@@ -3,10 +3,11 @@ const {app,BrowserWindow,Menu} = require("electron");
 
 function createWindow(){
     const win = new BrowserWindow({
-        width:600, height:600,
+        width:1400, height:900,
         show:false,
 
     })
+    win.loadFile("./public/Login_v1/index.html");
     win.loadFile("./public/index.html");
 
     win.once('ready-to-show',()=>{
