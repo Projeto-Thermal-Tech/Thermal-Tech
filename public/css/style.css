@@ -1,0 +1,162 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'B612';
+}  
+header{
+    display: flex;
+    width: 100%;
+    height: 60px;
+    background-color: #0080F5;
+    justify-content: space-between;
+}
+.logo{
+    box-sizing: border-box;
+    display: flex;
+}
+button{
+    cursor: pointer;
+    background-color: white;
+    font-weight: bold;
+}
+#logo{
+    margin-left: 2rem;
+    padding: 5px 20px;
+    width: 50px;
+    height: 50px;
+}
+h4{
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+a{
+    color:white;
+    text-decoration: none;
+}
+ul{
+    display: flex;
+}
+li{
+    margin-left: 0.5rem;
+    list-style: none;
+    padding: 1rem;
+    font-size: 1rem;
+}
+.nav-right{
+   display: flex;
+   justify-content: end;
+   /* width: 10rem;  */
+   padding: 0.5em;
+}
+.nav-right a img {
+    width: 30px;
+    height: 30px;
+    margin-left: 0.8rem;
+    margin-right: 0.8rem;
+ }
+ .nav-right h2{
+
+ }
+ main h2{
+    font-size: 28px;
+    padding: 1rem;
+    text-align: center;
+ }
+ .dados_manut{
+   margin-top: 1rem; 
+   width:90%;
+   margin-left: 5%;
+   margin-right: 5%;
+ }
+ .header_manut{
+    background-color: #0080F5;
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+ }
+ .search_manut{
+    margin-top: 1rem;
+    align-items: center;
+ }
+ .search_manut input{
+    width: 12rem;
+    height: 25px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+ }
+ .search_manut button{
+    margin-left: 5px;
+    width: 5rem;
+    height: 35px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+ }
+ .info_equip{
+    width: 40%;
+    display: flex;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 20px;
+ }
+ .info-left{
+    width: 60%;
+    
+ }
+.info-rigth{
+    width: 40%;
+    text-align: left;
+    align-items: end;
+}
+.add_manut{
+       display: flex;
+       align-items: center;
+}
+.add_manut button{
+       font-size: 18px;
+       width:20rem ;
+       padding: 10px;
+       border: none;
+       border-radius: 10px;
+}
+
+.icon{
+        margin-left: 10px;
+        width: 34px;
+}
+.table-container {
+    height: calc(30 * 1em); /* Defina a altura da tabela para 10 linhas */
+    overflow-y: scroll; /* Adicione uma barra de rolagem vertical */
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  thead {
+    background-color: darkgrey;
+  }
+  
+  th, td {
+    text-align: center;
+    padding: 5px;
+    cursor: pointer;
+    margin-bottom:10px;
+    border: 1px solid black; /* Adicione bordas às células */
+  }
+  
+  tr:nth-child(even) {
+    background-color: rgba(221, 219, 219, 0.793);
+  }
+  
+  tr:hover td {
+    font-weight: bold;
+    transform: scale(0.98);
+    /* Adicione outros estilos aqui, se necessário */
+  }
+  

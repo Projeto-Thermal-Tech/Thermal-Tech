@@ -1,0 +1,88 @@
+@media (max-width: 1300px) {
+    header{
+        height: 70px;
+        
+    }
+    .logo{
+        box-sizing: border-box;
+        display: flex;
+    }
+    h1{
+        padding: 5px;
+        font-size: 1rem;
+    }
+    h4{
+        font-size: 15px;
+    }
+   
+    #logo{
+        margin-left: 1rem;
+        padding: 5px 10px;
+        width: 50px;
+        height: 50px;
+    }
+    li{
+        /* margin-left: 0.5rem; */
+        list-style: none;
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+    .nav-right{
+        display: flex;
+        flex-direction: column;
+        /* width: 10rem;  */
+        padding: 0.5em;
+     }
+    .nav-right a img {
+        width: 25px;
+        height: 25px;
+        margin-left: 0.8rem;
+        margin-right: 0.8rem;
+     }
+     main h2{
+        font-size: 28px;
+        padding: 0.6rem;
+        text-align: center;
+     }
+     .dados_manut{
+        width:95%;
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+         
+      }
+     .search_manut input{
+        width: 7rem;
+        height: 25px;
+        padding: 5px;
+        border: none;
+        border-radius: 5px;
+        margin-top: 1rem
+     }
+     .info_equip{
+        width: 45%;
+        display: flex;
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: 10px;
+        font-size: 18px;
+     }
+     .info-left{
+        width: 50%;
+     }
+    .info-rigth{
+        margin-left: 20%;
+        justify-content: center;
+    }
+    .add_manut button{
+        font-size: 16px;
+        width:10rem ;
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+ }
+ .add_manut img{
+         margin-left: 10px;
+         width: 44px;
+ }
+  }
+  
