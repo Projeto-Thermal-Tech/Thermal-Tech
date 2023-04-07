@@ -1,4 +1,8 @@
-
+// Add this code to the login page JavaScript file
+window.onload = function() {
+    document.getElementById("login-form").elements[0].focus();
+  };
+  
 (function ($) {
     "use strict";
 
@@ -55,5 +59,3 @@
     
 
 })(jQuery);
-  
-

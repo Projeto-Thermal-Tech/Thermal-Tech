@@ -36,7 +36,7 @@
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" id="email" type="text" name="email" placeholder="Email">
+						<input class="input100" id="email" type="text" name="email" placeholder="Email" autofocus>
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -92,7 +92,7 @@
 		})
 	</script>
 <!--===============================================================================================-->
-	<script src="js/main.js"></script>
+	<script src="./script_login.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
 	<script>
@@ -109,7 +109,6 @@
 			function signIn() {
 			let email = document.getElementById("email").value;
 			let password = document.getElementById("password").value;
-			console.log(email, password); // Adicione esse console.log para verificar os valores
 
 			firebase.auth().signInWithEmailAndPassword(email, password).then(response => {
 				window.location.href = "../index.html";
@@ -118,7 +117,6 @@
 			});
 }
 
-			
 	</script>
 </body>
 </html>
