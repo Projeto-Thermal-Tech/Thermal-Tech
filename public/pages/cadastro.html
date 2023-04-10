@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/@media1200.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/@media1200.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Overpass:wght@400;700&display=swap" rel="stylesheet">
@@ -38,11 +38,45 @@
             
         </div>
     </header>
-    <div class="balloon-box balloon-circle">
-        <p>Nome:</p>
-        <h3 class="balloon-text"></h3>
-        <p>Matrícula</p>
-    </div> 
+    <nav class="menu-lateral">
+
+        <div class="btn-expandir">
+            <i class="bi bi-list" id="btn-exp"></i>
+        </div>
+
+        <ul>
+            <li class="item-menu ativo">
+                <a href="#">
+                    <span class="icon"><i class="bi bi-house-door"></i></span>
+                    <span class="txt-link">home</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="#">
+                    <span class="icon"><i class="bi bi-person"></i></span>
+                    <span class="txt-link">Técnicos</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="#">
+                    <span class="icon"><i class="bi bi-buildings-fill"></i></span>
+                    <span class="txt-link">Locais</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="#">
+                    <span class="icon"><i class="bi bi-clipboard-data-fill"></i></span>
+                    <span class="txt-link">Serviços</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="#">
+                    <span class="icon"><i class="bi bi-bag-check"></i></span>
+                    <span class="txt-link">Tipos de Arcondicionados</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
     <table>
         <tr>
             <th>ID</th>
@@ -93,5 +127,6 @@
             <td>Excluir</td>
         </tr>
     </table>
+    <script src="../../js/script.js"></script>
 </body>
 </html>
