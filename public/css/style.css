@@ -144,7 +144,7 @@ li{
   
   th, td {
     text-align: center;
-    padding: 5px;
+    padding: 10px;
     cursor: pointer;
     margin-bottom:10px;
     border: 1px solid black; /* Adicione bordas às células */
