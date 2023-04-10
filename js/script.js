@@ -1,6 +1,5 @@
 
-var btn_sair = document.querySelector("#sair");
-
+const btn_sair = document.querySelector("#sair");
 
       btn_sair.addEventListener("click", ()=>{
         const confirmLogout = confirm("Tem certeza que deseja sair?");
@@ -9,12 +8,4 @@ var btn_sair = document.querySelector("#sair");
        
     }
       })
-
-// inicio login
-
-
-// fim login  
-
-
-// buttons universais
 

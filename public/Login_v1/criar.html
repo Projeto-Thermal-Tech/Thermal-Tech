@@ -67,15 +67,15 @@
 
 					<div class="text-center p-t-12">
 						<span class="txt1">
-							Forgot
+							Esqueceu seu
 						</span>
 						<a class="txt2" href="#">
-							Username / Senha?
+							Email / Senha?
 						</a>
 					</div>
 
 					<div class="text-center p-t-90">
-						<a class="txt2" href="#">
+						<a class="txt2" href="#" onclick="register()">
 							ja possui uma conta?
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
@@ -123,7 +123,9 @@
 				alert(error);
 			});
 }
-
+			function register(){
+				window.location.href = "../pages/manut.html";
+			}
 	</script>
 </body>
 </html>
