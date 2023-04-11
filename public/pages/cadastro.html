@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/@media1200.css">
     <link rel="stylesheet" href="../css/cadastro.css">
+    <link rel="stylesheet" href="../css/@media1200.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Overpass:wght@400;700&display=swap" rel="stylesheet">
@@ -16,14 +15,14 @@
 <body>
     <header>
         <div class="logo">
-            <img id="logo" src="./assets/icon_logo_ar-condicionado.png" alt="">
+            <img id="logo" src="../assets/icon_logo_ar-condicionado.png" alt="">
             <h1>Thermal Tech</h1>
         </div>
         <nav>
             <ul>
-                <li><a href="">Equipamentos</a></li>
-                <li><a href="">Manutenções</a></li>
-                <li><a href="">Cadastro Geral</a></li>
+                <li><a href="../lista.html">Equipamentos</a></li>
+                <li><a href="../manut.html">Manutenções</a></li>
+                <li><a href="../cadastro.html">Cadastro Geral</a></li>
                 <li><a href="">Homem Hora</a></li>
                 <li><a href="">Gráficos gerenciais</a></li>
                 <li><a href="">Chat</a></li>
@@ -31,8 +30,8 @@
         </nav>
         <div class="nav-right">
             <div>
-                <a href=""><img src="./assets/icon_config.png" alt=""></a> 
-                <a href=""><img src="./assets/icon_sair.png" alt=""></a>
+                <a href=""><img src="../assets/icon_config.png" alt=""></a> 
+                <a href="" class="sair" ><img src="../assets/icon_sair.png" alt=""></a>
             </div>
             <div>
                 <h4>usuario@teste.com.br</h4>
@@ -40,6 +39,11 @@
             
         </div>
     </header>
+    <div class="balloon-box balloon-circle">
+        <p>Nome:</p>
+        <h3 class="balloon-text"></h3>
+        <p>Matrícula</p>
+    </div>
     <nav class="menu-lateral">
 
         <div class="btn-expandir">
@@ -79,59 +83,57 @@
             </li>
         </ul>
     </nav>
-    <div class="table-container">
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Matrícula</th> 
-                <th colspan="2">Ação</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Eduardo</td>
-                <td>457.546.448</td>
-                <td>Adicionar</td>
-                <td>Excluir</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Victor Bueno</td>
-                <td>457.546.448</td>
-                <td>Adicionar</td>
-                <td>Excluir</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Lucas Cuba</td>
-                <td>457.546.448</td>
-                <td>Adicionar</td>
-                <td>Excluir</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Lucas Ulbrich</td>
-                <td>457.546.448</td>
-                <td>Adicionar</td>
-                <td>Excluir</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>Luiz Roberti</td>
-                <td>457.546.448</td>
-                <td>Adicionar</td>
-                <td>Excluir</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>Jean Maciel</td>
-                <td>457.546.448</td>
-                <td>Adicionar</td>
-                <td>Excluir</td>
-            </tr>
-        </table>
-    </div>
-    
+    <script src="dashboardjs.js"></script> 
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Matrícula</th> 
+            <th colspan="2">Ação</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Eduardo</td>
+            <td>457.546.448</td>
+            <td>Adicionar</td>
+            <td>Excluir</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Victor Bueno</td>
+            <td>457.546.448</td>
+            <td>Adicionar</td>
+            <td>Excluir</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Lucas Cuba</td>
+            <td>457.546.448</td>
+            <td>Adicionar</td>
+            <td>Excluir</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Lucas Ulbrich</td>
+            <td>457.546.448</td>
+            <td>Adicionar</td>
+            <td>Excluir</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Luiz Roberti</td>
+            <td>457.546.448</td>
+            <td>Adicionar</td>
+            <td>Excluir</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Jean Maciel</td>
+            <td>457.546.448</td>
+            <td>Adicionar</td>
+            <td>Excluir</td>
+        </tr>
+    </table>
     <script src="../../js/script.js"></script>
 </body>
 </html>
