@@ -34,10 +34,10 @@ a{
   color:white;
   text-decoration: none;
 }
-ul{
+nav ul{
   display: flex;
 }
-li{
+nav li{
   margin-left: 0.5rem;
   list-style: none;
   padding: 1rem;
@@ -132,7 +132,7 @@ main h2{
 .table-container {
   height: calc(30 * 1em); /* Defina a altura da tabela para 10 linhas */
   overflow-y: scroll; /* Adicione uma barra de rolagem vertical */
-  margin-top: 100px;
+  margin-top: 10px;
 }
 
 table {
@@ -212,21 +212,21 @@ body {
   height: 100vh;
 }
 
-nav.menu-lateral {
+.menu-lateral {
   width: 60px;
   height: 100vh;
   background-color: #49619D;
   padding: 40px 0 40px 0%;
   box-shadow: 3px 0 0 black;
 
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   left: 0;
   overflow: hidden;
   transition: .5s;
 }
 
-nav.menu-lateral.expandir {
+.menu-lateral.expandir {
   width: 300px;
 }
 
@@ -275,4 +275,7 @@ ul li.item-menu a .txt-link {
 
 ul li.item-menu a .icon>i {
   font-size: 40px;
+}
+section{
+  display: flex;
 }
