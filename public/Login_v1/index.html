@@ -19,10 +19,13 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="../css/global.css">
 <!--===============================================================================================-->
 </head>
 <body>
-	
+	<!-- <div class="loading">
+		<span class="carregando"></span>
+	</div> -->
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
@@ -57,7 +60,6 @@
 							Login
 						</button>
 					</div>
-
 					<div class="text-center p-t-12">
 						<span class="txt1">
 							Forgot
@@ -68,7 +70,7 @@
 					</div>
 
 					<div class="text-center p-t-90">
-						<a class="txt2" href="#">
+						<a class="txt2" href="#" onclick="register()">
 							Crie sua conta
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
@@ -77,6 +79,10 @@
 			</div>
 		</div>
 	</div>
+	
+
+
+
 <!--===============================================================================================-->	
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
@@ -93,6 +99,7 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="./script_login.js"></script>
+	<script src="../../js/loading.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
 	<script>
@@ -107,16 +114,22 @@
 			firebase.initializeApp(firebaseConfig);
 			
 			function signIn() {
+				showLoading()
 			let email = document.getElementById("email").value;
 			let password = document.getElementById("password").value;
 
 			firebase.auth().signInWithEmailAndPassword(email, password).then(response => {
+				hideloading()
 				window.location.href = "../pages/manut.html";
 			}).catch(error => {
-				alert(error);
+				hideloading()
+				alert("Usuario não encontrado");
 			});
-}
-
+			}
+			
+			function register(){
+				window.location.href = "./criar.html";
+			}
 	</script>
 </body>
 </html>
