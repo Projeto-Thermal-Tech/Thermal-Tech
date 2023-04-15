@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/>
     <link rel="stylesheet" href="../css/list.css">
+    <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="./css/@media1200.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <script src="https://kit.fontawesome.com/8ab443ffcb.js" crossorigin="anonymous"></script>
@@ -17,7 +18,7 @@
 <body>
     <header>
         <div class="logo">
-            <img id="logo" src="../assets/logo_tt.jpeg" alt="">
+            <img id="logo" src="../assets/icon_logo_ar-condicionado.png" alt="">
             <h1>Thermal Tech</h1>
         </div>
         <nav>
@@ -53,7 +54,7 @@
                 
                 <div class="add_manut">
                     <div>
-                        <button>Adicionar Ar Condicionado +</button>
+                        <button onclick="showPopup()">Adicionar Ar Condicionado +</button>
                     </div>
                     <div>
                         <img class="icon" src="../assets/ar_equip.png" alt=""><img src="" alt="">
@@ -297,5 +298,76 @@
             </div>
         </section>
     </main>
+    <section class="overlay">
+        <div class="popup" id="popup">
+            <div class="popup-title">Cadastrar Equipamento</div>
+            <div class="popup-content">
+               <div class="popup-header">
+                 <div>
+                     <label for="" class="popup-label">TAG:</label>
+                     <input type="text" class="popup-input" id="tag" placeholder="ACS-2101"> 
+                 </div>
+                 <div>
+                     <label for="" class="popup-label">Tipo de Equipamento:</label>
+                         <select name="" id="">
+                             <option value=""></option>
+                             <option value="">Split</option>
+                             <option value="">Self-chiler</option>
+                             <option value="">Piso-Teto</option>
+                         </select>
+                 </div>
+                 <div>
+                     <label for="" class="popup-label">Número de Série</label>
+                     <input type="text" class="popup-input" id="n/s" placeholder="3928849328"> 
+                 </div>
+               </div>
+               <div>
+                 <label for="" class="popup-label">Descrição do Equipamento</label> 
+                 <textarea name="" id="" cols="82" rows="3"></textarea>
+             </div>  
+               <div class="popup-center">
+                 <div>
+                     <label for="" class="popup-label">Aréa Climatizada</label>
+                     <input type="number" name="" id="" class="popup-input">
+                 </div>
+                 <div>
+                     <label for="" class="popup-label">Localidade</label>
+                     <select name="" id="">
+                         <option value=""></option>
+                         <option value="">U-144</option>
+                         <option value="">U-2110</option>
+                         <option value="">U-2325</option>
+                     </select>
+                 </div>
+                 <div>
+                 <div>
+                     <label for="" class="popup-label">Modelo</label>
+                     <input type="number" name="" id="" class="popup-input">
+                 </div>
+               </div> 
+            </div>
+            <button class="popup-button" onclick="saveEquipment()">Salvar</button>
+            <button  class="popup-button" onclick="hidePopup()">Cancelar</button>
+        </div>
+    </section>
+    <script>
+         function showPopup() {
+        document.getElementById("popup").style.display= "block";
+        document.querySelector(".overlay").style.display = "block";
+	}
+
+	function hidePopup() {
+		document.getElementById("popup").style.display = "none";
+        document.querySelector(".overlay").style.display = "none";
+        
+	}
+
+	function saveEquipment() {
+		
+		alert("O equipamento foi cadastrado com sucesso na categoria " );
+
+		hidePopup();
+	}
+    </script>
     <script src="../js/script.js"></script>
 </html> 
