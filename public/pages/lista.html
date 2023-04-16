@@ -19,22 +19,22 @@
     <header>
         <div class="logo">
             <img id="logo" src="../assets/icon_logo_ar-condicionado.png" alt="">
-            <h1>Thermal Tech</h1>
+            <h1><a href="./home.html">Thermal Tech</a></h1>
         </div>
         <nav>
             <ul>
-                <li><a href="">Equipamentos</a></li>
-                <li><a href="">Manutenções</a></li>
-                <li><a href="">Cadastro Geral</a></li>
-                <li><a href="">Homem Hora</a></li>
+                <li><a href="#">Equipamentos</a></li>
+                <li><a href="./manut.html">Manutenções</a></li>
+                <li><a href="./cadastro.html">Cadastro Geral</a></li>
+                <li><a href="./horas.html">Homem Hora</a></li>
                 <li><a href="">Gráficos gerenciais</a></li>
                 <li><a href="">Chat</a></li>
             </ul>
         </nav>
         <div class="nav-right">
             <div>
-                <a href="#"><img src="../assets/icon_config.png" alt=""></a> 
-                <a  href="#" id="sair"><img  src="../assets/icon_sair.png" alt=""></a>
+                <a href="#"  class="config"><img src="../assets/icon_config.png" alt=""></a> 
+                <a  href="#" class="sair"><img  src="../assets/icon_sair.png" alt=""></a>
             </div>
             <div>
                 <h4>usuario@teste.com.br</h4>
@@ -351,23 +351,7 @@
         </div>
     </section>
     <script>
-         function showPopup() {
-        document.getElementById("popup").style.display= "block";
-        document.querySelector(".overlay").style.display = "block";
-	}
-
-	function hidePopup() {
-		document.getElementById("popup").style.display = "none";
-        document.querySelector(".overlay").style.display = "none";
-        
-	}
-
-	function saveEquipment() {
-		
-		alert("O equipamento foi cadastrado com sucesso na categoria " );
-
-		hidePopup();
-	}
+         
     </script>
-    <script src="../js/script.js"></script>
+    <script src="../../js/script.js"></script>
 </html> 
