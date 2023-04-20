@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,11 +8,13 @@
     <link rel="stylesheet" href="../css/cadastro.css">
     <link rel="stylesheet" href="../css/@media1200.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Overpass:wght@400;700&display=swap" rel="stylesheet">
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Overpass:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <title>Thermal Tech</title>
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -30,13 +33,13 @@
         </nav>
         <div class="nav-right">
             <div>
-                <a href=""><img src="../assets/icon_config.png" alt=""></a> 
-                <a href="" class="sair" ><img src="../assets/icon_sair.png" alt=""></a>
+                <a href=""><img src="../assets/icon_config.png" alt=""></a>
+                <a href="" class="sair"><img src="../assets/icon_sair.png" alt=""></a>
             </div>
             <div>
                 <h4>usuario@teste.com.br</h4>
             </div>
-            
+
         </div>
     </header>
     <section>
@@ -45,7 +48,7 @@
             <div class="btn-expandir">
                 <i class="bi bi-list" id="btn-exp"></i>
             </div>
-    
+
             <ul>
                 <li class="item-menu ativo">
                     <a href="#">
@@ -79,67 +82,76 @@
                 </li>
             </ul>
         </div>
-        <div class="table-container">
-            <div class="balloon-box balloon-circle">
-                <p>Nome:</p>
-                <h3 class="balloon-text"></h3>
-                <p>Matrícula</p>
+        <main>
+            <h2>Cadastro Técnicos</h2>
+            <section class="cadastro_dados">
+                <div class="header_dados">
+                    <div class="search_dados">
+                        <h4>Nomes dos Técnicos:</h4>
+                        <input type="text" placeholder="Nome do Técnico">
+                    </div>
+                    <div class="dados_Matrícula">
+                        <h5>Número da Matrícula</h5>
+                        <input type="text" placeholder="Número da Matrícula">
+                    </div>
+            </section>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Matrícula</th>
+                        <th colspan="2">Ação</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Eduardo</td>
+                        <td>457.546.448</td>
+                        <td>Adicionar</td>
+                        <td>Excluir</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Victor Bueno</td>
+                        <td>457.546.448</td>
+                        <td>Adicionar</td>
+                        <td>Excluir</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Lucas Cuba</td>
+                        <td>457.546.448</td>
+                        <td>Adicionar</td>
+                        <td>Excluir</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Lucas Ulbrich</td>
+                        <td>457.546.448</td>
+                        <td>Adicionar</td>
+                        <td>Excluir</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Luiz Roberti</td>
+                        <td>457.546.448</td>
+                        <td>Adicionar</td>
+                        <td>Excluir</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Jean Maciel</td>
+                        <td>457.546.448</td>
+                        <td>Adicionar</td>
+                        <td>Excluir</td>
+                    </tr>
+                </table>
             </div>
-            <table>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Matrícula</th> 
-                    <th colspan="2">Ação</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Eduardo</td>
-                    <td>457.546.448</td>
-                    <td>Adicionar</td>
-                    <td>Excluir</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Victor Bueno</td>
-                    <td>457.546.448</td>
-                    <td>Adicionar</td>
-                    <td>Excluir</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Lucas Cuba</td>
-                    <td>457.546.448</td>
-                    <td>Adicionar</td>
-                    <td>Excluir</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Lucas Ulbrich</td>
-                    <td>457.546.448</td>
-                    <td>Adicionar</td>
-                    <td>Excluir</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Luiz Roberti</td>
-                    <td>457.546.448</td>
-                    <td>Adicionar</td>
-                    <td>Excluir</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Jean Maciel</td>
-                    <td>457.546.448</td>
-                    <td>Adicionar</td>
-                    <td>Excluir</td>
-                </tr>
-            </table>
-        </div>
     </section>
-    
-   
-    <script src="dashboardjs.js"></script> 
+
+
+    <script src="dashboardjs.js"></script>
     <script src="../../js/script.js"></script>
 </body>
+
 </html>
