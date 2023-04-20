@@ -10,6 +10,7 @@ function showLoading() {
     
   }
   
+  
 function hideloading(){
     const loadings = document.getElementsByClassName("loading");
     if(loadings.length){

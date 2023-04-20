@@ -51,7 +51,7 @@
 						</span>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" id="password" type="password" name="pass" placeholder="Repita a senha">
+						<input class="input100" type="password" name="pass" placeholder="Repita a senha">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -60,7 +60,7 @@
 					
 					<div class="container-login100-form-btn">
 						
-						<button class="login100-form-btn" id="login-btn" type="button" onclick="signIn()">
+						<button class="login100-form-btn" id="login-btn" type="button" onclick="register()">
 							Cadastrar
 						</button>
 					</div>
@@ -75,7 +75,7 @@
 					</div>
 
 					<div class="text-center p-t-90">
-						<a class="txt2" href="#" onclick="register()">
+						<a class="txt2" href="../Login_v1/index.html">
 							ja possui uma conta?
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
@@ -85,7 +85,7 @@
 		</div>
 	</div>
 <!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
 	<script src="vendor/bootstrap/js/popper.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -100,6 +100,7 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="./script_login.js"></script>
+	<script src="../../js/loading.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
 	<script>
@@ -113,19 +114,7 @@
   			};
 			firebase.initializeApp(firebaseConfig);
 			
-			function signIn() {
-			let email = document.getElementById("email").value;
-			let password = document.getElementById("password").value;
-
-			firebase.auth().signInWithEmailAndPassword(email, password).then(response => {
-				window.location.href = "../pages/manut.html";
-			}).catch(error => {
-				alert(error);
-			});
-}
-			function register(){
-				window.location.href = "../pages/manut.html";
-			}
+			
 	</script>
 </body>
 </html>
