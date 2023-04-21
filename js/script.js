@@ -11,6 +11,8 @@ btn_sair.addEventListener("click", ()=>{
     })
 
 
+       
+
     
 btn_config.addEventListener("click", ()=>{
     alert("aqui vai abrir as configurações")

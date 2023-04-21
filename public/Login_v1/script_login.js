@@ -1,7 +1,17 @@
 // Add this code to the login page JavaScript file
+
+firebase.auth().onAuthStateChanged(function(user){
+  if(user){
+    window.location.href ="../pages/home.html"
+  }
+})
+
+
+
 window.onload = function () {
   document.getElementById("login-form").elements[0].focus();
 };
+
 function signIn() {
   showLoading();
   let email = document.getElementById("email").value;

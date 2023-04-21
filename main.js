@@ -7,8 +7,8 @@ function createWindow(){
         show:false,
 
     })
-    win.loadFile("seila.html");
-    // win.loadFile("./public/index.html");
+    // win.loadFile("seila.html");
+    win.loadFile("./public/Login_v1/index.html");
 
     win.once('ready-to-show',()=>{
         win.show();
