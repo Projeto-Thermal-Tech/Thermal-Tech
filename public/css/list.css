@@ -212,7 +212,7 @@ a{
     transform: translate(-50%, -50%);
     padding: 10px;
     width: 850px;
-    height: 500px;
+    height: 600px;
     background-color: white;
     z-index: 2;
     display: none;
@@ -234,6 +234,8 @@ a{
 .popup-content {
     margin: 20px;
     border: 1px solid black;
+    background-color: rgba(250, 235, 215, 0.712);
+    border-radius: 10px;
     padding: 10px;
 }
 
@@ -316,11 +318,15 @@ textarea{
     border-radius: 5px;
     border: none;
     color: white;
-    background-color: #0080F5;
     cursor: pointer;
     margin-right: 10px;
 }
-
+.salvar{
+    background-color: green;
+}
+.cancelar{
+    background-color: red;
+}
 .popup-button:hover {
     background-color: darkblue;
 }

@@ -54,9 +54,7 @@ li{
     margin-left: 0.8rem;
     margin-right: 0.8rem;
  }
- .nav-right h2{
 
- }
  main h2{
     font-size: 28px;
     padding: 1rem;
@@ -139,6 +137,7 @@ main div{
     
 }
 main img{
-   width: 50%;
-   margin: auto; 
+    border-radius: 5%;
+    margin-top: 10%;
+    width: 30%;
 }
