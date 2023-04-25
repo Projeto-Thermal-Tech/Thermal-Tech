@@ -150,7 +150,6 @@ main h2 {
 .table-container {
   height: calc(30 * 1em);
   /* Defina a altura da tabela para 10 linhas */
-  overflow-y: scroll;
   /* Adicione uma barra de rolagem vertical */
   margin-top: 10px;
 }

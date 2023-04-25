@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Overpass:wght@400;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <title>Thermal Tech</title>
 </head>
@@ -150,9 +151,29 @@
           </table>
         </div>
     </section>
-  
-  
-    <script src="dashboardjs.js"></script>
+    <script>
+        // Selecionar os itens clicado
+var itemMenu = document.querySelectorAll('.item-menu')
+function selectlink() {
+    itemMenu.forEach((item) =>
+        item.classList.remove('ativo')
+    )
+    this.classList.add('ativo')
+}
+
+itemMenu.forEach((item) =>
+    item.addEventListener('click', selectlink)
+)
+//expandir o menu
+
+var btnExp = document.querySelector('#btn-exp')
+var menuLateral = document.querySelector('.menu-lateral')
+
+btnExp.addEventListener('click', function () {
+    menuLateral.classList.toggle('expandir')
+})  
+
+    </script>
     <script src="../../js/script.js"></script>
   </body>
   
