@@ -11,148 +11,331 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Overpass:wght@400;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <title>Cadastro de utilidades</title>
 </head>
 
 <body>
-    <header>
-      <div class="logo">
-        <img id="logo" src="../assets/icon_logo_ar-condicionado.png" alt="">
-        <h1>Thermal Tech</h1>
+  <header>
+    <div class="logo">
+      <img id="logo" src="../assets/icon_logo_ar-condicionado.png" alt="">
+      <h1>Thermal Tech</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="../lista.html">Equipamentos</a></li>
+        <li><a href="../manut.html">Manutenções</a></li>
+        <li><a href="../cadastro.html">Cadastro Geral</a></li>
+        <li><a href="">Homem Hora</a></li>
+        <li><a href="">Gráficos gerenciais</a></li>
+        <li><a href="">Chat</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <div>
+        <a href=""><img src="../assets/icon_config.png" alt=""></a>
+        <a href="" class="sair"><img src="../assets/icon_sair.png" alt=""></a>
       </div>
-      <nav>
-        <ul>
-          <li><a href="../pages/lista.html">Equipamentos</a></li>
-          <li><a href="../pages/manut.html">Manutenções</a></li>
-          <li><a href="../pages/cadastro.html">Cadastro Geral</a></li>
-          <li><a href="">Homem Hora</a></li>
-          <li><a href="">Gráficos gerenciais</a></li>
-          <li><a href="">Chat</a></li>
-        </ul>
-      </nav>
-      <div class="nav-right">
-        <div>
-          <a href=""><img src="../assets/icon_config.png" alt=""></a>
-          <a href="" class="sair"><img src="../assets/icon_sair.png" alt=""></a>
-        </div>
-        <div>
-          <h4>usuario@teste.com.br</h4>
-        </div>
-  
+      <div>
+        <h4>usuario@teste.com.br</h4>
       </div>
-    </header>
-    <section>
-  
-      <div class="menu-lateral">
-  
-        <div class="btn-expandir">
-          <i class="bi bi-list" id="btn-exp"></i>
-        </div>
-  
-        <ul>
-          <li class="item-menu ativo">
-            <a href="#">
-              <span class="icon"><i class="bi bi-house-door"></i></span>
-              <span class="txt-link">home</span>
-            </a>
-          </li>
-          <li class="item-menu">
-            <a href="#">
-              <span class="icon"><i class="bi bi-person"></i></span>
-              <span class="txt-link">Técnicos</span>
-            </a>
-          </li>
-          <li class="item-menu">
-            <a href="#">
-              <span class="icon"><i class="bi bi-buildings-fill"></i></span>
-              <span class="txt-link">Locais</span>
-            </a>
-          </li>
-          <li class="item-menu">
-            <a href="#">
-              <span class="icon"><i class="bi bi-clipboard-data-fill"></i></span>
-              <span class="txt-link">Serviços</span>
-            </a>
-          </li>
-          <li class="item-menu">
-            <a href="#">
-              <span class="icon"><i class="bi bi-bag-check"></i></span>
-              <span class="txt-link">Tipos de Arcondicionados</span>
-            </a>
-          </li>
-        </ul>
+
+    </div>
+  </header>
+  <section>
+    <div class="menu-lateral">
+      <div class="btn-expandir">
+        <i class="bi bi-list" id="btn-exp"></i>
       </div>
-      <main>
-        <h2>Cadastro Técnicos</h2>
-        <section class="cadastro_dados">
-          <div class="header_dados">
-            <div class="search_dados">
-              <h4>Nomes dos Técnicos:</h4>
-              <input type="text" placeholder="Nome do Técnico">
-            </div>
-            <div class="search_dados">
-              <h4>Número da Matrícula:</h4>
-              <input type="number" placeholder="Número da Matrícula">
-            </div>
+      <ul>
+        <li class="item-menu">
+          <a href="#" data-table="tabela-tecnicos">
+            <span class="icon"><i class="bi bi-person"></i></span>
+            <span class="txt-link">Técnicos</span>
+          </a>
+        </li>
+        <li class="item-menu">
+          <a href="#" data-table="tabela-locais">
+            <span class="icon"><i class="bi bi-buildings-fill"></i></span>
+            <span class="txt-link">Locais</span>
+          </a>
+        </li>
+        <li class="item-menu">
+          <a href="#" data-table="tabela-servicos">
+            <span class="icon"><i class="bi bi-clipboard-data-fill"></i></span>
+            <span class="txt-link">Serviços</span>
+          </a>
+        </li>
+        <li class="item-menu">
+          <a href="#" data-table="tabela-tipos-arcondicionados">
+            <span class="icon"><i class="bi bi-bag-check"></i></span>
+            <span class="txt-link">Tipos de Arcondicionados</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <main>
+      <h2>Cadastro Técnicos</h2>
+      <section class="cadastro_dados">
+        <div class="header_dados">
+          <div class="search_dados">
+            <h4>Nomes dos Técnicos:</h4>
+            <input type="text" placeholder="Nome do Técnico">
+          </div>  
+          <div class="search_dados">
+            <h4>Número da Matrícula:</h4>
+            <input type="number" placeholder="Número da Matrícula">
           </div>
-        </section>
-        <div class="table-container">
-          <table>
+        </div>
+      </section>
+      <div class="table-container">
+        <div id="tabela2" class="tabela"></div>
+        <table id="tabela-tecnicos">
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Matrícula</th>
+            <th colspan="2">Ação</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Eduardo</td>
+            <td>457.546.448</td>
+            <td><i class="fas fa-pencil-alt"></i></td>
+            <td><i class="fas fa-trash-alt"></i></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Victor Bueno</td>
+            <td>457.546.448</td>
+            <td><i class="fas fa-pencil-alt"></i></td>
+            <td><i class="fas fa-trash-alt"></i></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Lucas Cuba</td>
+            <td>457.546.448</td>
+            <td><i class="fas fa-pencil-alt"></i></td>
+            <td><i class="fas fa-trash-alt"></i></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Lucas Ulbrich</td>
+            <td>457.546.448</td>
+            <td><i class="fas fa-pencil-alt"></i></td>
+            <td><i class="fas fa-trash-alt"></i></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Luiz Roberti</td>
+            <td>457.546.448</td>
+            <td><i class="fas fa-pencil-alt"></i></td>
+            <td><i class="fas fa-trash-alt"></i></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Jean Maciel</td>
+            <td>457.546.448</td>
+            <td><i class="fas fa-pencil-alt"></i></td>
+            <td><i class="fas fa-trash-alt"></i></td>
+          </tr>
+        </table>
+      </div>
+      <div class="table-container">
+        <div id="tabela3" class="tabela">
+          <table id="tabela-locais" class="tabela ativo">
             <tr>
               <th>ID</th>
-              <th>Nome</th>
-              <th>Matrícula</th>
+              <th>Locais</th>
               <th colspan="2">Ação</th>
             </tr>
             <tr>
               <td>1</td>
-              <td>Eduardo</td>
-              <td>457.546.448</td>
+              <td>Escritório</td>
               <td><i class="fas fa-pencil-alt"></i></td>
               <td><i class="fas fa-trash-alt"></i></td>
             </tr>
             <tr>
               <td>2</td>
-              <td>Victor Bueno</td>
-              <td>457.546.448</td>
+              <td>Ctu</td>
               <td><i class="fas fa-pencil-alt"></i></td>
               <td><i class="fas fa-trash-alt"></i></td>
             </tr>
             <tr>
               <td>3</td>
-              <td>Lucas Cuba</td>
-              <td>457.546.448</td>
+              <td>sede</td>
               <td><i class="fas fa-pencil-alt"></i></td>
               <td><i class="fas fa-trash-alt"></i></td>
             </tr>
             <tr>
               <td>4</td>
-              <td>Lucas Ulbrich</td>
-              <td>457.546.448</td>
+              <td>sala 30</td>
               <td><i class="fas fa-pencil-alt"></i></td>
               <td><i class="fas fa-trash-alt"></i></td>
             </tr>
             <tr>
               <td>5</td>
-              <td>Luiz Roberti</td>
-              <td>457.546.448</td>
+              <td>Laboratório 3</td>
               <td><i class="fas fa-pencil-alt"></i></td>
               <td><i class="fas fa-trash-alt"></i></td>
             </tr>
             <tr>
               <td>6</td>
-              <td>Jean Maciel</td>
-              <td>457.546.448</td>
+              <td>Laboratório 2</td>
               <td><i class="fas fa-pencil-alt"></i></td>
               <td><i class="fas fa-trash-alt"></i></td>
             </tr>
           </table>
         </div>
-    </section>
-  
-  
-    <script src="dashboardjs.js"></script>
+        <div class="table-container">
+          <div id="tabela4" class="tabela">
+            <table id="tabela-servicos" class="tabela ativo">
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th colspan="2">Ação</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>Limpeza e Manutenção</td>
+                <td><i class="fas fa-pencil-alt"></i></td>
+                <td><i class="fas fa-trash-alt"></i></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Verificação do funcionamento</td>
+                <td><i class="fas fa-pencil-alt"></i></td>
+                <td><i class="fas fa-trash-alt"></i></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Verificação do Estado de Conservação</td>
+                <td><i class="fas fa-pencil-alt"></i></td>
+                <td><i class="fas fa-trash-alt"></i></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Substituição de Filtro</td>
+                <td><i class="fas fa-pencil-alt"></i></td>
+                <td><i class="fas fa-trash-alt"></i></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Troca de Suporte</td>
+                <td><i class="fas fa-pencil-alt"></i></td>
+                <td><i class="fas fa-trash-alt"></i></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Substituiç</td>
+                <td><i class="fas fa-pencil-alt"></i></td>
+                <td><i class="fas fa-trash-alt"></i></td>
+              </tr>
+            </table>
+          </div>
+          <div class="table-container">
+            <div id="tabela5" class="tabela">
+              <table id="tabela-tipos-arcondicionados" class="tabela ativo">
+                <tr>
+                  <th>ID</th>
+                  <th>Nome</th>
+                  <th colspan="2">Ação</th>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>Eduardo</td>
+                  <td><i class="fas fa-pencil-alt"></i></td>
+                  <td><i class="fas fa-trash-alt"></i></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Victor Bueno</td>
+                  <td><i class="fas fa-pencil-alt"></i></td>
+                  <td><i class="fas fa-trash-alt"></i></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Lucas Cuba</td>
+                  <td><i class="fas fa-pencil-alt"></i></td>
+                  <td><i class="fas fa-trash-alt"></i></td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Lucas Ulbrich</td>
+                  <td><i class="fas fa-pencil-alt"></i></td>
+                  <td><i class="fas fa-trash-alt"></i></td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>Luiz Roberti</td>
+                  <td><i class="fas fa-pencil-alt"></i></td>
+                  <td><i class="fas fa-trash-alt"></i></td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>Jean Maciel</td>
+                  <td><i class="fas fa-pencil-alt"></i></td>
+                  <td><i class="fas fa-trash-alt"></i></td>
+                </tr>
+              </table>
+            </div>
+  </section>
+
+    <script>
+       function selectLink() {
+  // Remove a classe "ativo" de todos os links
+  itemMenu.forEach((item) => item.classList.remove('ativo'));
+
+  // Adiciona a classe "ativo" no link clicado
+  this.classList.add('ativo');
+}
+// Seleciona todos os links do menu lateral
+const links = document.querySelectorAll('.item-menu a');
+
+// Para cada link, adiciona um evento de clique
+links.forEach(link => {
+  link.addEventListener('click', (event) => {
+    event.preventDefault(); // Previne a ação padrão do link
+
+    // Esconde todas as tabelas
+    const tabelas = document.querySelectorAll('.table-container table');
+    tabelas.forEach(tabela => {
+      tabela.style.display = 'none';
+    });
+
+    // Exibe a tabela correspondente ao link clicado
+    const tabelaSelecionada = link.dataset.table;
+    const tabela = document.querySelector(`#${tabelaSelecionada}`);
+    tabela.style.display = 'table';
+  });
+});
+
+// selecionar tabela atraves do dashboard
+
+var btnExp = document.querySelector('#btn-exp')
+var menuLateral = document.querySelector('.menu-lateral')
+
+btnExp.addEventListener('click', function () {
+	menuLateral.classList.toggle('expandir')
+}) 
+
+var itemMenu = document.querySelectorAll('.menu-lateral a');
+
+function selectLink() {
+	itemMenu.forEach((item) =>
+		item.classList.remove('ativo')
+	)
+	this.classList.add('ativo')
+}
+
+itemMenu.forEach((item) =>
+	item.addEventListener('click', selectLink)
+)
+//fim da função selecionar tabela atraves do dashboard
+
+    </script>
     <script src="../../js/script.js"></script>
   </body>
   
