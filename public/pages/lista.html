@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Overpass:wght@400;700&display=swap" rel="stylesheet">
-    <title>Thermal Tech</title>
+    <title>Lista de Equipamentos</title>
 </head>
 <body>
     <header>
@@ -305,7 +305,7 @@
                <div class="popup-header">
                  <div>
                      <label for="" class="popup-label">TAG:</label>
-                     <input type="text" class="popup-input" id="tag" placeholder="ACS-2101"> 
+                     <input type="text" class="popup-input" id="tag" placeholder="ACS-2101"  oninput="converterParaMaiuscula(this)"> 
                  </div>
                  <div>
                      <label for="" class="popup-label">Tipo de Equipamento:</label>
@@ -328,7 +328,7 @@
                <div class="popup-center">
                  <div>
                      <label for="" class="popup-label">Aréa Climatizada</label>
-                     <input type="number" name="" id="" class="popup-input">
+                     <input type="number" name="" id="" class="popup-input" oninput=adicionarMetrosQuadrados(this)>
                  </div>
                  <div>
                      <label for="" class="popup-label">Localidade</label>
@@ -341,13 +341,17 @@
                  </div>
                  <div>
                  <div>
-                     <label for="" class="popup-label">Modelo</label>
-                     <input type="number" name="" id="" class="popup-input">
+                     <label for="" class="popup-label">Setor</label>
+                     <input type="number" name="" id="setor" class="popup-input">
                  </div>
-               </div> 
+               </div>
+               <div>
+                <label for="" class="popup-label">Modelo</label>
+                <input type="number" name="" id="modelo" class="popup-input">
+            </div> 
             </div>
-            <button class="popup-button" onclick="saveEquipment()">Salvar</button>
-            <button  class="popup-button" onclick="hidePopup()">Cancelar</button>
+            <button class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
+            <button  class="popup-button cancelar" onclick="hidePopup()">Cancelar</button>
         </div>
     </section>
     <script>
