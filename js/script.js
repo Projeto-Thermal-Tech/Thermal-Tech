@@ -66,7 +66,7 @@ function saveEquipment() {
 
     hidePopup();
 }
-<<<<<<< HEAD
+
 
 
 //dashboard
@@ -121,12 +121,10 @@ function showTabela(event) {
 for (var i = 0; i < links.length; i++) {
   links[i].addEventListener('click', showTabela);
 }
-=======
+
+  
+
+
 function converterParaMaiuscula(elemento) {
     elemento.value = elemento.value.toUpperCase();
 }
-  
-
-  
-  
->>>>>>> 2ae09a4466fe021fbc8e449a34d47fbdaa232b40
