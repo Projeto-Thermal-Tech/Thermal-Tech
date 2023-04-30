@@ -1,11 +1,11 @@
 const {app,BrowserWindow,Menu} = require("electron");
-
+const path = require('path')
 
 function createWindow(){
     const win = new BrowserWindow({
         width:1900, height:1080,
         show:false,
-
+         icon: path.join(__dirname, './public/assets/icon_logo.jpg')
     })
 
     // win.loadFile("seila.html");

@@ -50,7 +50,7 @@
                         <h4>Consultar Manutenções</h4>
                         <input type="text" placeholder="N° da manutenção">
                         <button>Pesquisar</button>
-                        <button>Filtrar</button>
+                        <button onclick="showPopup()">Filtrar</button>
                 </div>
                 <div class="info_equip">
                     <div class="info-left">
@@ -307,6 +307,73 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </section>
+        <section class="overlay">
+            <div class="popup" id="popup">
+                <div class="popup-title-filter">Filtrar manutenção</div>
+                <div class="popup-content-filter">
+                   <div class="popup-header-filter">
+                     <div>
+                         <label for="" class="popup-label-filter">TAG:</label>
+                         <input type="text" class="popup-input-filter" id="tag" placeholder="ACS-2101"  oninput="converterParaMaiuscula(this)"> 
+                     </div>
+                     <div>
+                         <label for="" class="popup-label-filter">Tipo de Manutenção:</label>
+                             <select name="" id="">
+                                 <option value=""></option>
+                                 <option value="">Corretiva</option>
+                                 <option value="">Preventiva</option>
+                             </select>
+                     </div>
+                     <div>
+                        <label for="" class="popup-label-filter">Técnico:</label>
+                        <input type="text" class="popup-input-filter" id="tecnico" placeholder="Victor Bueno"oninput="converterParaMaiuscula(this)"> 
+                    </div>
+                     <div>
+                         <label for="" class="popup-label-filter">Serviços</label>
+                         <input type="text" class="popup-input-filter" id="n/s" placeholder="Troca de filtro"> 
+                     </div>
+                   </div>  
+                   <div class="popup-center-filter">
+                     <div>
+                         <label for="" class="popup-label-filter">Data de Inico</label>
+                         <input type="date" name="" id="" class="popup-input-filter">
+                     </div>
+                     <div>
+                        <label for="" class="popup-label-filter">Data de Fim</label>
+                        <input type="date" name="" id="" class="popup-input-filter">
+                    </div>
+                    <div>
+                        <label for="" class="popup-label-filter">Hora de Inico</label>
+                        <input type="time" name="" id="" class="popup-input-filter">
+                    </div>
+                    <div>
+                        <label for="" class="popup-label-filter">Hora de Fim</label>
+                        <input type="time" name="" id="" class="popup-input-filter">
+                    </div>
+                </div>
+                <div>
+                    <label for="" class="popup-label-filter">Localidade</label>
+                    <select name="" id="">
+                        <option value=""></option>
+                        <option value="">U-144</option>
+                        <option value="">U-2110</option>
+                        <option value="">U-2325</option>
+                    </select>
+                </div>
+                <div>
+                <div>
+                    <label for="" class="popup-label-filter">Setor</label>
+                    <input type="number" name="" id="setor" class="popup-input-filter">
+                </div>
+              </div>
+              <div>
+               <label for="" class="popup-label-filter">Modelo</label>
+               <input type="number" name="" id="modelo" class="popup-input-filter">
+           </div>
+                <button class="popup-button salvar" onclick="saveEquipment()">Filtrar</button>
+                <button  class="popup-button cancelar" onclick="hidePopup()">Cancelar</button>
             </div>
         </section>
     </main>
