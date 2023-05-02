@@ -165,7 +165,7 @@ thead {
 }
 
 th,
-td {
+td  {
   text-align: center;
   padding: 4px;
   cursor: pointer;
@@ -203,7 +203,7 @@ main h2 {
 }
 
 .cadastro_dados {
-  margin-top: 0, 5rem;
+  margin-top: 1rem;
   width: 90%;
   margin-left: 23%;
   margin-right: 23%;
@@ -219,6 +219,7 @@ main h2 {
 }
 
 .search_dados input {
+  padding-left: 4,5rem;
   text-align: center;
   width: 25rem;
   height: 35px;
@@ -284,7 +285,7 @@ td {
 
 th {
   background-color: #49619D;
-  color: white;
+  color: #D9D9D9;
 }
 
 table td:nth-child(4),
