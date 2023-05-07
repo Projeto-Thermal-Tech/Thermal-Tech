@@ -24,9 +24,9 @@
     </div>
     <nav>
       <ul>
-        <li><a href="../lista.html">Equipamentos</a></li>
-        <li><a href="../manut.html">Manutenções</a></li>
-        <li><a href="../cadastro.html">Cadastro Geral</a></li>
+        <li><a href="./lista.html">Equipamentos</a></li>
+        <li><a href="./manut.html">Manutenções</a></li>
+        <li><a href="./cadastro.html">Cadastro Geral</a></li>
         <li><a href="">Homem Hora</a></li>
         <li><a href="">Gráficos gerenciais</a></li>
         <li><a href="./chat.html">Chat</a></li>
@@ -35,7 +35,7 @@
     <div class="nav-right">
       <div>
         <a href=""><img src="../assets/icon_config.png" alt=""></a>
-        <a href="" class="sair"><img src="../assets/icon_sair.png" alt=""></a>
+        <a href="" class="sair" onclick="logout()"><img src="../assets/icon_sair.png" alt=""></a>
       </div>
       <div>
         <h4>usuario@teste.com.br</h4>
@@ -287,7 +287,12 @@
 
 
   <script src="dashboardjs.js"></script>
-  <script src="../../js/script.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
+    <script src="../Login_v1/firebase-init.js"></script>
+    <script src="../../js/auth-guard.js"></script>
+    <script src="../../js/logout.js"></script>
+    <script src="../../js/script.js"></script>
 </body>
 
 </html>

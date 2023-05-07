@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/>
+    <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/> -->
     <link rel="stylesheet" href="../css/home.css">
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/@media1200.css">
@@ -12,6 +12,7 @@
     <script src="https://kit.fontawesome.com/8ab443ffcb.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' https://www.gstatic.com/firebasejs/">
 <link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Overpass:wght@400;700&display=swap" rel="stylesheet">
     <title>Thermal Tech</title>
 </head>
@@ -34,8 +35,8 @@
         </nav>
         <div class="nav-right">
             <div>
-                <a href="#" title="Configurações"><img src="../assets/icon_config.png" alt=""></a> 
-                <a  href="#" class="sair" title="sair"><img  src="../assets/icon_sair.png" alt=""></a>
+                <a href="#"  class="config"title="Configurações"><img src="../assets/icon_config.png" alt=""></a> 
+                <a  href="#" class="sair" onclick="logout()" title="sair"><img  src="../assets/icon_sair.png" alt=""></a>
             </div>
             <div>
                 <h4>usuario@teste.com.br</h4>
@@ -47,5 +48,10 @@
             <img  src="../assets/logo2.png" alt="">
         </div>
     </main>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
+    <script src="../Login_v1/firebase-init.js"></script>
+    <script src="../../js/auth-guard.js"></script>
+    <script src="../../js/logout.js"></script>
     <script src="../../js/script.js"></script>
     </html>
