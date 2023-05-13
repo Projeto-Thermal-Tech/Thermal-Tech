@@ -27,18 +27,46 @@ function newCont() {
   window.location.href = "./criar.html";
 }
 
+// function register() {
+//     showLoading();
+//     let email = document.getElementById("email").value;
+//     let password = document.getElementById("password").value;
+//     firebase.auth().createUserWithEmailAndPassword(email,password).then(()=>{
+//         hideloading()
+//         window.location.href ='../pages/home.html'
+//     }).catch(error =>{
+//         hideloading()
+//         alert(error)
+//     })
+//   }
+
 function register() {
     showLoading();
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
+    var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+    if (!passwordRegex.test(password)) {
+      alert('Senha fraca! A senha deve ter pelo menos 8 caracteres, uma letra maiúscula, uma letra minúscula e um número.');
+  } else{
     firebase.auth().createUserWithEmailAndPassword(email,password).then(()=>{
-        hideloading()
-        window.location.href ='../pages/home.html'
-    }).catch(error =>{
-        hideloading()
-        alert(error)
-    })
+      hideloading()
+      window.location.href ='../pages/home.html'
+  }).catch(error =>{
+      hideloading()
+      alert(error)
+  })
   }
+
+}
+
+
+
+
+
+
+
+
+
 
 
 

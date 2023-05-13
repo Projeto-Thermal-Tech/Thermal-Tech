@@ -147,7 +147,7 @@ main h2 {
   width: 34px;
 }
 
-.table-container {
+.table_container {
   height: calc(30 * 1em);
   /* Defina a altura da tabela para 10 linhas */
 
@@ -209,6 +209,7 @@ main h2 {
   margin-right: 23%;
 }
 
+
 .header_dados {
   background-color: #0080F5;
   border-radius: 15px;
@@ -238,60 +239,54 @@ main h2 {
 
 /*fim da interface acima da tabela*/
 
-/*Inicio do Design da tabela*/
-
+/* Início do Design da tabela */
 
 caption {
-  text-align: center;
+text-align: center;
 }
 
 table {
-  margin-left: 23%;
-  width: 100%;
-  box-sizing: border-box;
-  border: 3px solid rgb(42, 42, 255);
-  border-collapse: collapse;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 15px;
-  text-align: center;
-  margin-top: 0px;
-  /* ajuste o valor de acordo com o espaçamento que você deseja */
+margin-left: 23%;
+width: 100%;
+box-sizing: border-box;
+border: 3px solid rgb(42, 42, 255);
+border-collapse: collapse;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 15px;
+text-align: center;
+margin-top: 0px;
+/* ajuste o valor de acordo com o espaçamento que você deseja */
 }
 
 th,
 td {
-  padding: 10px;
-  /* adiciona um espaçamento na célula */
+padding: 10px;
+/* adiciona um espaçamento na célula */
 }
 
 th {
-  background-color: #49619D;
-  color: white;
+background-color: #49619D;
+color: white;
 }
 
 table td:nth-child(4),
 table td:nth-child(5),
 table td:nth-child(1) {
-  background-color: #D9D9D9;
+background-color: #D9D9D9;
 }
 
-
-th,
-td {
-  padding: 25px;
-  width: 20%;
-  /* Define uma largura fixa para as colunas */
+th:first-child,
+td:first-child {
+width: 5%;
+/* Define uma largura fixa para a coluna ID */
 }
 
-th {
-  background-color: #49619D;
-  color: #D9D9D9;
+.green-icon {
+color: green;
 }
 
-table td:nth-child(4),
-table td:nth-child(5),
-table td:nth-child(1) {
-  background-color: #D9D9D9;
+.red-icon {
+color: red;
 }
 
 
