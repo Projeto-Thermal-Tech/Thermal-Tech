@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/horas.css" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/@media1200.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">
+        <img id="logo" src="../assets/icon_logo_ar-condicionado.png" alt="" />
+        <h1><a href="./home.html">Thermal Tech</a></h1>
+      </div>
+      <nav>
+        <ul>
+            <li><a href="./lista.html">Equipamentos</a></li>
+            <li><a href="./manut.html">Manutenções</a></li>
+            <li><a href="./cadastro.html">Cadastro Geral</a></li>
+            <li><a href="./horas.html">Homem Hora</a></li>
+            <li><a href="">Gráficos gerenciais</a></li>
+            <li><a href="./chat.html">Chat</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <div>
+            <a href="#"  class="config"><img src="../assets/icon_config.png" alt=""></a> 
+            <a  href="#" class="sair" onclick="logout()"><img  src="../assets/icon_sair.png" alt=""></a>
+        </div>
+        <div>
+            <h4>usuario@teste.com.br</h4>
+        </div>  
+    </div>
+    </header>
+
+    <main class="container">
+      <form class="form">
+        <div class="primeira-linha-form">
+          <div class="emissor">
+            <label for="">Emissor:</label>
+            <select id="">
+              <option value="lucas">Lucas Silva Cuba</option>
+              <option value="lucas">Lucas Ulbrich Franco</option>
+              <option value="eduardo">Eduardo Wagner</option>
+              <option value="victor">Victor Bueno Cardoso</option>
+              <option value="jean">Jean victor dos Santos Maciel</option>
+              <option value="luiz">Luiz Gabriel Roberti</option>
+            </select>
+          </div>
+
+          <div class="tempo-quantidade">
+            <div class="tempo">
+              <label for="">Tempo</label>
+              <input type="time" />
+            </div>
+
+            <div class="quantidade">
+              <label for="">Qtde</label>
+              <input type="number" />
+              <span>Corretiva</span>
+            </div>
+          </div>
+        </div>
+        <div class="segunda-linha-form">
+          <div>
+            <label for="">Colaborador:</label>
+            <select id="">
+              <option value="lucas">Lucas Silva Cuba</option>
+              <option value="lucas">Lucas Ulbrich Franco</option>
+              <option value="eduardo">Eduardo Wagner</option>
+              <option value="victor">Victor Bueno Cardoso</option>
+              <option value="jean">Jean victor dos Santos Maciel</option>
+              <option value="luiz">Luiz Gabriel Roberti</option>
+            </select>
+          </div>
+
+          <div class="tempo-quantidade">
+            <div class="tempo">
+              <label for="">Tempo</label>
+              <input type="time" />
+            </div>
+
+            <div class="quantidade">
+              <label for="">Qtde</label>
+
+              <input type="number" />
+              <span>Corretivas</span>
+            </div>
+          </div>
+        </div>
+        <div class="terceira-linha-form">
+          <div class="periodo">
+            <label for="">Periodo</label>
+            <div class="datas">
+              <input type="date" />
+              <input type="date" />
+            </div>
+          </div>
+        </div>
+
+        <footer class="footer-bg">
+          <div class="footer">
+            <label for="">Total Geral</label>
+            <div class="total-tempo">
+              <p>43:28</p>
+            </div>
+            <di class="total-quantidade">
+              <p>23</p>
+            </di>
+          </div>
+        </footer>
+      </form>
+    </main>
+    <br />
+    <br />
+    <br />
+    <section class="tableform">
+        <div>
+          <table>
+            <tr>
+              <th>Manutenção</th>
+              <th>Tipos de Intervenção</th>
+              <th>Horas Trabalhadas</th>
+              <th>Data de inicio</th>
+              <th>Data de termino</th>
+            </tr>
+            <tr>
+              <td>982</td>
+              <td>Corretiva</td>
+              <td>6:50</td>
+              <td>08/03/2023</td>
+              <td>08/03/2023</td>
+            </tr>
+            <tr>
+              <td>984</td>
+              <td>Melhoria</td>
+              <td>0:40</td>
+              <td>08/03/2023</td>
+              <td>08/03/2023</td>
+            </tr>
+            <tr>
+              <td>985</td>
+              <td>Corretiva</td>
+              <td>0:30</td>
+              <td>11/03/2023</td>
+              <td>11/03/2023</td>
+            </tr>
+            <tr>
+              <td>975</td>
+              <td>Corretiva</td>
+              <td>4:13</td>
+              <td>11/03/2023</td>
+              <td>11/03/2023</td>
+            </tr>
+            <tr>
+              <td>980</td>
+              <td>Predial</td>
+              <td>2:10</td>
+              <td>11/03/2023</td>
+              <td>11/03/2023</td>
+            </tr>
+            <tr>
+              <td>997</td>
+              <td>Corretiva</td>
+              <td>0:00</td>
+              <td>12/03/2023</td>
+              <td>12/03/2023</td>
+            </tr>
+            <tr>
+              <td>998</td>
+              <td>Corretiva</td>
+              <td>0:20</td>
+              <td>12/03/2023</td>
+              <td>12/03/2023</td>
+            </tr>
+            <tr>
+              <td>995</td>
+              <td>Corretiva</td>
+              <td>0:10</td>
+              <td>13/03/2023</td>
+              <td>13/03/2023</td>
+            </tr>
+            <tr>
+              <td>995</td>
+              <td>Corretiva</td>
+              <td>0:58</td>
+              <td>13/03/2023</td>
+              <td>13/03/2023</td>
+            </tr>
+            <tr>
+              <td>1001</td>
+              <td>Preventiva</td>
+              <td>0:40</td>
+              <td>13/03/2023</td>
+              <td>13/03/2023</td>
+            </tr>
+            <tr>
+              <td>1003</td>
+              <td>Preventiva</td>
+              <td>1:24</td>
+              <td>14/03/2023</td>
+              <td>14/03/2023</td>
+            </tr>
+            <tr>
+              <td>1005</td>
+              <td>Corretiva</td>
+              <td>0:38</td>
+              <td>18/03/2023</td>
+              <td>18/03/2023</td>
+            </tr>
+          </table>
+        </div>
+    </section>
+</div>
+<script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
+     <script src="../Login_v1/firebase-init.js"></script>
+     <script src="../../js/auth-guard.js"></script>
+     <script src="../../js/logout.js"></script>
+     <script src="../../js/script.js"></script>
+    <script src="../../js/auth-guard.js"></script>
+  </body>
+</html>
