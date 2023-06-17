@@ -15,6 +15,8 @@ function signIn() {
   let email = document.getElementById("email").value;
   let password = document.getElementById("password").value;
 
+  localStorage.setItem("userEmail", email);
+
   firebase.auth().signInWithEmailAndPassword(email, password).then((response) => {
       hideloading();
       window.location.href = "../pages/home.html";
