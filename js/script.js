@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var userEmail = localStorage.getItem("userEmail");
 
   // Insere o email no elemento HTML correspondente
-  document.getElementsByClassName("userEmail").textContent = userEmail;
+  document.getElementById("userEmail").textContent = userEmail;
 });
 
 

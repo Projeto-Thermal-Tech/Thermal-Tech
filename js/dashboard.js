@@ -1,3 +1,10 @@
+document.addEventListener("DOMContentLoaded", function() {
+  // Recupera o email armazenado no localStorage
+  var userEmail = localStorage.getItem("userEmail");
+
+  // Insere o email no elemento HTML correspondente
+  document.getElementById("userEmail").textContent = userEmail;
+});
 // Selecionar os itens clicado
 var itemMenu = document.querySelectorAll('.item-menu')
 function selectlink(){
