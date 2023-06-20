@@ -1,5 +1,5 @@
 /node_modules
 /package-lock.json
 /package.json
-/public/chat.html
+/public/pages/chat.html
 /yarn.lock
