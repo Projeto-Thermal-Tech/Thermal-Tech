@@ -1,209 +1,217 @@
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-    list-style-type: none;
-    text-decoration: none;
-  }
-  header{
-    display: flex;
-    width: 100%;
-    height: 60px;
-    background-color: #0080F5;
-    justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  list-style-type: none;
+  text-decoration: none;
+}
+header{
+  display: flex;
+  width: 100%;
+  height: 60px;
+  background-color: #0080F5;
+  justify-content: space-between;
 }
 .logo{
-    box-sizing: border-box;
-    display: flex;
+  box-sizing: border-box;
+  display: flex;
 }
 button{
-    cursor: pointer;
-    background-color: white;
-    font-weight: bold;
+  cursor: pointer;
+  background-color: white;
+  font-weight: bold;
 }
 #logo{
-    margin-left: 2rem;
-    padding: 5px 20px;
-    width: 50px;
-    height: 50px;
+  margin-left: 0rem;
+  padding: 5px 20px;
+  width: 90px;
+  height: 50px;
 }
+
+main h1{
+font-size: 35px;
+padding: 1rem;
+text-align: center;
+}
+
 h4{
-    margin-bottom: 20px;
-    font-size: 20px;
+  margin-bottom: 20px;
+  font-size: 20px;
 }
 a{
-    color:white;
-    text-decoration: none;
+  color:white;
+  text-decoration: none;
 }
 ul{
-    display: flex;
+  display: flex;
 }
 li{
-    margin-left: 0.5rem;
-    list-style: none;
-    padding: 1rem;
-    font-size: 1rem;
+  margin-left: 0.5rem;
+  list-style: none;
+  padding: 1rem;
+  font-size: 1rem;
 }
 .nav-right{
-   display: flex;
-   justify-content: end;
-   /* width: 10rem;  */
-   padding: 0.5em;
+display: flex;
+justify-content: end;
+/* width: 10rem;  */
+padding: 0.5em;
+color: aliceblue;
 }
 .nav-right a img {
-    width: 30px;
-    height: 30px;
-    margin-left: 0.8rem;
-    margin-right: 0.8rem;
- }
- 
-  .container{
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px 30px;
-  }
-  
-  a{
-    display: block;
-    color: #fff;
-  }
-  
-  .header-bg{
-    background: #0080F5;
-  }
-  
-  .header{
-    display: flex;
-    padding: 20px 30px;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .header-menu{
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  #admin{
-    text-decoration: underline;
-  }
-  
-  /* form */
-  
-  .form{
-    margin-top: 40px;
-    background: #0080F5;
-    padding: 40px 20px;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .primeira-linha-form{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .tempo-quantidade{
-    display: flex;
-    gap: 15px;
-    align-items: center;
-  }
-  
-  label{
-    color: #fff;
-    font-size: 1.2rem;
-  }
-  
-  select{
-    width: 350px;
-    padding: 6px;
-    border-radius: 4px;
-    margin-top: 20px;
-  }
-  
-  span{
-    color: #fff;
-  }
-  
-  input{
-    padding: 6px;
-    outline: none;
-    width: 150px;
-    border-radius: 4px;
-    border: none;
-  }
-  
-  .tempo label, .quantidade label {
-    display: block;
-  }
-  
-  .segunda-linha-form{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .periodo{
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-    gap: 50px;
-  }
-  
-  /* footer */
-  
-  .footer{
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 20px;
-  }
-  
-  .footer p {
-    color: #fff;
-    background: #000;
-    padding: 6px 25px;
-    border-radius: 4px;
-  }
-  
-  body {
-      text-align: left;
-      font-family: arial;
-      position: relative;
-      
-      }
-      table,th,td {
-      border:1px solid black;
-      border-collapse:collapse;
-      
-      }
-      th,td{
-      padding:10px 30px;
-      }
-      th{
-      background-color: rgb(21, 9, 98);
-      color: white;
-      }
+ width: 30px;
+ height: 30px;
+ margin-left: 0.8rem;
+ margin-right: 0.8rem;
+}
+
+.container{
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 30px;
+}
+
+a{
+  display: block;
+  color: #fff;
+}
+
+.header-bg{
+  background: #0080F5;
+}
+
+.header{
+  display: flex;
+  padding: 20px 30px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-menu{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+#admin{
+  text-decoration: underline;
+}
+
+/* form */
+
+.form{
+  margin-top: 40px;
+  background: #0080F5;
+  padding: 40px 20px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.primeira-linha-form{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tempo-quantidade{
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+label{
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+select{
+  width: 350px;
+  padding: 6px;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+span{
+  color: #fff;
+}
+
+input{
+  padding: 6px;
+  outline: none;
+  width: 150px;
+  border-radius: 4px;
+  border: none;
+}
+
+.tempo label, .quantidade label {
+  display: block;
+}
+
+.segunda-linha-form{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.periodo{
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+/* footer */
+
+.footer{
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.footer p {
+  color: #000000;
+  background: #ffffff;
+  padding: 6px 25px;
+  border-radius: 4px;
+}
+
+body {
+    text-align: left;
+    font-family: arial;
+    position: relative;
     
-      .tableform{ 
-        margin: 0 auto;
-          width: 50%;
-          height: 400px;
-          overflow: auto;
-      }
-      .tableform::-webkit-scrollbar{ 
-          width: 10px;
-          border-radius: 10px;
-          border: 1px solid rgb(21, 9, 98);
-      }
-      .tableform::-webkit-scrollbar-thumb{ /* botao do scroll bar, esse que ta em cinza*/
-          background-color: rgb(133, 132, 132);
-          border-radius: 10px;
-          
-      }
+    }
+    table,th,td {
+    border:1px solid black;
+    border-collapse:collapse;
+    
+    }
+    th,td{
+    padding:10px 30px;
+    }
+    th{
+    background-color: #0080F5;
+    color: white;
+    }
+  
+    .tableform{ 
+      margin: 0 auto;
+        width: 50%;
+        height: 400px;
+        overflow: auto;
+    }
+    .tableform::-webkit-scrollbar{ 
+        width: 10px;
+        border-radius: 10px;
+        border: 1px solid #0080F5;
+    }
+    .tableform::-webkit-scrollbar-thumb{ /* botao do scroll bar, esse que ta em cinza*/
+        background-color: rgb(133, 132, 132);
+        border-radius: 10px;
+        
+    }

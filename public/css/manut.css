@@ -20,9 +20,9 @@ button{
     font-weight: bold;
 }
 #logo{
-    margin-left: 2rem;
+    margin-left: 0rem;
     padding: 5px 20px;
-    width: 50px;
+    width: 90px;
     height: 50px;
 }
 h4{
@@ -47,6 +47,7 @@ li{
    justify-content: end;
    /* width: 10rem;  */
    padding: 0.5em;
+   color: aliceblue;
 }
 .nav-right a img {
     width: 30px;
@@ -54,9 +55,7 @@ li{
     margin-left: 0.8rem;
     margin-right: 0.8rem;
  }
- .nav-right h2{
 
- }
  main h2{
     font-size: 28px;
     padding: 1rem;
@@ -79,6 +78,7 @@ li{
  .search_manut{
     margin-top: 1rem;
     align-items: center;
+    color:aliceblue;
  }
  .search_manut input{
     width: 12rem;
@@ -102,6 +102,10 @@ li{
     padding: 1rem;
     border-radius: 10px;
     font-size: 20px;
+    position: absolute;
+    top: 22%;
+    left: 50%;
+    transform: translate(-50%, -50%);
  }
  .info-left{
     width: 60%;
@@ -139,7 +143,8 @@ li{
   }
   
   thead {
-    background-color: darkgrey;
+    background-color: #0080F5;
+    color: rgb(255, 255, 255);
   }
   
   th, td {

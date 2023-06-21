@@ -20,9 +20,9 @@ button{
     font-weight: bold;
 }
 #logo{
-    margin-left: 2rem;
+    margin-left: 0rem;
     padding: 5px 20px;
-    width: 50px;
+    width: 90px;
     height: 50px;
 }
 h4{
@@ -47,6 +47,7 @@ li{
    justify-content: end;
    /* width: 10rem;  */
    padding: 0.5em;
+   color: aliceblue;
 }
 .nav-right a img {
     width: 30px;
