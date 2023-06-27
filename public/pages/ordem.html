@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/ordem.css">
+    <title>Document</title>
+</head>
+<body>
+	<header>
+        <div class="logo">
+            <img id="logo" src="../assets/icon_logo_ar-condicionado.png" alt="">
+            <h1><a href="./home.html">Thermal Tech</a></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="./lista.html">Equipamentos</a></li>
+                <li><a href="./manut.html">Manutenções</a></li>
+                <li><a href="./cadastro.html">Cadastro Geral</a></li>
+                <li><a href="">Homem Hora</a></li>
+                <li><a href="">Gráficos gerenciais</a></li>
+                <li><a href="./chat.html">Chat</a></li>
+            </ul>
+        </nav>
+        <div class="nav-right">
+            <div>
+                <a href=""  class="config" title="Configurações" ><img src="../assets/icon_config.png" alt=""></a> 
+                <a  href="" class="sair" title="sair" onclick="logout()"><img  src="../assets/icon_sair.png" alt=""></a>
+            </div>
+            <div>
+                <h4>usuario@teste.com.br</h4>
+            </div>  
+        </div>
+    </header>
+	<section>
+		<div class="container">
+			<div class="title">
+				<h2>Abertura de ordem</h2>
+	        </div>
+	    <div class="header-chamado">
+			<div class="header_chamado-title container-chamado">
+                <div class="block1">
+                    <div class="content1-block1">
+                        <div class=" flex linha linha1">
+                            <label for="">N° chamado:</label>
+                            <input type="number" value="33526923" readonly>
+                        </div>
+                        <div class=" flex linha linha2">
+                            <label>N° ordem:</label>
+                            <input type="number" value="2027145932" readonly>
+                        </div>
+                    </div>
+                    <div class="content2-block1">
+                        <div><h5>Status</h5></div>
+                        <div class="radio-input">
+                            <label>
+                            <input value="value-1" name="value-radio" id="value-1" type="radio" checked="">
+                            <span>Aberta</span>
+                            </label>
+                            <label>
+                              <input value="value-2" name="value-radio" id="value-2" type="radio">
+                            <span>Andamento</span>
+                            </label>
+                            <label>
+                              <input value="value-3" name="value-radio" id="value-3" type="radio">
+                            <span>Cancelada</span>
+                            </label>
+                            <label>
+                              <input value="value-3" name="value-radio" id="value-3" type="radio">
+                            <span>Encerrada</span>
+                            </label>
+                            <span class="selection"></span>
+                          </div>
+                    </div>
+                    <div class="content3-block1">
+                        <div class="tipo_manut">
+                            <div>
+                                <label for="01">Corretiva</label>
+                            <input id="corretiva" type="radio" name="r" value="corretiva" checked="">
+                            </div>
+                            <div>
+                                <label for="02">Preventiva</label>
+                                <input id="preventiva" type="radio" name="r" value="Preventiva">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content4-block1">
+                        <div class="hora_chamado">
+                            <label for="">Hora abertura</label>
+                            <input type="time" id="hora_cham">
+                        </div>
+                        <div class="data_chamado">
+                            <label for="">Data abertura</label>
+                            <input type="date" id="data_cham">
+                        </div>
+                    </div>
+                </div>
+                <div class="dados-cliente">
+                    <div>
+                        <div class="linha3">
+                            <label>Nome do cliente:</label>
+                            <input type="text" value="VICTOR LUIS CARDOSO BUENO" readonly>
+                        </div>
+                        <div class="linha3">
+                            <label>Email do cliente:</label>
+                            <input type="email" value="victor@thermaltech.com.br" readonly>
+                        </div>
+                        
+                        <div class="linha3">
+                            <label>Contato do cliente:</label>
+                            <input type="tel" value="(42)988266193" readonly>
+                        </div>
+                    </div>
+                    <div class="mydict">
+                        <div><h5>Prioridade</h5></div>
+                        <div>
+                            <label class="prioridade">
+                                <input type="radio" name="radio" checked="">
+                                <span>Baixa</span>
+                            </label>
+                            <label class="prioridade">
+                                <input type="radio" name="radio">
+                                <span>Média</span>
+                            </label>
+                            <label class="prioridade">
+                                <input type="radio" name="radio">
+                                <span>Urgente</span>
+                            </label>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+			</div>
+	</div>
+    <div class="container-chamado">
+        <div class="content1-block2">
+            <div>
+                <label> TAG  equipamento :</label>
+                <input type="text" id="tag" value=" ACS-2102" readonly>
+                <input type="text" id="descr_equip" value=" Ar condicionado tipo split; 24000btus; 220v" readonly>
+                <label> N° de série :</label>
+                <input type="number" id="ns" value="7154168716" readonly>
+                <label id="label_setor">Setor:</label>
+                <input type="text" id="setor" value=" U-2110" readonly>
+                <label>Localidade:</label>
+                <input type="text" id="Localidade" value=" Refeitório" readonly>
+            </div>
+        </div>
+        <div class="defeito-anexo">
+            <div class="content2-block2 linha3">
+                <label for="">Defeito: </label>
+                <input type="text" value="Ruídos internos" readonly>    
+            </div>
+            <div>
+                <div class="anexos">
+                    <label for="">Ver anexos </label>
+                    <button><img src="../assets/anexos.png" alt=""></button>
+                </div>
+            </div>
+        </div>
+        <div class="text-descr">
+            <label for="">Defeito relatado:</label>
+            <textarea name="" id="descr_defeito" cols="40" rows="10">Equipamento começou a apresentar ruídos sempre que a temperatura passa de 22c° graus, ao diminuir a temperatura ele para de fazer os rúidos</textarea>
+        </div>
+    </div>
+	</section>
+		
+	<link rel="stylesheet" href="../css/@media1200.css">
+</body>
+</html>

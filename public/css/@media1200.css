@@ -84,5 +84,54 @@
          margin-left: 10px;
          width: 44px;
  }
+
+  .content4-block1{
+    display: flex;
+    margin-left: 5%;
+}
+.hora_chamado, .data_chamado{
+  padding: 1px; 
+}
+.tipo_manut{
+    width: 200px;
+    margin-left: 20%;
   }
+  .content2-block1{
+    margin-left: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.397);
+    border-radius: 10px;
+    padding: 10px;
+    height: 75px;
+}
+.mydict div {
+    display: flex;
+    width: 45vh;
+    flex-wrap: wrap;
+    justify-content: end;
+    margin-top: 0.5rem;
+    justify-content: center;
+  }
+  #tag{
+    width: 80px;
+  }
+  #label_setor{
+    margin-left:5px ;
+  }
+  .content1-block2 #descr_equip{
+    width: 300px;
+  }
+  #ns{
+    width: 150px;
+  }
+  #setor{
+    width: 80px;
+  }
+  #descr_defeito{
+    margin-left: 20px;
+    width: 148vh;
+    height:100px;
+  }
+}
+
+  
   
