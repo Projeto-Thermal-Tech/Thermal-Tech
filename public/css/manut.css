@@ -47,7 +47,7 @@ li{
    justify-content: end;
    /* width: 10rem;  */
    padding: 0.5em;
-   color: aliceblue;
+   color: rgb(255, 255, 255);
 }
 .nav-right a img {
     width: 30px;
