@@ -14,10 +14,11 @@
     justify-content: space-between;
 }
 body{
-  background-color:rgba(105, 105, 105, 0.164);
+  background-color:#adb2b66b
 }
 input{
   border: 1px solid black;
+  color: #000;
 }
 .logo{
     box-sizing: border-box;
@@ -225,7 +226,7 @@ label{
     border:1px solid rgba(0, 0, 0, 0.363);
     border-radius: 10px;
     width: 200px;
-    margin-left: 70%;
+    margin-left: 30%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -238,20 +239,32 @@ label{
 
   .content4-block1{
     display: flex;
-    margin-left: 13%;
+    margin-left: 4%;
+}
+.content4-block1 input{
+  width: 120px;
+  color: #000;
+  
+}
+.content4-block1 div{
+  padding: 5;
+  margin-left: 5px;
 }
   .hora_chamado, .data_chamado{
-    padding: 10px; 
+    display: flex;
+    flex-direction: column;
   }
   #data_cham{
-    width: 150px;
-    font-size: 14px;
     background-color: bisque;
+    
   }
   #hora_cham{
-    width: 80px;
-    font-size: 14px;
     background-color: bisque;
+    width: 80px;
+    background-color: #9c9c9c;
+  }
+  #data_abert{
+    background-color: rgba(129, 131, 245, 0.411);
   }
   .content1-block2 input {
     background-color: bisque;
@@ -268,7 +281,7 @@ label{
 
   .mydict div {
     display: flex;
-    margin-left:22% ;
+    margin-left:2% ;
     width: 100vh;
     flex-wrap: wrap;
     justify-content: end;
@@ -315,7 +328,7 @@ label{
     border-radius: 0 .375em .375em 0;
   }
   #label_setor{
-    margin-left:95px ;
+    margin-left:10px ;
   }
   .content2-block2{
     margin-top: 5px;
@@ -341,10 +354,43 @@ label{
   }
   #descr_defeito{
     margin-left: 20px;
-    width: 186vh;
+    width: 180vh;
     height:100px;
   }
   .anexos button{
     border: 0;
     margin-left:10px ;
   }
+  .desc_servico{
+    display: flex;
+    padding: 10px;
+  }
+  .serv_a_realizar, .serv_realizado{
+    width: 100%;
+    padding: 3px;
+    height: 200px;
+  }
+  #desc_serv1, #desc_serv2{
+    width: 100%;
+    height: 150px;
+  }
+  #desc_serv1{
+    background-color: rgba(129, 131, 245, 0.411);
+  }
+  #desc_serv2{
+    background-color: rgba(129, 131, 245, 0.411);
+  }
+  .tecnicos{
+    /* margin-left: 20px; */
+    display:flex;
+    justify-content: space-around;
+  }
+  .tecnicos div{
+    display: flex;
+    flex-direction: column;
+  }
+  .tecnicos div select{
+    background-color: rgba(129, 131, 245, 0.411);
+    width: 550px;
+  }
+  

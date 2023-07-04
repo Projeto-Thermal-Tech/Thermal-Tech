@@ -20,8 +20,9 @@
             <ul>
                 <li><a href="./lista.html">Equipamentos</a></li>
                 <li><a href="./manut.html">Manutenções</a></li>
+                <li><a href="./ordem.html">Ordem</a></li>
                 <li><a href="./cadastro.html">Cadastro Geral</a></li>
-                <li><a href="">Homem Hora</a></li>
+                <li><a href="./horas.html">Homem Hora</a></li>
                 <li><a href="">Gráficos gerenciais</a></li>
                 <li><a href="./chat.html">Chat</a></li>
             </ul>
@@ -89,13 +90,29 @@
                         </div>
                     </div>
                     <div class="content4-block1">
-                        <div class="hora_chamado">
-                            <label for="">Hora abertura</label>
-                            <input type="time" id="hora_cham">
+                        <div class="data_chamado">
+                            <label for="">D-Solicitação</label>
+                            <input type="date" id="data_cham">
                         </div>
                         <div class="data_chamado">
-                            <label for="">Data abertura</label>
+                            <label for="">D-Abertura:</label>
+                            <input type="date" id="data_abert">
+                        </div>
+                        <div class="data_chamado">
+                            <label for="">D-Inicio:</label>
                             <input type="date" id="data_cham">
+                        </div>
+                        <div class="data_chamado">
+                            <label for="">D-Término</label>
+                            <input type="date" id="data_cham">
+                        </div>
+                        <div class="hora_chamado">
+                            <label for="">H-Inicio</label>
+                            <input type="time" id="hora_cham">
+                        </div>
+                        <div class="hora_chamado">
+                            <label for="">H-Enc</label>
+                            <input type="time" id="hora_cham">
                         </div>
                     </div>
                 </div>
@@ -165,11 +182,55 @@
         </div>
         <div class="text-descr">
             <label for="">Defeito relatado:</label>
-            <textarea name="" id="descr_defeito" cols="40" rows="10">Equipamento começou a apresentar ruídos sempre que a temperatura passa de 22c° graus, ao diminuir a temperatura ele para de fazer os rúidos</textarea>
+            <textarea readonly name="" id="descr_defeito" cols="40" rows="10">Equipamento começou a apresentar ruídos sempre que a temperatura passa de 22c° graus, ao diminuir a temperatura ele para de fazer os rúidos</textarea>
+        </div>
+    </div>
+    <div class="container-chamado">
+        <div class="content1-block3">
+            <div class="desc_servico">
+                <div class="serv_a_realizar">
+                    <div><label for="">Descrição do serviço a ser realizado:</label></div>
+                    <textarea name="" id="desc_serv1" cols="60" rows="40">Verificar os suportes do ar condiconado, verificar se a ventoinha não esta com folga, e verifcar a caixa contatora se esta operando na potencia correta</textarea>
+                </div>
+                <div class="serv_realizado">
+                     <div><label for="">Descrição do serviço realizado:</label></div>
+                    <textarea name="" id="desc_serv2" cols="30" rows="10">Veriifcado os suportes e feito a substitução dos mesmo, trocado a contatora; apertado buchas do mangote; limpado os tubo de ar</textarea>
+                </div>
+            </div>
+            <div class="tecnicos">
+                <div>
+                    <label for="">Técnico responsável</label>
+                    <select name="" id="tec_resp">
+                        <option value="">VICTOR LUIS CARDOSO BUENO</option>
+                        <option value="">LUCAS SILVA CUBA</option>
+                        <option value="">LUCAS ULBRICH FRANCO</option>
+                        <option value="">JEAN VICTOR </option>
+                    </select>
+                </div>
+                <div>
+                    <label for="">Técnico auxiliar 1</label>
+                    <select name="" id="tec_aux1">
+                        <option value="">LUCAS ULBRICH FRANCO</option>
+                        <option value="">LUCAS SILVA CUBA</option>
+                        <option value="">LUCAS ULBRICH FRANCO</option>
+                        <option value="">JEAN VICTOR </option>
+                    </select>
+                </div>
+                <div>
+                    <label for="">Técnico auxiliar 2</label>
+                    <select name="" id="tec_aux2">
+                        <option value="">LUCAS ULBRICH FRANCO</option>
+                        <option value="">LUCAS SILVA CUBA</option>
+                        <option value="">LUCAS ULBRICH FRANCO</option>
+                        <option value="">JEAN VICTOR </option>
+                    </select>
+                </div>
+                
+            </div>
         </div>
     </div>
 	</section>
-		
+	<link rel="stylesheet" href="../css/@media1440.css">	
 	<link rel="stylesheet" href="../css/@media1200.css">
 </body>
 </html>
