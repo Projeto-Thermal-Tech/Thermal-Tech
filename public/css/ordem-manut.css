@@ -1,0 +1,54 @@
+body{
+    background-color:#EAF1F6;
+}
+main{
+    margin: 10px;
+    box-shadow: 1px 1px 5px  black;
+}
+input{
+    padding: 1px;
+    border: 1px rgb(5, 5, 5);box-shadow: 1px 1px 2px  rgba(0, 0, 0, 0.555);
+}
+.title-page{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.473);
+}
+.title-page h2{
+    font-size: 18px;
+    padding: 5px;
+    background-color: #8CB1DA;
+}
+.icons{
+    padding: 1px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.473);
+}
+.icons img{
+    width: 22px;
+}
+.icons button{
+    margin: 1px;
+    background-color: transparent;
+    border: none;
+}
+.info-header-order{
+    
+}
+.info-header-order label{
+    display: inline-block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.486);
+    width: 60px;
+}
+#prioridade{
+    width: 45px;
+    text-align: center;
+    background-color:#8CB1DA ;
+}
+#ordem{
+    width: 110px;
+    margin-right: 10px;
+    background-color: #8CB1DA
+}
+#title-order{
+    width: 300px;
+    background-color: #FEF09E;
+  
+}
