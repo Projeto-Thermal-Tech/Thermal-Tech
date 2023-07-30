@@ -1,12 +1,14 @@
 body{
-    background-color:#EAF1F6;
+    background-color:#cae2f4c2;
 }
 main{
     margin: 10px;
     box-shadow: 1px 1px 5px  black;
+    padding: 5px;
+    border-radius: 5px;
 }
 input{
-    padding: 1px;
+    padding-left: 3px;
     border: 1px rgb(5, 5, 5);box-shadow: 1px 1px 2px  rgba(0, 0, 0, 0.555);
 }
 .title-page{
@@ -29,13 +31,20 @@ input{
     background-color: transparent;
     border: none;
 }
+
 .info-header-order{
-    
+    margin: 4px;
+}
+.info-header-order input{
+        /* width: 260px; */
+        
 }
 .info-header-order label{
     display: inline-block;
     border-bottom: 1px solid rgba(0, 0, 0, 0.486);
-    width: 60px;
+    width: 150px;
+    margin-right: 10px;
+    
 }
 #prioridade{
     width: 45px;
@@ -51,4 +60,43 @@ input{
     width: 300px;
     background-color: #FEF09E;
   
+}
+.dados_chmado{
+    margin: 10px;
+    box-shadow: 1px 1px 5px  black;
+    
+}
+.referencias{
+    font-size: 12px;
+    padding: 5px;
+    background-color: #8cb0daad;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.486);
+    margin-bottom: 10px;
+}
+
+
+.dados_chamado{
+
+}
+.label-margin{
+    margin-right: 30px;
+}
+.input_chamado{
+    width: 300px;
+}
+.responsabilidades, .objetivo, .chamado{
+    width: 70vw;
+}
+.title{
+    font-size: 12px;
+    padding: 5px;
+    background-color: #8cb0daad;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.486);
+    margin-bottom: 10px; 
+}
+.tecs input{
+    margin-right: 5px;
+}
+.descrição{
+    padding: 5px;
 }
