@@ -32,6 +32,9 @@ app.get("/graficos", function (req,res){
 app.get("/chat", function (req,res){
     res.sendFile(path.join(__dirname, "./public/pages/chat.html"))
 })
+app.get("/login", function (req,res){
+    res.sendFile(path.join(__dirname, "./public/Login_v1/index.html"))
+})
 
 
 app.listen(5000)

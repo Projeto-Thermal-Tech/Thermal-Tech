@@ -2,7 +2,8 @@ const {app,BrowserWindow,Menu} = require("electron");
 const path = require('path')
 
 function createWindow(){
-    const win = new BrowserWindow({
+    const win = 
+    new BrowserWindow({
         width:1920, height:1080,
         show:false,
          icon: path.join(__dirname, './public/assets/icon_logo.jpg')
@@ -19,7 +20,8 @@ function createWindow(){
     const menuTemplate =[];
     const menu = Menu.buildFromTemplate(menuTemplate);
     Menu.setApplicationMenu(menu)
-   
+    win.openDevTools();
+
       }
       
 app.whenReady().then(()=>{

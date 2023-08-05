@@ -36,7 +36,22 @@ function saveEquipment() {
 
   hidePopup();
 }
+function hideElements() {
+  var elements = document.querySelectorAll('.section_chamado');
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].classList.add('display_none');
+  }
+}
+function showElements() {
+  var elements = document.querySelectorAll('.section_chamado');
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].classList.remove('display_none');
+  }
+}
+
+function deletar(){
+  confirm("Tem certeza que deseja excluir o chamado?")
 
 
-
+}
 

@@ -19,7 +19,7 @@ function signIn() {
 
   firebase.auth().signInWithEmailAndPassword(email, password).then((response) => {
       hideloading();
-      window.location.href = "../pages/home.html";
+      window.location.href = "http://localhost:5000/inicio";
     }).catch((error) => {
       hideloading();
       alert("Usuario não encontrado");

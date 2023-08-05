@@ -23,7 +23,7 @@
         </div>
         <nav>
             <ul>
-                <li><a href="http://localhost:5000/equipamentos">Equipamentos</a></li>
+                <li><a href="http://localhost:5000/Equipamentos">Equipamentos</a></li>
                 <li><a href="http://localhost:5000/manutencao">Manutenções</a></li>
                 <li><a href="http://localhost:5000/ordem">Ordem</a></li>
                 <li><a href="http://localhost:5000/chamados">Chamado</a></li>
@@ -39,7 +39,7 @@
                 <a href="" class="sair" title="sair" onclick="logout()"><img src="../assets/icon_sair.png" alt=""></a>
             </div>
             <div>
-                <h4>usuario@teste.com.br</h4>
+                <h4 id="userEmail"></h4>
             </div>
         </div>
     </header>
@@ -47,11 +47,11 @@
         <main>
             <section>
                 <div class="title-page">
-                    <h2>Criar ordem de manutenção</h2>
+                    <h2>Criar chamado de manutenção</h2>
                 </div>
                 <div class="icons">
                     <button><img src="../assets/save.png" alt=""></button>
-                    <button><img src="../assets/delete.png" alt=""></button>
+                    <button><img src="../assets/delete.png" onclick="deletar()" alt=""></button>
                     <button><img src="../assets/print.png" alt=""></button>
                     <button onclick="document.getElementById('fileInput').click();" id="btn-anexo">
                         <img src="../assets/anexos.png" alt="">
@@ -74,16 +74,16 @@
                 </div>
             </section>
         </main>
-          <div class="nav_infos">
+          <!-- <div class="nav_infos">
             <button onclick="hideElements()">Cabeçalho</button>
             <button onclick="showElements()">Chamado</button>
             <button onclick="showElements()">Confirmações</button>
-          </div>  
+          </div>   -->
            
 
         <main class="chamado section_chamado">
             <section class="dados_chamado">
-                <h3>Chamado</h2>
+                <h3>Dados</h2>
             </section>
             <div class="title">
                 <h3>Referencias do objeto</h3>
@@ -147,11 +147,7 @@
         </main>
     
     </section>
-    <script src="../Login_v1/firebase-init.js"></script>
-    <script src="../js/auth-guard.js"></script>
-    <script src="../js/logout.js"></script>
     <script src="../js/script.js"></script>
-    <script src="../js/auth-guard.js"></script>
     <link rel="stylesheet" href="../css/@media1440.css">
     <link rel="stylesheet" href="../css/@media1200.css">
 </body>
