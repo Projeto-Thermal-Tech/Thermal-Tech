@@ -8,4 +8,4 @@ const client = new pg.Client({
     port:"5432"
 })
 
-module.exports = clientv
+module.exports = client
