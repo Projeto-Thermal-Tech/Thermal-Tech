@@ -1,0 +1,15 @@
+@media print{
+    header{
+    display: none;
+}
+.responsabilidades, .objetivo, .chamado{
+    width: 97vw;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 5px;
+}
+.icons{
+    display: none;
+}
+
+} 

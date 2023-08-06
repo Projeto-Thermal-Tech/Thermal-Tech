@@ -103,6 +103,7 @@ input{
 }
 .responsabilidades, .objetivo, .chamado{
     width: 70vw;
+    
 }
 .title{
     font-size: 12px;
@@ -123,4 +124,13 @@ input{
 }
 .display_none{
     display: none;
+}
+textarea {
+    resize: vertical; /* Permite apenas redimensionamento vertical */
+    overflow-x: hidden; /* Esconde a barra de rolagem horizontal se o conteúdo exceder */
+  }
+  .prioridade{
+    width: 50%;
+    display:inline;
+    align-items: center;
 }

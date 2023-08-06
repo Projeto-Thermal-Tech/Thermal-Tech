@@ -12,6 +12,8 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/criar-chamado.css">
+    <link rel="stylesheet" href="../css/print.css">
+    <link rel="stylesheet" href="../css/@media767.css">
     <title>Document</title>
 </head>
 
@@ -50,19 +52,19 @@
                     <h2>Criar chamado de manutenção</h2>
                 </div>
                 <div class="icons">
-                    <button><img src="../assets/save.png" alt=""></button>
-                    <button><img src="../assets/delete.png" onclick="deletar()" alt=""></button>
-                    <button><img src="../assets/print.png" alt=""></button>
+                    <button><img src="../assets/save.png" onclick="salvarChamado()" alt=""></button>
+                    <button><img src="../assets/delete.png" onclick="deletarChamado()" alt=""></button>
+                    <button><img src="../assets/print.png" onclick="imprimir()"></button>
                     <button onclick="document.getElementById('fileInput').click();" id="btn-anexo">
                         <img src="../assets/anexos.png" alt="">
-                      </button>
+                    </button>
                 </div>
                 <div class="header-order">
                     <div class="info-header-order">
                         <label for="">Ordem</label>
-                        <input type="text" id="prioridade" value="PM01" readonly>
-                        <input type="number" id="ordem" value="2027325612" readonly>
-                        <input type="text" id="title-order" value="Correção de dreno ACS-2101" readonly>
+                        <input type="number" id="ordem" readonly class="data-chamado">
+                        <input type="text" id="title-order" value="Correção de dreno ACS-2101" readonly
+                            class="data-chamado">
                     </div>
                     <div class="info-header-order">
                         <label for="">Status</label>
@@ -74,12 +76,12 @@
                 </div>
             </section>
         </main>
-          <!-- <div class="nav_infos">
+        <!-- <div class="nav_infos">
             <button onclick="hideElements()">Cabeçalho</button>
             <button onclick="showElements()">Chamado</button>
             <button onclick="showElements()">Confirmações</button>
           </div>   -->
-           
+
 
         <main class="chamado section_chamado">
             <section class="dados_chamado">
@@ -91,19 +93,20 @@
             <div class="dados">
                 <div class="info-header-order">
                     <label class="label-margin" for="">Localidade</label>
-                    <input type="text" value="Refeitório" readonly>
+                    <input type="text" value="Refeitório" class="data-chamado">
                 </div>
                 <div class="info-header-order">
-                    <label class="label-margin for="">Localidade</label>
-                    <input type=" text" value="U-144" readonly>
+                    <label class="label-margin" for="">Localidade</label>
+                    <input type=" text" value="U-144" class="data-chamado">
                 </div>
                 <div class="info-header-order">
                     <label class="label-margin for="" >Equipamento</label>
-                    <input type=" text" value="ACS-2101" readonly>
+                    <input type=" text" value="ACS-2101" class="data-chamado">
                 </div>
                 <div class="info-header-order">
                     <label class="label-margin for="">Descrição</label>
-                    <input type=" text" style="width: 300px;" value="Ar condiconado; 220v; split; 24000 btus" readonly>
+                    <input type=" text" style="width: 300px;" value="Ar condiconado; 220v; split; 24000 btus"
+                        class="data-chamado">
                 </div>
             </div>
         </main>
@@ -112,25 +115,33 @@
                 <h3>Responsabilidades</h3>
             </div>
             <div class="tecs info-header-order">
-                <Label>Téc. Responsavel</Label>
-                <input type="number"style="width: 100px;" value="71744030" readonly><input type="text" style="width: 250px;" value="Victor Luis Cardoso Bueno" readonly>
-            </div>
-            <div class="tecs info-header-order">
-                <Label>Téc. Responsavel</Label>
-                <input type="number" style="width: 100px;" value="74542010" readonly><input type="text" style="width: 250px;" value="Lucas Silva Cuba" readonly>
+                
+                    <Label>Prioridade</Label>
+                    <div class="prioridade">   
+                        Baixa
+                    <input class="data-chamado" type="radio" class="radio-button__input" id="radio3" name="prioridade">
+                    Média
+                    <input class="data-chamado" type="radio" class="radio-button__input" id="radio3" name="prioridade">
+                    Alta
+                    <input class="data-chamado" type="radio" class="radio-button__input" id="radio3" name="prioridade">
+                
+                    </div>
+                    
+
             </div>
             <div class="user info-header-order">
                 <div>
                     <label for="">Criado por</label>
-                    <input type="text" value="Jean Victor Maciel dos Santos" style="width: 220px;" readonly>
-                    <input type="email" name="" id="" style="width: 220px;" value="ens-jeanvictor@ugv.edu.br" readonly>
+                    <input class="data-chamado" type="text" value="Jean Victor Maciel dos Santos" style="width: 320px;">
+                    <input class="data-chamado" type="email" name="" id="" style="width: 320px;"
+                        value="ens-jeanvictor@ugv.edu.br">
                 </div>
                 <div style="padding-top: 5px;">
                     <label for="">Data chamado</label>
-                    <input type="date" name="" id="">
-                    <input type="time" name="" id="">
+                    <input class="data-chamado" type="date" name="" id="">
+                    <input class="data-chamado" type="time" name="" id="">
                 </div>
-            </div>      
+            </div>
         </main>
         <main class="objetivo section_chamado">
             <div class="title">
@@ -138,16 +149,20 @@
             </div>
             <div class="info-header-order">
                 <label for="">Descrição</label>
-                <input type="text" value="Correção de dreno ACS-2101" style="width: 280px;">
-                <input id="fileInput" type="file" style="display:none;">
+                <input class="data-chamado" type="text" value="Correção de dreno ACS-2101" style="width: 280px;">
+                <input class="data-chamado" id="fileInput" type="file" style="display:none;">
             </div>
             <div class="descrição">
-                <textarea name="" id="" cols="30" rows="10" style="width: 100%;padding: 5px;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni exercitationem expedita assumenda repellendus, distinctio eaque neque consectetur iusto eligendi rerum cupiditate fugiat itaque sint illum facere quae explicabo fugit rem.Magni officiis, expedita a quasi quisquam non fugit facilis. Sit placeat reiciendis iusto odit deleniti facere sed non consequatur minus, nemo omnis dolorem quae vitae vel pariatur labore distinctio voluptas.</textarea>
+                <textarea class="data-chamado" name="" id="" cols="30" rows="10"
+                    style="width: 100%;padding: 5px;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni exercitationem expedita assumenda repellendus, distinctio eaque neque consectetur iusto eligendi rerum cupiditate fugiat itaque sint illum facere quae explicabo fugit rem.Magni officiis, expedita a quasi quisquam non fugit facilis. Sit placeat reiciendis iusto odit deleniti facere sed non consequatur minus, nemo omnis dolorem quae vitae vel pariatur labore distinctio voluptas.</textarea>
             </div>
         </main>
-    
+
     </section>
     <script src="../js/script.js"></script>
     <link rel="stylesheet" href="../css/@media1440.css">
     <link rel="stylesheet" href="../css/@media1200.css">
+
+
+
 </body>

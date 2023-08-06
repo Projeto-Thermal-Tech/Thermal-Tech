@@ -1,0 +1,33 @@
+@media (max-width: 567px) {
+    .responsabilidades, .objetivo, .chamado{
+        width: 97vw;
+        padding: 5px;
+        margin: 10px;
+        border-radius: 5px;
+    
+    }
+    label{
+        font-size: 14px;
+    }
+    input{
+        height: 19px;
+        font-size: 12px;
+    }
+    .info-header-order label{
+        display: block;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.486);
+        width: 100px;
+        margin-right: 10px;
+        border-bottom: none;
+        
+    }
+    .prioridade{
+        width: 50%;
+        display:flex;
+        align-items: center;
+    }
+    .prioridade input{
+        margin-left: 15px;
+    }
+    
+  }
