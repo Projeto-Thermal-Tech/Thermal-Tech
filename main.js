@@ -1,5 +1,11 @@
 const {app,BrowserWindow,Menu} = require("electron");
 const path = require('path')
+const express=  require("express")
+const server = express()
+const router = require('./Router')
+
+server.use(router)
+server.listen(5000)
 
 function createWindow(){
     const win = 
