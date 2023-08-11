@@ -15,6 +15,7 @@ header {
 .logo {
   box-sizing: border-box;
   display: flex;
+  width: 100%;
 }
 
 button {
@@ -24,10 +25,10 @@ button {
 }
 
 #logo {
-  margin-left: rem;
+  margin-left: 0rem;
   padding: 5px 20px;
-  width: 90px;
-  height: 50px;
+  width: 50px;
+  height: 40px;
 }
 
 h4 {
@@ -56,7 +57,8 @@ nav li {
   justify-content: end;
   /* width: 10rem;  */
   padding: 0.5em;
-  color: aliceblue;
+  color: rgb(255, 255, 255);
+  width: 80%;
 }
 
 .nav-right a img {

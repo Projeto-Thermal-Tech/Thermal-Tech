@@ -3,7 +3,6 @@
     margin: 0;
     font-family: 'B612';
 }  
-
 header{
     display: flex;
     width: 100%;
@@ -14,6 +13,7 @@ header{
 .logo{
     box-sizing: border-box;
     display: flex;
+    width: 100%;
 }
 button{
     cursor: pointer;
@@ -26,7 +26,6 @@ button{
     width: 50px;
     height: 40px;
 }
-
 h1{
     margin-bottom: 50px;
     font-size: 30px;
@@ -51,6 +50,7 @@ li{
    /* width: 10rem;  */
    padding: 0.5em;
    color: rgb(255, 255, 255);
+   width: 80%;
 }
 .nav-right a img {
     width: 30px;
@@ -189,3 +189,5 @@ li{
     cursor: pointer;
     font-size: 18px;
   }
+  
+  

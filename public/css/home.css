@@ -13,6 +13,7 @@ header{
 .logo{
     box-sizing: border-box;
     display: flex;
+    width: 100%;
 }
 button{
     cursor: pointer;
@@ -48,6 +49,7 @@ li{
    /* width: 10rem;  */
    padding: 0.5em;
    color: aliceblue;
+   width: 100%;
 }
 .nav-right a img {
     width: 30px;
