@@ -12,6 +12,9 @@
   <link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Overpass:wght@400;700&display=swap"
     rel="stylesheet">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <title>Thermal Tech</title>
@@ -20,39 +23,36 @@
 
 <body>
 
-  <header>
-
-    <div class="logo">
-        <img id="logo" src="../assets/icon_logo.jpg" alt="">
-        <h1><a href="./chamado.html">Thermal Tech</a></h1>
-    </div>
-    <nav>
-        <ul>
-          <li><a href="http://localhost:5000/Equipamentos">Equipamentos</a></li>
-          <li><a href="http://localhost:5000/manutencao">Manutenções</a></li>
-          <li><a href="http://localhost:5000/ordem">Ordem</a></li>
-          <li><a href="http://localhost:5000/chamados">Chamado</a></li>
-          <li><a href="http://localhost:5000/registro">Cadastro Geral</a></li>
-          <li><a href="http://localhost:5000/relatorio">Homem Hora</a></li>
-          <li><a href="">Gráficos gerenciais</a></li>
-          <li><a href="./chat.html">Chat</a></li>
-        </ul>
-    </nav>
-
-    <div class="nav-right">
-      <div>
-          <a href="#"  class="config" title="Configurações" ><img src="../assets/icon_config.png" alt=""></a> 
-          <a  href="#" class="sair" title="sair" onclick="logout()"><img  src="../assets/icon_sair.png" alt=""></a>
-      </div>
-      <div>
-          <h4 id="userEmail"></h4>
-      </div>  
-  </div>
-
-  </header>
+    <header>
+        <div class="logo">
+           
+            <h1><a href="./home.html">Thermal Tech</a></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="http://localhost:5000/Equipamentos">Equipamentos</a></li>
+                <li><a href="http://localhost:5000/manutencao">Manutenções</a></li>
+                <li><a href="http://localhost:5000/ordem">Ordem</a></li>
+                <li><a href="http://localhost:5000/chamados">Chamado</a></li>
+                <li><a href="http://localhost:5000/registro">Cadastro Geral</a></li>
+                <li><a href="http://localhost:5000/relatorio">Homem Hora</a></li>
+                <li><a href="">Gráficos gerenciais</a></li>
+                <li><a href="./chat.html">Chat</a></li>
+            </ul>
+        </nav>
+        <div class="nav-right">
+            <div>
+                <a href="#"  class="config"><img src="../assets/icon_config.png" alt=""></a> 
+                <a  href="#" class="sair" onclick="logout()"><img  src="../assets/icon_sair.png" alt=""></a>
+            </div>
+            <div>
+                <h4 id="userEmail"></h4>
+            </div>  
+        </div>
+    </header>
     
     <br>
-    <h1>Chamados</h1>
+    <h2>Chamados</h2>
     
     <section class="dados_cham">
       <div class="header_cham">

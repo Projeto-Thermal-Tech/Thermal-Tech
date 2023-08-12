@@ -31,10 +31,6 @@ button {
   height: 40px;
 }
 
-h4 {
-  margin-bottom: 20px;
-  font-size: 20px;
-}
 
 a {
   color: white;
@@ -55,7 +51,7 @@ nav li {
 .nav-right {
   display: flex;
   justify-content: end;
-  /* width: 10rem;  */
+
   padding: 0.5em;
   color: rgb(255, 255, 255);
   width: 80%;
@@ -69,7 +65,7 @@ nav li {
 }
 
 main h2 {
-  font-size: 28px;
+  font-size: 2px;
   padding: 1rem;
   text-align: center;
 }

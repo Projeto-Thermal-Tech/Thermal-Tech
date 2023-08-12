@@ -2,11 +2,11 @@ const db = require("./cnx")
 
 async function insert(){
     await db.connect()
-    resultado = await db.query("select * from alunos")
-    novoAluno = await db.query("insert into alunos(al_nome) VALUES ('jean')")
-    mostrarAluno= await db.query("select * from alunos")
-    console.log(resultado.rows)
-    console.log(mostrarAluno.rows)
+    tabela = await db.query("select * from tecnicos")
+    novoTec = await db.query("insert into tecnicos(nome_tec, matricula) values ('Victor', '12145')")
+    novaTabela = await db.query("select * from tecnicos")
+    console.log(tabela.rows)
+    console.log(novaTabela.rows)
     await db.end()
 
 }

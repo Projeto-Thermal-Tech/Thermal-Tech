@@ -59,13 +59,18 @@
         margin-top: 1rem
      }
      .info_equip{
-        width: 45%;
-        display: flex;
-        background-color: white;
-        padding: 1.5rem;
-        border-radius: 10px;
-        font-size: 18px;
-     }
+      width: 48%;
+      height: 12%;
+      display: flex;
+      background-color: white;
+      padding: 1rem;
+      border-radius: 10px;
+      font-size: 20px;
+      position: absolute;
+      top: 29%;
+      left: 45%;
+      transform: translate(-50%, -50%);
+   }
      .info-left{
         width: 50%;
      }
