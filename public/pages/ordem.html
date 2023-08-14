@@ -15,11 +15,10 @@
     <link rel="stylesheet" href="../css/criar-chamado.css">
     <title>Document</title>
 </head>
-
 <body>
     <header>
         <div class="logo">
-            
+
             <h1><a href="./home.html">Thermal Tech</a></h1>
         </div>
         <nav>
@@ -36,12 +35,12 @@
         </nav>
         <div class="nav-right">
             <div>
-                <a href="#"  class="config"><img src="../assets/icon_config.png" alt=""></a> 
-                <a  href="#" class="sair" onclick="logout()"><img  src="../assets/icon_sair.png" alt=""></a>
+                <a href="#" class="config"><img src="../assets/icon_config.png" alt=""></a>
+                <a href="#" class="sair" onclick="logout()"><img src="../assets/icon_sair.png" alt=""></a>
             </div>
             <div>
                 <h4 id="userEmail"></h4>
-            </div>  
+            </div>
         </div>
     </header>
     <section>
@@ -56,7 +55,7 @@
                     <button><img src="../assets/print.png" alt=""></button>
                     <button onclick="document.getElementById('fileInput').click();" id="btn-anexo">
                         <img src="../assets/anexos.png" alt="">
-                      </button>
+                    </button>
                 </div>
                 <div class="header-order">
                     <div class="info-header-order">
@@ -75,11 +74,11 @@
                 </div>
             </section>
         </main>
-          <div class="nav_infos">
+        <div class="nav_infos">
             <button onclick="hideElements()">Cabeçalho</button>
             <button onclick="showElements()">Chamado</button>
-          </div>  
-          <main class="chamado section_chamado">
+        </div>
+        <main class="chamado section_chamado display_none">
             <section class="dados_chamado">
                 <h3>Dados</h2>
             </section>
@@ -92,36 +91,36 @@
                     <input type="text" value="Refeitório" class="data-chamado">
                 </div>
                 <div class="info-header-order">
-                    <label class="label-margin" for="">Localidade</label>
+                    <label class="label-margin" for="">Setor</label>
                     <input type=" text" value="U-144" class="data-chamado">
                 </div>
                 <div class="info-header-order">
-                    <label class="label-margin for="" >Equipamento</label>
+                    <label class="label-margin for=">Equipamento</label>
                     <input type=" text" value="ACS-2101" class="data-chamado">
                 </div>
                 <div class="info-header-order">
-                    <label class="label-margin for="">Descrição</label>
+                    <label class="label-margin for=">Descrição</label>
                     <input type=" text" style="width: 300px;" value="Ar condiconado; 220v; split; 24000 btus"
                         class="data-chamado">
                 </div>
             </div>
         </main>
-        <main class="responsabilidades section_chamado">
+        <main class="responsabilidades section_chamado display_none" >
             <div class="title">
                 <h3>Responsabilidades</h3>
             </div>
             <div class="tecs info-header-order">
-                
-                    <Label>Prioridade</Label>
-                    <div class="prioridade">   
-                        Baixa
+
+                <Label>Prioridade</Label>
+                <div class="prioridade">
+                    Baixa
                     <input class="data-chamado" type="radio" class="radio-button__input" id="radio3" name="prioridade">
                     Média
                     <input class="data-chamado" type="radio" class="radio-button__input" id="radio3" name="prioridade">
                     Alta
                     <input class="data-chamado" type="radio" class="radio-button__input" id="radio3" name="prioridade">
-                
-                    </div>
+
+                </div>
             </div>
             <div class="user info-header-order">
                 <div>
@@ -137,7 +136,7 @@
                 </div>
             </div>
         </main>
-        <main class="objetivo section_chamado">
+        <main class="objetivo section_chamado display_none" >
             <div class="title">
                 <h3>Objetivo</h3>
             </div>
@@ -151,9 +150,92 @@
                     style="width: 100%;padding: 5px;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni exercitationem expedita assumenda repellendus, distinctio eaque neque consectetur iusto eligendi rerum cupiditate fugiat itaque sint illum facere quae explicabo fugit rem.Magni officiis, expedita a quasi quisquam non fugit facilis. Sit placeat reiciendis iusto odit deleniti facere sed non consequatur minus, nemo omnis dolorem quae vitae vel pariatur labore distinctio voluptas.</textarea>
             </div>
         </main>
+        <section class="section_order">
+            <main  style="width: 30%;">
+                <div class="info-header-order">
+                    <div class="title">
+                        <h3>Responsabilidades</h3>
+                    </div>
+                    <div>
+                        <label for="">Criado por</label>
+                        <input class="data-chamado" type="text"  value="Victor Luis Cardoso Bueno" style="width: 320px;">
+                    </div>
+                </div>
+            </main>
+            <main style="width: 40%;">
+                <div class="info-header-order">
+                    <div class="title">
+                        <h3>Datas</h3>
+                    </div>
+                    <div>
+                        <label for="">Inicio</label>
+                        <input class="data-chamado" type="date">
+                        <input type="time">
+                        <label for="">Prioridade</label>
+                        <select name="" id="">
+                            <option value="">1- Baixa</option>
+                            <option value="">2- Média</option>
+                            <option value="">3- Alta</option>
+                        </select>
+                        <div>
+                            <label for="">Fim</label>
+                            <input type="date">
+                            <input type="time">
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <main style="width: 50%;">
+                <div class="info-header-order" >
+                    <div class="title">
+                        <h3>Confirmações</h3>
+                    </div>
+                    <label for="">Técnico resp.</label>
+                    <input type="number" value="41248466" style="width: 90px;">
+                    <input type="text" value="Lucas Silva Cuba">
+                    <label for="">Data de lanç.</label>
+                    <input type="datetime-local">
+                    <div>
+                        <label for="">Inicio do trabalho</label>
+                        <input type="date">
+                        <input type="time">
+                    </div>
+                    <div>
+                        <label for="">Fim do Trabalho</label>
+                        <input type="date">
+                        <input type="time">
+                    </div>
+                    <div>
+                        <label for="">Texto do serviço</label>
+                        <textarea name="" id="" cols="60" rows="2"></textarea>
+                    </div>
+                </div>
+            </main>
+            <main style="width: 50%;">
+                <div class="title">
+                    <h3>Dados total Confirmações</h3>
+                </div>
+                <div class="info-header-order" >
+                    <label for="">Dias acumulado</label>
+                    <input type="number" style="width: 40px;" value="2">
+                    <input type="text" style="width: 40px;" value="DIA">
+                    <label for="">Tempo de duração</label>
+                    <input type="time" value="02:00">
+                    <input type="text" value="Horas" style="width: 50px;">
+                    <div style="margin-top: 10px;">
+                        Confirmação final
+                        <input type="checkbox" name="" id="">
+                        Necessida revisão?
+                        <input type="checkbox">
+                    </div>
+                </div>
+                
+            </main>
+        </section>
+        
 
-       
-    
+
+
     </section>
     <script src="../Login_v1/firebase-init.js"></script>
     <script src="../js/auth-guard.js"></script>

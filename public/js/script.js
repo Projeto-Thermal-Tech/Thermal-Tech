@@ -2,6 +2,7 @@
 const btn_config = document.querySelector(".config");
 // const btn_sair = document.querySelector(".sair");
 
+const dados_chamado =document.querySelectorAll(".section_chamado").style.display="none"
 
 btn_config.addEventListener("click", () => {
     alert("aqui vai abrir as configurações")
@@ -36,17 +37,21 @@ function saveEquipment() {
 
   hidePopup();
 }
+
 function hideElements() {
   var elements = document.querySelectorAll('.section_chamado');
   for (var i = 0; i < elements.length; i++) {
     elements[i].classList.add('display_none');
   }
+  var elements = document.querySelector('.section_order').classList.remove("display_none");
 }
 function showElements() {
   var elements = document.querySelectorAll('.section_chamado');
   for (var i = 0; i < elements.length; i++) {
     elements[i].classList.remove('display_none');
   }
+  var elements = document.querySelector('.section_order').classList.add("display_none");
+  
 }
 
 function deletar(){

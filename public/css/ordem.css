@@ -148,7 +148,9 @@ label{
     padding: 5px;
 }
 
-
+.section_chamado{
+  display: none;
+}
 
 .radio-input input {
     display: none;
