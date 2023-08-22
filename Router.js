@@ -1,6 +1,7 @@
 const express=  require("express")
 const router = express.Router()
 const path = require("path")
+const novoEquip = require('../Thermal-Tech/database/db')
 
 router.use(express.static(path.join(__dirname, "/public"))); // Substitua "public" pelo nome da pasta onde estão os arquivos estáticos (CSS, JS, imagens, etc.)
 
@@ -10,6 +11,9 @@ router.get("/inicio", function (req,res){
 
 router.get("/equipamentos", function (req,res){
     res.sendFile(path.join(__dirname, "./public/pages/lista.html"))
+})
+router.post('/cadastro', function(req,res){
+    novoEquip.insert(req.body.tag,req.body.tipo,req.body.modelo, req.body.ns, req.body.area, req.body.local,req.body.setor, req.body.desc)
 })
 router.get("/manutencao", function (req,res){
     res.sendFile(path.join(__dirname, "./public/pages/manut.html"))
