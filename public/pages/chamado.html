@@ -63,12 +63,13 @@
 
       <div class="num_cham">
         <label>N° Chamado:</label>
-        <input type="number" placeholder="" class="num">
+        <input type="number" class="num">
       </div>
 
       <div class="estado">
         <label>Status:</label>
-        <select class="esta">
+        <select id="esta">
+          <option value="todo">Todos</option>  
           <option value="aberto">Aberto</option>
           <option value="fechado">Encerrado</option>
           <option value="andamento">Em Andamento</option>
@@ -83,7 +84,7 @@
     <br>
     
     <div class="table-container">
-      <table>
+      <table id="filtro_cham">
           <thead>
               <tr>
                   <th></th>
@@ -213,6 +214,33 @@
 
   </section>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterSelect = document.getElementById('esta');
+      const dataTable = document.getElementById('filtro_cham').getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+  
+      filterSelect.addEventListener('change', function() {
+        const selectedValue = filterSelect.value;
+  
+        for (const row of dataTable) {
+          const statusCell = row.querySelector('td:nth-child(5)').textContent.toLowerCase();
+  
+          if (selectedValue === 'aberto' && statusCell === 'aberto') {
+            row.style.display = 'table-row';
+          } else if (selectedValue === 'fechado' && statusCell === 'encerrado') {
+            row.style.display = 'table-row';
+          } else if (selectedValue === 'andamento' && statusCell === 'em andamento') {
+            row.style.display = 'table-row';
+          } else if (selectedValue === 'todos') {
+            row.style.display = 'table-row';
+          } else {
+            row.style.display = 'none';
+          }
+        }
+      });
+    });
+  </script>
+  
 
 </body>
 
@@ -222,6 +250,6 @@
  <script src="../js/auth-guard.js"></script>
  <script src="../js/logout.js"></script>
  <script src="../js/script.js"></script>
-<script src="../js/auth-guard.js"></script>
+ <script src="../js/auth-guard.js"></script>
 
 </html>

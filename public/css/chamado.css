@@ -35,7 +35,7 @@
     border-radius: 2%;
     border: none;
     width: 12rem;
-    height: 20px;
+    height: 29px;
     padding: 5px;
     font-size: 16px;
 }
@@ -46,7 +46,7 @@
     text-align: center;
 }
 
-.esta {
+#esta {
     border-radius: 2%;
     border: none;
     width: 9rem;

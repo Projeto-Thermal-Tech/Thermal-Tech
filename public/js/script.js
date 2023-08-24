@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-
 // functions
 
 function showPopup() {
@@ -115,3 +114,5 @@ function deletarChamado(){
   }
   
 }
+
+
