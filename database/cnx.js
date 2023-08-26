@@ -1,7 +1,7 @@
 const pg = require("pg")
 const {Pool} = require('pg')
 
-const pool = new Pool({
+const NewPool = new Pool({
     user:"postgres",
     host:"34.95.240.9",
     database:"postgres",
@@ -9,4 +9,4 @@ const pool = new Pool({
     port:"5432"
 })
 
-module.exports = Pool
+module.exports = NewPool

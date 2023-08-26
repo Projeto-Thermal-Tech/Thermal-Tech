@@ -79,20 +79,23 @@
     </div>
 
     <main>
+      <form action=""></form>
       <h2 id="titulo-tabela">Cadastrar Técnicos</h2>
       <section class="cadastro_dados">
         <div class="header_dados">
           <div class="search_dados">
+            <form action="/cadastro" method="post">
             <h4 id="cabecalho-tabela">Nomes dos Técnicos:</h4>
-            <input type="text" placeholder="Nome do Técnico">
+          <input type="text" name="nome" placeholder="Nome do Técnico">
           </div>  
           <div class="search_dados">
             <h4>Número da Matrícula:</h4>
-            <input type="number" placeholder="Número da Matrícula">
+            <input type="number" name="matricula" placeholder="Número da Matrícula">
           </div>
         </div>
+        <button type="submit"></button>
+      </form>
       </section>
-      
       <div class="table_container">
         <div id="tabela2" class="tabela">
         <table id="tabela-tecnicos">
