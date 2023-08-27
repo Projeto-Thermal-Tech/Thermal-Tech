@@ -31,3 +31,13 @@ exports.insert =function(tag,tipo,modelo,ns,area,local,setor,descricao){
     }
     return novoEquip(tag,tipo,modelo,ns,area,local,setor,descricao)
 }
+
+async function listarDados() {
+    const sql = "select * from lista_equipamentos";
+    tabela = await db.query(sql);
+    return tabela.rows;
+}
+
+module.exports = {
+    listarDados
+};

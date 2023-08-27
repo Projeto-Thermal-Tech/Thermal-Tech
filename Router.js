@@ -13,13 +13,7 @@ router.get("/inicio", function (req,res){
 router.get("/equipamentos", function (req,res){
     res.sendFile(path.join(__dirname, "./public/pages/lista.html"))
 })
-// router.post('/cadastro', function(req,res){
-//     novoEquip.insert(req.body.nome,req.body.matricula).then(function(){
-//         res.send("deu certo")
-//     }).catch( function(error){
-//         res.send("deu erro" + error)
-//     })
-// })
+
 router.post('/cadastro', function(req,res){
     novoEquip.insert(req.body.tag,req.body.tipo,req.body.modelo, req.body.ns, req.body.area, req.body.local,req.body.setor, req.body.desc).then(function(){
         res.send("deu certo")
