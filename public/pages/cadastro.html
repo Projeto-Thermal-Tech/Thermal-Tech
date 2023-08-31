@@ -52,8 +52,27 @@
 <br>
 <h2>Cadastros Gerais</h2>
 
-<section class="dados">
+<section class="dados_cad">
 
+    <div class="header_cad">
+      <div class="seleciona_tabela">
+        <label class="escolher">Escolha a tabela:</label>
+        <select id="escolha">+ Novo Chamado</button>
+          <option value="tecnico">Técnicos</option>  
+          <option value="local">Locais</option>
+          <option value="equipamento">Equipamentos</option>
+        </select>
+      </div>
+
+    <div class="cadastrar">
+      <button id="cadastro">+ Cadastrar</button>
+    <div class="filtrar">
+      <button id="filtro">Filtrar</button>
+    </div>
+    </div>
+
+    </div>
+  
 
     <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
 	  <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
