@@ -4,8 +4,12 @@ const express=  require("express")
 const server = express()
 const router = require('./Router')
 
+server.use(express.json())
+server.use(express.urlencoded({extended:true}))
+
 server.use(router)
 server.listen(5000)
+
 
 function createWindow(){
     const win = 
@@ -26,7 +30,7 @@ function createWindow(){
     const menuTemplate =[];
     const menu = Menu.buildFromTemplate(menuTemplate);
     Menu.setApplicationMenu(menu)
-    win.openDevTools();
+    // win.openDevTools();
 
       }
       

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/list.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="./css/@media1200.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <script src="https://kit.fontawesome.com/8ab443ffcb.js" crossorigin="anonymous"></script>
@@ -19,7 +20,7 @@
 <body>
     <header>
         <div class="logo">
-            <img id="logo" src="../assets/icon_logo.jpg" alt="">
+           
             <h1><a href="./home.html">Thermal Tech</a></h1>
         </div>
         <nav>
@@ -54,7 +55,6 @@
                         <button>Pesquisar</button>
                         <button>Filtrar</button>
                 </div>
-                
                 <div class="add_manut">
                     <div>
                         <button onclick="showPopup()">Adicionar Ar Condicionado +</button>
@@ -305,39 +305,40 @@
         <div class="popup" id="popup">
             <div class="popup-title">Cadastrar Equipamento</div>
             <div class="popup-content">
+                <form action="/cadastro" method="post">
                <div class="popup-header">
                  <div>
                      <label for="" class="popup-label">TAG:</label>
-                     <input type="text" class="popup-input" id="tag" placeholder="ACS-2101"  oninput="converterParaMaiuscula(this)"> 
+                     <input type="text" class="popup-input" id="tag" name="tag" placeholder="ACS-2101"> 
                  </div>
                  <div>
                      <label for="" class="popup-label">Tipo de Equipamento:</label>
-                         <select name="" id="">
+                         <select name="tipo">
                              <option value=""></option>
-                             <option value="">Split</option>
-                             <option value="">Self-chiler</option>
-                             <option value="">Piso-Teto</option>
+                             <option value="split">Split</option>
+                             <option value="self-chiler">Self-chiler</option>
+                             <option value="piso-teto">Piso-Teto</option>
                          </select>
                  </div>
                  <div>
                      <label for="" class="popup-label">Número de Série</label>
-                     <input type="text" class="popup-input" id="n/s" placeholder="3928849328"> 
+                     <input type="text" class="popup-input" id="n/s" name="ns" placeholder="3928849328"> 
                  </div>
                </div>
                <div>
                  <label for="" class="popup-label">Descrição do Equipamento</label> 
-                 <textarea name="" id="" cols="82" rows="3"></textarea>
+                 <textarea name="desc" id="desc" cols="82" rows="3"></textarea>
              </div>  
                <div class="popup-center">
                  <div>
                      <label for="" class="popup-label">Aréa Climatizada</label>
-                     <input type="number" name="" id="" class="popup-input">
+                     <input type="number" name="area" id="" class="popup-input">
                  </div>
                  <div>
                      <label for="" class="popup-label">Localidade</label>
-                     <select name="" id="">
+                     <select id="local"name="local" >
                          <option value=""></option>
-                         <option value="">U-144</option>
+                         <option value="2">U-144</option>
                          <option value="">U-2110</option>
                          <option value="">U-2325</option>
                      </select>
@@ -345,17 +346,18 @@
                  <div>
                  <div>
                      <label for="" class="popup-label">Setor</label>
-                     <input type="number" name="" id="setor" class="popup-input">
+                     <input type="text" name="setor" id="setor" class="popup-input">
                  </div>
                </div>
                <div>
                 <label for="" class="popup-label">Modelo</label>
-                <input type="number" name="" id="modelo" class="popup-input">
+                <input type="number" name="modelo" id="modelo" class="popup-input">
             </div> 
             </div>
             <button class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
             <button  class="popup-button cancelar" onclick="hidePopup()">Cancelar</button>
         </div>
+    </form>
     </section>
     <script>
          

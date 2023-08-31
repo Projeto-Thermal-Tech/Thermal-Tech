@@ -20,7 +20,7 @@ input{
   border: 1px solid black;
   color: #000;
 }
-.logo{
+/* .logo{
     box-sizing: border-box;
     display: flex;
 }
@@ -55,7 +55,6 @@ li{
 .nav-right{
    display: flex;
    justify-content: end;
-   /* width: 10rem;  */
    padding: 0.5em;
 }
 main label ,input{
@@ -66,7 +65,7 @@ main label ,input{
     height: 30px;
     margin-left: 0.8rem;
     margin-right: 0.8rem;
- }
+ } */
  .container-chamado{
     margin: 5px;
     border: 1px solid black;
@@ -149,7 +148,9 @@ label{
     padding: 5px;
 }
 
-
+.section_chamado{
+  display: none;
+}
 
 .radio-input input {
     display: none;

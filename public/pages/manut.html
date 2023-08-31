@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/@media1200.css">
+    <link rel="stylesheet" href="../css/@media1440.css">
+    <!-- <link rel="stylesheet" href="../css/style.css"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Overpass:wght@400;700&display=swap" rel="stylesheet">
     <title>Lista de Manutenções</title>
@@ -17,7 +19,7 @@
     
     <header>
         <div class="logo">
-            <img id="logo" src="../assets/icon_logo.jpg" alt="">
+            
             <h1><a href="./home.html">Thermal Tech</a></h1>
         </div>
         <nav>
@@ -34,8 +36,8 @@
         </nav>
         <div class="nav-right">
             <div>
-                <a href="#"  class="config" title="Configurações" ><img src="../assets/icon_config.png" alt=""></a> 
-                <a  href="#" class="sair" title="sair" onclick="logout()"><img  src="../assets/icon_sair.png" alt=""></a>
+                <a href="#"  class="config"><img src="../assets/icon_config.png" alt=""></a> 
+                <a  href="#" class="sair" onclick="logout()"><img  src="../assets/icon_sair.png" alt=""></a>
             </div>
             <div>
                 <h4 id="userEmail"></h4>
@@ -50,7 +52,7 @@
                         <h4>Consultar Manutenções</h4>
                         <input type="text" placeholder="N° da manutenção">
                         <button>Pesquisar</button>
-                        <button onclick="showPopup()">Filtrar</button>
+                        <button id="filtro" onclick="showPopup()">Filtrar</button>
                 </div>
                 <div class="info_equip">
                     <div class="info-left">
