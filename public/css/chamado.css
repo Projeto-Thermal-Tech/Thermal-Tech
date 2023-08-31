@@ -11,6 +11,7 @@ header{
     background-color: #0080F5;
     justify-content: space-between;
 }
+
 .logo{
     box-sizing: border-box;
     display: flex;
@@ -125,9 +126,9 @@ li{
 .add_cham button{
     font-size: 18px;
     width:13rem ;
-    padding: 10px;
+    padding: 8px;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 
 .filtro {

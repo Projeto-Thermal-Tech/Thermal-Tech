@@ -8,13 +8,14 @@
 }
 header{
   display: flex;
-  width: 100%;
-  height: 60px;
+  width: 100%; 
+  height: 100px;
   background-color: #0080F5;
   justify-content: space-between;
 }
+
 .logo{
-  box-sizing: border-box;
+  box-sizing: border-box; 
   display: flex;
 }
 button{
@@ -28,6 +29,25 @@ button{
   width: 90px;
   height: 50px;
 }
+
+.colaborador-input {
+  margin-bottom: 25px;
+  }
+
+  .name-input label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  }
+
+.name-input .input-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+  }
 
 main h1{
 font-size: 35px;
@@ -58,7 +78,7 @@ justify-content: end;
 /* width: 10rem;  */
 padding: 0.5em;
 color: aliceblue;
-}
+} 
 .nav-right a img {
  width: 30px;
  height: 30px;
@@ -67,9 +87,10 @@ color: aliceblue;
 }
 
 .container{
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 20px 30px;
+  padding: 20px 40px;
+  
 }
 
 a{
@@ -101,10 +122,10 @@ a{
 /* form */
 
 .form{
-  margin-top: 40px;
+  margin-top: 100px;
   background: #0080F5;
   padding: 40px 20px;
-  border-radius: 4px;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -118,7 +139,7 @@ a{
 
 .tempo-quantidade{
   display: flex;
-  gap: 15px;
+  gap: 30px;
   align-items: center;
 }
 
@@ -129,9 +150,9 @@ label{
 
 select{
   width: 350px;
-  padding: 6px;
+  padding: 10px;
   border-radius: 4px;
-  margin-top: 20px;
+  margin-top: px;
 }
 
 span{
@@ -157,10 +178,10 @@ input{
 }
 
 .periodo{
-  margin-top: 15px;
+  margin-top: 20px;
   display: flex;
   align-items: center;
-  gap: 50px;
+  gap: 5px;
 }
 
 /* footer */
@@ -176,7 +197,7 @@ input{
 .footer p {
   color: #000000;
   background: #ffffff;
-  padding: 6px 25px;
+  padding: 6px 20px;
   border-radius: 4px;
 }
 
@@ -186,24 +207,32 @@ body {
     position: relative;
     
     }
-    table,th,td {
-    border:1px solid black;
+    table td, table th {
+    border:0.3px solid black;
     border-collapse:collapse;
     
     }
-    th,td{
-    padding:10px 30px;
+    table caption {
+      caption-side:bottom;
+      text-align:left;
+      font-style: italic;
+      font-size: 10px;
+      margin: 2px 0;
     }
+    th,td{
+    padding:1px 28px;
+    }  
+
     th{
     background-color: #0080F5;
     color: white;
     }
   
     .tableform{ 
-      margin: 0 auto;
+      margin: 100px auto;
         width: 50%;
         height: 400px;
-        overflow: auto;
+        overflow: center;
     }
     .tableform::-webkit-scrollbar{ 
         width: 10px;
@@ -211,7 +240,12 @@ body {
         border: 1px solid #0080F5;
     }
     .tableform::-webkit-scrollbar-thumb{ /* botao do scroll bar, esse que ta em cinza*/
-        background-color: rgb(133, 132, 132);
+        background-color: rgb(80, 208, 215);
         border-radius: 10px;
         
     }
+
+      .titulo{
+        display: flex;
+        justify-content: center;
+      }

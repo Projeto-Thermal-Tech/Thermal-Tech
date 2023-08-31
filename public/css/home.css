@@ -8,6 +8,7 @@ header{
     width: 100%;
     height: 60px;
     background-color: #0080F5;
+    
     justify-content: space-between;
 }
 .logo{
@@ -18,6 +19,13 @@ button{
     cursor: pointer;
     background-color: white;
     font-weight: bold;
+    color: #0080F5; /* Cor do texto */
+    font-size: 16px; /* Tamanho da fonte */
+    padding: 10px 20px; /* Espaçamento interno do botão */
+    border: 2px solid #0080F5; /* Borda */
+    
+   
+border-radius: 5px; /* Borda arredondada */
 }
 #logo{
     margin-left: 0rem;
@@ -26,7 +34,7 @@ button{
     height: 50px;
 }
 h4{
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     font-size: 20px;
 }
 a{
@@ -46,7 +54,7 @@ li{
    display: flex;
    justify-content: end;
    /* width: 10rem;  */
-   padding: 0.5em;
+   padding: 0.5em; 
    color: aliceblue;
 }
 .nav-right a img {

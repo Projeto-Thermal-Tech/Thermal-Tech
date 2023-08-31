@@ -23,5 +23,7 @@
         background-color: bisque;
         width: 120px;
       }
-      .prioridade{}
+      .prioridade {
+        width: 110px;
+      }
 }

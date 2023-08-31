@@ -17,10 +17,11 @@
         <img id="logo" src="../assets/icon_logo.jpg" alt="" />
         <h1><a href="./horas.html">Thermal Tech</a></h1>
       </div>
-      <nav>
+      
+      <nav> 
         <ul>
           <li><a href="http://localhost:5000/Equipamentos">Equipamentos</a></li>
-          <li><a href="http://localhost:5000/manutencao">Manutenções</a></li>
+          <li><a href="http://localhost:5000/manutencao">Manutenções</a></li> 
           <li><a href="http://localhost:5000/ordem">Ordem</a></li>
           <li><a href="http://localhost:5000/chamados">Chamado</a></li>
           <li><a href="http://localhost:5000/registro">Cadastro Geral</a></li>
@@ -41,20 +42,22 @@
     </header>
 
     <main class="container">
+      <div class="titulo">
+        <h2 >Homem Hora</h2>
+      </div>
       <form class="form">
         <div class="primeira-linha-form">
           <div class="emissor">
-            <label for="">Emissor:</label>
-            <select id="">
-              <option value="lucas">Lucas Silva Cuba</option>
-              <option value="lucas">Lucas Ulbrich Franco</option>
-              <option value="eduardo">Eduardo Wagner</option>
-              <option value="victor">Victor Bueno Cardoso</option>
-              <option value="jean">Jean victor dos Santos Maciel</option>
-              <option value="luiz">Luiz Gabriel Roberti</option>
+            <label for="">Colaborador:</label>
+            <select id="emissor">
+              <option value="lucas">Eduardo Wagner Gregorio</option>
+              <option value="lucas">Jean victor dos Santos Maciel</option>
+              <option value="eduardo">Lucas Silva Cuba</option>
+              <option value="victor">Lucas Ulbrich Franco</option>
+              <option value="jean">Luiz Gabriel Roberti</option>
+              <option value="luiz">Victor Bueno Cardoso</option>
             </select>
           </div>
-
           <div class="tempo-quantidade">
             <div class="tempo">
               <label for="">Tempo</label>
@@ -62,7 +65,7 @@
             </div>
 
             <div class="quantidade">
-              <label for="">Qtde</label>
+              <label for="">Quantidade:</label>
               <input type="number" />
               <span>Corretiva</span>
             </div>
@@ -70,14 +73,14 @@
         </div>
         <div class="segunda-linha-form">
           <div>
-            <label for="">Colaborador:</label>
-            <select id="">
-              <option value="lucas">Lucas Silva Cuba</option>
-              <option value="lucas">Lucas Ulbrich Franco</option>
-              <option value="eduardo">Eduardo Wagner</option>
-              <option value="victor">Victor Bueno Cardoso</option>
-              <option value="jean">Jean victor dos Santos Maciel</option>
-              <option value="luiz">Luiz Gabriel Roberti</option>
+            <label for="">Emissor: </label>
+            <select id="Emissor">
+              <option value="lucas">Eduardo Wagner Gregorio</option>
+              <option value="lucas">Jean victor dos Santos Maciel</option>
+              <option value="eduardo">Lucas Silva Cuba</option>
+              <option value="victor">Lucas Ulbrich Franco</option>
+              <option value="jean">Luiz Gabriel Roberti</option>
+              <option value="luiz">Victor Bueno Cardoso</option>
             </select>
           </div>
 
@@ -88,16 +91,16 @@
             </div>
 
             <div class="quantidade">
-              <label for="">Qtde</label>
+              <label for="">Quantidade</label>
 
               <input type="number" />
-              <span>Corretivas</span>
+              <span>Preventiva</span>
             </div>
           </div>
         </div>
         <div class="terceira-linha-form">
           <div class="periodo">
-            <label for="">Periodo</label>
+            <label for="">Periodo:</label>
             <div class="datas">
               <input type="date" />
               <input type="date" />
@@ -109,17 +112,15 @@
           <div class="footer">
             <label for="">Total Geral</label>
             <div class="total-tempo">
-              <p>43:28</p>
+              <p>17:53</p>
             </div>
             <di class="total-quantidade">
-              <p>23</p>
+              <p>11</p>
             </di>
           </div>
         </footer>
       </form>
     </main>
-    <br />
-    <br />
     <br />
     <section class="tableform">
         <div>
