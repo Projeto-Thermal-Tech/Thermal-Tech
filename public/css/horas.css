@@ -1,34 +1,75 @@
 *{
-  margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-  list-style-type: none;
-  text-decoration: none;
-}
-header{
+  margin: 0;
+  font-family: 'B612';
+}  
+/* header{
   display: flex;
-  width: 100%; 
-  height: 100px;
+  width: 100%;
+  height: 60px;
   background-color: #0080F5;
   justify-content: space-between;
 }
 
 .logo{
-  box-sizing: border-box; 
+  box-sizing: border-box;
   display: flex;
+  width: 100%;
 }
+
 button{
   cursor: pointer;
   background-color: white;
   font-weight: bold;
 }
-#logo{
-  margin-left: 0rem;
-  padding: 5px 20px;
-  width: 90px;
-  height: 50px;
+
+h1{
+margin-bottom: 50px;
+font-size: 30px;
+text-align: center;
 }
+h4{
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+#filtro {
+position: absolute;
+right: 95px; 
+top: 34%;
+transform: translateY(-50%);
+}
+a{
+  color:white;
+  text-decoration: none;
+}
+ul{
+  display: flex;
+}
+li{
+  margin-left: 0.5rem;
+  list-style: none;
+  padding: 1rem;
+  font-size: 1rem;
+}
+.nav-right{
+ display: flex;
+ justify-content: end;
+ padding: 0.5em;
+ color: rgb(255, 255, 255);
+ width: 100%;
+}
+.nav-right a img {
+  width: 30px;
+  height: 30px;
+  margin-left: 0.8rem;
+  margin-right: 0.8rem;
+} */
+/* #logo{
+margin-left: 0rem;
+padding: 5px 20px;
+width: 90px;
+height: 50px;
+} */
 
 .colaborador-input {
   margin-bottom: 25px;
@@ -49,6 +90,7 @@ button{
     outline: none;
   }
 
+/*inicio do código de dasing da tela de horas*/
 main h1{
 font-size: 35px;
 padding: 1rem;
@@ -59,43 +101,12 @@ h4{
   margin-bottom: 20px;
   font-size: 20px;
 }
-a{
-  color:white;
-  text-decoration: none;
-}
-ul{
-  display: flex;
-}
-li{
-  margin-left: 0.5rem;
-  list-style: none;
-  padding: 1rem;
-  font-size: 1rem;
-}
-.nav-right{
-display: flex;
-justify-content: end;
-/* width: 10rem;  */
-padding: 0.5em;
-color: aliceblue;
-} 
-.nav-right a img {
- width: 30px;
- height: 30px;
- margin-left: 0.8rem;
- margin-right: 0.8rem;
-}
 
 .container{
   max-width: 1100px;
   margin: 0 auto;
   padding: 20px 40px;
   
-}
-
-a{
-  display: block;
-  color: #fff;
 }
 
 .header-bg{
@@ -120,9 +131,60 @@ a{
 }
 
 /* form */
+/* Estilos para o campo de entrada Colaborador e Emissor */
+#emissor {
+  width: 300px; /* Largura desejada para ambos os campos */
+  padding: 10px;
+  border-radius: 4px;
+}
+#Emissor {
+  width: 300px; /* Largura desejada para ambos os campos */
+  padding: 10px;
+  border-radius: 4px;
+}
+
+/* Estilos para o campo de entrada Tempo */
+input[type="time1"] {
+  padding: 5px;
+  border-radius: 4px;
+  width: 150px; /* Largura desejada para o campo de tempo */
+}
+
+/* Estilos para o campo de entrada Quantidade */
+input[type="number1"] {
+  padding: 5px;
+  border-radius: 4px;
+  margin-right: 10px; /* Adicione uma margem esquerda para mover para a direita */
+  width: 200px; /* Largura desejada para o campo de quantidade */
+}
+
+input[type="time2"] {
+  padding: 5px;
+  border-radius: 4px;
+  width: 150px; /* Largura desejada para o campo de tempo */
+}
+
+/* Estilos para o campo de entrada Quantidade */
+input[type="number2"] {
+  padding: 5px;
+  border-radius: 4px;
+  margin-right: 10px; /* Adicione uma margem esquerda para mover para a direita */
+  width: 200px; /* Largura desejada para o campo de quantidade */
+}
+
+/* Estilos para o rótulo Emissor */
+.segunda-linha-form div label[for="Emissor"] {
+  margin-left: 38px; /* Ajuste o valor da margem esquerda conforme necessário */
+  width: 300px; /* Ajusta a largura do rótulo Emissor */
+}
+
+/* Ajuste o posicionamento do campo de entrada Emissor */
+#Emissor {
+  margin-left: 38px; /* Ajuste o valor da margem esquerda conforme necessário */
+}
 
 .form{
-  margin-top: 100px;
+  margin-top: 2px;
   background: #0080F5;
   padding: 40px 20px;
   border-radius: 5px;
@@ -134,6 +196,7 @@ a{
 .primeira-linha-form{
   display: flex;
   align-items: center;
+  gap: 30px;
   justify-content: space-between;
 }
 
@@ -149,25 +212,22 @@ label{
 }
 
 select{
-  width: 350px;
+  width: 450px;
   padding: 10px;
   border-radius: 4px;
   margin-top: px;
 }
 
-span{
-  color: #fff;
-}
-
 input{
   padding: 6px;
-  outline: none;
-  width: 150px;
   border-radius: 4px;
+  outline: none;
+  width: 146px;
   border: none;
 }
 
 .tempo label, .quantidade label {
+  text-align: center;
   display: block;
 }
 
@@ -178,16 +238,17 @@ input{
 }
 
 .periodo{
-  margin-top: 20px;
+  margin-top: 10px;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 47px;
 }
 
 /* footer */
 
 .footer{
-  margin-top: 15px;
+  margin-right: 40px; /* Adicione uma margem esquerda para mover para a direita */
+  margin-top: -37px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -200,6 +261,24 @@ input{
   padding: 6px 20px;
   border-radius: 4px;
 }
+
+/* Estilos para o botão de envio */
+.submit-button {
+  background-color: #321ee7; /* Cor de fundo do botão */
+  color: black; /* Cor do texto do botão */
+  border: none; /* Remova a borda padrão do botão */
+  padding: 10px 10px; /* Espaçamento interno do botão */
+  border-radius: 4px; /* Borda arredondada */
+  cursor: pointer; /* Altera o cursor para indicar que é clicável */
+  width: 150px; /* Largura desejada do botão */
+  height: 40px; /* Altura desejada do botão */
+}
+
+/* Estilos quando o mouse passa sobre o botão */
+.submit-button:hover {
+  background-color: rgb(156, 109, 204);
+}
+
 
 body {
     text-align: left;
@@ -220,8 +299,8 @@ body {
       margin: 2px 0;
     }
     th,td{
-    padding:1px 28px;
-    }  
+    padding:1px 50px;
+    } 
 
     th{
     background-color: #0080F5;
@@ -229,8 +308,8 @@ body {
     }
   
     .tableform{ 
-      margin: 100px auto;
-        width: 50%;
+      margin: 1px auto;
+        width: 53%;
         height: 400px;
         overflow: center;
     }

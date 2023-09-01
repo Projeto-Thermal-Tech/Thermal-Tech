@@ -6,34 +6,7 @@
 
  h2{
     display: flex;
-<<<<<<< HEAD
-    width: 100%;
-    height: 60px;
-    background-color: #0080F5;
-    justify-content: space-between;
-}
-
-.logo{
-    box-sizing: border-box;
-    display: flex;
-}
-button{
-    cursor: pointer;
-    background-color: white;
-    font-weight: bold;
-}
-#logo{
-    margin-left: 0rem;
-    padding: 5px 20px;
-    width: 50px;
-    height: 40px;
-}
-
-h1{
-    margin-bottom: 50px;
-=======
     justify-content: center;
->>>>>>> 94c4e4815a781c9b729fc4f6a98077747407f975
     font-size: 30px;
  }
  .header_cham{
