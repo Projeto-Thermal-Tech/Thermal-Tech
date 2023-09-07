@@ -65,12 +65,14 @@ h2{
 
 .dados_cad{
   margin-top: 1rem; 
-  width:60%;
-  margin-left: 20%;
-  margin-right: 5%;
+  /* margin-left: 20%;
+  margin-right: 5%; */
+ display: flex;
+ justify-content: center;
 
 }
 .header_cad{
+  width: 68%;
   background-color: #0080F5;
   border-radius: 5px;
   padding: 1rem;
@@ -104,41 +106,109 @@ h2{
   font-size: 22px;
 }
 
-#escolha {
-  border-radius: 2%;
-  border: none;
-  width: 9rem;
-  height: 32px;
-  font-size: 16px;
-
-}#tabela_tec {
+#tabela_tec {
   background-color: #0080F5;
   text-align: center;
-  border-collapse: collapse; /*Mescla as bordas das células */
-  width: 50%;
-  border: 2px solid #000; /* Borda da tabela */
-  margin-left: 25%;
+  border-collapse: collapse;
+  width: 70%; /* Aumentei a largura para 70% */
+  margin: 0 auto; /* Centralizei a tabela horizontalmente */
 }
 
-#tabela_loc{
+#tabela_tec th {
+  background-color: #0080F5; /* Cor de fundo para cabeçalhos */
+  color: white; /* Cor do texto dos cabeçalhos */
+  font-weight: bold; /* Texto em negrito nos cabeçalhos */
+  padding: 10px; /* Espaçamento interno nos cabeçalhos */
+}
+
+#tabela_tec td {
+  background-color: #E7E7E7; /* Cor de fundo para células de dados */
+  padding: 8px; /* Espaçamento interno nas células de dados */
+}
+
+#tabela_tec button {
+  background-color: #FF5733; /* Cor de fundo para os botões */
+  color: white; /* Cor do texto dos botões */
+  border: none; /* Removi a borda dos botões */
+  padding: 5px 10px; /* Espaçamento interno nos botões */
+  border-radius: 5px; /* Arredondamento dos botões */
+  cursor: pointer; /* Alterei o cursor para indicar que os botões são clicáveis */
+}
+
+#tabela_loc button:hover {
+  background-color: #E6410C; /* Cor de fundo quando hover nos botões */
+}
+
+#tabela_loc {
   background-color: #0080F5;
-  border-collapse: collapse; /* Mescla as bordas das células */
-  border: 2px solid #000; /* Borda da tabela */
   text-align: center;
-  width: 50%;
-  margin-left: 25%;
+  border-collapse: collapse;
+  width: 70%; /* Aumentei a largura para 70% */
+  margin: 0 auto; /* Centralizei a tabela horizontalmente */
 }
 
-#tabela_equip{
+#tabela_loc th {
+  background-color: #0080F5; /* Cor de fundo para cabeçalhos */
+  color: white; /* Cor do texto dos cabeçalhos */
+  font-weight: bold; /* Texto em negrito nos cabeçalhos */
+  padding: 10px; /* Espaçamento interno nos cabeçalhos */
+}
+
+#tabela_loc td {
+  background-color: #E7E7E7; /* Cor de fundo para células de dados */
+  padding: 8px; /* Espaçamento interno nas células de dados */
+}
+
+#tabela_loc button {
+  background-color: #FF5733; /* Cor de fundo para os botões */
+  color: white; /* Cor do texto dos botões */
+  border: none; /* Removi a borda dos botões */
+  padding: 5px 10px; /* Espaçamento interno nos botões */
+  border-radius: 5px; /* Arredondamento dos botões */
+  cursor: pointer; /* Alterei o cursor para indicar que os botões são clicáveis */
+}
+
+#tabela_loc button:hover {
+  background-color: #E6410C; /* Cor de fundo quando hover nos botões */
+}
+
+
+#tabela_loc button:hover {
+  background-color: #E6410C; /* Cor de fundo quando hover nos botões */
+}
+
+#tabela_equip {
   background-color: #0080F5;
   text-align: center;
-  border-collapse: collapse; /* Mescla as bordas das células */
-  width: 50%;
-  border: 2px solid #000; /* Borda da tabela */
-  margin-left: 25%;
-
+  border-collapse: collapse;
+  width: 70%; /* Aumentei a largura para 70% */
+  margin: 0 auto; /* Centralizei a tabela horizontalmente */
 }
 
+#tabela_equip th {
+  background-color: #0080F5; /* Cor de fundo para cabeçalhos */
+  color: white; /* Cor do texto dos cabeçalhos */
+  font-weight: bold; /* Texto em negrito nos cabeçalhos */
+  padding: 10px; /* Espaçamento interno nos cabeçalhos */
+}
+
+#tabela_equip td {
+  background-color: #E7E7E7; /* Cor de fundo para células de dados */
+  padding: 8px; /* Espaçamento interno nas células de dados */
+}
+
+#tabela_equip button {
+  background-color: #FF5733; /* Cor de fundo para os botões */
+  color: white; /* Cor do texto dos botões */
+  border: none; /* Removi a borda dos botões */
+  padding: 5px 10px; /* Espaçamento interno nos botões */
+  border-radius: 5px; /* Arredondamento dos botões */
+  cursor: pointer; /* Alterei o cursor para indicar que os botões são clicáveis */
+}
+
+#tabela_equip button:hover {
+  background-color: #E6410C; /* Cor de fundo quando hover nos botões */
+}
 .overlay{
   position: fixed;
   top: 0;
