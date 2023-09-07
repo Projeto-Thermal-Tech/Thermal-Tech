@@ -58,9 +58,9 @@
       <div class="seleciona_tabela">
         <label class="escolher">Selecione a tabela:</label>
         <select id="escolha">+ Novo Chamado</button>
-          <option value="tecnico">Técnicos</option>  
-          <option value="local">Locais</option>
-          <option value="equipamento">Equipamentos</option>
+          <option value="tabela_tec">Técnicos</option>  
+          <option value="tabela_loc">Locais</option>
+          <option value="tabela_equip">Equipamentos</option>
         </select>
       </div>
 
@@ -123,8 +123,7 @@
     </tr>
 </table>
 
-<br>
-<table id="tabela_loc" border 1 >
+<table id="tabela_loc" border 1 style="display: none;">
   <tr>
   <th>ID</th>
   <th>Local</th>
@@ -161,8 +160,7 @@
     <td><button>Editar e Limpar</button></td>
   </table>
 
-  <br>
-<table id="tabela_equip" border 1 > 
+<table id="tabela_equip" border 1 style="display: none;"> 
   <tr>
     <th>ID</th>
     <th>Equipamentos</th>
@@ -199,6 +197,90 @@
       <td><button>Editar e Limpar</button></td>
     </tr>
 </table>
+
+<section class="overlay">
+  <div class="popup" id="popup-tec">
+      <div class="popup-title">Cadastrar Tecnico</div>
+      <div class="popup-content">
+          <form action="/cadastro" method="post">
+         <div class="popup-header">
+           <div>
+               <label for="" class="popup-label">Nome:</label>
+               <input type="text" class="popup-input" id="tag" name="tag" placeholder=""> 
+           </div>
+           <div>
+               <label for="" class="popup-label">Email:</label>
+               <input type="text" class="popup-input" id="tag" name="tag" placeholder=""> 
+           </div>
+           <div>
+               <label for="" class="popup-label">Matricula:</label>
+               <input type="number" class="popup-input" id="n/s" name="ns" placeholder=""> 
+           </div>
+         </div>
+         
+      </div>
+      <button class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
+      <button  class="popup-button cancelar" onclick="hidePopup()">Cancelar</button>
+  </form>
+  </div>
+  <div class="popup" id="popup-equip">
+      <div class="popup-title">Cadastrar Equipamento</div>
+      <div class="popup-content">
+          <form action="/cadastro" method="post">
+         <div class="popup-header">
+           <div>
+               <label for="" class="popup-label">Tipo:</label>
+               <input type="text" class="popup-input" id="tag" name="tag" placeholder=""> 
+           </div>
+           <div>
+               <label for="" class="popup-label">Voltagem:</label>
+               <select>
+                  <option value="voltagem">110v</option>
+                  <option value="voltagem">220v</option>
+              </select>
+           </div>
+      </div>
+      <button class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
+      <button  class="popup-button cancelar" onclick="hidePopup()">Cancelar</button>
+  </form>
+  </div>
+  </div>
+
+  <div class="popup" id="popup-loc">
+      <div class="popup-title">Cadastrar Local</div>
+      <div class="popup-content">
+          <form action="/cadastro" method="post">
+         <div class="popup-header">
+           <div>
+               <label for="" class="popup-label">Nome:</label>
+               <input type="text" class="popup-input" id="nome" name="nome_local" placeholder=""> 
+           </div>
+         </div>
+         
+      </div>
+      <button class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
+      <button  class="popup-button cancelar" onclick="hidePopup()">Cancelar</button>
+  </form>
+  </div>
+</section>
+
+<script>
+    var escolha = document.getElementById("escolha");
+    var tabelas = document.querySelectorAll("table");
+
+    escolha.addEventListener("change", function () {
+        var valorEscolhido = escolha.value;
+
+        tabelas.forEach(function (tabela) {
+            tabela.style.display = "none"; // Oculta todas as tabelas
+        });
+
+        document.getElementById(valorEscolhido).style.display = "table"; // Exibe a tabela selecionada
+    });
+
+    // Chame a função change para exibir a tabela inicialmente
+    escolha.dispatchEvent(new Event("change"));
+</script>
 
     <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
 	  <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
