@@ -3,11 +3,30 @@ const router = express.Router()
 const path = require("path")
 const novoEquip = require('../Thermal-Tech/database/db');
 const { error } = require("console");
+const dados = require('../Thermal-Tech/database/db')
 
-router.use(express.static(path.join(__dirname, "/public"))); // Substitua "public" pelo nome da pasta onde estão os arquivos estáticos (CSS, JS, imagens, etc.)
+console.log(dados)
+
+
+router.use(express.static(path.join(__dirname, "/public"))); 
+
+let user={name:'vini', tel:'4444'}
+
+
+router.get('/teste', (req,res)=>{
+    
+        res.render('user', user)
+ 
+})
+
+
+
 
 router.get("/inicio", function (req,res){
     res.sendFile(path.join(__dirname, "./public/pages/home.html"))
+})
+router.get('/teste', function(req,res){
+    res.render('teste')
 })
 
 router.get("/equipamentos", function (req,res){
@@ -16,9 +35,9 @@ router.get("/equipamentos", function (req,res){
 
 router.post('/cadastro', function(req,res){
     novoEquip.insert(req.body.tag,req.body.tipo,req.body.modelo, req.body.ns, req.body.area, req.body.local,req.body.setor, req.body.desc).then(function(){
-        res.send("deu certo")
+        res.sendFile(path.join(__dirname, "./public/pages/lista.html"))
     }).catch( function(error){
-        res.send("deu erro " + req.body.local+ error)
+        res.send("deu erro " + error)
     })
 })
 router.get("/manutencao", function (req,res){

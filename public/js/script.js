@@ -35,7 +35,6 @@ function saveEquipment() {
   var local = document.getElementById("local").value
   var desc = document.getElementById("desc").value
   alert("O equipamento " + tag + " foi cadastrado com sucesso!");
- alert(local) 
   hidePopup();
 }
 
