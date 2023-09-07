@@ -20,7 +20,7 @@
 
 const db = require("./cnx")
 
-exports.insert = function (tag, tipo, modelo, ns, area, local, setor, descricao) {
+exports.insertEquip = function (tag, tipo, modelo, ns, area, local, setor, descricao) {
     async function novoEquip(tag, tipo, modelo, ns, area, local, setor, descricao) {
         await db.connect()
         tabela = await db.query("select * from lista_equipamentos")
@@ -30,6 +30,14 @@ exports.insert = function (tag, tipo, modelo, ns, area, local, setor, descricao)
         console.log(tabela.rows)
     }
     return novoEquip(tag, tipo, modelo, ns, area, local, setor, descricao)
+}
+exports.insertSetor = function (nome_setor) {
+    async function novoSetor(nome_setor) {
+        await db.connect()
+        const inserir = ("insert into setor(nome_setor) values ($1)")
+        await db.query(inserir, [nome_setor])
+    }
+    return novoSetor(nome_setor)
 }
 
 async function listarDados() {

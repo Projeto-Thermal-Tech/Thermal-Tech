@@ -291,18 +291,18 @@
   <div class="popup" id="popup-loc">
       <div class="popup-title">Cadastrar Local</div>
       <div class="popup-content">
-          
+         <form action="/cadastro/setor" method="post">
          <div class="popup-header">
            <div>
                <label for="" class="popup-label">Nome:</label>
-               <input type="text" class="popup-input" id="nome" name="nome_local" placeholder=""> 
+               <input type="text" class="popup-input" id="nome" name="nome_setor" placeholder=""> 
            </div>
          </div>
          
       </div>
-      <button class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
+      <button type="submit" class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
       <button  class="popup-button cancelar" onclick="EsconderPopup()">Cancelar</button>
-
+      </form>
   </div>
 </section>
 

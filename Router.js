@@ -2,6 +2,7 @@ const express=  require("express")
 const router = express.Router()
 const path = require("path")
 const novoEquip = require('../Thermal-Tech/database/db');
+const novoSetor = require('../Thermal-Tech/database/db');
 const { error } = require("console");
 const dados = require('../Thermal-Tech/database/db')
 
@@ -33,9 +34,16 @@ router.get("/equipamentos", function (req,res){
     res.sendFile(path.join(__dirname, "./public/pages/lista.html"))
 })
 
-router.post('/cadastro', function(req,res){
-    novoEquip.insert(req.body.tag,req.body.tipo,req.body.modelo, req.body.ns, req.body.area, req.body.local,req.body.setor, req.body.desc).then(function(){
+router.post('/cadastro/equipamento', function(req,res){
+    novoEquip.insertEquip(req.body.tag,req.body.tipo,req.body.modelo, req.body.ns, req.body.area, req.body.local,req.body.setor, req.body.desc).then(function(){
         res.sendFile(path.join(__dirname, "./public/pages/lista.html"))
+    }).catch( function(error){
+        res.send("deu erro " + error)
+    })
+})
+router.post('/cadastro/setor', function(req,res){
+    novoSetor.insertSetor(req.body.nome_setor).then(function(){
+        res.sendFile(path.join(__dirname, "./public/pages/cadastro.html"))
     }).catch( function(error){
         res.send("deu erro " + error)
     })
