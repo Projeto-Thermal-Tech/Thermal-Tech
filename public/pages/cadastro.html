@@ -67,7 +67,7 @@
       </div>
 
     <div class="cadastrar">
-      <button id="cadastro">+ Cadastrar</button>
+      <button id="cadastro" onclick="mostrarCadastro()"><i class="fa-sharp fa-solid fa-plus fa-xs" style="color: #000000; margin-right: 5px;"></i></i>Cadastrar</button>
       <br>
     <div class="filtrar">
       <button id="filtro">Filtrar</button>
@@ -143,7 +143,7 @@
     </tr>
 </table>
 
-<table id="tabela_loc" border 1 style="display: none;">
+<table id="tabela_loc" border 1 >
   <tr>
   <th>ID</th>
   <th>Local</th>
@@ -192,7 +192,7 @@
       </td>
   </table>
 
-<table id="tabela_equip" border 1 style="display: none;"> 
+<table id="tabela_equip" border 1"> 
   <tr>
     <th>ID</th>
     <th>Equipamentos</th>
@@ -246,7 +246,6 @@
   <div class="popup" id="popup-tec">
       <div class="popup-title">Cadastrar Tecnico</div>
       <div class="popup-content">
-          <form action="/cadastro" method="post">
          <div class="popup-header">
            <div>
                <label for="" class="popup-label">Nome:</label>
@@ -264,13 +263,12 @@
          
       </div>
       <button class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
-      <button  class="popup-button cancelar" onclick="hidePopup()">Cancelar</button>
-  </form>
+      <button  class="popup-button cancelar" onclick="EsconderPopup()">Cancelar</button>
   </div>
   <div class="popup" id="popup-equip">
       <div class="popup-title">Cadastrar Equipamento</div>
       <div class="popup-content">
-          <form action="/cadastro" method="post">
+         
          <div class="popup-header">
            <div>
                <label for="" class="popup-label">Tipo:</label>
@@ -285,15 +283,15 @@
            </div>
       </div>
       <button class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
-      <button  class="popup-button cancelar" onclick="hidePopup()">Cancelar</button>
-  </form>
+      <button  class="popup-button cancelar" onclick="EsconderPopup()">Cancelar</button>
+
   </div>
   </div>
 
   <div class="popup" id="popup-loc">
       <div class="popup-title">Cadastrar Local</div>
       <div class="popup-content">
-          <form action="/cadastro" method="post">
+          
          <div class="popup-header">
            <div>
                <label for="" class="popup-label">Nome:</label>
@@ -303,17 +301,17 @@
          
       </div>
       <button class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
-      <button  class="popup-button cancelar" onclick="hidePopup()">Cancelar</button>
-  </form>
+      <button  class="popup-button cancelar" onclick="EsconderPopup()">Cancelar</button>
+
   </div>
 </section>
 
 <script>
-    var escolha = document.getElementById("escolha");
-    var tabelas = document.querySelectorAll("table");
+    const escolha = document.getElementById("escolha");
+    const tabelas = document.querySelectorAll("table");
 
     escolha.addEventListener("change", function () {
-        var valorEscolhido = escolha.value;
+        const valorEscolhido = escolha.value;
 
         tabelas.forEach(function (tabela) {
             tabela.style.display = "none"; // Oculta todas as tabelas
@@ -324,6 +322,32 @@
 
     // Chame a função change para exibir a tabela inicialmente
     escolha.dispatchEvent(new Event("change"));
+
+    function mostrarCadastro(){
+      document.querySelector('.overlay').style.display= 'block'
+      if (escolha.value ==='tabela_tec') {
+        document.getElementById('popup-tec').style.display= 'block'
+      }
+       if(escolha.value==='tabela_loc') {
+        document.getElementById('popup-loc').style.display= 'block'
+      }
+     if(escolha.value==='tabela_equip'){
+        document.getElementById('popup-equip').style.display= 'block'
+      }
+    }
+
+    function EsconderPopup(){
+      document.querySelector('.overlay').style.display= 'none'
+      if (escolha.value==='tabela_tec') {
+        document.getElementById('popup-tec').style.display= 'none'
+      }  if(escolha.value==='tabela_loc') {
+        document.getElementById('popup-loc').style.display= 'none'
+      }if(escolha.value==='tabela_equip'){
+        document.getElementById('popup-equip').style.display= 'none'
+      }
+    }
+
+
 </script>
 
     <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
