@@ -110,4 +110,31 @@ h2{
   width: 9rem;
   height: 32px;
   font-size: 16px;
+
+}#tabela_tec {
+  background-color: #0080F5;
+  text-align: center;
+  border-collapse: collapse; /*Mescla as bordas das células */
+  width: 50%;
+  border: 2px solid #000; /* Borda da tabela */
+  margin-left: 25%;
+}
+
+#tabela_loc{
+  background-color: #0080F5;
+  border-collapse: collapse; /* Mescla as bordas das células */
+  border: 2px solid #000; /* Borda da tabela */
+  text-align: center;
+  width: 50%;
+  margin-left: 25%;
+}
+
+#tabela_equip{
+  background-color: #0080F5;
+  text-align: center;
+  border-collapse: collapse; /* Mescla as bordas das células */
+  width: 50%;
+  border: 2px solid #000; /* Borda da tabela */
+  margin-left: 25%;
+
 }
