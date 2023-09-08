@@ -39,12 +39,30 @@ exports.insertSetor = function (nome_setor) {
     }
     return novoSetor(nome_setor)
 }
+exports.insertTecnico = function (nome,matricula,email) {
+    async function novoTec(nome,matricula,email) {
+        await db.connect()
+        const inserir = ("insert into tecnicos(nome_tec,matricula_tec,email) values ($1,$2,$3)")
+        await db.query(inserir, [nome,matricula,email])
+    }
+    return novoTec(nome,matricula,email)
+}
+exports.insertTipo = function (nome) {
+    async function novoTipo(nome) {
+        await db.connect()
+        const inserir = ("insert into tipos_arcondicionado(tipos_arcondicionado_tipar) values ($1)")
+        await db.query(inserir, [nome])
+    }
+    return novoTipo(nome)
+}
 
-exports.dados = function(){ 
-async function listarDados() {
-    const sql = "select * from setor";
-    tabela = await db.query(sql);
-    return tabela.rows;
-}
-listarDados() 
-}
+
+
+// exports.dados = function(){ 
+// async function listarDados() {
+//     const sql = "select * from setor";
+//     tabela = await db.query(sql);
+//     return tabela.rows;
+// }
+// listarDados() 
+// }

@@ -79,69 +79,33 @@
   <br>
 
   <table id="tabela_tec" border="1">
-
     <tr>
-        <th>id</th>
-        <th>Email</th>
-        <th>Técnicos</th>
-        <th>Matricula</th>
-        <th>Ação</th>
+      <th>id</th>
+      <th>Email</th>
+      <th>Técnicos</th>
+      <th>Matricula</th>
+      <th>Ação</th>
     </tr>
-    <tr>
-        <td>1</td>
-        <td>ens-luizroberti@ugv.edu.br</td>
-        <td>Luiz Roberti</td>
-        <td>123.456.789</td>
-        <td><button  style="background-color: yellow;"> <i class="fas fa-pencil-alt" style="color: black;"></i> <!-- Ícone de lápis para editar --></button>
-        <button style="background-color: red;"> <i class="fas fa-trash-alt" style="color: #e7e7ee;"></i> <!-- Ícone de lixeira para excluir --></button>
-        </td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>ens-lucasfranco@ugv.edu.br</td>
-        <td>Lucas Ulbrich</td>
-        <td>123.456.789</td>
-        <td><button  style="background-color: yellow;"> <i class="fas fa-pencil-alt" style="color: black;"></i> <!-- Ícone de lápis para editar --></button>
-          <button style="background-color: red;"> <i class="fas fa-trash-alt" style="color: #e7e7ee;"></i> <!-- Ícone de lixeira para excluir --></button>
-          </td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>ens-lucascuba@ugv.edu.br</td>
-      <td>Lucas Cuba</td>
-      <td>123.456.789</td>
-      <td><button  style="background-color: yellow;"> <i class="fas fa-pencil-alt" style="color: black;"></i> <!-- Ícone de lápis para editar --></button>
-        <button style="background-color: red;"> <i class="fas fa-trash-alt" style="color: #e7e7ee;"></i> <!-- Ícone de lixeira para excluir --></button>
-        </td>
+    <% tecnicos.forEach(function(tecnico) { %>
       <tr>
-        <td>4</td>
-        <td>ens-victorbueno@ugv.edu.br</td>
-        <td>Victor Bueno</td>
-        <td>123.456.789</td>
-        <td><button  style="background-color: yellow;"> <i class="fas fa-pencil-alt" style="color: black;"></i> <!-- Ícone de lápis para editar --></button>
-          <button style="background-color: red;"> <i class="fas fa-trash-alt" style="color: #e7e7ee;"></i> <!-- Ícone de lixeira para excluir --></button>
-          </td>
-        <tr>
-          <td>5</td>
-          <td>ens-jeanvictor@ugv.edu.br</td>
-          <td>Jean Maciel</td>
-          <td>123.456.789</td>
-          <td><button  style="background-color: yellow;"> <i class="fas fa-pencil-alt" style="color: black;"></i> <!-- Ícone de lápis para editar --></button>
-            <button style="background-color: red;"> <i class="fas fa-trash-alt" style="color: #e7e7ee;"></i> <!-- Ícone de lixeira para excluir --></button>
-            </td>
-          <tr>
-            <td>6</td>
-            <td>ens-eduardowagner@ugv.edu.br</td>
-            <td>Eduardo Wagner</td>
-            <td>123.456.789</td>
-            <td><button  style="background-color: yellow;"> <i class="fas fa-pencil-alt" style="color: black;"></i> <!-- Ícone de lápis para editar --></button>
-              <button style="background-color: red;"> <i class="fas fa-trash-alt" style="color: #e7e7ee;"></i> <!-- Ícone de lixeira para excluir --></button>
-              </td>
-          </tr>
-        </tr>
+        <td><%= tecnico.id_tec %></td>
+        <td><%= tecnico.email %></td>
+        <td><%= tecnico.nome_tec %></td>
+        <td><%= tecnico.matricula_tec %></td>
+        <td>
+          <button style="background-color: yellow;">
+            <i class="fas fa-pencil-alt" style="color: black;"></i>
+            <!-- Ícone de lápis para editar -->
+          </button>
+          <button style="background-color: red;">
+            <i class="fas fa-trash-alt" style="color: #e7e7ee;"></i>
+            <!-- Ícone de lixeira para excluir -->
+          </button>
+        </td>
       </tr>
-    </tr>
-</table>
+    <% }); %>
+  </table>
+  
 
 <table id="tabela_loc" border="1">
     <tr>
@@ -165,99 +129,68 @@
     <% }); %>
   </table>
 
-<table id="tabela_equip" border 1"> 
-  <tr>
-    <th>ID</th>
-    <th>Equipamentos</th>
-    <th>Ação</th>
-    </tr>
-
-    <td>1</td>
-    <td>Multi Split</td>
-    <td><button  style="background-color: yellow;"> <i class="fas fa-pencil-alt" style="color: black;"></i> <!-- Ícone de lápis para editar --></button>
-      <button style="background-color: red;"> <i class="fas fa-trash-alt" style="color: #e7e7ee;"></i> <!-- Ícone de lixeira para excluir --></button>
-      </td>
-    </tr>
+  <table id="tabela_equip" border="1"> 
     <tr>
-      <td>2</td>
-      <td>Piso Teto</td>
-      <td><button  style="background-color: yellow;"> <i class="fas fa-pencil-alt" style="color: black;"></i> <!-- Ícone de lápis para editar --></button>
-        <button style="background-color: red;"> <i class="fas fa-trash-alt" style="color: #e7e7ee;"></i> <!-- Ícone de lixeira para excluir --></button>
-        </td>
+      <th>ID</th>
+      <th>Equipamentos</th>
+      <th>Ação</th>
     </tr>
-    <tr>
-      <td>3</td>
-      <td>Split Hi-Wall</td>
-      <td><button  style="background-color: yellow;"> <i class="fas fa-pencil-alt" style="color: black;"></i> <!-- Ícone de lápis para editar --></button>
-        <button style="background-color: red;"> <i class="fas fa-trash-alt" style="color: #e7e7ee;"></i> <!-- Ícone de lixeira para excluir --></button>
+    <% tipo.forEach(function(tipo) { %>
+      <tr>
+        <td><%= tipo.id_tipar %></td>
+        <td><%= tipo.tipos_arcondicionado_tipar %></td>
+        <td>
+          <button style="background-color: yellow;">
+            <i class="fas fa-pencil-alt" style="color: black;"></i>
+            <!-- Ícone de lápis para editar -->
+          </button>
+          <button style="background-color: red;">
+            <i class="fas fa-trash-alt" style="color: #e7e7ee;"></i>
+            <!-- Ícone de lixeira para excluir -->
+          </button>
         </td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>Split Inverter</td>
-      <td><button  style="background-color: yellow;"> <i class="fas fa-pencil-alt" style="color: black;"></i> <!-- Ícone de lápis para editar --></button>
-        <button style="background-color: red;"> <i class="fas fa-trash-alt" style="color: #e7e7ee;"></i> <!-- Ícone de lixeira para excluir --></button>
-        </td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>Split Cassete</td>
-      <td><button  style="background-color: yellow;"> <i class="fas fa-pencil-alt" style="color: black;"></i> <!-- Ícone de lápis para editar --></button>
-        <button style="background-color: red;"> <i class="fas fa-trash-alt" style="color: #e7e7ee;"></i> <!-- Ícone de lixeira para excluir --></button>
-        </td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>Portátil</td>
-      <td><button  style="background-color: yellow;"> <i class="fas fa-pencil-alt" style="color: black;"></i> <!-- Ícone de lápis para editar --></button>
-        <button style="background-color: red;"> <i class="fas fa-trash-alt" style="color: #e7e7ee;"></i> <!-- Ícone de lixeira para excluir --></button>
-        </td>
-    </tr>
-</table>
+      </tr>
+    <% }); %>
+  </table>
+  
 
 <section class="overlay">
   <div class="popup" id="popup-tec">
       <div class="popup-title">Cadastrar Tecnico</div>
       <div class="popup-content">
          <div class="popup-header">
+          <form action="/cadastro/tecnico" method="post">
            <div>
                <label for="" class="popup-label">Nome:</label>
-               <input type="text" class="popup-input" id="tag" name="tag" placeholder=""> 
+               <input type="text" class="popup-input" id="tag" name="nome_tec" placeholder=""> 
            </div>
            <div>
                <label for="" class="popup-label">Email:</label>
-               <input type="text" class="popup-input" id="tag" name="tag" placeholder=""> 
+               <input type="text" class="popup-input" id="tag" name="email_tec" placeholder=""> 
            </div>
            <div>
                <label for="" class="popup-label">Matricula:</label>
-               <input type="number" class="popup-input" id="n/s" name="ns" placeholder=""> 
+               <input type="number" class="popup-input" id="n/s" name="mat_tec" placeholder=""> 
            </div>
          </div>
-         
       </div>
-      <button class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
+      <button type="submit" class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
       <button  class="popup-button cancelar" onclick="EsconderPopup()">Cancelar</button>
+    </form>
   </div>
   <div class="popup" id="popup-equip">
       <div class="popup-title">Cadastrar Equipamento</div>
       <div class="popup-content">
-         
+         <form action="/cadastro/tipo" method="post">
          <div class="popup-header">
            <div>
                <label for="" class="popup-label">Tipo:</label>
-               <input type="text" class="popup-input" id="tag" name="tag" placeholder=""> 
-           </div>
-           <div>
-               <label for="" class="popup-label">Voltagem:</label>
-               <select>
-                  <option value="voltagem">110v</option>
-                  <option value="voltagem">220v</option>
-              </select>
+               <input type="text" class="popup-input" id="tag" name="nome_tipo" placeholder=""> 
            </div>
       </div>
-      <button class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
+      <button type="submit" class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
       <button  class="popup-button cancelar" onclick="EsconderPopup()">Cancelar</button>
-
+    </form>
   </div>
   </div>
 
