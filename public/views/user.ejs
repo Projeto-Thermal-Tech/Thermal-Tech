@@ -32,7 +32,7 @@
             <li><a href="http://localhost:5000/manutencao">Manutenções</a></li>
             <li><a href="http://localhost:5000/ordem">Ordem</a></li>
             <li><a href="http://localhost:5000/chamados">Chamado</a></li>
-            <li><a href="http://localhost:5000/cadastro">Cadastro Geral</a></li>
+            <li><a href="http://localhost:5000/registro">Cadastro Geral</a></li>
             <li><a href="http://localhost:5000/relatorio">Homem Hora</a></li>
             <li><a href="">Gráficos gerenciais</a></li>
             <li><a href="./chat.html">Chat</a></li>
@@ -143,53 +143,26 @@
     </tr>
 </table>
 
-<table id="tabela_loc" border 1 >
-  <tr>
-  <th>ID</th>
-  <th>Local</th>
-  <th>Ação</th>
-  </tr>
-  <tr>
-  <td>1</td>
-  <td>Sede</td>
-  <td><button  style="background-color: yellow;"> <i class="fas fa-pencil-alt" style="color: black;"></i> <!-- Ícone de lápis para editar --></button>
-    <button style="background-color: red;"> <i class="fas fa-trash-alt" style="color: #e7e7ee;"></i> <!-- Ícone de lixeira para excluir --></button>
-    </td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>CTU</td>
-    <td><button  style="background-color: yellow;"> <i class="fas fa-pencil-alt" style="color: black;"></i> <!-- Ícone de lápis para editar --></button>
-      <button style="background-color: red;"> <i class="fas fa-trash-alt" style="color: #e7e7ee;"></i> <!-- Ícone de lixeira para excluir --></button>
-      </td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>Francisco Cleve</td>
-    <td><button  style="background-color: yellow;"> <i class="fas fa-pencil-alt" style="color: black;"></i> <!-- Ícone de lápis para editar --></button>
-      <button style="background-color: red;"> <i class="fas fa-trash-alt" style="color: #e7e7ee;"></i> <!-- Ícone de lixeira para excluir --></button>
-      </td>
-  </tr>
-  <tr>
-    <td>4</td>
-    <td>Laboratório</td>
-    <td><button  style="background-color: yellow;"> <i class="fas fa-pencil-alt" style="color: black;"></i> <!-- Ícone de lápis para editar --></button>
-      <button style="background-color: red;"> <i class="fas fa-trash-alt" style="color: #e7e7ee;"></i> <!-- Ícone de lixeira para excluir --></button>
-      </td>
-  </tr>
-  <tr>
-    <td>5</td>
-    <td>Escritório</td>
-    <td><button  style="background-color: yellow;"> <i class="fas fa-pencil-alt" style="color: black;"></i> <!-- Ícone de lápis para editar --></button>
-      <button style="background-color: red;"> <i class="fas fa-trash-alt" style="color: #e7e7ee;"></i> <!-- Ícone de lixeira para excluir --></button>
-      </td>
-  </tr>
-  <tr>
-    <td>6</td>
-    <td>Almoxarifado</td>
-    <td><button  style="background-color: yellow;"> <i class="fas fa-pencil-alt" style="color: black;"></i> <!-- Ícone de lápis para editar --></button>
-      <button style="background-color: red;"> <i class="fas fa-trash-alt" style="color: #e7e7ee;"></i> <!-- Ícone de lixeira para excluir --></button>
-      </td>
+<table id="tabela_loc" border="1">
+    <tr>
+      <th>ID</th>
+      <th>Local</th>
+      <th>Ação</th>
+    </tr>
+    <% setores.forEach(function(setor) { %>
+      <tr>
+        <td><%= setor.id_setor %></td>
+        <td><%= setor.nome_setor %></td>
+        <td>
+          <button style="background-color: yellow;">
+            <i class="fas fa-pencil-alt" style="color: black;"></i> <!-- Ícone de lápis para editar -->
+          </button>
+          <button style="background-color: red;">
+            <i class="fas fa-trash-alt" style="color: #e7e7ee;"></i> <!-- Ícone de lixeira para excluir -->
+          </button>
+        </td>
+      </tr>
+    <% }); %>
   </table>
 
 <table id="tabela_equip" border 1"> 
@@ -357,5 +330,6 @@
     <script src="../js/logout.js"></script>
     <script src="../js/script.js"></script>
 </body>
-
 </html>
+    
+      

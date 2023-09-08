@@ -40,9 +40,11 @@ exports.insertSetor = function (nome_setor) {
     return novoSetor(nome_setor)
 }
 
+exports.dados = function(){ 
 async function listarDados() {
-    const sql = "select * from lista_equipamentos";
+    const sql = "select * from setor";
     tabela = await db.query(sql);
     return tabela.rows;
 }
-
+listarDados() 
+}
