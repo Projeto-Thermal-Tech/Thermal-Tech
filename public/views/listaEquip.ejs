@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/> -->
+    <link rel="stylesheet" href="../css/list.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./css/@media1200.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://kit.fontawesome.com/8ab443ffcb.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Overpass:wght@400;700&display=swap" rel="stylesheet">
+    <title>Lista de Equipamentos</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+           
+            <h1><a href="./home.html">Thermal Tech</a></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="http://localhost:5000/Equipamentos">Equipamentos</a></li>
+                <li><a href="http://localhost:5000/manutencao">Manutenções</a></li>
+                <li><a href="http://localhost:5000/ordem">Ordem</a></li>
+                <li><a href="http://localhost:5000/chamados">Chamado</a></li>
+                <li><a href="http://localhost:5000/cadastro">Cadastro Geral</a></li>
+                <li><a href="http://localhost:5000/relatorio">Homem Hora</a></li>
+                <li><a href="">Gráficos gerenciais</a></li>
+                <li><a href="./chat.html">Chat</a></li>
+            </ul>
+        </nav>
+        <div class="nav-right">
+            <div>
+                <a href="#"  class="config"><img src="../assets/icon_config.png" alt=""></a> 
+                <a  href="#" class="sair" onclick="logout()"><img  src="../assets/icon_sair.png" alt=""></a>
+            </div>
+            <div>
+                <h4 id="userEmail"></h4>
+            </div>  
+        </div>
+    </header>
+    <main>
+        <h2>Lista de Equipamentos</h2>
+        <section class="dados_manut">
+            <div class="header_manut">
+                <div class="search_manut">
+                        <h4>Consultar Equipamentos</h4>
+                        <input type="text" placeholder="TAG do Equipamento">
+                        <button>Pesquisar</button>
+                        <button>Filtrar</button>
+                </div>
+                <div class="add_manut">
+                    <div>
+                        <button onclick="showPopup()">Adicionar Ar Condicionado +</button>
+                    </div>
+                    <div>
+                        <img class="icon" src="../assets/ar_equip.png" alt=""><img src="" alt="">
+                    </div> 
+                </div>
+            </div>
+        </section>
+        <section class="dados_manut">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ordem</th>
+                            <th>TAG</th>
+                            <th>Tipo</th>
+                            <th>Modelo</th>
+                            <th>Número de Série</th>
+                            <th>Área Climatizada</th>
+                            <th>Localidade</th>
+                            <th>Setor</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (let i = 0; i < equipamentos.length; i++) { %>
+                            <tr>
+                                <td><%= i + 1 %></td>
+                                <td><%= equipamentos[i].tag_listequip %></td>
+                                <td><%= equipamentos[i].tipo_listequip %></td>
+                                <td><%= equipamentos[i].modelo_listequip %></td>
+                                <td><%= equipamentos[i].numero_serie_listequip %></td>
+                                <td><%= equipamentos[i].area_cli_listequip %></td>
+                                <td><%= equipamentos[i].localidade_listequip %></td>
+                                <td><%= equipamentos[i].setor_listequip %></td>
+                                <td><%= equipamentos[i].descricao_listequip %></td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+                
+            </div>
+        </section>
+    </main>
+    <section class="overlay">
+        <div class="popup" id="popup">
+            <div class="popup-title">Cadastrar Equipamento</div>
+            <div class="popup-content">
+                <form action="/cadastro/equipamento" method="post">
+               <div class="popup-header">
+                 <div>
+                     <label for="" class="popup-label">TAG:</label>
+                     <input type="text" class="popup-input" id="tag" name="tag" placeholder="ACS-2101"> 
+                 </div>
+                 <div>
+                     <label for="" class="popup-label">Tipo de Equipamento:</label>
+                         <select name="tipo">
+                             <option value=""></option>
+                             <option value="split">Split</option>
+                             <option value="self-chiler">Self-chiler</option>
+                             <option value="piso-teto">Piso-Teto</option>
+                         </select>
+                 </div>
+                 <div>
+                     <label for="" class="popup-label">Número de Série</label>
+                     <input type="text" class="popup-input" id="n/s" name="ns" placeholder="3928849328"> 
+                 </div>
+               </div>
+               <div>
+                 <label for="" class="popup-label">Descrição do Equipamento</label> 
+                 <textarea name="desc" id="desc" cols="82" rows="3"></textarea>
+             </div>  
+               <div class="popup-center">
+                 <div>
+                     <label for="" class="popup-label">Aréa Climatizada</label>
+                     <input type="number" name="area" id="" class="popup-input">
+                 </div>
+                 <div>
+                     <label for="" class="popup-label">Localidade</label>
+                     <input type="text" name="local" id="local">
+                 </div>
+                 <div>
+                 <div>
+                     <label for="" class="popup-label">Setor</label>
+                     <select id="setor"name="setor" >
+                        <option value=""></option>
+                        <option value="1">U-144</option>
+                        <option value="2">U-2110</option>
+                        <option value="3">U-2325</option>
+                    </select>
+                 </div>
+               </div>
+               <div>
+                <label for="" class="popup-label">Modelo</label>
+                <input type="number" name="modelo" id="modelo" class="popup-input">
+            </div> 
+            </div>
+            <button class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
+            <button  class="popup-button cancelar" onclick="hidePopup()">Cancelar</button>
+        </div>
+    </form>
+    </section>
+    <script>
+         
+    </script>
+     <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
+     <script src="../Login_v1/firebase-init.js"></script>
+     <script src="../js/auth-guard.js"></script>
+     <script src="../js/logout.js"></script>
+     <script src="../js/script.js"></script>
+    <script src="../js/auth-guard.js"></script>
+</html> 

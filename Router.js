@@ -11,8 +11,6 @@ const db = require("./database/cnx")
 
 router.use(express.static(path.join(__dirname, "/public")));
 
-let user = { name: 'vini', tel: '4444' }
-
 
 router.get("/cadastro", async function (req, res) {
     try {
@@ -32,11 +30,29 @@ router.get("/cadastro", async function (req, res) {
 
         await listarDados(); // Espere até que a função listarDados seja concluída
 
-        res.render('user', { setores: tabelaSetor.rows,tipo:tabelaEquip.rows, tecnicos:tabelaTec.rows}); // Agora a variável tabela está acessível aqui
+        res.render('cadastro', { setores: tabelaSetor.rows,tipo:tabelaEquip.rows, tecnicos:tabelaTec.rows}); // Agora a variável tabela está acessível aqui
     } catch (error) {
         res.status(500).send("Erro ao buscar os dados da tabela setor: " + error.message);
     }
 });
+router.get("/equipamentos", async function (req, res) {
+    try {
+        let equipamentos;
+
+        async function listarEquipamentos() {
+            const sql = "select * from lista_equipamentos";
+            tabelaEquip = await db.query(sql); // Atribua o valor dentro da função
+            console.log(tabelaEquip.rows)
+        }
+
+        await listarEquipamentos(); // Espere até que a função listarDados seja concluída
+
+        res.render('listaEquip', { equipamentos: tabelaEquip.rows}); // Agora a variável tabela está acessível aqui
+    } catch (error) {
+        res.status(500).send("Erro ao buscar os dados: " + error.message);
+    }
+});
+
 
 router.get("/inicio", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/pages/home.html"))
@@ -45,13 +61,13 @@ router.get("/inicio", function (req, res) {
 //     res.render('user')
 // })
 
-router.get("/equipamentos", function (req, res) {
-    res.sendFile(path.join(__dirname, "./public/pages/lista.html"))
-})
+// router.get("/equipamentos", function (req, res) {
+//     res.sendFile(path.join(__dirname, "./public/pages/lista.html"))
+// })
 
 router.post('/cadastro/equipamento', function (req, res) {
     novoEquip.insertEquip(req.body.tag, req.body.tipo, req.body.modelo, req.body.ns, req.body.area, req.body.local, req.body.setor, req.body.desc).then(function () {
-        res.sendFile(path.join(__dirname, "./public/pages/lista.html"))
+        res.redirect('/equipamentos')
     }).catch(function (error) {
         res.send("deu erro " + error)
     })
