@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/cadastro.css">
   <link rel="stylesheet" href="../css/@media1200.css">
+ 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Overpass:wght@400;700&display=swap"
@@ -93,7 +94,7 @@
         <td><%= tecnico.nome_tec %></td>
         <td><%= tecnico.matricula_tec %></td>
         <td>
-          <button style="background-color: yellow;">
+          <button style="background-color: #FFB655;">
             <i class="fas fa-pencil-alt" style="color: black;"></i>
             <!-- Ícone de lápis para editar -->
           </button>
@@ -118,7 +119,7 @@
         <td><%= setor.id_setor %></td>
         <td><%= setor.nome_setor %></td>
         <td>
-          <button style="background-color: yellow;">
+          <button style="background-color: #FFB655;">
             <i class="fas fa-pencil-alt" style="color: black;"></i> <!-- Ícone de lápis para editar -->
           </button>
           <button style="background-color: red;">
@@ -140,7 +141,7 @@
         <td><%= tipo.id_tipar %></td>
         <td><%= tipo.tipos_arcondicionado_tipar %></td>
         <td>
-          <button style="background-color: yellow;">
+          <button style="background-color: #FFB655;">
             <i class="fas fa-pencil-alt" style="color: black;"></i>
             <!-- Ícone de lápis para editar -->
           </button>
@@ -158,8 +159,9 @@
   <div class="popup" id="popup-tec">
       <div class="popup-title">Cadastrar Tecnico</div>
       <div class="popup-content">
+        <form action="/cadastro/tecnico" method="post">
          <div class="popup-header">
-          <form action="/cadastro/tecnico" method="post">
+          
            <div>
                <label for="" class="popup-label">Nome:</label>
                <input type="text" class="popup-input" id="tag" name="nome_tec" placeholder=""> 
@@ -175,13 +177,15 @@
          </div>
       </div>
       <button type="submit" class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
-      <button  class="popup-button cancelar" onclick="EsconderPopup()">Cancelar</button>
+     
     </form>
+    <button  class="popup-button cancelar" onclick="EsconderPopup()">Cancelar</button>
   </div>
   <div class="popup" id="popup-equip">
       <div class="popup-title">Cadastrar Equipamento</div>
+      <form action="/cadastro/tipo" method="post">
       <div class="popup-content">
-         <form action="/cadastro/tipo" method="post">
+       
          <div class="popup-header">
            <div>
                <label for="" class="popup-label">Tipo:</label>
@@ -189,8 +193,8 @@
            </div>
       </div>
       <button type="submit" class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
-      <button  class="popup-button cancelar" onclick="EsconderPopup()">Cancelar</button>
     </form>
+    <button  class="popup-button cancelar" onclick="EsconderPopup()">Cancelar</button>
   </div>
   </div>
 
@@ -207,9 +211,10 @@
          
       </div>
       <button type="submit" class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
-      <button  class="popup-button cancelar" onclick="EsconderPopup()">Cancelar</button>
       </form>
+      <button  class="popup-button cancelar" onclick="EsconderPopup()">Cancelar</button>
   </div>
+
 </section>
 
 <script>
