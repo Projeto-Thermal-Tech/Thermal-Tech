@@ -112,14 +112,15 @@
                      <input type="text" class="popup-input" id="tag" name="tag" placeholder="ACS-2101"> 
                  </div>
                  <div>
-                     <label for="" class="popup-label">Tipo de Equipamento:</label>
-                         <select name="tipo">
-                             <option value=""></option>
-                             <option value="split">Split</option>
-                             <option value="self-chiler">Self-chiler</option>
-                             <option value="piso-teto">Piso-Teto</option>
-                         </select>
-                 </div>
+                    <label for="" class="popup-label">Tipo de Equipamento:</label>
+                    <select name="tipo">
+                        <option value=""></option> <!-- Opção em branco -->
+                        <% tipo.forEach(function(tipo) { %>
+                            <option value="<%= tipo.id_tipar %>"><%= tipo.tipos_arcondicionado_tipar %></option>
+                        <% }); %>
+                    </select>
+                </div>
+                
                  <div>
                      <label for="" class="popup-label">Número de Série</label>
                      <input type="text" class="popup-input" id="n/s" name="ns" placeholder="3928849328"> 
@@ -139,15 +140,15 @@
                      <input type="text" name="local" id="local">
                  </div>
                  <div>
-                 <div>
-                     <label for="" class="popup-label">Setor</label>
-                     <select id="setor"name="setor" >
-                        <option value=""></option>
-                        <option value="1">U-144</option>
-                        <option value="2">U-2110</option>
-                        <option value="3">U-2325</option>
-                    </select>
-                 </div>
+                    <div>
+                        <label for="" class="popup-label">Setor</label>
+                        <select id="setor" name="setor">
+                            <option value=""></option> <!-- Opção em branco -->
+                            <% setores.forEach(function(setor) { %>
+                                <option value="<%= setor.id_setor %>"><%= setor.nome_setor %></option>
+                            <% }); %>
+                        </select>
+                    </div>
                </div>
                <div>
                 <label for="" class="popup-label">Modelo</label>

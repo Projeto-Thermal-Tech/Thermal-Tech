@@ -41,13 +41,17 @@ router.get("/equipamentos", async function (req, res) {
 
         async function listarEquipamentos() {
             const sql = "select * from lista_equipamentos";
+            const sqlSetor = "select * from setor";
+            const sqlEquip = "select * from tipos_arcondicionado";
+            tabelaTipo = await db.query(sqlEquip);
+            tabelaSetor = await db.query(sqlSetor);
             tabelaEquip = await db.query(sql); // Atribua o valor dentro da função
             console.log(tabelaEquip.rows)
         }
 
         await listarEquipamentos(); // Espere até que a função listarDados seja concluída
 
-        res.render('listaEquip', { equipamentos: tabelaEquip.rows}); // Agora a variável tabela está acessível aqui
+        res.render('listaEquip', { equipamentos: tabelaEquip.rows, setores:tabelaSetor.rows, tipo:tabelaTipo.rows}); // Agora a variável tabela está acessível aqui
     } catch (error) {
         res.status(500).send("Erro ao buscar os dados: " + error.message);
     }
