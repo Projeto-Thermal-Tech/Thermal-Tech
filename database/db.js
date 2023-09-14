@@ -55,9 +55,18 @@ exports.insertTipo = function (nome) {
     }
     return novoTipo(nome)
 }
-
-
-
+exports.insertChamado =  function(status, chamado, localidade, setor, equipamento, descricao, prioridade, criado, datainicio, horainicio, descricaocha){
+    async function novoChamado(status, chamado, localidade, setor, equipamento, descricao, prioridade, criado, datainicio, horainicio, descricaocha){
+        await db.connect()
+        tabela = await db.query("SELECT * FROM chamado")
+        comsole.log(tabela.rows)
+        const inserir = ("insert into chamado( status_cha,chamado_cha,localidade_cha,setor_cha,equipamento_cha,descri_cha,prioridade_cha,criado_por_cha,data_ini_cha,hora_ini_cha, descricao_cha) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)")
+        await db.query(inserir,[status, chamado, localidade, setor, equipamento, descricao, prioridade, criado, datainicio, horainicio, descricaocha])
+        console.log(tabela.rows)
+    }
+    return novoChamado(status, chamado, localidade, setor, equipamento, descricao, prioridade, criado, datainicio, horainicio, descricaocha)
+}
+ 
 // exports.dados = function(){ 
 // async function listarDados() {
 //     const sql = "select * from setor";

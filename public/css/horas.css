@@ -278,53 +278,48 @@ input{
 .submit-button:hover {
   background-color: rgb(156, 109, 204);
 }
-
-
-body {
-    text-align: left;
-    font-family: arial;
-    position: relative;
-    
-    }
-    table td, table th {
-    border:0.3px solid black;
-    border-collapse:collapse;
-    
-    }
-    table caption {
-      caption-side:bottom;
-      text-align:left;
-      font-style: italic;
-      font-size: 10px;
-      margin: 2px 0;
-    }
-    th,td{
-    padding:1px 50px;
-    } 
-
-    th{
-    background-color: #0080F5;
-    color: white;
-    }
-  
-    .tableform{ 
-      margin: 1px auto;
-        width: 53%;
-        height: 400px;
-        overflow: center;
-    }
-    .tableform::-webkit-scrollbar{ 
-        width: 10px;
-        border-radius: 10px;
-        border: 1px solid #0080F5;
-    }
-    .tableform::-webkit-scrollbar-thumb{ /* botao do scroll bar, esse que ta em cinza*/
-        background-color: rgb(80, 208, 215);
-        border-radius: 10px;
-        
-    }
-
       .titulo{
         display: flex;
         justify-content: center;
       }
+      /* Estilos para a tabela */
+.custom-table {
+  width: 53%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+  overflow-y: auto; /* Adiciona a rolagem vertical quando necessário */
+}
+
+/* Estilos para a legenda da tabela */
+.custom-table caption {
+  caption-side: bottom;
+  text-align: left;
+  font-style: italic;
+  font-size: 14px;
+  margin: 2px 0;
+}
+
+/* Estilos para o cabeçalho da tabela */
+.custom-table th {
+  background-color: #0080F5;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+/* Estilos para as células de dados da tabela */
+.custom-table td {
+  padding: 8px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+/* Estilos para as células de dados da tabela */
+.custom-table td {
+  padding: 8px;
+  border: 1px solid #ccc;
+  text-align: center;
+  background-color: white; /* Define o fundo das células como branco */
+}
