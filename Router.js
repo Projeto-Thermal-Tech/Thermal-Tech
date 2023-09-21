@@ -40,7 +40,7 @@ router.get("/equipamentos", async function (req, res) {
         let equipamentos;
 
         async function listarEquipamentos() {
-            const sql = "select * from lista_equipamentos";
+            const sql = "SELECT lista_equipamentos.*, setor.nome_setor FROM lista_equipamentos INNER JOIN setor ON lista_equipamentos.setor_listequip = setor.id_setor;";
             const sqlSetor = "select * from setor";
             const sqlEquip = "select * from tipos_arcondicionado";
             tabelaTipo = await db.query(sqlEquip);
