@@ -78,7 +78,7 @@
   </section>
 
   <br>
-
+  <div class="table-container">
   <table id="tabela_tec" border="1">
     <tr>
       <th>id</th>
@@ -94,20 +94,18 @@
         <td><%= tecnico.nome_tec %></td>
         <td><%= tecnico.matricula_tec %></td>
         <td>
-          <button style="background-color: #FFB655;">
-            <i class="fas fa-pencil-alt" style="color: black;"></i>
-            <!-- Ícone de lápis para editar -->
+          <button style="background-color: yellow;">
+            <i class="fas fa-pencil-alt icon-large" style="color: black;"></i> 
           </button>
           <button style="background-color: red;">
-            <i class="fas fa-trash-alt" style="color: #e7e7ee;"></i>
-            <!-- Ícone de lixeira para excluir -->
+            <i class="fas fa-trash-alt icon-large" style="color: #e7e7ee;"></i> 
           </button>
         </td>
       </tr>
     <% }); %>
   </table>
-  
-
+</div>
+<div class="table-container">
 <table id="tabela_loc" border="1">
     <tr>
       <th>ID</th>
@@ -119,17 +117,18 @@
         <td><%= setor.id_setor %></td>
         <td><%= setor.nome_setor %></td>
         <td>
-          <button style="background-color: #FFB655;">
-            <i class="fas fa-pencil-alt" style="color: black;"></i> <!-- Ícone de lápis para editar -->
+          <button style="background-color: yellow;">
+            <i class="fas fa-pencil-alt icon-large" style="color: black;"></i> 
           </button>
           <button style="background-color: red;">
-            <i class="fas fa-trash-alt" style="color: #e7e7ee;"></i> <!-- Ícone de lixeira para excluir -->
+            <i class="fas fa-trash-alt icon-large" style="color: #e7e7ee;"></i> 
           </button>
         </td>
       </tr>
     <% }); %>
   </table>
-
+</div>
+<div class="table-container">
   <table id="tabela_equip" border="1"> 
     <tr>
       <th>ID</th>
@@ -141,19 +140,17 @@
         <td><%= tipo.id_tipar %></td>
         <td><%= tipo.tipos_arcondicionado_tipar %></td>
         <td>
-          <button style="background-color: #FFB655;">
-            <i class="fas fa-pencil-alt" style="color: black;"></i>
-            <!-- Ícone de lápis para editar -->
+          <button style="background-color: yellow;">
+            <i class="fas fa-pencil-alt icon-large" style="color: black;"></i> 
           </button>
           <button style="background-color: red;">
-            <i class="fas fa-trash-alt" style="color: #e7e7ee;"></i>
-            <!-- Ícone de lixeira para excluir -->
+            <i class="fas fa-trash-alt icon-large" style="color: #e7e7ee;"></i> 
           </button>
         </td>
       </tr>
     <% }); %>
   </table>
-  
+</div>
 
 <section class="overlay">
   <div class="popup" id="popup-tec">

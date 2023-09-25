@@ -63,7 +63,9 @@
 
       <div class="num_cham">
         <label>N° Chamado:</label>
-        <input type="number" class="num">
+        <input type="number" class="num" id="numeroChamado">
+        <button id="pesquisar"onclick="pesquisarChamado()">Pesquisar</button>
+        <button id="limpar-filtro" style="display: none;" onclick="limparFiltro()">Voltar</button>
       </div>
 
       <div class="estado">
@@ -239,6 +241,72 @@
         }
       });
     });
+    
+    var estadoAnteriorTabela = null;
+
+  // Função para pesquisar chamado
+  function pesquisarChamado() {
+    var numeroChamado = document.getElementById("numeroChamado").value;
+    var table = document.getElementById("filtro_cham");
+    var rows = table.getElementsByTagName("tr");
+
+    if (estadoAnteriorTabela === null) {
+      // Salvar o estado anterior da tabela
+      estadoAnteriorTabela = [];
+      for (var i = 1; i < rows.length; i++) {
+        estadoAnteriorTabela.push(rows[i].style.display);
+      }
+    }
+
+    var filtroAtivo = false;
+
+    for (var i = 1; i < rows.length; i++) {
+      var row = rows[i];
+      var cell = row.getElementsByTagName("td")[1]; // Coluna do Nº Chamado
+
+      if (cell) {
+        var chamado = cell.innerText;
+        if (chamado === numeroChamado) {
+          row.style.display = "";
+          filtroAtivo = true;
+        } else {
+          row.style.display = "none";
+        }
+      }
+    }
+
+    // Exibir ou ocultar o botão "Limpar Filtro" com base no filtroAtivo
+    var botaoLimparFiltro = document.querySelector('#limpar-filtro');
+    if (filtroAtivo) {
+      botaoLimparFiltro.style.display = "inline-block";
+    } else {
+      botaoLimparFiltro.style.display = "none";
+    }
+  }
+
+  // Função para limpar o filtro
+  function limparFiltro() {
+    if (estadoAnteriorTabela !== null) {
+      var table = document.getElementById("filtro_cham");
+      var rows = table.getElementsByTagName("tr");
+
+      // Restaurar o estado anterior da tabela
+      for (var i = 1; i < rows.length; i++) {
+        rows[i].style.display = estadoAnteriorTabela[i - 1];
+      }
+
+      estadoAnteriorTabela = null;
+    }
+
+    // Limpar o valor do input de número de chamado
+    const inputNumeroChamado = document.querySelector('.num');
+    inputNumeroChamado.value = '';
+
+    // Ocultar o botão "Limpar Filtro"
+    var botaoLimparFiltro = document.querySelector('#limpar-filtro');
+    botaoLimparFiltro.style.display = "none";
+  }
+
   </script>
   
 

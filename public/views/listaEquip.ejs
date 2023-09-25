@@ -51,9 +51,13 @@
             <div class="header_manut">
                 <div class="search_manut">
                         <h4>Consultar Equipamentos</h4>
-                        <input type="text" placeholder="TAG do Equipamento">
-                        <button>Pesquisar</button>
-                        <button>Filtrar</button>
+                         <input type="text" id="tagInput" placeholder="TAG do Equipamento">
+                         <button onclick="filtrarPorTag()" >Pesquisar</button>
+                         <button onclick="limparFiltro()" style="display: none;">Voltar</button>
+                         <button>Filtrar</button>
+                         
+
+
                 </div>
                 <div class="add_manut">
                     <div>
@@ -161,6 +165,48 @@
     </form>
     </section>
     <script>
+function filtrarPorTag() {
+    var input, filtro, tabela, linhas, colunaTag, i, textoTag;
+    input = document.getElementById("tagInput");
+    filtro = input.value.toUpperCase();
+    tabela = document.querySelector("table"); 
+    linhas = tabela.getElementsByTagName("tr");
+
+    var botaoLimparFiltro = document.querySelector("button[onclick='limparFiltro()']");
+
+    for (i = 1; i < linhas.length; i++) {
+        colunaTag = linhas[i].getElementsByTagName("td")[1]; // Segunda coluna (índice 1) contém a TAG
+        if (colunaTag) {
+            textoTag = colunaTag.textContent || colunaTag.innerText;
+            if (textoTag.toUpperCase().indexOf(filtro) > -1) {
+                linhas[i].style.display = "";
+                // Mostra o botão "Limpar Filtro"
+                botaoLimparFiltro.style.display = "";
+            } else {
+                linhas[i].style.display = "none";
+            }
+        }
+    }
+}
+function limparFiltro() {
+    var tabela, linhas, i;
+
+    // Obtém a tabela e suas linhas
+    tabela = document.querySelector("table");
+    linhas = tabela.getElementsByTagName("tr");
+
+    // Mostra todas as linhas da tabela
+    for (i = 1; i < linhas.length; i++) {
+        linhas[i].style.display = "";
+    }
+
+    // Limpa o campo de entrada
+    document.getElementById("tagInput").value = "";
+
+    // Oculta o botão "Limpar Filtro" novamente
+    document.querySelector("button[onclick='limparFiltro()']").style.display = "none";
+}
+
          
     </script>
      <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>

@@ -1,8 +1,8 @@
-*{
+* {
   padding: 0;
   margin: 0;
-  font-family: 'B612';
-}  
+  font-family: "B612";
+}
 /* header{
   display: flex;
   width: 100%;
@@ -71,121 +71,47 @@ width: 90px;
 height: 50px;
 } */
 
-.colaborador-input {
-  margin-bottom: 25px;
-  }
-
-  .name-input label {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 16px;
-  }
-
-.name-input .input-field {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    outline: none;
-  }
-
 /*inicio do código de dasing da tela de horas*/
-main h1{
-font-size: 35px;
-padding: 1rem;
-text-align: center;
+main h1 {
+  font-size: 35px;
+  padding: 1rem;
+  text-align: center;
 }
 
-h4{
+h4 {
   margin-bottom: 20px;
   font-size: 20px;
 }
 
-.container{
-  max-width: 1100px;
+.container {
+  width: 62%;
   margin: 0 auto;
-  padding: 20px 40px;
-  
+  padding: 20px;
 }
-
-.header-bg{
-  background: #0080F5;
-}
-
-.header{
-  display: flex;
-  padding: 20px 30px;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.header-menu{
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-#admin{
-  text-decoration: underline;
-}
-
 /* form */
 /* Estilos para o campo de entrada Colaborador e Emissor */
 #emissor {
-  width: 300px; /* Largura desejada para ambos os campos */
+  width: 65%; /* Largura desejada para ambos os campos */
   padding: 10px;
   border-radius: 4px;
 }
 #Emissor {
-  width: 300px; /* Largura desejada para ambos os campos */
+  width: 65%; /* Largura desejada para ambos os campos */
   padding: 10px;
   border-radius: 4px;
-}
-
-/* Estilos para o campo de entrada Tempo */
-input[type="time1"] {
-  padding: 5px;
-  border-radius: 4px;
-  width: 150px; /* Largura desejada para o campo de tempo */
-}
-
-/* Estilos para o campo de entrada Quantidade */
-input[type="number1"] {
-  padding: 5px;
-  border-radius: 4px;
-  margin-right: 10px; /* Adicione uma margem esquerda para mover para a direita */
-  width: 200px; /* Largura desejada para o campo de quantidade */
-}
-
-input[type="time2"] {
-  padding: 5px;
-  border-radius: 4px;
-  width: 150px; /* Largura desejada para o campo de tempo */
-}
-
-/* Estilos para o campo de entrada Quantidade */
-input[type="number2"] {
-  padding: 5px;
-  border-radius: 4px;
-  margin-right: 10px; /* Adicione uma margem esquerda para mover para a direita */
-  width: 200px; /* Largura desejada para o campo de quantidade */
-}
-
-/* Estilos para o rótulo Emissor */
-.segunda-linha-form div label[for="Emissor"] {
-  margin-left: 38px; /* Ajuste o valor da margem esquerda conforme necessário */
-  width: 300px; /* Ajusta a largura do rótulo Emissor */
-}
-
-/* Ajuste o posicionamento do campo de entrada Emissor */
-#Emissor {
   margin-left: 38px; /* Ajuste o valor da margem esquerda conforme necessário */
 }
 
-.form{
+input[type="time"],
+input[type="number"] {
+  padding: 5px;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.form {
   margin-top: 2px;
-  background: #0080F5;
+  background: #0080f5;
   padding: 40px 20px;
   border-radius: 5px;
   display: flex;
@@ -193,51 +119,45 @@ input[type="number2"] {
   gap: 10px;
 }
 
-.primeira-linha-form{
+.primeira-linha-form {
   display: flex;
   align-items: center;
   gap: 30px;
   justify-content: space-between;
 }
 
-.tempo-quantidade{
+.tempo-quantidade {
   display: flex;
   gap: 30px;
   align-items: center;
 }
 
-label{
+label {
   color: #fff;
   font-size: 1.2rem;
 }
 
-select{
-  width: 450px;
-  padding: 10px;
-  border-radius: 4px;
-  margin-top: px;
-}
-
-input{
+input {
   padding: 6px;
   border-radius: 4px;
   outline: none;
-  width: 146px;
+  width: 40%;
   border: none;
 }
 
-.tempo label, .quantidade label {
+.tempo label,
+.quantidade label {
   text-align: center;
   display: block;
 }
 
-.segunda-linha-form{
+.segunda-linha-form {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.periodo{
+.periodo {
   margin-top: 10px;
   display: flex;
   align-items: center;
@@ -246,13 +166,12 @@ input{
 
 /* footer */
 
-.footer{
-  margin-right: 40px; /* Adicione uma margem esquerda para mover para a direita */
-  margin-top: -37px;
+.footer {
+  margin-right: 5%; /* Adicione uma margem esquerda para mover para a direita */
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 20px;
+  gap: 10px;
 }
 
 .footer p {
@@ -264,62 +183,63 @@ input{
 
 /* Estilos para o botão de envio */
 .submit-button {
-  background-color: #321ee7; /* Cor de fundo do botão */
-  color: black; /* Cor do texto do botão */
-  border: none; /* Remova a borda padrão do botão */
-  padding: 10px 10px; /* Espaçamento interno do botão */
-  border-radius: 4px; /* Borda arredondada */
-  cursor: pointer; /* Altera o cursor para indicar que é clicável */
-  width: 150px; /* Largura desejada do botão */
-  height: 40px; /* Altura desejada do botão */
+  background-color: #321ee7;
+  color: black;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 20%;
+  height: 40%;
 }
 
 /* Estilos quando o mouse passa sobre o botão */
 .submit-button:hover {
-  background-color: rgb(156, 109, 204);
+  background-color: rgb(36, 107, 199);
 }
-      .titulo{
-        display: flex;
-        justify-content: center;
-      }
-      /* Estilos para a tabela */
-.custom-table {
-  width: 53%;
-  margin: 0 auto;
-  border-collapse: collapse;
-  border: 1px solid #ccc;
-  overflow-y: auto; /* Adiciona a rolagem vertical quando necessário */
+.titulo {
+  display: flex;
+  justify-content: center;
 }
 
-/* Estilos para a legenda da tabela */
-.custom-table caption {
-  caption-side: bottom;
-  text-align: left;
-  font-style: italic;
-  font-size: 14px;
-  margin: 2px 0;
+/* Estilos para a tabela */
+.table-container {
+  height: calc(20 * 1em); /* Defina a altura da tabela para 10 linhas */
+  /* overflow-y: scroll; Adicione uma barra de rolagem vertical */
+  overflow-y: auto;
+  margin: 0 auto; /* Centraliza horizontalmente */
+  width: 60%; /* Define a largura da tabela */
+}
+
+/* Resto do seu CSS para a tabela */
+table {
+  border-collapse: collapse;
+  width: 100%; /* Define a largura da tabela como 100% para ocupar todo o espaço disponível no container */
+}
+
+/* Resto do seu CSS para a tabela */
+
+thead {
+  background-color: #0080f5;
+  color: rgb(255, 255, 255);
 }
 
 /* Estilos para o cabeçalho da tabela */
-.custom-table th {
-  background-color: #0080F5;
-  color: white;
-  font-weight: bold;
-  padding: 10px;
-  border: 1px solid #ccc;
+th,
+td {
   text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  border: 1px solid black; /* Adicione bordas às células */
 }
 
-/* Estilos para as células de dados da tabela */
-.custom-table td {
-  padding: 8px;
-  border: 1px solid #ccc;
-  text-align: center;
+tr:nth-child(even) {
+  background-color: rgba(221, 219, 219, 0.793);
 }
-/* Estilos para as células de dados da tabela */
-.custom-table td {
-  padding: 8px;
-  border: 1px solid #ccc;
-  text-align: center;
-  background-color: white; /* Define o fundo das células como branco */
+
+tr:hover td {
+  font-weight: bold;
+  transform: scale(0.98);
+  /* Adicione outros estilos aqui, se necessário */
 }

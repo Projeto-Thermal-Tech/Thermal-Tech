@@ -136,7 +136,8 @@ li{
 }
 .table-container {
     height: calc(30 * 1em); /* Defina a altura da tabela para 10 linhas */
-    overflow-y: scroll; /* Adicione uma barra de rolagem vertical */
+    /* overflow-y: scroll; Adicione uma barra de rolagem vertical */
+    overflow-y: auto;
   }
   
   table {
