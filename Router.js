@@ -5,6 +5,7 @@ const novoEquip = require('../Thermal-Tech/database/db');
 const novoSetor = require('../Thermal-Tech/database/db');
 const novoTec = require('../Thermal-Tech/database/db');
 const novoTipo = require('../Thermal-Tech/database/db');
+const novoChamado = require('../Thermal-Tech/database/db');
 const dados = require('../Thermal-Tech/database/db');
 const { error } = require("console");
 const db = require("./database/cnx")
@@ -56,6 +57,28 @@ router.get("/equipamentos", async function (req, res) {
         res.status(500).send("Erro ao buscar os dados: " + error.message);
     }
 });
+router.get("/novo-chamado", async function (req, res) {
+    try {
+        let equipamentos;
+
+        async function listarEquipamentos() {
+            const sql = "SELECT lista_equipamentos.*, setor.nome_setor FROM lista_equipamentos INNER JOIN setor ON lista_equipamentos.setor_listequip = setor.id_setor;";
+            const sqlSetor = "select * from setor";
+            const sqlEquip = "select * from tipos_arcondicionado";
+            tabelaTipo = await db.query(sqlEquip);
+            tabelaSetor = await db.query(sqlSetor);
+            tabelaEquip = await db.query(sql); // Atribua o valor dentro da função
+            console.log(tabelaEquip.rows)
+        }
+
+        await listarEquipamentos(); // Espere até que a função listarDados seja concluída
+
+        res.render('novo-chamado', { equipamentos: tabelaEquip.rows, setores:tabelaSetor.rows, tipo:tabelaTipo.rows}); // Agora a variável tabela está acessível aqui
+    } catch (error) {
+        res.status(500).send("Erro ao buscar os dados: " + error.message);
+    }
+});
+
 
 
 router.get("/inicio", function (req, res) {
@@ -79,6 +102,13 @@ router.post('/cadastro/equipamento', function (req, res) {
 router.post('/cadastro/setor', function (req, res) {
     novoSetor.insertSetor(req.body.nome_setor).then(function () {
         res.redirect('/cadastro')
+    }).catch(function (error) {
+        res.send("deu erro " + error)
+    })
+})
+router.post('/cadastro/chamado', function (req, res) {
+    novoChamado.insertChamado(req.body.status, req.body.chamado, req.body.localidade, req.body.setor,req.body.tag,req.body.titleDesc,req.body.prioridade, req.body.criador,req.body.dataChamado, req.body.horaChamado,req.body.desc).then(function () {
+        res.redirect('/novo-chamado')
     }).catch(function (error) {
         res.send("deu erro " + error)
     })
