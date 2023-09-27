@@ -330,10 +330,7 @@
                 <div class="popup-title-filter">Filtrar manutenção</div>
                 <div class="popup-content-filter">
                    <div class="popup-header-filter">
-                     <div>
-                         <label for="" class="popup-label-filter">TAG:</label>
-                         <input type="text" class="popup-input-filter" id="tag" placeholder="ACS-2101"  oninput="converterParaMaiuscula(this)"> 
-                     </div>
+                 
                      <div>
                          <label for="" class="popup-label-filter">Tipo de Manutenção:</label>
                              <select name="" id="">
@@ -359,14 +356,6 @@
                      <div>
                         <label for="" class="popup-label-filter">Data de Fim</label>
                         <input type="date" name="" id="" class="popup-input-filter">
-                    </div>
-                    <div>
-                        <label for="" class="popup-label-filter">Hora de Inico</label>
-                        <input type="time" name="" id="" class="popup-input-filter">
-                    </div>
-                    <div>
-                        <label for="" class="popup-label-filter">Hora de Fim</label>
-                        <input type="time" name="" id="" class="popup-input-filter">
                     </div>
                 </div>
                 <div>
@@ -394,8 +383,15 @@
         </section>
     </main>
     <script>
-     function pesquisar() {
+   function pesquisar() {
   const numeroOrdem = document.getElementById('numeroOrdem').value;
+
+  // Verificar se o campo de entrada está vazio
+  if (!numeroOrdem) {
+    alert("Por favor, insira um número de ordem para pesquisar.");
+    return; // Não execute a pesquisa
+  }
+
   const tabela = document.getElementById('tabelaManutencoes');
   const linhas = tabela.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
   const limparFiltroButton = document.querySelector('button[onclick="limparFiltro()"]');
@@ -413,6 +409,7 @@
     }
   }
 }
+
 
 function limparFiltro() {
   const tabela = document.getElementById('tabelaManutencoes');

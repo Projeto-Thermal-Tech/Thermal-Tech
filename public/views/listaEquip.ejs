@@ -164,11 +164,18 @@
         </div>
     </form>
     </section>
-    <script>
+    <script>z
 function filtrarPorTag() {
     var input, filtro, tabela, linhas, colunaTag, i, textoTag;
     input = document.getElementById("tagInput");
     filtro = input.value.toUpperCase();
+
+    // Verifica se o campo de entrada está vazio
+    if (filtro.trim() === "") {
+        alert("Por favor, insira uma tag antes de pesquisar.");
+        return; // Retorna sem executar a pesquisa
+    }
+
     tabela = document.querySelector("table"); 
     linhas = tabela.getElementsByTagName("tr");
 
@@ -188,6 +195,8 @@ function filtrarPorTag() {
         }
     }
 }
+
+
 function limparFiltro() {
     var tabela, linhas, i;
 
@@ -207,7 +216,27 @@ function limparFiltro() {
     document.querySelector("button[onclick='limparFiltro()']").style.display = "none";
 }
 
-         
+         // Obtém o campo de entrada e a mensagem de erro
+var nsInput = document.getElementById("ns");
+var nsError = document.getElementById("ns-error");
+
+// Adiciona um ouvinte de evento para o evento de entrada
+nsInput.addEventListener("input", function () {
+    var valor = nsInput.value;
+    var limite = 50;
+
+    // Verifica o comprimento do valor inserido
+    if (valor.length > limite) {
+        // Exibe a mensagem de erro personalizada
+        nsError.textContent = "Erro: o valor inserido é muito longo (limite de " + limite + " caracteres).";
+        nsError.style.display = "block"; // Exibe a mensagem de erro
+    } else {
+        // Limpa a mensagem de erro
+        nsError.textContent = "";
+        nsError.style.display = "none"; // Oculta a mensagem de erro
+    }
+});
+
     </script>
      <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
      <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>

@@ -79,7 +79,7 @@
       </div>
      
       <div class="filtro"> 
-        <button>Filtrar</button>
+        <button id="filtro" onclick="showPopup()">Filtrar</button>
       </div>
     </div>
 
@@ -215,7 +215,58 @@
   </div>
 
   </section>
-
+  <section class="overlay">
+    <div class="popup" id="popup">
+        <div class="popup-title-filter">Filtrar Chamados</div>
+        <div class="popup-content-filter">
+           <div class="popup-header-filter">
+         
+             <div>
+                 <label for="" class="popup-label-filter">Nº Chamado:</label>
+                 <input type="number" class="popup-label-filter" id="" placeholder="Nº Chamado"> 
+             </div>
+             <div>
+                <label for="" class="popup-label-filter">Prioridade:</label>
+                <select name="" id="">
+                  <option value=""></option>
+                  <option value="">Alta</option>
+                  <option value="">Baixa</option>
+                  <option value="">Média</option>
+              </select>
+            </div>
+             <div>
+                 <label for="" class="popup-label-filter">descrição</label>
+                 <input type="text" class="popup-input-filter" id="descrição" placeholder="descrição"> 
+             </div>
+           </div>  
+          
+        <div>
+            <label for="" class="popup-label-filter">Status</label>
+            <select name="" id="">
+                <option value=""></option>
+                <option value="">Todos</option>
+                <option value="">Aberto</option>
+                <option value="">Encerrado</option>
+                <option value="">Em andamento</option>
+            </select>
+        </div>
+        <div>
+        <div>
+            <label for="" class="popup-label-filter">Criador</label>
+            <input type="text" name="" id="Criador" class="popup-input-filter">
+        </div>
+      </div>
+      <div class="popup-center-filter">
+        <div>
+            <label for="" class="popup-label-filter">Data de Inico</label>
+            <input type="date" name="" id="" class="popup-input-filter">
+        </div>
+      
+   </div>
+        <button class="popup-button salvar" onclick="saveEquipment()">Filtrar</button>
+        <button  class="popup-button cancelar" onclick="hidePopup()">Cancelar</button>
+    </div>
+</section>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const filterSelect = document.getElementById('esta');
@@ -246,34 +297,41 @@
 
   // Função para pesquisar chamado
   function pesquisarChamado() {
-    var numeroChamado = document.getElementById("numeroChamado").value;
-    var table = document.getElementById("filtro_cham");
-    var rows = table.getElementsByTagName("tr");
+  var numeroChamado = document.getElementById("numeroChamado").value;
 
-    if (estadoAnteriorTabela === null) {
-      // Salvar o estado anterior da tabela
-      estadoAnteriorTabela = [];
-      for (var i = 1; i < rows.length; i++) {
-        estadoAnteriorTabela.push(rows[i].style.display);
-      }
-    }
+  // Verificar se o campo de entrada está vazio
+  if (!numeroChamado) {
+    alert("Por favor, insira um número de chamado para pesquisar.");
+    return; // Não execute a pesquisa
+  }
 
-    var filtroAtivo = false;
+  var table = document.getElementById("filtro_cham");
+  var rows = table.getElementsByTagName("tr");
 
+  if (estadoAnteriorTabela === null) {
+    // Salvar o estado anterior da tabela
+    estadoAnteriorTabela = [];
     for (var i = 1; i < rows.length; i++) {
-      var row = rows[i];
-      var cell = row.getElementsByTagName("td")[1]; // Coluna do Nº Chamado
+      estadoAnteriorTabela.push(rows[i].style.display);
+    }
+  }
 
-      if (cell) {
-        var chamado = cell.innerText;
-        if (chamado === numeroChamado) {
-          row.style.display = "";
-          filtroAtivo = true;
-        } else {
-          row.style.display = "none";
-        }
+  var filtroAtivo = false;
+
+  for (var i = 1; i < rows.length; i++) {
+    var row = rows[i];
+    var cell = row.getElementsByTagName("td")[1]; // Coluna do Nº Chamado
+
+    if (cell) {
+      var chamado = cell.innerText;
+      if (chamado === numeroChamado) {
+        row.style.display = "";
+        filtroAtivo = true;
+      } else {
+        row.style.display = "none";
       }
     }
+  }
 
     // Exibir ou ocultar o botão "Limpar Filtro" com base no filtroAtivo
     var botaoLimparFiltro = document.querySelector('#limpar-filtro');
