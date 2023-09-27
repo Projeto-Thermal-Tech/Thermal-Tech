@@ -107,12 +107,15 @@ router.post('/cadastro/setor', function (req, res) {
     })
 })
 router.post('/cadastro/chamado', function (req, res) {
-    novoChamado.insertChamado(req.body.status, req.body.chamado, req.body.localidade, req.body.setor,req.body.tag,req.body.titleDesc,req.body.prioridade, req.body.criador,req.body.dataChamado, req.body.horaChamado,req.body.desc).then(function () {
+    novoChamado.insertChamado(req.body.status, req.body.chamado,req.body.tag,req.body.titleDesc,req.body.prioridade, req.body.criador,req.body.dataChamado, req.body.horaChamado,req.body.desc).then(function () {
         res.redirect('/novo-chamado')
     }).catch(function (error) {
         res.send("deu erro " + error)
     })
 })
+// router.post('/cadastro/chamado', function (req, res) {
+//     res.send( req.body.chamado +  req.body.status + req.body.titleDesc + req.body.tag + req.body.prioridade +  req.body.criador + req.body.dataChamado +  req.body.horaChamado + req.body.desc)
+// })
 router.post('/cadastro/tecnico', function (req, res) {
     novoTec.insertTecnico(req.body.nome_tec, req.body.mat_tec, req.body.email_tec).then(function () {
         res.redirect('/cadastro')

@@ -101,9 +101,12 @@ function imprimir(){
 function salvarChamado(){
   const inputs = document.querySelectorAll(".data-chamado")
   alert("Chamado criado com sucesso!")
-  inputs.forEach(function(input) {
-    input.value = '';
-  });
+  setTimeout(() => {
+    inputs.forEach(function(input) {
+      input.value = '';
+    });
+  }, 2000);
+  
 }
 function deletarChamado(){
   const inputs = document.querySelectorAll(".data-chamado")

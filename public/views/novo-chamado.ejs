@@ -69,10 +69,10 @@
                     </div>
                     <div class="info-header-order">
                         <label for="">Status</label>
-                        <input type="text" value="ABERTA" readonly name="status">
+                        <input type="text"value="ABERTA" name="status">
                         <br>
                         <label for="">Chamado</label>
-                        <input type="text" value="3321541" readonly name="chamado">
+                        <input type="number" value="3321541" name="chamado">
                     </div>
                 </div>
             </section>
@@ -95,7 +95,7 @@
                     <select id="setor" name="tag">
                         <option value=""></option> <!-- Opção em branco -->
                         <% equipamentos.forEach(function(tag) { %>
-                            <option value="<%= tag.id_setor %>"><%= tag.tag_listequip %></option>
+                            <option value="<%= tag.id_equip %>"><%= tag.tag_listequip %></option>
                         <% }); %>
                     </select>
                 </div>
@@ -143,14 +143,14 @@
             <div class="user info-header-order">
                 <div>
                     <label for="">Criado por</label>
-                    <input class="data-chamado" type="text" value="Jean Victor Maciel dos Santos" style="width: 320px;" name="criador">
+                    <input class="data-chamado" type="text" placeholder="Jean Victor Maciel dos Santos" style="width: 320px;" name="criador">
                     <input class="data-chamado" type="email" name="email" id="" style="width: 320px;"
-                        value="ens-jeanvictor@ugv.edu.br">
+                        placeholder="ens-jeanvictor@ugv.edu.br">
                 </div>
                 <div style="padding-top: 5px;">
                     <label for="">Data chamado</label>
                     <input class="data-chamado" id="dataChamado" type="date" name="dataChamado">
-                    <input class="data-chamado" type="time" name="horaChamado" id="horaChamado">
+                    <input class="data-chamado" type="time" name="horaChamado" id="horaChamado" step="1">
                 </div>
             </div>
         </main>
@@ -160,7 +160,7 @@
             </div>
             <div class="info-header-order">
                 <label for="">Descrição</label>
-                <input class="data-chamado" type="text" value="Correção de dreno ACS-2101" style="width: 280px;" name="titleDesc">
+                <input class="data-chamado" type="text" PL="Correção de dreno ACS-2101" style="width: 280px;" name="titleDesc">
                 <input class="data-chamado" id="fileInput" type="file" style="display:none;">
             </div>
             <div class="descrição">
