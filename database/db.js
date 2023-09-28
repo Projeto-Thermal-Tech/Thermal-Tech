@@ -55,14 +55,14 @@ exports.insertTipo = function (nome) {
     }
     return novoTipo(nome)
 }
-exports.insertChamado =  function(status, chamado, equipamento, descricao, prioridade, criado, datainicio, horainicio, descricaocha){
-    async function novoChamado(status, chamado, equipamento, descricao, prioridade, criado, datainicio, horainicio, descricaocha){
+exports.insertChamado =  function(status, equipamento, descricao, prioridade, criado, datainicio, horainicio, descricaocha){
+    async function novoChamado(status, equipamento, descricao, prioridade, criado, datainicio, horainicio, descricaocha){
         await db.connect()
         tabela = await db.query("SELECT * FROM chamado")
-        const inserir = ("insert into chamado( status_cha,chamado_cha,equipamento_cha,descri_cha,prioridade_cha,criado_por_cha,data_ini_cha,hora_ini_cha, descricao_cha) values($1,$2,$3,$4,$5,$6,$7,$8,$9)")
-        await db.query(inserir,[status, chamado, equipamento, descricao, prioridade, criado, datainicio, horainicio, descricaocha])
+        const inserir = ("insert into chamado( status_cha,equipamento_cha,descri_cha,prioridade_cha,criado_por_cha,data_ini_cha,hora_ini_cha, descricao_cha) values($1,$2,$3,$4,$5,$6,$7,$8)")
+        await db.query(inserir,[status, equipamento, descricao, prioridade, criado, datainicio, horainicio, descricaocha])
     }
-    return novoChamado(status, chamado, equipamento, descricao, prioridade, criado, datainicio, horainicio, descricaocha)
+    return novoChamado(status, equipamento, descricao, prioridade, criado, datainicio, horainicio, descricaocha)
 }
  
 // exports.dados = function(){ 
