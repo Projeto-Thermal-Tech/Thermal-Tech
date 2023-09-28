@@ -83,6 +83,7 @@
                             <th>Localidade</th>
                             <th>Setor</th>
                             <th>Descrição</th>
+                            <th>Ação</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -97,6 +98,14 @@
                                 <td><%= equipamentos[i].localidade_listequip %></td>
                                 <td><%= equipamentos[i].nome_setor %></td>
                                 <td><%= equipamentos[i].descricao_listequip %></td>
+                                <td>
+                                    <button style="background-color: yellow;">
+                                      <i class="fas fa-pencil-alt icon-large" style="color: black;"></i> 
+                                    </button>
+                                    <button style="background-color: red;">
+                                      <i class="fas fa-trash-alt icon-large" style="color: #e7e7ee;"></i> 
+                                    </button>
+                                  </td>
                             </tr>
                         <% } %>
                     </tbody>
