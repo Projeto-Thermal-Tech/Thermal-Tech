@@ -223,7 +223,7 @@
          
              <div>
                  <label for="" class="popup-label-filter">Nº Chamado:</label>
-                 <input type="number" class="popup-label-filter" id="" placeholder="Nº Chamado"> 
+                 <input type="number" class="popup-label-filter numero-chamado-input" id="" placeholder="Nº Chamado"> 
              </div>
              <div>
                 <label for="" class="popup-label-filter">Prioridade:</label>
@@ -295,8 +295,7 @@
     
     var estadoAnteriorTabela = null;
 
-  // Função para pesquisar chamado
-  function pesquisarChamado() {
+    function pesquisarChamado() {
   var numeroChamado = document.getElementById("numeroChamado").value;
 
   // Verificar se o campo de entrada está vazio
@@ -316,7 +315,7 @@
     }
   }
 
-  var filtroAtivo = false;
+  var chamadoExiste = false;
 
   for (var i = 1; i < rows.length; i++) {
     var row = rows[i];
@@ -326,12 +325,28 @@
       var chamado = cell.innerText;
       if (chamado === numeroChamado) {
         row.style.display = "";
-        filtroAtivo = true;
+        chamadoExiste = true;
       } else {
         row.style.display = "none";
       }
     }
   }
+
+  // Verifica se a tag não foi encontrada e exibe uma mensagem de erro
+  if (!chamadoExiste) {
+    alert("Esse número de chamado não existe.");
+    // Limpa o campo de entrada
+    document.getElementById("numeroChamado").value = "";
+    // Mostra todos os registros novamente
+    for (i = 1; i < rows.length; i++) {
+      rows[i].style.display = "";
+    }
+  } else {
+    // Exibe o botão "Voltar" apenas se a tag foi encontrada
+    document.querySelector('#limpar-filtro').style.display = "inline-block";
+  }
+}
+
 
     // Exibir ou ocultar o botão "Limpar Filtro" com base no filtroAtivo
     var botaoLimparFiltro = document.querySelector('#limpar-filtro');
@@ -340,7 +355,16 @@
     } else {
       botaoLimparFiltro.style.display = "none";
     }
-  }
+  
+
+    // Exibir ou ocultar o botão "Limpar Filtro" com base no filtroAtivo
+    var botaoLimparFiltro = document.querySelector('#limpar-filtro');
+    if (filtroAtivo) {
+      botaoLimparFiltro.style.display = "inline-block";
+    } else {
+      botaoLimparFiltro.style.display = "none";
+    }
+  
 
   // Função para limpar o filtro
   function limparFiltro() {

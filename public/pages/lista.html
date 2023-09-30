@@ -309,11 +309,11 @@
                <div class="popup-header">
                  <div>
                      <label for="" class="popup-label">TAG:</label>
-                     <input type="text" class="popup-input" id="tag" name="tag" placeholder="ACS-2101"> 
+                     <input type="text" class="popup-input" id="tag" name="tag" placeholder="ACS-2101" required> 
                  </div>
                  <div>
                      <label for="" class="popup-label">Tipo de Equipamento:</label>
-                         <select name="tipo">
+                         <select name="tipo" required>
                              <option value=""></option>
                              <option value="split">Split</option>
                              <option value="self-chiler">Self-chiler</option>
@@ -322,21 +322,21 @@
                  </div>
                  <div>
                      <label for="" class="popup-label">Número de Série</label>
-                     <input type="text" class="popup-input" id="n/s" name="ns" placeholder="3928849328"> 
+                     <input type="text" class="popup-input" id="n/s" name="ns" placeholder="3928849328" required> 
                  </div>
                </div>
                <div>
                  <label for="" class="popup-label">Descrição do Equipamento</label> 
-                 <textarea name="desc" id="desc" cols="82" rows="3"></textarea>
+                 <textarea name="desc" id="desc" cols="82" rows="3" required></textarea>
              </div>  
                <div class="popup-center">
                  <div>
                      <label for="" class="popup-label">Aréa Climatizada</label>
-                     <input type="number" name="area" id="" class="popup-input">
+                     <input type="number" name="area" id="" class="popup-input" required>
                  </div>
                  <div>
                      <label for="" class="popup-label">Localidade</label>
-                     <input type="text" name="local" id="local">
+                     <input type="text" name="local" id="local" required>
                  </div>
                  <div>
                  <div>
@@ -351,7 +351,7 @@
                </div>
                <div>
                 <label for="" class="popup-label">Modelo</label>
-                <input type="number" name="modelo" id="modelo" class="popup-input">
+                <input type="number" name="modelo" id="modelo" class="popup-input" required>
             </div> 
             </div>
             <button class="popup-button salvar" onclick="saveEquipment()">Salvar</button>

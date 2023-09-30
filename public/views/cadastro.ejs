@@ -5,14 +5,15 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/> -->
   <link rel="stylesheet" href="../css/cadastro.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/header.css">
   <link rel="stylesheet" href="../css/@media1200.css">
- 
+  <link rel="stylesheet" href="../css/@media1440.css">
+  <!-- <link rel="stylesheet" href="../css/style.css"> -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Overpass:wght@400;700&display=swap"
-    rel="stylesheet">
-    <link rel="stylesheet" href="index.css">
+  <link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Overpass:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -80,6 +81,7 @@
   <br>
   <div class="table-container">
   <table id="tabela_tec" border="1">
+    <thead>
     <tr>
       <th>id</th>
       <th>Email</th>
@@ -87,6 +89,8 @@
       <th>Matricula</th>
       <th>Ação</th>
     </tr>
+  </thead>
+  <tbody>
     <% tecnicos.forEach(function(tecnico) { %>
       <tr>
         <td><%= tecnico.id_tec %></td>
@@ -103,15 +107,19 @@
         </td>
       </tr>
     <% }); %>
+  </tbody>
   </table>
 </div>
 <div class="table-container">
 <table id="tabela_loc" border="1">
+  <thead>
     <tr>
       <th>ID</th>
       <th>Local</th>
       <th>Ação</th>
     </tr>
+  </thead>
+  <tbody>
     <% setores.forEach(function(setor) { %>
       <tr>
         <td><%= setor.id_setor %></td>
@@ -126,15 +134,19 @@
         </td>
       </tr>
     <% }); %>
+  </tbody>
   </table>
 </div>
 <div class="table-container">
   <table id="tabela_equip" border="1"> 
+    <thead>
     <tr>
       <th>ID</th>
       <th>Equipamentos</th>
       <th>Ação</th>
     </tr>
+  </thead>
+  <tbody>
     <% tipo.forEach(function(tipo) { %>
       <tr>
         <td><%= tipo.id_tipar %></td>
@@ -149,6 +161,7 @@
         </td>
       </tr>
     <% }); %>
+  </tbody>
   </table>
 </div>
 
@@ -161,15 +174,15 @@
           
            <div>
                <label for="" class="popup-label">Nome:</label>
-               <input type="text" class="popup-input" id="tag" name="nome_tec" placeholder=""> 
+               <input type="text" class="popup-input" id="tag" name="nome_tec" placeholder="" required> 
            </div>
            <div>
                <label for="" class="popup-label">Email:</label>
-               <input type="text" class="popup-input" id="tag" name="email_tec" placeholder=""> 
+               <input type="text" class="popup-input" id="tag" name="email_tec" placeholder="" required> 
            </div>
            <div>
                <label for="" class="popup-label">Matricula:</label>
-               <input type="number" class="popup-input" id="n/s" name="mat_tec" placeholder=""> 
+               <input type="number" class="popup-input" id="n/s" name="mat_tec" placeholder="" required> 
            </div>
          </div>
       </div>
@@ -184,7 +197,7 @@
          <div class="popup-header">
            <div>
                <label for="" class="popup-label">Nome:</label>
-               <input type="text" class="popup-input" id="nome" name="nome_setor" placeholder=""> 
+               <input type="text" class="popup-input" id="nome" name="nome_setor" placeholder="" required> 
            </div>
          </div>
          
@@ -200,7 +213,7 @@
        <div class="popup-header">
          <div>
              <label for="" class="popup-label">Tipo:</label>
-             <input type="text" class="popup-input" id="tag" name="nome_tipo" placeholder=""> 
+             <input type="text" class="popup-input" id="tag" name="nome_tipo" placeholder="" required> 
          </div>
     </div>
     <button type="submit" class="popup-button salvar" onclick="saveEquipment()">Salvar</button>

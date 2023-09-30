@@ -3,42 +3,44 @@
   margin: 0;
   font-family: 'B612';
 }
-header{
+/* header{
   display: flex;
   width: 100%;
   height: 60px;
   background-color: #0080F5;
   justify-content: space-between;
 }
-body{
-background-color:#a4c7d4
-}
-input{
-border: 1px solid black;
-color: #000;
-}
+
 .logo{
   box-sizing: border-box;
   display: flex;
+  width: 100%;
 }
+
 button{
   cursor: pointer;
   background-color: white;
   font-weight: bold;
 }
-#logo{
-  padding: 5px 20px;
-  width: 100px;
-  height: 50px;
+
+h1{
+margin-bottom: 50px;
+font-size: 30px;
+text-align: center;
 }
 h4{
   margin-bottom: 20px;
   font-size: 20px;
 }
+#filtro {
+position: absolute;
+right: 95px; 
+top: 34%;
+transform: translateY(-50%);
+}
 a{
   color:white;
   text-decoration: none;
-  
 }
 ul{
   display: flex;
@@ -52,16 +54,22 @@ li{
 .nav-right{
  display: flex;
  justify-content: end;
- width: 10rem; 
  padding: 0.5em;
+ color: rgb(255, 255, 255);
+ width: 100%;
 }
 .nav-right a img {
   width: 30px;
   height: 30px;
   margin-left: 0.8rem;
   margin-right: 0.8rem;
-}
-
+} */
+/* #logo{
+margin-left: 0rem;
+padding: 5px 20px;
+width: 90px;
+height: 50px;
+} */
 h1 {
   padding: 10px;
 }
@@ -81,7 +89,7 @@ h2{
 
 }
 .header_cad{
-  width: 68%;
+  width: 70%;
   background-color: #0080F5;
   border-radius: 5px;
   padding: 1rem;
@@ -109,63 +117,69 @@ h2{
   border: none;
   border-radius: 8px;
 }
+select#escolha {
+  text-align: center;
+  width: 40%; 
+  padding: 2px;
+  border: 2px solid #0a0a0a;
+  border-radius: 5px; 
+  font-size: 16px; 
+}
+select#escolha option {
+  background-color: #fff; 
+  color: #1e21b8;
+  font-size: 14px; 
+}
 
+/* Estilo para a opção selecionada */
+select#escolha option:checked {
+  background-color: #007bff; 
+  color: #fff;
+  font-weight: bold; 
+}
 .escolher{
   color: white;
   font-size: 22px;
-}
-th, td {
-  text-align: center;
-  padding: 10px;
-  cursor: pointer;
-  margin-bottom:10px;
-  border: 1px solid black; /* Adicione bordas às células */
-}
-tr:nth-child(even) {
-  background-color: rgba(221, 219, 219, 0.793);
-}
-tr:hover td {
-  font-weight: bold;
-  transform: scale(0.98);
-  /* Adicione outros estilos aqui, se necessário */
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
 }
-
 thead {
   background-color: #0080F5;
   color: rgb(255, 255, 255);
 }
+th,
+td {
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  border: 1px solid black; /* Adicione bordas às células */
+}
+tr:nth-child(even) {
+  background-color: rgba(221, 219, 219, 0.793);
+}
+tr:hover td {
+  font-weight: bold;
+  transform: scale(0.98);
+  /* Adicione outros estilos aqui, se necessário */
+}
 
-th{
-  background-color: #0080F5;
-  color: white;
+tr:nth-child(even) {
+  background-color: rgba(221, 219, 219, 0.793);
+}
+tr:hover td {
+  font-weight: bold;
+  transform: scale(0.98);
 }
 /* Classe CSS para aumentar o tamanho dos ícones */
 .icon-large {
   font-size: 23px; /* Ajuste o tamanho dos ícones para 24px ou o tamanho desejado */
 }
 
-th, td {
-  text-align: center;
-  padding: 10px;
-  cursor: pointer;
-  margin-bottom:10px;
-  border: 1px solid black; /* Adicione bordas às células */
-}
-
-tr:nth-child(even) {
-  background-color: rgba(221, 219, 219, 0.793);
-}
-
-tr:hover td {
-  font-weight: bold;
-  transform: scale(0.98);
-  /* Adicione outros estilos aqui, se necessário */
-}.overlay{
+.overlay{
   position: fixed;
   top: 0;
   left: 0;

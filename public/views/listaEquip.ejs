@@ -51,10 +51,10 @@
             <div class="header_manut">
                 <div class="search_manut">
                         <h4>Consultar Equipamentos</h4>
-                         <input type="text" id="tagInput" placeholder="TAG do Equipamento">
-                         <button onclick="filtrarPorTag()" >Pesquisar</button>
-                         <button onclick="limparFiltro()" style="display: none;">Voltar</button>
-                         <button>Filtrar</button>
+                        <input type="text" id="tagInput" placeholder="TAG do Equipamento">
+                        <button onclick="filtrarPorTag()">Pesquisar</button>
+                        <button onclick="limparFiltro()" style="display: none;">Voltar</button>
+                        <button>Filtrar</button>
                          
 
 
@@ -122,11 +122,11 @@
                <div class="popup-header">
                  <div>
                      <label for="" class="popup-label">TAG:</label>
-                     <input type="text" class="popup-input" id="tag" name="tag" placeholder="ACS-2101"> 
+                     <input type="text" class="popup-input" id="tag" name="tag" placeholder="ACS-2101" required> 
                  </div>
                  <div>
                     <label for="" class="popup-label">Tipo de Equipamento:</label>
-                    <select name="tipo">
+                    <select name="tipo" required>
                         <option value=""></option> <!-- Opção em branco -->
                         <% tipo.forEach(function(tipo) { %>
                             <option value="<%= tipo.id_tipar %>"><%= tipo.tipos_arcondicionado_tipar %></option>
@@ -136,26 +136,26 @@
                 
                  <div>
                      <label for="" class="popup-label">Número de Série</label>
-                     <input type="text" class="popup-input" id="n/s" name="ns" placeholder="3928849328"> 
+                     <input type="text" class="popup-input" id="n/s" name="ns" placeholder="3928849328" required> 
                  </div>
                </div>
                <div>
                  <label for="" class="popup-label">Descrição do Equipamento</label> 
-                 <textarea name="desc" id="desc" cols="82" rows="3"></textarea>
+                 <textarea name="desc" id="desc" cols="82" rows="3" required></textarea>
              </div>  
                <div class="popup-center">
                  <div>
                      <label for="" class="popup-label">Aréa Climatizada</label>
-                     <input type="number" name="area" id="" class="popup-input">
+                     <input type="number" name="area" id="" class="popup-input" required>
                  </div>
                  <div>
                      <label for="" class="popup-label">Localidade</label>
-                     <input type="text" name="local" id="local">
+                     <input type="text" name="local" id="local" required>
                  </div>
                  <div>
                     <div>
                         <label for="" class="popup-label">Setor</label>
-                        <select id="setor" name="setor">
+                        <select id="setor" name="setor" required>
                             <option value=""></option> <!-- Opção em branco -->
                             <% setores.forEach(function(setor) { %>
                                 <option value="<%= setor.id_setor %>"><%= setor.nome_setor %></option>
@@ -165,7 +165,7 @@
                </div>
                <div>
                 <label for="" class="popup-label">Modelo</label>
-                <input type="number" name="modelo" id="modelo" class="popup-input">
+                <input type="number" name="modelo" id="modelo" class="popup-input" required>
             </div> 
             </div>
             <button class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
@@ -173,78 +173,72 @@
         </div>
     </form>
     </section>
-    <script>z
+    <script>
 function filtrarPorTag() {
-    var input, filtro, tabela, linhas, colunaTag, i, textoTag;
-    input = document.getElementById("tagInput");
-    filtro = input.value.toUpperCase();
+  var input, filtro, tabela, linhas, colunaTag, i, textoTag, botaoLimparFiltro;
+  input = document.getElementById("tagInput");
+  filtro = input.value.toUpperCase();
+  tabela = document.querySelector("table");
+  linhas = tabela.getElementsByTagName("tr");
+  botaoLimparFiltro = document.querySelector("button[onclick='limparFiltro()']");
 
-    // Verifica se o campo de entrada está vazio
-    if (filtro.trim() === "") {
-        alert("Por favor, insira uma tag antes de pesquisar.");
-        return; // Retorna sem executar a pesquisa
+  // Verifica se o campo de entrada está vazio
+  if (filtro.trim() === "") {
+    alert("Por favor, insira uma tag antes de pesquisar.");
+    return; // Retorna sem executar a pesquisa
+  }
+
+  var tagEncontrada = false; // Variável para rastrear se a tag foi encontrada
+
+  for (i = 1; i < linhas.length; i++) {
+    colunaTag = linhas[i].getElementsByTagName("td")[1]; // Segunda coluna (índice 1) contém a TAG
+    if (colunaTag) {
+      textoTag = colunaTag.textContent || colunaTag.innerText;
+      if (textoTag.toUpperCase().indexOf(filtro) > -1) {
+        linhas[i].style.display = "";
+        tagEncontrada = true; // A tag foi encontrada
+      } else {
+        linhas[i].style.display = "none";
+      }
     }
+  }
 
-    tabela = document.querySelector("table"); 
-    linhas = tabela.getElementsByTagName("tr");
-
-    var botaoLimparFiltro = document.querySelector("button[onclick='limparFiltro()']");
-
+  // Verifica se a tag não foi encontrada e exibe uma mensagem de erro
+  if (!tagEncontrada) {
+    alert("A tag de equipamento '" + filtro + "' não existe.");
+    // Limpa o campo de entrada
+    input.value = "";
+    // Mostra todos os registros novamente
     for (i = 1; i < linhas.length; i++) {
-        colunaTag = linhas[i].getElementsByTagName("td")[1]; // Segunda coluna (índice 1) contém a TAG
-        if (colunaTag) {
-            textoTag = colunaTag.textContent || colunaTag.innerText;
-            if (textoTag.toUpperCase().indexOf(filtro) > -1) {
-                linhas[i].style.display = "";
-                // Mostra o botão "Limpar Filtro"
-                botaoLimparFiltro.style.display = "";
-            } else {
-                linhas[i].style.display = "none";
-            }
-        }
+      linhas[i].style.display = "";
     }
+  } else {
+    // Exibe o botão "Voltar" apenas se a tag foi encontrada
+    botaoLimparFiltro.style.display = "inline-block";
+  }
 }
-
 
 function limparFiltro() {
-    var tabela, linhas, i;
+  var tabela, linhas, i;
 
-    // Obtém a tabela e suas linhas
-    tabela = document.querySelector("table");
-    linhas = tabela.getElementsByTagName("tr");
+  // Obtém a tabela e suas linhas
+  tabela = document.querySelector("table");
+  linhas = tabela.getElementsByTagName("tr");
 
-    // Mostra todas as linhas da tabela
-    for (i = 1; i < linhas.length; i++) {
-        linhas[i].style.display = "";
-    }
+  // Mostra todas as linhas da tabela
+  for (i = 1; i < linhas.length; i++) {
+    linhas[i].style.display = "";
+  }
 
-    // Limpa o campo de entrada
-    document.getElementById("tagInput").value = "";
+  // Limpa o campo de entrada
+  document.getElementById("tagInput").value = "";
 
-    // Oculta o botão "Limpar Filtro" novamente
-    document.querySelector("button[onclick='limparFiltro()']").style.display = "none";
+  // Oculta o botão "Limpar Filtro"
+  document.querySelector("button[onclick='limparFiltro()']").style.display = "none";
 }
 
-         // Obtém o campo de entrada e a mensagem de erro
-var nsInput = document.getElementById("ns");
-var nsError = document.getElementById("ns-error");
 
-// Adiciona um ouvinte de evento para o evento de entrada
-nsInput.addEventListener("input", function () {
-    var valor = nsInput.value;
-    var limite = 50;
 
-    // Verifica o comprimento do valor inserido
-    if (valor.length > limite) {
-        // Exibe a mensagem de erro personalizada
-        nsError.textContent = "Erro: o valor inserido é muito longo (limite de " + limite + " caracteres).";
-        nsError.style.display = "block"; // Exibe a mensagem de erro
-    } else {
-        // Limpa a mensagem de erro
-        nsError.textContent = "";
-        nsError.style.display = "none"; // Oculta a mensagem de erro
-    }
-});
 
     </script>
      <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
