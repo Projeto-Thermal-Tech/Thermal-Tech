@@ -11,273 +11,273 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Overpass:wght@400;700&display=swap"
     rel="stylesheet">
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/header.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <title>Chamado</title>
-  
+
 </head>
 
 <body>
 
-    <header>
-        <div class="logo">
-           
-            <h1><a href="./home.html">Thermal Tech</a></h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="http://localhost:5000/Equipamentos">Equipamentos</a></li>
-                <li><a href="http://localhost:5000/manutencao">Manutenções</a></li>
-                <li><a href="http://localhost:5000/ordem">Ordem</a></li>
-                <li><a href="http://localhost:5000/chamados">Chamado</a></li>
-                <li><a href="http://localhost:5000/cadastro">Cadastro Geral</a></li>
-                <li><a href="http://localhost:5000/relatorio">Homem Hora</a></li>
-                <li><a href="">Gráficos gerenciais</a></li>
-                <li><a href="./chat.html">Chat</a></li>
-            </ul>
-        </nav>
-        <div class="nav-right">
-            <div>
-                <a href="#"  class="config"><img src="../assets/icon_config.png" alt=""></a> 
-                <a  href="#" class="sair" onclick="logout()"><img  src="../assets/icon_sair.png" alt=""></a>
-            </div>
-            <div>
-                <h4 id="userEmail"></h4>
-            </div>  
-        </div>
-    </header>
-    
-    <br>
-    <h2>Chamados</h2>
-    
-    <section class="dados_cham">
-      <div class="header_cham">
-        <div class="add_cham">
-          <img class="icon_cham" src="../assets/chamado.png" alt=""><img src="" alt="">
-          <a href="http://localhost:5000/novo-chamado"><button>+ Novo Chamado</button></a>
+  <header>
+    <div class="logo">
+
+      <h1><a href="./home.html">Thermal Tech</a></h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="http://localhost:5000/Equipamentos">Equipamentos</a></li>
+        <li><a href="http://localhost:5000/manutencao">Manutenções</a></li>
+        <li><a href="http://localhost:5000/ordem">Ordem</a></li>
+        <li><a href="http://localhost:5000/chamados">Chamado</a></li>
+        <li><a href="http://localhost:5000/cadastro">Cadastro Geral</a></li>
+        <li><a href="http://localhost:5000/relatorio">Homem Hora</a></li>
+        <li><a href="">Gráficos gerenciais</a></li>
+        <li><a href="./chat.html">Chat</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <div>
+        <a href="#" class="config"><img src="../assets/icon_config.png" alt=""></a>
+        <a href="#" class="sair" onclick="logout()"><img src="../assets/icon_sair.png" alt=""></a>
+      </div>
+      <div>
+        <h4 id="userEmail"></h4>
+      </div>
+    </div>
+  </header>
+
+  <br>
+  <h2>Chamados</h2>
+
+  <section class="dados_cham">
+    <div class="header_cham">
+      <div class="add_cham">
+        <img class="icon_cham" src="../assets/chamado.png" alt=""><img src="" alt="">
+        <a href="http://localhost:5000/novo-chamado"><button>+ Novo Chamado</button></a>
       </div>
 
       <div class="num_cham">
         <label>N° Chamado:</label>
         <input type="number" class="num" id="numeroChamado">
-        <button id="pesquisar"onclick="pesquisarChamado()">Pesquisar</button>
+        <button id="pesquisar" onclick="pesquisarChamado()">Pesquisar</button>
         <button id="limpar-filtro" style="display: none;" onclick="limparFiltro()">Voltar</button>
       </div>
 
       <div class="estado">
         <label>Status:</label>
         <select id="esta">
-          <option value="todos">Todos</option>  
+          <option value="todos">Todos</option>
           <option value="aberto">Aberto</option>
           <option value="fechado">Encerrado</option>
           <option value="andamento">Em Andamento</option>
         </select>
       </div>
-     
-      <div class="filtro"> 
+
+      <div class="filtro">
         <button id="filtro" onclick="showPopup()">Filtrar</button>
       </div>
     </div>
 
     <br>
-    
+
     <div class="table-container">
       <table id="filtro_cham">
-          <thead>
-              <tr>
-                  <th></th>
-                  <th>Nº Chamado</th>
-                  <th>Prioridade</th>
-                  <th>Descrição</th>
-                  <th>Status</th>
-                  <th>Criador</th>
-                  <th>Data</th>
-              
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td><button class="visualizar">Visualizar</button></td>
-                  <td>1</td>
-                  <td>Alta</td>
-                  <td>Parou de funcionar</td>
-                  <td>Encerrado</td>
-                  <td>Jean Maciel</td>
-                  <td>12/02/2023</td>
-                
-              </tr>
-              <tr>
-                  <td><button class="visualizar">Visualizar</button></td>                  
-                  <td>2</td>
-                  <td>Baixa</td>
-                  <td>Barulho estranho</td>
-                  <td>Aberto</td>
-                  <td>Victor Kinder Bueno</td>
-                  <td>12/02/2023</td>
-                                  
-              </tr>
-              <tr>
-                  <td><button class="visualizar">Visualizar</button></td>                  
-                  <td>3</td>
-                  <td>Média</td>
-                  <td>Saindo fumaça</td>
-                  <td>Aberto</td>
-                  <td>Lucas Elevado Aocuba</td>
-                  <td>12/02/2023</td>
-                  
-              </tr>
-              <tr>
-                  <td><button class="visualizar">Visualizar</button></td>                  
-                  <td>4</td>
-                  <td>Baixa</td>
-                  <td>Não esquenta</td>
-                  <td>Encerrado</td>
-                  <td>Lucas Franco Ulbrich</td>
-                  <td>12/02/2023</td>
-                  
-              </tr>
-              <tr>
-                  <td><button class="visualizar">Visualizar</button></td>                  
-                  <td>5</td>
-                  <td>Média</td>
-                  <td>Não esfria</td>
-                  <td>Encerrado</td>
-                  <td>Luiz Robertão</td>
-                  <td>12/02/2023</td>
-                  
-              </tr>
-              <tr>
-                  <td><button class="visualizar">Visualizar</button></td>                  
-                  <td>6</td>
-                  <td>Alta</td>
-                  <td>Não desliga</td>
-                  <td>Aberto</td>
-                  <td>Jeanzinho </td>
-                  <td>12/02/2023</td>
-                  
-              </tr>
-              <tr>
-                  <td><button class="visualizar">Visualizar</button></td>                  
-                  <td>7</td>
-                  <td>Alta</td>
-                  <td>Não liga</td>
-                  <td>Em andamento</td>
-                  <td>Lucas Wagner</td>
-                  <td>12/02/2023</td>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Nº Chamado</th>
+            <th>Prioridade</th>
+            <th>Descrição</th>
+            <th>Status</th>
+            <th>Criador</th>
+            <th>Data</th>
 
-              </tr>
-              <tr>
-                  <td><button class="visualizar">Visualizar</button></td>                  
-                  <td>8</td>
-                  <td>Média</td>
-                  <td>Liga sozinho</td>
-                  <td>Em andamento</td>
-                  <td>Victor Maciel</td>
-                  <td>12/02/2023</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><button class="visualizar">Visualizar</button></td>
+            <td>1</td>
+            <td>Alta</td>
+            <td>Parou de funcionar</td>
+            <td>Encerrado</td>
+            <td>Jean Maciel</td>
+            <td>12/02/2023</td>
 
-              </tr>
-              <tr>
-                  <td><button class="visualizar">Visualizar</button></td>                  
-                  <td>9</td>
-                  <td>Baixa</td>
-                  <td>Desliga sozinho</td>
-                  <td>Em andamento</td>
-                  <td>Luiz Cuba</td>
-                  <td>12/02/2023</td>
-              </tr>
-              
-              <tr>
-                  <td><button class="visualizar">Visualizar</button></td>                  
-                  <td>10</td>
-                  <td>Alta</td>
-                  <td>Necessária a substituição</td>
-                  <td>Encerrado</td>
-                  <td>Eduardo Wagner</td>
-                  <td>12/02/2023</td>
-              </tr>
+          </tr>
+          <tr>
+            <td><button class="visualizar">Visualizar</button></td>
+            <td>2</td>
+            <td>Baixa</td>
+            <td>Barulho estranho</td>
+            <td>Aberto</td>
+            <td>Victor Kinder Bueno</td>
+            <td>12/02/2023</td>
 
-              <tr>
-                  <td><button class="visualizar">Visualizar</button></td>                  
-                  <td>11</td>
-                  <td>Média</td>
-                  <td>Pegou fogo</td>
-                  <td>Aberto</td>
-                  <td>Roberto Torma</td>
-                  <td>12/02/2023</td>
-              </tr>
-              
-          </tbody>
+          </tr>
+          <tr>
+            <td><button class="visualizar">Visualizar</button></td>
+            <td>3</td>
+            <td>Média</td>
+            <td>Saindo fumaça</td>
+            <td>Aberto</td>
+            <td>Lucas Elevado Aocuba</td>
+            <td>12/02/2023</td>
+
+          </tr>
+          <tr>
+            <td><button class="visualizar">Visualizar</button></td>
+            <td>4</td>
+            <td>Baixa</td>
+            <td>Não esquenta</td>
+            <td>Encerrado</td>
+            <td>Lucas Franco Ulbrich</td>
+            <td>12/02/2023</td>
+
+          </tr>
+          <tr>
+            <td><button class="visualizar">Visualizar</button></td>
+            <td>5</td>
+            <td>Média</td>
+            <td>Não esfria</td>
+            <td>Encerrado</td>
+            <td>Luiz Robertão</td>
+            <td>12/02/2023</td>
+
+          </tr>
+          <tr>
+            <td><button class="visualizar">Visualizar</button></td>
+            <td>6</td>
+            <td>Alta</td>
+            <td>Não desliga</td>
+            <td>Aberto</td>
+            <td>Jeanzinho </td>
+            <td>12/02/2023</td>
+
+          </tr>
+          <tr>
+            <td><button class="visualizar">Visualizar</button></td>
+            <td>7</td>
+            <td>Alta</td>
+            <td>Não liga</td>
+            <td>Em andamento</td>
+            <td>Lucas Wagner</td>
+            <td>12/02/2023</td>
+
+          </tr>
+          <tr>
+            <td><button class="visualizar">Visualizar</button></td>
+            <td>8</td>
+            <td>Média</td>
+            <td>Liga sozinho</td>
+            <td>Em andamento</td>
+            <td>Victor Maciel</td>
+            <td>12/02/2023</td>
+
+          </tr>
+          <tr>
+            <td><button class="visualizar">Visualizar</button></td>
+            <td>9</td>
+            <td>Baixa</td>
+            <td>Desliga sozinho</td>
+            <td>Em andamento</td>
+            <td>Luiz Cuba</td>
+            <td>12/02/2023</td>
+          </tr>
+
+          <tr>
+            <td><button class="visualizar">Visualizar</button></td>
+            <td>10</td>
+            <td>Alta</td>
+            <td>Necessária a substituição</td>
+            <td>Encerrado</td>
+            <td>Eduardo Wagner</td>
+            <td>12/02/2023</td>
+          </tr>
+
+          <tr>
+            <td><button class="visualizar">Visualizar</button></td>
+            <td>11</td>
+            <td>Média</td>
+            <td>Pegou fogo</td>
+            <td>Aberto</td>
+            <td>Roberto Torma</td>
+            <td>12/02/2023</td>
+          </tr>
+
+        </tbody>
       </table>
-  </div>
+    </div>
 
   </section>
   <section class="overlay">
     <div class="popup" id="popup">
-        <div class="popup-title-filter">Filtrar Chamados</div>
-        <div class="popup-content-filter">
-           <div class="popup-header-filter">
-         
-             <div>
-                 <label for="" class="popup-label-filter">Nº Chamado:</label>
-                 <input type="number" class="popup-label-filter numero-chamado-input" id="" placeholder="Nº Chamado"> 
-             </div>
-             <div>
-                <label for="" class="popup-label-filter">Prioridade:</label>
-                <select name="" id="">
-                  <option value=""></option>
-                  <option value="">Alta</option>
-                  <option value="">Baixa</option>
-                  <option value="">Média</option>
-              </select>
-            </div>
-             <div>
-                 <label for="" class="popup-label-filter">descrição</label>
-                 <input type="text" class="popup-input-filter" id="descrição" placeholder="descrição"> 
-             </div>
-           </div>  
-          
-        <div>
-            <label for="" class="popup-label-filter">Status</label>
+      <div class="popup-title-filter">Filtrar Chamados</div>
+      <div class="popup-content-filter">
+        <div class="popup-header-filter">
+
+          <div>
+            <label for="" class="popup-label-filter">Nº Chamado:</label>
+            <input type="number" class="popup-label-filter numero-chamado-input" id="" placeholder="Nº Chamado">
+          </div>
+          <div>
+            <label for="" class="popup-label-filter">Prioridade:</label>
             <select name="" id="">
-                <option value=""></option>
-                <option value="">Todos</option>
-                <option value="">Aberto</option>
-                <option value="">Encerrado</option>
-                <option value="">Em andamento</option>
+              <option value=""></option>
+              <option value="">Alta</option>
+              <option value="">Baixa</option>
+              <option value="">Média</option>
             </select>
+          </div>
+          <div>
+            <label for="" class="popup-label-filter">descrição</label>
+            <input type="text" class="popup-input-filter" id="descrição" placeholder="descrição">
+          </div>
+        </div>
+
+        <div>
+          <label for="" class="popup-label-filter">Status</label>
+          <select name="" id="">
+            <option value=""></option>
+            <option value="">Todos</option>
+            <option value="">Aberto</option>
+            <option value="">Encerrado</option>
+            <option value="">Em andamento</option>
+          </select>
         </div>
         <div>
-        <div>
+          <div>
             <label for="" class="popup-label-filter">Criador</label>
             <input type="text" name="" id="Criador" class="popup-input-filter">
+          </div>
         </div>
-      </div>
-      <div class="popup-center-filter">
-        <div>
+        <div class="popup-center-filter">
+          <div>
             <label for="" class="popup-label-filter">Data de Inico</label>
             <input type="date" name="" id="" class="popup-input-filter">
+          </div>
+
         </div>
-      
-   </div>
         <button class="popup-button salvar" onclick="saveEquipment()">Filtrar</button>
-        <button  class="popup-button cancelar" onclick="hidePopup()">Cancelar</button>
-    </div>
-</section>
+        <button class="popup-button cancelar" onclick="hidePopup()">Cancelar</button>
+      </div>
+  </section>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       const filterSelect = document.getElementById('esta');
       const dataTable = document.getElementById('filtro_cham').getElementsByTagName('tbody')[0].getElementsByTagName('tr');
-  
-      filterSelect.addEventListener('change', function() {
+
+      filterSelect.addEventListener('change', function () {
         const selectedValue = filterSelect.value;
-  
+
         for (const row of dataTable) {
           const statusCell = row.querySelector('td:nth-child(5)').textContent.toLowerCase();
-  
+
           if (selectedValue === 'aberto' && statusCell === 'aberto') {
             row.style.display = 'table-row';
           } else if (selectedValue === 'fechado' && statusCell === 'encerrado') {
@@ -292,114 +292,122 @@
         }
       });
     });
-    
+
     var estadoAnteriorTabela = null;
 
     function pesquisarChamado() {
-  var numeroChamado = document.getElementById("numeroChamado").value;
+      var numeroChamado = document.getElementById("numeroChamado").value;
 
-  // Verificar se o campo de entrada está vazio
-  if (!numeroChamado) {
-    alert("Por favor, insira um número de chamado para pesquisar.");
-    return; // Não execute a pesquisa
-  }
-
-  var table = document.getElementById("filtro_cham");
-  var rows = table.getElementsByTagName("tr");
-
-  if (estadoAnteriorTabela === null) {
-    // Salvar o estado anterior da tabela
-    estadoAnteriorTabela = [];
-    for (var i = 1; i < rows.length; i++) {
-      estadoAnteriorTabela.push(rows[i].style.display);
-    }
-  }
-
-  var chamadoExiste = false;
-
-  for (var i = 1; i < rows.length; i++) {
-    var row = rows[i];
-    var cell = row.getElementsByTagName("td")[1]; // Coluna do Nº Chamado
-
-    if (cell) {
-      var chamado = cell.innerText;
-      if (chamado === numeroChamado) {
-        row.style.display = "";
-        chamadoExiste = true;
-      } else {
-        row.style.display = "none";
+      // Verificar se o campo de entrada está vazio
+      if (!numeroChamado) {
+        alert("Por favor, insira um número de chamado para pesquisar.");
+        return; // Não execute a pesquisa
       }
-    }
-  }
 
-  // Verifica se a tag não foi encontrada e exibe uma mensagem de erro
-  if (!chamadoExiste) {
-    alert("Esse número de chamado não existe.");
-    // Limpa o campo de entrada
-    document.getElementById("numeroChamado").value = "";
-    // Mostra todos os registros novamente
-    for (i = 1; i < rows.length; i++) {
-      rows[i].style.display = "";
-    }
-  } else {
-    // Exibe o botão "Voltar" apenas se a tag foi encontrada
-    document.querySelector('#limpar-filtro').style.display = "inline-block";
-  }
-}
-
-
-    // Exibir ou ocultar o botão "Limpar Filtro" com base no filtroAtivo
-    var botaoLimparFiltro = document.querySelector('#limpar-filtro');
-    if (filtroAtivo) {
-      botaoLimparFiltro.style.display = "inline-block";
-    } else {
-      botaoLimparFiltro.style.display = "none";
-    }
-  
-
-    // Exibir ou ocultar o botão "Limpar Filtro" com base no filtroAtivo
-    var botaoLimparFiltro = document.querySelector('#limpar-filtro');
-    if (filtroAtivo) {
-      botaoLimparFiltro.style.display = "inline-block";
-    } else {
-      botaoLimparFiltro.style.display = "none";
-    }
-  
-
-  // Função para limpar o filtro
-  function limparFiltro() {
-    if (estadoAnteriorTabela !== null) {
       var table = document.getElementById("filtro_cham");
       var rows = table.getElementsByTagName("tr");
 
-      // Restaurar o estado anterior da tabela
-      for (var i = 1; i < rows.length; i++) {
-        rows[i].style.display = estadoAnteriorTabela[i - 1];
+      if (estadoAnteriorTabela === null) {
+        // Salvar o estado anterior da tabela
+        estadoAnteriorTabela = [];
+        for (var i = 1; i < rows.length; i++) {
+          estadoAnteriorTabela.push(rows[i].style.display);
+        }
       }
 
-      estadoAnteriorTabela = null;
+      var chamadoExiste = false;
+
+      for (var i = 1; i < rows.length; i++) {
+        var row = rows[i];
+        var cell = row.getElementsByTagName("td")[1]; // Coluna do Nº Chamado
+
+        if (cell) {
+          var chamado = cell.innerText;
+          if (chamado === numeroChamado) {
+            row.style.display = "";
+            chamadoExiste = true;
+          } else {
+            row.style.display = "none";
+          }
+        }
+      }
+
+      // Verifica se a tag não foi encontrada e exibe uma mensagem de erro
+      if (!chamadoExiste) {
+        alert("Esse número de chamado não existe.");
+        // Limpa o campo de entrada
+        document.getElementById("numeroChamado").value = "";
+        // Mostra todos os registros novamente
+        for (i = 1; i < rows.length; i++) {
+          rows[i].style.display = "";
+        }
+      } else {
+        // Exibe o botão "Voltar" apenas se a tag foi encontrada
+        document.querySelector('#limpar-filtro').style.display = "inline-block";
+      }
     }
 
-    // Limpar o valor do input de número de chamado
-    const inputNumeroChamado = document.querySelector('.num');
-    inputNumeroChamado.value = '';
 
-    // Ocultar o botão "Limpar Filtro"
+    // Exibir ou ocultar o botão "Limpar Filtro" com base no filtroAtivo
     var botaoLimparFiltro = document.querySelector('#limpar-filtro');
-    botaoLimparFiltro.style.display = "none";
-  }
+    if (filtroAtivo) {
+      botaoLimparFiltro.style.display = "inline-block";
+    } else {
+      botaoLimparFiltro.style.display = "none";
+    }
+
+
+    // Exibir ou ocultar o botão "Limpar Filtro" com base no filtroAtivo
+    var botaoLimparFiltro = document.querySelector('#limpar-filtro');
+    if (filtroAtivo) {
+      botaoLimparFiltro.style.display = "inline-block";
+    } else {
+      botaoLimparFiltro.style.display = "none";
+    }
+
+
+    // Função para limpar o filtro
+    function limparFiltro() {
+      if (estadoAnteriorTabela !== null) {
+        var table = document.getElementById("filtro_cham");
+        var rows = table.getElementsByTagName("tr");
+
+        // Restaurar o estado anterior da tabela
+        for (var i = 1; i < rows.length; i++) {
+          rows[i].style.display = estadoAnteriorTabela[i - 1];
+        }
+
+        estadoAnteriorTabela = null;
+      }
+
+      // Limpar o valor do input de número de chamado
+      const inputNumeroChamado = document.querySelector('.num');
+      inputNumeroChamado.value = '';
+
+      // Ocultar o botão "Limpar Filtro"
+      var botaoLimparFiltro = document.querySelector('#limpar-filtro');
+      botaoLimparFiltro.style.display = "none";
+    }
 
   </script>
-  
+
 
 </body>
+<script>
+  function mostrarUser() {
+    const userEmail = localStorage.getItem("userEmail");
 
- <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
- <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
- <script src="../Login_v1/firebase-init.js"></script>
- <script src="../js/auth-guard.js"></script>
- <script src="../js/logout.js"></script>
- <script src="../js/script.js"></script>
- <script src="../js/auth-guard.js"></script>
+    // Insere o email no elemento HTML correspondente
+    document.getElementById("userEmail").innerHTML = userEmail;
+  }
+  mostrarUser()
+</script>
+<script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
+<script src="../Login_v1/firebase-init.js"></script>
+<script src="../js/auth-guard.js"></script>
+<script src="../js/logout.js"></script>
+<script src="../js/script.js"></script>
+<script src="../js/auth-guard.js"></script>
 
 </html>

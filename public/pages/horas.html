@@ -1,228 +1,240 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/> -->
-    <link rel="stylesheet" href="../css/horas.css" />
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/global.css" />
-    <link rel="stylesheet" href="../css/@media1200.css" />
-    <!-- <link rel="stylesheet" href="../css/style.css"> -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Overpass:wght@400;700&display=swap" rel="stylesheet">
-    <title>Homem Hora</title>
-  </head>
 
-  <body>
-    <header>
-      <div class="logo">
-        
-          <h1><a href="./home.html">Thermal Tech</a></h1>
-      </div>
-      <nav> 
-        <ul>
-          <li><a href="http://localhost:5000/Equipamentos">Equipamentos</a></li>
-          <li><a href="http://localhost:5000/manutencao">Manutenções</a></li> 
-          <li><a href="http://localhost:5000/ordem">Ordem</a></li>
-          <li><a href="http://localhost:5000/chamados">Chamado</a></li>
-          <li><a href="http://localhost:5000/registro">Cadastro Geral</a></li>
-          <li><a href="http://localhost:5000/relatorio">Homem Hora</a></li>
-          <li><a href="">Gráficos gerenciais</a></li>
-          <li><a href="./chat.html">Chat</a></li>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/> -->
+  <link rel="stylesheet" href="../css/horas.css" />
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/global.css" />
+  <link rel="stylesheet" href="../css/@media1200.css" />
+  <!-- <link rel="stylesheet" href="../css/style.css"> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Overpass:wght@400;700&display=swap"
+    rel="stylesheet">
+  <title>Homem Hora</title>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+
+      <h1><a href="./home.html">Thermal Tech</a></h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="http://localhost:5000/Equipamentos">Equipamentos</a></li>
+        <li><a href="http://localhost:5000/manutencao">Manutenções</a></li>
+        <li><a href="http://localhost:5000/ordem">Ordem</a></li>
+        <li><a href="http://localhost:5000/chamados">Chamado</a></li>
+        <li><a href="http://localhost:5000/registro">Cadastro Geral</a></li>
+        <li><a href="http://localhost:5000/relatorio">Homem Hora</a></li>
+        <li><a href="">Gráficos gerenciais</a></li>
+        <li><a href="./chat.html">Chat</a></li>
       </ul>
-      </nav>
-      <div class="nav-right">
-        <div>
-            <a href="#"  class="config"><img src="../assets/icon_config.png" alt=""></a> 
-            <a  href="#" class="sair" onclick="logout()"><img  src="../assets/icon_sair.png" alt=""></a>
-        </div>
-        <div>
-              <h4 id="userEmail"></h4>
-          </div>  
+    </nav>
+    <div class="nav-right">
+      <div>
+        <a href="#" class="config"><img src="../assets/icon_config.png" alt=""></a>
+        <a href="#" class="sair" onclick="logout()"><img src="../assets/icon_sair.png" alt=""></a>
       </div>
+      <div>
+        <h4 id="userEmail"></h4>
+      </div>
+    </div>
   </header>
 
-    <main class="container">
-      <div class="titulo">
-        <h2 >Homem Hora</h2>
+  <main class="container">
+    <div class="titulo">
+      <h2>Homem Hora</h2>
+    </div>
+    <form class="form">
+      <div class="primeira-linha-form">
+        <div class="emissor">
+          <label for="">Colaborador:</label>
+          <select id="emissor">
+            <option value="lucas">Eduardo Wagner Gregorio</option>
+            <option value="lucas">Jean victor dos Santos Maciel</option>
+            <option value="eduardo">Lucas Silva Cuba</option>
+            <option value="victor">Lucas Ulbrich Franco</option>
+            <option value="jean">Luiz Gabriel Roberti</option>
+            <option value="luiz">Victor Bueno Cardoso</option>
+          </select>
+        </div>
+        <div class="tempo-quantidade">
+          <div class="tempo">
+            <label for="">Tempo</label>
+            <input type="time" required />
+          </div>
+
+          <div class="quantidade">
+            <label for="">Quantidade:</label>
+            <input type="number" required />
+          </div>
+        </div>
       </div>
-      <form class="form">
-        <div class="primeira-linha-form">
-          <div class="emissor">
-            <label for="">Colaborador:</label>
-            <select id="emissor">
-              <option value="lucas">Eduardo Wagner Gregorio</option>
-              <option value="lucas">Jean victor dos Santos Maciel</option>
-              <option value="eduardo">Lucas Silva Cuba</option>
-              <option value="victor">Lucas Ulbrich Franco</option>
-              <option value="jean">Luiz Gabriel Roberti</option>
-              <option value="luiz">Victor Bueno Cardoso</option>
-            </select>
-          </div>
-          <div class="tempo-quantidade">
-            <div class="tempo">
-              <label for="">Tempo</label>
-              <input type="time" required />
-            </div>
+      <div class="segunda-linha-form">
+        <div>
+          <label for="">Emissor: </label>
+          <select id="Emissor">
+            <option value="lucas">Eduardo Wagner Gregorio</option>
+            <option value="lucas">Jean victor dos Santos Maciel</option>
+            <option value="eduardo">Lucas Silva Cuba</option>
+            <option value="victor">Lucas Ulbrich Franco</option>
+            <option value="jean">Luiz Gabriel Roberti</option>
+            <option value="luiz">Victor Bueno Cardoso</option>
+          </select>
+        </div>
 
-            <div class="quantidade">
-              <label for="">Quantidade:</label>
-              <input type="number" required/>
-            </div>
+        <div class="tempo-quantidade">
+          <div class="tempo">
+            <label for="">Tempo</label>
+            <input type="time" required />
+          </div>
+
+          <div class="quantidade">
+            <label for="">Quantidade</label>
+
+            <input type="number" required />
           </div>
         </div>
-        <div class="segunda-linha-form">
-          <div>
-            <label for="">Emissor: </label>
-            <select id="Emissor">
-              <option value="lucas">Eduardo Wagner Gregorio</option>
-              <option value="lucas">Jean victor dos Santos Maciel</option>
-              <option value="eduardo">Lucas Silva Cuba</option>
-              <option value="victor">Lucas Ulbrich Franco</option>
-              <option value="jean">Luiz Gabriel Roberti</option>
-              <option value="luiz">Victor Bueno Cardoso</option>
-            </select>
-          </div>
-
-          <div class="tempo-quantidade">
-            <div class="tempo">
-              <label for="">Tempo</label>
-              <input type="time"required/>
-            </div>
-
-            <div class="quantidade">
-              <label for="">Quantidade</label>
-
-              <input type="number"required/>
-            </div>
+      </div>
+      <div class="terceira-linha-form">
+        <div class="periodo">
+          <label for="">Periodo:</label>
+          <div class="datas">
+            <input type="date" required />
+            <input type="date" required />
           </div>
         </div>
-        <div class="terceira-linha-form">
-          <div class="periodo">
-            <label for="">Periodo:</label>
-            <div class="datas">
-              <input type="date"required/>
-              <input type="date"required/>
-            </div>
+      </div>
+      <footer class="footer-bg">
+        <div class="footer">
+          <label for="">Total Geral</label>
+          <div class="total-tempo">
+            <p>17:53</p>
           </div>
+          <di class="total-quantidade">
+            <p>11</p>
+          </di>
         </div>
-        <footer class="footer-bg">
-          <div class="footer">
-            <label for="">Total Geral</label>
-            <div class="total-tempo">
-              <p>17:53</p>
-            </div>
-            <di class="total-quantidade">
-              <p>11</p>
-            </di>
-          </div>
-        </footer>
-        <button type="submit" class="submit-button">Enviar</button>
-      </form>
-    </main>
-    <br/>
-    <div class="table-container">
+      </footer>
+      <button type="submit" class="submit-button">Enviar</button>
+    </form>
+  </main>
+  <br />
+  <div class="table-container">
     <table>
       <thead>
-          <tr>
-              <th>Manutencao</th>
-              <th>Tipos de Intervenção</th>
-              <th>Horas Trabalhadas</th>
-              <th>Data de Início</th>
-              <th>Data de Termíno</th>
-          </tr>
+        <tr>
+          <th>Manutencao</th>
+          <th>Tipos de Intervenção</th>
+          <th>Horas Trabalhadas</th>
+          <th>Data de Início</th>
+          <th>Data de Termíno</th>
+        </tr>
       </thead>
       <tbody>
-          <tr>
-              <td>982</td>
-              <td>Correntiva</td>
-              <td>6:30</td>
-              <td>08/07/2023</td>
-              <td>21/07/2023</td>
-          </tr>
-          <tr>
-              <td>983</td>
-              <td>Correntiva</td>
-              <td>7:28</td>
-              <td>09/07/2023</td>
-              <td>12/07/2023</td>
-          </tr>
-          <tr>
-              <td>984</td>
-              <td>Preventiva</td>
-              <td>5:35</td> 
-              <td>10/07/2023</td>
-              <td>24/07/2023</td>
-          </tr>
-          <tr>
-            <td>985</td>
-            <td>Correntiva</td>
-            <td>12:35</td>
-            <td>11/07/2023</td>
-            <td>04/07/2023</td>
-          </tr>
-          <tr>
-            <td>986</td>
-            <td>Preventiva</td>
-            <td>12:35</td>
-            <td>11/07/2023</td>
-            <td>04/07/2023</td>
-          </tr>
-          <tr>
-            <td>987</td>
-            <td>Correntiva</td>
-            <td>12:35</td>
-            <td>11/07/2023</td>
-            <td>04/07/2023</td>
-          </tr>
-          <tr>
-            <td>988</td>
-            <td>Preventiva</td>
-            <td>12:35</td>
-            <td>11/07/2023</td>
-            <td>04/07/2023</td>
-          </tr>
-          <tr>
-            <td>989</td>
-            <td>Correntiva</td>
-            <td>12:35</td>
-            <td>11/07/2023</td>
-            <td>04/07/2023</td>
-          </tr>
-          <tr>
-            <td>990</td>
-            <td>Preventiva</td>
-            <td>12:35</td>
-            <td>11/07/2023</td>
-            <td>04/07/2023</td>
-          </tr>
-          <tr>
-            <td>991</td>
-            <td>Correntiva</td>
-            <td>12:35</td>
-            <td>11/07/2023</td>
-            <td>04/07/2023</td>
-          </tr>
-          <tr>
-            <td>992</td>
-            <td>Preventiva</td>
-            <td>12:35</td>
-            <td>11/07/2023</td>
-            <td>04/07/2023</td>
-          </tr>
-          
-          
+        <tr>
+          <td>982</td>
+          <td>Correntiva</td>
+          <td>6:30</td>
+          <td>08/07/2023</td>
+          <td>21/07/2023</td>
+        </tr>
+        <tr>
+          <td>983</td>
+          <td>Correntiva</td>
+          <td>7:28</td>
+          <td>09/07/2023</td>
+          <td>12/07/2023</td>
+        </tr>
+        <tr>
+          <td>984</td>
+          <td>Preventiva</td>
+          <td>5:35</td>
+          <td>10/07/2023</td>
+          <td>24/07/2023</td>
+        </tr>
+        <tr>
+          <td>985</td>
+          <td>Correntiva</td>
+          <td>12:35</td>
+          <td>11/07/2023</td>
+          <td>04/07/2023</td>
+        </tr>
+        <tr>
+          <td>986</td>
+          <td>Preventiva</td>
+          <td>12:35</td>
+          <td>11/07/2023</td>
+          <td>04/07/2023</td>
+        </tr>
+        <tr>
+          <td>987</td>
+          <td>Correntiva</td>
+          <td>12:35</td>
+          <td>11/07/2023</td>
+          <td>04/07/2023</td>
+        </tr>
+        <tr>
+          <td>988</td>
+          <td>Preventiva</td>
+          <td>12:35</td>
+          <td>11/07/2023</td>
+          <td>04/07/2023</td>
+        </tr>
+        <tr>
+          <td>989</td>
+          <td>Correntiva</td>
+          <td>12:35</td>
+          <td>11/07/2023</td>
+          <td>04/07/2023</td>
+        </tr>
+        <tr>
+          <td>990</td>
+          <td>Preventiva</td>
+          <td>12:35</td>
+          <td>11/07/2023</td>
+          <td>04/07/2023</td>
+        </tr>
+        <tr>
+          <td>991</td>
+          <td>Correntiva</td>
+          <td>12:35</td>
+          <td>11/07/2023</td>
+          <td>04/07/2023</td>
+        </tr>
+        <tr>
+          <td>992</td>
+          <td>Preventiva</td>
+          <td>12:35</td>
+          <td>11/07/2023</td>
+          <td>04/07/2023</td>
+        </tr>
+
+
       </tbody>
-  </table>
-</div>
-<script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
-     <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
-     <script src="../Login_v1/firebase-init.js"></script>
-     <script src="../js/auth-guard.js"></script>
-     <script src="../js/logout.js"></script>
-     <script src="../js/script.js"></script>
-     <script src="../js/auth-guard.js"></script>
-  </body>
+    </table>
+  </div>
+  <script>
+    function mostrarUser() {
+      const userEmail = localStorage.getItem("userEmail");
+
+      // Insere o email no elemento HTML correspondente
+      document.getElementById("userEmail").innerHTML = userEmail;
+    }
+    mostrarUser()
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
+  <script src="../Login_v1/firebase-init.js"></script>
+  <script src="../js/auth-guard.js"></script>
+  <script src="../js/logout.js"></script>
+  <script src="../js/script.js"></script>
+  <script src="../js/auth-guard.js"></script>
+</body>
+
 </html>

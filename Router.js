@@ -5,6 +5,7 @@ const novoEquip = require('../Thermal-Tech/database/db');
 const novoSetor = require('../Thermal-Tech/database/db');
 const novoTec = require('../Thermal-Tech/database/db');
 const novoTipo = require('../Thermal-Tech/database/db');
+const novoUser = require('../Thermal-Tech/database/db');
 const novoChamado = require('../Thermal-Tech/database/db');
 const dados = require('../Thermal-Tech/database/db');
 const { error } = require("console");
@@ -47,7 +48,6 @@ router.get("/equipamentos", async function (req, res) {
             tabelaTipo = await db.query(sqlEquip);
             tabelaSetor = await db.query(sqlSetor);
             tabelaEquip = await db.query(sql); // Atribua o valor dentro da função
-            console.log(tabelaEquip.rows)
         }
 
         await listarEquipamentos(); // Espere até que a função listarDados seja concluída
@@ -74,8 +74,6 @@ router.get("/novo-chamado", async function (req, res) {
             tabelaSetor = await db.query(sqlSetor);
             tabelaEquip = await db.query(sql);
             numeroChamado = proximoChamado // Atribua o valor dentro da função
-            console.log(tabelaEquip.rows)
-            console.log(numeroChamado)
         }
 
         await listarEquipamentos(); // Espere até que a função listarDados seja concluída
@@ -137,6 +135,13 @@ router.post('/cadastro/tipo', function (req, res) {
         res.send("deu erro " + error)
     })
 })
+// router.post('/novoUsuario', function (req, res) {
+//     novoUser.insertUser(req.body.nome, req.body.email).then(function () {
+//         res.sendFile('../Login_v1/index.html')
+//     }).catch(function (error) {
+//         res.send("deu erro " + error)
+//     })
+// })
 router.get("/manutencao", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/pages/manut.html"))
 })
@@ -157,9 +162,6 @@ router.get("/graficos", function (req, res) {
 })
 router.get("/chat", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/pages/chat.html"))
-})
-router.get("/login", function (req, res) {
-    res.sendFile(path.join(__dirname, "./public/Login_v1/index.html"))
 })
 
 

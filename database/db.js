@@ -64,6 +64,14 @@ exports.insertChamado =  function(status, equipamento, descricao, prioridade, cr
     }
     return novoChamado(status, equipamento, descricao, prioridade, criado, datainicio, horainicio, descricaocha)
 }
+// exports.insertUser = function (nome,email) {
+//     async function novoUser(nome,email) {
+//         await db.connect()
+//         const inserir = ("insert into usuarios(nome, email) values ($1,$2)")
+//         await db.query(inserir, [nome,email])
+//     }
+//     return novoUser(nome,email)
+// }
  
 // exports.dados = function(){ 
 // async function listarDados() {

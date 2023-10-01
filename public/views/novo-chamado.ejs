@@ -70,7 +70,7 @@
                     </div>
                     <div class="info-header-order">
                         <label for="">Status</label>
-                        <input type="text" value="ABERTA" name="status">
+                        <input type="text" placeholder="ABERTA" name="status">
                         <br>
                         <label for="">Chamado</label>
                         <input type="number" value="<%= numeroChamado %>" name="chamado">
@@ -96,16 +96,19 @@
                     <select id="equipamento" name="tag">
                         <option value=""></option> <!-- Opção em branco -->
                         <% equipamentos.forEach(function(equipamento) { %>
-                            <option value="<%= equipamento.id_equip %>" data-localidade="<%= equipamento.localidade_listequip %>" data-setor="<%= equipamento.setor_listequip %>" data-descricao="<%= equipamento.descricao_listequip %>">
+                            <option value="<%= equipamento.id_equip %>"
+                                data-localidade="<%= equipamento.localidade_listequip %>"
+                                data-setor="<%= equipamento.setor_listequip %>"
+                                data-descricao="<%= equipamento.descricao_listequip %>">
                                 <%= equipamento.tag_listequip %>
                             </option>
-                        <% }); %>
-                    </select>
-                    
+                            <% }); %>
+                                </select>
+
                 </div>
                 <div class="info-header-order">
                     <label class="label-margin" for="">Localidade</label>
-                    <input type="text" value="Refeitório" class="data-chamado" id="localidade" name="localidade">
+                    <input type="text" class="data-chamado" id="localidade" name="localidade">
                 </div>
                 <div class="info-header-order">
                     <label for="" class="popup-label">Setor</label>
@@ -120,7 +123,7 @@
                 </div>
                 <div class="info-header-order">
                     <label class="label-margin for="">Descrição</label>
-                    <textarea type="text" id="descricao" style="width: 30%;"></textarea>
+                    <textarea type=" text" id="descricao" style="width: 30%;"></textarea>
                 </div>
             </div>
         </main>
@@ -148,7 +151,7 @@
                     <label for="">Criado por</label>
                     <input class="data-chamado" type="text" placeholder="Jean Victor Maciel dos Santos"
                         style="width: 320px;" name="criador">
-                    <input class="data-chamado" type="email" name="email" id="" style="width: 320px;"
+                    <input class="data-chamado" type="email" name="email" id="email" style="width: 320px;"
                         placeholder="ens-jeanvictor@ugv.edu.br">
                 </div>
                 <div style="padding-top: 5px;">
@@ -169,8 +172,8 @@
                 <input class="data-chamado" id="fileInput" type="file" style="display:none;">
             </div>
             <div class="descrição">
-                <textarea class="data-chamado" name="desc" id="" cols="30" rows="10"
-                    style="width: 100%;padding: 5px;" placeholder="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni exercitationem expedita assumenda repellendus,distinctio eaque neque consectetur iusto eligendi rerum cupiditate fugiat itaque sint illum facere quae explicabo fugit rem.Magni officiis, expedita a quasi quisquam non fugit facilis. Sit placeat reiciendis iusto odit deleniti facere sed non consequatur minus, nemo omnis dolorem quae vitae vel pariatur labore distinctio voluptas."></textarea>
+                <textarea class="data-chamado" name="desc" id="" cols="30" rows="10" style="width: 100%;padding: 5px;"
+                    placeholder="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni exercitationem expedita assumenda repellendus,distinctio eaque neque consectetur iusto eligendi rerum cupiditate fugiat itaque sint illum facere quae explicabo fugit rem.Magni officiis, expedita a quasi quisquam non fugit facilis. Sit placeat reiciendis iusto odit deleniti facere sed non consequatur minus, nemo omnis dolorem quae vitae vel pariatur labore distinctio voluptas."></textarea>
             </div>
         </main>
         </form>
@@ -197,21 +200,27 @@
 
         // Chame a função uma vez para configurar os valores iniciais
         atualizarDataHora();
-    </script>
-    <script>
-        document.getElementById("equipamento").addEventListener("change", function() {
+        document.getElementById("equipamento").addEventListener("change", function () {
             const selectedOption = this.options[this.selectedIndex];
             const localidade = selectedOption.getAttribute("data-localidade");
             const setor = selectedOption.getAttribute("data-setor");
             const descricao = selectedOption.getAttribute("data-descricao");
-    
+
             // Preencha os campos com os valores do equipamento selecionado
             document.getElementById("localidade").value = localidade;
             document.getElementById("setor").value = setor;
             document.getElementById("descricao").value = descricao;
         });
+        function mostrarUser() {
+            const userEmail = localStorage.getItem("userEmail");
+            const EmailCriador = document.getElementById("email")
+
+            // Insere o email no elemento HTML correspondente
+            document.getElementById("userEmail").innerHTML = userEmail;
+            EmailCriador.value = userEmail;
+        }
+        mostrarUser()
     </script>
-    
     <link rel="stylesheet" href="../css/@media1440.css">
     <link rel="stylesheet" href="../css/@media1200.css">
 </body>

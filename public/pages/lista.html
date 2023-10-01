@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,15 +13,19 @@
     <link rel="stylesheet" href="./css/@media1200.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <script src="https://kit.fontawesome.com/8ab443ffcb.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Overpass:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Overpass:wght@400;700&display=swap"
+        rel="stylesheet">
     <title>Lista de Equipamentos</title>
 </head>
+
 <body>
     <header>
         <div class="logo">
-           
+
             <h1><a href="./home.html">Thermal Tech</a></h1>
         </div>
         <nav>
@@ -37,12 +42,12 @@
         </nav>
         <div class="nav-right">
             <div>
-                <a href="#"  class="config"><img src="../assets/icon_config.png" alt=""></a> 
-                <a  href="#" class="sair" onclick="logout()"><img  src="../assets/icon_sair.png" alt=""></a>
+                <a href="#" class="config"><img src="../assets/icon_config.png" alt=""></a>
+                <a href="#" class="sair" onclick="logout()"><img src="../assets/icon_sair.png" alt=""></a>
             </div>
             <div>
                 <h4 id="userEmail"></h4>
-            </div>  
+            </div>
         </div>
     </header>
     <main>
@@ -50,10 +55,10 @@
         <section class="dados_manut">
             <div class="header_manut">
                 <div class="search_manut">
-                        <h4>Consultar Equipamentos</h4>
-                        <input type="text" placeholder="TAG do Equipamento">
-                        <button>Pesquisar</button>
-                        <button>Filtrar</button>
+                    <h4>Consultar Equipamentos</h4>
+                    <input type="text" placeholder="TAG do Equipamento">
+                    <button>Pesquisar</button>
+                    <button>Filtrar</button>
                 </div>
                 <div class="add_manut">
                     <div>
@@ -61,7 +66,7 @@
                     </div>
                     <div>
                         <img class="icon" src="../assets/ar_equip.png" alt=""><img src="" alt="">
-                    </div> 
+                    </div>
                 </div>
             </div>
         </section>
@@ -103,7 +108,7 @@
                             <td>U-123</td>
                             <td>Refeitório</td>
                             <td>Retirado suportes e trocado filtro</td>
-                            
+
                         </tr>
                         <tr>
                             <td>3</td>
@@ -115,7 +120,7 @@
                             <td>U-122</td>
                             <td>Central de alarmes</td>
                             <td>Retirado suportes e trocado filtro</td>
-                            
+
                         </tr>
                         <tr>
                             <td>4</td>
@@ -127,7 +132,7 @@
                             <td>U-132</td>
                             <td>Sala de comando</td>
                             <td>Retirado suportes e trocado filtro</td>
-                            
+
                         </tr>
                         <tr>
                             <td>5</td>
@@ -139,7 +144,7 @@
                             <td>U-145</td>
                             <td>Portaria</td>
                             <td>Retirado suportes e trocado filtro</td>
-                            
+
                         </tr>
                         <tr>
                             <td>6</td>
@@ -151,7 +156,7 @@
                             <td>U-144</td>
                             <td>Administrativo</td>
                             <td>Retirado suportes e trocado filtro</td>
-                            
+
                         </tr>
                         <tr>
                             <td>7</td>
@@ -306,67 +311,74 @@
             <div class="popup-title">Cadastrar Equipamento</div>
             <div class="popup-content">
                 <form action="/cadastro/equipamento" method="post">
-               <div class="popup-header">
-                 <div>
-                     <label for="" class="popup-label">TAG:</label>
-                     <input type="text" class="popup-input" id="tag" name="tag" placeholder="ACS-2101" required> 
-                 </div>
-                 <div>
-                     <label for="" class="popup-label">Tipo de Equipamento:</label>
-                         <select name="tipo" required>
-                             <option value=""></option>
-                             <option value="split">Split</option>
-                             <option value="self-chiler">Self-chiler</option>
-                             <option value="piso-teto">Piso-Teto</option>
-                         </select>
-                 </div>
-                 <div>
-                     <label for="" class="popup-label">Número de Série</label>
-                     <input type="text" class="popup-input" id="n/s" name="ns" placeholder="3928849328" required> 
-                 </div>
-               </div>
-               <div>
-                 <label for="" class="popup-label">Descrição do Equipamento</label> 
-                 <textarea name="desc" id="desc" cols="82" rows="3" required></textarea>
-             </div>  
-               <div class="popup-center">
-                 <div>
-                     <label for="" class="popup-label">Aréa Climatizada</label>
-                     <input type="number" name="area" id="" class="popup-input" required>
-                 </div>
-                 <div>
-                     <label for="" class="popup-label">Localidade</label>
-                     <input type="text" name="local" id="local" required>
-                 </div>
-                 <div>
-                 <div>
-                     <label for="" class="popup-label">Setor</label>
-                     <select id="setor"name="setor" >
-                        <option value=""></option>
-                        <option value="1">U-144</option>
-                        <option value="2">U-2110</option>
-                        <option value="3">U-2325</option>
-                    </select>
-                 </div>
-               </div>
-               <div>
-                <label for="" class="popup-label">Modelo</label>
-                <input type="number" name="modelo" id="modelo" class="popup-input" required>
-            </div> 
+                    <div class="popup-header">
+                        <div>
+                            <label for="" class="popup-label">TAG:</label>
+                            <input type="text" class="popup-input" id="tag" name="tag" placeholder="ACS-2101" required>
+                        </div>
+                        <div>
+                            <label for="" class="popup-label">Tipo de Equipamento:</label>
+                            <select name="tipo" required>
+                                <option value=""></option>
+                                <option value="split">Split</option>
+                                <option value="self-chiler">Self-chiler</option>
+                                <option value="piso-teto">Piso-Teto</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="" class="popup-label">Número de Série</label>
+                            <input type="text" class="popup-input" id="n/s" name="ns" placeholder="3928849328" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="" class="popup-label">Descrição do Equipamento</label>
+                        <textarea name="desc" id="desc" cols="82" rows="3" required></textarea>
+                    </div>
+                    <div class="popup-center">
+                        <div>
+                            <label for="" class="popup-label">Aréa Climatizada</label>
+                            <input type="number" name="area" id="" class="popup-input" required>
+                        </div>
+                        <div>
+                            <label for="" class="popup-label">Localidade</label>
+                            <input type="text" name="local" id="local" required>
+                        </div>
+                        <div>
+                            <div>
+                                <label for="" class="popup-label">Setor</label>
+                                <select id="setor" name="setor">
+                                    <option value=""></option>
+                                    <option value="1">U-144</option>
+                                    <option value="2">U-2110</option>
+                                    <option value="3">U-2325</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="" class="popup-label">Modelo</label>
+                            <input type="number" name="modelo" id="modelo" class="popup-input" required>
+                        </div>
+                    </div>
+                    <button class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
+                    <button class="popup-button cancelar" onclick="hidePopup()">Cancelar</button>
             </div>
-            <button class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
-            <button  class="popup-button cancelar" onclick="hidePopup()">Cancelar</button>
-        </div>
-    </form>
+            </form>
     </section>
     <script>
-         
+        function mostrarUser() {
+            const userEmail = localStorage.getItem("userEmail");
+
+            // Insere o email no elemento HTML correspondente
+            document.getElementById("userEmail").innerHTML = userEmail;
+        }
+        mostrarUser()
     </script>
-     <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
-     <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
-     <script src="../Login_v1/firebase-init.js"></script>
-     <script src="../js/auth-guard.js"></script>
-     <script src="../js/logout.js"></script>
-     <script src="../js/script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
+    <script src="../Login_v1/firebase-init.js"></script>
     <script src="../js/auth-guard.js"></script>
-</html> 
+    <script src="../js/logout.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/auth-guard.js"></script>
+
+</html>

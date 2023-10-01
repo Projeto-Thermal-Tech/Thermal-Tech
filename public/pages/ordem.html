@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../css/criar-chamado.css">
     <title>Ordem</title>
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -107,7 +108,7 @@
                 </div>
             </div>
         </main>
-        <main class="responsabilidades section_chamado display_none" >
+        <main class="responsabilidades section_chamado display_none">
             <div class="title">
                 <h3>Responsabilidades</h3>
             </div>
@@ -138,7 +139,7 @@
                 </div>
             </div>
         </main>
-        <main class="objetivo section_chamado display_none" >
+        <main class="objetivo section_chamado display_none">
             <div class="title">
                 <h3>Objetivo</h3>
             </div>
@@ -153,14 +154,14 @@
             </div>
         </main>
         <section class="section_order">
-            <main  style="width: 60%;">
+            <main style="width: 60%;">
                 <div class="info-header-order">
                     <div class="title">
                         <h3>Responsabilidades</h3>
                     </div>
                     <div>
                         <label for="">Criado por</label>
-                        <input class="data-chamado" type="text"  value="Victor Luis Cardoso Bueno" style="width: 320px;">
+                        <input class="data-chamado" type="text" value="Victor Luis Cardoso Bueno" style="width: 320px;">
                     </div>
                 </div>
             </main>
@@ -188,7 +189,7 @@
                 </div>
             </main>
             <main style="width: 60%;">
-                <div class="info-header-order" >
+                <div class="info-header-order">
                     <div class="title">
                         <h3>Confirmações</h3>
                     </div>
@@ -217,7 +218,7 @@
                 <div class="title">
                     <h3>Dados total Confirmações</h3>
                 </div>
-                <div class="info-header-order" >
+                <div class="info-header-order">
                     <label for="">Dias acumulado</label>
                     <input type="number" style="width: 40px;" value="2">
                     <input type="text" style="width: 40px;" value="DIA">
@@ -231,14 +232,23 @@
                         <input type="checkbox">
                     </div>
                 </div>
-                
+
             </main>
         </section>
-        
+
 
 
 
     </section>
+    <script>
+        function mostrarUser() {
+            const userEmail = localStorage.getItem("userEmail");
+
+            // Insere o email no elemento HTML correspondente
+            document.getElementById("userEmail").innerHTML = userEmail;
+        }
+        mostrarUser()
+    </script>
     <script src="../Login_v1/firebase-init.js"></script>
     <script src="../js/auth-guard.js"></script>
     <script src="../js/logout.js"></script>

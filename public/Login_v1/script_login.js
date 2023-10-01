@@ -29,6 +29,9 @@ function newCont() {
   window.location.href = "./criar.html";
 }
 
+// Após a autenticação bem-sucedida, obtenha o UID do usuário
+
+
 // function register() {
 //     showLoading();
 //     let email = document.getElementById("email").value;
@@ -80,19 +83,6 @@ function register() {
       });
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function recoverPassword(){
     let email = document.getElementById("email").value;

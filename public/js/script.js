@@ -8,13 +8,10 @@ btn_config.addEventListener("click", () => {
     alert("aqui vai abrir as configurações")
 })
 
-document.addEventListener("DOMContentLoaded", function() {
-  // Recupera o email armazenado no localStorage
-  var userEmail = localStorage.getItem("userEmail");
 
-  // Insere o email no elemento HTML correspondente
-  document.getElementById("userEmail").textContent = userEmail;
-});
+  // Recupera o email armazenado no localStorage
+
+  
 
 
 // functions
@@ -55,41 +52,6 @@ function showElements() {
 
 function deletar(){
   confirm("Tem certeza que deseja excluir o chamado?")
-
-
-  // Função para gerar o PDF
-  function generatePDF() {
-    // Capturar a área específica da página que você deseja incluir no PDF.
-    // Neste exemplo, iremos capturar todo o corpo da página, mas você pode ajustar
-    // o seletor CSS para capturar apenas a área desejada.
-    const element = document.body;
-
-    // Opções de configuração do html2canvas
-    const options = {
-      scale: 2, // Aumentar a escala para melhor qualidade de imagem (opcional)
-      useCORS: true // Permitir o uso de recursos externos (opcional)
-    };
-
-    // Capturar a imagem da página usando o html2canvas
-    html2canvas(element, options).then(canvas => {
-      // Obter os dados da imagem do canvas
-      const imgData = canvas.toDataURL("image/png");
-
-      // Configurar o tamanho do PDF para corresponder à imagem capturada
-      const pdf = new jsPDF({
-        orientation: "portrait",
-        unit: "px",
-        format: "a4"
-      });
-
-      // Adicionar a imagem ao PDF
-      pdf.addImage(imgData, "PNG", 0, 0);
-
-      // Salvar o PDF (neste exemplo, o nome do arquivo será "pagina.pdf")
-      pdf.save("pagina.pdf");
-    });
-  }
-
   // Vincular o botão ao evento de clique
   document.getElementById("btnGeneratePDF").addEventListener("click", generatePDF);
  }

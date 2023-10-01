@@ -21,7 +21,7 @@
 <body>
     <header>
         <div class="logo">
-            
+
             <h1><a href="./home.html">Thermal Tech</a></h1>
         </div>
         <nav>
@@ -38,12 +38,12 @@
         </nav>
         <div class="nav-right">
             <div>
-                <a href="#"  class="config"><img src="../assets/icon_config.png" alt=""></a> 
-                <a  href="#" class="sair" onclick="logout()"><img  src="../assets/icon_sair.png" alt=""></a>
+                <a href="#" class="config"><img src="../assets/icon_config.png" alt=""></a>
+                <a href="#" class="sair" onclick="logout()"><img src="../assets/icon_sair.png" alt=""></a>
             </div>
             <div>
                 <h4 id="userEmail"></h4>
-            </div>  
+            </div>
         </div>
     </header>
     <section>
@@ -145,7 +145,7 @@
 
 
 
-                        
+
                     </label>
                     <input type=" text" value="U-144" class="data-chamado">
                 </div>
@@ -165,17 +165,17 @@
                 <h3>Responsabilidades</h3>
             </div>
             <div class="tecs info-header-order">
-                
-                    <Label>Prioridade</Label>
-                    <div class="prioridade">   
-                        Baixa
+
+                <Label>Prioridade</Label>
+                <div class="prioridade">
+                    Baixa
                     <input class="data-chamado" type="radio" class="radio-button__input" id="radio3" name="prioridade">
                     Média
                     <input class="data-chamado" type="radio" class="radio-button__input" id="radio3" name="prioridade">
                     Alta
                     <input class="data-chamado" type="radio" class="radio-button__input" id="radio3" name="prioridade">
-                
-                    </div>
+
+                </div>
             </div>
             <div class="user info-header-order">
                 <div>
@@ -207,6 +207,15 @@
         </main>
 
     </section>
+    <script>
+        function mostrarUser() {
+            const userEmail = localStorage.getItem("userEmail");
+
+            // Insere o email no elemento HTML correspondente
+            document.getElementById("userEmail").innerHTML = userEmail;
+        }
+        mostrarUser()
+    </script>
     <script src="../js/script.js"></script>
     <link rel="stylesheet" href="../css/@media1440.css">
     <link rel="stylesheet" href="../css/@media1200.css">
