@@ -16,7 +16,7 @@ router.use(express.static(path.join(__dirname, "/public")));
 router.get("/cadastro", async function (req, res) {
     try {
         let tabelaSetor;
-        let tabelaTec; 
+        let tabelaTec;
         let tabelaEquip;  // Declare a variável fora da função
 
         async function listarDados() {
@@ -31,7 +31,7 @@ router.get("/cadastro", async function (req, res) {
 
         await listarDados(); // Espere até que a função listarDados seja concluída
 
-        res.render('cadastro', { setores: tabelaSetor.rows,tipo:tabelaEquip.rows, tecnicos:tabelaTec.rows}); // Agora a variável tabela está acessível aqui
+        res.render('cadastro', { setores: tabelaSetor.rows, tipo: tabelaEquip.rows, tecnicos: tabelaTec.rows }); // Agora a variável tabela está acessível aqui
     } catch (error) {
         res.status(500).send("Erro ao buscar os dados da tabela setor: " + error.message);
     }
@@ -52,7 +52,7 @@ router.get("/equipamentos", async function (req, res) {
 
         await listarEquipamentos(); // Espere até que a função listarDados seja concluída
 
-        res.render('listaEquip', { equipamentos: tabelaEquip.rows, setores:tabelaSetor.rows, tipo:tabelaTipo.rows}); // Agora a variável tabela está acessível aqui
+        res.render('listaEquip', { equipamentos: tabelaEquip.rows, setores: tabelaSetor.rows, tipo: tabelaTipo.rows }); // Agora a variável tabela está acessível aqui
     } catch (error) {
         res.status(500).send("Erro ao buscar os dados: " + error.message);
     }
@@ -65,15 +65,22 @@ router.get("/novo-chamado", async function (req, res) {
             const sql = "SELECT lista_equipamentos.*, setor.nome_setor FROM lista_equipamentos INNER JOIN setor ON lista_equipamentos.setor_listequip = setor.id_setor;";
             const sqlSetor = "select * from setor";
             const sqlEquip = "select * from tipos_arcondicionado";
+            const result = await db.query('SELECT MAX(id_chamado) FROM chamado');
+            const ultimoChamado = result.rows[0].max || 0;
+
+            // Incremente o número do chamado
+            const proximoChamado = ultimoChamado + 1;
             tabelaTipo = await db.query(sqlEquip);
             tabelaSetor = await db.query(sqlSetor);
-            tabelaEquip = await db.query(sql); // Atribua o valor dentro da função
+            tabelaEquip = await db.query(sql);
+            numeroChamado = proximoChamado // Atribua o valor dentro da função
             console.log(tabelaEquip.rows)
+            console.log(numeroChamado)
         }
 
         await listarEquipamentos(); // Espere até que a função listarDados seja concluída
 
-        res.render('novo-chamado', { equipamentos: tabelaEquip.rows, setores:tabelaSetor.rows, tipo:tabelaTipo.rows}); // Agora a variável tabela está acessível aqui
+        res.render('novo-chamado', { equipamentos: tabelaEquip.rows, setores: tabelaSetor.rows, tipo: tabelaTipo.rows, numeroChamado }); // Agora a variável tabela está acessível aqui
     } catch (error) {
         res.status(500).send("Erro ao buscar os dados: " + error.message);
     }
@@ -107,7 +114,7 @@ router.post('/cadastro/setor', function (req, res) {
     })
 })
 router.post('/cadastro/chamado', function (req, res) {
-    novoChamado.insertChamado(req.body.status,req.body.tag,req.body.titleDesc,req.body.prioridade, req.body.criador,req.body.dataChamado, req.body.horaChamado,req.body.desc).then(function () {
+    novoChamado.insertChamado(req.body.status, req.body.tag, req.body.titleDesc, req.body.prioridade, req.body.criador, req.body.dataChamado, req.body.horaChamado, req.body.desc).then(function () {
         res.redirect('/novo-chamado')
     }).catch(function (error) {
         res.send("deu erro " + error)

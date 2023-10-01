@@ -129,7 +129,7 @@
                     <select name="tipo" required>
                         <option value=""></option> <!-- Opção em branco -->
                         <% tipo.forEach(function(tipo) { %>
-                            <option value="<%= tipo.id_tipar %>"><%= tipo.tipos_arcondicionado_tipar %></option>
+                            <option  value="<%= tipo.id_tipar %>"><%= tipo.tipos_arcondicionado_tipar %></option>
                         <% }); %>
                     </select>
                 </div>
@@ -158,7 +158,7 @@
                         <select id="setor" name="setor" required>
                             <option value=""></option> <!-- Opção em branco -->
                             <% setores.forEach(function(setor) { %>
-                                <option value="<%= setor.id_setor %>"><%= setor.nome_setor %></option>
+                                <option required value="<%= setor.id_setor %>"><%= setor.nome_setor %></option>
                             <% }); %>
                         </select>
                     </div>
@@ -168,7 +168,7 @@
                 <input type="number" name="modelo" id="modelo" class="popup-input" required>
             </div> 
             </div>
-            <button class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
+            <button class="popup-button salvar" onclick="saveEquipment()" >Salvar</button>
             <button  class="popup-button cancelar" onclick="hidePopup()">Cancelar</button>
         </div>
     </form>

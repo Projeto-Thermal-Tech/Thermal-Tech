@@ -43,23 +43,44 @@ function newCont() {
 //   }
 
 function register() {
-    showLoading();
-    let email = document.getElementById("email").value;
-    let password = document.getElementById("password").value;
-    var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
-    if (!passwordRegex.test(password)) {
-      alert('Senha fraca! A senha deve ter pelo menos 8 caracteres, uma letra maiúscula, uma letra minúscula e um número.');
-  } else{
-    firebase.auth().createUserWithEmailAndPassword(email,password).then(()=>{
-      hideloading()
-      window.location.href ='../pages/home.html'
-  }).catch(error =>{
-      hideloading()
-      alert(error)
-  })
-  }
+  showLoading();
+  let email = document.getElementById("email").value;
+  let password = document.getElementById("password").value;
+  let fullName = document.getElementById("fullName").value; // Adicione um campo para o nome completo no seu formulário
+  var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
 
+  if (!passwordRegex.test(password)) {
+    alert('Senha fraca! A senha deve ter pelo menos 8 caracteres, uma letra maiúscula, uma letra minúscula e um número.');
+  } else {
+    // Crie um objeto com as informações do usuário, incluindo o nome completo
+    let user = {
+      email: email,
+      password: password,
+      displayName: fullName // Adicione o nome completo ao displayName
+    };
+
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        // Atualize o nome completo do usuário
+        userCredential.user.updateProfile({
+          displayName: fullName
+        })
+        .then(() => {
+          hideloading();
+          window.location.href = '../pages/home.html';
+        })
+        .catch((error) => {
+          hideloading();
+          alert(error);
+        });
+      })
+      .catch((error) => {
+        hideloading();
+        alert(error);
+      });
+  }
 }
+
 
 
 

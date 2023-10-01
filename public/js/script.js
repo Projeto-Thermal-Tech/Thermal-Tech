@@ -32,8 +32,6 @@ function hidePopup() {
 
 function saveEquipment() {
   var tag = document.getElementById("tag").value;
-  var local = document.getElementById("local").value
-  var desc = document.getElementById("desc").value
   alert("O equipamento " + tag + " foi cadastrado com sucesso!");
   hidePopup();
 }
@@ -53,6 +51,7 @@ function showElements() {
   var elements = document.querySelector('.section_order').classList.add("display_none");
   
 }
+
 
 function deletar(){
   confirm("Tem certeza que deseja excluir o chamado?")
@@ -118,5 +117,6 @@ function deletarChamado(){
   }
   
 }
+
 
 
