@@ -2,7 +2,7 @@
 // Add this code to the login page JavaScript file
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
-      window.location.href = "../pages/home.html";
+    window.location.href = "../pages/home.html";
   }
 })
 
@@ -18,12 +18,12 @@ function signIn() {
   localStorage.setItem("userEmail", email);
 
   firebase.auth().signInWithEmailAndPassword(email, password).then((response) => {
-      hideloading();
-      window.location.href = "http://localhost:5000/inicio";
-    }).catch((error) => {
-      hideloading();
-      alert("Usuario não encontrado");
-    });
+    hideloading();
+    window.location.href = "http://localhost:5000/inicio";
+  }).catch((error) => {
+    hideloading();
+    alert("Usuario não encontrado");
+  });
 }
 function newCont() {
   window.location.href = "./criar.html";
@@ -56,44 +56,27 @@ function register() {
     alert('Senha fraca! A senha deve ter pelo menos 8 caracteres, uma letra maiúscula, uma letra minúscula e um número.');
   } else {
     // Crie um objeto com as informações do usuário, incluindo o nome completo
-    let user = {
-      email: email,
-      password: password,
-      displayName: fullName // Adicione o nome completo ao displayName
-    };
-
     firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        // Atualize o nome completo do usuário
-        userCredential.user.updateProfile({
-          displayName: fullName
-        })
-        .then(() => {
-          hideloading();
-          window.location.href = '../pages/home.html';
-        })
-        .catch((error) => {
-          hideloading();
-          alert(error);
-        });
-      })
-      .catch((error) => {
+      .then(() => {
         hideloading();
-        alert(error);
-      });
-  }
+        window.location.href = '../pages/home.html';
+      }).catch ((error) => {
+    hideloading();
+    alert(error);
+  });
+}
 }
 
-function recoverPassword(){
-    let email = document.getElementById("email").value;
-    showLoading()
-    firebase.auth().sendPasswordResetEmail(email).then(()=>{
-        hideloading()
-        alert("email enviado com sucesso")
-    }).catch(error =>{
-        hideloading();
-        alert("email não encontrado")
-    })
+function recoverPassword() {
+  let email = document.getElementById("email").value;
+  showLoading()
+  firebase.auth().sendPasswordResetEmail(email).then(() => {
+    hideloading()
+    alert("email enviado com sucesso")
+  }).catch(error => {
+    hideloading();
+    alert("email não encontrado")
+  })
 
 }
 

@@ -29,8 +29,7 @@
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="images/logo2.png" alt="IMG">
 				</div>
-
-				<form class="login100-form validate-form">
+				<form action="http://localhost:5000/novoUsuario" method="post" class="login100-form validate-form">
 					<span class="login100-form-title">
 						Criar conta
 					</span>
@@ -66,7 +65,8 @@
 					</div>
 					
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" id="login-btn" type="button" onclick="register()">
+						<!-- <button class="login100-form-btn" id="login-btn" type="button" onclick="register()"> -->
+						<button class="login100-form-btn" id="login-btn" type="submit" onclick="register()">
 							Cadastrar
 						</button>
 					</div>

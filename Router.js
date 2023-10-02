@@ -135,13 +135,14 @@ router.post('/cadastro/tipo', function (req, res) {
         res.send("deu erro " + error)
     })
 })
-// router.post('/novoUsuario', function (req, res) {
-//     novoUser.insertUser(req.body.nome, req.body.email).then(function () {
-//         res.sendFile('../Login_v1/index.html')
-//     }).catch(function (error) {
-//         res.send("deu erro " + error)
-//     })
-// })
+router.post('/novoUsuario', function (req, res) {
+    novoUser.insertUser(req.body.nome, req.body.email).then(function () {
+        res.sendFile(path.join(__dirname, "./public/pages/manut.html"))
+    }).catch(function (error) {
+        res.send("deu erro " + error)
+    })
+})
+
 router.get("/manutencao", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/pages/manut.html"))
 })
