@@ -54,7 +54,10 @@
                         <input type="text" id="tagInput" placeholder="TAG do Equipamento">
                         <button onclick="filtrarPorTag()">Pesquisar</button>
                         <button onclick="limparFiltro()" style="display: none;">Voltar</button>
-                        <button>Filtrar</button>
+                        <button id="filtro" onclick="Salvarequipamento()">Filtrar</button>
+
+
+
                          
 
 
@@ -91,7 +94,7 @@
                             <tr>
                                 <td><%= i + 1 %></td>
                                 <td><%= equipamentos[i].tag_listequip %></td>
-                                <td><%= equipamentos[i].tipo_listequip %></td>
+                                <td><%= equipamentos[i].tipos_arcondicionado_tipar %></td>
                                 <td><%= equipamentos[i].modelo_listequip %></td>
                                 <td><%= equipamentos[i].numero_serie_listequip %></td>
                                 <td><%= equipamentos[i].area_cli_listequip %></td>
@@ -173,6 +176,53 @@
         </div>
     </form>
     </section>
+    <section class="overlayfiltro">
+    <div class="popoufiltro" id="popoufiltro">
+        <div class="popup-titulo-filtro">Filtrar equipamentos</div>
+        <div class="popou-content-filtro">
+            <div class="popup-header-filtro">
+
+                    <div>
+                        <label for="" class="popou-label-filtro">Tag:</label>
+                        <input type="text" class="popou-label-filtro" id="Tag" placeholder="Tag">
+                    </div>
+                    <div>
+                        <label for="" class="popou-label-filtro">Tipo</label>
+                        <input type="text" class="popou-label-filtro" id="Tipo" placeholder="Tipo">
+                    </div>
+                    <div>
+                        <label for="" class="popou-label-filtro">Modelo</label>
+                        <input type="text" class="popou-label-filtro" id="Modelo" placeholder="Modelo">
+                    </div>
+                    <div>
+                        <label for="" class="popou-label-filtro">Número de Série</label>
+                        <input type="number" class="popou-label-filtro" id="Número_Série" placeholder="Número de Série">
+                    </div>
+                    <div>
+                        <label for="" class="popou-label-filtro">Área Climatizada</label>
+                        <input type="text" class="popou-label-filtro" id="Área_Climatizada" placeholder="Área Climatizada">
+                    </div>
+                    <div>
+                        <label for="" class="popou-label-filtro">Localidade</label>
+                        <input type="text" class="popou-label-filtro" id="Localidade" placeholder="Localidade">
+                    </div>
+                    <div>
+                        <label for="" class="popou-label-filtro">Setor</label>
+                        <input type="text" class="popou-label-filtro" id="Setor" placeholder="Setor">
+                    </div>
+                    <div>
+                        <label for="" class="popou-label-filtro">Descrição</label>
+                        <input type="text" class="popou-label-filtro" id="Descrição" placeholder="Descrição">
+                    </div>
+                    <div>
+                        <button class="popup-button salvarfiltro" onclick="Salvarequipamento()">Filtrar</button>
+                        <button class="popup-button cancelarfiltro" onclick="Esconderpopou()">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
     <script>
         function mostrarUser(){
   const userEmail = localStorage.getItem("userEmail");
@@ -201,7 +251,7 @@ function filtrarPorTag() {
     colunaTag = linhas[i].getElementsByTagName("td")[1]; // Segunda coluna (índice 1) contém a TAG
     if (colunaTag) {
       textoTag = colunaTag.textContent || colunaTag.innerText;
-      if (textoTag.toUpperCase().indexOf(filtro) > -1) {
+      if (textoTag.toUpperCase() === filtro) { // Modificado aqui
         linhas[i].style.display = "";
         tagEncontrada = true; // A tag foi encontrada
       } else {
@@ -224,7 +274,6 @@ function filtrarPorTag() {
     botaoLimparFiltro.style.display = "inline-block";
   }
 }
-
 function limparFiltro() {
   var tabela, linhas, i;
 
@@ -245,6 +294,15 @@ function limparFiltro() {
 }
 
 
+function Salvarequipamento() {
+  document.getElementById("popoufiltro").style.display = "block";
+  document.querySelector(".overlayfiltro").style.display = "block";
+}
+function Esconderpopou() {
+  document.getElementById("popoufiltro").style.display = "none";
+  document.querySelector(".overlayfiltro").style.display = "none";
+
+}
 
 
     </script>

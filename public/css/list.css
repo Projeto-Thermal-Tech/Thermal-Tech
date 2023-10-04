@@ -288,6 +288,14 @@ a{
     border: 1px solid gray;
     margin-bottom: 20px;
 }
+
+    /* Estilo para o textarea */
+    #desc {
+        width: 100%; /* Defina a largura desejada aqui */
+        resize: none; /* Impede o redimensionamento horizontal */
+    }
+
+
 .popup-header{
     display: flex;
     justify-content: space-between;
@@ -337,3 +345,172 @@ textarea{
 .popup-button:hover {
     background-color: #000000;
 }
+
+
+.overlayfiltro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    display: none;
+}
+
+.popoufiltro {
+    position: fixed;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    width: 850px;
+    height: 860px;
+    background-color: white;
+    z-index: 2;
+    display: none;
+    border-radius: 10px;
+}
+
+.popup-titulo-filtro {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    background-color:#0080F5;
+    border-radius: 10px;
+    height: 10%;
+    padding: 10px;
+    color: aliceblue;
+}
+
+.popou-content-filtro {
+    margin: 20px;
+    border: 1px solid black;
+    background-color: #0080F5;
+    border-radius: 10px;
+    padding: 5px;
+}
+.popup-input-filtro, #Tag {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+  }
+  .popup-input-filtro, #Tipo {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+  }
+  .popup-input-filtro, #Modelo {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+  }
+  .popup-input-filtro, #Número_Série {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+  }
+ 
+  .popup-input-filtro, #Área_Climatizada {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+  }
+  .popup-input-filtro, #Localidade {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+  }
+  .popup-input-filtro, #Setor {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+  }
+  .popup-input-filtro, #Descrição {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+  }
+.popou-label-filtro {
+    width: 100%;
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.popup-input-filtro {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+  }
+textarea{
+    border-radius: 5px;
+    display: block;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+  }
+.popup-buttons {
+    text-align: center;
+  }
+.popup-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.salvarfiltro {
+    background-color: green;
+}
+
+.cancelarfiltro {
+    background-color: red;
+}
+.popup-button:hover {
+    background-color: darkblue;
+  }
