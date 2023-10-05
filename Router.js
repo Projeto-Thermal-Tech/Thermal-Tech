@@ -37,6 +37,16 @@ router.get("/cadastro", async function (req, res) {
         res.status(500).send("Erro ao buscar os dados da tabela setor: " + error.message);
     }
 });
+router.get("/chamado", async (req, res) => {
+    try {
+      const chamado = await selectChamado(); // Consulta os chamados no banco de dados
+      res.render('chamado.ejs', { chamado: chamado });
+    } catch (error) {
+      console.error('Erro ao buscar chamado:', error);
+      res.status(500).send('Erro ao buscar chamado');
+    }
+});
+
 router.get("/equipamentos", async function (req, res) {
     try {
         let equipamentos;
@@ -83,7 +93,6 @@ router.get("/novo-chamado", async function (req, res) {
         res.status(500).send("Erro ao buscar os dados: " + error.message);
     }
 });
-
 
 
 router.get("/inicio", function (req, res) {

@@ -72,6 +72,21 @@ exports.insertUser = function (nome,email) {
     }
     return novoUser(nome,email)
 }
+exports.selectChamado = async function() {
+    try {
+      await db.connect();
+      const query = 'SELECT id_chamado, prioridade_cha, descri_cha, status_cha, criado_por_cha, data_ini_cha FROM chamado';
+      const result = await db.query(query);
+      return result.rows;
+    } catch (error) {
+      console.error('Erro ao executar a consulta SELECT:', error);
+      throw error;
+    } finally {
+      await db.end();
+    }
+};
+
+
  
 // exports.dados = function(){ 
 // async function listarDados() {
