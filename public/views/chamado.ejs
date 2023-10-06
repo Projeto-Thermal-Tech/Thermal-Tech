@@ -88,6 +88,7 @@
       <table id="filtro_cham">
         <thead>
           <tr>
+            <th></th>
             <th>Nº Chamado</th>
             <th>Status</th>
             <th>Descrição</th>
@@ -97,16 +98,26 @@
           </tr>
         </thead>
         <tbody>
-          <% for (let i = 0; i < chamado.length; i++) { %>
+          <% 
+          function formatarData(data) {
+            const dataObj = new Date(data);
+            const dia = dataObj.getDate().toString().padStart(2, '0');
+            const mes = (dataObj.getMonth() + 1).toString().padStart(2, '0'); // Mês começa em 0
+            const ano = dataObj.getFullYear().toString();
+            return `${dia}/${mes}/${ano}`;
+          }
+          
+          for (let i = 0; i < chamados.length; i++) { %>
             <tr>
-              <td><%= chamado[i].id_chamado %></td>
-              <td><%= chamado[i].status_cha %></td>
-              <td><%= chamado[i].descri_cha %></td>
-              <td><%= chamado[i].prioridade_cha %></td>
-              <td><%= chamado[i].criado_por_cha %></td>
-              <td><%= chamado[i].data_ini_cha %></td>
+              <td><button class="visualizar">Visualizar</button></td>
+              <td><%= chamados[i].id_chamado %></td>
+              <td><%= chamados[i].nome_status %></td>
+              <td><%= chamados[i].descri_cha %></td>
+              <td><%= chamados[i].prioridade_cha %></td>
+              <td><%= chamados[i].criado_por_cha %></td>
+              <td><%= formatarData(chamados[i].data_ini_cha) %></td>
             </tr>
-          <% }; %>
+          <% }; %>          
         </tbody>
       </table>
     </div>

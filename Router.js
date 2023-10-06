@@ -37,13 +37,18 @@ router.get("/cadastro", async function (req, res) {
         res.status(500).send("Erro ao buscar os dados da tabela setor: " + error.message);
     }
 });
-router.get("/chamado", async (req, res) => {
+router.get("/chamado", async function (req, res) {
     try {
-      const chamado = await selectChamado(); // Consulta os chamados no banco de dados
-      res.render('chamado.ejs', { chamado: chamado });
+        async function listarchamados() {
+            const sql = "SELECT chamado.*, status.nome_status FROM chamado INNER JOIN status ON chamado.status_cha = status.id_status";
+            chamados = await db.query(sql)
+        }
+        await listarchamados(); // Espere até que a função listarDados seja concluída
+        
+
+        res.render('chamado', {chamados:chamados.rows }); // Agora a variável tabela está acessível aqui
     } catch (error) {
-      console.error('Erro ao buscar chamado:', error);
-      res.status(500).send('Erro ao buscar chamado');
+        res.status(500).send("Erro ao buscar os dados: " + error.message);
     }
 });
 
@@ -59,7 +64,6 @@ router.get("/equipamentos", async function (req, res) {
             tabelaSetor = await db.query(sqlSetor);
             tabelaEquip = await db.query(sql); // Atribua o valor dentro da função
         }
-
         await listarEquipamentos(); // Espere até que a função listarDados seja concluída
 
         res.render('listaEquip', { equipamentos: tabelaEquip.rows, setores: tabelaSetor.rows, tipo: tabelaTipo.rows }); // Agora a variável tabela está acessível aqui
