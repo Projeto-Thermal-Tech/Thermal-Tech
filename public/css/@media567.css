@@ -6,6 +6,7 @@
         border-radius: 5px;
     
     }
+
     label{
         font-size: 14px;
     }
@@ -31,3 +32,54 @@
     }
     
   }
+
+  /* Estilos padrão para todas as telas */
+  h2 {
+    font-size: 24px;
+}
+
+.header_cham {
+    flex-direction: column; /* Ajuste para uma exibição mais limpa em telas menores */
+    width: 100%;
+}
+.dados_cham {
+    width: 100%;
+    padding: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 2%;
+}
+
+.add_cham {
+    align-items: center;
+    margin-right: 7%;
+}
+
+.add_cham img {
+    margin-right: 1px; /* Remova o espaçamento à direita para acomodar o layout de coluna */
+    margin-bottom: 1px; /* Adicione algum espaçamento abaixo da imagem */
+}
+
+.num,
+#esta,
+.situ {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.num_cham button{
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+.filtro button{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Ajustes para os selects e labels */
+select,
+label {
+    width: 100%;
+    margin-bottom: 10px;
+}

@@ -149,6 +149,9 @@ router.get("/manutencao", function (req, res) {
 router.get("/ordem", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/pages/ordem.html"))
 })
+router.get("/consulta_ordem", function (req, res) {
+    res.sendFile(path.join(__dirname, "./public/pages/consulta-ordem.html"))
+})
 router.get("/chamados", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/pages/chamado.html"))
 })
