@@ -150,7 +150,7 @@
                 <div>
                     <label for="">Criado por</label>
                     <input class="data-chamado" type="text" placeholder="Jean Victor Maciel dos Santos"
-                        style="width: 320px;" name="criador">
+                        style="width: 320px;" name="criador" value="<%= nome %>">
                     <input class="data-chamado" type="email" name="email" id="email" style="width: 320px;"
                         placeholder="ens-jeanvictor@ugv.edu.br">
                 </div>
@@ -223,7 +223,7 @@ atualizarDataHora();
             document.getElementById("userEmail").innerHTML = userEmail;
             EmailCriador.value = userEmail;
         }
-        mostrarUser()
+        mostrarUser()    
     </script>
     <link rel="stylesheet" href="../css/@media1440.css">
     <link rel="stylesheet" href="../css/@media1200.css">

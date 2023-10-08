@@ -9,7 +9,9 @@ const novoUser = require('../Thermal-Tech/database/db');
 const novoChamado = require('../Thermal-Tech/database/db');
 const dados = require('../Thermal-Tech/database/db');
 const { error } = require("console");
-const db = require("./database/cnx")
+const db = require("./database/cnx");
+const { email } = require('../Thermal-Tech/public/js/config');
+
 
 router.use(express.static(path.join(__dirname, "/public")));
 
@@ -71,28 +73,56 @@ router.get("/equipamentos", async function (req, res) {
         res.status(500).send("Erro ao buscar os dados: " + error.message);
     }
 });
+
 router.get("/novo-chamado", async function (req, res) {
     try {
         let equipamentos;
 
-        async function listarEquipamentos() {
+        async function listarchamados() {
             const sql = "SELECT lista_equipamentos.*, setor.nome_setor FROM lista_equipamentos INNER JOIN setor ON lista_equipamentos.setor_listequip = setor.id_setor;";
             const sqlSetor = "select * from setor";
             const sqlEquip = "select * from tipos_arcondicionado";
+            const sqlUsuarios = "SELECT * FROM usuarios";
             const result = await db.query('SELECT MAX(id_chamado) FROM chamado');
             const ultimoChamado = result.rows[0].max || 0;
 
             // Incremente o número do chamado
             const proximoChamado = ultimoChamado + 1;
             tabelaTipo = await db.query(sqlEquip);
+            tabelaUser = await db.query(sqlUsuarios);
             tabelaSetor = await db.query(sqlSetor);
             tabelaEquip = await db.query(sql);
             numeroChamado = proximoChamado // Atribua o valor dentro da função
         }
 
-        await listarEquipamentos(); // Espere até que a função listarDados seja concluída
+        await listarchamados();
+         // Suponha que você tenha uma configuração para o banco de dados
 
-        res.render('novo-chamado', { equipamentos: tabelaEquip.rows, setores: tabelaSetor.rows, tipo: tabelaTipo.rows, numeroChamado }); // Agora a variável tabela está acessível aqui
+        // Função para buscar o nome com base no email
+        async function buscarNomePorEmail(email) {
+            try {
+                const result = await db.query('SELECT nome FROM usuarios WHERE email = $1', [email]);
+                if (result.rows.length > 0) {
+                    return result.rows[0].nome; // Retorna o nome se o email for encontrado
+                } else {
+                    return null; // Retorna null se o email não for encontrado
+                }
+            } catch (error) {
+                throw error;
+            }
+        }
+        
+        console.log(email)
+        const nome = await buscarNomePorEmail(email);
+        console.log(email)
+        res.render('novo-chamado', { 
+            equipamentos: tabelaEquip.rows, 
+            setores: tabelaSetor.rows, 
+            tipo: tabelaTipo.rows, 
+            numeroChamado, 
+            usuarios: tabelaUser.rows, 
+            nome: nome // Passa o nome como parâmetro
+        });
     } catch (error) {
         res.status(500).send("Erro ao buscar os dados: " + error.message);
     }

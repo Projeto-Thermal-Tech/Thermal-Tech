@@ -14,11 +14,11 @@ function signIn() {
   showLoading();
   let email = document.getElementById("email").value;
   let password = document.getElementById("password").value;
-
   localStorage.setItem("userEmail", email);
 
   firebase.auth().signInWithEmailAndPassword(email, password).then((response) => {
     hideloading();
+    alert(valorEmail)
     window.location.href = "http://localhost:5000/inicio";
   }).catch((error) => {
     hideloading();

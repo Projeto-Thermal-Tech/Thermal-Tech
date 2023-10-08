@@ -20,6 +20,10 @@ function showPopup() {
   document.getElementById("popup").style.display = "block";
   document.querySelector(".overlay").style.display = "block";
 }
+function showPopupEditar() {
+  document.getElementById("popup-edit").style.display = "block";
+  document.querySelector(".overlay-edit").style.display = "block";
+}
 
 function hidePopup() {
   document.getElementById("popup").style.display = "none";
