@@ -109,10 +109,10 @@
               <%= tecnico.matricula_tec %>
             </td>
             <td>
-              <button style="background-color: transparent; border: none;">
+              <button onclick="mostrarCadastro()" style="background-color: transparent; border: none;">
                 <i class="fas fa-pencil-alt icon-large" style="color: black;"></i>
               </button>
-              <button style="background-color: transparent;border: none;">
+              <button onclick="pedirConfirmacao()" style="background-color: transparent;border: none;">
                 <img src="../assets/delete.png" alt>
                  </button>
             </td>
@@ -140,10 +140,10 @@
               <%= setor.nome_setor %>
             </td>
             <td>
-              <button style="background-color: transparent; border: none;">
+              <button onclick="mostrarCadastro()" style="background-color: transparent; border: none;">
                 <i class="fas fa-pencil-alt icon-large" style="color: black;"></i>
               </button>
-              <button style="background-color: transparent; border: none;">
+              <button onclick="pedirConfirmacao()" style="background-color: transparent; border: none;">
                 <img src="../assets/delete.png" alt>
               </button>
             </td>
@@ -171,10 +171,10 @@
               <%= tipo.tipos_arcondicionado_tipar %>
             </td>
             <td>
-              <button style="background-color: transparent; border: none;">
+              <button onclick="mostrarCadastro()" style="background-color: transparent; border: none;">
                 <i class="fas fa-pencil-alt icon-large" style="color: black;"></i>
               </button>
-              <button style="background-color: transparent; border: none;">
+              <button onclick="pedirConfirmacao()" style="background-color: transparent; border: none;">
               <img src="../assets/delete.png" alt>
               </button>
             </td>
@@ -281,6 +281,12 @@
       } if (escolha.value === 'tabela_equip') {
         document.getElementById('popup-equip').style.display = 'none'
       }
+    }
+
+    function pedirConfirmacao() {
+        // Exibe um diálogo de confirmação e armazena o resultado em uma variável
+        var confirmacao = window.confirm("Tem certeza que deseja Excluir?");
+
     }
 
 

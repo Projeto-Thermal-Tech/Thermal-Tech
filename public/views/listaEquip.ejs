@@ -102,10 +102,10 @@
                                 <td><%= equipamentos[i].nome_setor %></td>
                                 <td><%= equipamentos[i].descricao_listequip %></td>
                                 <td>
-                                    <button style="background-color: transparent; border: none;">
+                                    <button onclick="showPopup()" style="background-color: transparent; border: none;">
                                       <i class="fas fa-pencil-alt icon-large" style="color: black;"></i> 
                                     </button>
-                                    <button style="background-color: transparent; border: none;">
+                                    <button onclick="pedirConfirmacao()" style="background-color: transparent; border: none;">
                                         <img src="../assets/delete.png" alt>
                                     </button>
                                   </td>
@@ -301,6 +301,12 @@ function Salvarequipamento() {
 function Esconderpopou() {
   document.getElementById("popoufiltro").style.display = "none";
   document.querySelector(".overlayfiltro").style.display = "none";
+
+}
+
+function pedirConfirmacao() {
+        // Exibe um diálogo de confirmação e armazena o resultado em uma variável
+        var confirmacao = window.confirm("Tem certeza que deseja Excluir?");
 
 }
 
