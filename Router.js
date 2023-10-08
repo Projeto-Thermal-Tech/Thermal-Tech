@@ -37,6 +37,21 @@ router.get("/cadastro", async function (req, res) {
         res.status(500).send("Erro ao buscar os dados da tabela setor: " + error.message);
     }
 });
+router.get("/chamado", async function (req, res) {
+    try {
+        async function listarchamados() {
+            const sql = "SELECT chamado.*, status.nome_status FROM chamado INNER JOIN status ON chamado.status_cha = status.id_status";
+            chamados = await db.query(sql)
+        }
+        await listarchamados(); // Espere até que a função listarDados seja concluída
+        
+
+        res.render('chamado', {chamados:chamados.rows }); // Agora a variável tabela está acessível aqui
+    } catch (error) {
+        res.status(500).send("Erro ao buscar os dados: " + error.message);
+    }
+});
+
 router.get("/equipamentos", async function (req, res) {
     try {
         let equipamentos;
@@ -49,7 +64,6 @@ router.get("/equipamentos", async function (req, res) {
             tabelaSetor = await db.query(sqlSetor);
             tabelaEquip = await db.query(sql); // Atribua o valor dentro da função
         }
-
         await listarEquipamentos(); // Espere até que a função listarDados seja concluída
 
         res.render('listaEquip', { equipamentos: tabelaEquip.rows, setores: tabelaSetor.rows, tipo: tabelaTipo.rows }); // Agora a variável tabela está acessível aqui
@@ -85,7 +99,6 @@ router.get("/novo-chamado", async function (req, res) {
 });
 
 
-
 router.get("/inicio", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/pages/home.html"))
 })
@@ -112,7 +125,7 @@ router.post('/cadastro/setor', function (req, res) {
     })
 })
 router.post('/cadastro/chamado', function (req, res) {
-    novoChamado.insertChamado(req.body.status, req.body.tag, req.body.titleDesc, req.body.prioridade, req.body.criador, req.body.dataChamado, req.body.horaChamado, req.body.desc).then(function () {
+    novoChamado.insertChamado(req.body.status, req.body.tag, req.body.titleDesc, req.body.prioridade, req.body.criador,req.body.email, req.body.dataChamado, req.body.horaChamado, req.body.desc).then(function () {
         res.redirect('/novo-chamado')
     }).catch(function (error) {
         res.send("deu erro " + error)

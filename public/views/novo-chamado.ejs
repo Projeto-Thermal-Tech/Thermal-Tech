@@ -29,7 +29,7 @@
                 <li><a href="http://localhost:5000/Equipamentos">Equipamentos</a></li>
                 <li><a href="http://localhost:5000/manutencao">Manutenções</a></li>
                 <li><a href="http://localhost:5000/ordem">Ordem</a></li>
-                <li><a href="http://localhost:5000/chamados">Chamado</a></li>
+                <li><a href="http://localhost:5000/chamado">Chamado</a></li>
                 <li><a href="http://localhost:5000/cadastro">Cadastro Geral</a></li>
                 <li><a href="http://localhost:5000/relatorio">Homem Hora</a></li>
                 <li><a href="">Gráficos gerenciais</a></li>
@@ -180,26 +180,30 @@
     </section>
     <script src="../js/script.js"></script>
     <script>
-        function atualizarDataHora() {
-            const dataChamado = document.getElementById("dataChamado");
-            const horaChamado = document.getElementById("horaChamado");
+       function atualizarDataHora() {
+    const dataChamado = document.getElementById("dataChamado");
+    const horaChamado = document.getElementById("horaChamado");
 
-            const agora = new Date();
+    const agora = new Date();
 
-            // Formate a data no formato "YYYY-MM-DD" para o campo de data
-            const dataFormatada = agora.toISOString().split("T")[0];
-            dataChamado.value = dataFormatada;
+    // Formate a data no formato "yyyy-MM-dd" para o campo de data
+    const dia = String(agora.getDate()).padStart(2, '0');
+    const mes = String(agora.getMonth() + 1).padStart(2, '0');
+    const ano = agora.getFullYear();
+    const dataFormatada = `${ano}-${mes}-${dia}`;
+    dataChamado.value = dataFormatada;
 
-            // Formate a hora no formato "HH:mm" para o campo de hora
-            const horaFormatada = agora.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-            horaChamado.value = horaFormatada;
-        }
+    // Formate a hora no formato "HH:mm" para o campo de hora
+    const horaFormatada = agora.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    horaChamado.value = horaFormatada;
+}
 
-        // Atualize a data e a hora a cada segundo (1000 milissegundos)
-        setInterval(atualizarDataHora, 1000);
+// Atualize a data e a hora a cada segundo (1000 milissegundos)
+setInterval(atualizarDataHora, 1000);
 
-        // Chame a função uma vez para configurar os valores iniciais
-        atualizarDataHora();
+// Chame a função uma vez para configurar os valores iniciais
+atualizarDataHora();
+
         document.getElementById("equipamento").addEventListener("change", function () {
             const selectedOption = this.options[this.selectedIndex];
             const localidade = selectedOption.getAttribute("data-localidade");
