@@ -85,8 +85,65 @@ exports.selectChamado = async function() {
       await db.end();
     }
 };
+exports.updateEquip = function (id, tag, tipo, modelo, ns, area, local, setor, descricao) {
+    async function atualizarEquip(id, tag, tipo, modelo, ns, area, local, setor, descricao) {
+        try {
+            await db.connect();
 
+            // Verifique se o registro com o ID fornecido existe na tabela
+            const verificaRegistro = await db.query('SELECT * FROM lista_equipamentos WHERE id_equip = $1', [id]);
+            if (verificaRegistro.rows.length === 0) {
+                throw new Error('Registro não encontrado.');
+            }
 
+            // Execute a atualização dos dados
+            const atualizacao = `
+                UPDATE lista_equipamentos
+                SET
+                    tag_listequip = $2,
+                    tipo_listequip = $3,
+                    modelo_listequip = $4,
+                    numero_serie_listequip = $5,
+                    area_cli_listequip = $6,
+                    localidade_listequip = $7,
+                    setor_listequip = $8,
+                    descricao_listequip = $9
+                WHERE id_equip = $1
+            `;
+            await db.query(atualizacao, [id, tag, tipo, modelo, ns, area, local, setor, descricao]);
+
+            return 'Registro atualizado com sucesso.';
+        } catch (error) {
+            throw new Error(`Erro ao atualizar registro: ${error.message}`);
+        } 
+    }
+
+    return atualizarEquip(id, tag, tipo, modelo, ns, area, local, setor, descricao);
+}
+
+exports.deleteEquip = function (id) {
+    async function excluirEquip(id) {
+        try {
+            await db.connect();
+
+            // Verifique se o registro com o ID fornecido existe na tabela
+            const verificaRegistro = await db.query('SELECT * FROM lista_equipamentos WHERE id_equip = $1', [id]);
+            if (verificaRegistro.rows.length === 0) {
+                throw new Error('Registro não encontrado.');
+            }
+
+            // Execute a exclusão do registro
+            const exclusao = 'DELETE FROM lista_equipamentos WHERE id_equip = $1';
+            await db.query(exclusao, [id]);
+
+            return 'Registro excluído com sucesso.';
+        } catch (error) {
+            throw new Error(`Erro ao excluir registro: ${error.message}`);
+        } 
+    }
+
+    return excluirEquip(id);
+}
  
 // exports.dados = function(){ 
 // async function listarDados() {

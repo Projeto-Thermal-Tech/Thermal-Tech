@@ -110,7 +110,7 @@
             </td>
             <td>
               <button onclick="mostrarCadastro()" style="background-color: transparent; border: none;">
-                <i class="fas fa-pencil-alt icon-large" style="color: black;"></i>
+                <img src="../assets/botao-editar.png" width="27px" alt="">
               </button>
               <button onclick="pedirConfirmacao()" style="background-color: transparent;border: none;">
                 <img src="../assets/delete.png" alt>
@@ -141,7 +141,7 @@
             </td>
             <td>
               <button onclick="mostrarCadastro()" style="background-color: transparent; border: none;">
-                <i class="fas fa-pencil-alt icon-large" style="color: black;"></i>
+                <img src="../assets/botao-editar.png" width="27px" alt="">
               </button>
               <button onclick="pedirConfirmacao()" style="background-color: transparent; border: none;">
                 <img src="../assets/delete.png" alt>
@@ -172,7 +172,7 @@
             </td>
             <td>
               <button onclick="mostrarCadastro()" style="background-color: transparent; border: none;">
-                <i class="fas fa-pencil-alt icon-large" style="color: black;"></i>
+                <img src="../assets/botao-editar.png" width="27px" alt="">
               </button>
               <button onclick="pedirConfirmacao()" style="background-color: transparent; border: none;">
               <img src="../assets/delete.png" alt>
@@ -282,7 +282,20 @@
         document.getElementById('popup-equip').style.display = 'none'
       }
     }
+    function editarEquipamento(tag, tipo, numeroSerie, descricao, area, localidade, setor, modelo) {
+    // Preencha os campos do popup com os dados do equipamento
+    document.getElementById('TAG').value = tag;
+    document.getElementById('SETOR').value = setor;
+    document.getElementById('TIPO').value = tipo;
+    document.getElementById('N/S').value = numeroSerie;
+    document.getElementById('DESC').value = descricao;
+    document.getElementById('AREA').value = area;
+    document.getElementById('LOCAL').value = localidade;
+    document.getElementById('MODELO').value = modelo;
 
+    // Chame a função para mostrar o popup
+    showPopupEditar();
+}
     function pedirConfirmacao() {
         // Exibe um diálogo de confirmação e armazena o resultado em uma variável
         var confirmacao = window.confirm("Tem certeza que deseja Excluir?");

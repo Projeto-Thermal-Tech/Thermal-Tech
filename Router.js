@@ -7,6 +7,8 @@ const novoTec = require('../Thermal-Tech/database/db');
 const novoTipo = require('../Thermal-Tech/database/db');
 const novoUser = require('../Thermal-Tech/database/db');
 const novoChamado = require('../Thermal-Tech/database/db');
+const atualizarEquip = require('../Thermal-Tech/database/db')
+const excluirEquip = require('../Thermal-Tech/database/db')
 const dados = require('../Thermal-Tech/database/db');
 const { error } = require("console");
 const db = require("./database/cnx");
@@ -76,8 +78,6 @@ router.get("/equipamentos", async function (req, res) {
 
 router.get("/novo-chamado", async function (req, res) {
     try {
-        let equipamentos;
-
         async function listarchamados() {
             const sql = "SELECT lista_equipamentos.*, setor.nome_setor FROM lista_equipamentos INNER JOIN setor ON lista_equipamentos.setor_listequip = setor.id_setor;";
             const sqlSetor = "select * from setor";
@@ -96,9 +96,6 @@ router.get("/novo-chamado", async function (req, res) {
         }
 
         await listarchamados();
-         // Suponha que você tenha uma configuração para o banco de dados
-
-        // Função para buscar o nome com base no email
         async function buscarNomePorEmail(email) {
             try {
                 const result = await db.query('SELECT nome FROM usuarios WHERE email = $1', [email]);
@@ -132,13 +129,7 @@ router.get("/novo-chamado", async function (req, res) {
 router.get("/inicio", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/pages/home.html"))
 })
-// router.get('/teste', function (req, res) {
-//     res.render('user')
-// })
 
-// router.get("/equipamentos", function (req, res) {
-//     res.sendFile(path.join(__dirname, "./public/pages/lista.html"))
-// })
 
 router.post('/cadastro/equipamento', function (req, res) {
     novoEquip.insertEquip(req.body.tag, req.body.tipo, req.body.modelo, req.body.ns, req.body.area, req.body.local, req.body.setor, req.body.desc).then(function () {
@@ -147,6 +138,22 @@ router.post('/cadastro/equipamento', function (req, res) {
         res.send("deu erro " + error)
     })
 })
+router.post('/atualizar/equipamento', function (req, res) {
+    atualizarEquip.updateEquip(req.body.id_equip,req.body.TAG, req.body.TIPO, req.body.MODELO,req.body.NS,req.body.AREA, req.body.LOCAL,req.body.SETOR,req.body.DESC).then(function () {
+        res.redirect('/equipamentos')
+    }).catch(function (error) {
+        res.send("deu erro " + error)
+    })
+})
+router.post('/deletar/equipamento/:id', function (req, res) {
+    const idEquip = req.params.id;
+    excluirEquip.deleteEquip(idEquip).then(function () {
+        res.redirect('/equipamentos');
+    }).catch(function (error) {
+        res.send("deu erro " + error);
+    });
+});
+
 router.post('/cadastro/setor', function (req, res) {
     novoSetor.insertSetor(req.body.nome_setor).then(function () {
         res.redirect('/cadastro')
@@ -154,6 +161,7 @@ router.post('/cadastro/setor', function (req, res) {
         res.send("deu erro " + error)
     })
 })
+
 router.post('/cadastro/chamado', function (req, res) {
     novoChamado.insertChamado(req.body.status, req.body.tag, req.body.titleDesc, req.body.prioridade, req.body.criador,req.body.email, req.body.dataChamado, req.body.horaChamado, req.body.desc).then(function () {
         res.redirect('/novo-chamado')
@@ -161,9 +169,6 @@ router.post('/cadastro/chamado', function (req, res) {
         res.send("deu erro " + error)
     })
 })
-// router.post('/cadastro/chamado', function (req, res) {
-//     res.send( req.body.chamado +  req.body.status + req.body.titleDesc + req.body.tag + req.body.prioridade +  req.body.criador + req.body.dataChamado +  req.body.horaChamado + req.body.desc)
-// })
 router.post('/cadastro/tecnico', function (req, res) {
     novoTec.insertTecnico(req.body.nome_tec, req.body.mat_tec, req.body.email_tec).then(function () {
         res.redirect('/cadastro')

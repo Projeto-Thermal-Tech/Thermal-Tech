@@ -103,6 +103,7 @@
                                 <td><%= equipamentos[i].descricao_listequip %></td>
                                 <td>
                                     <button onclick="editarEquipamento(
+        '<%= equipamentos[i].id_equip %>',                               
         '<%= equipamentos[i].tag_listequip %>',
         '<%= equipamentos[i].tipos_arcondicionado_tipar %>',
         '<%= equipamentos[i].numero_serie_listequip %>',
@@ -112,11 +113,20 @@
         '<%= equipamentos[i].nome_setor %>',
         '<%= equipamentos[i].modelo_listequip %>'
     )" style="background-color: transparent; border: none;">
-        <i class="fas fa-pencil-alt icon-large" style="color: black;"></i> 
+        <img src="../assets/botao-editar.png" width="27px" alt="">
     </button>
-                                    <button onclick="pedirConfirmacao()" style="background-color: transparent; border: none;">
-                                        <img src="../assets/delete.png" alt>
-                                    </button>
+
+    <form action="/deletar/equipamento/<%= equipamentos[i].id_equip %>" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este equipamento?')">
+        <input type="hidden" name="_method" value="DELETE">
+        <button type="submit" style="background-color: transparent; border: none;">
+            <img src="../assets/delete.png" alt>
+        </button>
+    </form>
+    
+        
+        
+    
+    
                                   </td>
                             </tr>
                         <% } %>
@@ -180,24 +190,25 @@
                 <input type="number" name="modelo" id="modelo" class="popup-input" required>
             </div> 
             </div>
-            <button class="popup-button salvar" onclick="saveEquipment()" >Salvar</button>
-            <button  class="popup-button cancelar" onclick="hidePopup()">Cancelar</button>
+            <button class="popup-button salvar" type="submit" onclick="saveEquipment()" >Salvar</button>
+            <button class="popup-button cancelar" onclick="hidePopup()">Cancelar</button>
         </div>
     </form>
     </section>
     <section class="overlay-edit">
         <div class="popup" id="popup-edit">
-            <div class="popup-title">Cadastrar Equipamento</div>
+            <div class="popup-title">Editar Equipamento</div>
             <div class="popup-content">
-                <form>
+                <form action="/atualizar/equipamento" method="post">
                <div class="popup-header">
                  <div>
                      <label for="" class="popup-label">TAG:</label>
-                     <input type="text" class="popup-input" id="TAG" name="tag" placeholder="ACS-2101" required> 
+                     <input type="text" class="popup-input" id="TAG" name="TAG" placeholder="ACS-2101" required>
+                     <input type="text" id="id_equip" name="id_equip" style="display: none;"> 
                  </div>
                  <div>
                     <label for="" class="popup-label">Tipo de Equipamento:</label>
-                    <select id="TIPO" name="tipo" required>
+                    <select id="TIPO" name="TIPO" required>
                         <% tipo.forEach(function(tipo) { %>
                             <option  value="<%= tipo.id_tipar %>"><%= tipo.tipos_arcondicionado_tipar %></option>
                         <% }); %>
@@ -205,26 +216,26 @@
                 </div>
                  <div>
                      <label for="" class="popup-label">Número de Série</label>
-                     <input type="text" class="popup-input" id="N/S" name="ns" placeholder="3928849328" required> 
+                     <input type="text" class="popup-input" id="N/S" name="NS" placeholder="3928849328" required> 
                  </div>
                </div>
                <div>
                  <label for="" class="popup-label">Descrição do Equipamento</label> 
-                 <textarea name="desc" id="DESC" cols="82" rows="3" required></textarea>
+                 <textarea name="DESC" id="DESC" cols="82" rows="3" required></textarea>
              </div>  
                <div class="popup-center">
                  <div>
                      <label for="" class="popup-label">Aréa Climatizada</label>
-                     <input type="number" name="area" id="AREA" class="popup-input" required>
+                     <input type="number" name="AREA" id="AREA" class="popup-input" required>
                  </div>
                  <div>
                      <label for="" class="popup-label">Localidade</label>
-                     <input type="text" name="local" id="LOCAL" required>
+                     <input type="text" name="LOCAL" id="LOCAL" required>
                  </div>
                  <div>
                     <div>
                         <label for="" class="popup-label">Setor</label>
-                        <select id="SETOR" name="setor" required>
+                        <select id="SETOR" name="SETOR" required>
                             <% setores.forEach(function(setor) { %>
                                 <option value="<%= setor.id_setor %>"><%= setor.nome_setor %></option>
                             <% }); %>
@@ -233,13 +244,14 @@
                </div>
                <div>
                 <label for="" class="popup-label">Modelo</label>
-                <input type="number" name="modelo" id="MODELO" class="popup-input" required>
+                <input type="number" name="MODELO" id="MODELO" class="popup-input" required>
             </div> 
             </div>
-            <button class="popup-button salvar" onclick="saveEquipment()" >Salvar</button>
-            <button  class="popup-button cancelar" onclick="hidePopup()">Cancelar</button>
+            <button class="popup-button salvar"type="submit" onclick="saveEquipment()" >Salvar</button>
+            <button class="popup-button cancelar" onclick="hidePopup()">Cancelar</button>
+        </form>
         </div>
-    </form>
+    
     </section>
     <section class="overlayfiltro">
     <div class="popoufiltro" id="popoufiltro">
@@ -357,8 +369,9 @@ function limparFiltro() {
   // Oculta o botão "Limpar Filtro"
   document.querySelector("button[onclick='limparFiltro()']").style.display = "none";
 }
-function editarEquipamento(tag, tipo, numeroSerie, descricao, area, localidade, setor, modelo) {
+function editarEquipamento(id_equip,tag, tipo, numeroSerie, descricao, area, localidade, setor, modelo) {
     // Preencha os campos do popup com os dados do equipamento
+    document.getElementById('id_equip').value = id_equip;
     document.getElementById('TAG').value = tag;
     document.getElementById('SETOR').value = setor;
     document.getElementById('TIPO').value = tipo;
