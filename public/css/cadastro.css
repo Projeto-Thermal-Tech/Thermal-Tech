@@ -189,6 +189,75 @@ tr:hover td {
   z-index: 1;
   display: none;
 }
+.overlay-tec{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  display: none;
+}
+.popup-tecnico {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  width: 850px;
+  height: 600px;
+  background-color: white;
+  z-index: 2;
+  display: none;
+  border-radius: 10px;
+}
+.overlay-setores{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  display: none;
+}
+.popup-setores {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  width: 850px;
+  height: 600px;
+  background-color: white;
+  z-index: 2;
+  display: none;
+  border-radius: 10px;
+}
+.overlay-Tipos{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  display: none;
+}
+.popup-Tipos{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  width: 850px;
+  height: 600px;
+  background-color: white;
+  z-index: 2;
+  display: none;
+  border-radius: 10px;
+}
 /* Para as tabelas de seu segundo código */
 #tabela_tec,
 #tabela_loc,
@@ -224,7 +293,7 @@ tr:hover td {
   display: none;
   border-radius: 10px;
 }
-#popup-equip {
+#popup-equip{
   position: fixed;
   top: 40%;
   left: 50%;
@@ -237,7 +306,45 @@ tr:hover td {
   display: none;
   border-radius: 10px;
 }
-
+#popup-tecnico{
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  width: 850px;
+  height: 270px;
+  background-color: white;
+  z-index: 2;
+  display: none;
+  border-radius: 10px;
+}
+#popup-setores{
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  width: 850px;
+  height: 270px;
+  background-color: white;
+  z-index: 2;
+  display: none;
+  border-radius: 10px;
+}
+#popup-Tipos{
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  width: 850px;
+  height: 270px;
+  background-color: white;
+  z-index: 2;
+  display: none;
+  border-radius: 10px;
+}
 .popup-title {
   font-size: 24px;
   font-weight: bold;

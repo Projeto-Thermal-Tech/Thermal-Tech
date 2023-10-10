@@ -145,6 +145,171 @@ exports.deleteEquip = function (id) {
     return excluirEquip(id);
 }
  
+exports.updateTecnicos = function (id_tec, nome_tec, matricula_tec, email) {
+    async function atualizarTecnicos(id_tec, nome_tec, matricula_tec, email) {
+        try {
+            await db.connect();
+
+            // Verifique se o registro com o ID fornecido existe na tabela
+            const verificaRegistro = await db.query('SELECT * FROM tecnicos WHERE id_tec = $1', [id_tec]);
+            if (verificaRegistro.rows.length === 0) {
+                throw new Error('Registro não encontrado.');
+            }
+
+            // Execute a atualização dos dados
+            const atualizacao = `
+                UPDATE tecnicos
+                SET
+                    nome_tec = $2,
+                    matricula_tec = $3,
+                    email = $4
+                WHERE id_tec = $1
+            `;
+            await db.query(atualizacao, [id_tec, nome_tec, matricula_tec, email]);
+
+            return 'Registro atualizado com sucesso.';
+        } catch (error) {
+            throw new Error(`Erro ao atualizar registro: ${error.message}`);
+        } 
+    }
+
+    return atualizarTecnicos(id_tec, nome_tec, matricula_tec, email);
+}
+exports.deleteTecnico = function (id_tec) {
+    async function deletarTecnico(id_tec) {
+        try {
+            await db.connect();
+
+            // Verifique se o registro com o ID fornecido existe na tabela
+            const verificaRegistro = await db.query('SELECT * FROM tecnicos WHERE id_tec = $1', [id_tec]);
+            if (verificaRegistro.rows.length === 0) {
+                throw new Error('Registro não encontrado.');
+            }
+
+            // Execute a exclusão dos dados
+            const exclusao = `
+                DELETE FROM tecnicos
+                WHERE id_tec = $1
+            `;
+            await db.query(exclusao, [id_tec]);
+
+            return 'Registro excluído com sucesso.';
+        } catch (error) {
+            throw new Error(`Erro ao excluir registro: ${error.message}`);
+        } 
+    }
+
+    return deletarTecnico(id_tec);
+}
+exports.updateSetor = function (id_setor, nome_setor) {
+    async function atualizarSetor(id_setor, nome_setor) {
+        try {
+            await db.connect();
+
+            // Verifique se o registro com o ID fornecido existe na tabela
+            const verificaRegistro = await db.query('SELECT * FROM setor WHERE id_setor = $1', [id_setor]);
+            if (verificaRegistro.rows.length === 0) {
+                throw new Error('Registro não encontrado.');
+            }
+
+            // Execute a atualização dos dados
+            const atualizacao = `
+                UPDATE setor
+                SET nome_setor = $2
+                WHERE id_setor = $1
+            `;
+            await db.query(atualizacao, [id_setor, nome_setor]);
+
+            return 'Registro atualizado com sucesso.';
+        } catch (error) {
+            throw new Error(`Erro ao atualizar registro: ${error.message}`);
+        } 
+    }
+
+    return atualizarSetor(id_setor, nome_setor);
+}
+exports.deleteSetor = function (id_setor) {
+    async function deletarSetor(id_setor) {
+        try {
+            await db.connect();
+
+            // Verifique se o registro com o ID fornecido existe na tabela
+            const verificaRegistro = await db.query('SELECT * FROM setor WHERE id_setor = $1', [id_setor]);
+            if (verificaRegistro.rows.length === 0) {
+                throw new Error('Registro não encontrado.');
+            }
+
+            // Execute a exclusão dos dados
+            const exclusao = `
+                DELETE FROM setor
+                WHERE id_setor = $1
+            `;
+            await db.query(exclusao, [id_setor]);
+
+            return 'Registro excluído com sucesso.';
+        } catch (error) {
+            throw new Error(`Erro ao excluir registro: ${error.message}`);
+        }
+    }
+
+    return deletarSetor(id_setor);
+}
+
+exports.updateTipo = function (id_tipar, tipos_arcondicionado_tipar) {
+    async function atualizarTipo(id_tipar, tipos_arcondicionado_tipar) {
+        try {
+            await db.connect();
+
+            // Verifique se o registro com o ID fornecido existe na tabela
+            const verificaRegistro = await db.query('SELECT * FROM tipos_arcondicionado WHERE id_tipar = $1', [id_tipar]);
+            if (verificaRegistro.rows.length === 0) {
+                throw new Error('Registro não encontrado.');
+            }
+
+            // Execute a atualização dos dados
+            const atualizacao = `
+                UPDATE tipos_arcondicionado
+                SET tipos_arcondicionado_tipar = $2
+                WHERE id_tipar = $1
+            `;
+            await db.query(atualizacao, [id_tipar, tipos_arcondicionado_tipar]);
+
+            return 'Registro atualizado com sucesso.';
+        } catch (error) {
+            throw new Error(`Erro ao atualizar registro: ${error.message}`);
+        } 
+    }
+
+    return atualizarTipo(id_tipar, tipos_arcondicionado_tipar);
+}
+exports.deleteTipoArCondicionado = function (id_tipar) {
+    async function deletarTipoArCondicionado(id_tipar) {
+        try {
+            await db.connect();
+
+            // Verifique se o registro com o ID fornecido existe na tabela
+            const verificaRegistro = await db.query('SELECT * FROM tipos_arcondicionado WHERE id_tipar = $1', [id_tipar]);
+            if (verificaRegistro.rows.length === 0) {
+                throw new Error('Registro não encontrado.');
+            }
+
+            // Execute a exclusão dos dados
+            const exclusao = `
+                DELETE FROM tipos_arcondicionado
+                WHERE id_tipar = $1
+            `;
+            await db.query(exclusao, [id_tipar]);
+
+            return 'Registro excluído com sucesso.';
+        } catch (error) {
+            throw new Error(`Erro ao excluir registro: ${error.message}`);
+        }
+    }
+
+    return deletarTipoArCondicionado(id_tipar);
+}
+
+
 // exports.dados = function(){ 
 // async function listarDados() {
 //     const sql = "select * from setor";

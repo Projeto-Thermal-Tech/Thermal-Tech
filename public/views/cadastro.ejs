@@ -96,25 +96,27 @@
       <tbody>
         <% tecnicos.forEach(function(tecnico) { %>
           <tr>
+            <td><%= tecnico.id_tec %></td>
+            <td><%= tecnico.email %></td>
+            <td><%= tecnico.nome_tec %></td>
+            <td><%= tecnico.matricula_tec %></td>
             <td>
-              <%= tecnico.id_tec %>
-            </td>
-            <td>
-              <%= tecnico.email %>
-            </td>
-            <td>
-              <%= tecnico.nome_tec %>
-            </td>
-            <td>
-              <%= tecnico.matricula_tec %>
-            </td>
-            <td>
-              <button onclick="mostrarCadastro()" style="background-color: transparent; border: none;">
-                <img src="../assets/botao-editar.png" width="27px" alt="">
-              </button>
-              <button onclick="pedirConfirmacao()" style="background-color: transparent;border: none;">
-                <img src="../assets/delete.png" alt>
-                 </button>
+              <button onclick="editarTecnico(
+            '<%= tecnico.id_tec %>',
+            '<%= tecnico.email %>' ,
+            '<%= tecnico.nome_tec %>' ,
+            '<%= tecnico.matricula_tec %>' ,
+            )" style="background-color: transparent; border: none;">
+        <img src="../assets/botao-editar.png" width="27px" alt="">
+    </button>
+    <form action="/deletar/Tecnico/<%= tecnico.id_tec %>" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este equipamento?')">
+      <input type="hidden" name="_method" value="DELETE">
+      <button type="submit" style="background-color: transparent; border: none;">
+          <img src="../assets/delete.png" alt>
+      </button>
+  </form>
+  </td>
+</tr>
             </td>
           </tr>
           <% }); %>
@@ -133,19 +135,22 @@
       <tbody>
         <% setores.forEach(function(setor) { %>
           <tr>
+            <td><%= setor.id_setor %></td>
+            <td><%= setor.nome_setor %></td>
             <td>
-              <%= setor.id_setor %>
-            </td>
-            <td>
-              <%= setor.nome_setor %>
-            </td>
-            <td>
-              <button onclick="mostrarCadastro()" style="background-color: transparent; border: none;">
-                <img src="../assets/botao-editar.png" width="27px" alt="">
-              </button>
-              <button onclick="pedirConfirmacao()" style="background-color: transparent; border: none;">
-                <img src="../assets/delete.png" alt>
-              </button>
+              <button onclick="editarSetores(
+        '<%= setor.id_setor %>',                               
+        '<%= setor.nome_setor %>',
+    )" style="background-color: transparent; border: none;">
+        <img src="../assets/botao-editar.png" width="27px" alt="">
+    </button>
+    <form action="/deletar/Setor/<%= setor.id_setor %>" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este setor?')">
+      <input type="hidden" name="_method" value="DELETE">
+      <button type="submit" style="background-color: transparent; border: none;">
+          <img src="../assets/delete.png" alt>
+      </button>
+  </form>
+  
             </td>
           </tr>
           <% }); %>
@@ -164,26 +169,28 @@
       <tbody>
         <% tipo.forEach(function(tipo) { %>
           <tr>
+            <td><%= tipo.id_tipar %></td>
+            <td><%= tipo.tipos_arcondicionado_tipar %></td>
             <td>
-              <%= tipo.id_tipar %>
-            </td>
-            <td>
-              <%= tipo.tipos_arcondicionado_tipar %>
-            </td>
-            <td>
-              <button onclick="mostrarCadastro()" style="background-color: transparent; border: none;">
+              <button onclick="editarTipos(
+                '<%= tipo.id_tipar %>',                               
+                '<%= tipo.tipos_arcondicionado_tipar %>',
+            )" style="background-color: transparent; border: none;">
                 <img src="../assets/botao-editar.png" width="27px" alt="">
+            </button>
+            <form action="/deletar/TipoArCondicionado/<%= tipo.id_tipar %>" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este tipo de ar-condicionado?')">
+              <input type="hidden" name="_method" value="DELETE">
+              <button type="submit" style="background-color: transparent; border: none;">
+                  <img src="../assets/delete.png" alt>
               </button>
-              <button onclick="pedirConfirmacao()" style="background-color: transparent; border: none;">
-              <img src="../assets/delete.png" alt>
-              </button>
+          </form>
+          
             </td>
           </tr>
           <% }); %>
       </tbody>
     </table>
   </div>
-
   <section class="overlay">
     <div class="popup" id="popup-tec">
       <div class="popup-title">Cadastrar Tecnico</div>
@@ -241,7 +248,70 @@
     <button class="popup-button cancelar" onclick="EsconderPopup()">Cancelar</button>
     </div>
   </section>
+  <section class="overlay-tec">
+    <div class="popup" id="popup-tecnico">
+      <div class="popup-title">Editar Tecnico</div>
+      <div class="popup-content">
+        <form action="/atualizar/Tecnicos" method="post">
+          <div class="popup-header">
+            <div>
+              <label for="" class="popup-label">Nome:</label>
+              <input type="text" class="popup-input" id="nome_tec" name="nome_tec" placeholder="" required>
+              <input type="text" id="id_tec" name="id_tec" style="display: none;"> 
+            </div>
+            <div>
+              <label for="" class="popup-label">Email:</label>
+              <input type="text" class="popup-input" id="email" name="email" placeholder="" required>
+            </div>
+            <div>
+              <label for="" class="popup-label">Matricula:</label>
+              <input type="number" class="popup-input" id="matricula_tec" name="matricula_tec" placeholder="" required>
+            </div>
+          </div>
+      </div>
+      <button type="submit" class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
+      </form>
+      <button class="popup-button cancelar" onclick="EsconderPopup()">Cancelar</button>
+    </div>
+  </section>
 
+  <section class="overlay-setores">
+    <div class="popup" id="popup-setores">
+      <div class="popup-title">Editar Setor</div>
+      <div class="popup-content">
+        <form action="/atualizar/setor" method="post">
+          <div class="popup-header">
+            <div>
+              <label for="" class="popup-label">Nome:</label>
+              <input type="text" class="popup-input" id="nome_setor" name="nome_setor" placeholder="" required>
+              <input type="text" id="id_setor" name="id_setor" style="display: none;"> 
+            </div>
+          </div>
+      </div>
+      <button type="submit" class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
+      </form>
+      <button class="popup-button cancelar" onclick="EsconderPopup()">Cancelar</button>
+    </div>
+  </section>
+
+  <section class="overlay-Tipos">
+  <div class="popup" id="popup-Tipos">
+    <div class="popup-title">Editar Equipamento</div>
+    <form action="/atualizar/Tipos" method="post">
+      <div class="popup-content">
+        <div class="popup-header">
+          <div>
+            <label for="" class="popup-label">Tipo:</label>
+            <input type="text" class="popup-input" id="tipos_arcondicionado_tipar" name="tipos_arcondicionado_tipar" placeholder="" required>
+            <input type="text" id="id_tipar" name="id_tipar" style="display: none;">  
+          </div>
+        </div>
+        <button type="submit" class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
+    </form>
+  </div>
+  <button class="popup-button cancelar" onclick="EsconderPopup()">Cancelar</button>
+  </div>
+</section>
   <script>
     const escolha = document.getElementById("escolha");
     const tabelas = document.querySelectorAll("table");
@@ -282,19 +352,22 @@
         document.getElementById('popup-equip').style.display = 'none'
       }
     }
-    function editarEquipamento(tag, tipo, numeroSerie, descricao, area, localidade, setor, modelo) {
-    // Preencha os campos do popup com os dados do equipamento
-    document.getElementById('TAG').value = tag;
-    document.getElementById('SETOR').value = setor;
-    document.getElementById('TIPO').value = tipo;
-    document.getElementById('N/S').value = numeroSerie;
-    document.getElementById('DESC').value = descricao;
-    document.getElementById('AREA').value = area;
-    document.getElementById('LOCAL').value = localidade;
-    document.getElementById('MODELO').value = modelo;
-
-    // Chame a função para mostrar o popup
-    showPopupEditar();
+    function editarTecnico(id_tec, email, nome_tec, matricula_tec) {
+    document.getElementById('id_tec').value = id_tec;
+    document.getElementById('email').value = email;
+    document.getElementById('nome_tec').value = nome_tec;
+    document.getElementById('matricula_tec').value = matricula_tec;
+    showPopupEditarTec();
+}
+function editarSetores(id_setor, nome_setor) {
+    document.getElementById('id_setor').value = id_setor;
+    document.getElementById('nome_setor').value = nome_setor;
+    showPopupEditarSetor();
+}
+function editarTipos(id_tipar, tipos_arcondicionado_tipar) {
+    document.getElementById('id_tipar').value = id_tipar;
+    document.getElementById('tipos_arcondicionado_tipar').value = tipos_arcondicionado_tipar;
+    showPopupEditartipoEquip();
 }
     function pedirConfirmacao() {
         // Exibe um diálogo de confirmação e armazena o resultado em uma variável

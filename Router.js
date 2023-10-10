@@ -1,6 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const path = require("path")
+const app = express();
 const novoEquip = require('../Thermal-Tech/database/db');
 const novoSetor = require('../Thermal-Tech/database/db');
 const novoTec = require('../Thermal-Tech/database/db');
@@ -9,6 +10,12 @@ const novoUser = require('../Thermal-Tech/database/db');
 const novoChamado = require('../Thermal-Tech/database/db');
 const atualizarEquip = require('../Thermal-Tech/database/db')
 const excluirEquip = require('../Thermal-Tech/database/db')
+const atualizarTecnicos = require('../Thermal-Tech/database/db');
+const excluirtec = require('../Thermal-Tech/database/db');
+const atualizarSetor = require('../Thermal-Tech/database/db');
+const excluirSetor = require('../Thermal-Tech/database/db');
+const atualizarTipo = require('../Thermal-Tech/database/db');
+const excluirTipoArCondicionado = require('../Thermal-Tech/database/db');
 const dados = require('../Thermal-Tech/database/db');
 const { error } = require("console");
 const db = require("./database/cnx");
@@ -149,6 +156,52 @@ router.post('/deletar/equipamento/:id', function (req, res) {
     const idEquip = req.params.id;
     excluirEquip.deleteEquip(idEquip).then(function () {
         res.redirect('/equipamentos');
+    }).catch(function (error) {
+        res.send("deu erro " + error);
+    });
+});
+router.post('/atualizar/tecnicos', function (req, res) {
+    atualizarTecnicos.updateTecnicos(req.body.id_tec, req.body.nome_tec, req.body.matricula_tec, req.body.email).then(function () {
+        res.redirect('/cadastro')
+    }).catch(function (error) {
+        res.send("deu erro " + error)
+    })
+});
+router.post('/deletar/Tecnico/:id', function (req, res) {
+    const id_tec = req.params.id;
+    excluirtec.deleteTecnico(id_tec).then(function() {
+        res.redirect('/cadastro');
+    }).catch(function (error) {
+        res.send("deu erro " + error);
+    });
+})
+
+router.post('/atualizar/setor', function (req, res) {
+    atualizarSetor.updateSetor(req.body.id_setor, req.body.nome_setor).then(function () {
+        res.redirect('/cadastro')
+    }).catch(function(error) {
+        res.send("deu erro " + error)
+    })
+})
+router.post('/deletar/Setor/:id', function (req, res) {
+    const id_setor = req.params.id;
+    excluirSetor.deleteSetor(id_setor).then(function () {
+        res.redirect('/cadastro');
+    }).catch(function (error) {
+        res.send("deu erro " + error);
+    });
+});
+router.post('/atualizar/Tipos', function (req, res) { // Corrigido para corresponder à ação do formulário HTML
+    atualizarTipo.updateTipo(req.body.id_tipar, req.body.tipos_arcondicionado_tipar).then(function () {
+        res.redirect('/cadastro')
+    }).catch(function(error){
+        res.send("deu erro " + error)
+    })
+})
+router.post('/deletar/TipoArCondicionado/:id', function (req, res) {
+    const id_tipar = req.params.id;
+    excluirTipoArCondicionado.deleteTipoArCondicionado(id_tipar).then(function () {
+        res.redirect('/cadastro');
     }).catch(function (error) {
         res.send("deu erro " + error);
     });

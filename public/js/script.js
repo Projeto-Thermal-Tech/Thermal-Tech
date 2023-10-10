@@ -24,6 +24,21 @@ function showPopupEditar() {
   document.getElementById("popup-edit").style.display = "block";
   document.querySelector(".overlay-edit").style.display = "block";
 }
+function showPopupEditarTec() {
+  document.getElementById("popup-tecnico").style.display = "block";
+  document.querySelector(".overlay-tec").style.display = "block";
+}
+
+function showPopupEditarSetor() {
+  document.getElementById("popup-setores").style.display = "block";
+  document.querySelector(".overlay-setores").style.display = "block";
+}
+
+function showPopupEditartipoEquip() {
+  document.getElementById("popup-Tipos").style.display = "block";
+  document.querySelector(".overlay-Tipos").style.display = "block";
+}
+
 
 function hidePopup() {
   document.getElementById("popup").style.display = "none";
