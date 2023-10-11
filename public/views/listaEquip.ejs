@@ -107,13 +107,13 @@
         '<%= equipamentos[i].nome_setor %>',
         '<%= equipamentos[i].modelo_listequip %>'
     )" style="background-color: transparent; border: none;">
-        <img src="../assets/botao-editar.png" width="27px" alt="">
+        <img src="../assets/botao-editar.png" width="20px" alt="">
     </button>
 
     <form action="/deletar/equipamento/<%= equipamentos[i].id_equip %>" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este equipamento?')">
         <input type="hidden" name="_method" value="DELETE">
         <button type="submit" style="background-color: transparent; border: none;">
-            <img src="../assets/delete.png" alt>
+            <img src="../assets/delete.png" width="25px">
         </button>
     </form>
     

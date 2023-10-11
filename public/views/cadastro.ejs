@@ -107,12 +107,12 @@
             '<%= tecnico.nome_tec %>' ,
             '<%= tecnico.matricula_tec %>' ,
             )" style="background-color: transparent; border: none;">
-        <img src="../assets/botao-editar.png" width="27px" alt="">
+        <img src="../assets/botao-editar.png" width="20px" alt="">
     </button>
     <form action="/deletar/Tecnico/<%= tecnico.id_tec %>" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este equipamento?')">
       <input type="hidden" name="_method" value="DELETE">
       <button type="submit" style="background-color: transparent; border: none;">
-          <img src="../assets/delete.png" alt>
+          <img src="../assets/delete.png" width="25">
       </button>
   </form>
   </td>
@@ -142,12 +142,12 @@
         '<%= setor.id_setor %>',                               
         '<%= setor.nome_setor %>',
     )" style="background-color: transparent; border: none;">
-        <img src="../assets/botao-editar.png" width="27px" alt="">
+        <img src="../assets/botao-editar.png" width="20px" alt="">
     </button>
     <form action="/deletar/Setor/<%= setor.id_setor %>" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este setor?')">
       <input type="hidden" name="_method" value="DELETE">
       <button type="submit" style="background-color: transparent; border: none;">
-          <img src="../assets/delete.png" alt>
+          <img src="../assets/delete.png" width="25">
       </button>
   </form>
   
@@ -176,12 +176,12 @@
                 '<%= tipo.id_tipar %>',                               
                 '<%= tipo.tipos_arcondicionado_tipar %>',
             )" style="background-color: transparent; border: none;">
-                <img src="../assets/botao-editar.png" width="27px" alt="">
+                <img src="../assets/botao-editar.png" width="20px" alt="">
             </button>
             <form action="/deletar/TipoArCondicionado/<%= tipo.id_tipar %>" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este tipo de ar-condicionado?')">
               <input type="hidden" name="_method" value="DELETE">
               <button type="submit" style="background-color: transparent; border: none;">
-                  <img src="../assets/delete.png" alt>
+                  <img src="../assets/delete.png" width="25">
               </button>
           </form>
           
@@ -235,7 +235,7 @@
     <div class="popup" id="popup-equip">
       <div class="popup-title">Cadastrar Equipamento</div>
       <form action="/cadastro/tipo" method="post">
-        <div class="popup-content">
+        <div class="popup-content-Cad-Equip">
           <div class="popup-header">
             <div>
               <label for="" class="popup-label">Tipo:</label>
@@ -244,8 +244,8 @@
           </div>
           <button type="submit" class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
       </form>
+      <button class="popup-button cancelar" onclick="EsconderPopup()">Cancelar</button>
     </div>
-    <button class="popup-button cancelar" onclick="EsconderPopup()">Cancelar</button>
     </div>
   </section>
   <section class="overlay-tec">
@@ -308,8 +308,8 @@
         </div>
         <button type="submit" class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
     </form>
+    <button class="popup-button cancelar" onclick="EsconderPopup()">Cancelar</button>
   </div>
-  <button class="popup-button cancelar" onclick="EsconderPopup()">Cancelar</button>
   </div>
 </section>
   <script>

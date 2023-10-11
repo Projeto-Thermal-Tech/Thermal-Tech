@@ -274,7 +274,7 @@ tr:hover td {
   transform: translate(-50%, -50%);
   padding: 10px;
   width: 850px;
-  height: 270px;
+  height: 330px;
   background-color: white;
   z-index: 2;
   display: none;
@@ -287,7 +287,7 @@ tr:hover td {
   transform: translate(-50%, -50%);
   padding: 10px;
   width: 850px;
-  height: 270px;
+  height: 330px;
   background-color: white;
   z-index: 2;
   display: none;
@@ -313,7 +313,7 @@ tr:hover td {
   transform: translate(-50%, -50%);
   padding: 10px;
   width: 850px;
-  height: 270px;
+  height: 330px;
   background-color: white;
   z-index: 2;
   display: none;
@@ -326,7 +326,7 @@ tr:hover td {
   transform: translate(-50%, -50%);
   padding: 10px;
   width: 850px;
-  height: 270px;
+  height: 330px;
   background-color: white;
   z-index: 2;
   display: none;
@@ -339,7 +339,7 @@ tr:hover td {
   transform: translate(-50%, -50%);
   padding: 10px;
   width: 850px;
-  height: 270px;
+  height: 330px;
   background-color: white;
   z-index: 2;
   display: none;
@@ -352,7 +352,7 @@ tr:hover td {
   text-align: center;
   background-color:#0080F5;
   border-radius: 12px;
-  height: 12%;
+  height: 18%;
   padding: 10px;
   color: aliceblue;
 }
@@ -362,10 +362,17 @@ tr:hover td {
   border: 1px solid black;
   background-color: #0080F5;
   border-radius: 15px;
+  padding: 20px;
+  color:aliceblue;
+}
+.popup-content-Cad-Equip{
+  margin: 22px;
+  border: 1px solid black;
+  background-color: #0080F5;
+  border-radius: 15px;
   padding: 10px;
   color:aliceblue;
 }
-
 .popup-label {
   display: block;
   font-size: 20px;
@@ -449,4 +456,3 @@ textarea{
 .display-none{
   display: none;
 }
-
