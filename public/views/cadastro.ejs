@@ -59,27 +59,30 @@
   <h2>Cadastros Gerais</h2>
 
   <section class="dados_cad">
-
     <div class="header_cad">
-      <div class="seleciona_tabela">
-        <label class="escolher">Selecione a tabela:</label>
-        <select id="escolha">+ Novo Chamado</button>
-          <option value="tabela_tec">Técnicos</option>
-          <option value="tabela_loc">Locais</option>
-          <option value="tabela_equip">Equipamentos</option>
-        </select>
-      </div>
-
-      <div class="cadastrar">
-        <button id="cadastro" onclick="mostrarCadastro()"><i class="fa-sharp fa-solid fa-plus fa-xs"
-            style="color: #000000; margin-right: 5px;"></i></i>Cadastrar</button>
-        <br>
-        <div class="filtrar">
-          <button id="filtro">Filtrar</button>
+        <div class="seleciona_tabela">
+            <label class="escolher">Selecione a tabela:</label>
+            <select id="escolha">+ Novo Chamado</button>
+                <option value="tabela_tec">Técnicos</option>
+                <option value="tabela_loc">Locais</option>
+                <option value="tabela_equip">Equipamentos</option>
+            </select>
         </div>
-      </div>
-
-  </section>
+        
+        <div class="cadastrar">
+            <button id="cadastro" onclick="mostrarCadastro()">
+                <i class="fa-sharp fa-solid fa-plus fa-xs" style="color: #000000; margin-right: 5px;"></i>
+                Cadastrar
+            </button>
+            <br>
+            <div class="filtrar">
+                <button class="filtroTec" onclick="FiltrarTec()">Filtrar Técnicos</button>
+                <button class="filtroLocais" onclick="FiltrarLocais()">Filtrar Locais</button>
+                <button class="filtroEquipamentos" onclick="FiltrarTiposEquipamentos()">Filtrar Equipamentos</button>
+            </div>
+        </div>
+    </div>
+</section>
 
   <br>
   <div class="table-container">
@@ -90,7 +93,8 @@
           <th>Email</th>
           <th>Técnicos</th>
           <th>Matricula</th>
-          <th>Ação</th>
+          <th style="width: 50px;">Editar</th>
+          <th style="width: 50px;">Excluir</th>
         </tr>
       </thead>
       <tbody>
@@ -109,12 +113,14 @@
             )" style="background-color: transparent; border: none;">
         <img src="../assets/botao-editar.png" width="20px" alt="">
     </button>
+    <td>
     <form action="/deletar/Tecnico/<%= tecnico.id_tec %>" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este equipamento?')">
       <input type="hidden" name="_method" value="DELETE">
       <button type="submit" style="background-color: transparent; border: none;">
           <img src="../assets/delete.png" width="25">
       </button>
   </form>
+</td>
   </td>
 </tr>
             </td>
@@ -129,8 +135,8 @@
         <tr>
           <th>ID</th>
           <th>Local</th>
-          <th>Editar</th>
-          <th>Excluir</th>
+          <th style="width: 50px;">Editar</th>
+          <th style="width: 50px;">Excluir</th>
         </tr>
       </thead>
       <tbody>
@@ -145,11 +151,13 @@
     )" style="background-color: transparent; border: none;">
         <img src="../assets/botao-editar.png" width="20px" alt="">
     </button>
+    <td>
     <form action="/deletar/Setor/<%= setor.id_setor %>" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este setor?')">
       <input type="hidden" name="_method" value="DELETE">
       <button type="submit" style="background-color: transparent; border: none;">
           <img src="../assets/delete.png" width="25">
       </button>
+    </td>
   </form>
   
             </td>
@@ -315,6 +323,64 @@
   </div>
   </div>
 </section>
+<section class="overlayfiltro-tec">
+  <div class="popoufiltro-tec" id="popoufiltro-tec">
+      <div class="popup-titulo-filtro-tec">Filtrar Técnicos</div>
+      <div class="popou-content-filtro-tec">
+          <div class="popup-header-filtro-tec">
+          <div>
+              <label for="" class="popou-label-filtro-email">email</label>
+              <input type="text" class="popou-label-filtro-email" id="email" placeholder="email">
+          </div>
+                  <div>
+                      <label for="" class="popou-label-filtro-tec">Técnicos</label>
+                      <input type="text" class="popou-label-filtro-tec" id="Técnicos" placeholder="Técnicos">
+                  </div>
+                
+                  <div>
+                      <label for="" class="popou-label-filtro-mat">Matricula</label>
+                      <input type="text" class="popou-label-filtro-mat" id="Matricula" placeholder="Matricula">
+                  </div>
+                  <div>
+                    <button class="popup-button salvarfiltro-tec" onclick="FiltrarTec()">Filtrar</button>
+                    <button class="popup-button cancelarfiltro-tec" onclick="EsconderpopouTecnico()">Cancelar</button>
+                </div>
+              </div>
+          </div>
+      </div>  
+  </section>
+  <section class="overlayfiltro-locais">
+    <div class="popoufiltro-locais" id="popoufiltro-locais">
+        <div class="popup-titulo-filtro-locais">Filtrar Locais</div>
+        <div class="popou-content-filtro-locais">
+            <div class="popup-header-filtro-locais">
+            <div>
+                <label for="" class="popou-label-filtro-local">local</label>
+                <input type="text" class="popou-label-filtro-local" id="local" placeholder="local">
+            </div>
+                   <button class="popup-button salvarfiltro-locais" onclick="FiltrarLocais()">Filtrar</button>
+                   <button class="popup-button cancelarfiltro-locais" onclick="EsconderpopouLocais()">Cancelar</button>
+                  </div>
+                </div>
+            </div>
+        </div>  
+    </section>
+    <section class="overlayfiltro-Equipamentos">
+      <div class="popoufiltro-Equipamentos" id="popoufiltro-Equipamentos">
+          <div class="popup-titulo-filtro-Equipamentos">Filtrar Equipamentos</div>
+          <div class="popou-content-filtro-Equipamentos">
+              <div class="popup-header-filtro-Equipamentos">
+              <div>
+                  <label for="" class="popou-label-filtro-Equipamentos">Equipamentos</label>
+                  <input type="text" class="popou-label-filtro-Equipamentos" id="Equipamentos" placeholder="Equipamentos">
+              </div>
+                     <button class="popup-button salvarfiltro-Equipamentos" onclick="FiltrarTiposEquipamentos()">Filtrar</button>
+                     <button class="popup-button cancelarfiltro-Equipamentos" onclick="EsconderpopouTiposEquipamentos()">Cancelar</button>
+                    </div>
+                  </div>
+              </div>
+          </div>  
+      </section>
   <script>
     const escolha = document.getElementById("escolha");
     const tabelas = document.querySelectorAll("table");
@@ -377,6 +443,64 @@ function editarTipos(id_tipar, tipos_arcondicionado_tipar) {
         var confirmacao = window.confirm("Tem certeza que deseja Excluir?");
 
     }
+
+function FiltrarTec() {
+  document.getElementById("popoufiltro-tec").style.display = "block";
+  document.querySelector(".overlayfiltro-tec").style.display = "block";
+}
+
+function EsconderpopouTecnico() {
+  document.getElementById("popoufiltro-tec").style.display = "none";
+  document.querySelector(".overlayfiltro-tec").style.display = "none"; // Corrigido o seletor
+}
+function FiltrarLocais() {
+  document.getElementById("popoufiltro-locais").style.display = "block";
+  document.querySelector(".overlayfiltro-locais").style.display = "block";
+}
+
+function EsconderpopouLocais() {
+  document.getElementById("popoufiltro-locais").style.display = "none";
+  document.querySelector(".overlayfiltro-locais").style.display = "none"; // Corrigido o seletor
+}
+
+function FiltrarTiposEquipamentos() {
+  document.getElementById("popoufiltro-Equipamentos").style.display = "block";
+  document.querySelector(".overlayfiltro-Equipamentos").style.display = "block";
+}
+
+function EsconderpopouTiposEquipamentos() {
+  document.getElementById("popoufiltro-Equipamentos").style.display = "none";
+  document.querySelector(".overlayfiltro-Equipamentos").style.display = "none"; // Corrigido o seletor
+}
+
+window.onload = function() {
+    const tabelaSelect = document.getElementById("escolha");
+    const botoesFiltro = {
+        'tabela_tec': document.querySelector(".filtroTec"),
+        'tabela_loc': document.querySelector(".filtroLocais"),
+        'tabela_equip': document.querySelector(".filtroEquipamentos")
+    };
+
+    tabelaSelect.addEventListener("change", function () {
+        const valorEscolhido = tabelaSelect.value;
+
+        // Oculta todos os botões de filtro
+        for (let botao in botoesFiltro) {
+            botoesFiltro[botao].style.display = "none";
+        }
+
+        // Exibe o botão de filtro correspondente à tabela selecionada
+        if (botoesFiltro[valorEscolhido]) {
+            botoesFiltro[valorEscolhido].style.display = "inline-block";
+        }
+    });
+
+    // Chame a função para configurar o filtro inicialmente
+    tabelaSelect.dispatchEvent(new Event("change"));
+}
+
+
+
 
 
   </script>
