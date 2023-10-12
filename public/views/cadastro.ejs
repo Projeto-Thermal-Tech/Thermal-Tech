@@ -129,7 +129,8 @@
         <tr>
           <th>ID</th>
           <th>Local</th>
-          <th>Ação</th>
+          <th>Editar</th>
+          <th>Excluir</th>
         </tr>
       </thead>
       <tbody>
@@ -163,7 +164,8 @@
         <tr>
           <th>ID</th>
           <th>Equipamentos</th>
-          <th>Ação</th>
+          <th style="width: 50px;">Editar</th>
+          <th style="width: 50px;">Excluir</th>
         </tr>
       </thead>
       <tbody>
@@ -178,6 +180,7 @@
             )" style="background-color: transparent; border: none;">
                 <img src="../assets/botao-editar.png" width="20px" alt="">
             </button>
+          </td> <td>
             <form action="/deletar/TipoArCondicionado/<%= tipo.id_tipar %>" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este tipo de ar-condicionado?')">
               <input type="hidden" name="_method" value="DELETE">
               <button type="submit" style="background-color: transparent; border: none;">

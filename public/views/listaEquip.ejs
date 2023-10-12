@@ -71,22 +71,21 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Ordem</th>
-                            <th>TAG</th>
-                            <th>Tipo</th>
+                            <th style="width: 110px;">TAG</th>
+                            <th style="width: 40px;">Tipo</th>
                             <th>Modelo</th>
                             <th>Número de Série</th>
-                            <th>Área Climatizada</th>
+                            <th style="width: 40px;">Área Climatizada</th>
                             <th>Localidade</th>
                             <th>Setor</th>
                             <th>Descrição</th>
-                            <th>Ação</th>
+                            <th>Editar</th>
+                            <th>Excluir</th>
                         </tr>
                     </thead>
                     <tbody>
                         <% for (let i = 0; i < equipamentos.length; i++) { %>
                             <tr>
-                                <td><%= i + 1 %></td>
                                 <td><%= equipamentos[i].tag_listequip %></td>
                                 <td><%= equipamentos[i].tipos_arcondicionado_tipar %></td>
                                 <td><%= equipamentos[i].modelo_listequip %></td>
@@ -95,7 +94,7 @@
                                 <td><%= equipamentos[i].localidade_listequip %></td>
                                 <td><%= equipamentos[i].nome_setor %></td>
                                 <td><%= equipamentos[i].descricao_listequip %></td>
-                                <td>
+                                <td style="width: 100px;">
                                     <button onclick="editarEquipamento(
         '<%= equipamentos[i].id_equip %>',                               
         '<%= equipamentos[i].tag_listequip %>',
@@ -107,21 +106,17 @@
         '<%= equipamentos[i].nome_setor %>',
         '<%= equipamentos[i].modelo_listequip %>'
     )" style="background-color: transparent; border: none;">
-        <img src="../assets/botao-editar.png" width="20px" alt="">
+        <img src="../assets/botao-editar.png" width="30px" alt="">
     </button>
 
-    <form action="/deletar/equipamento/<%= equipamentos[i].id_equip %>" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este equipamento?')">
-        <input type="hidden" name="_method" value="DELETE">
-        <button type="submit" style="background-color: transparent; border: none;">
-            <img src="../assets/delete.png" width="25px">
-        </button>
-    </form>
     
-        
-        
-    
-    
-                                  </td>
+ </td>
+ <td><form class="btn-excluir" action="/deletar/equipamento/<%= equipamentos[i].id_equip %>" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este equipamento?')">
+    <input type="hidden" name="_method" value="DELETE">
+    <button type="submit" style="background-color: transparent; border: none;">
+        <img src="../assets/delete.png" width="35px">
+    </button>
+</form></td>
                             </tr>
                         <% } %>
                     </tbody>

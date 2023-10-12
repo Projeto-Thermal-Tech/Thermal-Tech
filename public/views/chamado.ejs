@@ -109,7 +109,9 @@
           
           for (let i = 0; i < chamados.length; i++) { %>
             <tr>
-              <td><button class="visualizar">Visualizar</button></td>
+              <td><form action="/view/chamado" method="post"><input type="hidden" class="visualizar" value="<%= chamados[i].id_chamado %>" name="id_chamado"></input>
+               <button type="submit" class="visualizar">Visualizar</button> 
+              </form></td>
               <td><%= chamados[i].id_chamado %></td>
               <td><%= chamados[i].nome_status %></td>
               <td><%= chamados[i].descri_cha %></td>

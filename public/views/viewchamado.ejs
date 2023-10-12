@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/criar-chamado.css">
+    <link rel="stylesheet" href="../css/print.css">
+    <link rel="stylesheet" href="../css/@media767.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+
+            <h1><a href="./home.html">Thermal Tech</a></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="http://localhost:5000/Equipamentos">Equipamentos</a></li>
+                <li><a href="http://localhost:5000/manutencao">Manutenções</a></li>
+                <li><a href="http://localhost:5000/ordem">Ordem</a></li>
+                <li><a href="http://localhost:5000/chamado">Chamado</a></li>
+                <li><a href="http://localhost:5000/cadastro">Cadastro Geral</a></li>
+                <li><a href="http://localhost:5000/relatorio">Homem Hora</a></li>
+                <li><a href="">Gráficos gerenciais</a></li>
+                <li><a href="./chat.html">Chat</a></li>
+            </ul>
+        </nav>
+        <div class="nav-right">
+            <div>
+                <a href="#" class="config"><img src="../assets/icon_config.png" alt=""></a>
+                <a href="#" class="sair" onclick="logout()"><img src="../assets/icon_sair.png" alt=""></a>
+            </div>
+            <div>
+                <h4 id="userEmail"></h4>
+            </div>
+        </div>
+    </header>
+    <section>
+        <main>
+            <section>
+                <div class="title-page">
+                    <h2>Criar chamado de manutenção</h2>
+                </div>
+                <div class="icons">
+                    <form action="/cadastro/chamado" method="post">
+                        <button type="submit"><img src="../assets/save.png" onclick="salvarChamado()" alt=""></button>
+                        <button><img src="../assets/delete.png" onclick="deletarChamado()" alt=""></button>
+                        <button><img src="../assets/print.png" onclick="imprimir()"></button>
+                        <button onclick="document.getElementById('fileInput').click();" id="btn-anexo">
+                            <img src="../assets/anexos.png" alt="">
+                        </button>
+                </div>
+                <div class="header-order">
+                    <div class="info-header-order">
+                        <label for="">Ordem</label>
+                        <input type="number" id="ordem" readonly class="data-chamado">
+                        <input type="text" id="title-order" placeholder="Correção de dreno ACS-2101" readonly
+                            class="data-chamado">
+                    </div>
+                    <div class="info-header-order">
+                        <label for="">Status</label>
+                        <input type="text" placeholder="ABERTA" name="status" value="<%= dadosChamado.status_cha %>">
+                        <br>
+                        <label for="">Chamado</label>
+                        <input type="number" name="chamado" value="<%= dadosChamado.id_chamado %>">
+                    </div>
+                </div>
+            </section>
+        </main>
+        <main class="chamado section_chamado">
+            <section class="dados_chamado">
+                <h3>Dados</h2>
+            </section>
+            <div class="title">
+                <h3>Referencias do objeto</h3>
+            </div>
+            <div class="dados">
+                <div class="info-header-order">
+                    <label class="label-margin for="" >Equipamento</label>
+                        <input type=" text" value="<%= dadosChamado.equipamento_cha %>">
+                </div>
+                <div class="info-header-order">
+                    <label class="label-margin" for="">Localidade</label>
+                    <input type="text" class="data-chamado" id="localidade" name="localidade" value="">
+                </div>
+                <div class="info-header-order">
+                    <label for="" class="popup-label">Setor</label>
+                    <input type="text" class="data-chamado">
+                </div>
+                <div class="info-header-order">
+                    <label class="label-margin for="">Descrição</label>
+                    <textarea type=" text" id="descricao" style="width: 30%;"></textarea>
+                </div>
+            </div>
+        </main>
+        <main class="responsabilidades section_chamado">
+            <div class="title">
+                <h3>Responsabilidades</h3>
+            </div>
+            <div class="tecs info-header-order">
+
+                <label>Prioridade</label>
+                <div class="prioridade">
+                    <% if (dadosChamado.prioridade_cha==='baixa' ) { %>
+                        Baixa
+                        <input class="data-chamado" type="radio" id="radioBaixa" name="prioridade" value="baixa"
+                            checked>
+                        <% } else { %>
+                            Baixa
+                            <input class="data-chamado" type="radio" id="radioBaixa" name="prioridade" value="baixa">
+                            <% } %>
+
+                                <% if (dadosChamado.prioridade_cha==='media' ) { %>
+                                    Média
+                                    <input class="data-chamado" type="radio" id="radioMedia" name="prioridade"
+                                        value="media" checked>
+                                    <% } else { %>
+                                        Média
+                                        <input class="data-chamado" type="radio" id="radioMedia" name="prioridade"
+                                            value="media">
+                                        <% } %>
+
+                                            <% if (dadosChamado.prioridade_cha==='alta' ) { %>
+                                                Alta
+                                                <input class="data-chamado" type="radio" id="radioAlta"
+                                                    name="prioridade" value="alta" checked>
+                                                <% } else { %>
+                                                    Alta
+                                                    <input class="data-chamado" type="radio" id="radioAlta"
+                                                        name="prioridade" value="alta">
+                                                    <% } %>
+                </div>
+
+
+            </div>
+            <div class="user info-header-order">
+                <div>
+                    <label for="">Criado por</label>
+                    <input class="data-chamado" type="text" style="width: 320px;" name="criador"
+                        value="<%=dadosChamado.criado_por_cha%>">
+                    <input class="data-chamado" type="email" name="email" id="email" style="width: 320px;"
+                        value="<%=dadosChamado.email%>">
+                </div>
+                <div style="padding-top: 5px;">
+                    <label for="">Data chamado</label>
+                    <% const formatDate=(date)=> {
+                        const formattedDate = new Date(date).toISOString().split('T')[0];
+                        return formattedDate;
+                        };
+                        %>
+                        <input class="data-chamado" id="dataChamado" type="date" name="dataChamado"
+                            value="<%= formatDate(dadosChamado.data_ini_cha) %>">
+
+                        <input class="data-chamado" type="time" name="horaChamado" id="horaChamado" step="1"
+                            value="<%= dadosChamado.hora_ini_cha %>">
+                </div>
+            </div>
+        </main>
+        <main class="objetivo section_chamado">
+            <div class="title">
+                <h3>Objetivo</h3>
+            </div>
+            <div class="info-header-order">
+                <label for="">Descrição</label>
+                <input class="data-chamado" type="text" PL="Correção de dreno ACS-2101" style="width: 280px;"
+                    name="titleDesc" value="<%= dadosChamado.descri_cha %>">
+                <input class="data-chamado" id="fileInput" type="file" style="display:none;">
+            </div>
+            <div class="descrição">
+                <textarea class="data-chamado" name="desc" id="" cols="30" rows="10" style="width: 100%;padding: 5px;"
+                    placeholder="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni exercitationem expedita assumenda repellendus,distinctio eaque neque consectetur iusto eligendi rerum cupiditate fugiat itaque sint illum facere quae explicabo fugit rem.Magni officiis, expedita a quasi quisquam non fugit facilis. Sit placeat reiciendis iusto odit deleniti facere sed non consequatur minus, nemo omnis dolorem quae vitae vel pariatur labore distinctio voluptas."><%= dadosChamado.descricao_cha %></textarea>
+            </div>
+        </main>
+        </form>
+    </section>
+    <script src="../js/script.js"></script>
+    <script>
+        //        function atualizarDataHora() {
+        //     const dataChamado = document.getElementById("dataChamado");
+        //     const horaChamado = document.getElementById("horaChamado");
+
+        //     const agora = new Date();
+
+        //     // Formate a data no formato "yyyy-MM-dd" para o campo de data
+        //     const dia = String(agora.getDate()).padStart(2, '0');
+        //     const mes = String(agora.getMonth() + 1).padStart(2, '0');
+        //     const ano = agora.getFullYear();
+        //     const dataFormatada = `${ano}-${mes}-${dia}`;
+        //     dataChamado.value = dataFormatada;
+
+        //     // Formate a hora no formato "HH:mm" para o campo de hora
+        //     const horaFormatada = agora.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+        //     horaChamado.value = horaFormatada;
+        // }
+
+        // // Atualize a data e a hora a cada segundo (1000 milissegundos)
+        // setInterval(atualizarDataHora, 1000);
+
+        // // Chame a função uma vez para configurar os valores iniciais
+        // atualizarDataHora();
+
+
+        document.getElementById("equipamento").addEventListener("change", function () {
+            const selectedOption = this.options[this.selectedIndex];
+            const localidade = selectedOption.getAttribute("data-localidade");
+            const setor = selectedOption.getAttribute("data-setor");
+            const descricao = selectedOption.getAttribute("data-descricao");
+
+            // Preencha os campos com os valores do equipamento selecionado
+            document.getElementById("localidade").value = localidade;
+            document.getElementById("setor").value = setor;
+            document.getElementById("descricao").value = descricao;
+        });
+        //         function mostrarUser() {
+        //             const userEmail = localStorage.getItem("userEmail");
+        //             const EmailCriador = document.getElementById("email")
+
+        //             // Insere o email no elemento HTML correspondente
+        //             document.getElementById("userEmail").innerHTML = userEmail;
+        //             EmailCriador.value = userEmail;
+        //         }
+        //         mostrarUser()    
+    </script>
+    <link rel="stylesheet" href="../css/@media1440.css">
+    <link rel="stylesheet" href="../css/@media1200.css">
+</body>
