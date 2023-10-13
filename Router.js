@@ -136,11 +136,14 @@ router.post("/view/chamado", async function (req, res) {
         const id_chamado = req.body.id_chamado;
         const sql = "SELECT chamado.id_chamado, status.nome_status AS status_cha,lista_equipamentos.tag_listequip AS equipamento_cha,chamado.descri_cha,chamado.prioridade_cha,chamado.criado_por_cha,chamado.email,chamado.data_ini_cha,chamado.hora_ini_cha,chamado.descricao_cha FROM chamado INNER JOIN lista_equipamentos ON lista_equipamentos.id_equip = chamado.equipamento_cha INNER JOIN status ON status.id_status = chamado.status_cha WHERE chamado.id_chamado = $1"
         const dados = await db.query(sql, [id_chamado]);
+        const tagEquip = dados.rows[0].equipamento_cha
         
+        const sqlEquip = 'SELECT * FROM lista_equipamentos WHERE tag_listequip = $1';
+        const dadosEquip = await db.query(sqlEquip, [tagEquip]);
+        console.log(dadosEquip.rows[0])
         
-        console.log(dados.rows[0])
         res.render('viewchamado', { 
-            dadosChamado: dados.rows[0]
+            dadosChamado: dados.rows[0],dadosEquip:dadosEquip.rows
         });
     } catch (error) {
         res.status(500).send("Erro ao buscar os dados: " + error.message);

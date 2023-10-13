@@ -87,22 +87,23 @@
             </div>
             <div class="dados">
                 <div class="info-header-order">
-                    <label class="label-margin for="" >Equipamento</label>
-                        <input type=" text" value="<%= dadosChamado.equipamento_cha %>">
+                    <label class="label-margin" for="">Equipamento</label>
+                    <input type="text" value="<%= dadosChamado.equipamento_cha %>">
                 </div>
                 <div class="info-header-order">
                     <label class="label-margin" for="">Localidade</label>
-                    <input type="text" class="data-chamado" id="localidade" name="localidade" value="">
+                    <input type="text" class="data-chamado" id="localidade" name="localidade" value="<%= dadosEquip[0].localidade_listequip %>">
                 </div>
                 <div class="info-header-order">
                     <label for="" class="popup-label">Setor</label>
-                    <input type="text" class="data-chamado">
+                    <input type="text" class="data-chamado" value="<%= dadosEquip[0].setor_listequip %>">
                 </div>
                 <div class="info-header-order">
-                    <label class="label-margin for="">Descrição</label>
-                    <textarea type=" text" id="descricao" style="width: 30%;"></textarea>
+                    <label class="label-margin" for="">Descrição</label>
+                    <textarea type="text" id="descricao" style="width: 30%;"><%= dadosEquip[0].descricao_listequip %></textarea>
                 </div>
             </div>
+            
         </main>
         <main class="responsabilidades section_chamado">
             <div class="title">
