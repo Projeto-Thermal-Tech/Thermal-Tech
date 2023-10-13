@@ -773,3 +773,21 @@ textarea {
   background-color: darkblue;
 }
 
+
+/* Estilo para o campo de entrada (input) */
+#matricula_tecnico, #local_setor, #tipo_equip {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+  font-size: 14px;
+}
+/* Estilo para os botões */
+button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+

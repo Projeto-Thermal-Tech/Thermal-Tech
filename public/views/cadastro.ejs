@@ -68,7 +68,21 @@
                 <option value="tabela_equip">Equipamentos</option>
             </select>
         </div>
-        
+        <div class="matricula_tecnico">
+          <input type="number" id="matricula_tecnico" placeholder="N° matricula">
+          <button onclick="filtrarPorTecnico()">Pesquisar</button>
+          <button onclick="limparFiltroTecnico()" id="botaoVoltar_tec" style="display: none;">Voltar</button>
+        </div>
+        <div class="local_setor">
+          <input type="text" id="local_setor" placeholder="Local">
+          <button onclick="filtrarPorLocal()">Pesquisar</button>
+          <button onclick="limparFiltroLocal()" id="botaoVoltar" style="display: none;">Voltar</button>
+        </div>        
+        <div class="tipo_equip">
+          <input type="text" id="tipo_equip" placeholder="Equipamento">
+          <button onclick="filtrarPorEquipamento()">Pesquisar</button>
+          <button onclick="limparFiltroEquipamento()" id="botaoVoltar_equip" style="display: none;">Voltar</button>
+        </div>      
         <div class="cadastrar">
             <button id="cadastro" onclick="mostrarCadastro()">
                 <i class="fa-sharp fa-solid fa-plus fa-xs" style="color: #000000; margin-right: 5px;"></i>
@@ -499,7 +513,208 @@ window.onload = function() {
     tabelaSelect.dispatchEvent(new Event("change"));
 }
 
+document.getElementById('escolha').addEventListener('change', function() {
+    // Ocultar todos os elementos primeiro
+    document.querySelector('.matricula_tecnico').style.display = 'none';
+    document.querySelector('.local_setor').style.display = 'none';
+    document.querySelector('.tipo_equip').style.display = 'none';
 
+    // Mostrar o elemento correspondente com base na opção selecionada
+    if (this.value === 'tabela_tec') {
+        document.querySelector('.matricula_tecnico').style.display = 'block';
+    } else if (this.value === 'tabela_loc') {
+        document.querySelector('.local_setor').style.display = 'block';
+    } else if (this.value === 'tabela_equip') {
+        document.querySelector('.tipo_equip').style.display = 'block';
+    }
+});
+
+
+
+function filtrarPorTecnico() {
+  var input, filtro, tabela, linhas, colunaMatricula, i, textoMatricula, botaoVoltar;
+  input = document.getElementById("matricula_tecnico");
+  filtro = input.value.toUpperCase();
+  tabela = document.querySelector("table");
+  linhas = tabela.getElementsByTagName("tr");
+  botaoVoltar = document.querySelector("button[onclick='limparFiltroTecnico()']");
+
+  // Verifica se o campo de entrada está vazio
+  if (filtro.trim() === "") {
+    alert("Por favor, insira um número de matrícula antes de pesquisar.");
+    return; // Retorna sem executar a pesquisa
+  }
+
+  var matriculaEncontrada = false; // Variável para rastrear se a matrícula foi encontrada
+
+  for (i = 1; i < linhas.length; i++) {
+    colunaMatricula = linhas[i].getElementsByTagName("td")[3]; // Primeira coluna (índice 0) contém a matrícula
+    if (colunaMatricula) {
+      textoMatricula = colunaMatricula.textContent || colunaMatricula.innerText;
+      if (textoMatricula.toUpperCase() === filtro) {
+        linhas[i].style.display = "";
+        matriculaEncontrada = true; // A matrícula foi encontrada
+      } else {
+        linhas[i].style.display = "none";
+      }
+    }
+  }
+
+  // Verifica se a matrícula não foi encontrada e exibe uma mensagem de erro
+  if (!matriculaEncontrada) {
+    alert("A matrícula '" + filtro + "' não existe.");
+    // Limpa o campo de entrada
+    input.value = "";
+    // Mostra todos os registros novamente
+    for (i = 1; i < linhas.length; i++) {
+      linhas[i].style.display = "";
+    }
+  } else {
+    // Exibe o botão "Voltar" apenas se a matrícula foi encontrada
+    botaoVoltar.style.display = "inline-block";
+  }
+}
+
+function limparFiltroTecnico() {
+  var tabela, linhas, i;
+
+  // Obtém a tabela e suas linhas
+  tabela = document.querySelector("table");
+  linhas = tabela.getElementsByTagName("tr");
+
+  // Mostra todas as linhas da tabela
+  for (i = 1; i < linhas.length; i++) {
+    linhas[i].style.display = "";
+  }
+
+  // Limpa o campo de entrada
+  document.getElementById("matricula_tecnico").value = "";
+
+  // Oculta o botão "Voltar"
+  document.querySelector("button[onclick='limparFiltroTecnico()']").style.display = "none";
+}
+
+
+function filtrarPorLocal() {
+  var input, filtro, tabela, linhas, colunaLocal, i, textoLocal, botaoVoltar;
+  input = document.getElementById("local_setor");
+  filtro = input.value.trim().toUpperCase();
+
+  if (filtro === "") {
+    alert("Por favor, insira um nome de local antes de pesquisar.");
+    return;
+  }
+
+  tabela = document.getElementById("tabela_loc");
+  linhas = tabela.getElementsByTagName("tr");
+  botaoVoltar = document.getElementById("botaoVoltar");
+
+  var localEncontrado = false;
+
+  for (i = 1; i < linhas.length; i++) {
+    colunaLocal = linhas[i].getElementsByTagName("td")[1];
+    if (colunaLocal) {
+      textoLocal = colunaLocal.textContent || colunaLocal.innerText;
+      textoLocal = textoLocal.trim().toUpperCase();
+
+      if (textoLocal === filtro) {
+        linhas[i].style.display = "";
+        localEncontrado = true;
+      } else {
+        linhas[i].style.display = "none";
+      }
+    }
+  }
+
+  if (!localEncontrado) {
+    alert("O local '" + filtro + "' não foi encontrado.");
+    input.value = "";
+    for (i = 1; i < linhas.length; i++) {
+      linhas[i].style.display = "";
+    }
+  } else {
+    botaoVoltar.style.display = "inline-block";
+  }
+}
+
+function limparFiltroLocal() {
+  var tabela, linhas, i;
+  tabela = document.getElementById("tabela_loc");
+  linhas = tabela.getElementsByTagName("tr");
+  var input = document.getElementById("local_setor");
+  var botaoVoltar = document.getElementById("botaoVoltar");
+
+  input.value = "";
+
+  for (i = 1; i < linhas.length; i++) {
+    linhas[i].style.display = "";
+  }
+
+  botaoVoltar.style.display = "none";
+}
+
+
+// Função para filtrar por equipamento
+function filtrarPorEquipamento() {
+  var input, filtro, tabela, linhas, colunaEquipamento, i, textoEquipamento, botaoVoltar;
+  input = document.getElementById("tipo_equip");
+  filtro = input.value.trim().toUpperCase();
+
+  if (filtro === "") {
+    alert("Por favor, insira um tipo de equipamento antes de pesquisar.");
+    return;
+  }
+
+  tabela = document.getElementById("tabela_equip");
+  linhas = tabela.getElementsByTagName("tr");
+  botaoVoltar = document.getElementById("botaoVoltar_equip"); // Usando o botaoVoltar_equip para pesquisa por equipamento
+
+  var equipamentoEncontrado = false;
+
+  for (i = 1; i < linhas.length; i++) {
+    colunaEquipamento = linhas[i].getElementsByTagName("td")[1]; // Assumindo que a segunda coluna contém o tipo de equipamento
+    if (colunaEquipamento) {
+      textoEquipamento = colunaEquipamento.textContent || colunaEquipamento.innerText;
+      textoEquipamento = textoEquipamento.trim().toUpperCase();
+
+      if (textoEquipamento === filtro) {
+        linhas[i].style.display = "";
+        equipamentoEncontrado = true;
+      } else {
+        linhas[i].style.display = "none";
+      }
+    }
+  }
+
+  if (!equipamentoEncontrado) {
+    alert("O equipamento '" + filtro + "' não foi encontrado.");
+    input.value = "";
+    for (i = 1; i < linhas.length; i++) {
+      linhas[i].style.display = "";
+    }
+  } else {
+    botaoVoltar.style.display = "inline-block";
+  }
+}
+
+// Função para limpar o filtro e mostrar todos os registros de equipamento
+function limparFiltroEquipamento() {
+  var tabela, linhas, i;
+  tabela = document.getElementById("tabela_equip");
+  linhas = tabela.getElementsByTagName("tr");
+  var input = document.getElementById("tipo_equip");
+  var botaoVoltar = document.getElementById("botaoVoltar_equip"); // Usando o botaoVoltar_equip para pesquisa por equipamento
+
+  input.value = "";
+
+  for (i = 1; i < linhas.length; i++) {
+    linhas[i].style.display = "";
+  }
+
+  botaoVoltar.style.display = "none";
+}
+ 
+ 
 
 
 
