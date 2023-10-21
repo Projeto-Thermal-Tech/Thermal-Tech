@@ -267,9 +267,12 @@
               <input type="text" class="popup-input" id="tag" name="nome_tipo" placeholder="" required>
             </div>
           </div>
-          <button type="submit" class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
+          <div>
+            <button type="submit" class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
+          </div>
       </form>
-      <button class="popup-button cancelar" onclick="EsconderPopup()">Cancelar</button>
+      <button class="popup-button cancelar" type="button" onclick="EsconderPopup()">Cancelar</button>
+    </div>
     </div>
     </div>
   </section>
@@ -296,7 +299,7 @@
       </div>
       <button type="submit" class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
       </form>
-      <button class="popup-button cancelar" onclick="EsconderPopup()">Cancelar</button>
+      <button class="popup-button cancelar" onclick="EsconderPopupEditTec()">Cancelar</button>
     </div>
   </section>
 
@@ -313,9 +316,11 @@
             </div>
           </div>
       </div>
-      <button type="submit" class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
+      <div>
+        <button type="submit" class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
       </form>
-      <button class="popup-button cancelar" onclick="EsconderPopup()">Cancelar</button>
+      <button class="popup-button cancelar" type="button" onclick="EsconderPopupEditLocal()">Cancelar</button>
+      </div>
     </div>
   </section>
 
@@ -331,9 +336,12 @@
             <input type="text" id="id_tipar" name="id_tipar" style="display: none;">  
           </div>
         </div>
-        <button type="submit" class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
+        <div>
+          <button type="submit" class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
     </form>
-    <button class="popup-button cancelar" onclick="EsconderPopup()">Cancelar</button>
+        <button class="popup-button cancelar" type="button" onclick="EsconderPopupEditTipo()">Cancelar</button>
+        </div>
+        
   </div>
   </div>
 </section>
@@ -425,16 +433,20 @@
       }
     }
 
-    function EsconderPopup() {
-      document.querySelector('.overlay').style.display = 'none'
-      if (escolha.value === 'tabela_tec') {
-        document.getElementById('popup-tec').style.display = 'none'
-      } if (escolha.value === 'tabela_loc') {
-        document.getElementById('popup-loc').style.display = 'none'
-      } if (escolha.value === 'tabela_equip') {
-        document.getElementById('popup-equip').style.display = 'none'
-      }
+    function EsconderPopupEditTec() {
+      document.getElementById('popup-tecnico').style.display = 'none'
+      // document.querySelectorAll('.overlay-tec').style.display = 'none'
+      document.querySelector('.overlay-tec').style.display='none'
     }
+    function EsconderPopupEditLocal(){
+      document.getElementById('popup-setores').style.display = 'none'
+      document.querySelector('.overlay-setores').style.display = 'none'
+    }
+    function EsconderPopupEditTipo(){
+      document.getElementById('popup-Tipos').style.display = 'none'
+      document.querySelector('.overlay-Tipos').style.display = 'none'
+    }
+
     function editarTecnico(id_tec, email, nome_tec, matricula_tec) {
     document.getElementById('id_tec').value = id_tec;
     document.getElementById('email').value = email;
