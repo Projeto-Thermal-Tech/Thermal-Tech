@@ -64,6 +64,16 @@ exports.insertChamado =  function(status, equipamento, descricao, prioridade, cr
     }
     return novoChamado(status, equipamento, descricao, prioridade, criado, email, datainicio, horainicio, descricaocha)
 }
+exports.insertOrdem = function(status, criadoPor, dataInicio, dataFim, horaInicio, horaFim, prioridade, matricula, tecnicoResp, dataIniTrab, horaIniTrab, dataFimTrab, horaFimTrab, textoServico){
+    async function novaOrdem(status, criadoPor, dataInicio, dataFim, horaInicio, horaFim, prioridade, matricula, tecnicoResp, dataIniTrab, horaIniTrab, dataFimTrab, horaFimTrab, textoServico){
+        await db.connect()
+        tabela = await db.query("SELECT * FROM ordem")
+        const inserir = ("insert into ordem(status_ord, criado_por_ord, data_ini_ord, data_fim_ord, hora_ini_ord,hora_fim_ord,prioridade_ord,matricula_ord,tecnico_resp_ord,data_ini_trab,hora_ini_trab,data_fim_trab,hora_fim_trab,texto_servico) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)")
+        await db.query(inserir,[status, criadoPor, dataInicio, dataFim, horaInicio,horaFim,prioridadeOrdem ,matriculaOrdem ,tecnicoRespOrdem ,dataIniTrab ,horaIniTrab ,dataFimTrab ,horaFimTrab ,textoServico])
+    }
+    return novaOrdem(statusOrdem ,criadoPorOrdem ,dataInicioOrdem ,dataFimOrdem ,horaInicioOrdem ,horaFimOrdem ,prioridadeOrdem ,matriculaOrdem ,tecnicoRespOrdem ,dataIniTrab ,horaIniTrab ,dataFimTrab ,horaFimTrab ,textoServico)
+}
+
 exports.insertUser = function (nome,email) {
     async function novoUser(nome,email) {
         await db.connect()
@@ -75,7 +85,7 @@ exports.insertUser = function (nome,email) {
 exports.selectChamado = async function() {
     try {
       await db.connect();
-      const query = 'SELECT id_chamado, prioridade_cha, descri_cha, status_cha, criado_por_cha, data_ini_cha FROM chamado';
+      const query = 'SELECT chamado.id_chamado, prioridade.nome_pri AS prioridade_cha, chamado.descri_cha, chamado.status_cha, chamado.criado_por_cha, chamado.data_ini_cha FROM chamado INNER JOIN prioridade ON chamado.prioridade_cha = prioridade.id_prioridade';
       const result = await db.query(query);
       return result.rows;
     } catch (error) {
@@ -85,6 +95,7 @@ exports.selectChamado = async function() {
       await db.end();
     }
 };
+
 exports.updateEquip = function (id, tag, tipo, modelo, ns, area, local, setor, descricao) {
     async function atualizarEquip(id, tag, tipo, modelo, ns, area, local, setor, descricao) {
         try {

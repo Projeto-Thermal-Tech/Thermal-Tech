@@ -322,7 +322,7 @@ function filtrarPorTag() {
   var tagEncontrada = false; // Variável para rastrear se a tag foi encontrada
 
   for (i = 1; i < linhas.length; i++) {
-    colunaTag = linhas[i].getElementsByTagName("td")[1]; // Segunda coluna (índice 1) contém a TAG
+    colunaTag = linhas[i].getElementsByTagName("td")[0]; // Segunda coluna (índice 1) contém a TAG
     if (colunaTag) {
       textoTag = colunaTag.textContent || colunaTag.innerText;
       if (textoTag.toUpperCase() === filtro) { // Modificado aqui

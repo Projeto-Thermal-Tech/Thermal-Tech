@@ -51,7 +51,7 @@ router.get("/cadastro", async function (req, res) {
 router.get("/chamado", async function (req, res) {
     try {
         async function listarchamados() {
-            const sql = "SELECT chamado.*, status.nome_status FROM chamado INNER JOIN status ON chamado.status_cha = status.id_status";
+            const sql = "SELECT chamado.*, status.nome_status, prioridade.nome_pri FROM chamado INNER JOIN status ON chamado.status_cha = status.id_status INNER JOIN prioridade ON chamado.prioridade_cha = prioridade.id_prioridade";
             chamados = await db.query(sql)
         }
         await listarchamados(); // Espere até que a função listarDados seja concluída
@@ -62,6 +62,20 @@ router.get("/chamado", async function (req, res) {
         res.status(500).send("Erro ao buscar os dados: " + error.message);
     }
 });
+router.get("/ordem", async function (req, res) {
+    try {
+        async function listarOrdens() {
+            const sql = "SELECT o.id_ordem, c.id_chamado AS id_chamado_relacionado, s.nome_status AS status_chamado, o.criado_por_ord, o.data_ini_ord, o.data_fim_ord,o.hora_ini_ord, o.hora_fim_ord, p.nome_pri AS prioridade, t.nome_tec AS tecnico_responsavel, o.data_ini_trab, o.hora_ini_trab, o.data_fim_trab,  o.hora_fim_trab, o.texto_servico FROM ordem o INNER JOIN chamado c ON o.id_ordem = c.id_chamado INNER JOIN tecnicos t ON o.tecnico_resp_ord = t.id_tec INNER JOIN prioridade p ON o.prioridade_ord = p.id_prioridade INNER JOIN status s ON c.status_cha = s.id_status";
+            ordens = await db.query(sql)
+        }
+        await listarOrdens(); // Espere até que a função listarOrdens seja concluída
+
+        res.render('ordem', {ordens:ordens.rows }); // Agora a variável ordens está acessível aqui
+    } catch (error) {
+        res.status(500).send("Erro ao buscar os dados: " + error.message);
+    }
+});
+
 
 router.get("/equipamentos", async function (req, res) {
     try {
