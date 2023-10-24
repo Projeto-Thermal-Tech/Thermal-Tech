@@ -100,5 +100,32 @@ function deletarChamado(){
   
 }
 
+function salvarOrdem(){
+  const inputs = document.querySelectorAll(".data-chamado")
+  alert("Ordem criado com sucesso!")
+  setTimeout(() => {
+    inputs.forEach(function(input) {
+      input.value = '';
+    });
+  }, 2000);
+  
+}
+function deletarOrdem(){
+  const inputs = document.querySelectorAll(".data-chamado")
+  confirmDelete = confirm("Tem certeza que deseja excluir esse chamado?") 
+  if(confirmDelete = true){
+    inputs.forEach(function(input) {
+      input.value = '';
+    });
+  }
+}
 
+function deletarOrdem(){
+  confirm("Tem certeza que deseja excluir a ordem?")
+  // Vincular o botão ao evento de clique
+  document.getElementById("btnGeneratePDF").addEventListener("click", generatePDF);
+ }
+function imprimirOrdem(){
+  print()
+}
 

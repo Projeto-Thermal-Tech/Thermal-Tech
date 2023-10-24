@@ -8,6 +8,7 @@ const novoTec = require('../Thermal-Tech/database/db');
 const novoTipo = require('../Thermal-Tech/database/db');
 const novoUser = require('../Thermal-Tech/database/db');
 const novoChamado = require('../Thermal-Tech/database/db');
+const novaOrdem = require('../Thermal-Tech/database/db');
 const atualizarEquip = require('../Thermal-Tech/database/db')
 const excluirEquip = require('../Thermal-Tech/database/db')
 const atualizarTecnicos = require('../Thermal-Tech/database/db');
@@ -250,6 +251,13 @@ router.post('/cadastro/setor', function (req, res) {
 router.post('/cadastro/chamado', function (req, res) {
     novoChamado.insertChamado(req.body.status, req.body.tag, req.body.titleDesc, req.body.prioridade, req.body.criador,req.body.email, req.body.dataChamado, req.body.horaChamado, req.body.desc).then(function () {
         res.redirect('/novo-chamado')
+    }).catch(function (error) {
+        res.send("deu erro " + error)
+    })
+})
+router.post('/cadastro/ordem', function (req, res) {
+    novaOrdem.insertOrdem(req.body.status, req.body.criador, req.body.dataini, req.body.datafim, req.body.horaini, req.body.horafim, req.body.prioridade, req.body.matricula, req.body.tecnicos, req.body.datainitrab, req.body.horainitrab, req.body.datafimtrab, req.body.horafimtrab, req.body.textoserviço).then(function () {
+        res.redirect('/novo-ordem')
     }).catch(function (error) {
         res.send("deu erro " + error)
     })
