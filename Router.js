@@ -64,17 +64,21 @@ router.get("/chamado", async function (req, res) {
     }
 });
 router.get("/ordem", async function (req, res) {
-    try {
-        async function listarOrdens() {
-            const sql = "SELECT o.id_ordem, c.id_chamado AS id_chamado_relacionado, s.nome_status AS status_chamado, o.criado_por_ord, o.data_ini_ord, o.data_fim_ord,o.hora_ini_ord, o.hora_fim_ord, p.nome_pri AS prioridade, t.nome_tec AS tecnico_responsavel, o.data_ini_trab, o.hora_ini_trab, o.data_fim_trab,  o.hora_fim_trab, o.texto_servico FROM ordem o INNER JOIN chamado c ON o.id_ordem = c.id_chamado INNER JOIN tecnicos t ON o.tecnico_resp_ord = t.id_tec INNER JOIN prioridade p ON o.prioridade_ord = p.id_prioridade INNER JOIN status s ON c.status_cha = s.id_status";
-            ordens = await db.query(sql)
-        }
-        await listarOrdens(); // Espere até que a função listarOrdens seja concluída
+    // try {
+    //     async function listarOrdens() {
+    //         const sql = "SELECT o.id_ordem, c.id_chamado AS id_chamado_relacionado, s.nome_status AS status_chamado, o.criado_por_ord, o.data_ini_ord, o.data_fim_ord,o.hora_ini_ord, o.hora_fim_ord, p.nome_pri AS prioridade, t.nome_tec AS tecnico_responsavel, o.data_ini_trab, o.hora_ini_trab, o.data_fim_trab,  o.hora_fim_trab, o.texto_servico FROM ordem o INNER JOIN chamado c ON o.id_ordem = c.id_chamado INNER JOIN tecnicos t ON o.tecnico_resp_ord = t.id_tec INNER JOIN prioridade p ON o.prioridade_ord = p.id_prioridade INNER JOIN status s ON c.status_cha = s.id_status";
+    //         ordens = await db.query(sql)
+    //     }
+    //     await listarOrdens(); // Espere até que a função listarOrdens seja concluída
 
-        res.render('ordem', {ordens:ordens.rows }); // Agora a variável ordens está acessível aqui
-    } catch (error) {
-        res.status(500).send("Erro ao buscar os dados: " + error.message);
-    }
+    //     res.render('ordem', {ordens:ordens.rows }); // Agora a variável ordens está acessível aqui
+    // } catch (error) {
+    //     res.status(500).send("Erro ao buscar os dados: " + error.message);
+    // }
+    res.render('ordem');
+});
+router.get("/consulta_ordem", function (req, res) {
+    res.render('consulta-ordem')
 });
 
 
@@ -289,9 +293,6 @@ router.get("/manutencao", function (req, res) {
 })
 router.get("/ordem", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/pages/ordem.html"))
-})
-router.get("/consulta_ordem", function (req, res) {
-    res.sendFile(path.join(__dirname, "./public/pages/consulta-ordem.html"))
 })
 router.get("/chamados", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/pages/chamado.html"))

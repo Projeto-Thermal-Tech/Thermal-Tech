@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/chamado.css">
+  <link rel="stylesheet" href="../css/consulta-ordem.css">
   <link rel="stylesheet" href="../css/@media1200.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,19 +55,20 @@
   <br>
   <h2>Ordens</h2>
 
-  <section class="dados_cham">
-    <div class="header_cham">
+  <section class="dados_Ord">
+    <div class="header_Ord">
 
-      <div class="num_cham">
+      <div class="num_Ord">
+        <a href="http://localhost:5000/ordem"><button style="width: 200px; margin-right: 50px;">+ Nova Ordem de manutenção</button></a>
         <label>N° Ordem:</label>
-        <input type="number" class="num" id="numeroChamado">
-        <button id="pesquisar" onclick="pesquisarChamado()">Pesquisar</button>
+        <input type="number" class="num" id="numeroOrdem">
+        <button id="pesquisar" onclick="pesquisarOrdem()">Pesquisar</button>
         <button id="limpar-filtro" style="display: none;" onclick="limparFiltro()">Voltar</button>
       </div>
 
-      <div class="estado">
+      <div class="estadoOrd">
         <label>Status:</label>
-        <select id="esta">
+        <select id="estaOrd">
           <option value="todos">Todos</option>
           <option value="aberto">Aberto</option>
           <option value="fechado">Encerrado</option>
@@ -75,15 +76,15 @@
         </select>
       </div>
 
-      <div class="filtro">
-        <button id="filtro" onclick="showPopup()">Filtrar</button>
+      <div class="filtroOrd">
+        <button id="filtro" onclick="showPopupOrdem()">Filtrar</button>
       </div>
     </div>
 
     <br>
 
     <div class="table-container">
-      <table id="filtro_cham">
+      <table id="filtro_ord">
         <thead>
           <tr>
             <th></th>
@@ -98,7 +99,7 @@
         </thead>
         <tbody>
           <tr>
-            <td><button class="visualizar">Visualizar</button></td>
+            <td><button class="visualizarOrd">Visualizar</button></td>
             <td>1</td>
             <td>Alta</td>
             <td>Parou de funcionar</td>
@@ -108,7 +109,7 @@
 
           </tr>
           <tr>
-            <td><button class="visualizar">Visualizar</button></td>
+            <td><button class="visualizarOrd">Visualizar</button></td>
             <td>2</td>
             <td>Baixa</td>
             <td>Barulho estranho</td>
@@ -118,7 +119,7 @@
 
           </tr>
           <tr>
-            <td><button class="visualizar">Visualizar</button></td>
+            <td><button class="visualizarOrd">Visualizar</button></td>
             <td>3</td>
             <td>Média</td>
             <td>Saindo fumaça</td>
@@ -128,7 +129,7 @@
 
           </tr>
           <tr>
-            <td><button class="visualizar">Visualizar</button></td>
+            <td><button class="visualizarOrd">Visualizar</button></td>
             <td>4</td>
             <td>Baixa</td>
             <td>Não esquenta</td>
@@ -138,7 +139,7 @@
 
           </tr>
           <tr>
-            <td><button class="visualizar">Visualizar</button></td>
+            <td><button class="visualizarOrd">Visualizar</button></td>
             <td>5</td>
             <td>Média</td>
             <td>Não esfria</td>
@@ -148,7 +149,7 @@
 
           </tr>
           <tr>
-            <td><button class="visualizar">Visualizar</button></td>
+            <td><button class="visualizarOrd">Visualizar</button></td>
             <td>6</td>
             <td>Alta</td>
             <td>Não desliga</td>
@@ -158,7 +159,7 @@
 
           </tr>
           <tr>
-            <td><button class="visualizar">Visualizar</button></td>
+            <td><button class="visualizarOrd">Visualizar</button></td>
             <td>7</td>
             <td>Alta</td>
             <td>Não liga</td>
@@ -168,7 +169,7 @@
 
           </tr>
           <tr>
-            <td><button class="visualizar">Visualizar</button></td>
+            <td><button class="visualizarOrd">Visualizar</button></td>
             <td>8</td>
             <td>Média</td>
             <td>Liga sozinho</td>
@@ -178,7 +179,7 @@
 
           </tr>
           <tr>
-            <td><button class="visualizar">Visualizar</button></td>
+            <td><button class="visualizarOrd">Visualizar</button></td>
             <td>9</td>
             <td>Baixa</td>
             <td>Desliga sozinho</td>
@@ -188,7 +189,7 @@
           </tr>
 
           <tr>
-            <td><button class="visualizar">Visualizar</button></td>
+            <td><button class="visualizarOrd">Visualizar</button></td>
             <td>10</td>
             <td>Alta</td>
             <td>Necessária a substituição</td>
@@ -198,7 +199,7 @@
           </tr>
 
           <tr>
-            <td><button class="visualizar">Visualizar</button></td>
+            <td><button class="visualizarOrd">Visualizar</button></td>
             <td>11</td>
             <td>Média</td>
             <td>Pegou fogo</td>
@@ -212,18 +213,18 @@
     </div>
 
   </section>
-  <section class="overlay">
-    <div class="popup" id="popup">
-      <div class="popup-title-filter">Filtrar Chamados</div>
-      <div class="popup-content-filter">
-        <div class="popup-header-filter">
+  <section class="overlayOrdem">
+    <div class="popupOrdem" id="popupOrdem">
+      <div class="popup-title-filter-Ordem">Filtrar Chamados</div>
+      <div class="popup-content-filter-Ordem">
+        <div class="popup-header-filter-Ordem">
 
           <div>
-            <label for="" class="popup-label-filter">Nº Chamado:</label>
-            <input type="number" class="popup-label-filter numero-chamado-input" id="" placeholder="Nº Chamado">
+            <label for="" class="popup-label-filter-Ordem">Nº Chamado:</label>
+            <input type="number" class="popup-label-filter-Ordem numero-chamado-input-Ordem" id="" placeholder="Nº Chamado">
           </div>
           <div>
-            <label for="" class="popup-label-filter">Prioridade:</label>
+            <label for="" class="popup-label-filter-Ordem">Prioridade:</label>
             <select name="" id="">
               <option value=""></option>
               <option value="">Alta</option>
@@ -232,13 +233,13 @@
             </select>
           </div>
           <div>
-            <label for="" class="popup-label-filter">descrição</label>
-            <input type="text" class="popup-input-filter" id="descrição" placeholder="descrição">
+            <label for="" class="popup-label-filter-Ordem">descrição</label>
+            <input type="text" class="popup-input-filter-Ordem" id="descrição" placeholder="descrição">
           </div>
         </div>
 
         <div>
-          <label for="" class="popup-label-filter">Status</label>
+          <label for="" class="popup-label-filter-Ordem">Status</label>
           <select name="" id="">
             <option value=""></option>
             <option value="">Todos</option>
@@ -249,14 +250,14 @@
         </div>
         <div>
           <div>
-            <label for="" class="popup-label-filter">Criador</label>
-            <input type="text" name="" id="Criador" class="popup-input-filter">
+            <label for="" class="popup-label-filter-Ordem">Criador</label>
+            <input type="text" name="" id="Criador" class="popup-input-filter-Ordem">
           </div>
         </div>
-        <div class="popup-center-filter">
+        <div class="popup-center-filter-Ordem">
           <div>
-            <label for="" class="popup-label-filter">Data de Inico</label>
-            <input type="date" name="" id="" class="popup-input-filter">
+            <label for="" class="popup-label-filter-Ordem">Data de Inico</label>
+            <input type="date" name="" id="" class="popup-input-filter-Ordem">
           </div>
 
         </div>
@@ -267,7 +268,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const filterSelect = document.getElementById('esta');
-      const dataTable = document.getElementById('filtro_cham').getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+      const dataTable = document.getElementById('filtro_ord').getElementsByTagName('tbody')[0].getElementsByTagName('tr');
 
       filterSelect.addEventListener('change', function () {
         const selectedValue = filterSelect.value;
@@ -292,16 +293,16 @@
 
     var estadoAnteriorTabela = null;
 
-    function pesquisarChamado() {
-      var numeroChamado = document.getElementById("numeroChamado").value;
+    function pesquisarOrdem() {
+      var numeroOrdem = document.getElementById("numeroOrdem").value;
 
       // Verificar se o campo de entrada está vazio
-      if (!numeroChamado) {
-        alert("Por favor, insira um número de chamado para pesquisar.");
+      if (!numeroOrdem) {
+        alert("Por favor, insira um número de ordem para pesquisar.");
         return; // Não execute a pesquisa
       }
 
-      var table = document.getElementById("filtro_cham");
+      var table = document.getElementById("filtro_ord");
       var rows = table.getElementsByTagName("tr");
 
       if (estadoAnteriorTabela === null) {
@@ -312,17 +313,17 @@
         }
       }
 
-      var chamadoExiste = false;
+      var ordemExiste = false;
 
       for (var i = 1; i < rows.length; i++) {
         var row = rows[i];
         var cell = row.getElementsByTagName("td")[1]; // Coluna do Nº Chamado
 
         if (cell) {
-          var chamado = cell.innerText;
-          if (chamado === numeroChamado) {
+          var ordem = cell.innerText;
+          if (ordem === numeroOrdem) {
             row.style.display = "";
-            chamadoExiste = true;
+            ordemExiste = true;
           } else {
             row.style.display = "none";
           }
@@ -330,10 +331,10 @@
       }
 
       // Verifica se a tag não foi encontrada e exibe uma mensagem de erro
-      if (!chamadoExiste) {
-        alert("Esse número de chamado não existe.");
+      if (!ordemExiste) {
+        alert("Esse número de ordem não existe.");
         // Limpa o campo de entrada
-        document.getElementById("numeroChamado").value = "";
+        document.getElementById("numeroOrdem").value = "";
         // Mostra todos os registros novamente
         for (i = 1; i < rows.length; i++) {
           rows[i].style.display = "";
@@ -366,7 +367,7 @@
     // Função para limpar o filtro
     function limparFiltro() {
       if (estadoAnteriorTabela !== null) {
-        var table = document.getElementById("filtro_cham");
+        var table = document.getElementById("filtro_ord");
         var rows = table.getElementsByTagName("tr");
 
         // Restaurar o estado anterior da tabela
@@ -378,8 +379,8 @@
       }
 
       // Limpar o valor do input de número de chamado
-      const inputNumeroChamado = document.querySelector('.num');
-      inputNumeroChamado.value = '';
+      const inputnumeroOrdem = document.querySelector('.num');
+      inputnumeroOrdem.value = '';
 
       // Ocultar o botão "Limpar Filtro"
       var botaoLimparFiltro = document.querySelector('#limpar-filtro');

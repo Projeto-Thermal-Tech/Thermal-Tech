@@ -129,3 +129,9 @@ function imprimirOrdem(){
   print()
 }
 
+
+function showPopupOrdem() {
+  document.getElementById("popupOrdem").style.display = "block";
+  document.querySelector(".overlayOrdem").style.display = "block";
+}
+

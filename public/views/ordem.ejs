@@ -57,9 +57,9 @@
                     <div class="icons">
                         <form action="/cadastro/ordem" method="post">
                             <button type="submit"><img src="../assets/save.png" onclick="salvarOrdem()" alt=""></button>
-                            <button><img src="../assets/delete.png" onclick="deletarOrdem()" alt=""></button>
-                            <button><img src="../assets/print.png" onclick="imprimirOrdem()"></button>
-                            <button onclick="document.getElementById('fileInput').click();" id="btn-anexo">
+                            <button type="button"><img src="../assets/delete.png" onclick="deletarOrdem()" alt=""></button>
+                            <button type="button"><img src="../assets/print.png" onclick="imprimirOrdem()"></button>
+                            <button type="button" onclick="document.getElementById('fileInput').click();" id="btn-anexo">
                                 <img src="../assets/anexos.png" alt="">
                             </button>
                     </div>
@@ -75,14 +75,14 @@
                             <input type="text" value="ABERTA" readonly>
                             <br>
                             <label for="">Chamado</label>
-                            <input type="text" value="3321541" readonly>
+                            <input type="number" value="">
                         </div>
                     </div>
                 </section>
             </main>
             <div class="nav_infos">
-                <button onclick="hideElements()">Cabeçalho</button>
-                <button onclick="showElements()">Chamado</button>
+                <button type="button" onclick="hideElements()">Cabeçalho</button>
+                <button type="button" onclick="showElements()">Chamado</button>
             </div>
             <main class="chamado section_chamado display_none">
                 <section class="dados_chamado">
@@ -132,7 +132,7 @@
                     <div>
                         <label for="">Criado por</label>
                         <input class="data-chamado" type="text" value="Jean Victor Maciel dos Santos" style="width: 320px;">
-                        <input class="data-chamado" type="email" name="" id="" style="width: 320px;"
+                        <input class="data-chamado" type="email" name="" style="width: 320px;"
                             value="ens-jeanvictor@ugv.edu.br">
                     </div>
                     <div style="padding-top: 5px;">
@@ -164,7 +164,7 @@
                         </div>
                         <div>
                             <label for="">Criado por</label>
-                            <input class="data-chamado" type="text" value="Victor Luis Cardoso Bueno" style="width: 320px;">
+                            <input class="data-chamado" type="text" id="email" style="width: 320px;">
                         </div>
                     </div>
                 </main>
@@ -175,8 +175,8 @@
                         </div>
                         <div>
                             <label for="">Inicio</label>
-                            <input class="data-chamado" type="date">
-                            <input type="time">
+                            <input class="data-chamado" id="data-init-ordem" type="date">
+                            <input type="time" id="hora-init-ordem">
                             <label for="">Prioridade</label>
                             <select name="" id="">
                                 <option value="">1- Baixa</option>
@@ -187,6 +187,12 @@
                                 <label for="">Fim</label>
                                 <input type="date">
                                 <input type="time">
+                                <label for="">Tipo Manutenção</label>
+                                <select name="" id="">
+                                    <option value=""></option>
+                                    <option value="">Corretiva</option>
+                                    <option value="">Preventiva</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -204,12 +210,12 @@
                         <div>
                             <label for="">Inicio do trabalho</label>
                             <input type="date">
-                            <input type="time">
+                            <input type="time" step="1">
                         </div>
                         <div>
                             <label for="">Fim do Trabalho</label>
                             <input type="date">
-                            <input type="time">
+                            <input type="time" step="1">
                         </div>
                         <div>
                             <label for="">Texto do serviço</label>
@@ -244,12 +250,38 @@
 
         <script>
             function mostrarUser() {
-                const userEmail = localStorage.getItem("userEmail");
-    
-                // Insere o email no elemento HTML correspondente
-                document.getElementById("userEmail").innerHTML = userEmail;
-            }
-            mostrarUser()
+            const userEmail = localStorage.getItem("userEmail");
+            const EmailCriador = document.getElementById("email")
+
+            // Insere o email no elemento HTML correspondente
+            document.getElementById("userEmail").innerHTML = userEmail;
+            EmailCriador.value = userEmail;
+        }
+        mostrarUser()
+
+        function atualizarDataHora() {
+  const dataOrdem = document.getElementById("data-init-ordem");
+  const horaOrdem = document.getElementById("hora-init-ordem");
+
+  const agora = new Date();
+
+  // Formate a data no formato "yyyy-MM-dd" para o campo de data
+  const dia = String(agora.getDate()).padStart(2, '0');
+  const mes = String(agora.getMonth() + 1).padStart(2, '0');
+  const ano = agora.getFullYear();
+  const dataFormatada = `${ano}-${mes}-${dia}`;
+  dataOrdem.value = dataFormatada;
+
+  // Formate a hora no formato "HH:mm" para o campo de hora
+  const horaFormatada = agora.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  horaOrdem.value = horaFormatada;
+}
+
+// Atualize a data e a hora a cada segundo (1000 milissegundos)
+setInterval(atualizarDataHora, 1000);
+
+// Chame a função uma vez para configurar os valores iniciais
+atualizarDataHora();
         </script>
         <script src="../Login_v1/firebase-init.js"></script>
         <script src="../js/auth-guard.js"></script>
