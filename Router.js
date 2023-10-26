@@ -77,6 +77,24 @@ router.get("/ordem", async function (req, res) {
     // }
     res.render('ordem');
 });
+
+// router.post('/criar/ordem', function (req, res) {
+//     novaOrdem.insertOrdem(req.body.status,req.body.criador, req.body.data_inicio, req.body.hora_inicio, req.body.prioridade, req.body.data_fim, req.body.hora_fim, req.body.tipo_manut, req.body.matricula, req.body.data_lancamento, req.body.data_inicio_trabalho, req.body.hora_inicio_trabalho,req.body.data_fim_trabalho, req.body.hora_fim_trabalho,req.body.desc_manut ).then(function () {
+//         res.redirect('/ordem')
+//     }).catch(function (error) {
+//         res.send("deu erro " + error)
+//     })
+// })
+router.post('/criar/ordem', function (req, res) {
+    // res.json(req.body.num_ordem, req.body.status,req.body.num_chamado,req.body.criador,req.body.data_inicio, req.body.hora_inicio,req.body.prioridade, req.body.tipo_manut)
+    novaOrdem.insertOrdem(req.body.num_ordem, req.body.status,req.body.num_chamado,req.body.criador,req.body.data_inicio, req.body.hora_inicio,req.body.prioridade, req.body.tipo_manut).then(function () {
+        res.redirect('/ordem')
+    }).catch(function (error) {
+        res.send("deu erro " + error)
+    })
+})
+
+
 router.get("/consulta_ordem", function (req, res) {
     res.render('consulta-ordem')
 });

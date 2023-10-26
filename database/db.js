@@ -64,15 +64,47 @@ exports.insertChamado =  function(status, equipamento, descricao, prioridade, cr
     }
     return novoChamado(status, equipamento, descricao, prioridade, criado, email, datainicio, horainicio, descricaocha)
 }
-exports.insertOrdem = function(status, criadoPor, dataInicio, dataFim, horaInicio, horaFim, prioridade, matricula, tecnicoResp, dataIniTrab, horaIniTrab, dataFimTrab, horaFimTrab, textoServico){
-    async function novaOrdem(status, criadoPor, dataInicio, dataFim, horaInicio, horaFim, prioridade, matricula, tecnicoResp, dataIniTrab, horaIniTrab, dataFimTrab, horaFimTrab, textoServico){
+
+
+
+
+
+
+
+
+
+
+
+
+// exports.insertOrdem = function(status,criador,data_inicio,hora_inicio,prioridade,data_fim,hora_fim,tipo_manut,matricula,data_lancamento,data_inicio_trabalho,hora_inicio_trabalho,data_fim_trabalho,hora_fim_trabalho,desc_manut ){
+//     async function novaOrdem(status,criador,data_inicio,hora_inicio,prioridade,data_fim,hora_fim,tipo_manut,matricula,data_lancamento,data_inicio_trabalho,hora_inicio_trabalho,data_fim_trabalho,hora_fim_trabalho,desc_manut){
+//         await db.connect()
+//         tabela = await db.query("SELECT * FROM ordem")
+//         const inserir = ("insert into ordem(status_ord,criado_por_ord, data_ini_ord, hora_ini_ord, prioridade_ord, data_fim_ord, hora_fim_ord, manut_ord, matricula_ord,data_lanc_ord,data_ini_trab, hora_ini_trab,data_fim_trab, hora_fim_trab, texto_servico) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)")
+//         await db.query(inserir,[status,criador,data_inicio,hora_inicio,prioridade,data_fim,hora_fim,tipo_manut,matricula,data_lancamento,data_inicio_trabalho,hora_inicio_trabalho,data_fim_trabalho,hora_fim_trabalho,desc_manut])
+//     }
+//     return novaOrdem(status,criador,data_inicio,hora_inicio,prioridade,data_fim,hora_fim,tipo_manut,matricula,data_lancamento,data_inicio_trabalho,hora_inicio_trabalho,data_fim_trabalho,hora_fim_trabalho,desc_manut)
+// }
+exports.insertOrdem = function(num_ord,status,num_chamado,criador,data_init,hora_init,prioridade,tipo_manut ){
+    async function novaOrdem(num_ord,status,num_chamado,criador,data_init,hora_init,prioridade,tipo_manut){
         await db.connect()
         tabela = await db.query("SELECT * FROM ordem")
-        const inserir = ("insert into ordem(status_ord, criado_por_ord, data_ini_ord, data_fim_ord, hora_ini_ord,hora_fim_ord,prioridade_ord,matricula_ord,tecnico_resp_ord,data_ini_trab,hora_ini_trab,data_fim_trab,hora_fim_trab,texto_servico) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)")
-        await db.query(inserir,[status, criadoPor, dataInicio, dataFim, horaInicio,horaFim,prioridadeOrdem ,matriculaOrdem ,tecnicoRespOrdem ,dataIniTrab ,horaIniTrab ,dataFimTrab ,horaFimTrab ,textoServico])
+        const inserir = ("insert into ordem(id_ordem,status_ord,numero_cha,criado_por_ord, data_ini_ord, hora_ini_ord, prioridade_ord, manut_ord) values($1,$2,$3,$4,$5,$6,$7,$8)")
+        await db.query(inserir,[num_ord,status,num_chamado,criador,data_init,hora_init,prioridade,tipo_manut])
     }
-    return novaOrdem(statusOrdem ,criadoPorOrdem ,dataInicioOrdem ,dataFimOrdem ,horaInicioOrdem ,horaFimOrdem ,prioridadeOrdem ,matriculaOrdem ,tecnicoRespOrdem ,dataIniTrab ,horaIniTrab ,dataFimTrab ,horaFimTrab ,textoServico)
+    return novaOrdem(num_ord,status,num_chamado,criador,data_init,hora_init,prioridade,tipo_manut)
 }
+
+
+
+
+
+
+
+
+
+
+
 
 exports.insertUser = function (nome,email) {
     async function novoUser(nome,email) {

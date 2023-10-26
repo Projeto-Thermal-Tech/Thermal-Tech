@@ -53,9 +53,9 @@
                 <section>
                     <div class="title-page">
                         <h2>Criar ordem de manutenção</h2>
+                        <form action="/criar/ordem" method="post">
                     </div>
                     <div class="icons">
-                        <form action="/cadastro/ordem" method="post">
                             <button type="submit"><img src="../assets/save.png" onclick="salvarOrdem()" alt=""></button>
                             <button type="button"><img src="../assets/delete.png" onclick="deletarOrdem()" alt=""></button>
                             <button type="button"><img src="../assets/print.png" onclick="imprimirOrdem()"></button>
@@ -67,15 +67,15 @@
                         <div class="info-header-order">
                             <label for="">Ordem</label>
                             <input type="text" id="prioridade" value="PM01" readonly>
-                            <input type="number" id="ordem" value="2027325612" readonly>
+                            <input type="number" id="ordem" placeholder="40001" name="num_ordem">
                             <input type="text" id="title-order" value="Correção de dreno ACS-2101" readonly>
                         </div>
                         <div class="info-header-order">
                             <label for="">Status</label>
-                            <input type="text" value="ABERTA" readonly>
+                            <input type="number" placeholder="ABERTA" name="status">
                             <br>
                             <label for="">Chamado</label>
-                            <input type="number" value="">
+                            <input type="number" value="" name="num_chamado">
                         </div>
                     </div>
                 </section>
@@ -164,7 +164,7 @@
                         </div>
                         <div>
                             <label for="">Criado por</label>
-                            <input class="data-chamado" type="text" id="email" style="width: 320px;">
+                            <input class="data-chamado" type="text" id="email" name="criador" style="width: 320px;">
                         </div>
                     </div>
                 </main>
@@ -175,23 +175,23 @@
                         </div>
                         <div>
                             <label for="">Inicio</label>
-                            <input class="data-chamado" id="data-init-ordem" type="date">
-                            <input type="time" id="hora-init-ordem">
+                            <input class="data-chamado" id="data-init-ordem" name="data_inicio" type="date">
+                            <input type="time" id="hora-init-ordem" name="hora_inicio">
                             <label for="">Prioridade</label>
-                            <select name="" id="">
-                                <option value="">1- Baixa</option>
-                                <option value="">2- Média</option>
-                                <option value="">3- Alta</option>
+                            <select name="prioridade" id="">
+                                <option value="1">1- Baixa</option>
+                                <option value="2">2- Média</option>
+                                <option value="3">3- Alta</option>
                             </select>
                             <div>
                                 <label for="">Fim</label>
-                                <input type="date">
-                                <input type="time">
+                                <input type="date" name="data_fim">
+                                <input type="time" name="hora_fim">
                                 <label for="">Tipo Manutenção</label>
-                                <select name="" id="">
+                                <select name="tipo_manut" id="">
                                     <option value=""></option>
-                                    <option value="">Corretiva</option>
-                                    <option value="">Preventiva</option>
+                                    <option value="1">Corretiva</option>
+                                    <option value="2">Preventiva</option>
                                 </select>
                             </div>
                         </div>
@@ -203,23 +203,23 @@
                             <h3>Confirmações</h3>
                         </div>
                         <label for="">Técnico resp.</label>
-                        <input type="number" value="41248466" style="width: 90px;">
+                        <input type="number" placeholder="41248466" name="matricula" style="width: 90px;">
                         <input type="text" value="Lucas Silva Cuba">
                         <label for="">Data de lanç.</label>
-                        <input type="datetime-local">
+                        <input type="datetime-local" name="data_lancamento">
                         <div>
                             <label for="">Inicio do trabalho</label>
-                            <input type="date">
-                            <input type="time" step="1">
+                            <input type="date" name="data_inicio_trabalho">
+                            <input type="time" step="1" name="hora_inicio_trabalho">
                         </div>
                         <div>
                             <label for="">Fim do Trabalho</label>
-                            <input type="date">
-                            <input type="time" step="1">
+                            <input type="date" name="data_fim_trabalho">
+                            <input type="time" step="1" name="data_fim_trabalho">
                         </div>
                         <div>
                             <label for="">Texto do serviço</label>
-                            <textarea name="" id="" cols="60" rows="2"></textarea>
+                            <textarea name="desc_manut" id="" cols="60" rows="2"></textarea>
                         </div>
                     </div>
                 </main>
@@ -236,12 +236,12 @@
                         <input type="text" value="Horas" style="width: 50px;">
                         <div style="margin-top: 10px;">
                             Confirmação final
-                            <input type="checkbox" name="" id="">
+                            <input type="checkbox" id="">
                             Necessida revisão?
                             <input type="checkbox">
                         </div>
                     </div>
-    
+                </form>
                 </main>
             </section>
                 </section>
