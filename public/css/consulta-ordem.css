@@ -26,6 +26,7 @@
   }
 
 .num_Ord{
+  margin-top: 22px;
     color:white;
     font-size:25px;
     text-align: center;
@@ -299,4 +300,26 @@ textarea{
 }
 .popup-button:hover {
   background-color: darkblue;
+}
+
+#pesquisar {
+  font-size: 18px;
+  width:8rem ;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+}
+#limpar-filtro{
+  font-size: 18px;
+  width:8rem ;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+}
+#nova_ord{
+  font-size: 18px;
+  width:13rem ;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
 }

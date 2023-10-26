@@ -85,14 +85,23 @@ exports.insertChamado =  function(status, equipamento, descricao, prioridade, cr
 //     }
 //     return novaOrdem(status,criador,data_inicio,hora_inicio,prioridade,data_fim,hora_fim,tipo_manut,matricula,data_lancamento,data_inicio_trabalho,hora_inicio_trabalho,data_fim_trabalho,hora_fim_trabalho,desc_manut)
 // }
-exports.insertOrdem = function(num_ord,status,num_chamado,criador,data_init,hora_init,prioridade,tipo_manut ){
-    async function novaOrdem(num_ord,status,num_chamado,criador,data_init,hora_init,prioridade,tipo_manut){
-        await db.connect()
-        tabela = await db.query("SELECT * FROM ordem")
-        const inserir = ("insert into ordem(id_ordem,status_ord,numero_cha,criado_por_ord, data_ini_ord, hora_ini_ord, prioridade_ord, manut_ord) values($1,$2,$3,$4,$5,$6,$7,$8)")
-        await db.query(inserir,[num_ord,status,num_chamado,criador,data_init,hora_init,prioridade,tipo_manut])
+exports.insertOrdem = function(num_ord, status, num_chamado, criador, data_init, hora_init, prioridade, tipo_manut) {
+    async function novaOrdem(num_ord, status, num_chamado, criador, data_init, hora_init, prioridade, tipo_manut) {
+        await db.connect();
+        tabela = await db.query("SELECT * FROM ordem");
+        const inserir = ("insert into ordem(id_ordem,status_ord,numero_cha,criado_por_ord,data_ini_ord,hora_ini_ord,prioridade_ord,manut_ord) values($1,$2,$3,$4,$5,$6,$7,$8)");
+        await db.query(inserir,[num_ord,status,num_chamado,criador,data_init,hora_init,prioridade,tipo_manut]);
     }
-    return novaOrdem(num_ord,status,num_chamado,criador,data_init,hora_init,prioridade,tipo_manut)
+    return novaOrdem(num_ord,status,num_chamado,criador,data_init,hora_init,prioridade,tipo_manut);
+} 
+exports.proximoNumeroOrdem = async function() {
+    const result = await db.query('SELECT MAX(id_ordem) FROM ordem');
+    const ultimaOrdem = result.rows[0].max || 0;
+
+    // Incremente o número da ordem
+    const proximaOrdem = ultimaOrdem + 1;
+
+    return proximaOrdem;
 }
 
 

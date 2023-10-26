@@ -135,3 +135,13 @@ function showPopupOrdem() {
   document.querySelector(".overlayOrdem").style.display = "block";
 }
 
+
+function showPopupOrdem() {
+  document.getElementById("popupOrdem").style.display = "block";
+  document.querySelector(".overlayOrdem").style.display = "block";
+}
+function hidePopupOrdem() {
+  document.getElementById("popupOrdem").style.display = "none";
+  document.querySelector(".overlayOrdem").style.display = "none";
+
+}

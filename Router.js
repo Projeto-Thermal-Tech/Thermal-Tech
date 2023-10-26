@@ -93,6 +93,20 @@ router.post('/criar/ordem', function (req, res) {
         res.send("deu erro " + error)
     })
 })
+router.get("/proximo-numero-ordem", async function (req, res) {
+    try {
+        const result = await db.query('SELECT MAX(id_ordem) FROM ordem');
+        const ultimaOrdem = result.rows[0].max || 0;
+
+        // Incremente o número da ordem
+        const proximaOrdem = ultimaOrdem + 1;
+
+        // Envie o próximo número da ordem como resposta
+        res.json({ proximaOrdem: proximaOrdem });
+    } catch (error) {
+        console.error(error);
+    }
+});
 
 
 router.get("/consulta_ordem", function (req, res) {

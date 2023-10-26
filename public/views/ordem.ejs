@@ -28,13 +28,12 @@
             <ul>
                 <li><a href="http://localhost:5000/Equipamentos">Equipamentos</a></li>
                 <li><a href="http://localhost:5000/manutencao">Manutenções</a></li>
-                <li><a href="http://localhost:5000/ordem">Ordem</a></li>
                 <li><a href="http://localhost:5000/consulta_ordem">Consultar Ordens</a></li>
-                <li><a href="http://localhost:5000/chamados">Chamado</a></li>
+                <li><a href="http://localhost:5000/chamado">Chamados</a></li>
                 <li><a href="http://localhost:5000/cadastro">Cadastro Geral</a></li>
                 <li><a href="http://localhost:5000/relatorio">Homem Hora</a></li>
                 <li><a href="">Gráficos gerenciais</a></li>
-                <li><a href="./chat.html">Chat</a></li>
+                <li><a href="../pages/chat.html">Chat</a></li>
             </ul>
         </nav>
         <div class="nav-right">
@@ -282,6 +281,17 @@ setInterval(atualizarDataHora, 1000);
 
 // Chame a função uma vez para configurar os valores iniciais
 atualizarDataHora();
+
+
+window.addEventListener('load', function () {
+    fetch('/proximo-numero-ordem')
+        .then(response => response.json())
+        .then(data => {
+            // Atualize o valor do campo de entrada com o próximo número da ordem
+            document.getElementById('ordem').value = data.proximaOrdem;
+        })
+        .catch(error => console.error(error));
+});
         </script>
         <script src="../Login_v1/firebase-init.js"></script>
         <script src="../js/auth-guard.js"></script>

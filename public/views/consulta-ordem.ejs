@@ -32,15 +32,14 @@
       <ul>
         <li><a href="http://localhost:5000/Equipamentos">Equipamentos</a></li>
         <li><a href="http://localhost:5000/manutencao">Manutenções</a></li>
-        <li><a href="http://localhost:5000/ordem">Ordem</a></li>
         <li><a href="http://localhost:5000/consulta_ordem">Consultar Ordens</a></li>
-        <li><a href="http://localhost:5000/chamados">Chamado</a></li>
+        <li><a href="http://localhost:5000/chamado">Chamados</a></li>
         <li><a href="http://localhost:5000/cadastro">Cadastro Geral</a></li>
         <li><a href="http://localhost:5000/relatorio">Homem Hora</a></li>
         <li><a href="">Gráficos gerenciais</a></li>
-        <li><a href="./chat.html">Chat</a></li>
+        <li><a href="../pages/chat.html">Chat</a></li>
       </ul>
-    </nav>
+  </nav>
     <div class="nav-right">
       <div>
         <a href="#" class="config"><img src="../assets/icon_config.png" alt=""></a>
@@ -59,7 +58,7 @@
     <div class="header_Ord">
 
       <div class="num_Ord">
-        <a href="http://localhost:5000/ordem"><button style="width: 200px; margin-right: 50px;">+ Nova Ordem de manutenção</button></a>
+        <a href="http://localhost:5000/ordem"><button id="nova_ord" style="width: 200px; margin-right: 50px;">+ Nova Ordem de manutenção</button></a>
         <label>N° Ordem:</label>
         <input type="number" class="num" id="numeroOrdem">
         <button id="pesquisar" onclick="pesquisarOrdem()">Pesquisar</button>
@@ -215,13 +214,13 @@
   </section>
   <section class="overlayOrdem">
     <div class="popupOrdem" id="popupOrdem">
-      <div class="popup-title-filter-Ordem">Filtrar Chamados</div>
+      <div class="popup-title-filter-Ordem">Filtrar Ordens</div>
       <div class="popup-content-filter-Ordem">
         <div class="popup-header-filter-Ordem">
 
           <div>
-            <label for="" class="popup-label-filter-Ordem">Nº Chamado:</label>
-            <input type="number" class="popup-label-filter-Ordem numero-chamado-input-Ordem" id="" placeholder="Nº Chamado">
+            <label for="" class="popup-label-filter-Ordem">Nº Ordem:</label>
+            <input type="number" class="popup-label-filter-Ordem numero-chamado-input-Ordem" id="" placeholder="Nº Ordem">
           </div>
           <div>
             <label for="" class="popup-label-filter-Ordem">Prioridade:</label>
@@ -261,8 +260,8 @@
           </div>
 
         </div>
-        <button class="popup-button salvar" onclick="saveEquipment()">Filtrar</button>
-        <button class="popup-button cancelar" onclick="hidePopup()">Cancelar</button>
+        <button class="popup-button salvar" onclick="showPopupOrdem()">Filtrar</button>
+        <button class="popup-button cancelar" onclick="hidePopupOrdem()">Cancelar</button>
       </div>
   </section>
   <script>
