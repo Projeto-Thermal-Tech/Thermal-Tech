@@ -66,14 +66,15 @@ router.get("/chamado", async function (req, res) {
 router.get("/ordem", async function (req, res) {
     try {
         async function listarchamados() {
+            const sqlEquip = "SELECT lista_equipamentos.*, tipos_arcondicionado.tipos_arcondicionado_tipar, setor.nome_setor FROM lista_equipamentos INNER JOIN tipos_arcondicionado ON lista_equipamentos.tipo_listequip = tipos_arcondicionado.id_tipar INNER JOIN setor ON lista_equipamentos.setor_listequip = setor.id_setor;";
             const sql = "SELECT chamado.*, status.nome_status, prioridade.nome_pri FROM chamado INNER JOIN status ON chamado.status_cha = status.id_status INNER JOIN prioridade ON chamado.prioridade_cha = prioridade.id_prioridade";
             chamados = await db.query(sql)
-            // console.log(chamados.rows)
+            equipamento = await db.query(sqlEquip)
         }
         await listarchamados(); // Espere até que a função listarDados seja concluída
         
 
-        res.render('ordem', {chamados:chamados.rows }); // Agora a variável tabela está acessível aqui
+        res.render('ordem', {chamados:chamados.rows, equipamento:equipamento.rows }); // Agora a variável tabela está acessível aqui
     } catch (error) {
         res.status(500).send("Erro ao buscar os dados: " + error.message);
     }
