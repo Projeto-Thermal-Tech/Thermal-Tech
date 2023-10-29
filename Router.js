@@ -64,27 +64,21 @@ router.get("/chamado", async function (req, res) {
     }
 });
 router.get("/ordem", async function (req, res) {
-    // try {
-    //     async function listarOrdens() {
-    //         const sql = "SELECT o.id_ordem, c.id_chamado AS id_chamado_relacionado, s.nome_status AS status_chamado, o.criado_por_ord, o.data_ini_ord, o.data_fim_ord,o.hora_ini_ord, o.hora_fim_ord, p.nome_pri AS prioridade, t.nome_tec AS tecnico_responsavel, o.data_ini_trab, o.hora_ini_trab, o.data_fim_trab,  o.hora_fim_trab, o.texto_servico FROM ordem o INNER JOIN chamado c ON o.id_ordem = c.id_chamado INNER JOIN tecnicos t ON o.tecnico_resp_ord = t.id_tec INNER JOIN prioridade p ON o.prioridade_ord = p.id_prioridade INNER JOIN status s ON c.status_cha = s.id_status";
-    //         ordens = await db.query(sql)
-    //     }
-    //     await listarOrdens(); // Espere até que a função listarOrdens seja concluída
+    try {
+        async function listarchamados() {
+            const sql = "SELECT chamado.*, status.nome_status, prioridade.nome_pri FROM chamado INNER JOIN status ON chamado.status_cha = status.id_status INNER JOIN prioridade ON chamado.prioridade_cha = prioridade.id_prioridade";
+            chamados = await db.query(sql)
+            // console.log(chamados.rows)
+        }
+        await listarchamados(); // Espere até que a função listarDados seja concluída
+        
 
-    //     res.render('ordem', {ordens:ordens.rows }); // Agora a variável ordens está acessível aqui
-    // } catch (error) {
-    //     res.status(500).send("Erro ao buscar os dados: " + error.message);
-    // }
-    res.render('ordem');
+        res.render('ordem', {chamados:chamados.rows }); // Agora a variável tabela está acessível aqui
+    } catch (error) {
+        res.status(500).send("Erro ao buscar os dados: " + error.message);
+    }
 });
 
-// router.post('/criar/ordem', function (req, res) {
-//     novaOrdem.insertOrdem(req.body.status,req.body.criador, req.body.data_inicio, req.body.hora_inicio, req.body.prioridade, req.body.data_fim, req.body.hora_fim, req.body.tipo_manut, req.body.matricula, req.body.data_lancamento, req.body.data_inicio_trabalho, req.body.hora_inicio_trabalho,req.body.data_fim_trabalho, req.body.hora_fim_trabalho,req.body.desc_manut ).then(function () {
-//         res.redirect('/ordem')
-//     }).catch(function (error) {
-//         res.send("deu erro " + error)
-//     })
-// })
 router.post('/criar/ordem', function (req, res) {
     // res.json(req.body.num_ordem, req.body.status,req.body.num_chamado,req.body.criador,req.body.data_inicio, req.body.hora_inicio,req.body.prioridade, req.body.tipo_manut)
     novaOrdem.insertOrdem(req.body.num_ordem, req.body.status,req.body.num_chamado,req.body.criador,req.body.data_inicio, req.body.hora_inicio,req.body.prioridade, req.body.tipo_manut).then(function () {

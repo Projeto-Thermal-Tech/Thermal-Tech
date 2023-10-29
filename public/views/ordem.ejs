@@ -74,7 +74,8 @@
                             <input type="number" placeholder="ABERTA" name="status">
                             <br>
                             <label for="">Chamado</label>
-                            <input type="number" value="" name="num_chamado">
+                            <input type="number" value="" name="num_chamado" id="numeroChamado">
+                            <img src="../assets/executar.png" alt="" style="position: absolute; margin-left: 5px; cursor: pointer;" width="24px" onclick="mostrarDadosChamado('<%= JSON.stringify(chamados) %>')">
                         </div>
                     </div>
                 </section>
@@ -93,19 +94,19 @@
                 <div class="dados">
                     <div class="info-header-order">
                         <label class="label-margin" for="">Localidade</label>
-                        <input type="text" value="Refeitório" class="data-chamado">
+                        <input type="text" placeholder="Refeitório" id="localidadeCampo" class="data-chamado" value=''>
                     </div>
                     <div class="info-header-order">
                         <label class="label-margin" for="">Setor</label>
-                        <input type=" text" value="U-144" class="data-chamado">
+                        <input type=" text" placeholder="U-144" id="setorCampo" class="data-chamado">
                     </div>
                     <div class="info-header-order">
                         <label class="label-margin for=">Equipamento</label>
-                        <input type=" text" value="ACS-2101" class="data-chamado">
+                        <input type=" text" placeholder="ACS-2101" id="equipamentoCampo" class="data-chamado">
                     </div>
                     <div class="info-header-order">
                         <label class="label-margin for=">Descrição</label>
-                        <input type=" text" style="width: 300px;" value="Ar condiconado; 220v; split; 24000 btus"
+                        <input type=" text" style="width: 300px;" placeholder="Ar condiconado; 220v; split; 24000 btus"
                             class="data-chamado">
                     </div>
                 </div>
@@ -130,14 +131,13 @@
                 <div class="user info-header-order">
                     <div>
                         <label for="">Criado por</label>
-                        <input class="data-chamado" type="text" value="Jean Victor Maciel dos Santos" style="width: 320px;">
-                        <input class="data-chamado" type="email" name="" style="width: 320px;"
-                            value="ens-jeanvictor@ugv.edu.br">
+                        <input class="data-chamado" type="text" id="criadorCampo" placeholder="Jean Victor Maciel dos Santos" style="width: 320px;">
+                        <input class="data-chamado" type="email" name="" id="emailCampo" style="width: 320px;"placeholder="ens-jeanvictor@ugv.edu.br">
                     </div>
                     <div style="padding-top: 5px;">
                         <label for="">Data chamado</label>
-                        <input class="data-chamado" type="date" name="" id="">
-                        <input class="data-chamado" type="time" name="" id="">
+                        <input class="data-chamado" type="date" name="" id="dataCampo">
+                        <input class="data-chamado" type="time" name="" id="horaCampo">
                     </div>
                 </div>
             </main>
@@ -147,11 +147,11 @@
                 </div>
                 <div class="info-header-order">
                     <label for="">Descrição</label>
-                    <input class="data-chamado" type="text" value="Correção de dreno ACS-2101" style="width: 280px;">
+                    <input class="data-chamado" type="text" id="descChaCampo" placeholder="Correção de dreno ACS-2101" style="width: 280px;">
                     <input class="data-chamado" id="fileInput" type="file" style="display:none;">
                 </div>
                 <div class="descrição">
-                    <textarea class="data-chamado" name="" id="" cols="30" rows="10"
+                    <textarea class="data-chamado" name="" id="descricaoCampo" cols="30" rows="10"
                         style="width: 100%;padding: 5px;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni exercitationem expedita assumenda repellendus, distinctio eaque neque consectetur iusto eligendi rerum cupiditate fugiat itaque sint illum facere quae explicabo fugit rem.Magni officiis, expedita a quasi quisquam non fugit facilis. Sit placeat reiciendis iusto odit deleniti facere sed non consequatur minus, nemo omnis dolorem quae vitae vel pariatur labore distinctio voluptas.</textarea>
                 </div>
             </main>
@@ -292,6 +292,51 @@ window.addEventListener('load', function () {
         })
         .catch(error => console.error(error));
 });
+document.querySelector('form').addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+      event.preventDefault();
+      return false;
+  }
+});
+
+function mostrarDadosChamado(chamado) {
+    const chamadosObj = JSON.parse(chamado);
+    const numeroChamado = parseInt(document.getElementById('numeroChamado').value);
+    
+    const chamadoSelecionado = chamadosObj.find(chamado => chamado.id_chamado === numeroChamado);
+
+    if (chamadoSelecionado) {
+      function formatarDataParaInputDate(data) {
+    const dataObj = new Date(data); // Converta a data para um objeto Date
+    const ano = dataObj.getFullYear();
+    const mes = (dataObj.getMonth() + 1).toString().padStart(2, '0'); // Adicione 1 ao mês, pois os meses são baseados em zero
+    const dia = dataObj.getDate().toString().padStart(2, '0');
+    return `${ano}-${mes}-${dia}`;
+}
+
+// Uso:
+const dataDoBanco = chamadoSelecionado.data_ini_cha;
+const dataFormatada = formatarDataParaInputDate(dataDoBanco);
+
+        document.getElementById('dataCampo').value = dataFormatada;
+        document.getElementById('horaCampo').value = chamadoSelecionado.hora_ini_cha;
+        document.getElementById('descChaCampo').value = chamadoSelecionado.descricao_cha;
+        document.getElementById('descricaoCampo').value = chamadoSelecionado.descri_cha;
+        document.getElementById('criadorCampo').value = chamadoSelecionado.criado_por_cha;
+        document.getElementById('emailCampo').value = chamadoSelecionado.email;
+        document.getElementById('equipamentoCampo').value = chamadoSelecionado.equipamento_cha;
+        document.getElementById('descricaoCampo').value = chamadoSelecionado.descri_cha;
+        
+    } else {
+        console.log("Chamado não encontrado");
+    }
+}
+
+
+
+
+
+
         </script>
         <script src="../Login_v1/firebase-init.js"></script>
         <script src="../js/auth-guard.js"></script>

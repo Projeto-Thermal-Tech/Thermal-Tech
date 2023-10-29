@@ -32,7 +32,7 @@ function createWindow(){
     const menuTemplate =[];
     const menu = Menu.buildFromTemplate(menuTemplate);
     Menu.setApplicationMenu(menu)
-    win.openDevTools();
+    // win.openDevTools();
 
       }
       
