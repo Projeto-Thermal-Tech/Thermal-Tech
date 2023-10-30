@@ -104,8 +104,17 @@ router.get("/proximo-numero-ordem", async function (req, res) {
 });
 
 
-router.get("/consulta_ordem", function (req, res) {
-    res.render('consulta-ordem')
+router.get("/consulta_ordem", async function (req, res) {
+    try {
+        async function listaOrdens(){
+        const sql = "SELECT ordem.*, status.nome_status, prioridade.nome_pri FROM ordem INNER JOIN status ON ordem.status_ord = status.id_status INNER JOIN prioridade ON ordem.prioridade_ord = prioridade.id_prioridade";
+        ordem = await db.query(sql)
+    }
+    await listaOrdens();
+    res.render('consulta-ordem', {ordem:ordem.rows});
+} catch (error) {
+    res.status(500).send("Erro ao buscar os dados: " + error.message);
+    }
 });
 
 
@@ -195,6 +204,21 @@ router.post("/view/chamado", async function (req, res) {
         res.status(500).send("Erro ao buscar os dados: " + error.message);
     }
 });
+router.post("/view/ordem", async function (req, res) {
+    try {
+        const id_ordem = req.body.id_ordem; 
+        const sql = "SELECT ordem.id_ordem, status.nome_status AS status_ord, ordem.criado_por_ord, ordem.data_ini_ord, ordem.data_fim_ord, ordem.hora_ini_ord, ordem.hora_fim_ord, prioridade.nome_pri AS prioridade_ord, tipo_manut.nome_manut AS manut_ord, ordem.matricula_ord, tecnicos.nome_tec AS tecnico_resp_ord, ordem.data_ini_trab, ordem.hora_ini_trab, ordem.data_fim_trab, ordem.hora_fim_trab, ordem.texto_servico FROM ordem INNER JOIN tecnicos ON tecnicos.id_tec = ordem.tecnico_resp_ord INNER JOIN prioridade ON prioridade.id_prioridade = ordem.prioridade_ord INNER JOIN tipo_manut ON tipo_manut.id_manut = ordem.manut_ord INNER JOIN status ON status.id_status = ordem.status_ord WHERE ordem.id_ordem = $1";
+        const dados = await db.query(sql, [id_ordem]);
+
+        res.render('viewordem', {
+            dadosOrdem: dados.rows[0]
+        });
+    } catch (error) {
+        res.status(500).send("Erro ao buscar os dados: " + error.message);
+    }
+});
+
+
 
 
 router.get("/inicio", function (req, res) {

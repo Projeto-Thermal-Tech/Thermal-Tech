@@ -93,120 +93,32 @@
             <th>Status</th>
             <th>Criador</th>
             <th>Data</th>
-
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><button class="visualizarOrd">Visualizar</button></td>
-            <td>1</td>
-            <td>Alta</td>
-            <td>Parou de funcionar</td>
-            <td>Encerrado</td>
-            <td>Jean Maciel</td>
-            <td>12/02/2023</td>
-
-          </tr>
-          <tr>
-            <td><button class="visualizarOrd">Visualizar</button></td>
-            <td>2</td>
-            <td>Baixa</td>
-            <td>Barulho estranho</td>
-            <td>Aberto</td>
-            <td>Victor Kinder Bueno</td>
-            <td>12/02/2023</td>
-
-          </tr>
-          <tr>
-            <td><button class="visualizarOrd">Visualizar</button></td>
-            <td>3</td>
-            <td>Média</td>
-            <td>Saindo fumaça</td>
-            <td>Aberto</td>
-            <td>Lucas Elevado Aocuba</td>
-            <td>12/02/2023</td>
-
-          </tr>
-          <tr>
-            <td><button class="visualizarOrd">Visualizar</button></td>
-            <td>4</td>
-            <td>Baixa</td>
-            <td>Não esquenta</td>
-            <td>Encerrado</td>
-            <td>Lucas Franco Ulbrich</td>
-            <td>12/02/2023</td>
-
-          </tr>
-          <tr>
-            <td><button class="visualizarOrd">Visualizar</button></td>
-            <td>5</td>
-            <td>Média</td>
-            <td>Não esfria</td>
-            <td>Encerrado</td>
-            <td>Luiz Robertão</td>
-            <td>12/02/2023</td>
-
-          </tr>
-          <tr>
-            <td><button class="visualizarOrd">Visualizar</button></td>
-            <td>6</td>
-            <td>Alta</td>
-            <td>Não desliga</td>
-            <td>Aberto</td>
-            <td>Jeanzinho </td>
-            <td>12/02/2023</td>
-
-          </tr>
-          <tr>
-            <td><button class="visualizarOrd">Visualizar</button></td>
-            <td>7</td>
-            <td>Alta</td>
-            <td>Não liga</td>
-            <td>Em andamento</td>
-            <td>Lucas Wagner</td>
-            <td>12/02/2023</td>
-
-          </tr>
-          <tr>
-            <td><button class="visualizarOrd">Visualizar</button></td>
-            <td>8</td>
-            <td>Média</td>
-            <td>Liga sozinho</td>
-            <td>Em andamento</td>
-            <td>Victor Maciel</td>
-            <td>12/02/2023</td>
-
-          </tr>
-          <tr>
-            <td><button class="visualizarOrd">Visualizar</button></td>
-            <td>9</td>
-            <td>Baixa</td>
-            <td>Desliga sozinho</td>
-            <td>Em andamento</td>
-            <td>Luiz Cuba</td>
-            <td>12/02/2023</td>
-          </tr>
-
-          <tr>
-            <td><button class="visualizarOrd">Visualizar</button></td>
-            <td>10</td>
-            <td>Alta</td>
-            <td>Necessária a substituição</td>
-            <td>Encerrado</td>
-            <td>Eduardo Wagner</td>
-            <td>12/02/2023</td>
-          </tr>
-
-          <tr>
-            <td><button class="visualizarOrd">Visualizar</button></td>
-            <td>11</td>
-            <td>Média</td>
-            <td>Pegou fogo</td>
-            <td>Aberto</td>
-            <td>Roberto Torma</td>
-            <td>12/02/2023</td>
-          </tr>
-
+            <% 
+            function formatarData(data) {
+              const dataObj = new Date(data);
+              const dia = dataObj.getDate().toString().padStart(2, '0');
+              const mes = (dataObj.getMonth() + 1).toString().padStart(2, '0'); // Mês começa em 0
+              const ano = dataObj.getFullYear().toString();
+              return `${dia}/${mes}/${ano}`;
+            }
+            
+            for (let i = 0; i < ordem.length; i++) { %>
+              <tr>
+                <td><form action="/view/ordem" method="post"><input type="hidden" class="visualizar" value="<%= ordem[i].id_ordem %>" name="id_ordem"></input>
+                  <button type="submit" class="visualizar">Visualizar</button> 
+                 </form></td>
+                <td><%= ordem[i].id_ordem %></td>
+                <td><%= ordem[i].nome_pri %></td>
+                <td><%= ordem[i].texto_servico %></td>
+                <td><%= ordem[i].nome_status %></td>
+                <td><%= ordem[i].criado_por_ord %></td>
+                <td><%= formatarData(ordem[i].data_ini_ord) %></td>
+              </tr>
+              <% }; %>  
         </tbody>
       </table>
     </div>
