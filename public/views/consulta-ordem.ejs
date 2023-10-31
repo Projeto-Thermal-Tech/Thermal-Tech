@@ -109,7 +109,7 @@
             for (let i = 0; i < ordem.length; i++) { %>
               <tr>
                 <td><form action="/view/ordem" method="post"><input type="hidden" class="visualizar" value="<%= ordem[i].id_ordem %>" name="id_ordem"></input>
-                  <button type="submit" class="visualizar">Visualizar</button> 
+                  <button type="submit" class="visualizarOrd">Visualizar</button> 
                  </form></td>
                 <td><%= ordem[i].id_ordem %></td>
                 <td><%= ordem[i].nome_pri %></td>

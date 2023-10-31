@@ -302,7 +302,7 @@ a{
     border: 1px solid gray;
     margin-bottom: 20px;
 }
-.popup-input, #LOCAL {
+.popup-input, #local, #LOCAL {
     display: block;
     width: 100%;
     padding: 10px;

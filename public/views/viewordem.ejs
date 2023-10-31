@@ -66,94 +66,18 @@
                         <div class="info-header-order">
                             <label for="">Ordem</label>
                             <input type="text" id="prioridade" value="PM01" readonly>
-                            <input type="number" id="ordem" placeholder="40000" name="num_ordem" value="<%= dadosOrdem.id_ordem %>">
+                            <input type="number" name="ordem" value="<%= dadosOrdem.id_ordem %>">
                             <input type="text" id="title-order" value="Correção de dreno ACS-2101" readonly>
                         </div>
                         <div class="info-header-order">
                             <label for="">Status</label>
-                            <input type="number" placeholder="ABERTA" name="status" value="<%= dadosOrdem.status_ord %>">
+                            <input type="text" placeholder="ABERTA" name="status" value="<%= dadosOrdem.nome_status%>">
                             <br>
                             <label for="">Chamado</label>
-                            <input type="number" value="" name="num_chamado" id="numeroChamado" value="<%= dadosOrdem.numero_cha %>">
-                            <img src="../assets/executar.png" alt="" style="position: absolute; margin-left: 5px; cursor: pointer;" width="24px" onclick="mostrarDadosChamado('<%= JSON.stringify(chamados) %>', '<%= JSON.stringify(equipamento)%>')">
+                            <input type="number" name="num_chamado" id="numeroChamado" value="<%= dadosOrdem.numero_cha %>">
                         </div>
                     </div>
                 </section>
-            </main>
-            <div class="nav_infos">
-                <button type="button" onclick="hideElements()">Cabeçalho</button>
-                <button type="button" onclick="showElements()">Chamado</button>
-            </div>
-            <main class="chamado section_chamado display_none">
-                <section class="dados_chamado">
-                    <h3>Dados</h2>
-                </section>
-                <div class="title">
-                    <h3>Referencias do objeto</h3>
-                </div>
-                <div class="dados">
-                    <div class="info-header-order">
-                        <label class="label-margin" for="">Localidade</label>
-                        <input type="text" placeholder="Refeitório" id="localidadeCampo" class="data-chamado" value=''>
-                    </div>
-                    <div class="info-header-order">
-                        <label class="label-margin" for="">Setor</label>
-                        <input type=" text" placeholder="U-144" id="setorCampo" class="data-chamado">
-                    </div>
-                    <div class="info-header-order">
-                        <label class="label-margin for=">Equipamento</label>
-                        <input type=" text" placeholder="ACS-2101" id="equipamentoCampo" class="data-chamado">
-                    </div>
-                    <div class="info-header-order">
-                        <label class="label-margin for=">Descrição</label>
-                        <input type=" text" style="width: 300px;" id="descricaoEquipamentoCampo" placeholder="Ar condiconado; 220v; split; 24000 btus"
-                            class="data-chamado">
-                    </div>
-                </div>
-            </main>
-            <main class="responsabilidades section_chamado display_none">
-                <div class="title">
-                    <h3>Responsabilidades</h3>
-                </div>
-                <div class="tecs info-header-order">
-    
-                    <Label>Prioridade</Label>
-                    <div class="prioridade">
-                        Baixa
-                        <input class="data-chamado" type="radio" id="priBaixa" class="radio-button__input" id="radio3">
-                        Média
-                        <input class="data-chamado" type="radio"  id="priMedia"class="radio-button__input" id="radio3">
-                        Alta
-                        <input class="data-chamado" type="radio" id="priAlta" class="radio-button__input" id="radio3">
-    
-                    </div>
-                </div>
-                <div class="user info-header-order">
-                    <div>
-                        <label for="">Criado por</label>
-                        <input class="data-chamado" type="text" id="criadorCampo" placeholder="Jean Victor Maciel dos Santos" style="width: 320px;">
-                        <input class="data-chamado" type="email"  id="emailCampo" style="width: 320px;"placeholder="ens-jeanvictor@ugv.edu.br">
-                    </div>
-                    <div style="padding-top: 5px;">
-                        <label for="">Data chamado</label>
-                        <input class="data-chamado" type="date"  id="dataCampo">
-                        <input class="data-chamado" type="time"  id="horaCampo">
-                    </div>
-                </div>
-            </main>
-            <main class="objetivo section_chamado display_none">
-                <div class="title">
-                    <h3>Objetivo</h3>
-                </div>
-                <div class="info-header-order">
-                    <label for="">Descrição</label>
-                    <input class="data-chamado" type="text" id="descChaCampo" placeholder="Correção de dreno ACS-2101" style="width: 280px;">
-                    <input class="data-chamado" id="fileInput" type="file" style="display:none;">
-                </div>
-                <div class="descrição">
-                    <textarea class="data-chamado" name="" id="descricaoCampo" cols="30" rows="10"
-                        style="width: 100%;padding: 5px;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni exercitationem expedita assumenda repellendus, distinctio eaque neque consectetur iusto eligendi rerum cupiditate fugiat itaque sint illum facere quae explicabo fugit rem.Magni officiis, expedita a quasi quisquam non fugit facilis. Sit placeat reiciendis iusto odit deleniti facere sed non consequatur minus, nemo omnis dolorem quae vitae vel pariatur labore distinctio voluptas.</textarea>
-                </div>
             </main>
             <section class="section_order">
                 <main style="width: 60%;">
@@ -174,24 +98,51 @@
                         </div>
                         <div>
                             <label for="">Inicio</label>
+                            <% const formatDate=(date)=> {
+                                const formattedDate = new Date(date).toISOString().split('T')[0];
+                                return formattedDate;
+                                };
+                                %>
                             <input class="data-chamado" id="data-init-ordem" name="data_inicio" type="date" value="<%= formatDate(dadosOrdem.data_ini_ord) %>">
                             <input type="time" id="hora-init-ordem" name="hora_inicio" value="<%= dadosOrdem.hora_ini_ord %>">
                             <label for="">Prioridade</label>
-                            <select name="prioridade" id="">
-                                <option value="1">1- Baixa</option>
-                                <option value="2">2- Média</option>
-                                <option value="3">3- Alta</option>
-                            </select>
+                            <div class="prioridade">
+                                <% if (dadosOrdem.prioridade_ord == 3) { %>
+                                    Baixa
+                                    <input class="data-chamado" type="radio" id="priBaixa" name="prioridade" value="3" checked>
+                                <% } else { %>
+                                    Baixa
+                                    <input class="data-chamado" type="radio" id="priBaixa" name="prioridade" value="3">
+                                <% } %>
+                            
+                                <% if (dadosOrdem.prioridade_ord == 2) { %>
+                                    Média
+                                    <input class="data-chamado" type="radio" id="priMedia" name="prioridade" value="2" checked>
+                                <% } else { %>
+                                    Média
+                                    <input class="data-chamado" type="radio" id="priMedia" name="prioridade" value="2">
+                                <% } %>
+                            
+                                <% if (dadosOrdem.prioridade_ord == 1) { %>
+                                    Alta
+                                    <input class="data-chamado" type="radio" id="priAlta" name="prioridade" value="1" checked>
+                                <% } else { %>
+                                    Alta
+                                    <input class="data-chamado" type="radio" id="priAlta" name="prioridade" value="1">
+                                <% } %>
+                            </div>
+                            
                             <div>
                                 <label for="">Fim</label>
-                                <input type="date" name="data_fim" value="<%= formatDate(dadosOrdem.data_fim_ord) %>">>
-                                <input type="time" name="hora_fim" value="<%= dadosOrdem.hora_fim_ord %>">>
+                                <input type="date" name="data_fim" value="<%= formatDate(dadosOrdem.data_fim_ord) %>">
+                                <input type="time" name="hora_fim" value="<%= dadosOrdem.hora_fim_ord %>">
                                 <label for="">Tipo Manutenção</label>
                                 <select name="tipo_manut" id="">
                                     <option value=""></option>
-                                    <option value="1">Corretiva</option>
-                                    <option value="2">Preventiva</option>
+                                    <option value="1" <%= dadosOrdem.manut_ord == 1 ? 'selected' : '' %>>Corretiva</option>
+                                    <option value="2" <%= dadosOrdem.manut_ord == 2 ? 'selected' : '' %>>Preventiva</option>
                                 </select>
+                                
                             </div>
                         </div>
                     </div>
@@ -202,23 +153,23 @@
                             <h3>Confirmações</h3>
                         </div>
                         <label for="">Técnico resp.</label>
-                        <input type="number" placeholder="41248466" name="matricula" style="width: 90px;">
-                        <input type="text" value="Lucas Silva Cuba">
+                        <input type="number" placeholder="" name="matricula" style="width: 90px;" value="<%= dadosOrdem.matricula_ord %>">
+                        <input type="text" value="<%= dadosOrdem.tecnico_resp_ord %>">
                         <label for="">Data de lanç.</label>
                         <input type="datetime-local" name="data_lancamento">
                         <div>
                             <label for="">Inicio do trabalho</label>
-                            <input type="date" name="data_inicio_trabalho">
-                            <input type="time" step="1" name="hora_inicio_trabalho">
+                            <input type="date" name="data_inicio_trabalho" value="<%= dadosOrdem.data_ini_trab %>">
+                            <input type="time" step="1" name="hora_inicio_trabalho" value="<%= dadosOrdem.hora_ini_trab %>">
                         </div>
                         <div>
                             <label for="">Fim do Trabalho</label>
-                            <input type="date" name="data_fim_trabalho">
-                            <input type="time" step="1" name="data_fim_trabalho">
+                            <input type="date" name="data_fim_trabalho" value="<%= dadosOrdem.data_fim_trab %>">
+                            <input type="time" step="1" name="data_fim_trabalho" value="<%= dadosOrdem.hora_fim_trab %>">
                         </div>
                         <div>
                             <label for="">Texto do serviço</label>
-                            <textarea name="desc_manut" id="" cols="60" rows="2"></textarea>
+                            <textarea name="desc_manut" id="" cols="60" rows="2"></textarea value="<%=dadosOrdem.texto_servico %>">
                         </div>
                     </div>
                 </main>
@@ -228,10 +179,10 @@
                     </div>
                     <div class="info-header-order">
                         <label for="">Dias acumulado</label>
-                        <input type="number" style="width: 40px;" value="2">
-                        <input type="text" style="width: 40px;" value="DIA">
+                        <input type="number" style="width: 40px;" value="">
+                        <input type="text" style="width: 40px;" value="">
                         <label for="">Tempo de duração</label>
-                        <input type="time" value="02:00">
+                        <input type="time" value="">
                         <input type="text" value="Horas" style="width: 50px;">
                         <div style="margin-top: 10px;">
                             Confirmação final
@@ -299,7 +250,7 @@ document.querySelector('form').addEventListener('keydown', function(event) {
   }
 });
 
-function mostrarDadosChamado(chamado, equipamentos) {
+function mostrarDadosOrdem(chamado, equipamentos) {
     const chamadosObj = JSON.parse(chamado);
     const equipamentosObj = JSON.parse(equipamentos);
 
