@@ -1,22 +1,3 @@
-// const db = require('./cnx');
-
-// async function insert() {
-
-//         await db.connect();
-
-//         const selectQuery = 'SELECT * FROM tecnicos';
-//         const selectResult = await db.query(selectQuery);
-//         console.log('Antes da atualização:', selectResult.rows);
-
-//         const updateQuery = "UPDATE tecnicos set nome_tec = 'Lucas Franco' WHERE id_tec = 5 ";
-//         await db.query(updateQuery);
-
-//         const selectResultAfterupdate = await db.query(selectQuery);
-//         console.log('Após a exclusão:', selectResultAfterupdate.rows);
-//     } 
-
-// insert();
-
 
 const db = require("./cnx")
 
@@ -64,27 +45,6 @@ exports.insertChamado =  function(status, equipamento, descricao, prioridade, cr
     }
     return novoChamado(status, equipamento, descricao, prioridade, criado, email, datainicio, horainicio, descricaocha)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-// exports.insertOrdem = function(status,criador,data_inicio,hora_inicio,prioridade,data_fim,hora_fim,tipo_manut,matricula,data_lancamento,data_inicio_trabalho,hora_inicio_trabalho,data_fim_trabalho,hora_fim_trabalho,desc_manut ){
-//     async function novaOrdem(status,criador,data_inicio,hora_inicio,prioridade,data_fim,hora_fim,tipo_manut,matricula,data_lancamento,data_inicio_trabalho,hora_inicio_trabalho,data_fim_trabalho,hora_fim_trabalho,desc_manut){
-//         await db.connect()
-//         tabela = await db.query("SELECT * FROM ordem")
-//         const inserir = ("insert into ordem(status_ord,criado_por_ord, data_ini_ord, hora_ini_ord, prioridade_ord, data_fim_ord, hora_fim_ord, manut_ord, matricula_ord,data_lanc_ord,data_ini_trab, hora_ini_trab,data_fim_trab, hora_fim_trab, texto_servico) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)")
-//         await db.query(inserir,[status,criador,data_inicio,hora_inicio,prioridade,data_fim,hora_fim,tipo_manut,matricula,data_lancamento,data_inicio_trabalho,hora_inicio_trabalho,data_fim_trabalho,hora_fim_trabalho,desc_manut])
-//     }
-//     return novaOrdem(status,criador,data_inicio,hora_inicio,prioridade,data_fim,hora_fim,tipo_manut,matricula,data_lancamento,data_inicio_trabalho,hora_inicio_trabalho,data_fim_trabalho,hora_fim_trabalho,desc_manut)
-// }
 exports.insertOrdem = function(num_ord, status, num_chamado, criador, data_init, hora_init, prioridade, tipo_manut) {
     async function novaOrdem(num_ord, status, num_chamado, criador, data_init, hora_init, prioridade, tipo_manut) {
         await db.connect();
