@@ -113,7 +113,7 @@
 
                 <label>Prioridade</label>
                 <div class="prioridade">
-                    <% if (dadosChamado.prioridade_cha==='baixa' ) { %>
+                    <% if (dadosChamado.prioridade_cha== 3 ) { %>
                         Baixa
                         <input class="data-chamado" type="radio" id="radioBaixa" name="prioridade" value="baixa"
                             checked>
@@ -122,7 +122,7 @@
                             <input class="data-chamado" type="radio" id="radioBaixa" name="prioridade" value="baixa">
                             <% } %>
 
-                                <% if (dadosChamado.prioridade_cha==='media' ) { %>
+                                <% if (dadosChamado.prioridade_cha== 2 ) { %>
                                     Média
                                     <input class="data-chamado" type="radio" id="radioMedia" name="prioridade"
                                         value="media" checked>
@@ -132,7 +132,7 @@
                                             value="media">
                                         <% } %>
 
-                                            <% if (dadosChamado.prioridade_cha==='alta' ) { %>
+                                            <% if (dadosChamado.prioridade_cha== 1 ) { %>
                                                 Alta
                                                 <input class="data-chamado" type="radio" id="radioAlta"
                                                     name="prioridade" value="alta" checked>
