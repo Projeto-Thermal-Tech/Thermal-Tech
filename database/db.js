@@ -63,18 +63,6 @@ exports.proximoNumeroOrdem = async function() {
 
     return proximaOrdem;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 exports.insertUser = function (nome,email) {
     async function novoUser(nome,email) {
         await db.connect()
@@ -320,13 +308,37 @@ exports.deleteTipoArCondicionado = function (id_tipar) {
 
     return deletarTipoArCondicionado(id_tipar);
 }
+exports.updateOrdem = function (id,data_fim,hora_fim,matricula,data_lanc_ord,hora_ini_trab,data_ini_trab,data_fim_trab,hora_fim_trab, texto_servico) {
+    async function atualizarOrdem(id,data_fim,hora_fim,matricula,data_lanc_ord,hora_ini_trab,data_ini_trab,data_fim_trab,hora_fim_trab, texto_servico) {
+        try {
+            await db.connect();
 
+            // Verifique se o registro com o ID fornecido existe na tabela
+            const verificaRegistro = await db.query('SELECT * FROM ordem WHERE id_ordem = $1', [id]);
+            if (verificaRegistro.rows.length === 0) {
+                throw new Error('Registro não encontrado.');
+            }
+            const atualizacao = `
+                UPDATE ordem
+                SET
+                    data_fim_ord  = $2,
+                    hora_fim_ord = $3,
+                    matricula_ord = $4,
+                    data_lanc_ord = $5,
+                    hora_ini_trab  = $6,
+                    data_ini_trab = $7,
+                    data_fim_trab = $8,
+                    hora_fim_trab = $9,
+                    texto_servico =$10
+                WHERE id_ordem = $1
+            `;
+            await db.query(atualizacao, [id,data_fim,hora_fim,matricula,data_lanc_ord,hora_ini_trab,data_ini_trab,data_fim_trab,hora_fim_trab, texto_servico]);
 
-// exports.dados = function(){ 
-// async function listarDados() {
-//     const sql = "select * from setor";
-//     tabela = await db.query(sql);
-//     return tabela.rows;
-// }
-// listarDados() 
-// }
+            return 'Registro atualizado com sucesso.';
+        } catch (error) {
+            throw new Error(`Erro ao atualizar registro: ${error.message}`);
+        } 
+    }
+
+    return atualizarOrdem(id,data_fim,hora_fim,matricula,data_lanc_ord,hora_ini_trab,data_ini_trab,data_fim_trab,hora_fim_trab, texto_servico);
+}
