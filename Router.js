@@ -222,12 +222,16 @@ router.post("/view/ordem", async function (req, res) {
     }
 });
 router.post("/encerra/ordem", async function (req, res) {
-    atualizarOrdem.updateOrdem(req.body.ordem,req.body.data_fim, req.body.hora_fim, req.body.matricula, req.body.data_lanc_ord, req.body.hora_ini_trab, req.body.data_ini_trab, req.body.data_fim_trab, req.body.hora_fim_trab, req.body.texto_servico).then(function () {
-    }).catch(function (error) {
-        res.send("deu erro " + error)
+    atualizarOrdem.updateOrdem(req.body.ordem, req.body.data_fim, req.body.hora_fim, req.body.matricula, req.body.data_lanc_ord, req.body.hora_ini_trab, req.body.data_ini_trab, req.body.data_fim_trab, req.body.hora_fim_trab, req.body.texto_servico)
+    .then(function () {
+        // A atualização foi bem-sucedida, agora renderize a página
+        res.render("consulta-ordem");
     })
-    res.render("consulta-ordem")
+    .catch(function (error) {
+        res.send("deu erro " + error);
+    });
 });
+
 
 
 
