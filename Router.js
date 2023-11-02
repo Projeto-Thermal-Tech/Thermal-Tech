@@ -53,7 +53,7 @@ router.get("/cadastro", async function (req, res) {
 router.get("/chamado", async function (req, res) {
     try {
         async function listarchamados() {
-            const sql = "SELECT chamado.*, status.nome_status, prioridade.nome_pri FROM chamado INNER JOIN status ON chamado.status_cha = status.id_status INNER JOIN prioridade ON chamado.prioridade_cha = prioridade.id_prioridade";
+            const sql = "SELECT chamado.*, status.nome_status, prioridade.nome_pri FROM chamado INNER JOIN status ON chamado.status_cha = status.id_status INNER JOIN prioridade ON chamado.prioridade_cha = prioridade.id_prioridade ORDER BY chamado.id_chamado ASC;";
             chamados = await db.query(sql)
         }
         await listarchamados(); // Espere até que a função listarDados seja concluída
@@ -124,7 +124,7 @@ router.get("/equipamentos", async function (req, res) {
         let equipamentos;
 
         async function listarEquipamentos() {
-            const sql = "SELECT lista_equipamentos.*, tipos_arcondicionado.tipos_arcondicionado_tipar, setor.nome_setor FROM lista_equipamentos INNER JOIN tipos_arcondicionado ON lista_equipamentos.tipo_listequip = tipos_arcondicionado.id_tipar INNER JOIN setor ON lista_equipamentos.setor_listequip = setor.id_setor;";
+            const sql = "SELECT lista_equipamentos.*, tipos_arcondicionado.tipos_arcondicionado_tipar, setor.nome_setor FROM lista_equipamentos INNER JOIN tipos_arcondicionado ON lista_equipamentos.tipo_listequip = tipos_arcondicionado.id_tipar INNER JOIN setor ON lista_equipamentos.setor_listequip = setor.id_setor ORDER BY lista_equipamentos.id_equip ASC;";
             const sqlSetor = "select * from setor";
             const sqlEquip = "select * from tipos_arcondicionado";
             tabelaTipo = await db.query(sqlEquip);
