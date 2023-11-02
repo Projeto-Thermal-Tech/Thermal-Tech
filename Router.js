@@ -10,6 +10,7 @@ const novoUser = require('../Thermal-Tech/database/db');
 const novoChamado = require('../Thermal-Tech/database/db');
 const novaOrdem = require('../Thermal-Tech/database/db');
 const atualizarEquip = require('../Thermal-Tech/database/db')
+const atualizarOrdem = require('../Thermal-Tech/database/db')
 const excluirEquip = require('../Thermal-Tech/database/db')
 const atualizarTecnicos = require('../Thermal-Tech/database/db');
 const excluirtec = require('../Thermal-Tech/database/db');
@@ -207,7 +208,7 @@ router.post("/view/chamado", async function (req, res) {
 router.post("/view/ordem", async function (req, res) {
     try {
         const id_ordem = req.body.id_ordem; 
-        const sql = "SELECT ordem.id_ordem, status.nome_status, ordem.numero_cha, ordem.criado_por_ord, ordem.data_ini_ord, ordem.data_fim_ord, ordem.hora_ini_ord, ordem.hora_fim_ord, ordem.prioridade_ord, ordem.manut_ord, ordem.matricula_ord, ordem.tecnico_resp_ord, ordem.data_ini_trab, ordem.hora_ini_trab, ordem.data_fim_trab, ordem.hora_fim_trab, ordem.texto_servico FROM ordem INNER JOIN status ON ordem.status_ord = status.id_status WHERE id_ordem = $1";
+        const sql = "SELECT ordem.id_ordem, status.nome_status, ordem.numero_cha, ordem.criado_por_ord, ordem.data_ini_ord, ordem.data_fim_ord, ordem.hora_ini_ord, ordem.hora_fim_ord, ordem.prioridade_ord, ordem.manut_ord, ordem.matricula_ord, ordem.data_ini_trab, ordem.hora_ini_trab, ordem.data_fim_trab, ordem.hora_fim_trab, ordem.texto_servico FROM ordem INNER JOIN status ON ordem.status_ord = status.id_status WHERE id_ordem = $1";
         const dados = await db.query(sql, [id_ordem]);
         if (dados.rows.length > 0) {
             res.render('viewordem', {
@@ -220,6 +221,15 @@ router.post("/view/ordem", async function (req, res) {
         res.status(500).send("Erro ao buscar os dados: " + error.message);
     }
 });
+router.post("/encerra/ordem", async function (req, res) {
+    atualizarOrdem.updateOrdem(req.body.ordem,req.body.data_fim, req.body.hora_fim, req.body.matricula, req.body.data_lanc_ord, req.body.hora_ini_trab, req.body.data_ini_trab, req.body.data_fim_trab, req.body.hora_fim_trab, req.body.texto_servico).then(function () {
+    }).catch(function (error) {
+        res.send("deu erro " + error)
+    })
+    res.render("consulta-ordem")
+});
+
+
 
 router.get("/inicio", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/pages/home.html"))
@@ -240,6 +250,7 @@ router.post('/atualizar/equipamento', function (req, res) {
         res.send("deu erro " + error)
     })
 })
+
 router.post('/deletar/equipamento/:id', function (req, res) {
     const idEquip = req.params.id;
     excluirEquip.deleteEquip(idEquip).then(function () {
