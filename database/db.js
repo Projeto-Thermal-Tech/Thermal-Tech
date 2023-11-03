@@ -20,13 +20,13 @@ exports.insertSetor = function (nome_setor) {
     }
     return novoSetor(nome_setor)
 }
-exports.insertTecnico = function (nome,matricula,email) {
-    async function novoTec(nome,matricula,email) {
+exports.insertTecnico = function (matricula,nome,email) {
+    async function novoTec(matricula,nome,email) {
         await db.connect()
-        const inserir = ("insert into tecnicos(nome_tec,matricula_tec,email) values ($1,$2,$3)")
-        await db.query(inserir, [nome,matricula,email])
+        const inserir = ("insert into tecnicos(matricula_tec,nome_tec,email) values ($1,$2,$3)")
+        await db.query(inserir, [matricula,nome,email])
     }
-    return novoTec(nome,matricula,email)
+    return novoTec(matricula,nome,email)
 }
 exports.insertTipo = function (nome) {
     async function novoTipo(nome) {
@@ -145,13 +145,13 @@ exports.deleteEquip = function (id) {
     return excluirEquip(id);
 }
  
-exports.updateTecnicos = function (id_tec, nome_tec, matricula_tec, email) {
-    async function atualizarTecnicos(id_tec, nome_tec, matricula_tec, email) {
+exports.updateTecnicos = function ( matricula_tec, nome_tec, email) {
+    async function atualizarTecnicos( matricula_tec, nome_tec, email) {
         try {
             await db.connect();
 
             // Verifique se o registro com o ID fornecido existe na tabela
-            const verificaRegistro = await db.query('SELECT * FROM tecnicos WHERE id_tec = $1', [id_tec]);
+            const verificaRegistro = await db.query('SELECT * FROM tecnicos WHERE  matricula_tec = $1', [ matricula_tec,]);
             if (verificaRegistro.rows.length === 0) {
                 throw new Error('Registro não encontrado.');
             }
@@ -161,11 +161,10 @@ exports.updateTecnicos = function (id_tec, nome_tec, matricula_tec, email) {
                 UPDATE tecnicos
                 SET
                     nome_tec = $2,
-                    matricula_tec = $3,
-                    email = $4
-                WHERE id_tec = $1
+                    email = $3
+                WHERE  matricula_tec = $1
             `;
-            await db.query(atualizacao, [id_tec, nome_tec, matricula_tec, email]);
+            await db.query(atualizacao, [ matricula_tec, nome_tec,  email]);
 
             return 'Registro atualizado com sucesso.';
         } catch (error) {
@@ -173,15 +172,15 @@ exports.updateTecnicos = function (id_tec, nome_tec, matricula_tec, email) {
         } 
     }
 
-    return atualizarTecnicos(id_tec, nome_tec, matricula_tec, email);
+    return atualizarTecnicos( matricula_tec, nome_tec,  email);
 }
-exports.deleteTecnico = function (id_tec) {
-    async function deletarTecnico(id_tec) {
+exports.deleteTecnico = function (matricula_tec) {
+    async function deletarTecnico(matricula_tec) {
         try {
             await db.connect();
 
             // Verifique se o registro com o ID fornecido existe na tabela
-            const verificaRegistro = await db.query('SELECT * FROM tecnicos WHERE id_tec = $1', [id_tec]);
+            const verificaRegistro = await db.query('SELECT * FROM tecnicos WHERE matricula_tec = $1', [matricula_tec]);
             if (verificaRegistro.rows.length === 0) {
                 throw new Error('Registro não encontrado.');
             }
@@ -189,9 +188,9 @@ exports.deleteTecnico = function (id_tec) {
             // Execute a exclusão dos dados
             const exclusao = `
                 DELETE FROM tecnicos
-                WHERE id_tec = $1
+                WHERE matricula_tec = $1
             `;
-            await db.query(exclusao, [id_tec]);
+            await db.query(exclusao, [matricula_tec]);
 
             return 'Registro excluído com sucesso.';
         } catch (error) {
@@ -199,7 +198,7 @@ exports.deleteTecnico = function (id_tec) {
         } 
     }
 
-    return deletarTecnico(id_tec);
+    return deletarTecnico(matricula_tec);
 }
 exports.updateSetor = function (id_setor, nome_setor) {
     async function atualizarSetor(id_setor, nome_setor) {

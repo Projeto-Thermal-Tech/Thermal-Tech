@@ -233,8 +233,6 @@ router.post("/encerra/ordem", async function (req, res) {
 });
 
 
-
-
 router.get("/inicio", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/pages/home.html"))
 })
@@ -264,15 +262,15 @@ router.post('/deletar/equipamento/:id', function (req, res) {
     });
 });
 router.post('/atualizar/tecnicos', function (req, res) {
-    atualizarTecnicos.updateTecnicos(req.body.id_tec, req.body.nome_tec, req.body.matricula_tec, req.body.email).then(function () {
+    atualizarTecnicos.updateTecnicos(req.body.matricula_tec, req.body.nome_tec,  req.body.email).then(function () {
         res.redirect('/cadastro')
     }).catch(function (error) {
         res.send("deu erro " + error)
     })
-});
-router.post('/deletar/Tecnico/:id', function (req, res) {
-    const id_tec = req.params.id;
-    excluirtec.deleteTecnico(id_tec).then(function() {
+}); 
+router.post('/deletar/Tecnico/:matricula_tec', function (req, res) {
+    const matricula_tec = req.params.matricula_tec;
+    excluirtec.deleteTecnico(matricula_tec).then(function() {
         res.redirect('/cadastro');
     }).catch(function (error) {
         res.send("deu erro " + error);
@@ -333,7 +331,7 @@ router.post('/cadastro/ordem', function (req, res) {
     })
 })
 router.post('/cadastro/tecnico', function (req, res) {
-    novoTec.insertTecnico(req.body.nome_tec, req.body.mat_tec, req.body.email_tec).then(function () {
+    novoTec.insertTecnico(req.body.mat_tec, req.body.nome_tec,  req.body.email_tec).then(function () {
         res.redirect('/cadastro')
     }).catch(function (error) {
         res.send("deu erro " + error)

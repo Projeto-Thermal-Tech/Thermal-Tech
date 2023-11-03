@@ -103,10 +103,9 @@
     <table id="tabela_tec" border="1">
       <thead>
         <tr>
-          <th>id</th>
-          <th>Email</th>
-          <th>Técnicos</th>
           <th>Matricula</th>
+          <th>Técnicos</th>
+          <th>Email</th>
           <th style="width: 50px;">Editar</th>
           <th style="width: 50px;">Excluir</th>
         </tr>
@@ -114,21 +113,19 @@
       <tbody>
         <% tecnicos.forEach(function(tecnico) { %>
           <tr>
-            <td><%= tecnico.id_tec %></td>
-            <td><%= tecnico.email %></td>
-            <td><%= tecnico.nome_tec %></td>
             <td><%= tecnico.matricula_tec %></td>
+            <td><%= tecnico.nome_tec %></td>
+            <td><%= tecnico.email %></td>
             <td>
               <button onclick="editarTecnico(
-            '<%= tecnico.id_tec %>',
-            '<%= tecnico.email %>' ,
-            '<%= tecnico.nome_tec %>' ,
             '<%= tecnico.matricula_tec %>' ,
+            '<%= tecnico.nome_tec %>' ,
+            '<%= tecnico.email %>' ,
             )" style="background-color: transparent; border: none;">
         <img src="../assets/botao-editar.png" width="20px" alt="">
     </button>
     <td>
-    <form action="/deletar/Tecnico/<%= tecnico.id_tec %>" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este equipamento?')">
+    <form action="/deletar/Tecnico/<%= tecnico.matricula_tec %>" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este técnico?')">
       <input type="hidden" name="_method" value="DELETE">
       <button type="submit" style="background-color: transparent; border: none;">
           <img src="../assets/delete.png" width="25">
@@ -222,7 +219,10 @@
       <div class="popup-content">
         <form action="/cadastro/tecnico" method="post">
           <div class="popup-header">
-
+            <div>
+              <label for="" class="popup-label">Matricula:</label>
+              <input type="number" class="popup-input" id="matriculaTec" name="mat_tec" placeholder="" required>
+            </div>
             <div>
               <label for="" class="popup-label">Nome:</label>
               <input type="text" class="popup-input" id="tag" name="nome_tec" placeholder="" required>
@@ -231,15 +231,11 @@
               <label for="" class="popup-label">Email:</label>
               <input type="text" class="popup-input" id="tag" name="email_tec" placeholder="" required>
             </div>
-            <div>
-              <label for="" class="popup-label">Matricula:</label>
-              <input type="number" class="popup-input" id="n/s" name="mat_tec" placeholder="" required>
-            </div>
           </div>
       </div>
       <button type="submit" class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
       </form>
-      <button class="popup-button cancelar" onclick="EsconderPopup()">Cancelar</button>
+      <button class="popup-button cancelar" onclick="EsconderPopupTec()">Cancelar</button>
     </div>
     <div class="popup" id="popup-loc">
       <div class="popup-title">Cadastrar Local</div>
@@ -255,7 +251,7 @@
       </div>
       <button type="submit" class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
       </form>
-      <button class="popup-button cancelar" onclick="EsconderPopup()">Cancelar</button>
+      <button class="popup-button cancelar" onclick="EsconderPopupLoc()">Cancelar</button>
     </div>
     <div class="popup" id="popup-equip">
       <div class="popup-title">Cadastrar Equipamento</div>
@@ -269,9 +265,8 @@
           </div>
           <div>
             <button type="submit" class="popup-button salvar" onclick="saveEquipment()">Salvar</button>
-          </div>
       </form>
-      <button class="popup-button cancelar" type="button" onclick="EsconderPopup()">Cancelar</button>
+      <button class="popup-button cancelar" type="button" onclick="EsconderPopupEquip()">Cancelar</button>
     </div>
     </div>
     </div>
@@ -282,18 +277,18 @@
         <div class="popup-content-tecnico">
             <form action="/atualizar/Tecnicos" method="post">
                 <div class="popup-header">
+                  <div>
+                    <label for="" class="popup-label">Matricula:</label>
+                    <input type="number" class="popup-input" id="matricula_tec" name="matricula_tec" placeholder="" required>
+                </div>
                     <div>
                         <label for="" class="popup-label">Nome:</label>
                         <input type="text" class="popup-input" id="nome_tec" name="nome_tec" placeholder="" required>
-                        <input type="text" id="id_tec" name="id_tec" style="display: none;">
+
                     </div>
                     <div>
                         <label for="" class="popup-label">Email:</label>
                         <input type="text" class="popup-input" id="email" name="email" placeholder="" required>
-                    </div>
-                    <div>
-                        <label for="" class="popup-label">Matricula:</label>
-                        <input type="number" class="popup-input" id="matricula_tec" name="matricula_tec" placeholder="" required>
                     </div>
                 </div>
                 <div style="display: flex;">
@@ -352,19 +347,18 @@
       <div class="popup-titulo-filtro-tec">Filtrar Técnicos</div>
       <div class="popou-content-filtro-tec">
           <div class="popup-header-filtro-tec">
+            <div>
+              <label for="" class="popou-label-filtro-mat">Matricula</label>
+              <input type="number" class="popou-label-filtro-mat" id="Matricula" placeholder="Matricula">
+          </div>
+          <div>
+            <label for="" class="popou-label-filtro-tec">Técnicos</label>
+            <input type="text" class="popou-label-filtro-tec" id="Técnicos" placeholder="Técnicos">
+        </div>
           <div>
               <label for="" class="popou-label-filtro-email">email</label>
               <input type="text" class="popou-label-filtro-email" id="email" placeholder="email">
           </div>
-                  <div>
-                      <label for="" class="popou-label-filtro-tec">Técnicos</label>
-                      <input type="text" class="popou-label-filtro-tec" id="Técnicos" placeholder="Técnicos">
-                  </div>
-                
-                  <div>
-                      <label for="" class="popou-label-filtro-mat">Matricula</label>
-                      <input type="text" class="popou-label-filtro-mat" id="Matricula" placeholder="Matricula">
-                  </div>
                   <div>
                     <button class="popup-button salvarfiltro-tec" onclick="FiltrarTec()">Filtrar</button>
                     <button class="popup-button cancelarfiltro-tec" onclick="EsconderpopouTecnico()">Cancelar</button>
@@ -434,6 +428,27 @@
         document.getElementById('popup-equip').style.display = 'block'
       }
     }
+    function EsconderPopupTec() {
+    var popup = document.getElementById('popup-tec');
+    popup.style.display = 'none';
+    var overlay = document.querySelector('.overlay');
+    overlay.style.display = 'none';
+}
+
+function EsconderPopupLoc() {
+    var popup = document.getElementById('popup-loc');
+    popup.style.display = 'none';
+    var overlay = document.querySelector('.overlay');
+    overlay.style.display = 'none';
+}
+
+function EsconderPopupEquip() {
+    var popup = document.getElementById('popup-equip');
+    popup.style.display = 'none';
+    var overlay = document.querySelector('.overlay');
+    overlay.style.display = 'none';
+}
+
 
     function EsconderPopupEditTec() {
       document.getElementById('popup-tecnico').style.display = 'none'
@@ -449,11 +464,12 @@
       document.querySelector('.overlay-Tipos').style.display = 'none'
     }
 
-    function editarTecnico(id_tec, email, nome_tec, matricula_tec) {
-    document.getElementById('id_tec').value = id_tec;
-    document.getElementById('email').value = email;
-    document.getElementById('nome_tec').value = nome_tec;
-    document.getElementById('matricula_tec').value = matricula_tec;
+    function editarTecnico(matricula_tec,  nome_tec, email ) {
+      document.getElementById('matricula_tec').value = matricula_tec;
+      document.getElementById('nome_tec').value = nome_tec;
+      document.getElementById('email').value = email;
+    
+    
     showPopupEditarTec();
 }
 function editarSetores(id_setor, nome_setor) {
@@ -562,7 +578,7 @@ function filtrarPorTecnico() {
   var matriculaEncontrada = false; // Variável para rastrear se a matrícula foi encontrada
 
   for (i = 1; i < linhas.length; i++) {
-    colunaMatricula = linhas[i].getElementsByTagName("td")[3]; // Primeira coluna (índice 0) contém a matrícula
+    colunaMatricula = linhas[i].getElementsByTagName("td")[0]; // Primeira coluna (índice 0) contém a matrícula
     if (colunaMatricula) {
       textoMatricula = colunaMatricula.textContent || colunaMatricula.innerText;
       if (textoMatricula.toUpperCase() === filtro) {
