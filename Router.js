@@ -83,7 +83,7 @@ router.get("/ordem", async function (req, res) {
 
 router.post('/criar/ordem', function (req, res) {
     // res.json(req.body.num_ordem, req.body.status,req.body.num_chamado,req.body.criador,req.body.data_inicio, req.body.hora_inicio,req.body.prioridade, req.body.tipo_manut)
-    novaOrdem.insertOrdem(req.body.num_ordem, req.body.status,req.body.num_chamado,req.body.criador,req.body.data_inicio, req.body.hora_inicio,req.body.prioridade, req.body.tipo_manut).then(function () {
+    novaOrdem.insertOrdem(req.body.num_ordem,req.body.titulo_ord, req.body.status,req.body.num_chamado,req.body.criador,req.body.data_inicio, req.body.hora_inicio,req.body.prioridade, req.body.tipo_manut).then(function () {
         res.redirect('/ordem')
     }).catch(function (error) {
         res.send("deu erro " + error)
@@ -323,13 +323,13 @@ router.post('/cadastro/chamado', function (req, res) {
         res.send("deu erro " + error)
     })
 })
-router.post('/cadastro/ordem', function (req, res) {
-    novaOrdem.insertOrdem(req.body.status, req.body.criador, req.body.dataini, req.body.datafim, req.body.horaini, req.body.horafim, req.body.prioridade, req.body.matricula, req.body.tecnicos, req.body.datainitrab, req.body.horainitrab, req.body.datafimtrab, req.body.horafimtrab, req.body.textoserviço).then(function () {
-        res.redirect('/novo-ordem')
-    }).catch(function (error) {
-        res.send("deu erro " + error)
-    })
-})
+// router.post('/cadastro/ordem', function (req, res) {
+//     novaOrdem.insertOrdem(req.body.status,req.body.titulo_ord, req.body.criador, req.body.dataini, req.body.datafim, req.body.horaini, req.body.horafim, req.body.prioridade, req.body.matricula, req.body.tecnicos, req.body.datainitrab, req.body.horainitrab, req.body.datafimtrab, req.body.horafimtrab, req.body.textoserviço).then(function () {
+//         res.redirect('/novo-ordem')
+//     }).catch(function (error) {
+//         res.send("deu erro " + error)
+//     })
+// })
 router.post('/cadastro/tecnico', function (req, res) {
     novoTec.insertTecnico(req.body.mat_tec, req.body.nome_tec,  req.body.email_tec).then(function () {
         res.redirect('/cadastro')
