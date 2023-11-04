@@ -210,6 +210,7 @@ router.post("/view/ordem", async function (req, res) {
         const id_ordem = req.body.id_ordem; 
         const sql = "SELECT ordem.id_ordem, status.nome_status, ordem.numero_cha, ordem.criado_por_ord, ordem.data_ini_ord, ordem.data_fim_ord, ordem.hora_ini_ord, ordem.hora_fim_ord, ordem.prioridade_ord, ordem.manut_ord, ordem.matricula_ord, ordem.data_ini_trab, ordem.hora_ini_trab, ordem.data_fim_trab, ordem.hora_fim_trab, ordem.texto_servico FROM ordem INNER JOIN status ON ordem.status_ord = status.id_status WHERE id_ordem = $1";
         const dados = await db.query(sql, [id_ordem]);
+        console.log(dados.rows)
         if (dados.rows.length > 0) {
             res.render('viewordem', {
                 dadosOrdem: dados.rows[0]

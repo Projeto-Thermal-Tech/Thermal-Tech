@@ -98,10 +98,15 @@
                         </div>
                         <div>
                             <label for="">Inicio</label>
-                            <% const formatDate=(date)=> {
-                                const formattedDate = new Date(date).toISOString().split('T')[0];
-                                return formattedDate;
-                                };
+                            <% const formatDate = (dateString) => {
+                                let date = new Date(dateString);
+                                if (!isNaN(date.getTime()) && date.toISOString().slice(0,10) !== '1970-01-01') {
+                                    const formattedDate = date.toISOString().split('T')[0];
+                                    return formattedDate;
+                                } else {
+                                    return '';
+                                }
+                            };
                                 %>
                             <input class="data-chamado" id="data-init-ordem" name="data_inicio" type="date" value="<%= formatDate(dadosOrdem.data_ini_ord) %>">
                             <input type="time" id="hora-init-ordem" name="hora_inicio" value="<%= dadosOrdem.hora_ini_ord %>">
