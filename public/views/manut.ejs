@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/> -->
+    <link rel="stylesheet" href="../css/manut.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/@media1200.css">
+    <link rel="stylesheet" href="../css/@media1440.css">
+    <!-- <link rel="stylesheet" href="../css/style.css"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Overpass:wght@400;700&display=swap" rel="stylesheet">
+    <title>Lista de Manutenções</title>
+</head>
+<body>
+    
+    <header>
+        <div class="logo">
+            
+            <h1><a href="./home.html">Thermal Tech</a></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="http://localhost:5000/Equipamentos">Equipamentos</a></li>
+                <li><a href="http://localhost:5000/manutencao">Manutenções</a></li>
+                <li><a href="http://localhost:5000/consulta_ordem">Consultar Ordens</a></li>
+                <li><a href="http://localhost:5000/chamado">Chamados</a></li>
+                <li><a href="http://localhost:5000/cadastro">Cadastro Geral</a></li>
+                <li><a href="http://localhost:5000/relatorio">Homem Hora</a></li>
+                <li><a href="">Gráficos gerenciais</a></li>
+                <li><a href="../pages/chat.html">Chat</a></li>
+            </ul>
+        </nav>
+        <div class="nav-right">
+            <div>
+                <a href="#"  class="config"><img src="../assets/icon_config.png" alt=""></a> 
+                <a  href="#" class="sair" onclick="logout()"><img  src="../assets/icon_sair.png" alt=""></a>
+            </div>
+            <div>
+                <h4 id="userEmail"></h4>
+            </div>  
+        </div>
+    </header>
+    <main>
+        <h2>Lista de Manutenções</h2>
+        <section class="dados_manut">
+            <div class="header_manut">
+                <div class="search_manut">
+                        <h4>Consultar Manutenções</h4>
+                        <input type="text" id="numeroOrdem" placeholder="N° da manutenção">
+                        <button onclick="pesquisar()">Pesquisar</button>
+                        <button id="filtro" onclick="showPopup()">Filtrar</button>
+                        <button onclick="limparFiltro()" style="display: none">Voltar</button>
+                </div>
+                <div class="info_equip">
+                    <div class="info-left">
+                        <h5>Tag do equipamento: ACS-2101</h5>
+                        <h5>Tipo do quipamento: Split</h5>
+                        <h5>Número de Série:3115423521 </h5>
+                    </div>
+                    <div class="info-rigth">
+                        <h5>Modelo: STR</h5>
+                        <h5>Àrea Climatizada: 23m2</h5>
+                        <h5>Localidade: U-144</h5>
+                    </div>
+                </div>
+            
+            </div>
+        </section>
+        <section class="dados_manut">
+            <div class="table-container">
+                <table id="tabelaManutencoes">
+                    <thead>
+                        <tr>
+                            <th>Ordem</th>
+                            <th>manutenção</th>
+                            <th>status</th>
+                            <th>Técnico Responsável</th>
+                            <th>Título</th>
+                            <th>Data de Início</th>
+                            <th>Data de Término</th>
+                            <th>Hora de Início</th>
+                            <th>Hora de Término</th>
+                            <th>Descrição da Manutenção</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% 
+                        function formatarData(data) {
+                            const dataObj = new Date(data);
+                            const dia = dataObj.getDate().toString().padStart(2, '0');
+                            const mes = (dataObj.getMonth() + 1).toString().padStart(2, '0'); // Mês começa em 0
+                            const ano = dataObj.getFullYear().toString();
+                            return `${dia}/${mes}/${ano}`;
+                        }
+            
+                        manutencao.forEach(function(manut) { %>
+                            <tr>
+                                <td><%= manut.id_ordem %></td>
+                                <td><%= manut.nome_manut %></td>
+                                <td><%= manut.nome_status %></td>
+                                <td><%= manut.nome_tec %></td>
+                                <td><%= manut.titulo_ord %></td>
+                                <td><%= formatarData(manut.data_ini_ord) %></td>
+                                <td><%= formatarData(manut.data_fim_ord) %></td>
+                                <td><%= manut.hora_ini_ord %></td>
+                                <td><%= manut.hora_fim_ord %></td>
+                                <td><%= manut.texto_servico %></td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+            
+        </section>
+        <section class="overlay">
+            <div class="popup" id="popup">
+                <div class="popup-title-filter">Filtrar manutenção</div>
+                <div class="popup-content-filter">
+                   <div class="popup-header-filter">
+                 
+                     <div>
+                         <label for="" class="popup-label-filter">Tipo de Manutenção:</label>
+                             <select name="" id="">
+                                 <option value=""></option>
+                                 <option value="">Corretiva</option>
+                                 <option value="">Preventiva</option>
+                             </select>
+                     </div>
+                     <div>
+                        <label for="" class="popup-label-filter">Técnico:</label>
+                        <input type="text" class="popup-input-filter" id="tecnico" placeholder="Victor Bueno"oninput="converterParaMaiuscula(this)"> 
+                    </div>
+                     <div>
+                         <label for="" class="popup-label-filter">Serviços</label>
+                         <input type="text" class="popup-input-filter" id="n/s" placeholder="Troca de filtro"> 
+                     </div>
+                   </div>  
+                   <div class="popup-center-filter">
+                     <div>
+                         <label for="" class="popup-label-filter">Data de Inico</label>
+                         <input type="date" name="" id="" class="popup-input-filter ">
+                     </div>
+                     <div>
+                        <label for="" class="popup-label-filter">Data de Fim</label>
+                        <input type="date" name="" id="" class="popup-input-filter">
+                    </div>
+                </div>
+                <div>
+                    <label for="" class="popup-label-filter">Localidade</label>
+                    <select name="" id="">
+                        <option value=""></option>
+                        <option value="">U-144</option>
+                        <option value="">U-2110</option>
+                        <option value="">U-2325</option>
+                    </select>
+                </div>
+                <div>
+                <div>
+                    <label for="" class="popup-label-filter">Setor</label>
+                    <input type="number" name="" id="setor" class="popup-input-filter">
+                </div>
+              </div>
+              <div>
+               <label for="" class="popup-label-filter">Modelo</label>
+               <input type="number" name="" id="modelo" class="popup-input-filter">
+           </div>
+                <button class="popup-button salvar" onclick="saveEquipment()">Filtrar</button>
+                <button  class="popup-button cancelar" onclick="hidePopup()">Cancelar</button>
+            </div>
+        </section>
+    </main>
+    <script>
+        function mostrarUser(){
+  const userEmail = localStorage.getItem("userEmail");
+
+  // Insere o email no elemento HTML correspondente
+  document.getElementById("userEmail").innerHTML = userEmail;
+}
+mostrarUser()
+function pesquisar() {
+  const numeroOrdem = document.getElementById('numeroOrdem').value;
+
+  // Verificar se o campo de entrada está vazio
+  if (!numeroOrdem) {
+    alert("Por favor, insira um número de ordem para pesquisar.");
+    return; // Não execute a pesquisa
+  }
+
+  const tabela = document.getElementById('tabelaManutencoes');
+  const linhas = tabela.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+  const limparFiltroButton = document.querySelector('button[onclick="limparFiltro()"]');
+  
+  let ordemExiste = false;
+
+  for (let i = 0; i < linhas.length; i++) {
+    const colunaOrdem = linhas[i].getElementsByTagName('td')[0];
+    if (colunaOrdem) {
+      const textoOrdem = colunaOrdem.textContent || colunaOrdem.innerText;
+      if (textoOrdem === numeroOrdem) {
+        linhas[i].style.display = '';
+        limparFiltroButton.style.display = 'block'; // Mostrar o botão "Limpar Filtro"
+        ordemExiste = true;
+      } else {
+        linhas[i].style.display = 'none';
+      }
+    }
+  }
+
+  if (!ordemExiste) {
+    alert("Essa ordem de equipamento não existe.");
+    // Restaurar todas as linhas para visível
+    for (let i = 0; i < linhas.length; i++) {
+      linhas[i].style.display = '';
+    }
+    return; // Não execute a pesquisa
+  }
+}
+
+
+
+function limparFiltro() {
+  const tabela = document.getElementById('tabelaManutencoes');
+  const linhas = tabela.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+  const limparFiltroButton = document.querySelector('button[onclick="limparFiltro()"]');
+
+  for (let i = 0; i < linhas.length; i++) {
+    linhas[i].style.display = '';
+  }
+  
+  document.getElementById('numeroOrdem').value = ''; // Limpa o campo de pesquisa
+  limparFiltroButton.style.display = 'none'; // Oculta o botão "Limpar Filtro"
+}
+
+
+    </script>
+    <!-- <script src="../Login_v1/script_login.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
+    <script src="../Login_v1/firebase-init.js"></script>
+    <script src="../js/auth-guard.js"></script>
+    <script src="../js/logout.js"></script>
+    <script src="../js/script.js"></script>
+</html> 

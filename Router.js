@@ -34,9 +34,9 @@ router.get("/cadastro", async function (req, res) {
         let tabelaEquip;  // Declare a variável fora da função
 
         async function listarDados() {
-            const sqlSetor = "select * from setor";
-            const sqlTec = "select * from tecnicos";
-            const sqlEquip = "select * from tipos_arcondicionado";
+            const sqlSetor = "select * from setor  ORDER BY setor.id_setor ASC;";
+            const sqlTec = "select * from tecnicos  ORDER BY tecnicos.matricula_tec ASC;";
+            const sqlEquip = "select * from tipos_arcondicionado ORDER BY tipos_arcondicionado.id_tipar;";
             tabelaSetor = await db.query(sqlSetor);
             tabelaTec = await db.query(sqlTec);
             tabelaEquip = await db.query(sqlEquip); // Atribua o valor dentro da função
@@ -108,7 +108,7 @@ router.get("/proximo-numero-ordem", async function (req, res) {
 router.get("/consulta_ordem", async function (req, res) {
     try {
         async function listaOrdens(){
-        const sql = "SELECT ordem.*, status.nome_status, prioridade.nome_pri FROM ordem INNER JOIN status ON ordem.status_ord = status.id_status INNER JOIN prioridade ON ordem.prioridade_ord = prioridade.id_prioridade";
+        const sql = "SELECT ordem.*, status.nome_status, prioridade.nome_pri FROM ordem INNER JOIN status ON ordem.status_ord = status.id_status INNER JOIN prioridade ON ordem.prioridade_ord = prioridade.id_prioridade ORDER BY ordem.id_ordem ASC;";
         ordem = await db.query(sql)
     }
     await listaOrdens();
@@ -222,6 +222,46 @@ router.post("/view/ordem", async function (req, res) {
         res.status(500).send("Erro ao buscar os dados: " + error.message);
     }
 });
+router.get("/manutencao", async function (req, res) {
+    try {
+        const sql = "SELECT ordem.id_ordem, tipo_manut.nome_manut, tecnicos.nome_tec, status.nome_status, ordem.titulo_ord, ordem.data_ini_ord, ordem.data_fim_ord, ordem.hora_ini_ord, ordem.hora_fim_ord, ordem.texto_servico FROM ordem INNER JOIN status ON ordem.status_ord = status.id_status INNER JOIN tipo_manut ON ordem.manut_ord = tipo_manut.id_manut INNER JOIN tecnicos ON ordem.matricula_ord = tecnicos.matricula_tec ORDER BY ordem.id_ordem ASC";
+
+        let manutencao = await db.query(sql);
+        res.render('manut', { manutencao: manutencao.rows });
+        
+    } catch (error) {
+        res.status(500).send("Erro ao buscar os dados: " + error.message);
+    }
+});
+router.get("/relatorio", async function (req, res) {
+    try {
+        const sql = "SELECT ordem.id_ordem, tipo_manut.nome_manut, ordem.hora_ini_trab, ordem.data_ini_trab, ordem.data_fim_trab FROM ordem INNER JOIN tipo_manut ON ordem.manut_ord = tipo_manut.id_manut ORDER BY ordem.id_ordem ASC";
+
+        let relatorio = await db.query(sql);
+        res.render('horas', { horas: relatorio.rows });
+        
+    } catch (error) {
+        res.status(500).send("Erro ao buscar os dados: " + error.message);
+    }
+});
+
+
+
+
+// router.get("/view/manut", async function (req, res) {
+//     try {
+//         const id_ordem = req.body.manut;
+//         const createViewSql = " SELECT ordem.id_ordem,lista_equipamentos.tag_listequip,tipos_arcondicionado.tipos_arcondicionado_tipar as tipo_listequip,tecnicos.matricula_tec as matricula_ord, ordem.titulo_ord,ordem.data_ini_ord,ordem.data_fim_ord,ordem.hora_ini_ord, ordem.hora_fim_ord,ordem.texto_servico FROM ordem JOIN lista_equipamentos ON ordem.numero_cha = lista_equipamentos.id_equip JOIN tipos_arcondicionado ON lista_equipamentos.tipo_listequip = tipos_arcondicionado.id_tipar JOIN tecnicos ON ordem.matricula_ord = tecnicos.matricula_tec;";
+//         await db.query(createViewSql);
+//         const querySql = "SELECT ordem.id_ordem,lista_equipamentos.tag_listequip,tipos_arcondicionado.tipos_arcondicionado_tipar as tipo_listequip,tecnicos.matricula_tec as matricula_ord, ordem.titulo_ord,ordem.data_ini_ord,ordem.data_fim_ord,ordem.hora_ini_ord, ordem.hora_fim_ord,ordem.texto_servico FROM ordem JOIN lista_equipamentos ON ordem.numero_cha = lista_equipamentos.id_equip JOIN tipos_arcondicionado ON lista_equipamentos.tipo_listequip = tipos_arcondicionado.id_tipar JOIN tecnicos ON ordem.matricula_ord = tecnicos.matricula_tec;";
+//         const result = await db.query(querySql);
+//         res.render('viewmanut', { manut: result.rows })
+//     } catch (err) {
+//         console.error(err);
+//         res.status(500).send('Erro no servidor');
+//     }
+// });
+
 router.post("/encerra/ordem", async function (req, res) {
     atualizarOrdem.updateOrdem(req.body.ordem, req.body.data_fim, req.body.hora_fim, req.body.matricula, req.body.data_lanc_ord, req.body.hora_ini_trab, req.body.data_ini_trab, req.body.data_fim_trab, req.body.hora_fim_trab, req.body.texto_servico)
     .then(function () {
@@ -353,9 +393,6 @@ router.post('/novoUsuario', function (req, res) {
     })
 })
 
-router.get("/manutencao", function (req, res) {
-    res.sendFile(path.join(__dirname, "./public/pages/manut.html"))
-})
 router.get("/ordem", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/pages/ordem.html"))
 })
