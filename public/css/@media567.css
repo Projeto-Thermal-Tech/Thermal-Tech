@@ -31,9 +31,7 @@
         margin-left: 15px;
     }
     
-  }
-
-  /* Estilos padrão para todas as telas */
+     /* Estilos padrão para todas as telas */
   h2 {
     font-size: 24px;
 }
@@ -60,11 +58,27 @@
     margin-bottom: 1px; /* Adicione algum espaçamento abaixo da imagem */
 }
 
+.add_cham button {
+    width: 170px; /* Largura desejada */
+    height: 30px; /* Altura desejada */
+    padding: 5px; /* Espaçamento interno desejado */
+}
+
 .num,
 #esta,
 .situ {
-    width: 100%;
+    width: 80%;
     margin-bottom: 10px;
+}
+
+#n_cham{
+    font-size: 16px;
+}
+
+#pesquisar{
+    width: 130px; /* Largura desejada */
+    height: 30px; /* Altura desejada */
+    padding: 5px; /* Espaçamento interno desejado */
 }
 
 .num_cham button{
@@ -83,3 +97,14 @@ label {
     width: 100%;
     margin-bottom: 10px;
 }
+
+.estado,
+.filtro,
+.ocult {
+    display: none;
+}
+
+  }
+
+ 
+

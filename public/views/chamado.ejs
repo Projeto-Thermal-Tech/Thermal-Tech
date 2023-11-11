@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/chamado.css">
   <link rel="stylesheet" href="../css/@media1200.css">
+  <link rel="stylesheet" href="../css/@media567.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Overpass:wght@400;700&display=swap"
@@ -62,7 +63,7 @@
       </div>
 
       <div class="num_cham">
-        <label>N° Chamado:</label>
+        <label id="n_cham">N° Chamado:</label>
         <input type="number" class="num" id="numeroChamado">
         <button id="pesquisar" onclick="pesquisarChamado()">Pesquisar</button>
         <button id="limpar-filtro" style="display: none;" onclick="limparFiltro()">Voltar</button>
@@ -91,10 +92,10 @@
             <th></th>
             <th>Nº Chamado</th>
             <th>Status</th>
-            <th>Descrição</th>
-            <th>Prioridade</th>
-            <th>Criador</th>
-            <th>Data</th>
+            <th class="ocult">Descrição</th>
+            <th class="ocult">Prioridade</th>
+            <th class="ocult">Criador</th>
+            <th class="ocult">Data</th>
           </tr>
         </thead>
         <tbody>
@@ -114,10 +115,10 @@
               </form></td>
               <td><%= chamados[i].id_chamado %></td>
               <td><%= chamados[i].nome_status %></td>
-              <td><%= chamados[i].descri_cha %></td>
-              <td><%= chamados[i].nome_pri %></td>
-              <td><%= chamados[i].criado_por_cha %></td>
-              <td><%= formatarData(chamados[i].data_ini_cha) %></td>
+              <td class="ocult"><%= chamados[i].descri_cha %></td>
+              <td class="ocult"><%= chamados[i].nome_pri %></td>
+              <td class="ocult"><%= chamados[i].criado_por_cha %></td>
+              <td class="ocult"><%= formatarData(chamados[i].data_ini_cha) %></td>
             </tr>
           <% }; %>          
         </tbody>
