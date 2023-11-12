@@ -63,14 +63,15 @@
                 </div>
                 <div class="header-order">
                     <div class="info-header-order">
-                        <input type="text" id="title-order" placeholder="Correção de dreno ACS-2101" readonly
-                            class="data-chamado">
                         <label for="">Ordem</label>
                         <input type="number" id="ordem" readonly class="data-chamado">
+                        <input type="text" id="title-order" placeholder="Correção de dreno ACS-2101" readonly
+                            class="data-chamado">
                     </div>
                     <div class="info-header-order">
                         <label for="">Status</label>
-                        <input type="text" placeholder="ABERTA" name="status">
+                        <input type="text" value="1" name="status" style="display: none;">
+                        <input type="text" value="ABERTA" readonly>
                         <br>
                         <label for="">Chamado</label>
                         <input type="number" value="<%= numeroChamado %>" name="chamado">
@@ -112,7 +113,9 @@
                 </div>
                 <div class="info-header-order">
                     <label for="" class="popup-label">Setor</label>
-                    <select id="setor" name="setor">
+                    <select id="setor" name="setor" style="-webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none; padding: 1px; margin-left: 2px; border: 1px black solid; width: 168px;">
                         <option value=""></option> <!-- Opção em branco -->
                         <% setores.forEach(function(setor) { %>
                             <option value="<%= setor.id_setor %>">
@@ -123,7 +126,8 @@
                 </div>
                 <div class="info-header-order">
                     <label class="label-margin for="">Descrição</label>
-                    <textarea type=" text" id="descricao" style="width: 30%;"></textarea>
+                    <input id="descricao" type="text" style="width: 300px;">
+                    <!-- <textarea type=" text"  style="width: 30%;"></textarea> -->
                 </div>
             </div>
         </main>
