@@ -65,17 +65,16 @@
                     <div class="header-order">
                         <div class="info-header-order">
                             <label for="">Ordem</label>
-                            <input type="text" id="prioridade" value="PM01" readonly>
                             <input type="number" id="ordem" placeholder="40001" name="num_ordem">
                             <input type="text" id="title-order" name="titulo_ord" value="Correção de dreno ACS-2101">
                         </div>
                         <div class="info-header-order">
                             <label for="">Status</label>
-                            <input type="number" placeholder="ABERTA" name="status">
+                            <input type="number" value="1" style="display: none;" name="status">
+                            <input type="text" value="ABERTA" readonly>
                             <br>
                             <label for="">Chamado</label>
-                            <input type="number" value="" name="num_chamado" id="numeroChamado">
-                            <img src="../assets/executar.png" alt="" style="position: absolute; margin-left: 5px; cursor: pointer;" width="24px" onclick="mostrarDadosChamado('<%= JSON.stringify(chamados) %>', '<%= JSON.stringify(equipamento)%>')">
+                            <input type="number" value="" name="num_chamado" id="numeroChamado" oninput="mostrarDadosChamado('<%= JSON.stringify(chamados) %>', '<%= JSON.stringify(equipamento)%>')">
                         </div>
                     </div>
                 </section>
@@ -206,7 +205,7 @@
                         <input type="number" placeholder="41248466" name="matricula" style="width: 90px;">
                         <input type="text" value="Lucas Silva Cuba">
                         <label for="">Data de lanç.</label>
-                        <input type="datetime-local" name="data_lancamento">
+                        <input type="date" name="data_lancamento">
                         <div>
                             <label for="">Inicio do trabalho</label>
                             <input type="date" name="data_inicio_trabalho">
@@ -325,14 +324,15 @@ function mostrarDadosChamado(chamado, equipamentos) {
         if (equipamentoAssociado) {
             const prioridade = chamadoSelecionado.prioridade_cha;
 
-    // Selecione o campo de rádio correto com base na prioridade
-    if (prioridade === 1) {
-        document.getElementById('priBaixa').checked = true;
-    } else if (prioridade === 2) {
-        document.getElementById('priMedia').checked = true;
-    } else if (prioridade === 3) {
-        document.getElementById('priAlta').checked = true;
-    }
+            // Selecione o campo de rádio correto com base na prioridade
+            if (prioridade === 1) {
+                document.getElementById('priBaixa').checked = true;
+            } else if (prioridade === 2) {
+                document.getElementById('priMedia').checked = true;
+            } else if (prioridade === 3) {
+                document.getElementById('priAlta').checked = true;
+            }
+
             // Preencha os campos do formulário com informações do chamado e equipamento
             document.getElementById('dataCampo').value = formatarDataParaInputDate(chamadoSelecionado.data_ini_cha);
             document.getElementById('horaCampo').value = chamadoSelecionado.hora_ini_cha;
@@ -346,11 +346,32 @@ function mostrarDadosChamado(chamado, equipamentos) {
             document.getElementById('descricaoEquipamentoCampo').value = equipamentoAssociado.descricao_listequip;
         } else {
             console.log("Equipamento não encontrado para este chamado");
+            limparCampos(); // Adicionamos a limpeza dos campos aqui
         }
     } else {
         console.log("Chamado não encontrado");
+        limparCampos(); // Adicionamos a limpeza dos campos aqui
     }
 }
+
+function limparCampos() {
+    // Limpeza dos campos de input
+    document.getElementById('dataCampo').value = '';
+    document.getElementById('horaCampo').value = '';
+    document.getElementById('descChaCampo').value = '';
+    document.getElementById('descricaoCampo').value = '';
+    document.getElementById('criadorCampo').value = '';
+    document.getElementById('emailCampo').value = '';
+    document.getElementById('equipamentoCampo').value = '';
+    document.getElementById('setorCampo').value = '';
+    document.getElementById('localidadeCampo').value = '';
+    document.getElementById('descricaoEquipamentoCampo').value = '';
+    // Limpeza dos campos de radio
+    document.getElementById('priBaixa').checked = false;
+    document.getElementById('priMedia').checked = false;
+    document.getElementById('priAlta').checked = false;
+}
+
 
 
 
