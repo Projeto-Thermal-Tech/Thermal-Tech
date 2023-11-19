@@ -2,26 +2,26 @@ const express = require("express")
 const router = express.Router()
 const path = require("path")
 const app = express();
-const novoEquip = require('../Thermal-Tech/database/db');
-const novoSetor = require('../Thermal-Tech/database/db');
-const novoTec = require('../Thermal-Tech/database/db');
-const novoTipo = require('../Thermal-Tech/database/db');
-const novoUser = require('../Thermal-Tech/database/db');
-const novoChamado = require('../Thermal-Tech/database/db');
-const novaOrdem = require('../Thermal-Tech/database/db');
-const atualizarEquip = require('../Thermal-Tech/database/db')
-const atualizarOrdem = require('../Thermal-Tech/database/db')
-const excluirEquip = require('../Thermal-Tech/database/db')
-const atualizarTecnicos = require('../Thermal-Tech/database/db');
-const excluirtec = require('../Thermal-Tech/database/db');
-const atualizarSetor = require('../Thermal-Tech/database/db');
-const excluirSetor = require('../Thermal-Tech/database/db');
-const atualizarTipo = require('../Thermal-Tech/database/db');
-const excluirTipoArCondicionado = require('../Thermal-Tech/database/db');
-const dados = require('../Thermal-Tech/database/db');
+const novoEquip = require('./database/db');
+const novoSetor = require('./database/db');
+const novoTec = require('./database/db');
+const novoTipo = require('./database/db');
+const novoUser = require('./database/db');
+const novoChamado = require('./database/db');
+const novaOrdem = require('./database/db');
+const atualizarEquip = require('./database/db')
+const atualizarOrdem = require('./database/db')
+const excluirEquip = require('./database/db')
+const atualizarTecnicos = require('./database/db');
+const excluirtec = require('./database/db');
+const atualizarSetor = require('./database/db');
+const excluirSetor = require('./database/db');
+const atualizarTipo = require('./database/db');
+const excluirTipoArCondicionado = require('./database/db');
+const dados = require('./database/db');
 const { error } = require("console");
 const db = require("./database/cnx");
-const { email } = require('../Thermal-Tech/public/js/config');
+const { email } = require('./public/js/config');
 
 
 router.use(express.static(path.join(__dirname, "/public")));
@@ -238,10 +238,12 @@ router.get("/manutencao", async function (req, res) {
 });
 router.get("/relatorio", async function (req, res) {
     try {
-        const sql = "SELECT ordem.id_ordem, tipo_manut.nome_manut, ordem.hora_ini_trab, ordem.data_ini_trab, ordem.data_fim_trab FROM ordem INNER JOIN tipo_manut ON ordem.manut_ord = tipo_manut.id_manut ORDER BY ordem.id_ordem ASC";
-
-        let relatorio = await db.query(sql);
-        res.render('horas', { horas: relatorio.rows });
+        const sqlHoras = "SELECT ordem.id_ordem, tipo_manut.nome_manut, tecnicos.matricula_tec, ordem.hora_ini_trab, ordem.hora_fim_trab, ordem.data_ini_trab, ordem.data_fim_trab, TO_CHAR((ordem.hora_fim_trab - ordem.hora_ini_trab), 'HH24:MI:SS') as horas_trabalhadas FROM ordem  INNER JOIN tipo_manut ON ordem.manut_ord = tipo_manut.id_manut INNER JOIN tecnicos ON ordem.matricula_ord = tecnicos.matricula_tec ORDER BY ordem.id_ordem ASC;  ";
+        const sqlTecnicos='SELECT * FROM tecnicos'
+        let relatorio = await db.query(sqlHoras);
+        let Tecnicos =await db.query(sqlTecnicos)
+        console.log(relatorio.rows)
+        res.render('horas', { horas: relatorio.rows, Tecnicos:Tecnicos.rows });
         
     } catch (error) {
         res.status(500).send("Erro ao buscar os dados: " + error.message);
