@@ -44,27 +44,31 @@ function newCont() {
 //     })
 //   }
 
-function register() {
-  showLoading();
+async function register(event) {
+  event.preventDefault(); // Evita o envio padrão do formulário
+
+  await showLoading();
   let email = document.getElementById("email").value;
   let password = document.getElementById("password").value;
-  let fullName = document.getElementById("fullName").value; // Adicione um campo para o nome completo no seu formulário
-  var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+  let fullName = document.getElementById("fullName").value;
+  var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
   if (!passwordRegex.test(password)) {
-    alert('Senha fraca! A senha deve ter pelo menos 8 caracteres, uma letra maiúscula, uma letra minúscula e um número.');
-  } else {
-    // Crie um objeto com as informações do usuário, incluindo o nome completo
-    firebase.auth().createUserWithEmailAndPassword(email, password)
+      alert('Senha fraca! A senha deve ter pelo menos 8 caracteres, uma letra maiúscula, uma letra minúscula e um número.');
+      hideloading();
+      return; // Retorna imediatamente se a senha for fraca
+  }
+
+  firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(() => {
-        hideloading();
-        window.location.href = '../pages/home.html';
-      }).catch ((error) => {
-    hideloading();
-    alert(error);
-  });
+          hideloading();
+          window.location.href = '../pages/home.html';
+      }).catch((error) => {
+          hideloading();
+          alert(error);
+      });
 }
-}
+
 
 function recoverPassword() {
   let email = document.getElementById("email").value;

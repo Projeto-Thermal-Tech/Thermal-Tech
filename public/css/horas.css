@@ -90,8 +90,8 @@ h4 {
 }
 /* form */
 /* Estilos para o campo de entrada Colaborador e Emissor */
-#emissor {
-  width: 65%; /* Largura desejada para ambos os campos */
+#selectTec {
+  width: 55%; /* Largura desejada para ambos os campos */
   padding: 10px;
   border-radius: 4px;
 }

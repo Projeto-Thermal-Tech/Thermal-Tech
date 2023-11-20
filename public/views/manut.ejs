@@ -212,6 +212,7 @@ function pesquisar() {
 
   if (!ordemExiste) {
     alert("Essa ordem de equipamento não existe.");
+    document.getElementById('numeroOrdem').value = ''; // Limpa o campo de entrada
     // Restaurar todas as linhas para visível
     for (let i = 0; i < linhas.length; i++) {
       linhas[i].style.display = '';
@@ -219,8 +220,6 @@ function pesquisar() {
     return; // Não execute a pesquisa
   }
 }
-
-
 
 function limparFiltro() {
   const tabela = document.getElementById('tabelaManutencoes');
@@ -234,6 +233,8 @@ function limparFiltro() {
   document.getElementById('numeroOrdem').value = ''; // Limpa o campo de pesquisa
   limparFiltroButton.style.display = 'none'; // Oculta o botão "Limpar Filtro"
 }
+
+
 
 
     </script>
