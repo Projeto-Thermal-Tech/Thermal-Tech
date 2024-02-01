@@ -46,7 +46,7 @@ li{
 .nav-right{
  display: flex;
  justify-content: end;
- /* width: 10rem;  */
+ width: 10rem; 
  padding: 0.5em;
  color: aliceblue;
 }

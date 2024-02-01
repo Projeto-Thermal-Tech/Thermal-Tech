@@ -53,7 +53,7 @@ input{
     margin: 4px;
 }
 .info-header-order input{
-        /* width: 260px; */
+        width: 260px;
         
 }
 .info-header-order label{
@@ -133,4 +133,32 @@ textarea {
     width: 50%;
     display:inline;
     align-items: center;
+}
+/* .chamado {
+    width: 60%;
+}
+.responsabilidades {
+    width: 60%;
+}
+
+.objetivo {
+    width: 60%;
+} */
+
+main {
+    width: 99%;
+}
+
+.section_order {
+    width: 75%;
+}
+
+
+.view_ordem {
+    width: 99%; 
+
+}
+
+.Criar_view_cha {
+    width: 95%;
 }

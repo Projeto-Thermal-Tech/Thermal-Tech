@@ -1,0 +1,211 @@
+@media screen and (max-width: 1000px) {
+    h4{
+        text-align: center;
+    }
+    .dados_manut{
+        width:100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+     .header_manut{
+         flex-direction: column;
+         margin-bottom: 1rem; 
+    }
+     
+     .search_manut input, .search_manut button{
+         width: 100%;
+         margin-bottom: 1rem; 
+    }
+     .info_equip{
+         flex-direction: column;
+         margin-bottom: 1rem; 
+    }
+     .info-left, .info-rigth{
+         width: 100%;
+         margin-bottom: 1rem; 
+    }
+     .add_manut button{
+        width:100% ;
+        margin-bottom: 1rem; 
+    }
+
+     /* Estilo Popup*/
+
+     .popup {
+        width: 90%;
+        height: auto;
+        overflow: auto;
+    }
+    .popup-header, .popup-center {
+        flex-direction: column;
+    }
+    .popup-input, #tag, #tipo, #local, #LOCAL {
+        width: 100%;
+    }
+    #desc, #DESC {
+        width: 100%;
+    }
+
+    /* Popup Filtro*/
+
+    .popoufiltro {
+        width: 90%;
+        height: auto;
+    }
+    .popup-input-filtro, #Tag, #Tipo, #Modelo, #Número_Série, #Área_Climatizada, #Localidade, #Setor {
+        width: 100%;
+    }
+    /* ================================================================================================ */
+        /* ESTILO TELA MANUTENÇÃO*/
+    .dados_manut{
+        width:100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .header_manut{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .search_manut{
+        width: 100%;
+    }
+    .search_manut input, .search_manut button{
+        width: 100%;
+    }
+    .info_equip{
+        position: static;
+        transform: none;
+        width: 70%;
+        margin-top: 1rem;
+        flex-direction: column; 
+    }
+    .info-left, .info-rigth{
+        width: 100%;
+    }
+
+    .table-container {
+        height: auto;
+    }
+    th, td {
+        padding: 5px; 
+    }
+
+    /* Popou Filtro */
+    .popup {
+        width: 90%;
+        height: auto;
+    }
+    .popup-content-filter {
+        flex-direction: column;
+    }
+    .popup-header-filter, .popup-center-filter {
+        flex-direction: column;
+    }
+    .popup-input-filter #date, #setor{
+        width: 100%;
+    }
+    .popup-center-filter {
+        width: 100%;
+    }
+    /* ================================================================================================ */
+    
+    /* ESTILO DA TELA CONSULTA DE ORDEM*/
+    .dados_Ord{
+        width:100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+     .header_Ord{
+         flex-direction: column;
+         align-items: flex-start;
+    }
+     .num_Ord, .estadoOrd, .filtroOrd {
+        width: 100%;
+         text-align: left;
+    }
+     .num, #estaOrd, .situ {
+         width: 100%;
+     }
+     .add_cham button, .filtroOrd button, .num_cham button {
+         width: 100%;
+     }
+
+     .num {
+        margin-bottom: 1rem;
+        margin-right: 1rem; 
+    }
+
+    #nova_ord {
+        margin-right: 32px; 
+    }
+    .estadoOrd {
+        margin-top: 1rem; 
+    }
+    
+    /* Popou Filtro */ 
+    .popupOrdem {
+        width: 90%;
+        height: auto;
+    }
+    .popup-content-filter-Ordem {
+        flex-direction: column;
+    }
+    .popup-label-filter-Ordem {
+        font-size: 20px;
+    }
+    .popup-title-filter-Ordem {
+        font-size: 20px;
+        }
+    /* =========================================================================== */
+    /* ESTILO DA TELA DE ORDEM */
+
+    .title-page h2, .info-header-order label {
+        font-size: 16px;
+    }
+        
+    .icons img {
+        width: 38px;
+    }
+
+    #ordem, #prioridade, #title-order, #Chamado, #Status{
+        width: 100%;
+    }
+    
+    .info-header-order input {
+        width: 350px; 
+    }
+    
+    .chamado {
+        width: 95%;
+    }
+
+    .responsabilidades {
+        width: 95%;
+    }
+    
+    .objetivo {
+        width: 95%;
+    }
+
+    textarea[name="desc_manut"] {
+        width: 100%;
+      }
+    
+
+    .section_order {
+        width: 96%;
+    }
+
+    .Criar_ord_manut {
+        width: 95%; 
+    }
+
+    textarea {
+        max-width: 100%; 
+    }
+    /* =================================================================================================== */
+}
+    
+
+      
+ 
