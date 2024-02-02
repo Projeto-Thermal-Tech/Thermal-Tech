@@ -2,7 +2,10 @@
     /* TELA CADASTRO */
     .header_cad {
         flex-direction: column;
-        align-items: flex-start;
+        margin-bottom: 1rem;
+        width: 90%;  
+        margin-left: auto;
+        margin-right: auto;
     }
     .header_cad div {
         width: 100%;
@@ -21,26 +24,50 @@
     }
     
     .escolher {
-        font-size: 39px;
+        font-size: 29px;
         text-align: center;
     }
 
+    .matricula_tecnico input {
+        margin-top: 10px;
+        font-size: 20px;
+        width:100%;
+        text-align: center;
+    }
+    
     .matricula_tecnico button {
         margin-top: 10px;
         font-size: 20px;
-        width: 190px;
+        width:100%;
+        text-align: center;
+    }
+
+    .local_setor input {
+        margin-top: 10px;
+        font-size: 20px;
+        width:100%;
+        text-align: center;
     }
 
     .local_setor button {
         margin-top: 10px;
         font-size: 20px;
-        width: 190px;
+        width:100%;
+        text-align: center;
     }
 
     .tipo_equip button {
         margin-top: 10px;
         font-size: 20px;
-        width: 190px;
+        width:100%;
+        text-align: center;
+    }
+
+    .tipo_equip input {
+        margin-top: 10px;
+        font-size: 20px;
+        width:100%;
+        text-align: center;
     }
     
     /* Poppu Filtro Tela Cadastro */ 
