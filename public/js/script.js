@@ -21,7 +21,9 @@ btn_config.addEventListener("click", () => {
 function showPopup() {
   document.getElementById("popup").style.display = "block";
   document.querySelector(".overlay").style.display = "block";
+  document.body.style.overflow = 'hidden';  // Desabilita a rolagem do corpo da página
 }
+
 function showPopupEditar() {
   document.getElementById("popup-edit").style.display = "block";
   document.querySelector(".overlay-edit").style.display = "block";
@@ -45,6 +47,7 @@ function showPopupEditartipoEquip() {
 function hidePopup() {
   document.getElementById("popup").style.display = "none";
   document.querySelector(".overlay").style.display = "none";
+  document.body.style.overflow = 'auto'; 
   document.getElementById("popup-edit").style.display = "none";
   document.querySelector(".overlay-edit").style.display = "none";
 }
@@ -135,6 +138,7 @@ function imprimirOrdem(){
 function showPopupOrdem() {
   document.getElementById("popupOrdem").style.display = "block";
   document.querySelector(".overlayOrdem").style.display = "block";
+  document.body.style.overflow = 'hidden';
 }
 
 
@@ -145,5 +149,6 @@ function showPopupOrdem() {
 function hidePopupOrdem() {
   document.getElementById("popupOrdem").style.display = "none";
   document.querySelector(".overlayOrdem").style.display = "none";
+  document.body.style.overflow = 'auto'
 
 }
