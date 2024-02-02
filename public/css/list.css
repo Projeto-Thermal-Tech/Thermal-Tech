@@ -168,30 +168,6 @@ li{
     transform: scale(0.98);
     /* Adicione outros estilos aqui, se necessário */
   }
-
-li{
-    margin-left: 0.5rem;
-    list-style: none;
-    padding: 1rem;
-    font-size: 1rem;
-}
-a{
-    text-decoration: none;
-    color: white;
-    
-}
-.nav-right{
-   display: flex;
-   justify-content: end;
-   /* width: 10rem;  */
-   padding: 0.5em;
-}
-.nav-right a img {
-    width: 30px;
-    height: 30px;
-    margin-left: 0.8rem;
-    margin-right: 0.8rem;
- }
  
  .tabela-container {
     width: 500px;

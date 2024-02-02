@@ -1,0 +1,18 @@
+@media screen and (max-width: 1000px) {
+    /* Seu código CSS para telas com largura máxima de 1000px vai aqui */
+    main {
+        width: 96%;
+    }
+    .responsabilidades, .objetivo, .chamado {
+        width: 96%;
+    }
+    .view_ordem {
+        width: 96%;
+    }
+    .Criar_view_cha {
+        width: 96%;
+    }
+    .section_order {
+        width: 96%;
+    }
+}

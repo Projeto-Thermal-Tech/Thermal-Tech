@@ -5,50 +5,81 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/@media1200.css">
-    <link rel="stylesheet" href="../css/@media144*0.css">
+    <!-- <link rel="stylesheet" href="../css/style.css"> -->
+    <!-- <link rel="stylesheet" href="../css/@media1200.css">
+    <link rel="stylesheet" href="../css/@media1440.css"> -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/criar-chamado.css">
+    <link rel="stylesheet" href="../css/@mediaheader1000.css">
+    <link rel="stylesheet" href="../css/@medialistEquip.css">
     <title>Ordem</title>
 </head>
 
 <body>
     <header>
-        <div class="logo">
-
-            <h1><a href="./home.html">Thermal Tech</a></h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="http://localhost:5000/Equipamentos">Equipamentos</a></li>
-                <li><a href="http://localhost:5000/manutencao">Manutenções</a></li>
-                <li><a href="http://localhost:5000/consulta_ordem">Consultar Ordens</a></li>
-                <li><a href="http://localhost:5000/chamado">Chamados</a></li>
-                <li><a href="http://localhost:5000/cadastro">Cadastro Geral</a></li>
-                <li><a href="http://localhost:5000/relatorio">Homem Hora</a></li>
-                <li><a href="">Gráficos gerenciais</a></li>
-                <li><a href="../pages/chat.html">Chat</a></li>
-            </ul>
-        </nav>
-        <div class="nav-right">
-            <div>
+        <div class="interface">
+            <div class="logo">
+                <h1><a href="./home.html">Thermal Tech</a></h1>
+            </div>
+            <nav>
+                <nav class="menu-desktop">
+                    <ul>
+                        <li><a href="http://localhost:5000/Equipamentos">Equipamentos</a></li>
+                        <li><a href="http://localhost:5000/manutencao">Manutenções</a></li>
+                        <li><a href="http://localhost:5000/consulta_ordem">Consultar Ordens</a></li>
+                        <li><a href="http://localhost:5000/chamado">Chamados</a></li>
+                        <li><a href="http://localhost:5000/cadastro">Cadastro Geral</a></li>
+                        <li><a href="http://localhost:5000/relatorio">Homem Hora</a></li>
+                        <li><a href="">Gráficos gerenciais</a></li>
+                        <li><a href="../pages/chat.html">Chat</a></li>
+                    </ul>
+                </nav>
+            </nav>
+            <div class="nav-right">
+              <div>
                 <a href="#" class="config"><img src="../assets/icon_config.png" alt=""></a>
                 <a href="#" class="sair" onclick="logout()"><img src="../assets/icon_sair.png" alt=""></a>
-            </div>
-            <div>
+              </div>
+              <div>
                 <h4 id="userEmail"></h4>
+              </div>
             </div>
+            <div class="btn-abrir-menu" id="btn-menu">
+                <i class="bi bi-list"></i>
+            </div>
+            <div class="menu-mobile" id="menu-mobile">
+                <div class="btn-fechar hide" id="btn-fechar">
+                    <i class="bi bi-x-lg"></i>
+                </div>
+                <nav>
+                    <nav>
+                        <ul>
+                            <li><a href="http://localhost:5000/Equipamentos">Equipamentos</a></li>
+                            <li><a href="http://localhost:5000/manutencao">Manutenções</a></li>
+                            <li><a href="http://localhost:5000/consulta_ordem">Consultar Ordens</a></li>
+                            <li><a href="http://localhost:5000/chamado">Chamados</a></li>
+                            <li><a href="http://localhost:5000/cadastro">Cadastro Geral</a></li>
+                            <li><a href="http://localhost:5000/relatorio">Homem Hora</a></li>
+                            <li><a href="">Gráficos gerenciais</a></li>
+                            <li><a href="../pages/chat.html">Chat</a></li>
+                        </ul>
+                    </nav>
+                </nav>
+            </div>
+            <div class="overlay-menu"></div>
         </div>
     </header>
     <section>
         <section>
-            <main>
+            <main class="Criar_ord_manut">
                 <section>
                     <div class="title-page">
                         <h2>Criar ordem de manutenção</h2>
@@ -79,7 +110,7 @@
                 </section>
             </main>
             <section class="section_order">
-                <main style="width: 75%;">
+                <main class="view_ordem">
                     <div class="info-header-order">
                         <div class="title">
                             <h3>Responsabilidades</h3>
@@ -90,7 +121,7 @@
                         </div>
                     </div>
                 </main>
-                <main style="width: 75%;">
+                <main>
                     <div class="info-header-order">
                         <div class="title">
                             <h3>Datas</h3>
@@ -153,7 +184,7 @@
                         </div>
                     </div>
                 </main>
-                <main style="width: 75%;">
+                <main>
                     <div class="info-header-order">
                         <div class="title">
                             <h3>Confirmações</h3>
@@ -179,7 +210,7 @@
                         </div>
                     </div>
                 </main>
-                <main style="width: 75%;">
+                <main>
                     <div class="title">
                         <h3>Dados total Confirmações</h3>
                     </div>
@@ -203,7 +234,7 @@
             </main>
         </form>
         </section>
-
+        <script src="../js/menu-mobile.js"></script>
         <script>
         //     function mostrarUser() {
         //     const userEmail = localStorage.getItem("userEmail");
