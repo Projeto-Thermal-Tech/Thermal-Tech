@@ -98,9 +98,15 @@
     .table-container {
         height: auto;
     }
+
     th, td {
-        padding: 5px; 
-    }
+        padding: 5px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom:10px;
+        border: 1px solid black;
+      }
+      
 
     /* Popou Filtro */
     .popup {
@@ -135,7 +141,7 @@
     }
      .num_Ord, .estadoOrd, .filtroOrd {
         width: 100%;
-         text-align: left;
+        text-align: center;
     }
      .num, #estaOrd, .situ {
          width: 100%;
@@ -150,8 +156,11 @@
     }
 
     #nova_ord {
-        margin-right: 32px; 
-    }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    } 
     .estadoOrd {
         margin-top: 1rem; 
     }
@@ -223,5 +232,10 @@
 }
     
 
+@media screen and (max-width: 1000px) {
+    #userEmail {
+      display: none; /* Esconde o elemento em telas menores que 1000px */
+    }
+  }
       
  

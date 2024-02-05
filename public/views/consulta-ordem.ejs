@@ -86,14 +86,13 @@
 
   <section class="dados_Ord">
     <div class="header_Ord">
-
-      <div class="num_Ord">
-        <a href="http://localhost:5000/ordem"><button id="nova_ord" style="width: 200px; margin-right: 50px;">+ Nova Ordem de manutenção</button></a>
-        <label>N° Ordem:</label>
+      <div class="num_Ord" style="text-align: center;">
+        <a href="http://localhost:5000/ordem"><button id="nova_ord" style="width: 200px; margin-right: 50px; margin: 0 auto;">+ Nova Ordem de manutenção</button></a>
+        <label class="label_ordem">N° Ordem:</label>
         <input type="number" class="num" id="numeroOrdem">
         <button id="pesquisar" onclick="pesquisarOrdem()">Pesquisar</button>
         <button id="limpar-filtro" style="display: none;" onclick="limparFiltro()">Voltar</button>
-      </div>
+    </div>
 
       <div class="estadoOrd">
         <label>Status:</label>

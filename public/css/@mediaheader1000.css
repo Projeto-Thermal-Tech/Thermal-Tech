@@ -62,7 +62,7 @@
     }
     
     .interface .menu-mobile i{
-        color: rgb(0, 0, 0);
+        color: rgb(206, 106, 106);
         font-size: 25px;
     }
     
@@ -81,7 +81,7 @@
         font-size: 20px;
         font-weight: 300;
         padding: 20px 4%;
-
+        text-align: center;
     }
 
     .interface .menu-mobile nav ul li a:hover{

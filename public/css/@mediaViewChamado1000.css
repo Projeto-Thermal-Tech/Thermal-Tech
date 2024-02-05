@@ -16,3 +16,10 @@
         width: 96%;
     }
 }
+
+
+@media screen and (max-width: 1000px) {
+    #userEmail {
+      display: none; /* Esconde o elemento em telas menores que 1000px */
+    }
+  }

@@ -145,6 +145,7 @@ function showPopupOrdem() {
 function showPopupOrdem() {
   document.getElementById("popupOrdem").style.display = "block";
   document.querySelector(".overlayOrdem").style.display = "block";
+  document.body.style.overflow = 'hidden';
 }
 function hidePopupOrdem() {
   document.getElementById("popupOrdem").style.display = "none";
