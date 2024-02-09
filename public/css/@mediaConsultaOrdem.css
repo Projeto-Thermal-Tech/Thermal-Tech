@@ -1,0 +1,68 @@
+@media screen and (max-width: 1000px) {
+    /* ESTILO DA TELA CONSULTA DE ORDEM*/
+    .dados_Ord{
+        flex-direction: column;
+        margin-bottom: 1rem;
+        width: 90%;  
+        margin-left: auto;
+        margin-right: auto;
+    }
+     .header_Ord{
+         flex-direction: column;
+         align-items: flex-start;
+    }
+     .num_Ord, .estadoOrd, .filtroOrd {
+        width: 100%;
+        text-align: center;
+    }
+     .num, #estaOrd, .situ {
+         width: 100%;
+     }
+     .add_cham button, .filtroOrd button, .num_cham button {
+         width: 100%;
+     }
+
+     .num {
+        margin-bottom: 1rem;
+        margin-right: 1rem; 
+    }
+
+    #nova_ord {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    } 
+    .estadoOrd {
+        margin-top: 1rem; 
+    }
+    
+    /* Popou Filtro */ 
+    .popupOrdem {
+        width: 90%;
+        max-height: 90vh;
+        overflow: auto;
+        position: fixed; 
+    }
+    .popup-content-filter-Ordem {
+        flex-direction: column;
+    }
+    .popup-label-filter-Ordem {
+        font-size: 20px;
+    }
+    .popup-title-filter-Ordem {
+        font-size: 20px;
+        }
+
+    .table-container {
+        height: auto;
+    }
+    
+    th, td {
+        padding: 5px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom:10px;
+        border: 1px solid black;
+    }
+}

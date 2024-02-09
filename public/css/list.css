@@ -62,7 +62,12 @@ li{
     margin-right: 0.8rem;
  }
   */
+
+  body {
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+  }
  main h2{
+    color: #fff;
     font-size: 28px;
     padding: 1rem;
     text-align: center;
@@ -74,7 +79,7 @@ li{
    margin-right: 5%;
  }
  .header_manut{
-    background-color: #0080F5;
+    background: linear-gradient(90deg, rgb(34, 18, 253) 0%, rgba(23, 23, 167, 0.411)35%, rgba(0,212,255,1) 100%);
     border-radius: 10px;
     padding: 1rem;
     display: flex;
@@ -141,34 +146,33 @@ li{
   }
   
   table {
+    color: #fff;
     width: 100%;
     border-collapse: collapse;
-  }
-  
-  thead {
-    background-color: #0080F5;
-    color: rgb(255, 255, 255);
-    
-  }
-  
-  th, td {
+    background-color: #100f41;
+}
+
+thead {
+    background-color: #007BFF;
+    font-weight: bold;
+}
+
+th, td {
     text-align: center;
     padding: 10px;
     cursor: pointer;
     margin-bottom:10px;
-    border: 1px solid black; /* Adicione bordas às células */
-  }
-  
-  tr:nth-child(even) {
-    background-color: rgba(221, 219, 219, 0.793);
-  }
-  
-  tr:hover td {
-    font-weight: bold;
-    transform: scale(0.98);
-    /* Adicione outros estilos aqui, se necessário */
-  }
- 
+    border: 1px solid white; 
+}
+
+tr {
+    background: rgba(0, 123, 255, 0.5); 
+}
+
+tr:nth-child(even) {
+    background: rgba(0, 213, 255, 0.384);
+}
+
  .tabela-container {
     width: 500px;
     overflow-x: scroll;
