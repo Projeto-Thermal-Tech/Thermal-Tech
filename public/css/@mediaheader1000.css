@@ -15,6 +15,10 @@
         display: block;
     }
 
+    .interface {
+        width: 100%;
+        /* outras propriedades... */
+    }
 
     .nav-right a {
         display: none;
@@ -109,6 +113,9 @@
 
 @media screen and (min-width: 1000px) {
     .interface .btn-abrir-menu {
+        position: fixed;
+        right: 0;
+        top: 0;
         align-self: flex-end;
         display: none !important;
     }

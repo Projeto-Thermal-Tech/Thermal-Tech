@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="../css/@media767.css">
     <link rel="stylesheet" href="../css/@mediaheader1000.css">
     <link rel="stylesheet" href="../css/@mediaViewChamado1000.css">
+    <link rel="stylesheet" href="../css/@mediaheader1280.css">
     <title>Document</title>
 </head>
 
@@ -219,6 +220,16 @@
     <script src="../js/menu-mobile.js"></script>
     <script src="../js/script.js"></script>
     <script>
+
+function mostrarUser() {
+                    const userEmail = localStorage.getItem("userEmail");
+                    const EmailCriador = document.getElementById("email")
+
+                    // Insere o email no elemento HTML correspondente
+                    document.getElementById("userEmail").innerHTML = userEmail;
+                    EmailCriador.value = userEmail;
+                }
+                mostrarUser()    
         //        function atualizarDataHora() {
         //     const dataChamado = document.getElementById("dataChamado");
         //     const horaChamado = document.getElementById("horaChamado");
@@ -255,15 +266,7 @@
             document.getElementById("setor").value = setor;
             document.getElementById("descricao").value = descricao;
         });
-        //         function mostrarUser() {
-        //             const userEmail = localStorage.getItem("userEmail");
-        //             const EmailCriador = document.getElementById("email")
 
-        //             // Insere o email no elemento HTML correspondente
-        //             document.getElementById("userEmail").innerHTML = userEmail;
-        //             EmailCriador.value = userEmail;
-        //         }
-        //         mostrarUser()    
     </script>
     <link rel="stylesheet" href="../css/@media1440.css">
     <link rel="stylesheet" href="../css/@media1200.css">

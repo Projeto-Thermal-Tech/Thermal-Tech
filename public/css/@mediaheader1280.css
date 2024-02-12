@@ -1,0 +1,36 @@
+@media screen and (max-width: 1280px) {
+    h1 {
+        font-size: 20px;
+        white-space: nowrap; 
+    }
+
+    header{
+        padding: 40px 1%;
+    }
+
+    .logo{
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .interface nav.menu-desktop ul li {
+        font-size: 14px; 
+        white-space: nowrap;
+        margin-left: 1px; 
+        padding: 0 16px; 
+    }
+
+    .nav-right a img {
+        width: 1.5rem; 
+        height: 1.5rem; 
+    }
+
+    .nav-right div {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #userEmail {
+        font-size: 17px; 
+    }
+}

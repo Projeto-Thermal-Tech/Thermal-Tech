@@ -149,29 +149,34 @@ li{
     color: #fff;
     width: 100%;
     border-collapse: collapse;
-    background-color: #100f41;
-}
-
-thead {
-    background-color: #007BFF;
+    background-color: #2e2ca1a9;
+  }
+  
+  thead {
+    background-color: #217dc986;
     font-weight: bold;
-}
-
-th, td {
+    
+  }
+  th {
+    background-color: #000000b4;
+  }
+  th, td {
     text-align: center;
     padding: 10px;
     cursor: pointer;
     margin-bottom:10px;
     border: 1px solid white; 
-}
-
-tr {
-    background: rgba(0, 123, 255, 0.5); 
-}
-
-tr:nth-child(even) {
-    background: rgba(0, 213, 255, 0.384);
-}
+  }
+  
+  tr:nth-child(even) {
+    background:  rgba(144, 225, 241, 0.582);
+  }
+  
+  tr:hover td {
+    font-weight: bold;
+    transform: scale(0.98);
+  }
+  
 
  .tabela-container {
     width: 500px;
