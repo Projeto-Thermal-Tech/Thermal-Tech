@@ -1,8 +1,10 @@
 function mostrarUser() {
   const userEmail = localStorage.getItem("userEmail");
+  const EmailCriador = document.getElementById("email")
 
   // Insere o email no elemento HTML correspondente
   document.getElementById("userEmail").innerHTML = userEmail;
+  EmailCriador.value = userEmail;
 }
 mostrarUser()
 const btn_config = document.querySelector(".config");
@@ -159,3 +161,31 @@ function hidePopupOrdem() {
   document.body.style.overflow = 'auto'
 
 }
+
+
+// Funcionalidades da tela de visualizar ordem de manutenção
+
+  // Chame a função preencherNomeTec aqui com os argumentos apropriados
+ 
+
+function preencherNomeTec(listaTecs) {
+  if (!listaTecs) {
+      console.error('listaTecs está vazia');
+      return;
+  }
+  let tecnicos;
+  try {
+      tecnicos = JSON.parse(decodeURIComponent(listaTecs));
+  } catch (error) {
+      console.error('Erro ao analisar listaTecs:', error);
+      return;
+  }
+  const idTec = parseInt(document.getElementById('matricula').value);
+  const tecnico = tecnicos.find(tec => tec.matricula_tec === idTec);
+  if (tecnico) {
+      document.getElementById('nomeTec').value = tecnico.nome_tec;
+  } else {
+      document.getElementById('nomeTec').value = '';
+  }
+}
+
