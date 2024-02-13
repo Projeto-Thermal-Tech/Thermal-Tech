@@ -1,3 +1,4 @@
+
 function mostrarUser() {
   const userEmail = localStorage.getItem("userEmail");
   const EmailCriador = document.getElementById("email")
@@ -8,34 +9,9 @@ function mostrarUser() {
 }
 mostrarUser()
 
-function atualizarDataHora() {
-  const dataOrdem = document.getElementById("data_fim");
-  const horaOrdem = document.getElementById("hora_fim");
-  if (dataOrdem.value !== '' && horaOrdem.value !== '') {
-      return;
-  }
-  const agora = new Date();
-
-  // Formate a data no formato "yyyy-MM-dd" para o campo de data
-  const dia = String(agora.getDate()).padStart(2, '0');
-  const mes = String(agora.getMonth() + 1).padStart(2, '0');
-  const ano = agora.getFullYear();
-  const dataFormatada = `${ano}-${mes}-${dia}`;
-  dataOrdem.value = dataFormatada;
-
-  // Formate a hora no formato "HH:mm" para o campo de hora
-  const horaFormatada = agora.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-  horaOrdem.value = horaFormatada;
-}
-setInterval(() => {
-  atualizarDataHora();
-}, 500);
-// Chame a função uma vez para configurar os valores iniciais
-atualizarDataHora();
-
-
 const btn_config = document.querySelector(".config");
 const dados_chamado =document.querySelectorAll(".section_chamado").style.display="none"
+
 btn_config.addEventListener("click", () => {
     alert("aqui vai abrir as configurações")
 })
@@ -76,6 +52,41 @@ function hidePopup() {
 function saveEquipment() {
   var tag = document.getElementById("tag").value;
   alert("O equipamento " + tag + " foi cadastrado com sucesso!");
+  hidePopup();
+}
+function saveTecnico() {
+  var nome_tec = document.getElementById("tag").value;
+  alert("O Técnico " + nome_tec + " foi cadastrado com sucesso!");
+  hidePopup();
+}
+function saveType() {
+  var nome_Type = document.getElementById("nome_tipo").value;
+  alert("O Tipo de equipamento " + nome_Type + " foi cadastrado com sucesso!");
+  hidePopup();
+}
+function saveSetor() {
+  var nome_setor = document.getElementById("nome").value;
+  alert("O Setor " + nome_setor + " foi cadastrado com sucesso!");
+  hidePopup();
+}
+function saveEquipmentEdit(){
+  var tag = document.getElementById("tag").value;
+  alert("O equipamento " + tag + " foi atualizado com sucesso!");
+  hidePopup();
+}
+function saveTecEdit() {
+  var nome_tec = document.getElementById("nome_tec").value;
+  alert("O Tipo de equipamento " + nome_tec + " foi cadastrado com sucesso!");
+  hidePopup();
+}
+function saveSetorEdit() {
+  var nome_tec = document.getElementById("nome_setor").value;
+  alert("O Tipo de equipamento " + nome_tec + " foi cadastrado com sucesso!");
+  hidePopup();
+}
+function saveEquipEdit(){
+  var tag = document.getElementById("tipos_arcondicionado_tipar").value;
+  alert("O equipamento " + tag + " foi atualizado com sucesso!");
   hidePopup();
 }
 
@@ -206,4 +217,5 @@ window.addEventListener('load', function () {
       })
       .catch(error => console.error(error));
 });
+
 

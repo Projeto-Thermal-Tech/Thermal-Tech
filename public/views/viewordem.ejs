@@ -194,9 +194,9 @@
                                     <label for="">Tipo Manutenção</label>
                                     <select name="tipo_manut" id="">
                                         <option value=""></option>
-                                        <option value="3" <%=dadosOrdem.manut_ord==3 ? 'selected' : '' %>>Corretiva
+                                        <option value="1" <%=dadosOrdem.manut_ord==1 ? 'selected' : '' %>>Corretiva
                                         </option>
-                                        <option value="4" <%=dadosOrdem.manut_ord==4 ? 'selected' : '' %>>Preventiva
+                                        <option value="2" <%=dadosOrdem.manut_ord==2 ? 'selected' : '' %>>Preventiva
                                         </option>
                                     </select>
 
@@ -263,18 +263,21 @@
         </main>
         </form>
     </section>
-    <script src="../js/script.js"></script>
+    <script defer src="../js/script.js"></script>
+    <!-- <script src="../js/teste.js"></script> -->
     <script src="../js/menu-mobile.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
             // Chame a função preencherNomeTec aqui com os argumentos apropriados
             preencherNomeTec(decodeURIComponent('<%= encodeURIComponent(JSON.stringify(nomeTecs)) %>'));
         });
+    
     </script>
     <script src="../Login_v1/firebase-init.js"></script>
     <script src="../js/auth-guard.js"></script>
     <script src="../js/logout.js"></script>
     <script src="../js/auth-guard.js"></script>
+    <script src="../js/scriptsViewOrdem.js"></script>
     <link rel="stylesheet" href="../css/@media1440.css">
     <link rel="stylesheet" href="../css/@media1200.css">
 </body>
