@@ -7,24 +7,38 @@ function mostrarUser() {
   EmailCriador.value = userEmail;
 }
 mostrarUser()
+
+function atualizarDataHora() {
+  const dataOrdem = document.getElementById("data_fim");
+  const horaOrdem = document.getElementById("hora_fim");
+  if (dataOrdem.value !== '' && horaOrdem.value !== '') {
+      return;
+  }
+  const agora = new Date();
+
+  // Formate a data no formato "yyyy-MM-dd" para o campo de data
+  const dia = String(agora.getDate()).padStart(2, '0');
+  const mes = String(agora.getMonth() + 1).padStart(2, '0');
+  const ano = agora.getFullYear();
+  const dataFormatada = `${ano}-${mes}-${dia}`;
+  dataOrdem.value = dataFormatada;
+
+  // Formate a hora no formato "HH:mm" para o campo de hora
+  const horaFormatada = agora.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  horaOrdem.value = horaFormatada;
+}
+setInterval(() => {
+  atualizarDataHora();
+}, 500);
+// Chame a função uma vez para configurar os valores iniciais
+atualizarDataHora();
+
+
 const btn_config = document.querySelector(".config");
-// const btn_sair = document.querySelector(".sair");
-
 const dados_chamado =document.querySelectorAll(".section_chamado").style.display="none"
-
 btn_config.addEventListener("click", () => {
     alert("aqui vai abrir as configurações")
 })
-
-
-  // Recupera o email armazenado no localStorage
-
-  
-
-
-// functions
-
-
 
 function showPopup() {
   document.getElementById("popup").style.display = "block";
@@ -51,7 +65,6 @@ function showPopupEditartipoEquip() {
   document.querySelector(".overlay-Tipos").style.display = "block";
 }
 
-
 function hidePopup() {
   document.getElementById("popup").style.display = "none";
   document.querySelector(".overlay").style.display = "none";
@@ -73,6 +86,7 @@ function hideElements() {
   }
   var elements = document.querySelector('.section_order').classList.remove("display_none");
 }
+
 function showElements() {
   var elements = document.querySelectorAll('.section_chamado');
   for (var i = 0; i < elements.length; i++) {
@@ -81,7 +95,6 @@ function showElements() {
   var elements = document.querySelector('.section_order').classList.add("display_none");
   
 }
-
 
 function deletar(){
   confirm("Tem certeza que deseja excluir o chamado?")
@@ -102,6 +115,7 @@ function salvarChamado(){
   }, 2000);
   
 }
+
 function deletarChamado(){
   const inputs = document.querySelectorAll(".data-chamado")
   confirmDelete = confirm("Tem certeza que deseja excluir esse chamado?") 
@@ -142,7 +156,6 @@ function imprimirOrdem(){
   print()
 }
 
-
 function showPopupOrdem() {
   document.getElementById("popupOrdem").style.display = "block";
   document.querySelector(".overlayOrdem").style.display = "block";
@@ -155,18 +168,13 @@ function showPopupOrdem() {
   document.querySelector(".overlayOrdem").style.display = "block";
   document.body.style.overflow = 'hidden';
 }
+
 function hidePopupOrdem() {
   document.getElementById("popupOrdem").style.display = "none";
   document.querySelector(".overlayOrdem").style.display = "none";
   document.body.style.overflow = 'auto'
 
 }
-
-
-// Funcionalidades da tela de visualizar ordem de manutenção
-
-  // Chame a função preencherNomeTec aqui com os argumentos apropriados
- 
 
 function preencherNomeTec(listaTecs) {
   if (!listaTecs) {
@@ -188,4 +196,14 @@ function preencherNomeTec(listaTecs) {
       document.getElementById('nomeTec').value = '';
   }
 }
+
+window.addEventListener('load', function () {
+  fetch('/proximo-numero-ordem')
+      .then(response => response.json())
+      .then(data => {
+          // Atualize o valor do campo de entrada com o próximo número da ordem
+          document.getElementById('ordem').value = data.proximaOrdem;
+      })
+      .catch(error => console.error(error));
+});
 
