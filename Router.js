@@ -40,7 +40,6 @@ router.get("/cadastro", async function (req, res) {
             tabelaSetor = await db.query(sqlSetor);
             tabelaTec = await db.query(sqlTec);
             tabelaEquip = await db.query(sqlEquip); // Atribua o valor dentro da função
-            console.log(tabelaTec.rows)
         }
 
         await listarDados(); // Espere até que a função listarDados seja concluída
@@ -172,9 +171,8 @@ router.get("/novo-chamado", async function (req, res) {
             }
         }
         
-        console.log(email)
+        
         const nome = await buscarNomePorEmail(email);
-        console.log(email)
         res.render('novo-chamado', { 
             equipamentos: tabelaEquip.rows, 
             setores: tabelaSetor.rows, 
@@ -196,7 +194,6 @@ router.post("/view/chamado", async function (req, res) {
         
         const sqlEquip = 'SELECT * FROM lista_equipamentos WHERE tag_listequip = $1';
         const dadosEquip = await db.query(sqlEquip, [tagEquip]);
-        console.log(dadosEquip.rows[0])
         
         res.render('viewchamado', { 
             dadosChamado: dados.rows[0],dadosEquip:dadosEquip.rows
@@ -212,7 +209,6 @@ router.post("/view/ordem", async function (req, res) {
         const sql = "SELECT ordem.id_ordem, status.nome_status, ordem.numero_cha, ordem.criado_por_ord, ordem.data_ini_ord, ordem.data_fim_ord, ordem.hora_ini_ord, ordem.hora_fim_ord, ordem.prioridade_ord, ordem.manut_ord, ordem.matricula_ord, ordem.data_lanc_ord,ordem.data_ini_trab, ordem.hora_ini_trab, ordem.data_fim_trab, ordem.hora_fim_trab, ordem.texto_servico FROM ordem INNER JOIN status ON ordem.status_ord = status.id_status WHERE id_ordem = $1";
         const dados = await db.query(sql, [id_ordem]);
         const nomeTecs= await db.query(sqlTec)
-        console.log(dados.rows)
         if (dados.rows.length > 0) {
             res.render('viewordem', {
                 dadosOrdem: dados.rows[0],
@@ -242,7 +238,6 @@ router.get("/relatorio", async function (req, res) {
         const sqlTecnicos='SELECT * FROM tecnicos'
         let relatorio = await db.query(sqlHoras);
         let Tecnicos =await db.query(sqlTecnicos)
-        console.log(relatorio.rows)
         res.render('horas', { horas: relatorio.rows, Tecnicos:Tecnicos.rows });
         
     } catch (error) {

@@ -1,4 +1,4 @@
-@media(max-width:1500px){
+@media(max-width:1600px){
     .block1{
         position: relative;
       }
@@ -38,4 +38,21 @@
       .prioridade {
         width: 110px;
       }
+      .interface nav.menu-desktop ul li{
+        white-space: nowrap;
+        display: inline-block;
+        font-size: 16px;
+        padding: 2px 12px;
+    }
+    header{
+      padding: 40px 1%;
+  }
+  h1{
+    padding: 7px;
+    font-size: 24px;
+}
+h4{
+  font-size: 14px;
+  margin-top: 5px;
+}
 }
