@@ -8,7 +8,20 @@ function mostrarUser() {
 }
 mostrarUser()
 
-function atualizarDataHora() {
+document.getElementById("equipamento").addEventListener("change", function () {
+  const selectedOption = this.options[this.selectedIndex];
+  const localidade = selectedOption.getAttribute("data-localidade");
+  const setor = selectedOption.getAttribute("data-setor");
+  const descricao = selectedOption.getAttribute("data-descricao");
+
+  // Preencha os campos com os valores do equipamento selecionado
+  document.getElementById("localidade").value = localidade;
+  document.getElementById("setor").value = setor;
+  document.getElementById("descricao").value = descricao;
+});
+
+
+function atualizarDataHoraOrdem() {
   const dataOrdem = document.getElementById("data_fim");
   const horaOrdem = document.getElementById("hora_fim");
   if (dataOrdem.value !== '' && horaOrdem.value !== '') {
@@ -27,15 +40,32 @@ function atualizarDataHora() {
   const horaFormatada = agora.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
   horaOrdem.value = horaFormatada;
 }
-setInterval(() => {
-  atualizarDataHora();
-}, 500);
-// Chame a função uma vez para configurar os valores iniciais
-atualizarDataHora();
+
+function atualizarDataHoraChamado() {
+  const dataChamado = document.getElementById("dataChamado");
+  const horaChamado = document.getElementById("horaChamado");
+
+  const agora = new Date();
+
+  // Formate a data no formato "yyyy-MM-dd" para o campo de data
+  const dia = String(agora.getDate()).padStart(2, '0');
+  const mes = String(agora.getMonth() + 1).padStart(2, '0');
+  const ano = agora.getFullYear();
+  const dataFormatada = `${ano}-${mes}-${dia}`;
+  dataChamado.value = dataFormatada;
+
+  // Formate a hora no formato "HH:mm" para o campo de hora
+  const horaFormatada = agora.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  horaChamado.value = horaFormatada;
+}
+
+atualizarDataHoraChamado();
+atualizarDataHoraChamado();
 
 
 const btn_config = document.querySelector(".config");
 const dados_chamado =document.querySelectorAll(".section_chamado").style.display="none"
+
 btn_config.addEventListener("click", () => {
     alert("aqui vai abrir as configurações")
 })
@@ -206,4 +236,5 @@ window.addEventListener('load', function () {
       })
       .catch(error => console.error(error));
 });
+
 

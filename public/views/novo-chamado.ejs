@@ -44,13 +44,13 @@
                 </nav>
             </nav>
             <div class="nav-right">
-              <div>
-                <a href="#" class="config"><img src="../assets/icon_config.png" alt=""></a>
-                <a href="#" class="sair" onclick="logout()"><img src="../assets/icon_sair.png" alt=""></a>
-              </div>
-              <div>
-                <h4 id="userEmail"></h4>
-              </div>
+                <div>
+                    <a href="#" class="config"><img src="../assets/icon_config.png" alt=""></a>
+                    <a href="#" class="sair" onclick="logout()"><img src="../assets/icon_sair.png" alt=""></a>
+                </div>
+                <div>
+                    <h4 id="userEmail"></h4>
+                </div>
             </div>
             <div class="btn-abrir-menu" id="btn-menu">
                 <i class="bi bi-list"></i>
@@ -110,11 +110,6 @@
                 </div>
             </section>
         </main>
-        <!-- <div class="nav_infos">
-            <button onclick="hideElements()">Cabeçalho</button>
-            <button onclick="showElements()">Chamado</button>
-            <button onclick="showElements()">Confirmações</button>
-          </div>   -->
         <main class="chamado section_chamado">
             <section class="dados_chamado">
                 <h3>Dados</h2>
@@ -125,7 +120,7 @@
             <div class="dados">
                 <div class="info-header-order">
                     <label class="label-margin for="" >Equipamento</label>
-                    <select id="equipamento" name="tag">
+                    <select id=" equipamento" name="tag">
                         <option value=""></option> <!-- Opção em branco -->
                         <% equipamentos.forEach(function(equipamento) { %>
                             <option value="<%= equipamento.id_equip %>"
@@ -136,7 +131,6 @@
                             </option>
                             <% }); %>
                                 </select>
-
                 </div>
                 <div class="info-header-order">
                     <label class="label-margin" for="">Localidade</label>
@@ -157,8 +151,8 @@
                 </div>
                 <div class="info-header-order">
                     <label class="label-margin for="">Descrição</label>
-                    <input id="descricao" type="text" style="width: 300px;">
-                    <!-- <textarea type=" text"  style="width: 30%;"></textarea> -->
+                    <input id=" descricao" type="text" style="width: 300px;">
+                        <!-- <textarea type=" text"  style="width: 30%;"></textarea> -->
                 </div>
             </div>
         </main>
@@ -167,20 +161,17 @@
                 <h3>Responsabilidades</h3>
             </div>
             <div class="tecs info-header-order">
-
                 <label>Prioridade</label>
                 <div class="prioridade">
                     Baixa
                     <input class="data-chamado" type="radio" id="radioBaixa" name="prioridade" value="1">
-                
+
                     Média
                     <input class="data-chamado" type="radio" id="radioMedia" name="prioridade" value="2">
-                
+
                     Alta
                     <input class="data-chamado" type="radio" id="radioAlta" name="prioridade" value="3">
                 </div>
-                
-
             </div>
             <div class="user info-header-order">
                 <div>
@@ -216,43 +207,6 @@
     </section>
     <script src="../js/menu-mobile.js"></script>
     <script src="../js/script.js"></script>
-    <script>
-       function atualizarDataHora() {
-    const dataChamado = document.getElementById("dataChamado");
-    const horaChamado = document.getElementById("horaChamado");
-
-    const agora = new Date();
-
-    // Formate a data no formato "yyyy-MM-dd" para o campo de data
-    const dia = String(agora.getDate()).padStart(2, '0');
-    const mes = String(agora.getMonth() + 1).padStart(2, '0');
-    const ano = agora.getFullYear();
-    const dataFormatada = `${ano}-${mes}-${dia}`;
-    dataChamado.value = dataFormatada;
-
-    // Formate a hora no formato "HH:mm" para o campo de hora
-    const horaFormatada = agora.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-    horaChamado.value = horaFormatada;
-}
-
-// Atualize a data e a hora a cada segundo (1000 milissegundos)
-setInterval(atualizarDataHora, 1000);
-
-// Chame a função uma vez para configurar os valores iniciais
-atualizarDataHora();
-
-        document.getElementById("equipamento").addEventListener("change", function () {
-            const selectedOption = this.options[this.selectedIndex];
-            const localidade = selectedOption.getAttribute("data-localidade");
-            const setor = selectedOption.getAttribute("data-setor");
-            const descricao = selectedOption.getAttribute("data-descricao");
-
-            // Preencha os campos com os valores do equipamento selecionado
-            document.getElementById("localidade").value = localidade;
-            document.getElementById("setor").value = setor;
-            document.getElementById("descricao").value = descricao;
-        });   
-    </script>
     <link rel="stylesheet" href="../css/@media1440.css">
     <link rel="stylesheet" href="../css/@media1200.css">
 </body>
