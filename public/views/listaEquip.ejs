@@ -334,14 +334,8 @@
         
     </section>
     <script src="../js/menu-mobile.js"></script>
+    <script src="../js/script.js"></script>
     <script>
-        function mostrarUser(){
-  const userEmail = localStorage.getItem("userEmail");
-
-  // Insere o email no elemento HTML correspondente
-  document.getElementById("userEmail").innerHTML = userEmail;
-}
-mostrarUser()
 function filtrarPorTag() {
   var input, filtro, tabela, linhas, colunaTag, i, textoTag, botaoLimparFiltro;
   input = document.getElementById("tagInput");
