@@ -12,6 +12,7 @@ mostrarUser()
 const btn_config = document.querySelector(".config");
 const dados_chamado =document.querySelectorAll(".section_chamado").style.display="none"
 
+
 btn_config.addEventListener("click", () => {
     alert("aqui vai abrir as configurações")
 })
@@ -217,5 +218,6 @@ window.addEventListener('load', function () {
       })
       .catch(error => console.error(error));
 });
+
 
 
