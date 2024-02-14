@@ -1,0 +1,974 @@
+/* Código CSS do Header */
+@import url('https://fonts.googleapis.com/css2?family=B612&family=Lato&family=Montserrat:wght@100;300;400;700&family=Roboto:ital,wght@0,300;0,400;0,700;1,100&family=Varela+Round&display=swap');
+*{
+    font-family:B612;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+}
+.content{
+    display: flex;
+}
+header{
+    display: flex;
+    width: 100%;
+    height: 3.75rem;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    justify-content: space-between;
+    padding: 40px 4%;
+}
+body{
+    background-color: #a4c7d4;
+}
+input{
+    border: 0.063rem solid black;
+    color: #000;
+}
+button{
+    cursor: pointer;
+    background-color: white;
+    font-weight: bold;
+}
+#logo{
+    padding: 0.313rem 1.25rem;
+    width: 6.25rem;
+    height: 3.125rem;
+}
+h4{
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+}
+a{
+    color:white;
+    text-decoration: none;
+}
+ul{
+    display: flex;
+}
+li{
+    margin-left: 0.5rem;
+    list-style: none;
+    padding: 0.1rem; 
+    font-size: 1rem;
+}
+.nav-right{
+    display: flex;
+    justify-content: flex-end; 
+    /* width: 10rem;  */
+    padding: 0.5em;
+}
+.nav-right a img {
+    width: 1.875rem;
+    height: 1.875rem;
+    margin-left: 0.8rem;
+    margin-right: 0.8rem;
+}
+header > .interface{
+    display:  flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.interface .logo{
+    box-sizing: border-box;
+    display: flex;
+}
+
+.interface a{
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    transition: .2s;
+}
+
+.interface nav.menu-desktop a:hover{
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.interface nav ul{
+    list-style-type: none;
+}
+
+.interface nav.menu-desktop ul li{
+    display: inline-block;
+    font-size: 16px;
+    padding: 0 22px;
+}
+
+.interface .menu-mobile {
+    display: none;
+}
+/* Código CSS do Header */
+
+/* Código CSS da Página de Home */
+.icon{
+    margin-left: 10px;
+    width: 34px;
+}
+#divLogo{
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+#imgLogo{
+border-radius: 5%;
+margin-top: 10%;
+width: 30%;
+}
+/* Código CSS da Página de Home */
+
+/* Código CSS de Loading da Página de */
+.loading {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.carregando{
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    display: block;
+    border: 12px solid blue;
+    border-top:12px solid transparent ;
+    border-radius: 50%;
+    animation: loading 1s linear infinite;
+}
+@keyframes loading{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+@media screen and (max-width: 1000px) {
+    .interface .menu-mobile {
+        background-color:   rgba(9,9,121,1);
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 99999999;
+        width: 0%;
+        overflow: hidden;
+        transition: .55s;
+    }
+
+    .interface .menu-mobile {
+        display: block;
+    }
+
+    .interface {
+        width: 100%;
+        /* outras propriedades... */
+    }
+
+    .nav-right a {
+        display: none;
+    }
+
+    .interface .menu-desktop, .interface .btn-contato{
+        display:  none;
+    }
+
+    h1 {
+        font-size: 45px; 
+    }
+    
+    .interface .menu-mobile.abrir-menu {
+        display: block;
+    }
+    
+    .interface .btn-fechar {
+        z-index: 100000000;
+        display: block;
+    }
+    .interface .btn-fechar {
+        position: absolute;
+        top: 0;
+        left: 0; 
+    }
+ 
+    
+    .interface .menu-mobile.abrir-menu ~ .btn-fechar {
+        display: block;
+    }
+
+    .interface .menu-mobile.abrir-menu {
+        width: 70%;
+    }
+
+    .interface .menu-mobile.abrir-menu ~ .overlay-menu {
+        display: block;
+    }
+
+
+    .interface .btn-abrir-menu i{
+        color: rgba(0,212,255,1);
+        font-size: 40px;
+    }
+    
+    .interface .menu-mobile i{
+        color: rgb(206, 106, 106);
+        font-size: 25px;
+    }
+    
+    .interface .menu-mobile .btn-fechar {
+        padding: 20px 5%;
+    }
+
+    .interface .menu-mobile nav ul{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .interface .menu-mobile nav ul li a{
+        display: block;
+        color: #fff;
+        font-size: 20px;
+        font-weight: 300;
+        padding: 20px 4%;
+        text-align: center;
+    }
+
+    .interface .menu-mobile nav ul li a:hover{
+        background-color: rebeccapurple;
+        color: aquamarine;
+    }
+
+    .interface .overlay-menu {
+        background-color: rgba(0, 0, 0, 0.74);
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 8888;
+        display: none;
+    }
+      .nav-right {
+        display: none;
+    }
+
+    
+}
+
+
+@media screen and (min-width: 1000px) {
+    .interface .btn-abrir-menu {
+        position: fixed;
+        right: 0;
+        top: 0;
+        align-self: flex-end;
+        display: none !important;
+    }
+
+    .interface .btn-fechar {
+        display: none !important;
+    }
+  
+    
+}
+
+.MainListEquip h2{
+    color: #fff;
+    font-size: 28px;
+    padding: 1rem;
+    text-align: center;
+ }
+ .dados_manut{
+   margin-top: 1rem; 
+   width:90%;
+   margin-left: 5%;
+   margin-right: 5%;
+ }
+ .header_manut{
+    background: linear-gradient(90deg, rgb(34, 18, 253) 0%, rgba(23, 23, 167, 0.411)35%, rgba(0,212,255,1) 100%);
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+ }
+ .search_manut{
+    margin-top: 1rem;
+    align-items: center;
+    color: white;
+ }
+ .search_manut input{
+    width: 12rem;
+    height: 25px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+ }
+ .search_manut button{
+    margin-left: 5px;
+    width: 5rem;
+    height: 35px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+ }
+ .info_equip{
+    width: 40%;
+    display: flex;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 20px;
+ }
+ .info-left{
+    width: 60%;
+    
+ }
+.info-rigth{
+    width: 40%;
+    text-align: left;
+    align-items: end;
+}
+.add_manut{
+       display: flex;
+       align-items: center;
+}
+.add_manut button{
+       font-size: 18px;
+       width:20rem ;
+       padding: 10px;
+       border: none;
+       border-radius: 10px;
+}
+
+.icon{
+        margin-left: 10px;
+        width: 34px;
+}
+.table-container {
+    height: calc(30 * 1em); /* Defina a altura da tabela para 10 linhas */
+    /* overflow-y: scroll; Adicione uma barra de rolagem vertical */
+    overflow-y: auto;
+  }
+  
+  .dados_manut table {
+    color: #fff;
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #2e2ca1a9;
+  }
+  
+  .dados_manut thead {
+    background-color: #217dc986;
+    font-weight: bold;
+    
+  }
+  .dados_manut th {
+    background-color: #000000b4;
+  }
+  .dados_manut th, td {
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    margin-bottom:10px;
+    border: 1px solid white; 
+  }
+  
+  .dados_manut tr:nth-child(even) {
+    background:  rgba(144, 225, 241, 0.582);
+  }
+  
+  .dados_manut tr:hover td {
+    font-weight: bold;
+    transform: scale(0.98);
+  }
+  
+
+ .tabela-container {
+    width: 500px;
+    overflow-x: scroll;
+    float: right;
+  }
+
+  .overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    display: none;
+}
+.overlay-edit{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    display: none;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    width: 850px;
+    height: 600px;
+    background-color: white;
+    z-index: 2;
+    display: none;
+    border-radius: 10px;
+}
+.popup-edit {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    width: 850px;
+    height: 600px;
+    background-color: white;
+    z-index: 2;
+    display: none;
+    border-radius: 10px;
+}
+
+.popup-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    background-color:#0080F5;
+    border-radius: 10px;
+    height: 10%;
+    padding: 10px;
+    color: aliceblue;
+}
+
+.popup-content {
+    margin: 20px;
+    border: 1px solid black;
+    background-color: #0080F5;
+    border-radius: 10px;
+    padding: 10px;
+    color:aliceblue;
+}
+
+.popup-label {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.popup-input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+}
+.popup-input, #tag {
+    display: block;
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+}
+.popup-input, #tipo {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+}
+.popup-input, #local, #LOCAL {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+}
+
+    /* Estilo para o textarea */
+    #desc {
+        width: 100%; /* Defina a largura desejada aqui */
+        resize: none; /* Impede o redimensionamento horizontal */
+    }
+
+
+.popup-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.popup-center{
+    display: flex;
+    justify-content: space-between;
+}
+.overlay select{
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+}
+.overlay-edit select{
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+}
+.overlay textarea{
+    border-radius: 5px;
+    display: block;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+}
+.overlay-edit textarea{
+    border-radius: 5px;
+    display: block;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+}
+.popup-buttons {
+    text-align: center;
+}
+
+.popup-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.salvar{
+    background-color: green;
+}
+.cancelar{
+    background-color: red;
+}
+.popup-button:hover {
+    background-color: #000000;
+}
+
+
+.overlayfiltro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    display: none;
+}
+
+.popoufiltro {
+    position: fixed;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    width: 850px;
+    height: 860px;
+    background-color: white;
+    z-index: 2;
+    display: none;
+    border-radius: 10px;
+}
+
+.popup-titulo-filtro {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    background-color:#0080F5;
+    border-radius: 10px;
+    height: 10%;
+    padding: 10px;
+    color: aliceblue;
+}
+
+.popou-content-filtro {
+    margin: 20px;
+    border: 1px solid black;
+    background-color: #0080F5;
+    border-radius: 10px;
+    padding: 5px;
+}
+.popup-input-filtro, #Tag {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+  }
+  .popup-input-filtro, #Tipo {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+  }
+  .popup-input-filtro, #Modelo {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+  }
+  .popup-input-filtro, #Número_Série {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+  }
+ 
+  .popup-input-filtro, #Área_Climatizada {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+  }
+  .popup-input-filtro, #Localidade {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+  }
+  .popup-input-filtro, #Setor {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+  }
+  .popup-input-filtro, #Descrição {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+  }
+.popou-label-filtro {
+    width: 100%;
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.popup-input-filtro {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+  }
+.popup-buttons {
+    text-align: center;
+  }
+.popup-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.salvarfiltro {
+    background-color: green;
+}
+
+.cancelarfiltro {
+    background-color: red;
+}
+.popup-button:hover {
+    background-color: darkblue;
+  }
+  @media screen and (max-width: 1280px) {
+    h1 {
+        font-size: 20px;
+        white-space: nowrap; 
+    }
+
+    header{
+        padding: 40px 1%;
+    }
+
+    .logo{
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .interface nav.menu-desktop ul li {
+        font-size: 14px; 
+        white-space: nowrap;
+        margin-left: 1px; 
+        padding: 0 16px; 
+    }
+
+    .nav-right a img {
+        width: 1.5rem; 
+        height: 1.5rem; 
+    }
+
+    .nav-right div {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #userEmail {
+        font-size: 17px; 
+    }
+}
+@media(max-width:1600px){
+    .block1{
+        position: relative;
+      }
+    .content4-block1{
+        position: absolute;
+        left: 80%;
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .info_equip{
+      width: 45%;
+      position: absolute;
+    top: 29%;
+    left: 53%;
+      display: flex;
+      background-color: white;
+      padding: 1rem;
+      margin-left: 55px;
+      border-radius: 10px;
+      font-size: 18px;
+   }
+    .hora_chamado, .data_chamado{
+      display: flex;
+     flex-direction: row;
+     justify-content: end;
+     padding: 4px;
+    }
+    .content4-block1 label{
+        font-size:10px;
+        margin-right: 5px;
+      }
+      #hora_cham{
+        background-color: bisque;
+        width: 120px;
+      }
+      .prioridade {
+        width: 110px;
+      }
+      .interface nav.menu-desktop ul li{
+        white-space: nowrap;
+        display: inline-block;
+        font-size: 16px;
+        padding: 2px 12px;
+    }
+    header{
+      padding: 40px 1%;
+  }
+  h1{
+    padding: 7px;
+    font-size: 24px;
+}
+h4{
+  font-size: 14px;
+  margin-top: 5px;
+}
+}
+@media screen and (max-width: 1000px) {
+    h4{
+        text-align: center;
+    }
+    .dados_manut{
+        width:100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .header_manut{
+        flex-direction: column;
+        margin-bottom: 1rem;
+        width: 90%;  
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+     
+     .search_manut input, .search_manut button{
+         width: 100%;
+         margin-bottom: 1rem; 
+    }
+     .info_equip{
+         flex-direction: column;
+         margin-bottom: 1rem; 
+    }
+     .info-left, .info-rigth{
+         width: 100%;
+         margin-bottom: 1rem; 
+    }
+     .add_manut button{
+        width:100% ;
+        margin-bottom: 1rem; 
+    }
+
+     /* Estilo Popup*/
+
+     .popup {
+        width: 90%;
+        max-height: 80vh;
+        overflow: auto;
+        position: fixed; 
+    }
+    .popup-header, .popup-center {
+        flex-direction: column;
+    }
+    .popup-input, #tag, #tipo, #local, #LOCAL {
+        width: 100%;
+    }
+    #desc, #DESC {
+        width: 100%;
+    }
+
+    /* Popup Filtro*/
+
+    .popoufiltro {
+        width: 90%;
+        max-height: 90vh;
+        overflow: auto;
+        position: fixed; 
+    }
+    .popup-input-filtro, #Tag, #Tipo, #Modelo, #Número_Série, #Área_Climatizada, #Localidade, #Setor {
+        width: 100%;
+    }
+    /* ================================================================================================ */
+        /* ESTILO TELA MANUTENÇÃO*/
+
+    h4 {
+
+        font-size: 25px;
+    }
+    .dados_manut{
+        width:100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .header_manut{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .search_manut{
+        width: 100%;
+    }
+    .search_manut input, .search_manut button{
+        width: 100%;
+    }
+    .info_equip{
+        position: static;
+        transform: none;
+        width: 70%;
+        margin-top: 1rem;
+        flex-direction: column; 
+    }
+    .info-left, .info-rigth{
+        width: 100%;
+    }
+
+    .table-container {
+        height: auto;
+    }
+
+    th, td {
+        padding: 5px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom:10px;
+        border: 1px solid black;
+      }
+      
+
+    /* Popou Filtro */
+    .popup {
+        width: 90%;
+        height: auto;
+    }
+    .popup-content-filter {
+        flex-direction: column;
+    }
+    .popup-header-filter, .popup-center-filter {
+        flex-direction: column;
+    }
+    .popup-input-filter #date, #setor{
+        width: 100%;
+    }
+    .popup-center-filter {
+        width: 100%;
+    }
+    /* ================================================================================================ */
+    
+} 
+    
+
+@media screen and (max-width: 1000px) {
+    #userEmail {
+      display: none; /* Esconde o elemento em telas menores que 1000px */
+    }
+  }
+      
+ 
