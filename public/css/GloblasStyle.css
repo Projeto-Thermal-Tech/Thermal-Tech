@@ -157,15 +157,11 @@ width: 30%;
         width: 0%;
         overflow: hidden;
         transition: .55s;
-    }
-
-    .interface .menu-mobile {
         display: block;
     }
 
     .interface {
         width: 100%;
-        /* outras propriedades... */
     }
 
     .nav-right a {
@@ -478,24 +474,6 @@ width: 30%;
     border: 1px solid gray;
     margin-bottom: 20px;
 }
-.popup-input, #tag {
-    display: block;
-    width: 80%;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid gray;
-    margin-bottom: 20px;
-}
-.popup-input, #tipo {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid gray;
-    margin-bottom: 20px;
-}
 .popup-input, #local, #LOCAL {
     display: block;
     width: 100%;
@@ -579,7 +557,7 @@ width: 30%;
     background-color: #000000;
 }
 
-
+ /* Popop Filtro da tela Lista Equipamentos*/
 .overlayfiltro {
     position: fixed;
     top: 0;
@@ -624,71 +602,7 @@ width: 30%;
     border-radius: 10px;
     padding: 5px;
 }
-.popup-input-filtro, #Tag {
-    display: block;
-    width: 100%;
-    padding: 5px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid gray;
-    margin-bottom: 20px;
-  }
-  .popup-input-filtro, #Tipo {
-    display: block;
-    width: 100%;
-    padding: 5px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid gray;
-    margin-bottom: 20px;
-  }
-  .popup-input-filtro, #Modelo {
-    display: block;
-    width: 100%;
-    padding: 5px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid gray;
-    margin-bottom: 20px;
-  }
-  .popup-input-filtro, #Número_Série {
-    display: block;
-    width: 100%;
-    padding: 5px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid gray;
-    margin-bottom: 20px;
-  }
- 
-  .popup-input-filtro, #Área_Climatizada {
-    display: block;
-    width: 100%;
-    padding: 5px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid gray;
-    margin-bottom: 20px;
-  }
-  .popup-input-filtro, #Localidade {
-    display: block;
-    width: 100%;
-    padding: 5px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid gray;
-    margin-bottom: 20px;
-  }
-  .popup-input-filtro, #Setor {
-    display: block;
-    width: 100%;
-    padding: 5px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid gray;
-    margin-bottom: 20px;
-  }
-  .popup-input-filtro, #Descrição {
+.popup-input-filtro, #Tag, #Tipo, #Modelo, #Número_Série, #Área_Climatizada, #Localidade, #Setor, #Descrição {
     display: block;
     width: 100%;
     padding: 5px;
@@ -705,30 +619,6 @@ width: 30%;
     margin-bottom: 5px;
 }
 
-.popup-input-filtro {
-    display: block;
-    width: 100%;
-    padding: 5px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid gray;
-    margin-bottom: 20px;
-  }
-.popup-buttons {
-    text-align: center;
-  }
-.popup-button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 5px;
-    border: none;
-    color: white;
-    cursor: pointer;
-    margin-right: 10px;
-}
-
 .salvarfiltro {
     background-color: green;
 }
@@ -738,6 +628,7 @@ width: 30%;
 }
 .popup-button:hover {
     background-color: darkblue;
+    transition: .5s;
   }
   @media screen and (max-width: 1280px) {
     h1 {
