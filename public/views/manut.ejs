@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="../css/@media125.css">
 <link rel="stylesheet" href="../css/@mediaheader1000.css">
 <link rel="stylesheet" href="../css/@mediaheader1280.css">
+<link rel="stylesheet" href="../css/feedback.css">
     <title>Lista de Manutenções</title>
 </head>
 <body>
@@ -206,7 +207,72 @@
                 <button  class="popup-button cancelar" onclick="hidePopup()">Cancelar</button>
             </div>
         </section>
+
+        <section class="overlayFeedback">
+            <div class="popupfeedback" id="popupfeedback">
+                <div class="popup-titulo-feedback">Feedback</div>
+                <div class="popup-content-feedback">
+                    <div class="popup-header-Feedback">
+                        <div id="anonymousSection">
+                            <button class="EnviarAnonimamente" onclick="enableAnonymous()">Enviar Anonimamente</button>
+                        </div>
+                        <div id="feedbackSection">
+                            <div>
+                                <label for="" class="label-feedback" id="NomeFeedbackLabel">Nome:</label>
+                                <input type="text" class="input-feedback" id="NomeFeedback" placeholder="Nome">
+                            </div>
+                            <div>
+                                <label for="" class="label-feedback" id="emailLabelFeed">Email:</label>
+                                <input type="text" class="input-feedback" id="emailFeed" placeholder="Email">
+                            </div>
+                            <div>
+                                <label for="" class="label-feedback">Descrição do Feedback:</label> 
+                                <textarea class="DescriçãoFeedback" name="DescriçãoFeedback" id="DescriçãoFeedback" cols="82" rows="3" required maxlength="500"></textarea>
+                            </div>
+                            <div>
+                                <button class="popup-button salvarFeedback" onclick="SalvarFeedback()">Fazer Feedback</button>
+                                <button class="popup-button cancelarFeedback" onclick="EsconderpopouFeedback()">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>                
+                    </div>                
+                </div>
+            </div>
+        </section>
+        <section class="overlaySuporte">
+            <div class="popupSuporte" id="popupSuporte">
+                <div class="popup-titulo-Suporte">Suporte</div>
+                <div class="popup-content-Suporte">
+                    <div class="popup-header-Suporte">
+                        <div>
+                            <label for="" class="label-Suporte">Nome:</label>
+                            <input type="text" class="input-Suporte" id="NomeSuporte" placeholder="Nome">
+                        </div>
+                        <div>
+                            <label for="" class="label-Suporte">Email:</label>
+                            <input type="text" class="input-Suporte" id="email" placeholder="Email">
+                        </div>
+                        <div>
+                            <label for="" class="label-Suporte">Descrição do Suporte:</label> 
+                            <textarea name="DescriçãoSuporte" id="DescriçãoSuporte" cols="82" rows="3" required></textarea>
+                        </div>
+                        <div>
+                            <button class="popup-button salvarSuporte" onclick="SalvarSuporte()">Fazer Suporte</button>
+                            <button class="popup-button cancelarSuporte" onclick="EsconderpopouSuporte()">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div style="position: fixed; right: 10px; bottom: 20px;">
+            <div class="button-feedback" onmouseover="mostrarBotoes()" onmouseout="esconderBotoes()">
+                <img src="../assets/Thermal-tach-zinho-removebg-preview.png" id="feedback-button" alt="Feedback">
+                <button class="BotaoAbrirPopup" style="height: 50px;" onclick="AbrirPopupFeedback()">Fazer Feedback</button>
+                <button class="BotaoAbrirPopup" style="height: 50px;" onclick="AbrirPopupSuporte()">Suporte</button>
+            </div>
+        </div>
     </main>
+    <script src="../js/feedback.js"></script>
     <script src="../js/menu-mobile.js"></script>
     <script src="../js/script.js"></script>
     <script src="../js/ScriptsManut.js"></script>
