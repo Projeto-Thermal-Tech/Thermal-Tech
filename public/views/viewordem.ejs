@@ -11,15 +11,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/global.css">
     <!-- <link rel="stylesheet" href="../css/style.css"> -->
-    <!-- <link rel="stylesheet" href="../css/@media1200.css">
-    <link rel="stylesheet" href="../css/@media1440.css"> -->
+    <link rel="stylesheet" href="../css/@media1200.css">
+    <!-- <link rel="stylesheet" href="../css/@media1440.css"> -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/criar-chamado.css">
     <link rel="stylesheet" href="../css/@mediaheader1000.css">
-    <link rel="stylesheet" href="../css/@medialistEquip.css">
+    <link rel="stylesheet" href="../css/@mediaOrdem.css">
+    <link rel="stylesheet" href="../css/@media125.css">
+    <link rel="stylesheet" href="../css/@mediaheader1280.css">
     <title>Ordem</title>
 </head>
 
@@ -27,7 +29,7 @@
     <header>
         <div class="interface">
             <div class="logo">
-                <h1><a href="./home.html">Thermal Tech</a></h1>
+                <h1><a href="../pages/home.html">Thermal Tech</a></h1>
             </div>
             <nav>
                 <nav class="menu-desktop">
@@ -44,13 +46,13 @@
                 </nav>
             </nav>
             <div class="nav-right">
-              <div>
-                <a href="#" class="config"><img src="../assets/icon_config.png" alt=""></a>
-                <a href="#" class="sair" onclick="logout()"><img src="../assets/icon_sair.png" alt=""></a>
-              </div>
-              <div>
-                <h4 id="userEmail"></h4>
-              </div>
+                <div>
+                    <a href="#" class="config"><img src="../assets/icon_config.png" alt=""></a>
+                    <a href="#" class="sair" onclick="logout()"><img src="../assets/icon_sair.png" alt=""></a>
+                </div>
+                <div>
+                    <h4 id="userEmail"></h4>
+                </div>
             </div>
             <div class="btn-abrir-menu" id="btn-menu">
                 <i class="bi bi-list"></i>
@@ -79,45 +81,51 @@
     </header>
     <section>
         <section>
-            <main class="Criar_ord_manut">
+            <main>
                 <section>
                     <div class="title-page">
-                        <h2>Criar ordem de manutenção</h2>
+                        <h2>Vizualizar Ordem</h2>
                     </div>
                     <div class="icons">
                         <form action="/encerra/ordem" method="post">
                             <button type="submit"><img src="../assets/save.png" onclick="salvarOrdem()" alt=""></button>
-                            <button type="button"><img src="../assets/delete.png" onclick="deletarOrdem()" alt=""></button>
+                            <button type="button"><img src="../assets/delete.png" onclick="deletarOrdem()"
+                                    alt=""></button>
                             <button type="button"><img src="../assets/print.png" onclick="imprimirOrdem()"></button>
-                            <button type="button" onclick="document.getElementById('fileInput').click();" id="btn-anexo">
+                            <button type="button" onclick="document.getElementById('fileInput').click();"
+                                id="btn-anexo">
                                 <img src="../assets/anexos.png" alt="">
                             </button>
                     </div>
                     <div class="header-order">
                         <div class="info-header-order">
                             <label for="">Ordem</label>
-                            <input type="number" name="ordem" style="background-color: #8CB1DA;" value="<%= dadosOrdem.id_ordem %>" readonly>
+                            <input type="number" name="ordem" style="background-color: #8CB1DA;"
+                                value="<%= dadosOrdem.id_ordem %>" readonly>
                             <input type="text" id="title-order" value="Correção de dreno ACS-2101" readonly>
                         </div>
                         <div class="info-header-order">
                             <label for="">Status</label>
-                            <input type="text" placeholder="ABERTA" name="status" value="<%= dadosOrdem.nome_status%>" readonly>
+                            <input type="text" placeholder="ABERTA" name="status" value="<%= dadosOrdem.nome_status%>"
+                                readonly>
                             <br>
                             <label for="">Chamado</label>
-                            <input type="number" name="num_chamado" id="numeroChamado" value="<%= dadosOrdem.numero_cha %>" readonly>
+                            <input type="number" name="num_chamado" id="numeroChamado"
+                                value="<%= dadosOrdem.numero_cha %>" readonly>
                         </div>
                     </div>
                 </section>
             </main>
             <section class="section_order">
-                <main class="view_ordem">
+                <main>
                     <div class="info-header-order">
                         <div class="title">
                             <h3>Responsabilidades</h3>
                         </div>
                         <div>
                             <label for="">Criado por</label>
-                            <input class="data-chamado" type="text" id="email" name="criador" style="width: 320px;" value="<%= dadosOrdem.criado_por_ord %>" readonly>
+                            <input class="data-chamado" type="text" id="email" name="criador" style="width: 320px;"
+                                value="<%= dadosOrdem.criado_por_ord %>" readonly>
                         </div>
                     </div>
                 </main>
@@ -128,59 +136,71 @@
                         </div>
                         <div>
                             <label for="">Inicio</label>
-                            <% const formatDate = (dateString) => {
+                            <% const formatDate=(dateString)=> {
                                 let date = new Date(dateString);
                                 if (!isNaN(date.getTime()) && date.toISOString().slice(0,10) !== '1970-01-01') {
-                                    const formattedDate = date.toISOString().split('T')[0];
-                                    return formattedDate;
+                                const formattedDate = date.toISOString().split('T')[0];
+                                return formattedDate;
                                 } else {
-                                    console.error("Erro ao formatar a data.");
-                                    return '';
+                                console.error("Erro ao formatar a data.");
+                                return '';
                                 }
-                            };
-                            %>
-                            <input class="data-chamado" id="data-init-ordem" name="data_inicio" type="date" value="<%= formatDate(dadosOrdem.data_ini_ord) %>">
-                            <input type="time" id="hora-init-ordem" name="hora_inicio" value="<%= dadosOrdem.hora_ini_ord %>">
-                            <label for="">Prioridade</label>
-                            <div class="prioridade">
-                                <% if (dadosOrdem.prioridade_ord == 3) { %>
-                                    Baixa
-                                    <input class="data-chamado" type="radio" id="priBaixa" name="prioridade" value="3" checked>
-                                <% } else { %>
-                                    Baixa
-                                    <input class="data-chamado" type="radio" id="priBaixa" name="prioridade" value="3">
-                                <% } %>
-                            
-                                <% if (dadosOrdem.prioridade_ord == 2) { %>
-                                    Média
-                                    <input class="data-chamado" type="radio" id="priMedia" name="prioridade" value="2" checked>
-                                <% } else { %>
-                                    Média
-                                    <input class="data-chamado" type="radio" id="priMedia" name="prioridade" value="2">
-                                <% } %>
-                            
-                                <% if (dadosOrdem.prioridade_ord == 1) { %>
-                                    Alta
-                                    <input class="data-chamado" type="radio" id="priAlta" name="prioridade" value="1" checked>
-                                <% } else { %>
-                                    Alta
-                                    <input class="data-chamado" type="radio" id="priAlta" name="prioridade" value="1">
-                                <% } %>
-                            </div>
-                            
-                            <div>
-                                <label for="">Fim</label>
-                                <input type="date" name="data_fim"id="data_fim" value="<%= formatDate(dadosOrdem.data_fim_ord) %>">
-                                <!-- <input type="date" name="data_fim" value="<%= formatDate(dadosOrdem.data_fim_ord) %>"> -->
-                                <input type="time" name="hora_fim" id="hora_fim" name="hora_fim" value="<%= dadosOrdem.hora_fim_ord %>">
-                                <label for="">Tipo Manutenção</label>
-                                <select name="tipo_manut" id="">
-                                    <option value=""></option>
-                                    <option value="3" <%= dadosOrdem.manut_ord == 3 ? 'selected' : '' %>>Corretiva</option>
-                                    <option value="4" <%= dadosOrdem.manut_ord == 4 ? 'selected' : '' %>>Preventiva</option>
-                                </select>
-                                
-                            </div>
+                                };
+                                %>
+                                <input class="data-chamado" id="data-init-ordem" name="data_inicio" type="date"
+                                    value="<%= formatDate(dadosOrdem.data_ini_ord) %>">
+                                <input type="time" id="hora-init-ordem" name="hora_inicio"
+                                    value="<%= dadosOrdem.hora_ini_ord %>">
+                                <label for="">Prioridade</label>
+                                <div class="prioridade">
+                                    <% if (dadosOrdem.prioridade_ord==3) { %>
+                                        Baixa
+                                        <input class="data-chamado" type="radio" id="priBaixa" name="prioridade"
+                                            value="3" checked>
+                                        <% } else { %>
+                                            Baixa
+                                            <input class="data-chamado" type="radio" id="priBaixa" name="prioridade"
+                                                value="3">
+                                            <% } %>
+
+                                                <% if (dadosOrdem.prioridade_ord==2) { %>
+                                                    Média
+                                                    <input class="data-chamado" type="radio" id="priMedia"
+                                                        name="prioridade" value="2" checked>
+                                                    <% } else { %>
+                                                        Média
+                                                        <input class="data-chamado" type="radio" id="priMedia"
+                                                            name="prioridade" value="2">
+                                                        <% } %>
+
+                                                            <% if (dadosOrdem.prioridade_ord==1) { %>
+                                                                Alta
+                                                                <input class="data-chamado" type="radio" id="priAlta"
+                                                                    name="prioridade" value="1" checked>
+                                                                <% } else { %>
+                                                                    Alta
+                                                                    <input class="data-chamado" type="radio"
+                                                                        id="priAlta" name="prioridade" value="1">
+                                                                    <% } %>
+                                </div>
+
+                                <div>
+                                    <label for="">Fim</label>
+                                    <input type="date" name="data_fim" id="data_fim"
+                                        value="<%= formatDate(dadosOrdem.data_fim_ord) %>">
+                                    <!-- <input type="date" name="data_fim" value="<%= formatDate(dadosOrdem.data_fim_ord) %>"> -->
+                                    <input type="time" name="hora_fim" id="hora_fim" name="hora_fim"
+                                        value="<%= dadosOrdem.hora_fim_ord %>">
+                                    <label for="">Tipo Manutenção</label>
+                                    <select name="tipo_manut" id="">
+                                        <option value=""></option>
+                                        <option value="1" <%=dadosOrdem.manut_ord==1 ? 'selected' : '' %>>Corretiva
+                                        </option>
+                                        <option value="2" <%=dadosOrdem.manut_ord==2 ? 'selected' : '' %>>Preventiva
+                                        </option>
+                                    </select>
+
+                                </div>
                         </div>
                     </div>
                 </main>
@@ -190,23 +210,32 @@
                             <h3>Confirmações</h3>
                         </div>
                         <label for="">Técnico resp.</label>
-                        <input type="number" placeholder="" oninput="preencherNomeTec(decodeURIComponent('<%= encodeURIComponent(JSON.stringify(nomeTecs)) %>'))" id="matricula" name="matricula" style="width: 90px;" value="<%= dadosOrdem.matricula_ord %>" required>
+                        <input type="number" placeholder=""
+                            oninput="preencherNomeTec(decodeURIComponent('<%= encodeURIComponent(JSON.stringify(nomeTecs)) %>'))"
+                            id="matricula" name="matricula" style="width: 90px;" value="<%= dadosOrdem.matricula_ord %>"
+                            required>
                         <input type="text" value="" id="nomeTec">
                         <label for="">Data de lanç.</label>
-                        <input type="date" name="data_lanc_ord" required value="<%= formatDate(dadosOrdem.data_lanc_ord) %>">
+                        <input type="date" name="data_lanc_ord" required
+                            value="<%= formatDate(dadosOrdem.data_lanc_ord) %>">
                         <div>
                             <label for="">Inicio do trabalho</label>
-                            <input type="date" name="data_ini_trab"  value="<%= formatDate(dadosOrdem.data_ini_trab) %>" required> 
-                            <input type="time" step="1" name="hora_ini_trab" value="<%= dadosOrdem.hora_ini_trab %>" required>
+                            <input type="date" name="data_ini_trab" value="<%= formatDate(dadosOrdem.data_ini_trab) %>"
+                                required>
+                            <input type="time" step="1" name="hora_ini_trab" value="<%= dadosOrdem.hora_ini_trab %>"
+                                required>
                         </div>
                         <div>
                             <label for="">Fim do Trabalho</label>
-                            <input type="date" name="data_fim_trab" value="<%= formatDate(dadosOrdem.data_fim_trab) %>" required> 
-                            <input type="time" step="1" name="hora_fim_trab" value="<%= dadosOrdem.hora_fim_trab %>" required>
+                            <input type="date" name="data_fim_trab" value="<%= formatDate(dadosOrdem.data_fim_trab) %>"
+                                required>
+                            <input type="time" step="1" name="hora_fim_trab" value="<%= dadosOrdem.hora_fim_trab %>"
+                                required>
                         </div>
                         <div>
                             <label for="">Texto do serviço</label>
-                           <textarea name="texto_servico" id="" cols="60" rows="2"><%= dadosOrdem.texto_servico %></textarea>
+                            <textarea name="texto_servico" id="" cols="60"
+                                rows="2"><%= dadosOrdem.texto_servico %></textarea>
                         </div>
                     </div>
                 </main>
@@ -230,159 +259,25 @@
                     </div>
                 </main>
             </section>
-                </section>
-            </main>
-        </form>
         </section>
-        <script src="../js/menu-mobile.js"></script>
-        <script>
-        //     function mostrarUser() {
-        //     const userEmail = localStorage.getItem("userEmail");
-        //     const EmailCriador = document.getElementById("email")
-
-        //     // Insere o email no elemento HTML correspondente
-        //     document.getElementById("userEmail").innerHTML = userEmail;
-        //     EmailCriador.value = userEmail;
-        // }
-        // mostrarUser()
-
-        function atualizarDataHora() {
-  const dataOrdem = document.getElementById("data_fim");
-  const horaOrdem = document.getElementById("hora_fim");
-  if (dataOrdem.value !== '' && horaOrdem.value !== '') {
-    return;
-}
-  const agora = new Date();
-
-  // Formate a data no formato "yyyy-MM-dd" para o campo de data
-  const dia = String(agora.getDate()).padStart(2, '0');
-  const mes = String(agora.getMonth() + 1).padStart(2, '0');
-  const ano = agora.getFullYear();
-  const dataFormatada = `${ano}-${mes}-${dia}`;
-  dataOrdem.value = dataFormatada;
-
-  // Formate a hora no formato "HH:mm" para o campo de hora
-  const horaFormatada = agora.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-  horaOrdem.value = horaFormatada;
-}
-
-// Atualize a data e a hora a cada segundo (1000 milissegundos)
-setInterval(atualizarDataHora, 1000);
-
-// Chame a função uma vez para configurar os valores iniciais
-atualizarDataHora();
-
-
-window.addEventListener('load', function () {
-    fetch('/proximo-numero-ordem')
-        .then(response => response.json())
-        .then(data => {
-            // Atualize o valor do campo de entrada com o próximo número da ordem
-            document.getElementById('ordem').value = data.proximaOrdem;
-        })
-        .catch(error => console.error(error));
-});
-document.querySelector('form').addEventListener('keydown', function(event) {
-  if (event.key === 'Enter') {
-      event.preventDefault();
-      return false;
-  }
-});
-document.addEventListener('DOMContentLoaded', (event) => {
-    // Chame a função preencherNomeTec aqui com os argumentos apropriados
-    preencherNomeTec(decodeURIComponent('<%= encodeURIComponent(JSON.stringify(nomeTecs)) %>'));
-});
-function preencherNomeTec(listaTecs) {
-    if (!listaTecs) {
-        console.error('listaTecs está vazia');
-        return;
-    }
-    let tecnicos;
-    try {
-        tecnicos = JSON.parse(decodeURIComponent(listaTecs));
-    } catch (error) {
-        console.error('Erro ao analisar listaTecs:', error);
-        return;
-    }
-    const idTec = parseInt(document.getElementById('matricula').value);
-    const tecnico = tecnicos.find(tec => tec.matricula_tec === idTec);
-    if (tecnico) {
-        document.getElementById('nomeTec').value = tecnico.nome_tec;
-    } else {
-        document.getElementById('nomeTec').value = '';
-    }
-}
-
-
-
-
-
-
-
-function mostrarDadosOrdem(chamado, equipamentos) {
-    const chamadosObj = JSON.parse(chamado);
-    const equipamentosObj = JSON.parse(equipamentos);
-
-    const numeroChamado = parseInt(document.getElementById('numeroChamado').value);
-
-    const chamadoSelecionado = chamadosObj.find(chamado => chamado.id_chamado === numeroChamado);
-
-    if (chamadoSelecionado) {
-        // Função para formatar a data em um formato compatível com input date
-        function formatarDataParaInputDate(data) {
-            const dataObj = new Date(data);
-            const ano = dataObj.getFullYear();
-            const mes = (dataObj.getMonth() + 1).toString().padStart(2, '0');
-            const dia = dataObj.getDate().toString().padStart(2, '0');
-            return `${ano}-${mes}-${dia}`;
-        }
-
-        // Encontre o equipamento correspondente com base no ID
-        const idEquipamento = chamadoSelecionado.equipamento_cha;
-        const equipamentoAssociado = equipamentosObj.find(equipamento => equipamento.id_equip === idEquipamento);
-
-        if (equipamentoAssociado) {
-            const prioridade = chamadoSelecionado.prioridade_cha;
-
-    // Selecione o campo de rádio correto com base na prioridade
-    if (prioridade === 1) {
-        document.getElementById('priBaixa').checked = true;
-    } else if (prioridade === 2) {
-        document.getElementById('priMedia').checked = true;
-    } else if (prioridade === 3) {
-        document.getElementById('priAlta').checked = true;
-    }
-            // Preencha os campos do formulário com informações do chamado e equipamento
-            document.getElementById('dataCampo').value = formatarDataParaInputDate(chamadoSelecionado.data_ini_cha);
-            document.getElementById('horaCampo').value = chamadoSelecionado.hora_ini_cha;
-            document.getElementById('descChaCampo').value = chamadoSelecionado.descricao_cha;
-            document.getElementById('descricaoCampo').value = chamadoSelecionado.descri_cha;
-            document.getElementById('criadorCampo').value = chamadoSelecionado.criado_por_cha;
-            document.getElementById('emailCampo').value = chamadoSelecionado.email;
-            document.getElementById('equipamentoCampo').value = equipamentoAssociado.tag_listequip;
-            document.getElementById('setorCampo').value = equipamentoAssociado.nome_setor;
-            document.getElementById('localidadeCampo').value = equipamentoAssociado.localidade_listequip;
-            document.getElementById('descricaoEquipamentoCampo').value = equipamentoAssociado.descricao_listequip;
-        } else {
-            console.log("Equipamento não encontrado para este chamado");
-        }
-    } else {
-        console.log("Chamado não encontrado");
-    }
-}
-
-
-
-
-
-
-
-        </script>
-        <script src="../Login_v1/firebase-init.js"></script>
-        <script src="../js/auth-guard.js"></script>
-        <script src="../js/logout.js"></script>
-        <script src="../js/script.js"></script>
-        <script src="../js/auth-guard.js"></script>
-        <link rel="stylesheet" href="../css/@media1440.css">
-        <link rel="stylesheet" href="../css/@media1200.css">
-    </body>
+        </main>
+        </form>
+    </section>
+    <script defer src="../js/script.js"></script>
+    <!-- <script src="../js/teste.js"></script> -->
+    <script src="../js/menu-mobile.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Chame a função preencherNomeTec aqui com os argumentos apropriados
+            preencherNomeTec(decodeURIComponent('<%= encodeURIComponent(JSON.stringify(nomeTecs)) %>'));
+        });
+    
+    </script>
+    <script src="../Login_v1/firebase-init.js"></script>
+    <script src="../js/auth-guard.js"></script>
+    <script src="../js/logout.js"></script>
+    <script src="../js/auth-guard.js"></script>
+    <script src="../js/scriptsViewOrdem.js"></script>
+    <link rel="stylesheet" href="../css/@media1440.css">
+    <link rel="stylesheet" href="../css/@media1200.css">
+</body>

@@ -11,10 +11,11 @@
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/global.css">
     <!-- <link rel="stylesheet" href="../css/style.css"> -->
-    <!-- <link rel="stylesheet" href="./css/@media1200.css"> -->
+    <link rel="stylesheet" href="./css/@media1200.css">
     <link rel="stylesheet" href="../css/@medialistEquip.css">
     <link rel="stylesheet" href="../css/@media1440.css">
     <link rel="stylesheet" href="../css/@mediaheader1000.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <script src="https://kit.fontawesome.com/8ab443ffcb.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -22,13 +23,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Overpass:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/@media125.css">
+<link rel="stylesheet" href="../css/@mediaheader1280.css">
     <title>Lista de Equipamentos</title>
 </head>
 <body>
     <header>
         <div class="interface">
             <div class="logo">
-                <h1><a href="./home.html">Thermal Tech</a></h1>
+                <h1><a href="../pages/home.html">Thermal Tech</a></h1>
             </div>
             <nav>
                 <nav class="menu-desktop">
@@ -275,7 +278,7 @@
             </div> 
             </div>
             <div>
-                <button class="popup-button salvar"type="submit" onclick="saveEquipment()" >Salvar</button>
+                <button class="popup-button salvar"type="submit" onclick="saveEquipmentEdit()" >Salvar</button>
             </form>
                 <button class="popup-button cancelar" type="button" onclick="hidePopup()">Cancelar</button>
             </div>
@@ -331,141 +334,8 @@
         
     </section>
     <script src="../js/menu-mobile.js"></script>
-    <script>
-        function mostrarUser(){
-  const userEmail = localStorage.getItem("userEmail");
-
-  // Insere o email no elemento HTML correspondente
-  document.getElementById("userEmail").innerHTML = userEmail;
-}
-mostrarUser()
-function filtrarPorTag() {
-  var input, filtro, tabela, linhas, colunaTag, i, textoTag, botaoLimparFiltro;
-  input = document.getElementById("tagInput");
-  filtro = input.value.toUpperCase();
-  tabela = document.querySelector("table");
-  linhas = tabela.getElementsByTagName("tr");
-  botaoLimparFiltro = document.querySelector("button[onclick='limparFiltro()']");
-
-  // Verifica se o campo de entrada está vazio
-  if (filtro.trim() === "") {
-    alert("Por favor, insira uma tag antes de pesquisar.");
-    return; // Retorna sem executar a pesquisa
-  }
-
-  var tagEncontrada = false; // Variável para rastrear se a tag foi encontrada
-
-  for (i = 1; i < linhas.length; i++) {
-    colunaTag = linhas[i].getElementsByTagName("td")[0]; // Segunda coluna (índice 1) contém a TAG
-    if (colunaTag) {
-      textoTag = colunaTag.textContent || colunaTag.innerText;
-      if (textoTag.toUpperCase() === filtro) { // Modificado aqui
-        linhas[i].style.display = "";
-        tagEncontrada = true; // A tag foi encontrada
-      } else {
-        linhas[i].style.display = "none";
-      }
-    }
-  }
-
-  // Verifica se a tag não foi encontrada e exibe uma mensagem de erro
-  if (!tagEncontrada) {
-    alert("A tag de equipamento '" + filtro + "' não existe.");
-    // Limpa o campo de entrada
-    input.value = "";
-    // Mostra todos os registros novamente
-    for (i = 1; i < linhas.length; i++) {
-      linhas[i].style.display = "";
-    }
-  } else {
-    // Exibe o botão "Voltar" apenas se a tag foi encontrada
-    botaoLimparFiltro.style.display = "inline-block";
-  }
-}
-function limparFiltro() {
-  var tabela, linhas, i;
-
-  // Obtém a tabela e suas linhas
-  tabela = document.querySelector("table");
-  linhas = tabela.getElementsByTagName("tr");
-
-  // Mostra todas as linhas da tabela
-  for (i = 1; i < linhas.length; i++) {
-    linhas[i].style.display = "";
-  }
-
-  // Limpa o campo de entrada
-  document.getElementById("tagInput").value = "";
-
-  // Oculta o botão "Limpar Filtro"
-  document.querySelector("button[onclick='limparFiltro()']").style.display = "none";
-}
-function editarEquipamento(id_equip, tag, tipoNome, numeroSerie, descricao, area, localidade, setorNome, modelo) {
-    // Preencha os campos do popup com os dados do equipamento
-    document.getElementById('id_equip').value = id_equip;
-    document.getElementById('TAG').value = tag;
-    document.getElementById('N/S').value = numeroSerie;
-    document.getElementById('DESC').value = descricao;
-    document.getElementById('AREA').value = area;
-    document.getElementById('LOCAL').value = localidade;
-    document.getElementById('MODELO').value = modelo;
-
-    // Obtenha o elemento select para o tipo
-    var selectElementTipo = document.querySelector('select[name="TIPO"]');
-
-    // Obtenha todas as opções dentro do elemento select para o tipo
-    var optionsTipo = selectElementTipo.options;
-
-    // Percorra todas as opções e defina a opção selecionada com base no nome do tipo
-    for (var i = 0; i < optionsTipo.length; i++) {
-        if (optionsTipo[i].getAttribute("data-nome") === tipoNome) {
-            selectElementTipo.selectedIndex = i;
-            break;
-        }
-    }
-
-    // Obtenha o elemento select para o setor
-    var selectElementSetor = document.querySelector('select[name="SETOR"]');
-
-    // Obtenha todas as opções dentro do elemento select para o setor
-    var optionsSetor = selectElementSetor.options;
-
-    // Percorra todas as opções e defina a opção selecionada com base no nome do setor
-    for (var j = 0; j < optionsSetor.length; j++) {
-        if (optionsSetor[j].getAttribute("data-nome") === setorNome) {
-            selectElementSetor.selectedIndex = j;
-            break;
-        }
-    }
-
-    showPopupEditar();
-}
-
-
-
-
-
-
-
-function Salvarequipamento() {
-  document.getElementById("popoufiltro").style.display = "block";
-  document.querySelector(".overlayfiltro").style.display = "block";
-  document.body.style.overflow = 'hidden';
-}
-function Esconderpopou() {
-  document.getElementById("popoufiltro").style.display = "none";
-  document.querySelector(".overlayfiltro").style.display = "none";
-
-}
-
-function pedirConfirmacao() {
-        // Exibe um diálogo de confirmação e armazena o resultado em uma variável
-        var confirmacao = window.confirm("Tem certeza que deseja Excluir?");
-
-}
-
-
-    </script>
+    <script src="../js/script.js"></script>
+    <script src="../js/ScriptsListaEquip.js"></script>
      <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
      <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
      <script src="../Login_v1/firebase-init.js"></script>

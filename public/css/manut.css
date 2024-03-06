@@ -3,73 +3,7 @@
     margin: 0;
     font-family: 'B612';
 }  
-/* header{
-    display: flex;
-    width: 100%;
-    height: 60px;
-    background-color: #0080F5;
-    justify-content: space-between;
-}
 
-.logo{
-    box-sizing: border-box;
-    display: flex;
-    width: 100%;
-}
-
-button{
-    cursor: pointer;
-    background-color: white;
-    font-weight: bold;
-}
-
-h1{
-  margin-bottom: 50px;
-  font-size: 30px;
-  text-align: center;
-}
-h4{
-    margin-bottom: 20px;
-    font-size: 20px;
-}
-#filtro {
-  position: absolute;
-  right: 95px; 
-  top: 34%;
-  transform: translateY(-50%);
-}
-a{
-    color:white;
-    text-decoration: none;
-}
-ul{
-    display: flex;
-}
-li{
-    margin-left: 0.5rem;
-    list-style: none;
-    padding: 1rem;
-    font-size: 1rem;
-}
-.nav-right{
-   display: flex;
-   justify-content: end;
-   padding: 0.5em;
-   color: rgb(255, 255, 255);
-   width: 100%;
-}
-.nav-right a img {
-    width: 30px;
-    height: 30px;
-    margin-left: 0.8rem;
-    margin-right: 0.8rem;
- } */
- /* #logo{
-  margin-left: 0rem;
-  padding: 5px 20px;
-  width: 90px;
-  height: 50px;
-} */
  main h2{
     font-size: 28px;
     padding: 1rem;
@@ -83,7 +17,7 @@ li{
    margin-right: 5%;
  }
  .header_manut{
-    background-color: #0080F5;
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
     border-radius: 10px;
     padding: 1rem;
     display: flex;
@@ -168,7 +102,7 @@ li{
     padding: 10px;
     cursor: pointer;
     margin-bottom:10px;
-    border: 1px solid black; /* Adicione bordas às células */
+    border: 1px solid rgb(255, 255, 255); /* Adicione bordas às células */
   }
   
   tr:nth-child(even) {

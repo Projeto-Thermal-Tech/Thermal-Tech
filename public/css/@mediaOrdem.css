@@ -1,0 +1,179 @@
+@media screen and (max-width: 1000px) {
+ /* ESTILO DA TELA DE ORDEM */
+
+
+    main {
+        width: 95;
+    }
+
+    .section_order main {
+        width: 100%; 
+    }
+    .title-page h2, .info-header-order label {
+        font-size: 16px;
+    }
+    
+    .icons img {
+        width: 38px;
+    }
+
+    #ordem {
+        width: 50%; 
+    }
+    input[name="status"] {
+        width: 50%; 
+    }
+    
+    input[type="text"] {
+        width: 50%; 
+    }
+    
+    #numeroChamado {
+        width: 50%;
+    }
+    #title-order {
+        width: 94.3%;
+    }
+
+    #prioridade{
+        width: 100%;
+    }
+
+    /* Dados chamado*/
+    .chamado {
+        width: 95%;
+    }
+    #localidadeCampo {
+        width: 50%;
+    }
+
+    #setorCampo {
+        width: 50%;
+    }
+
+    #equipamentoCampo {
+        width: 50%;
+    }
+
+    #descricaoEquipamentoCampo {
+        width: 50%;
+    }
+    /* Fim Dados chamado*/
+
+
+    /* responsabilidades */
+    .responsabilidades {
+        width: 95%;
+    }
+    
+    .tecs {
+        margin-right: 80px;
+        display: flex;
+        flex-direction: row; 
+        justify-content: space-between; 
+    }
+    
+    .prioridade {
+        display: flex;
+        flex-direction: row; 
+        justify-content: space-between; 
+    }
+
+    #criadorCampo, #emailCampo {
+        width: 50%; 
+    }
+
+    div[style="padding-top: 5px;"] {
+        display: flex;
+        flex-direction: column; 
+    }
+    .data-chamado {
+        width: 40%; 
+    }
+    /* Fim Responsabilidades */
+
+
+    /* Objetivo */
+    .objetivo {
+       width: 95%;
+    }
+
+    #descChaCampo {
+        width: 100%; 
+    }
+    /* Fim Objetivo */
+    
+
+    /* Responsabilidades Cabeçalho */
+    .section_order {
+        width: 96%;
+    }
+
+    #email {
+        width: 100%;
+    }
+    /* Datas*/
+    .data-chamado {
+        width: 40%;
+    }
+    
+    #hora-init-ordem {
+        width: 40%; 
+    }
+    
+    select[name="prioridade"] {
+        width: 40%; 
+    }
+    
+    input[name="data_fim"] {
+        width: 40%; 
+    }
+    
+    input[name="hora_fim"] {
+        width: 40%; 
+    }
+    
+    select[name="tipo_manut"] {
+        width: 40%; 
+    }
+
+    /* Datas  Confirmações*/
+    .info-header-order-datas {
+        flex-direction: column; 
+    }
+    
+    .info-header-order-datas div {
+        display: flex;
+        flex-direction: column; 
+    }
+    
+    .info-header-order-datas input{
+        width: 40%; 
+    }
+
+    .info-header-order-datas textarea {
+        width: 100%;
+    }
+    
+    /* Novo estilo */
+    .info-header-order-datas .input-line {
+        display: flex; 
+    }
+   
+
+    .Criar_ord_manut {
+        width: 95%; 
+    }
+
+    textarea {
+       max-width: 100%; 
+    }
+
+}
+
+@media screen and (max-width: 1000px) {
+    #userEmail {
+      display: none; /* Esconde o elemento em telas menores que 1000px */
+    }
+  }
+      

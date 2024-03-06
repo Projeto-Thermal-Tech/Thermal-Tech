@@ -15,6 +15,10 @@
         display: block;
     }
 
+    .interface {
+        width: 100%;
+        /* outras propriedades... */
+    }
 
     .nav-right a {
         display: none;
@@ -62,7 +66,7 @@
     }
     
     .interface .menu-mobile i{
-        color: rgb(0, 0, 0);
+        color: rgb(206, 106, 106);
         font-size: 25px;
     }
     
@@ -81,7 +85,7 @@
         font-size: 20px;
         font-weight: 300;
         padding: 20px 4%;
-
+        text-align: center;
     }
 
     .interface .menu-mobile nav ul li a:hover{
@@ -109,6 +113,9 @@
 
 @media screen and (min-width: 1000px) {
     .interface .btn-abrir-menu {
+        position: fixed;
+        right: 0;
+        top: 0;
         align-self: flex-end;
         display: none !important;
     }

@@ -18,9 +18,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Overpass:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-<link rel="stylesheet" href="../css/@media125.css">
 <link rel="stylesheet" href="../css/@mediaheader1000.css">
-<link rel="stylesheet" href="../css/@mediaheader1280.css">
+<link rel="stylesheet" href="../css/@media125.css">
     <title>Lista de Manutenções</title>
 </head>
 <body>
@@ -89,7 +88,7 @@
                         <button id="filtro" onclick="showPopup()">Filtrar</button>
                         <button onclick="limparFiltro()" style="display: none">Voltar</button>
                 </div>
-                <!-- <div class="info_equip">
+                <div class="info_equip">
                     <div class="info-left">
                         <h5>Tag do equipamento: ACS-2101</h5>
                         <h5>Tipo do quipamento: Split</h5>
@@ -100,7 +99,7 @@
                         <h5>Àrea Climatizada: 23m2</h5>
                         <h5>Localidade: U-144</h5>
                     </div>
-                </div> -->
+                </div>
             
             </div>
         </section>
@@ -209,7 +208,65 @@
     </main>
     <script src="../js/menu-mobile.js"></script>
     <script src="../js/script.js"></script>
-    <script src="../js/ScriptsManut.js"></script>
+    <script>
+function pesquisar() {
+  const numeroOrdem = document.getElementById('numeroOrdem').value;
+
+  // Verificar se o campo de entrada está vazio
+  if (!numeroOrdem) {
+    alert("Por favor, insira um número de ordem para pesquisar.");
+    return; // Não execute a pesquisa
+  }
+
+  const tabela = document.getElementById('tabelaManutencoes');
+  const linhas = tabela.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+  const limparFiltroButton = document.querySelector('button[onclick="limparFiltro()"]');
+  
+  let ordemExiste = false;
+
+  for (let i = 0; i < linhas.length; i++) {
+    const colunaOrdem = linhas[i].getElementsByTagName('td')[0];
+    if (colunaOrdem) {
+      const textoOrdem = colunaOrdem.textContent || colunaOrdem.innerText;
+      if (textoOrdem === numeroOrdem) {
+        linhas[i].style.display = '';
+        limparFiltroButton.style.display = 'block'; // Mostrar o botão "Limpar Filtro"
+        ordemExiste = true;
+      } else {
+        linhas[i].style.display = 'none';
+      }
+    }
+  }
+
+  if (!ordemExiste) {
+    alert("Essa ordem de equipamento não existe.");
+    document.getElementById('numeroOrdem').value = ''; // Limpa o campo de entrada
+    // Restaurar todas as linhas para visível
+    for (let i = 0; i < linhas.length; i++) {
+      linhas[i].style.display = '';
+    }
+    return; // Não execute a pesquisa
+  }
+}
+
+function limparFiltro() {
+  const tabela = document.getElementById('tabelaManutencoes');
+  const linhas = tabela.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+  const limparFiltroButton = document.querySelector('button[onclick="limparFiltro()"]');
+
+  for (let i = 0; i < linhas.length; i++) {
+    linhas[i].style.display = '';
+  }
+  
+  document.getElementById('numeroOrdem').value = ''; // Limpa o campo de pesquisa
+  limparFiltroButton.style.display = 'none'; // Oculta o botão "Limpar Filtro"
+}
+
+
+
+
+    </script>
+    <!-- <script src="../Login_v1/script_login.js"></script> -->
     <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
     <script src="../Login_v1/firebase-init.js"></script>

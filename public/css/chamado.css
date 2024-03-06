@@ -124,7 +124,7 @@
     padding: 10px;
     cursor: pointer;
     margin-bottom:10px;
-    border: 1px solid black; 
+    border: 1px solid rgb(255, 255, 255); 
   }
 
   tr:nth-child(even) {

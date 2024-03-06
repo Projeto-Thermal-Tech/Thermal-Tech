@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="../css/@media767.css">
     <link rel="stylesheet" href="../css/@mediaheader1000.css">
     <link rel="stylesheet" href="../css/@mediaViewChamado1000.css">
+    <link rel="stylesheet" href="../css/@media125.css">
+    <link rel="stylesheet" href="../css/@mediaheader1280.css">
     <title>Document</title>
 </head>
 
@@ -27,7 +29,7 @@
     <header>
         <div class="interface">
             <div class="logo">
-                <h1><a href="./home.html">Thermal Tech</a></h1>
+                <h1><a href="../pages/home.html">Thermal Tech</a></h1>v
             </div>
             <nav>
                 <nav class="menu-desktop">
@@ -78,7 +80,7 @@
         </div>
     </header>
     <section>
-        <main class="Criar_view_cha">
+        <main>
             <section>
                 <div class="title-page">
                     <h2>Criar chamado de manutenção</h2>
@@ -218,53 +220,6 @@
     </section>
     <script src="../js/menu-mobile.js"></script>
     <script src="../js/script.js"></script>
-    <script>
-        //        function atualizarDataHora() {
-        //     const dataChamado = document.getElementById("dataChamado");
-        //     const horaChamado = document.getElementById("horaChamado");
-
-        //     const agora = new Date();
-
-        //     // Formate a data no formato "yyyy-MM-dd" para o campo de data
-        //     const dia = String(agora.getDate()).padStart(2, '0');
-        //     const mes = String(agora.getMonth() + 1).padStart(2, '0');
-        //     const ano = agora.getFullYear();
-        //     const dataFormatada = `${ano}-${mes}-${dia}`;
-        //     dataChamado.value = dataFormatada;
-
-        //     // Formate a hora no formato "HH:mm" para o campo de hora
-        //     const horaFormatada = agora.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-        //     horaChamado.value = horaFormatada;
-        // }
-
-        // // Atualize a data e a hora a cada segundo (1000 milissegundos)
-        // setInterval(atualizarDataHora, 1000);
-
-        // // Chame a função uma vez para configurar os valores iniciais
-        // atualizarDataHora();
-
-
-        document.getElementById("equipamento").addEventListener("change", function () {
-            const selectedOption = this.options[this.selectedIndex];
-            const localidade = selectedOption.getAttribute("data-localidade");
-            const setor = selectedOption.getAttribute("data-setor");
-            const descricao = selectedOption.getAttribute("data-descricao");
-
-            // Preencha os campos com os valores do equipamento selecionado
-            document.getElementById("localidade").value = localidade;
-            document.getElementById("setor").value = setor;
-            document.getElementById("descricao").value = descricao;
-        });
-        //         function mostrarUser() {
-        //             const userEmail = localStorage.getItem("userEmail");
-        //             const EmailCriador = document.getElementById("email")
-
-        //             // Insere o email no elemento HTML correspondente
-        //             document.getElementById("userEmail").innerHTML = userEmail;
-        //             EmailCriador.value = userEmail;
-        //         }
-        //         mostrarUser()    
-    </script>
     <link rel="stylesheet" href="../css/@media1440.css">
     <link rel="stylesheet" href="../css/@media1200.css">
 </body>

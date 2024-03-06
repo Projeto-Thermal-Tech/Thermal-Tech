@@ -98,9 +98,15 @@
     .table-container {
         height: auto;
     }
+
     th, td {
-        padding: 5px; 
-    }
+        padding: 5px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom:10px;
+        border: 1px solid black;
+      }
+      
 
     /* Popou Filtro */
     .popup {
@@ -121,107 +127,13 @@
     }
     /* ================================================================================================ */
     
-    /* ESTILO DA TELA CONSULTA DE ORDEM*/
-    .dados_Ord{
-        flex-direction: column;
-        margin-bottom: 1rem;
-        width: 90%;  
-        margin-left: auto;
-        margin-right: auto;
-    }
-     .header_Ord{
-         flex-direction: column;
-         align-items: flex-start;
-    }
-     .num_Ord, .estadoOrd, .filtroOrd {
-        width: 100%;
-         text-align: left;
-    }
-     .num, #estaOrd, .situ {
-         width: 100%;
-     }
-     .add_cham button, .filtroOrd button, .num_cham button {
-         width: 100%;
-     }
-
-     .num {
-        margin-bottom: 1rem;
-        margin-right: 1rem; 
-    }
-
-    #nova_ord {
-        margin-right: 32px; 
-    }
-    .estadoOrd {
-        margin-top: 1rem; 
-    }
-    
-    /* Popou Filtro */ 
-    .popupOrdem {
-        width: 90%;
-        max-height: 90vh;
-        overflow: auto;
-        position: fixed; 
-    }
-    .popup-content-filter-Ordem {
-        flex-direction: column;
-    }
-    .popup-label-filter-Ordem {
-        font-size: 20px;
-    }
-    .popup-title-filter-Ordem {
-        font-size: 20px;
-        }
-    /* =========================================================================== */
-    /* ESTILO DA TELA DE ORDEM */
-
-    .title-page h2, .info-header-order label {
-        font-size: 16px;
-    }
-        
-    .icons img {
-        width: 38px;
-    }
-
-    #ordem, #prioridade, #title-order, #Chamado, #Status{
-        width: 100%;
-    }
-    
-    .info-header-order input {
-        width: 350px; 
-    }
-    
-    .chamado {
-        width: 95%;
-    }
-
-    .responsabilidades {
-        width: 95%;
-    }
-    
-    .objetivo {
-        width: 95%;
-    }
-
-    textarea[name="desc_manut"] {
-        width: 100%;
-      }
+} 
     
 
-    .section_order {
-        width: 96%;
+@media screen and (max-width: 1000px) {
+    #userEmail {
+      display: none; /* Esconde o elemento em telas menores que 1000px */
     }
-
-    .Criar_ord_manut {
-        width: 95%; 
-    }
-
-    textarea {
-        max-width: 100%; 
-    }
-    /* =================================================================================================== */
-}
-    
-
+  }
       
  
