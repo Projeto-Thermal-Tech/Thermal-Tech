@@ -46,7 +46,7 @@ router.get("/cadastro", async function (req, res) {
 
         res.render('cadastro', { setores: tabelaSetor.rows, tipo: tabelaEquip.rows, tecnicos: tabelaTec.rows }); // Agora a variável tabela está acessível aqui
     } catch (error) {
-        res.status(500).send("Erro ao buscar os dados da tabela setor: " + error.message);
+        res.status(404).render('error404');
     }
 });
 router.get("/chamado", async function (req, res) {
@@ -60,7 +60,7 @@ router.get("/chamado", async function (req, res) {
 
         res.render('chamado', {chamados:chamados.rows }); // Agora a variável tabela está acessível aqui
     } catch (error) {
-        res.status(500).send("Erro ao buscar os dados: " + error.message);
+        res.status(404).render('error404');
     }
 });
 router.get("/ordem", async function (req, res) {
@@ -76,7 +76,7 @@ router.get("/ordem", async function (req, res) {
 
         res.render('ordem', {chamados:chamados.rows, equipamento:equipamento.rows }); // Agora a variável tabela está acessível aqui
     } catch (error) {
-        res.status(500).send("Erro ao buscar os dados: " + error.message);
+        res.status(404).render('error404');
     }
 });
 
@@ -85,8 +85,8 @@ router.post('/criar/ordem', function (req, res) {
     novaOrdem.insertOrdem(req.body.num_ordem,req.body.titulo_ord, req.body.status,req.body.num_chamado,req.body.criador,req.body.data_inicio, req.body.hora_inicio,req.body.prioridade, req.body.tipo_manut).then(function () {
         res.redirect('/ordem')
     }).catch(function (error) {
-        res.send("deu erro " + error)
-    })
+        res.status(404).redirect('/404');
+    });
 })
 router.get("/proximo-numero-ordem", async function (req, res) {
     try {
@@ -99,7 +99,7 @@ router.get("/proximo-numero-ordem", async function (req, res) {
         // Envie o próximo número da ordem como resposta
         res.json({ proximaOrdem: proximaOrdem });
     } catch (error) {
-        console.error(error);
+        res.status(404).render('error404');
     }
 });
 
@@ -113,7 +113,7 @@ router.get("/consulta_ordem", async function (req, res) {
     await listaOrdens();
     res.render('consulta-ordem', {ordem:ordem.rows});
 } catch (error) {
-    res.status(500).send("Erro ao buscar os dados: " + error.message);
+        res.status(404).render('error404');
     }
 });
 
@@ -134,10 +134,9 @@ router.get("/equipamentos", async function (req, res) {
 
         res.render('listaEquip', { equipamentos: tabelaEquip.rows, setores: tabelaSetor.rows, tipo: tabelaTipo.rows }); // Agora a variável tabela está acessível aqui
     } catch (error) {
-        res.status(500).send("Erro ao buscar os dados: " + error.message);
+        res.status(404).render('error404');
     }
 });
-
 router.get("/novo-chamado", async function (req, res) {
     try {
         async function listarchamados() {
@@ -167,7 +166,7 @@ router.get("/novo-chamado", async function (req, res) {
                     return null; // Retorna null se o email não for encontrado
                 }
             } catch (error) {
-                throw error;
+                res.status(404).render('error404');
             }
         }
         
@@ -182,7 +181,7 @@ router.get("/novo-chamado", async function (req, res) {
             nome: nome // Passa o nome como parâmetro
         });
     } catch (error) {
-        res.status(500).send("Erro ao buscar os dados: " + error.message);
+        res.status(404).render('error404');
     }
 });
 router.post("/view/chamado", async function (req, res) {
@@ -199,7 +198,7 @@ router.post("/view/chamado", async function (req, res) {
             dadosChamado: dados.rows[0],dadosEquip:dadosEquip.rows
         });
     } catch (error) {
-        res.status(500).send("Erro ao buscar os dados: " + error.message);
+        res.status(404).render('error404');
     }
 });
 router.post("/view/ordem", async function (req, res) {
@@ -218,7 +217,7 @@ router.post("/view/ordem", async function (req, res) {
             res.status(404).send("Ordem não encontrada");
         }
     } catch (error) {
-        res.status(500).send("Erro ao buscar os dados: " + error.message);
+        res.status(404).render('error404');
     }
 });
 router.get("/manutencao", async function (req, res) {
@@ -229,7 +228,7 @@ router.get("/manutencao", async function (req, res) {
         res.render('manut', { manutencao: manutencao.rows });
         
     } catch (error) {
-        res.status(500).send("Erro ao buscar os dados: " + error.message);
+        res.status(404).render('error404');
     }
 });
 router.get("/relatorio", async function (req, res) {
@@ -241,7 +240,7 @@ router.get("/relatorio", async function (req, res) {
         res.render('horas', { horas: relatorio.rows, Tecnicos:Tecnicos.rows });
         
     } catch (error) {
-        res.status(500).send("Erro ao buscar os dados: " + error.message);
+        res.status(404).render('error404');
     }
 });
 
@@ -269,7 +268,7 @@ router.post("/encerra/ordem", async function (req, res) {
         res.render("consulta-ordem");
     })
     .catch(function (error) {
-        res.send("deu erro " + error);
+        res.status(404).redirect('/404');
     });
 });
 
@@ -283,15 +282,15 @@ router.post('/cadastro/equipamento', function (req, res) {
     novoEquip.insertEquip(req.body.tag, req.body.tipo, req.body.modelo, req.body.ns, req.body.area, req.body.local, req.body.setor, req.body.desc).then(function () {
         res.redirect('/equipamentos')
     }).catch(function (error) {
-        res.send("deu erro " + error)
-    })
+        res.status(404).redirect('/404');
+    });
 })
 router.post('/atualizar/equipamento', function (req, res) {
     atualizarEquip.updateEquip(req.body.id_equip,req.body.TAG, req.body.TIPO, req.body.MODELO,req.body.NS,req.body.AREA, req.body.LOCAL,req.body.SETOR,req.body.DESC).then(function () {
         res.redirect('/equipamentos')
     }).catch(function (error) {
-        res.send("deu erro " + error)
-    })
+        res.status(404).redirect('/404');
+    });
 })
 
 router.post('/deletar/equipamento/:id', function (req, res) {
@@ -299,53 +298,53 @@ router.post('/deletar/equipamento/:id', function (req, res) {
     excluirEquip.deleteEquip(idEquip).then(function () {
         res.redirect('/equipamentos');
     }).catch(function (error) {
-        res.send("deu erro " + error);
+        res.status(404).redirect('/404');
     });
 });
 router.post('/atualizar/tecnicos', function (req, res) {
     atualizarTecnicos.updateTecnicos(req.body.matricula_tec, req.body.nome_tec,  req.body.email).then(function () {
         res.redirect('/cadastro')
     }).catch(function (error) {
-        res.send("deu erro " + error)
-    })
+        res.status(404).redirect('/404');
+    });
 }); 
 router.post('/deletar/Tecnico/:matricula_tec', function (req, res) {
     const matricula_tec = req.params.matricula_tec;
     excluirtec.deleteTecnico(matricula_tec).then(function() {
         res.redirect('/cadastro');
     }).catch(function (error) {
-        res.send("deu erro " + error);
+        res.status(404).redirect('/404');
     });
 })
 
 router.post('/atualizar/setor', function (req, res) {
     atualizarSetor.updateSetor(req.body.id_setor, req.body.nome_setor).then(function () {
         res.redirect('/cadastro')
-    }).catch(function(error) {
-        res.send("deu erro " + error)
-    })
+    }).catch(function (error) {
+        res.status(404).redirect('/404');
+    });
 })
 router.post('/deletar/Setor/:id', function (req, res) {
     const id_setor = req.params.id;
     excluirSetor.deleteSetor(id_setor).then(function () {
         res.redirect('/cadastro');
     }).catch(function (error) {
-        res.send("deu erro " + error);
+        res.status(404).redirect('/404');
     });
 });
 router.post('/atualizar/Tipos', function (req, res) { // Corrigido para corresponder à ação do formulário HTML
     atualizarTipo.updateTipo(req.body.id_tipar, req.body.tipos_arcondicionado_tipar).then(function () {
         res.redirect('/cadastro')
-    }).catch(function(error){
-        res.send("deu erro " + error)
-    })
+    }).catch(function (error) {
+        res.status(404).redirect('/404');
+    });
 })
 router.post('/deletar/TipoArCondicionado/:id', function (req, res) {
     const id_tipar = req.params.id;
     excluirTipoArCondicionado.deleteTipoArCondicionado(id_tipar).then(function () {
         res.redirect('/cadastro');
     }).catch(function (error) {
-        res.send("deu erro " + error);
+        res.status(404).redirect('/404');
     });
 });
 
@@ -353,16 +352,16 @@ router.post('/cadastro/setor', function (req, res) {
     novoSetor.insertSetor(req.body.nome_setor).then(function () {
         res.redirect('/cadastro')
     }).catch(function (error) {
-        res.send("deu erro " + error)
-    })
+        res.status(404).redirect('/404');
+    });
 })
 
 router.post('/cadastro/chamado', function (req, res) {
     novoChamado.insertChamado(req.body.status, req.body.tag, req.body.titleDesc, req.body.prioridade, req.body.criador,req.body.email, req.body.dataChamado, req.body.horaChamado, req.body.desc).then(function () {
         res.redirect('/novo-chamado')
     }).catch(function (error) {
-        res.send("deu erro " + error)
-    })
+        res.status(404).redirect('/404');
+    });
 })
 // router.post('/cadastro/ordem', function (req, res) {
 //     novaOrdem.insertOrdem(req.body.status,req.body.titulo_ord, req.body.criador, req.body.dataini, req.body.datafim, req.body.horaini, req.body.horafim, req.body.prioridade, req.body.matricula, req.body.tecnicos, req.body.datainitrab, req.body.horainitrab, req.body.datafimtrab, req.body.horafimtrab, req.body.textoserviço).then(function () {
@@ -375,23 +374,30 @@ router.post('/cadastro/tecnico', function (req, res) {
     novoTec.insertTecnico(req.body.mat_tec, req.body.nome_tec,  req.body.email_tec).then(function () {
         res.redirect('/cadastro')
     }).catch(function (error) {
-        res.send("deu erro " + error)
-    })
+        res.status(404).redirect('/404');
+    });
 })
 router.post('/cadastro/tipo', function (req, res) {
     novoTipo.insertTipo(req.body.nome_tipo).then(function () {
         res.redirect('/cadastro')
     }).catch(function (error) {
-        res.send("deu erro " + error)
-    })
+        res.status(404).redirect('/404');
+    });
 })
 router.post('/novoUsuario', function (req, res) {
     novoUser.insertUser(req.body.nome, req.body.email).then(function () {
         res.sendFile(path.join(__dirname, "./public/pages/manut.html"))
     }).catch(function (error) {
-        res.send("deu erro " + error)
-    })
+        res.status(404).redirect('/404');
+    });
 })
+
+app.get('/404', function(req, res) {
+    res.status(404).render('error404');
+});
+app.use(function(req, res, next){
+    res.status(404).redirect('/404');
+});
 
 router.get("/ordem", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/pages/ordem.html"))
