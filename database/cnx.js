@@ -1,12 +1,17 @@
-const pg = require("pg")
-const {Pool} = require('pg')
+// Importe o pacote dotenv no início do seu arquivo
+require('dotenv').config();
 
-const NewPool = new Pool({
-    user:"postgres",
-    host:"34.95.242.130",
-    database:"banco_tt",
-    password:"123456",
-    port:"5432"
-})
+// Use as variáveis de ambiente definidas no arquivo .env
+const dbConfig = {
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    database: 'banco_tt' // ou qualquer outro valor padrão
+};
 
-module.exports = NewPool
+// Utilize as variáveis de configuração do banco de dados conforme necessário
+const { Pool } = require('pg');
+const pool = new Pool(dbConfig);
+
+module.exports = pool;
