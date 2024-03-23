@@ -1,17 +1,8 @@
 var isAnonymous = false;
 
-function mostrarBotoes() {
-  document.getElementById("botoes").style.display = "block";
-}
-
-function esconderBotoes() {
-  document.getElementById("botoes").style.display = "none";
-}
-
 function AbrirPopupFeedback() {
   document.getElementById("popupfeedback").style.display = "block";
   document.querySelector(".overlayFeedback").style.display = "block";
-  document.body.style.overflow = 'hidden'; 
 }
 
 function SalvarFeedback() {
@@ -20,24 +11,14 @@ function SalvarFeedback() {
   document.getElementById("popupfeedback").style.display = "none";
   document.querySelector(".overlayFeedback").style.display = "none";
 }
-
-function EsconderpopouFeedback() {
-  isAnonymous = false;
-  resetForm();
-  document.getElementById("popupfeedback").style.display = "none";
-  document.querySelector(".overlayFeedback").style.display = "none";
-}
-
 function AbrirPopupSuporte() {
   document.getElementById("popupSuporte").style.display = "block";
   document.querySelector(".overlaySuporte").style.display = "block";
-  document.body.style.overflow = 'hidden'; 
 }
 
 function SalvarSuporte() {
   document.getElementById("popupSuporte").style.display = "block";
   document.querySelector(".overlaySuporte").style.display = "block";
-  document.body.style.overflow = 'hidden';
 }
 
 function EsconderpopouSuporte() {
