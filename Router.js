@@ -360,7 +360,7 @@ router.post('/cadastro/chamado', function (req, res) {
     novoChamado.insertChamado(req.body.status, req.body.tag, req.body.titleDesc, req.body.prioridade, req.body.criador,req.body.email, req.body.dataChamado, req.body.horaChamado, req.body.desc).then(function () {
         res.redirect('/novo-chamado')
     }).catch(function (error) {
-        res.status(404).redirect('/404');
+        res.send(error)
     });
 })
 // router.post('/cadastro/ordem', function (req, res) {

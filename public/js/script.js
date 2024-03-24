@@ -118,6 +118,7 @@ function imprimir(){
 }
 
 function salvarChamado(){
+  localStorage.setItem('Chamado', 'true');
   const inputs = document.querySelectorAll(".data-chamado")
   alert("Chamado criado com sucesso!")
   setTimeout(() => {
@@ -218,6 +219,7 @@ window.addEventListener('load', function () {
       })
       .catch(error => console.error(error));
 });
+
 
 
 

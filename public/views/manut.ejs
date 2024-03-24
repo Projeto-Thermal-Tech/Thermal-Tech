@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/> -->
     <link rel="stylesheet" href="../css/manut.css">
     <link rel="stylesheet" href="../css/global.css">
@@ -272,6 +272,22 @@
             </div>
         </div>
     </main>
+    <script>
+        // Monitorar notificações recebidas
+// Monitorar mudanças em localStorage
+$(window).on('storage', function(e) {
+    console.log("Evento de armazenamento detectado.");
+    if (e.originalEvent.key === 'Chamado') {
+        console.log("Chamado detectado no armazenamento.");
+        // Disparar evento de notificação
+        $.notify('Um novo chamado foi criado.', 'success' )
+        // Limpar o sinal de novo chamado
+        localStorage.removeItem('Chamado');
+        console.log("Chamado removido do armazenamento.");
+    }
+});
+    </script>
+    <script src="../js/notify.min.js"></script>
     <script src="../js/feedback.js"></script>
     <script src="../js/menu-mobile.js"></script>
     <script src="../js/script.js"></script>
