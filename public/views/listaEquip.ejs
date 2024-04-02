@@ -50,7 +50,7 @@
             </nav>
             <div class="nav-right">
               <div>
-                <a href="#" class="config" onclick="toggleDashboard()"><img src="../assets/icon_config.png" alt=""></a>
+                <a href="#" class="config" onclick="AbrirDashboard()"><img src="../assets/icon_config.png" alt=""></a>
               </div>
             </div>
             <div class="btn-abrir-menu" id="btn-menu">
@@ -390,43 +390,55 @@
     <section class="overlay-dashboard" id="dashboard">
         <div class="dashboard">
             <span class="close-icon" onclick="closeDashboard()">X</span>
-            <div class="image-dash">
-                <img class="user-image" src="../assets/img.jpeg" alt="image-dash">
-                <div class="user-info">
-                    <span class="user-name">nome</span>
-                    <h4 id="userEmail" class="user-email"></h4>
-                </div>
-            </div>   
+            <form>
+                <div class="image-dash">
+                    <label for="arquivo">
+                        <img id="icone" src="../assets/icons8-usuário-50.png" alt="Ícone de pessoa" style="cursor: pointer;">
+                    </label>
+                    <input type="file" id="arquivo" name="arquivo" accept="image/*" onchange="previewImage(event)" style="display: none;">
+                    <img class="user-image" id="preview" src="" alt="Pré-visualização da imagem" style="display: none;">
+                    <div class="user-info">
+                        <h4 id="userName" class="user-name"></h4>
+                        <h4 id="userEmail" class="user-email"></h4>
+                    </div>
+                </div>  
+            </form>
             <hr>
             <div class="content-dashboard">
                 <div class="links-dash">
-                    <a href="#" class="PerfilDoUsuário:"><img class="img-links" src="../assets/icons8-usuário-16.png" alt=""></a>
-                    <span class="user-name">Perfil Do Usuário</span>
+                    <a href="#">
+                        <img class="img-links" src="../assets/icons8-usuário-16.png" alt="">
+                        <span class="user-name">Perfil Do Usuário</span>
+                    </a>
                 </div>
-                <hr>
                 <div class="links-dash">
-                    <img class="img-links" src="../assets/icons8-comentar-debate-50.png" alt="Ícone">
-                    <span class="user-nameBotaoAbrirPopup" onclick="AbrirPopupFeedback()">Feedback</span>
+                    <a href="#" onclick="AbrirPopupFeedback()">
+                        <img class="img-links" src="../assets/icons8-comentar-debate-50.png" alt="Ícone">
+                        <span class="user-nameBotaoAbrirPopup">Feedback</span>
+                    </a>
                 </div>
-                
-                <hr>
                 <div class="links-dash">
-                    <img class="img-links" src="../assets/icons8-suporte-online-skin-type-1-100.png" alt="Ícone">
-                    <span class="user-nameBotaoAbrirPopup" onclick="AbrirPopupSuporte()">Suporte</span>
+                    <a href="#" onclick="AbrirPopupSuporte()">
+                        <img class="img-links" src="../assets/icons8-suporte-online-skin-type-1-100.png" alt="Ícone">
+                        <span class="user-nameBotaoAbrirPopup">Suporte</span>
+                    </a>
                 </div>
-                <hr>
                 <div class="links-dash">
-                    <a href="#" class="Notificações"><img class="img-links" src="../assets/icons8-alarmes-50.png" alt=""></a>
-                    <span class="user-name">Notificações</span>
+                    <a href="#" class="NotificaçõesLink">
+                        <img class="img-links" src="../assets/icons8-alarmes-50.png" alt="">
+                        <span class="user-name">Notificações</span>
+                    </a>
                 </div>
                 <div class="links-dash logout">
-                    <a href="#" class="sair" onclick="logout()"><img class="img-links" src="../assets/icon_sair.png" alt=""></a>
-                    <span class="user-name">logout</span>
-                </div>                
-                <hr>
+                    <a href="#" class="sair" onclick="logout()">
+                        <img class="img-links" src="../assets/icon_sair.png" alt="">
+                        <span class="user-name">logout</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
+    <script src="../js/dashboard.js"></script>
     <script src="../js/dashboard.js"></script>
     <script src="../js/feedback.js"></script>
     <script src="../js/menu-mobile.js"></script>

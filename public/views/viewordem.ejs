@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="../css/@media125.css">
     <link rel="stylesheet" href="../css/@mediaheader1280.css">
     <link rel="stylesheet" href="../css/feedback.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
     <title>Ordem</title>
 </head>
 
@@ -47,13 +48,9 @@
                 </nav>
             </nav>
             <div class="nav-right">
-                <div>
-                    <a href="#" class="config"><img src="../assets/icon_config.png" alt=""></a>
-                    <a href="#" class="sair" onclick="logout()"><img src="../assets/icon_sair.png" alt=""></a>
-                </div>
-                <div>
-                    <h4 id="userEmail"></h4>
-                </div>
+              <div>
+                <a href="#" class="config" onclick="AbrirDashboard()"><img src="../assets/icon_config.png" alt=""></a>
+              </div>
             </div>
             <div class="btn-abrir-menu" id="btn-menu">
                 <i class="bi bi-list"></i>
@@ -288,7 +285,8 @@
                         </div>
                         <div>
                             <button class="popup-button salvarFeedback" onclick="SalvarFeedback()">Fazer Feedback</button>
-                            <button class="popup-button cancelarFeedback" onclick="EsconderpopouFeedback()">Cancelar</button>
+                            <button class="popup-button cancelarFeedback" onclick="SalvarFeedback()">Cancelar</button>
+
                         </div>
                     </div>
                 </div>                
@@ -321,13 +319,57 @@
             </div>
         </div>
     </section>
-    <div style="position: fixed; right: 10px; bottom: 20px;">
-        <div class="button-feedback" onmouseover="mostrarBotoes()" onmouseout="esconderBotoes()">
-            <img src="../assets/Thermal-tach-zinho-removebg-preview.png" id="feedback-button" alt="Feedback">
-            <button class="BotaoAbrirPopup" style="height: 50px;" onclick="AbrirPopupFeedback()">Fazer Feedback</button>
-            <button class="BotaoAbrirPopup" style="height: 50px;" onclick="AbrirPopupSuporte()">Suporte</button>
+    <section class="overlay-dashboard" id="dashboard">
+        <div class="dashboard">
+            <span class="close-icon" onclick="closeDashboard()">X</span>
+            <form>
+                <div class="image-dash">
+                    <label for="arquivo">
+                        <img id="icone" src="../assets/icons8-usuário-50.png" alt="Ícone de pessoa" style="cursor: pointer;">
+                    </label>
+                    <input type="file" id="arquivo" name="arquivo" accept="image/*" onchange="previewImage(event)" style="display: none;">
+                    <img class="user-image" id="preview" src="" alt="Pré-visualização da imagem" style="display: none;">
+                    <div class="user-info">
+                        <h4 id="userName" class="user-name"></h4>
+                        <h4 id="userEmail" class="user-email"></h4>
+                    </div>
+                </div>  
+            </form>
+            <hr>
+            <div class="content-dashboard">
+                <div class="links-dash">
+                    <a href="#">
+                        <img class="img-links" src="../assets/icons8-usuário-16.png" alt="">
+                        <span class="user-name">Perfil Do Usuário</span>
+                    </a>
+                </div>
+                <div class="links-dash">
+                    <a href="#" onclick="AbrirPopupFeedback()">
+                        <img class="img-links" src="../assets/icons8-comentar-debate-50.png" alt="Ícone">
+                        <span class="user-nameBotaoAbrirPopup">Feedback</span>
+                    </a>
+                </div>
+                <div class="links-dash">
+                    <a href="#" onclick="AbrirPopupSuporte()">
+                        <img class="img-links" src="../assets/icons8-suporte-online-skin-type-1-100.png" alt="Ícone">
+                        <span class="user-nameBotaoAbrirPopup">Suporte</span>
+                    </a>
+                </div>
+                <div class="links-dash">
+                    <a href="#" class="NotificaçõesLink">
+                        <img class="img-links" src="../assets/icons8-alarmes-50.png" alt="">
+                        <span class="user-name">Notificações</span>
+                    </a>
+                </div>
+                <div class="links-dash logout">
+                    <a href="#" class="sair" onclick="logout()">
+                        <img class="img-links" src="../assets/icon_sair.png" alt="">
+                        <span class="user-name">logout</span>
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
     <script defer src="../js/script.js"></script>
     <!-- <script src="../js/teste.js"></script> -->
     <script src="../js/menu-mobile.js"></script>
@@ -338,6 +380,7 @@
         });
     
     </script>
+    <script src="../js/dashboard.js"></script>
     <script src="../js/feedback.js"></script>
     <script src="../Login_v1/firebase-init.js"></script>
     <script src="../js/auth-guard.js"></script>
