@@ -1,16 +1,17 @@
 // Importe o pacote dotenv no início do seu arquivo
 require('dotenv').config();
-
+const express = require("express")
+const eventManager = require('./eventManager');
 // Use as variáveis de ambiente definidas no arquivo .env
 const dbConfig = {
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
+    user: 'postgres',
+    password: '123456',
+    host: '34.151.204.122',
+    port: '5432',
     database: 'banco_tt' // ou qualquer outro valor padrão
 };
 
-const { text } = require('express');
+
 // Utilize as variáveis de configuração do banco de dados conforme necessário
 const { Pool, Client } = require('pg');
 const pool = new Pool(dbConfig);
@@ -21,12 +22,17 @@ pool.connect((err, pool, done) => {
   } else {
       console.log("Database connected");
       pool.on('notification', (msg) => {
-          console.log(msg.payload);
-      });
-      const query = pool.query("LISTEN insert_notification");
+        console.log(msg.payload);
+        eventManager.emit('newNotification', msg.payload); // Disparar o evento quando uma nova notificação é recebida
+    });    
+      const query = pool.query("LISTEN update_notification");
   }
 });
 
 
-module.exports = pool;
+module.exports = pool
+
+
+  
+
 

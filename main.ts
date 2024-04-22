@@ -4,6 +4,7 @@ const express=  require("express")
 const server = express()
 const router = require('./Router')
 
+
 server.use(express.json())
 server.use(express.urlencoded({extended:true}))
 server.set('views', path.join(__dirname, './public/views'));

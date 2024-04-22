@@ -1,5 +1,6 @@
 const express = require("express")
 const router = express.Router()
+const eventManager = require('./database/eventManager');
 const path = require("path")
 const app = express();
 const novoEquip = require('./database/db');
@@ -391,6 +392,23 @@ router.post('/novoUsuario', function (req, res) {
         res.status(404).redirect('/404');
     });
 })
+const dbConfig = {
+    user: 'postgres',
+    password: '123456',
+    host: '34.151.204.122',
+    port: '5432',
+    database: 'banco_tt' // ou qualquer outro valor padrão
+};
+let notification = null;
+
+// Ouvir o evento 'newNotification' e atualizar a variável 'notification'
+eventManager.on('newNotification', (msg) => {
+  notification = msg;
+});
+
+router.get("/teste", async function (req, res) {
+  res.send(notification); // Enviar a última notificação recebida quando a rota '/teste' é acessada
+});
 
 app.get('/404', function(req, res) {
     res.status(404).render('error404');

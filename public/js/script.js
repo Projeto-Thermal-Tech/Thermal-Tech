@@ -8,6 +8,19 @@ function mostrarUser() {
   EmailCriador.value = userEmail;
 }
 mostrarUser()
+let lastNotification = null;
+
+async function fetchNotification() {
+    const response = await fetch('http://localhost:5000/teste');
+    const data = await response.text();
+
+    if (data && data !== lastNotification) {
+        alert(data);
+        lastNotification = data;
+    }
+}
+
+setInterval(fetchNotification, 5000);
 
 const btn_config = document.querySelector(".config");
 const dados_chamado =document.querySelectorAll(".section_chamado").style.display="none"
