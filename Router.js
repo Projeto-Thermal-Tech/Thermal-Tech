@@ -408,6 +408,7 @@ eventManager.on('newNotification', (msg) => {
 
 router.get("/teste", async function (req, res) {
   res.send(notification); // Enviar a última notificação recebida quando a rota '/teste' é acessada
+  notification = null;  
 });
 
 app.get('/404', function(req, res) {
