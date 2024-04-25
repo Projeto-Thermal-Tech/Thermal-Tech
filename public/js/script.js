@@ -1,12 +1,12 @@
-
 function mostrarUser() {
   const userEmail = localStorage.getItem("userEmail");
-  const EmailCriador = document.getElementById("email")
-
-  // Insere o email no elemento HTML correspondente
+  const fullName = localStorage.getItem("fullName"); 
+  
   document.getElementById("userEmail").innerHTML = userEmail;
-  EmailCriador.value = userEmail;
+  document.getElementById("userEmailInput").value = userEmail;
+  document.getElementById("fullName").value = fullName; 
 }
+
 mostrarUser()
 
 const btn_config = document.querySelector(".config");

@@ -119,3 +119,123 @@ hr {
     bottom: 20px; 
     width: calc(90% - 20px); 
 }
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(25, 14, 75, 0.596); 
+    overflow: auto;
+    padding-top: 100px;
+}
+
+.user-content {
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.user-close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    float: right;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.user-close:hover {
+  color: #444;
+}
+.user-close:hover, .user-close:focus {
+    color: #000;
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-size: 16px;
+    color: #333;
+}
+
+.input-field {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: border 0.3s ease;
+    font-size: 16px;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: #1d46ff;
+    box-shadow: 0 0 55px rgba(248, 248, 248, 0.829);
+  }
+
+  .input-fieldData {
+    width: 30%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: border 0.3s ease;
+    font-size: 16px;
+}
+
+.input-fieldData:focus {
+    outline: none;
+    border-color: #1d46ff;
+    box-shadow: 0 0 55px rgba(248, 248, 248, 0.829);
+  }
+
+  .input-submit {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+    width: 30%;
+    background-color: #b5cbd8;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.input-submit:hover {
+    background-color: gray;
+}
+
+.title-user {
+    color: #FFF;
+    font-size: 34px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+.labelUser, .labelUserData {
+    color: #FFF;
+    font-size: 20px;
+  }
