@@ -8,6 +8,20 @@ function mostrarUser() {
   EmailCriador.value = userEmail;
 }
 mostrarUser()
+let lastNotification = null;
+
+async function fetchNotification() {
+    const response = await fetch('http://localhost:5000/teste');
+    const data = await response.json();
+
+    if (data && data !== lastNotification) {
+      const message = "Novo chamado criado: " + data.id_chamado;
+         $.notify(message, "success");
+        lastNotification = data;
+    }
+}
+
+setInterval(fetchNotification, 5000);
 
 const btn_config = document.querySelector(".config");
 const dados_chamado =document.querySelectorAll(".section_chamado").style.display="none"
@@ -118,6 +132,7 @@ function imprimir(){
 }
 
 function salvarChamado(){
+  localStorage.setItem('Chamado', 'true');
   const inputs = document.querySelectorAll(".data-chamado")
   alert("Chamado criado com sucesso!")
   setTimeout(() => {
@@ -218,6 +233,7 @@ window.addEventListener('load', function () {
       })
       .catch(error => console.error(error));
 });
+
 
 
 
