@@ -204,60 +204,61 @@
             </div>
         </section>
 
-        <section class="overlayFeedback">
-            <div class="popupfeedback" id="popupfeedback">
-                <div class="popup-titulo-feedback">Feedback</div>
-                <div class="popup-content-feedback">
-                    <div class="popup-header-Feedback">
+        <section class="user-profile">
+            <div id="feedbackModal" class="feedback">
+                <div class="feedback-content">
+                    <span class="feedback-close" onclick="resetForm()">&times;</span>
+                    <h2 class="title-feedback">Feedback</h2>
+                    <hr class="feedbackLine">
+                    <form id="feedbackForm" class="feedback-form">
                         <div id="anonymousSection">
-                            <button class="EnviarAnonimamente" onclick="enableAnonymous()">Enviar Anonimamente</button>
+                            <button class="EnviarAnonimamente" id="EnviarAnonimamenteButton" onclick="enableAnonymous()">Enviar Anonimamente</button>
                         </div>
-                        <div id="feedbackSection">
-                            <div>
-                                <label for="" class="label-feedback" id="NomeFeedbackLabel">Nome:</label>
-                                <input type="text" class="input-feedback" id="NomeFeedback" placeholder="Nome">
-                            </div>
-                            <div>
-                                <label for="" class="label-feedback" id="emailLabelFeed">Email:</label>
-                                <input type="text" class="input-feedback" id="emailFeed" placeholder="Email">
-                            </div>
-                            <div>
-                                <label for="" class="label-feedback">Descrição do Feedback:</label> 
-                                <textarea class="DescriçãoFeedback" name="DescriçãoFeedback" id="DescriçãoFeedback" cols="82" rows="3" required maxlength="500"></textarea>
-                            </div>
-                            <div>
-                                <button class="popup-button salvarFeedback" onclick="SalvarFeedback()">Fazer Feedback</button>
-                                <button class="popup-button cancelarFeedback" onclick="SalvarFeedback()">Cancelar</button>
-    
-                            </div>
+                        <div class="form-group-feedback" id="nomeField">
+                            <label class="labelFeedback" for="userName" id="NomeFeedbackLabel">Nome:</label>
+                                <input type="text" id="NomeFeedback" class="input-field-feedback " aria-describedby="userNameHelp">
                         </div>
-                    </div>                
-                    </div>                
+                        <div class="form-group-feedback" id="emailField">
+                            <label class="labelFeedback" for="userEmailInput">Email:</label>
+                            <input type="email" id="userEmailInput" class="input-field-feedback" aria-describedby="userEmailHelp">
+                        </div>              
+                        <div class="form-group-feedback">
+                            <label class="labelFeedback" for="DescriçãoFeedback">Descrição do Feedback:</label>
+                            <input type="text" id="DescriçãoFeedback" class="input-field-feedback" aria-describedby="DescriçãoFeedback">
+                        </div>
+                        <hr>
+                        <div class="form-group-feedback">
+                            <input type="submit" value="Salvar" class="input-submit-feedback">
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>
-        <section class="overlaySuporte">
-            <div class="popupSuporte" id="popupSuporte">
-                <div class="popup-titulo-Suporte">Suporte</div>
-                <div class="popup-content-Suporte">
-                    <div class="popup-header-Suporte">
-                        <div>
-                            <label for="" class="label-Suporte">Nome:</label>
-                            <input type="text" class="input-Suporte" id="NomeSuporte" placeholder="Nome">
+        
+        <section class="user-profile">
+            <div id="suporteModal" class="suporte">
+                <div class="suporte-content">
+                    <span class="suporte-close">&times;</span>
+                    <h2 class="title-suporte">Suporte</h2>
+                    <hr class="suporteLine">
+                    <form id="suporteForm" class="suporte-form">
+                        <div class="form-group-suporte" id="nomeField">
+                            <label class="labelSuporte" for="userName">Nome:</label>
+                            <input type="text" id="nome" class="input-field-suporte" aria-describedby="userName">
                         </div>
-                        <div>
-                            <label for="" class="label-Suporte">Email:</label>
-                            <input type="text" class="input-Suporte" id="email" placeholder="Email">
+                        <div class="form-group-suporte" id="emailField">
+                            <label class="labelSuporte" for="userEmailInput">Email:</label>
+                            <input type="email" id="userEmailSuporte" class="input-field-suporte" aria-describedby="userEmail">
+                        </div>              
+                        <div class="form-group-suporte">
+                            <label class="labelSuporte" for="DescriçãoSuporte">Descrição do Suporte:</label>
+                            <input type="text" id="DescriçãoSuporte" class="input-field-suporte" aria-describedby="DescriçãoSuporte">
                         </div>
-                        <div>
-                            <label for="" class="label-Suporte">Descrição do Suporte:</label> 
-                            <textarea name="DescriçãoSuporte" id="DescriçãoSuporte" cols="82" rows="3" required></textarea>
+                        <hr>
+                        <div class="form-group-suporte">
+                            <input type="submit" value="Salvar" class="input-submit-feedback">
                         </div>
-                        <div>
-                            <button class="popup-button salvarSuporte" onclick="SalvarSuporte()">Fazer Suporte</button>
-                            <button class="popup-button cancelarSuporte" onclick="EsconderpopouSuporte()">Cancelar</button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </section>
@@ -280,19 +281,19 @@
                 <hr>
                 <div class="content-dashboard">
                     <div class="links-dash">
-                        <a href="#">
+                        <a href="#" onclick="AbiriPopupPerfilUsuario()">
                             <img class="img-links" src="../assets/icons8-usuário-16.png" alt="">
                             <span class="user-name">Perfil Do Usuário</span>
                         </a>
                     </div>
                     <div class="links-dash">
-                        <a href="#" onclick="AbrirPopupFeedback()">
+                        <a href="#" class="linksdashfeedback" onclick="AbrirPopupFeedback()">
                             <img class="img-links" src="../assets/icons8-comentar-debate-50.png" alt="Ícone">
                             <span class="user-nameBotaoAbrirPopup">Feedback</span>
                         </a>
                     </div>
                     <div class="links-dash">
-                        <a href="#" onclick="AbrirPopupSuporte()">
+                        <a href="#"  class="linksdashsuporte" onclick="AbrirPopupSuporte()">
                             <img class="img-links" src="../assets/icons8-suporte-online-skin-type-1-100.png" alt="Ícone">
                             <span class="user-nameBotaoAbrirPopup">Suporte</span>
                         </a>
@@ -312,6 +313,41 @@
                 </div>
             </div>
         </section>
+        <section class="user-profile">
+            <div id="userModal" class="modal">
+              <div class="user-content">
+                <span class="user-close">&times;</span>
+                <h2 class="title-user">Perfil do Usuário</h2>
+                <hr class="profileLine">
+                <form id="profileForm" class="profile-form">
+                  <div class="form-group">
+                    <label class="labelUser" for="userName">Nome:</label>
+                    <input type="text" id="nome" class="input-field" aria-describedby="userNameHelp">
+                  </div>
+                  <div class="form-group">
+                    <label class="labelUser" for="userEmailInput">Email:</label>
+                    <input type="email" id="userEmailInput" class="input-field" aria-describedby="userEmailHelp">
+                  </div>              
+                  <div class="form-group">
+                    <label class="labelUser" for="userPhone">Telefone:</label>
+                    <input type="text" id="userPhone" class="input-field" aria-describedby="userPhoneHelp">
+                  </div>
+                  <div class="form-group">
+                    <label class="labelUser" for="CPF">CPF:</label>
+                    <input type="number" id="CPF" class="input-field" aria-describedby="CPF">
+                  </div>
+                  <div class="form-group">
+                    <label class="labelUserData" for="dataNascimento">Data de Nascimento:</label>
+                    <input type="date" id="dataNascimento" class="input-fieldData" aria-describedby="dataNascimento" maxlength="14">
+                  </div> 
+                  <hr>
+                  <div class="form-group">
+                    <input type="submit" value="Salvar" class="input-submit">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </section>
     </main>
     <script src="../js/dashboard.js"></script>
     <script src="../js/feedback.js"></script>

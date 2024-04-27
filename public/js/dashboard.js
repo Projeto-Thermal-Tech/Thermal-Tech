@@ -26,27 +26,23 @@ function previewImage(event) {
     reader.readAsDataURL(event.target.files[0]);
   }
 
-document.addEventListener("DOMContentLoaded", function() {
-    const modal = document.getElementById("userModal");
-    const openModalLink = document.querySelector(".links-dash a"); 
-    const closeModalButton = modal.querySelector(".user-close"); 
-  
-    if (modal && openModalLink && closeModalButton) {
-      openModalLink.onclick = function() {
-        modal.style.display = "block";
-      };
-  
-      closeModalButton.onclick = function() {
-        modal.style.display = "none";
-      };
-  
-      window.onclick = function(event) {
-        if (event.target === modal) {
-          modal.style.display = "none";
-        }
-      };
-    }
-  });  
+function AbiriPopupPerfilUsuario() {
+  document.getElementById('userModal').style.display = 'block';
+}
+
+function FecharPopupPerfilUsuario() {
+  document.getElementById('userModal').style.display = 'none';
+}
+
+document.getElementsByClassName('user-close')[0].onclick = function() {
+  FecharPopupPerfilUsuario();
+}
+
+window.onclick = function(event) {
+  if (event.target == document.getElementById('userModal')) {
+    FecharPopupPerfilUsuario();
+  }
+}
 
 document.getElementById('userPhone').addEventListener('input', function (e) {
     const target = e.target, position = target.selectionEnd, length = target.value.length;

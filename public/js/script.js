@@ -4,6 +4,7 @@ function mostrarUser() {
   
   document.getElementById("userEmail").innerHTML = userEmail;
   document.getElementById("userEmailInput").value = userEmail;
+  document.getElementById("userEmailSuporte").value = userEmail;
   document.getElementById("fullName").value = fullName; 
 }
 

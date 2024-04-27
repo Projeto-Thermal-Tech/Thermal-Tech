@@ -1,191 +1,248 @@
-
-/* Popou Feedback */
-.overlayFeedback {
+.feedback {
+    display: none;
     position: fixed;
-    top: 0;
+    z-index: 1000;
     left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-    display: none;
+    background-color: rgba(25, 14, 75, 0.596); 
+    overflow: auto;
+    padding-top: 100px;
 }
-.popupfeedback {
-    position: fixed;
-    top: 48%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 10px;
-    width: 850px;
-    height: 550px;
-    background-color: white;
-    z-index: 2;
-    display: none;
+
+.feedback-content {
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
     border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    animation: fadeIn 0.5s ease;
 }
-.popup-titulo-feedback {
-    font-size: 24px;
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.feedback-close {
+    color: #aaa;
+    font-size: 28px;
     font-weight: bold;
+    float: right;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.feedback-close:hover {
+  color: #444;
+}
+
+.feedback-close:hover, .feedback-close:focus {
+    color: #000;
+}
+
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group-feedback {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-size: 16px;
+    color: #333;
+}
+
+.input-field-feedback {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: border 0.3s ease;
+    font-size: 16px;
+}
+
+.input-field-feedback:focus {
+    outline: none;
+    border-color: #1d46ff;
+    box-shadow: 0 0 55px rgba(248, 248, 248, 0.829);
+}
+
+.input-field-feedbackData {
+    width: 30%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: border 0.3s ease;
+    font-size: 16px;
+}
+
+.input-field-feedback:focus {
+    outline: none;
+    border-color: #1d46ff;
+    box-shadow: 0 0 55px rgba(248, 248, 248, 0.829);
+  }
+
+.input-submit-feedback {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+    width: 30%;
+    background-color: #107e78;;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.input-submit-feedback:hover {
+    background-color: #224e4c;
+}
+
+.title-feedback {
+    color: #FFF;
+    font-size: 34px;
     margin-bottom: 20px;
     text-align: center;
-    background-color:#0080F5;
-    border-radius: 10px;
-    height: 10%;
-    padding: 10px;
-    color: aliceblue;
 }
-.popup-content-feedback {
-    margin: 20px;
-    border: 1px solid black;
-    background-color: #0080F5;
-    border-radius: 10px;
-    padding: 10px;
-    color:aliceblue;
+  
+.labelFeedback{
+    color: #FFF;
+    font-size: 20px;
 }
 
-.label-feedback {
-    display: block;
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.input-feedback{
-    display: block;
-    width: 100%;
-    padding: 5px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid gray;
-    margin-bottom: 20px;
-}
-.salvarFeedback {
-    background-color: green;
-    font-size: 18px;
-    width:10rem ;
-    padding: 10px;
+hr {
     border: none;
-    border-radius: 10px;
+    border-top: 2px solid #ccc; 
+    margin: 20px 0; 
 }
 
-.cancelarFeedback {
-    background-color: red;
-    font-size: 18px;
-    width:10rem ;
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-}
-
-.EnviarFeedback {
-    background-color: green;
-}
-.DescriçãoFeedback {
-    width: 100%;
-}
-
-
-/* Popo Suporte*/
-.overlaySuporte {
+/* Suporte*/
+.suporte {
+    display: none;
     position: fixed;
-    top: 0;
+    z-index: 1000;
     left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-    display: none;
+    background-color: rgba(25, 14, 75, 0.596); 
+    overflow: auto;
+    padding-top: 100px;
 }
-.popupSuporte {
-    position: fixed;
-    top: 48%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 10px;
-    width: 850px;
-    height: 450px;
-    background-color: white;
-    z-index: 2;
-    display: none;
+
+.suporte-content {
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
     border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    animation: fadeIn 0.5s ease;
 }
-.popup-titulo-Suporte {
-    font-size: 24px;
+
+.suporte-close {
+    color: #aaa;
+    font-size: 28px;
     font-weight: bold;
+    float: right;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.suporte-close:hover {
+  color: #444;
+}
+
+.suporte-close:hover, .suporte-close:focus {
+    color: #000;
+}
+
+.title-suporte {
+    color: #FFF;
+    font-size: 34px;
     margin-bottom: 20px;
     text-align: center;
-    background-color:#0080F5;
-    border-radius: 10px;
-    height: 10%;
-    padding: 10px;
-    color: aliceblue;
-}
-.popup-content-Suporte {
-    margin: 20px;
-    border: 1px solid black;
-    background-color: #0080F5;
-    border-radius: 10px;
-    padding: 10px;
-    color:aliceblue;
 }
 
-.label-Suporte {
-    display: block;
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 5px;
+.suporte-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.input-Suporte{
-    display: block;
-    width: 100%;
-    padding: 5px;
-    font-size: 16px;
+.form-group-suporte {
+    display: flex;
+    flex-direction: column;
+}
+
+.labelSuporte{
+    color: #FFF;
+    font-size: 20px;
+}
+
+.input-field-suporte {
+    padding: 10px;
     border-radius: 5px;
-    border: 1px solid gray;
-    margin-bottom: 20px;
-}
-.salvarSuporte {
-    background-color: green;
-    font-size: 18px;
-    width:10rem ;
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
+    border: 1px solid #ccc;
+    transition: border 0.3s ease;
+    font-size: 16px;
 }
 
-.cancelarSuporte {
-    background-color: red;
-    font-size: 18px;
-    width:10rem ;
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
+.input-field-suporte:focus {
+    outline: none;
+    border-color: #1d46ff;
+    box-shadow: 0 0 55px rgba(248, 248, 248, 0.829);
 }
 
-.EnviarFeedback {
-    background-color: green;
+.input-field-suporte:focus {
+    outline: none;
+    border-color: #1d46ff;
+    box-shadow: 0 0 55px rgba(248, 248, 248, 0.829);
+  }
+
+  .input-submit-suporte {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+    width: 30%;
+    background-color: #107e78;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
-.textarea-largura-customizada {
-    width: 300px;
+
+.input-submit-suporte:hover {
+    background-color: #224e4c;
 }
 
 .EnviarAnonimamente {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 18px;
-    font-weight: bold;
+    display: block;
+    text-align: center;
+    width: 30%;
+    background-color: #107e78;
+    color: white;
+    padding: 10px;
     border-radius: 5px;
     border: none;
-    color: rgb(0, 0, 0);
     cursor: pointer;
-    margin-right: 10px;
+    transition: background-color 0.3s ease;
 }
 
-.BotaoAbrirPopup {
-    background: none; 
-    border: none; 
-    color: #000; 
-    text-decoration: underline; 
-    cursor: pointer; 
+.EnviarAnonimamente:hover {
+    background-color: #224e4c;
 }

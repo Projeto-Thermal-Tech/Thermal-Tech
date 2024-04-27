@@ -16,14 +16,15 @@
 .dashboard {
     width: 100%;
     height: 100%;
-    color: #FFF; 
-    background-color: rgb(55, 121, 207);  
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+    color: #1e2368e1; 
+    background-color: rgba(23, 80, 145, 0.733);  
+    border-radius: 20px; 
+    border: 10px solid;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     padding: 20px;
     overflow-y: auto; 
 }
+
 
 /* img logo*/ 
 .user-image {
@@ -56,15 +57,15 @@
 .links-dash a {
     color: #ffffff;
     font-size: 16px; 
-    transition: color 0.3s ease, transform 0.3s ease;
+    transition: transform 1.3s ease;
     display: flex; 
     align-items: center; 
     text-decoration: none; 
 }
 
 .links-dash a:hover {
-    transform: scale(1.05);
-    color: #162f4985;
+    transform: scale(1.35);
+    color: #000000de;
 }
 
 .image-dash {
@@ -89,6 +90,7 @@
 
 .image-dash span, .image-dash h4 {
     display: block;
+    color: white;
 }
 
 .user-info .user-name, .user-info .user-email, .user-nameBotaoAbrirPopup {
@@ -103,9 +105,11 @@
 
 .close-icon {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 20px;
+    right: 20px;
     cursor: pointer;
+    color: rgb(7, 7, 7);
+    font-size: 25px;
 }
 
 hr {
@@ -120,6 +124,7 @@ hr {
     width: calc(90% - 20px); 
 }
 
+/* Perfil do User*/
 .modal {
     display: none;
     position: fixed;
@@ -192,9 +197,9 @@ hr {
     outline: none;
     border-color: #1d46ff;
     box-shadow: 0 0 55px rgba(248, 248, 248, 0.829);
-  }
+}
 
-  .input-fieldData {
+.input-fieldData {
     width: 30%;
     padding: 10px;
     border-radius: 5px;
@@ -215,7 +220,7 @@ hr {
     text-align: center;
     align-items: center;
     width: 30%;
-    background-color: #b5cbd8;
+    background-color: #107e78;;
     color: white;
     padding: 10px;
     border-radius: 5px;
@@ -225,7 +230,7 @@ hr {
 }
 
 .input-submit:hover {
-    background-color: gray;
+    background-color: #224e4c;;
 }
 
 .title-user {
@@ -233,9 +238,9 @@ hr {
     font-size: 34px;
     margin-bottom: 20px;
     text-align: center;
-  }
+}
   
 .labelUser, .labelUserData {
     color: #FFF;
     font-size: 20px;
-  }
+}
