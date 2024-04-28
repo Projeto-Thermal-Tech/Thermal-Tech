@@ -257,16 +257,6 @@ router.get("/relatorio", async function (req, res) {
     }
 });
 
-router.get('/executarPython', (req, res) => {
-    exec('python ./public/python/notification.py', (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Erro ao executar o script Python: ${error}`);
-            return res.sendStatus(500);
-        }
-        console.log('Saída do script Python:');
-        res.sendStatus(200);
-    });
-});
 
 
 
@@ -428,10 +418,23 @@ eventManager.on('newNotification', (msg) => {
   notification = msg;
 });
 
-router.get("/teste", async function (req, res) {
+router.get("/notification", async function (req, res) {
   res.send(notification); // Enviar a última notificação recebida quando a rota '/teste' é acessada
   notification = null;  
 });
+
+router.get('/executarPython', (req, res) => {
+    const id_chamado = notification;
+    exec(`python ./public/python/notification.py "${id_chamado}"`, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Erro ao executar o script Python: ${error}`);
+            return res.sendStatus(500);
+        }
+        console.log('Saída do script Python:');
+        res.sendStatus(200);
+    });
+});
+
 
 app.get('/404', function(req, res) {
     res.status(404).render('error404');

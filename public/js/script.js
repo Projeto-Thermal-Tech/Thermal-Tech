@@ -11,7 +11,7 @@ mostrarUser()
 let lastNotification = null;
 
 async function fetchNotification() {
-    const response = await fetch('http://localhost:5000/teste');
+    const response = await fetch('http://localhost:5000/notification');
     const data = await response.json();
 
     if (data && data !== lastNotification) {

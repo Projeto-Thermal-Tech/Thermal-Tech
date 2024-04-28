@@ -1,5 +1,10 @@
 import sys
 from win11toast import toast
 
-# message = sys.argv[1] if len(sys.argv) > 1 else 'Novo agendamento!'
-toast('Novo Chamado Criado')
+# Se um argumento foi passado para o script, ele será usado como o ID do chamado
+print(sys.argv[0])
+id_chamado = sys.argv[0]
+
+# A mensagem da notificação incluirá o ID do chamado
+message = 'Novo Chamado Criado: ' + id_chamado
+toast(message)
