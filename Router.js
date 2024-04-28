@@ -23,6 +23,7 @@ const dados = require('./database/db');
 const { error } = require("console");
 const db = require("./database/cnx");
 const { email } = require('./public/js/config');
+const { exec}  = require('child_process');
 
 
 router.use(express.static(path.join(__dirname, "/public")));
@@ -245,6 +246,16 @@ router.get("/relatorio", async function (req, res) {
     }
 });
 
+router.get('/executarPython', (req, res) => {
+    exec('python ./public/js/notification.py', (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Erro ao executar o script Python: ${error}`);
+            return res.sendStatus(500);
+        }
+        console.log('Saída do script Python:');
+        res.sendStatus(200);
+    });
+});
 
 
 
