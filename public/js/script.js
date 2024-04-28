@@ -15,13 +15,22 @@ async function fetchNotification() {
     const data = await response.json();
 
     if (data && data !== lastNotification) {
-      const message = "Novo chamado criado: " + data.id_chamado;
+      const message = "Novo chamado criado: " + data.id_chamado;       
          $.notify(message, "success");
+         fetch('http://localhost:5000/executarPython')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro ao executar o script Python');
+        }
+        console.log('Script Python executado com sucesso');
+    })
+    .catch(error => console.error(error));
         lastNotification = data;
     }
 }
 
 setInterval(fetchNotification, 5000);
+
 
 const btn_config = document.querySelector(".config");
 const dados_chamado =document.querySelectorAll(".section_chamado").style.display="none"

@@ -51,6 +51,17 @@ router.get("/cadastro", async function (req, res) {
         res.status(404).render('error404');
     }
 });
+router.get('/executarPython', (req, res) => {
+    exec('python ./public/python/notification.py', (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Erro ao executar o script Python: ${error}`);
+            return res.sendStatus(500);
+        }
+        console.log(`Saída do script Python: ${stdout}`);
+        res.sendStatus(200);
+    });
+});
+
 router.get("/chamado", async function (req, res) {
     try {
         async function listarchamados() {
@@ -247,7 +258,7 @@ router.get("/relatorio", async function (req, res) {
 });
 
 router.get('/executarPython', (req, res) => {
-    exec('python ./public/js/notification.py', (error, stdout, stderr) => {
+    exec('python ./public/python/notification.py', (error, stdout, stderr) => {
         if (error) {
             console.error(`Erro ao executar o script Python: ${error}`);
             return res.sendStatus(500);
