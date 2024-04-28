@@ -19,6 +19,17 @@ function signIn() {
   firebase.auth().signInWithEmailAndPassword(email, password).then((response) => {
     hideloading();
     window.location.href = "http://localhost:5000/inicio";
+
+    // Obtenha o usuário atualmente logado
+    var user = firebase.auth().currentUser;
+
+    if (user != null) {
+      // O usuário está logado, obtenha a URL da foto do perfil
+      var photoURL = user.photoURL;
+
+      // Armazene a URL da foto do perfil no localStorage
+      localStorage.setItem("userPhotoURL", photoURL);
+    }
   }).catch((error) => {
     hideloading();
     alert("Usuario não encontrado");

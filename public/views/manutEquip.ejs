@@ -268,15 +268,17 @@
                 <form>
                     <div class="image-dash">
                         <label for="arquivo">
-                            <img id="icone" src="../assets/icons8-usuário-50.png" alt="Ícone de pessoa" style="cursor: pointer;">
+                            <img id="icone" class="user-image" src="../assets/icons8-usuário-50.png" alt="Ícone de pessoa"
+                                style="cursor: pointer;">
                         </label>
-                        <input type="file" id="arquivo" name="arquivo" accept="image/*" onchange="previewImage(event)" style="display: none;">
+                        <input type="file" id="arquivo" name="arquivo" accept="image/*" onchange="previewImage(event)"
+                            style="display: none;">
                         <img class="user-image" id="preview" src="" alt="Pré-visualização da imagem" style="display: none;">
                         <div class="user-info">
                             <h4 id="userName" class="user-name"></h4>
-                            <h4 id="userEmail" class="user-email"></h4>
                         </div>
-                    </div>  
+                    </div>
+                        <h5 id="userEmail" style="color: white;" class="user-email"></h5>
                 </form>
                 <hr>
                 <div class="content-dashboard">

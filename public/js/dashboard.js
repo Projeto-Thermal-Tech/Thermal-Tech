@@ -55,3 +55,25 @@ document.getElementById('userPhone').addEventListener('input', function (e) {
       target.setSelectionRange(position, position);
     }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+  // Obtenha a URL da foto do perfil do localStorage
+  var photoURL = localStorage.getItem("userPhotoURL");
+
+  // Verifique se a URL da foto do perfil existe
+  if (photoURL === 'null') {
+      // Se a URL da foto do perfil não existir, defina a URL padrão
+      console.log("URL da foto do perfil não encontrada");
+      var imgTag = document.querySelector('#icone');
+
+      imgTag.scr = "../assets/icons8-usuário-50.png";
+  } else {
+      // Encontre a tag img que você deseja alterar
+      var imgTag = document.querySelector('#icone');
+      // Defina o atributo src da tag img para a URL da foto do perfil
+      imgTag.src = photoURL;
+      console.log("URL da foto do perfil encontrada");
+  }
+});
