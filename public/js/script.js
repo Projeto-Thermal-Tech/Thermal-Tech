@@ -12,10 +12,11 @@ let lastNotification = null;
 
 async function fetchNotification() {
     const response = await fetch('http://localhost:5000/teste');
-    const data = await response.text();
+    const data = await response.json();
 
     if (data && data !== lastNotification) {
-        alert(data);
+      const message = "Novo chamado criado: " + data.id_chamado;
+         $.notify(message, "success");
         lastNotification = data;
     }
 }
