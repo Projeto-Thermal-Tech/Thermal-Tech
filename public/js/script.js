@@ -11,26 +11,25 @@ mostrarUser()
 let lastNotification = null;
 
 async function fetchNotification() {
-    const response = await fetch('http://localhost:5000/notification');
-    const data = await response.json();
+  const response = await fetch('http://localhost:5000/notification');
+  const data = await response.json();
 
-    if (data && data !== lastNotification) {
-      const message = "Novo chamado criado: " + data.id_chamado;       
-         $.notify(message, "success");
-         fetch('http://localhost:5000/executarPython')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Erro ao executar o script Python');
-        }
-        console.log('Script Python executado com sucesso');
-    })
-    .catch(error => console.error(error));
-        lastNotification = data;
-    }
+  if (data && data !== lastNotification) {
+    const message = "Novo chamado criado: " + data.id_chamado + ', ' + data.criado_por_cha;       
+       $.notify(message, "success");
+       fetch('http://localhost:5000/executarPython?id=' + data.id_chamado + '&criado_por=' + data.criado_por_cha)
+  .then(response => {
+      if (!response.ok) {
+          throw new Error('Erro ao executar o script Python');
+      }
+      console.log('Script Python executado com sucesso');
+  })
+  .catch(error => console.error(error));
+      lastNotification = data;
+  }
 }
 
 setInterval(fetchNotification, 5000);
-
 
 const btn_config = document.querySelector(".config");
 const dados_chamado =document.querySelectorAll(".section_chamado").style.display="none"

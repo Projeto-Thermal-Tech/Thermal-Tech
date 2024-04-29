@@ -52,7 +52,9 @@ router.get("/cadastro", async function (req, res) {
     }
 });
 router.get('/executarPython', (req, res) => {
-    exec('python ./public/python/notification.py', (error, stdout, stderr) => {
+    const id_chamado = req.query.id;  // Obtenha o ID do chamado da requisição
+    const criado_por_cha = req.query.criado_por;  // Obtenha criado_por_cha da requisição
+    exec(`python ./public/python/notification.py ${id_chamado} ${criado_por_cha}`, (error, stdout, stderr) => {
         if (error) {
             console.error(`Erro ao executar o script Python: ${error}`);
             return res.sendStatus(500);
