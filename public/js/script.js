@@ -17,7 +17,7 @@ async function fetchNotification() {
   if (data && data !== lastNotification) {
     const message = "Novo chamado criado: " + data.id_chamado + ', ' + data.criado_por_cha;       
        $.notify(message, "success");
-       fetch('http://localhost:5000/executarPython?id=' + data.id_chamado + '&criado_por=' + data.criado_por_cha)
+       fetch('http://localhost:5000/executarPython?id=' + data.id_chamado + '&criado_por=' + data.criado_por_cha + '&hora_ini_cha=' + data.hora_ini_cha + '&data_ini_cha=' + data.data_ini_cha)
   .then(response => {
       if (!response.ok) {
           throw new Error('Erro ao executar o script Python');

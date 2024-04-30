@@ -51,9 +51,20 @@ router.get("/cadastro", async function (req, res) {
         res.status(404).render('error404');
     }
 });
+let notification = null;
+eventManager.on('newNotification', (msg) => {
+    notification = msg;
+  });
+  
+  router.get("/notification", async function (req, res) {
+    res.send(notification); // Enviar a última notificação recebida quando a rota '/teste' é acessada
+    notification = null;  
+  });
 router.get('/executarPython', (req, res) => {
     const id_chamado = req.query.id;  // Obtenha o ID do chamado da requisição
     const criado_por_cha = req.query.criado_por;  // Obtenha criado_por_cha da requisição
+    const hora_ini_cha = req.query.hora_ini_cha;  // Obtenha hora_ini_cha da requisição
+    const data_ini_cha = req.query.data_ini_cha;  // Obtenha data_ini_cha da requisição
     exec(`python ./public/python/notification.py ${id_chamado} ${criado_por_cha}`, (error, stdout, stderr) => {
         if (error) {
             console.error(`Erro ao executar o script Python: ${error}`);
@@ -61,6 +72,13 @@ router.get('/executarPython', (req, res) => {
         }
         console.log(`Saída do script Python: ${stdout}`);
         res.sendStatus(200);
+    });
+    exec(`python ./public/python/sendMail.py ${id_chamado} "${criado_por_cha}|${hora_ini_cha}|${data_ini_cha}"`, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Erro ao executar o script Python: ${error}`);
+            return res.sendStatus(500);
+        }
+        console.log(`Saída do script Python: ${stdout}`);
     });
 });
 
@@ -413,29 +431,9 @@ const dbConfig = {
     port: '5432',
     database: 'banco_tt' // ou qualquer outro valor padrão
 };
-let notification = null;
+
 
 // Ouvir o evento 'newNotification' e atualizar a variável 'notification'
-eventManager.on('newNotification', (msg) => {
-  notification = msg;
-});
-
-router.get("/notification", async function (req, res) {
-  res.send(notification); // Enviar a última notificação recebida quando a rota '/teste' é acessada
-  notification = null;  
-});
-
-router.get('/executarPython', (req, res) => {
-    const id_chamado = notification;
-    exec(`python ./public/python/notification.py "${id_chamado}"`, (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Erro ao executar o script Python: ${error}`);
-            return res.sendStatus(500);
-        }
-        console.log('Saída do script Python:');
-        res.sendStatus(200);
-    });
-});
 
 
 app.get('/404', function(req, res) {
