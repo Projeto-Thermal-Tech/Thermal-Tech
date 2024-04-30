@@ -23,7 +23,7 @@ sender_email = "cloudthermaltech2@gmail.com"
 password = "tzjvpbvvpblcgyqh"
 
 #configurações do e-mail
-receive_email = "ens-victorbueno@ugv.edu.br"
+receive_email = "ens-eduardowagner@ugv.edu.br"
 subject = "NOVO CHAMADO CRIADO"
 body = f"""
 <!DOCTYPE html>
@@ -33,23 +33,44 @@ body = f"""
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Email Teste</title>
+ <style>
+        .button {{
+            background-color: gray;
+            border: 1px solid white;
+            border-radius: 10px;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition: background-color 3s ease;
+        }}
+        .button:hover {{
+            transform: scale(1.1);
+            background-color: #ffffff;
+            color: gray;
+        }}
+        p {{
+            margin-bottom: 30px;
+        }}
+    </style>
 </head>
-<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f2f2f2;">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f2f2f2;">
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);">
+    <img src="../assets/icon_logo.jpg" alt="Logo" style="width: 100px;">
+    <table style="width: 100%; max-width: 600px; margin: 0 auto; box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.1);">
         <tr>
-            <td>
-                <table border="0" cellpadding="0" cellspacing="0" width="600" style="background-color: #ffffff;">
-                    <tr>
-                        <td align="center" style="padding: 40px 0;">
-                            <p>Olá,Um novo chamado Foi criado.</p>
-                            <p>Chamado: {id_chamado} </p>
-                            <p>Criado por: {criador} </p>
-                            <p>Criado as : {horaInicio} no dia: {dataInicio} </p>
-                            <p>Agradecemos por ter recebido este e-mail de teste.</p>
-                            <p>Este e-mail foi enviado apenas para fins de demonstração e teste.</p>
-                        </td>
-                    </tr>
-                </table>
+            <td style="padding: 40px; text-align: center;">
+                <h1 style="color: #ffffff;">Olá,</h1>
+                <p style="line-height: 1.5; color: #ffffff; font-size: 18px;">Um novo chamado foi criado.</p>
+                <p style="line-height: 1.5; color: #ffffff; font-size: 18px;">Chamado: {id_chamado}</p>
+                <p style="line-height: 1.5; color: #ffffff; font-size: 18px;">Criado por: {criador}</p>
+                <p style="line-height: 1.5; color: #ffffff; font-size: 18px;">Criado às: {horaInicio} no dia: {dataInicio}</p>
+                <p style="line-height: 1.5; color: #ffffff; font-size: 18px;">Agradecemos por ter recebido este e-mail de teste.</p>
+                <p style="line-height: 1.5; color: #ffffff; font-size: 18px;">Este e-mail foi enviado apenas para fins de demonstração e teste.</p>
+                <a href="http://localhost:5000/chamado"{id_chamado} class="button">Clique Aqui Pra Vizualizar o Chamado</a>
             </td>
         </tr>
     </table>
