@@ -65,6 +65,7 @@ router.get('/executarPython', (req, res) => {
     const criado_por_cha = req.query.criado_por;  // Obtenha criado_por_cha da requisição
     const hora_ini_cha = req.query.hora_ini_cha;  // Obtenha hora_ini_cha da requisição
     const data_ini_cha = req.query.data_ini_cha;  // Obtenha data_ini_cha da requisição
+    const email = req.query.email;  // Obtenha email da requisição
     exec(`python ./public/python/notification.py ${id_chamado} ${criado_por_cha}`, (error, stdout, stderr) => {
         if (error) {
             console.error(`Erro ao executar o script Python: ${error}`);
@@ -73,7 +74,7 @@ router.get('/executarPython', (req, res) => {
         console.log(`Saída do script Python: ${stdout}`);
         res.sendStatus(200);
     });
-    exec(`python ./public/python/sendMail.py ${id_chamado} "${criado_por_cha}|${hora_ini_cha}|${data_ini_cha}"`, (error, stdout, stderr) => {
+    exec(`python ./public/python/sendMail.py ${id_chamado} "${criado_por_cha}|${hora_ini_cha}|${data_ini_cha}" "${email}"`, (error, stdout, stderr) => {
         if (error) {
             console.error(`Erro ao executar o script Python: ${error}`);
             return res.sendStatus(500);
@@ -220,6 +221,23 @@ router.get("/novo-chamado", async function (req, res) {
 router.post("/view/chamado", async function (req, res) {
     try {
         const id_chamado = req.body.id_chamado;
+        const sql = "SELECT chamado.id_chamado, status.nome_status AS status_cha,lista_equipamentos.tag_listequip AS equipamento_cha,chamado.descri_cha,chamado.prioridade_cha,chamado.criado_por_cha,chamado.email,chamado.data_ini_cha,chamado.hora_ini_cha,chamado.descricao_cha FROM chamado INNER JOIN lista_equipamentos ON lista_equipamentos.id_equip = chamado.equipamento_cha INNER JOIN status ON status.id_status = chamado.status_cha WHERE chamado.id_chamado = $1"
+        const dados = await db.query(sql, [id_chamado]);
+        const tagEquip = dados.rows[0].equipamento_cha
+        
+        const sqlEquip = 'SELECT * FROM lista_equipamentos WHERE tag_listequip = $1';
+        const dadosEquip = await db.query(sqlEquip, [tagEquip]);
+        
+        res.render('viewchamado', { 
+            dadosChamado: dados.rows[0],dadosEquip:dadosEquip.rows
+        });
+    } catch (error) {
+        res.status(404).render('error404');
+    }
+});
+router.get("/view/chamado/:id_chamado", async function (req, res) {
+    try {
+        const id_chamado = req.params.id_chamado;
         const sql = "SELECT chamado.id_chamado, status.nome_status AS status_cha,lista_equipamentos.tag_listequip AS equipamento_cha,chamado.descri_cha,chamado.prioridade_cha,chamado.criado_por_cha,chamado.email,chamado.data_ini_cha,chamado.hora_ini_cha,chamado.descricao_cha FROM chamado INNER JOIN lista_equipamentos ON lista_equipamentos.id_equip = chamado.equipamento_cha INNER JOIN status ON status.id_status = chamado.status_cha WHERE chamado.id_chamado = $1"
         const dados = await db.query(sql, [id_chamado]);
         const tagEquip = dados.rows[0].equipamento_cha
