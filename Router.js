@@ -60,27 +60,49 @@ eventManager.on('newNotification', (msg) => {
     res.send(notification); // Enviar a última notificação recebida quando a rota '/teste' é acessada
     notification = null;  
   });
-router.get('/executarPython', (req, res) => {
+router.get('/executarPython', async (req, res) => {
     const id_chamado = req.query.id;  // Obtenha o ID do chamado da requisição
     const criado_por_cha = req.query.criado_por;  // Obtenha criado_por_cha da requisição
     const hora_ini_cha = req.query.hora_ini_cha;  // Obtenha hora_ini_cha da requisição
     const data_ini_cha = req.query.data_ini_cha;  // Obtenha data_ini_cha da requisição
     const email = req.query.email;  // Obtenha email da requisição
-    exec(`python ./public/python/notification.py ${id_chamado} ${criado_por_cha}`, (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Erro ao executar o script Python: ${error}`);
-            return res.sendStatus(500);
+    const id_usuario = req.query.id_usuario // Obtenha id_usuario da requisição
+
+    try {
+        // Verifique se já existe uma entrada para o chamado e o usuário
+        const query = `SELECT * FROM notificacoes_enviadas WHERE id_chamado = ${id_chamado} AND id_usuario = ${id_usuario}`;
+        const results = await db.query(query);
+
+        // Se a consulta retornar uma entrada, não envie o e-mail
+        if (results.rows.length > 0) {
+            return res.sendStatus(200);
         }
-        console.log(`Saída do script Python: ${stdout}`);
-        res.sendStatus(200);
-    });
-    exec(`python ./public/python/sendMail.py ${id_chamado} "${criado_por_cha}|${hora_ini_cha}|${data_ini_cha}" "${email}"`, (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Erro ao executar o script Python: ${error}`);
-            return res.sendStatus(500);
-        }
-        console.log(`Saída do script Python: ${stdout}`);
-    });
+
+        // Se a consulta não retornar uma entrada, envie o e-mail e adicione uma entrada à tabela
+        exec(`python ./public/python/notification.py ${id_chamado} ${criado_por_cha}`, (error, stdout, stderr) => {
+            if (error) {
+                console.error(`Erro ao executar o script Python: ${error}`);
+                return res.sendStatus(500);
+            }
+            console.log(`Saída do script Python: ${stdout}`);
+        });
+        exec(`python ./public/python/sendMail.py ${id_chamado} "${criado_por_cha}|${hora_ini_cha}|${data_ini_cha}" "${email}"`, async (error, stdout, stderr) => {
+            if (error) {
+                console.error(`Erro ao executar o script Python: ${error}`);
+                return res.sendStatus(500);
+            }
+
+            // Adicione uma entrada à tabela
+            const insertQuery = `INSERT INTO notificacoes_enviadas (id_chamado, id_usuario) VALUES (${id_chamado}, ${id_usuario})`;
+            await db.query(insertQuery);
+
+            console.log(`Saída do script Python: ${stdout}`);
+            res.sendStatus(200);
+        });
+    } catch (error) {
+        console.error(`Erro ao consultar o banco de dados: ${error}`);
+        return res.sendStatus(500);
+    }
 });
 
 router.get("/chamado", async function (req, res) {
