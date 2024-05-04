@@ -67,34 +67,35 @@ router.get('/executarPython', async (req, res) => {
     const data_ini_cha = req.query.data_ini_cha;  // Obtenha data_ini_cha da requisição
     const email = req.query.email;  // Obtenha email da requisição
     const id_usuario = req.query.id_usuario // Obtenha id_usuario da requisição
-
+    // Se a consulta não retornar uma entrada, envie o e-mail e adicione uma entrada à tabela
+    exec(`python ./public/python/notification.py ${id_chamado} ${criado_por_cha}`, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Erro ao executar o script Python: ${error}`);
+            return res.sendStatus(500);
+        }
+        console.log(`Saída do script Python: ${stdout}`);
+    });
     try {
         // Verifique se já existe uma entrada para o chamado e o usuário
-        const query = `SELECT * FROM notificacoes_enviadas WHERE id_chamado = ${id_chamado} AND id_usuario = ${id_usuario}`;
+        const query = `SELECT * FROM notificacoes_enviadas WHERE id_chamado = ${id_chamado}`;
         const results = await db.query(query);
 
-        // Se a consulta retornar uma entrada, não envie o e-mail
+        // Se o id_chamado já existir na tabela, pule o envio do e-mail
         if (results.rows.length > 0) {
-            return res.sendStatus(200);
+        return;
         }
 
-        // Se a consulta não retornar uma entrada, envie o e-mail e adicione uma entrada à tabela
-        exec(`python ./public/python/notification.py ${id_chamado} ${criado_por_cha}`, (error, stdout, stderr) => {
-            if (error) {
-                console.error(`Erro ao executar o script Python: ${error}`);
-                return res.sendStatus(500);
-            }
-            console.log(`Saída do script Python: ${stdout}`);
-        });
+        try {
+            const insertQuery = `INSERT INTO notificacoes_enviadas (id_chamado) VALUES (${id_chamado}) ON CONFLICT (id_chamado) DO NOTHING`;
+            await db.query(insertQuery);
+        } catch (error) {
+            console.error(`Erro ao inserir no banco de dados: ${error}`);
+        }
         exec(`python ./public/python/sendMail.py ${id_chamado} "${criado_por_cha}|${hora_ini_cha}|${data_ini_cha}" "${email}"`, async (error, stdout, stderr) => {
             if (error) {
                 console.error(`Erro ao executar o script Python: ${error}`);
                 return res.sendStatus(500);
             }
-
-            // Adicione uma entrada à tabela
-            const insertQuery = `INSERT INTO notificacoes_enviadas (id_chamado, id_usuario) VALUES (${id_chamado}, ${id_usuario})`;
-            await db.query(insertQuery);
 
             console.log(`Saída do script Python: ${stdout}`);
             res.sendStatus(200);
@@ -137,13 +138,19 @@ router.get("/ordem", async function (req, res) {
 });
 
 router.post('/criar/ordem', function (req, res) {
-    // res.json(req.body.num_ordem, req.body.status,req.body.num_chamado,req.body.criador,req.body.data_inicio, req.body.hora_inicio,req.body.prioridade, req.body.tipo_manut)
     novaOrdem.insertOrdem(req.body.num_ordem,req.body.titulo_ord, req.body.status,req.body.num_chamado,req.body.criador,req.body.data_inicio, req.body.hora_inicio,req.body.prioridade, req.body.tipo_manut).then(function () {
-        res.redirect('/ordem')
+        const query = 'select * from chamado where id_chamado = $1';
+        return db.query(query, [req.body.num_chamado]);
+    }).then(function (dados_chamado) {
+        const chamado = dados_chamado.rows[0]; // Acessa a primeira linha retornada pela consulta
+        return exec(`python ./public/python/sendMailUpdateChamado.py ${req.body.num_ordem} ${chamado.email} ${chamado.id_chamado}`);
+    }).then(function () {
+        res.redirect('/ordem');
     }).catch(function (error) {
+        console.error(error);
         res.status(404).redirect('/404');
     });
-})
+});
 router.get("/proximo-numero-ordem", async function (req, res) {
     try {
         const result = await db.query('SELECT MAX(id_ordem) FROM ordem');
