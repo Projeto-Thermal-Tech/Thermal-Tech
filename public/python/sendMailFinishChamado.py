@@ -4,16 +4,10 @@ import sys
 from email.mime.text import MIMEText
 from  email.mime.multipart import MIMEMultipart
 
-#Informações sobre o chamado
-id_chamado = sys.argv[1]
-criador, horaInicio, dataInicio,  = sys.argv[2].split('|')
-email = sys.argv[3]
-# Remova os segundos da hora
-horaInicio = horaInicio[:-3]
-
-# Reformatar a data
-ano, mes, dia = dataInicio.split('-')
-dataInicio = f'{dia}/{mes}/{ano}'
+numeroOrdem = sys.argv[1]
+tecnico = sys.argv[3    ]
+chamado = sys.argv[2]
+email = sys.argv[4]
 
 
 #configurações do servidor SMTP
@@ -24,7 +18,7 @@ password = "tzjvpbvvpblcgyqh"
 
 #configurações do e-mail
 receive_email = email
-subject = "NOVO CHAMADO CRIADO"
+subject = "Seu chamado foi encerrado."
 body = f"""
 <!DOCTYPE html>
 <html lang="en">
@@ -73,13 +67,10 @@ body = f"""
         <tr>
             <td style="padding: 40px; text-align: center;">
                 <h1 style="color: #ffffff;">Olá,</h1>
-                <p style="line-height: 1.5; color: #ffffff; font-size: 18px;">Um novo chamado foi criado.</p>
-                <p style="line-height: 1.5; color: #ffffff; font-size: 18px;">Chamado: {id_chamado}</p>
-                <p style="line-height: 1.5; color: #ffffff; font-size: 18px;">Criado por: {criador}</p>
-                <p style="line-height: 1.5; color: #ffffff; font-size: 18px;">Criado às: {horaInicio} no dia: {dataInicio}</p>
-                <p style="line-height: 1.5; color: #ffffff; font-size: 18px;">Agradecemos por ter recebido este e-mail de teste.</p>
-                <p style="line-height: 1.5; color: #ffffff; font-size: 18px;">Este e-mail foi enviado apenas para fins de demonstração e teste.</p>
-                <a href="http://localhost:5000/view/chamado/{id_chamado}" class="button">Clique Aqui Pra Vizualizar o Chamado</a>
+                <p style="line-height: 1.5; color: #ffffff; font-size: 18px;">Seu chamado foi encerrado.</p>
+                <p style="line-height: 1.5; color: #ffffff; font-size: 18px;">Chamado: {chamado}</p>
+                <p style="line-height: 1.5; color: #ffffff; font-size: 18px;">Ordem: {numeroOrdem}</p>
+                <p style="line-height: 1.5; color: #ffffff; font-size: 18px;">tecnico: {tecnico}</p>
             </td>
         </tr>
     </table>

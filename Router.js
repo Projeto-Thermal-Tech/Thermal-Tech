@@ -23,7 +23,8 @@ const dados = require('./database/db');
 const { error } = require("console");
 const db = require("./database/cnx");
 const { email } = require('./public/js/config');
-const { exec}  = require('child_process');
+const { exec } = require('child_process');
+const e = require("express");
 
 
 router.use(express.static(path.join(__dirname, "/public")));
@@ -54,12 +55,12 @@ router.get("/cadastro", async function (req, res) {
 let notification = null;
 eventManager.on('newNotification', (msg) => {
     notification = msg;
-  });
-  
-  router.get("/notification", async function (req, res) {
+});
+
+router.get("/notification", async function (req, res) {
     res.send(notification); // Enviar a última notificação recebida quando a rota '/teste' é acessada
-    notification = null;  
-  });
+    notification = null;
+});
 router.get('/executarPython', async (req, res) => {
     const id_chamado = req.query.id;  // Obtenha o ID do chamado da requisição
     const criado_por_cha = req.query.criado_por;  // Obtenha criado_por_cha da requisição
@@ -82,7 +83,7 @@ router.get('/executarPython', async (req, res) => {
 
         // Se o id_chamado já existir na tabela, pule o envio do e-mail
         if (results.rows.length > 0) {
-        return;
+            return;
         }
 
         try {
@@ -113,9 +114,9 @@ router.get("/chamado", async function (req, res) {
             chamados = await db.query(sql)
         }
         await listarchamados(); // Espere até que a função listarDados seja concluída
-        
 
-        res.render('chamado', {chamados:chamados.rows }); // Agora a variável tabela está acessível aqui
+
+        res.render('chamado', { chamados: chamados.rows }); // Agora a variável tabela está acessível aqui
     } catch (error) {
         res.status(404).render('error404');
     }
@@ -129,16 +130,16 @@ router.get("/ordem", async function (req, res) {
             equipamento = await db.query(sqlEquip)
         }
         await listarchamados(); // Espere até que a função listarDados seja concluída
-        
 
-        res.render('ordem', {chamados:chamados.rows, equipamento:equipamento.rows }); // Agora a variável tabela está acessível aqui
+
+        res.render('ordem', { chamados: chamados.rows, equipamento: equipamento.rows }); // Agora a variável tabela está acessível aqui
     } catch (error) {
         res.status(404).render('error404');
     }
 });
 
 router.post('/criar/ordem', function (req, res) {
-    novaOrdem.insertOrdem(req.body.num_ordem,req.body.titulo_ord, req.body.status,req.body.num_chamado,req.body.criador,req.body.data_inicio, req.body.hora_inicio,req.body.prioridade, req.body.tipo_manut).then(function () {
+    novaOrdem.insertOrdem(req.body.num_ordem, req.body.titulo_ord, req.body.status, req.body.num_chamado, req.body.criador, req.body.data_inicio, req.body.hora_inicio, req.body.prioridade, req.body.tipo_manut).then(function () {
         const query = 'select * from chamado where id_chamado = $1';
         return db.query(query, [req.body.num_chamado]);
     }).then(function (dados_chamado) {
@@ -169,13 +170,13 @@ router.get("/proximo-numero-ordem", async function (req, res) {
 
 router.get("/consulta_ordem", async function (req, res) {
     try {
-        async function listaOrdens(){
-        const sql = "SELECT ordem.*, status.nome_status, prioridade.nome_pri FROM ordem INNER JOIN status ON ordem.status_ord = status.id_status INNER JOIN prioridade ON ordem.prioridade_ord = prioridade.id_prioridade ORDER BY ordem.id_ordem ASC;";
-        ordem = await db.query(sql)
-    }
-    await listaOrdens();
-    res.render('consulta-ordem', {ordem:ordem.rows});
-} catch (error) {
+        async function listaOrdens() {
+            const sql = "SELECT ordem.*, status.nome_status, prioridade.nome_pri FROM ordem INNER JOIN status ON ordem.status_ord = status.id_status INNER JOIN prioridade ON ordem.prioridade_ord = prioridade.id_prioridade ORDER BY ordem.id_ordem ASC;";
+            ordem = await db.query(sql)
+        }
+        await listaOrdens();
+        res.render('consulta-ordem', { ordem: ordem.rows });
+    } catch (error) {
         res.status(404).render('error404');
     }
 });
@@ -232,15 +233,15 @@ router.get("/novo-chamado", async function (req, res) {
                 res.status(404).render('error404');
             }
         }
-        
-        
+
+
         const nome = await buscarNomePorEmail(email);
-        res.render('novo-chamado', { 
-            equipamentos: tabelaEquip.rows, 
-            setores: tabelaSetor.rows, 
-            tipo: tabelaTipo.rows, 
-            numeroChamado, 
-            usuarios: tabelaUser.rows, 
+        res.render('novo-chamado', {
+            equipamentos: tabelaEquip.rows,
+            setores: tabelaSetor.rows,
+            tipo: tabelaTipo.rows,
+            numeroChamado,
+            usuarios: tabelaUser.rows,
             nome: nome // Passa o nome como parâmetro
         });
     } catch (error) {
@@ -253,12 +254,12 @@ router.post("/view/chamado", async function (req, res) {
         const sql = "SELECT chamado.id_chamado, status.nome_status AS status_cha,lista_equipamentos.tag_listequip AS equipamento_cha,chamado.descri_cha,chamado.prioridade_cha,chamado.criado_por_cha,chamado.email,chamado.data_ini_cha,chamado.hora_ini_cha,chamado.descricao_cha FROM chamado INNER JOIN lista_equipamentos ON lista_equipamentos.id_equip = chamado.equipamento_cha INNER JOIN status ON status.id_status = chamado.status_cha WHERE chamado.id_chamado = $1"
         const dados = await db.query(sql, [id_chamado]);
         const tagEquip = dados.rows[0].equipamento_cha
-        
+
         const sqlEquip = 'SELECT * FROM lista_equipamentos WHERE tag_listequip = $1';
         const dadosEquip = await db.query(sqlEquip, [tagEquip]);
-        
-        res.render('viewchamado', { 
-            dadosChamado: dados.rows[0],dadosEquip:dadosEquip.rows
+
+        res.render('viewchamado', {
+            dadosChamado: dados.rows[0], dadosEquip: dadosEquip.rows
         });
     } catch (error) {
         res.status(404).render('error404');
@@ -270,12 +271,12 @@ router.get("/view/chamado/:id_chamado", async function (req, res) {
         const sql = "SELECT chamado.id_chamado, status.nome_status AS status_cha,lista_equipamentos.tag_listequip AS equipamento_cha,chamado.descri_cha,chamado.prioridade_cha,chamado.criado_por_cha,chamado.email,chamado.data_ini_cha,chamado.hora_ini_cha,chamado.descricao_cha FROM chamado INNER JOIN lista_equipamentos ON lista_equipamentos.id_equip = chamado.equipamento_cha INNER JOIN status ON status.id_status = chamado.status_cha WHERE chamado.id_chamado = $1"
         const dados = await db.query(sql, [id_chamado]);
         const tagEquip = dados.rows[0].equipamento_cha
-        
+
         const sqlEquip = 'SELECT * FROM lista_equipamentos WHERE tag_listequip = $1';
         const dadosEquip = await db.query(sqlEquip, [tagEquip]);
-        
-        res.render('viewchamado', { 
-            dadosChamado: dados.rows[0],dadosEquip:dadosEquip.rows
+
+        res.render('viewchamado', {
+            dadosChamado: dados.rows[0], dadosEquip: dadosEquip.rows
         });
     } catch (error) {
         res.status(404).render('error404');
@@ -283,15 +284,15 @@ router.get("/view/chamado/:id_chamado", async function (req, res) {
 });
 router.post("/view/ordem", async function (req, res) {
     try {
-        const id_ordem = req.body.id_ordem; 
-        const sqlTec='SELECT matricula_tec, nome_tec, email FROM tecnicos;'
+        const id_ordem = req.body.id_ordem;
+        const sqlTec = 'SELECT matricula_tec, nome_tec, email FROM tecnicos;'
         const sql = "SELECT ordem.id_ordem, status.nome_status, ordem.numero_cha, ordem.criado_por_ord, ordem.data_ini_ord, ordem.data_fim_ord, ordem.hora_ini_ord, ordem.hora_fim_ord, ordem.prioridade_ord, ordem.manut_ord, ordem.matricula_ord, ordem.data_lanc_ord,ordem.data_ini_trab, ordem.hora_ini_trab, ordem.data_fim_trab, ordem.hora_fim_trab, ordem.texto_servico FROM ordem INNER JOIN status ON ordem.status_ord = status.id_status WHERE id_ordem = $1";
         const dados = await db.query(sql, [id_ordem]);
-        const nomeTecs= await db.query(sqlTec)
+        const nomeTecs = await db.query(sqlTec)
         if (dados.rows.length > 0) {
             res.render('viewordem', {
                 dadosOrdem: dados.rows[0],
-                nomeTecs:nomeTecs.rows
+                nomeTecs: nomeTecs.rows
             });
         } else {
             res.status(404).send("Ordem não encontrada");
@@ -306,7 +307,7 @@ router.get("/manutencao", async function (req, res) {
 
         let manutencao = await db.query(sql);
         res.render('manut', { manutencao: manutencao.rows });
-        
+
     } catch (error) {
         res.status(404).render('error404');
     }
@@ -314,42 +315,39 @@ router.get("/manutencao", async function (req, res) {
 router.get("/relatorio", async function (req, res) {
     try {
         const sqlHoras = "SELECT ordem.id_ordem, tipo_manut.nome_manut, tecnicos.matricula_tec, ordem.hora_ini_trab, ordem.hora_fim_trab, ordem.data_ini_trab, ordem.data_fim_trab, TO_CHAR((ordem.hora_fim_trab - ordem.hora_ini_trab), 'HH24:MI:SS') as horas_trabalhadas FROM ordem  INNER JOIN tipo_manut ON ordem.manut_ord = tipo_manut.id_manut INNER JOIN tecnicos ON ordem.matricula_ord = tecnicos.matricula_tec ORDER BY ordem.id_ordem ASC;  ";
-        const sqlTecnicos='SELECT * FROM tecnicos'
+        const sqlTecnicos = 'SELECT * FROM tecnicos'
         let relatorio = await db.query(sqlHoras);
-        let Tecnicos =await db.query(sqlTecnicos)
-        res.render('horas', { horas: relatorio.rows, Tecnicos:Tecnicos.rows });
-        
+        let Tecnicos = await db.query(sqlTecnicos)
+        res.render('horas', { horas: relatorio.rows, Tecnicos: Tecnicos.rows });
+
     } catch (error) {
         res.status(404).render('error404');
     }
 });
 
-
-
-
-// router.get("/view/manut", async function (req, res) {
-//     try {
-//         const id_ordem = req.body.manut;
-//         const createViewSql = " SELECT ordem.id_ordem,lista_equipamentos.tag_listequip,tipos_arcondicionado.tipos_arcondicionado_tipar as tipo_listequip,tecnicos.matricula_tec as matricula_ord, ordem.titulo_ord,ordem.data_ini_ord,ordem.data_fim_ord,ordem.hora_ini_ord, ordem.hora_fim_ord,ordem.texto_servico FROM ordem JOIN lista_equipamentos ON ordem.numero_cha = lista_equipamentos.id_equip JOIN tipos_arcondicionado ON lista_equipamentos.tipo_listequip = tipos_arcondicionado.id_tipar JOIN tecnicos ON ordem.matricula_ord = tecnicos.matricula_tec;";
-//         await db.query(createViewSql);
-//         const querySql = "SELECT ordem.id_ordem,lista_equipamentos.tag_listequip,tipos_arcondicionado.tipos_arcondicionado_tipar as tipo_listequip,tecnicos.matricula_tec as matricula_ord, ordem.titulo_ord,ordem.data_ini_ord,ordem.data_fim_ord,ordem.hora_ini_ord, ordem.hora_fim_ord,ordem.texto_servico FROM ordem JOIN lista_equipamentos ON ordem.numero_cha = lista_equipamentos.id_equip JOIN tipos_arcondicionado ON lista_equipamentos.tipo_listequip = tipos_arcondicionado.id_tipar JOIN tecnicos ON ordem.matricula_ord = tecnicos.matricula_tec;";
-//         const result = await db.query(querySql);
-//         res.render('viewmanut', { manut: result.rows })
-//     } catch (err) {
-//         console.error(err);
-//         res.status(500).send('Erro no servidor');
-//     }
-// });
-
 router.post("/encerra/ordem", async function (req, res) {
-    atualizarOrdem.updateOrdem(req.body.ordem, req.body.data_fim, req.body.hora_fim, req.body.matricula, req.body.data_lanc_ord, req.body.hora_ini_trab, req.body.data_ini_trab, req.body.data_fim_trab, req.body.hora_fim_trab, req.body.texto_servico)
-    .then(function () {
-        // A atualização foi bem-sucedida, agora renderize a página
-        res.render("consulta-ordem");
-    })
-    .catch(function (error) {
-        res.status(404).redirect('/404');
-    });
+    atualizarOrdem.updateOrdem(req.body.ordem, req.body.data_fim, req.body.hora_fim, req.body.matricula, req.body.data_lanc_ord, req.body.hora_ini_trab, req.body.data_ini_trab, req.body.data_fim_trab, req.body.hora_fim_trab, req.body.texto_servico, req.body.num_chamado)
+        .then( async function () {
+            const sql = "SELECT ordem.*, status.nome_status, prioridade.nome_pri FROM ordem INNER JOIN status ON ordem.status_ord = status.id_status INNER JOIN prioridade ON ordem.prioridade_ord = prioridade.id_prioridade ORDER BY ordem.id_ordem ASC;";
+            const sqlEmailChamado = "SELECT chamado.criado_por_cha, chamado.email FROM chamado WHERE chamado.id_chamado = $1";
+            const sqlNomeTecnico = "SELECT nome_tec FROM tecnicos WHERE matricula_tec = $1";
+            NomeTecnico = await db.query(sqlNomeTecnico, [req.body.matricula]);
+            EmailCriadorChamado = await db.query(sqlEmailChamado, [req.body.num_chamado]);
+            ordem = await db.query(sql)
+            res.render("consulta-ordem", { ordem: ordem.rows });
+            exec(`python ./public/python/sendMailFinishChamado.py ${req.body.ordem} ${req.body.num_chamado} ${NomeTecnico.rows[0].nome_tec} ${EmailCriadorChamado.rows[0].email}`, (error, stdout, stderr) => {
+                if (error) {
+                    console.error(`Error: ${error.message}`);
+                } else if (stderr) {
+                    console.error(`stderr: ${stderr}`);
+                } else {
+                    console.log(`stdout: ${stdout}`);
+                }
+            });
+        })
+        .catch(function (error) {
+            res.status(404).redirect('/404');
+        });
 });
 
 
@@ -366,7 +364,7 @@ router.post('/cadastro/equipamento', function (req, res) {
     });
 })
 router.post('/atualizar/equipamento', function (req, res) {
-    atualizarEquip.updateEquip(req.body.id_equip,req.body.TAG, req.body.TIPO, req.body.MODELO,req.body.NS,req.body.AREA, req.body.LOCAL,req.body.SETOR,req.body.DESC).then(function () {
+    atualizarEquip.updateEquip(req.body.id_equip, req.body.TAG, req.body.TIPO, req.body.MODELO, req.body.NS, req.body.AREA, req.body.LOCAL, req.body.SETOR, req.body.DESC).then(function () {
         res.redirect('/equipamentos')
     }).catch(function (error) {
         res.status(404).redirect('/404');
@@ -382,15 +380,15 @@ router.post('/deletar/equipamento/:id', function (req, res) {
     });
 });
 router.post('/atualizar/tecnicos', function (req, res) {
-    atualizarTecnicos.updateTecnicos(req.body.matricula_tec, req.body.nome_tec,  req.body.email).then(function () {
+    atualizarTecnicos.updateTecnicos(req.body.matricula_tec, req.body.nome_tec, req.body.email).then(function () {
         res.redirect('/cadastro')
     }).catch(function (error) {
         res.status(404).redirect('/404');
     });
-}); 
+});
 router.post('/deletar/Tecnico/:matricula_tec', function (req, res) {
     const matricula_tec = req.params.matricula_tec;
-    excluirtec.deleteTecnico(matricula_tec).then(function() {
+    excluirtec.deleteTecnico(matricula_tec).then(function () {
         res.redirect('/cadastro');
     }).catch(function (error) {
         res.status(404).redirect('/404');
@@ -437,21 +435,14 @@ router.post('/cadastro/setor', function (req, res) {
 })
 
 router.post('/cadastro/chamado', function (req, res) {
-    novoChamado.insertChamado(req.body.status, req.body.tag, req.body.titleDesc, req.body.prioridade, req.body.criador,req.body.email, req.body.dataChamado, req.body.horaChamado, req.body.desc).then(function () {
+    novoChamado.insertChamado(req.body.status, req.body.tag, req.body.titleDesc, req.body.prioridade, req.body.criador, req.body.email, req.body.dataChamado, req.body.horaChamado, req.body.desc).then(function () {
         res.redirect('/novo-chamado')
     }).catch(function (error) {
         res.send(error)
     });
 })
-// router.post('/cadastro/ordem', function (req, res) {
-//     novaOrdem.insertOrdem(req.body.status,req.body.titulo_ord, req.body.criador, req.body.dataini, req.body.datafim, req.body.horaini, req.body.horafim, req.body.prioridade, req.body.matricula, req.body.tecnicos, req.body.datainitrab, req.body.horainitrab, req.body.datafimtrab, req.body.horafimtrab, req.body.textoserviço).then(function () {
-//         res.redirect('/novo-ordem')
-//     }).catch(function (error) {
-//         res.send("deu erro " + error)
-//     })
-// })
 router.post('/cadastro/tecnico', function (req, res) {
-    novoTec.insertTecnico(req.body.mat_tec, req.body.nome_tec,  req.body.email_tec).then(function () {
+    novoTec.insertTecnico(req.body.mat_tec, req.body.nome_tec, req.body.email_tec).then(function () {
         res.redirect('/cadastro')
     }).catch(function (error) {
         res.status(404).redirect('/404');
@@ -479,14 +470,10 @@ const dbConfig = {
     database: 'banco_tt' // ou qualquer outro valor padrão
 };
 
-
-// Ouvir o evento 'newNotification' e atualizar a variável 'notification'
-
-
-app.get('/404', function(req, res) {
+app.get('/404', function (req, res) {
     res.status(404).render('error404');
 });
-app.use(function(req, res, next){
+app.use(function (req, res, next) {
     res.status(404).redirect('/404');
 });
 
