@@ -3,6 +3,18 @@ import smtplib
 import sys
 from email.mime.text import MIMEText
 from  email.mime.multipart import MIMEMultipart
+from datetime import datetime
+
+# Obter a hora atual
+hora_atual = datetime.now().hour
+
+# Determinar a saudação apropriada
+if 6 <= hora_atual < 12:
+    saudacao = "Bom dia"
+elif 12 <= hora_atual < 18:
+    saudacao = "Boa tarde"
+else:
+    saudacao = "Boa noite"
 
 numeroOrdem = sys.argv[1]
 tecnico = sys.argv[3    ]
@@ -28,49 +40,76 @@ body = f"""
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Email Teste</title>
  <style>
-        .button {{
-            background-color: gray;
-            border: 1px solid white;
-            border-radius: 10px;
-            color: white;
-            padding: 15px 32px;
+         .body {{
+            font-family:B612; 
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+        }}
+
+        .email-table {{
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.1);
+        }}
+
+        .email-content{{
+            padding: 20px;
             text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            transition: background-color 3s ease;
         }}
-        .button:hover {{
-            transform: scale(1.1);
-            background-color: #ffffff;
-            color: gray;
+
+        .email-heading {{
+            color: #ffffff;
         }}
-        p {{
+
+        .email-text {{
+            text-align: center;
+            line-height: 1.5;
+            color: #ffffff;
+            font-size: 18px;
             margin-bottom: 30px;
         }}
+
         .user-image {{
-            width: 150px;
-            height: 100px;
-}}
+            width: 300px;
+            height: 200px;
+        }}
 
         .user-image img {{
-            width: 150px;
-            height: 100px;
-}}
+            width: 300px;
+            height: 200px;
+        }}
+
+         .button {{
+            background-color: #ffffff;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: all 0.3s ease-out;
+        }}
+
+        .button:hover {{
+            background-color: #f8f8f8;
+            transform: scale(1.05);
+        }}
+
     </style>
 </head>
-<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);">
+<body class="body">
     <img class="user-image" src="https://firebasestorage.googleapis.com/v0/b/thermal-tech-57a87.appspot.com/o/logo.png?alt=media&token=0cd54494-7088-48fd-bdfc-16f7712b6171" alt="Logo">
-    <table style="width: 100%; max-width: 600px; margin: 0 auto; box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.1);">
+    <table class="email-table">
         <tr>
-            <td style="padding: 40px; text-align: center;">
-                <h1 style="color: #ffffff;">Olá,</h1>
-                <p style="line-height: 1.5; color: #ffffff; font-size: 18px;">Seu chamado foi encerrado.</p>
-                <p style="line-height: 1.5; color: #ffffff; font-size: 18px;">Chamado: {chamado}</p>
-                <p style="line-height: 1.5; color: #ffffff; font-size: 18px;">Ordem: {numeroOrdem}</p>
-                <p style="line-height: 1.5; color: #ffffff; font-size: 18px;">tecnico: {tecnico}</p>
+            <td class="email-content">
+                <h1 class="email-heading">{saudacao}</h1>
+                <p class="email-text">Temos o prazer de informar que o seu chamado foi concluído com sucesso.</p>
+                <p class="email-text">Identificação do Chamado: {chamado}</p>
+                <p class="email-text">Número da Ordem: {numeroOrdem}</p>
+                <p class="email-text">O chamado foi atendido pelo técnico: {tecnico}</p>
             </td>
         </tr>
     </table>

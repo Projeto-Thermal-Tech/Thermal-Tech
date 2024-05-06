@@ -28,4 +28,4 @@ with open(local_path, 'wb') as file:
     file.write(response.content)
 
 # Use o caminho local para a imagem como ícone
-toast(message, icon=os.path.realpath(local_path))
+toast(message, icon=os.path.realpath(local_path), on_click=f'http://localhost:5000/view/chamado/{id_chamado}')
