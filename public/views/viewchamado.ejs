@@ -92,6 +92,7 @@
                         <button type="submit"><img src="/assets/save.png" onclick="salvarChamado()" alt=""></button>
                         <button><img src="/assets/delete.png" onclick="deletarChamado()" alt=""></button>
                         <button><img src="/assets/print.png" onclick="imprimir()"></button>
+                        <button id="gerarPdfButton" type="button"><img src="/assets/pdf.png" onclick="PdfDowload()"></button>
                         <button onclick="document.getElementById('fileInput').click();" id="btn-anexo">
                             <img src="/assets/anexos.png" alt="">
                         </button>
@@ -291,3 +292,24 @@
 <link rel="stylesheet" href="/css/@media1440.css">
 <link rel="stylesheet" href="/css/@media1200.css">
 </body>
+
+<script>
+    document.getElementById("gerarPdfButton").addEventListener("click", function() {
+        // Enviar uma solicitação para o servidor para gerar o PDF
+        fetch("/gerar_pdf", {
+            method: "POST",
+            body: document.documentElement.innerHTML  // Envia o conteúdo HTML da página atual
+        })
+        .then(response => response.blob())
+        .then(blob => {
+            // Cria um link para baixar o PDF
+            const url = window.URL.createObjectURL(new Blob([blob]));
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "output.pdf";
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+        });
+    });
+</script>
