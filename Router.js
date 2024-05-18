@@ -24,8 +24,8 @@ const { error } = require("console");
 const db = require("./database/cnx");
 const { email } = require('./public/js/config');
 const { exec } = require('child_process');
-const e = require("express");
-
+const e = require("express");  
+const { spawn } = require('child_process');
 
 router.use(express.static(path.join(__dirname, "/public")));
 
@@ -52,6 +52,31 @@ router.get("/cadastro", async function (req, res) {
         res.status(404).render('error404');
     }
 });
+
+router.get('/graficos', (req, res) => {
+    // Inicia o aplicativo Streamlit em um processo separado
+    const process = spawn('streamlit', ['run', './public/python/graficos.py']);
+
+    process.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`);
+    });
+
+    process.stderr.on('data', (data) => {
+        console.error(`stderr: ${data}`);
+    });
+
+    process.on('close', (code) => {
+        console.log(`child process exited with code ${code}`);
+    });
+
+    // Renderiza uma página com um iframe que exibe o aplicativo Streamlit
+    res.send(`
+        <iframe src="http://localhost:8501" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;">
+            Your browser doesn't support iframes
+        </iframe>
+    `);
+});
+
 let notification = null;
 eventManager.on('newNotification', (msg) => {
     notification = msg;
@@ -272,7 +297,7 @@ router.get("/view/chamado/:id_chamado", async function (req, res) {
         const dados = await db.query(sql, [id_chamado]);
         const tagEquip = dados.rows[0].equipamento_cha
 
-        const sqlEquip = 'SELECT * FROM lista_equipamentos WHERE tag_listequip = $1';
+        const sqlEquip = 'SELECT * FROM C WHERE tag_listequip = $1';
         const dadosEquip = await db.query(sqlEquip, [tagEquip]);
 
         res.render('viewchamado', {

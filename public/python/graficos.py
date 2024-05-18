@@ -5,6 +5,34 @@ from database import get_data
 
 st.set_page_config(layout="wide", page_title='Meu Painel', page_icon=":bar_chart:")
 
+st.sidebar.markdown(
+    """
+    <style>
+    .sidebar-link {
+        display: block;
+        padding: 8px 0;
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+    .sidebar-link:hover {
+        color: lightgray;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+st.sidebar.markdown('<a class="sidebar-link" href="http://localhost:5000/Equipamentos">Equipamentos</a>', unsafe_allow_html=True)
+st.sidebar.markdown('<a class="sidebar-link" href="http://localhost:5000/manutencao">Manutenções</a>', unsafe_allow_html=True)
+st.sidebar.markdown('<a class="sidebar-link" href="http://localhost:5000/consulta_ordem">Consultar Ordens</a>', unsafe_allow_html=True)
+st.sidebar.markdown('<a class="sidebar-link" href="http://localhost:5000/chamado">Chamados</a>', unsafe_allow_html=True)
+st.sidebar.markdown('<a class="sidebar-link" href="http://localhost:5000/cadastro">Cadastro Geral</a>', unsafe_allow_html=True)
+st.sidebar.markdown('<a class="sidebar-link" href="http://localhost:5000/relatorio">Homem Hora</a>', unsafe_allow_html=True)
+st.sidebar.markdown('<a class="sidebar-link" href="http://localhost:5000/graficos">Gráficos gerenciais</a>', unsafe_allow_html=True)
+st.sidebar.markdown('<a class="sidebar-link" href="../pages/chat.html">Chat</a>', unsafe_allow_html=True)
+
 # Adicione um título ao painel
 st.sidebar.title("Painel de Controle")
 
