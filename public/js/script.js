@@ -33,10 +33,27 @@ setInterval(fetchNotification, 5000);
 
 const btn_config = document.querySelector(".config");
 const dados_chamado =document.querySelectorAll(".section_chamado").style.display="none"
-
+function gerarPDF() {
+  // Enviar uma solicitação para o servidor para gerar o PDF
+  fetch("/gerar_pdf", {
+      method: "POST",
+      body: document.documentElement.innerHTML  // Envia o conteúdo HTML da página atual
+  })
+  .then(response => response.blob())
+  .then(blob => {
+      // Cria um link para baixar o PDF
+      const url = window.URL.createObjectURL(new Blob([blob]));
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "output.pdf";
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+  });
+}
 
 btn_config.addEventListener("click", () => {
-    alert("aqui vai abrir as configurações")
+  alert("aqui vai abrir as configurações")
 })
 
 function showPopup() {

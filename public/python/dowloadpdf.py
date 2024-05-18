@@ -13,6 +13,9 @@ def gerar_pdf():
     # Obtém o HTML da página atual
     html_content = request.data.decode("utf-8")
     
+    # Imprime o conteúdo HTML para depuração
+    print(html_content)
+    
     # Gera o PDF a partir do HTML
     pdf = HTML(string=html_content).write_pdf()
 
