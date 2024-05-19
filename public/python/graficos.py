@@ -24,14 +24,14 @@ st.sidebar.markdown(
     unsafe_allow_html=True
 )
 
-st.sidebar.markdown('<a class="sidebar-link" href="http://localhost:5000/Equipamentos">Equipamentos</a>', unsafe_allow_html=True)
-st.sidebar.markdown('<a class="sidebar-link" href="http://localhost:5000/manutencao">Manutenções</a>', unsafe_allow_html=True)
-st.sidebar.markdown('<a class="sidebar-link" href="http://localhost:5000/consulta_ordem">Consultar Ordens</a>', unsafe_allow_html=True)
-st.sidebar.markdown('<a class="sidebar-link" href="http://localhost:5000/chamado">Chamados</a>', unsafe_allow_html=True)
-st.sidebar.markdown('<a class="sidebar-link" href="http://localhost:5000/cadastro">Cadastro Geral</a>', unsafe_allow_html=True)
-st.sidebar.markdown('<a class="sidebar-link" href="http://localhost:5000/relatorio">Homem Hora</a>', unsafe_allow_html=True)
-st.sidebar.markdown('<a class="sidebar-link" href="http://localhost:5000/graficos">Gráficos gerenciais</a>', unsafe_allow_html=True)
-st.sidebar.markdown('<a class="sidebar-link" href="../pages/chat.html">Chat</a>', unsafe_allow_html=True)
+st.sidebar.markdown('<a class="sidebar-link" href="http://localhost:5000/Equipamentos" target="_self">Equipamentos</a>', unsafe_allow_html=True)
+st.sidebar.markdown('<a class="sidebar-link" href="http://localhost:5000/manutencao" target="_self">Manutenções</a>', unsafe_allow_html=True)
+st.sidebar.markdown('<a class="sidebar-link" href="http://localhost:5000/consulta_ordem" target="_self">Consultar Ordens</a>', unsafe_allow_html=True)
+st.sidebar.markdown('<a class="sidebar-link" href="http://localhost:5000/chamado" target="_self">Chamados</a>', unsafe_allow_html=True)
+st.sidebar.markdown('<a class="sidebar-link" href="http://localhost:5000/cadastro" target="_self">Cadastro Geral</a>', unsafe_allow_html=True)
+st.sidebar.markdown('<a class="sidebar-link" href="http://localhost:5000/relatorio" target="_self">Homem Hora</a>', unsafe_allow_html=True)
+st.sidebar.markdown('<a class="sidebar-link" href="http://localhost:5000/graficos" target="_self">Gráficos gerenciais</a>', unsafe_allow_html=True)
+st.sidebar.markdown('<a class="sidebar-link" href="../pages/chat.html" target="_self">Chat</a>', unsafe_allow_html=True)
 
 # Adicione um título ao painel
 st.sidebar.title("Painel de Controle")

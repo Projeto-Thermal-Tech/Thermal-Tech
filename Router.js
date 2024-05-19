@@ -53,29 +53,39 @@ router.get("/cadastro", async function (req, res) {
     }
 });
 
-router.get('/graficos', (req, res) => {
-    // Inicia o aplicativo Streamlit em um processo separado
-    const process = spawn('streamlit', ['run', './public/python/graficos.py']);
+let streamlitProcess = null;
 
-    process.stdout.on('data', (data) => {
+router.get('/graficos', (req, res) => {
+    // Encerra o processo Streamlit anterior, se houver um
+    if (streamlitProcess) {
+        streamlitProcess.on('exit', () => {
+            startStreamlitProcess(res);
+        });
+        streamlitProcess.kill('SIGKILL');
+    } else {
+        startStreamlitProcess(res);
+    }
+});
+
+function startStreamlitProcess(res) {
+    // Inicia o aplicativo Streamlit em um processo separado
+    streamlitProcess = spawn('streamlit', ['run', './public/python/graficos.py', '--server.headless', 'true', '--server.port', '8501']);
+
+    streamlitProcess.stdout.on('data', (data) => {
         console.log(`stdout: ${data}`);
     });
 
-    process.stderr.on('data', (data) => {
+    streamlitProcess.stderr.on('data', (data) => {
         console.error(`stderr: ${data}`);
     });
 
-    process.on('close', (code) => {
+    streamlitProcess.on('close', (code) => {
         console.log(`child process exited with code ${code}`);
     });
 
     // Renderiza uma página com um iframe que exibe o aplicativo Streamlit
-    res.send(`
-        <iframe src="http://localhost:8501" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;">
-            Your browser doesn't support iframes
-        </iframe>
-    `);
-});
+res.redirect('http://localhost:8501/')
+}
 
 let notification = null;
 eventManager.on('newNotification', (msg) => {
