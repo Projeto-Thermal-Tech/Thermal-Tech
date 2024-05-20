@@ -5,19 +5,24 @@ from database import get_data
 
 st.set_page_config(layout="wide", page_title='Meu Painel', page_icon=":bar_chart:")
 
+
 st.sidebar.markdown(
     """
     <style>
     .sidebar-link {
         display: block;
-        padding: 8px 0;
+        padding: 10px 15px;
         color: white;
         text-decoration: none;
-        font-size: 16px;
-        margin-bottom: 8px;
+        font-size: 18px;
+        margin-bottom: 10px;
+        background-color:  rgba(0,212,255,1);
+        border-radius: 5px;
+        font-family: Arial, sans-serif;
     }
     .sidebar-link:hover {
         color: lightgray;
+        background-color: rgba(9,9,121,1);
     }
     </style>
     """,
