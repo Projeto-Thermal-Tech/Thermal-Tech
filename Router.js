@@ -300,6 +300,19 @@ router.post("/view/chamado", async function (req, res) {
         res.status(404).render('error404');
     }
 });
+
+router.get('/downloadpdf', async (req, res) => {
+    const numerochamado = req.query.id
+    exec(`python ./public/python/downloadpdf.py ${numerochamado}`, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Erro ao executar o script Python: ${error}`);
+            return res.sendStatus(500);
+        }
+        console.log(`Saída do script Python: ${stdout}`);
+    });
+
+});
+
 router.get("/view/chamado/:id_chamado", async function (req, res) {
     try {
         const id_chamado = req.params.id_chamado;
@@ -307,7 +320,7 @@ router.get("/view/chamado/:id_chamado", async function (req, res) {
         const dados = await db.query(sql, [id_chamado]);
         const tagEquip = dados.rows[0].equipamento_cha
 
-        const sqlEquip = 'SELECT * FROM C WHERE tag_listequip = $1';
+        const sqlEquip = 'SELECT * FROM lista_equipamentos WHERE tag_listequip = $1';
         const dadosEquip = await db.query(sqlEquip, [tagEquip]);
 
         res.render('viewchamado', {
