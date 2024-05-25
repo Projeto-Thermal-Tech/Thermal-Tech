@@ -303,7 +303,7 @@ router.post("/view/chamado", async function (req, res) {
 
 router.get('/downloadpdf', async (req, res) => {
     const numerochamado = req.query.id
-    exec(`python ./public/python/downloadpdf.py ${numerochamado}`, (error, stdout, stderr) => {
+    exec(`python ./public/python/download.py ${numerochamado}`, (error, stdout, stderr) => {
         if (error) {
             console.error(`Erro ao executar o script Python: ${error}`);
             return res.sendStatus(500);

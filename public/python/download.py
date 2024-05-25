@@ -1,8 +1,10 @@
+import os
 import pdfkit
 import sys
 
 numerochamado = sys.argv[1]
-path_to_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'  # Altere para o caminho correto no seu sistema
+dir_path = os.path.dirname(os.path.abspath(__file__))
+path_to_wkhtmltopdf = os.path.join(dir_path, './wkhtmltopdf/bin/wkhtmltopdf.exe')
 config = pdfkit.configuration(wkhtmltopdf=path_to_wkhtmltopdf)
 
-pdfkit.from_url(f"http://localhost:5000/view/chamado/{numerochamado}", "teste.pdf", configuration=config)
+pdfkit.from_url(f"http://localhost:5000/view/chamado/{numerochamado}", f"chamado {numerochamado}.pdf", configuration=config)

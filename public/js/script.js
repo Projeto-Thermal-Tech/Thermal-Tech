@@ -45,7 +45,7 @@ fetch('http://localhost:5000/downloadpdf?id=' + numerochamado)
       console.log('Script Python executado com sucesso');
   })
   .catch(error => console.error(error));
-      lastNotification = data;
+  alert("PDF gerado com sucesso!")
   }
 
 btn_config.addEventListener("click", () => {
