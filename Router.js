@@ -302,15 +302,15 @@ router.post("/view/chamado", async function (req, res) {
 });
 
 router.get('/downloadpdf', async (req, res) => {
-    const numerochamado = req.query.id
-    exec(`python ./public/python/download.py ${numerochamado}`, (error, stdout, stderr) => {
+    const numeroOrdem = req.query.id
+    exec(`python ./public/python/download.py ${numeroOrdem}`, (error, stdout, stderr) => {
         if (error) {
             console.error(`Erro ao executar o script Python: ${error}`);
             return res.sendStatus(500);
         }
         console.log(`Saída do script Python: ${stdout}`);
+        res.download(stdout.trim());  // Envia o arquivo PDF como resposta
     });
-
 });
 
 router.get("/view/chamado/:id_chamado", async function (req, res) {
@@ -333,6 +333,25 @@ router.get("/view/chamado/:id_chamado", async function (req, res) {
 router.post("/view/ordem", async function (req, res) {
     try {
         const id_ordem = req.body.id_ordem;
+        const sqlTec = 'SELECT matricula_tec, nome_tec, email FROM tecnicos;'
+        const sql = "SELECT ordem.id_ordem, status.nome_status, ordem.numero_cha, ordem.criado_por_ord, ordem.data_ini_ord, ordem.data_fim_ord, ordem.hora_ini_ord, ordem.hora_fim_ord, ordem.prioridade_ord, ordem.manut_ord, ordem.matricula_ord, ordem.data_lanc_ord,ordem.data_ini_trab, ordem.hora_ini_trab, ordem.data_fim_trab, ordem.hora_fim_trab, ordem.texto_servico FROM ordem INNER JOIN status ON ordem.status_ord = status.id_status WHERE id_ordem = $1";
+        const dados = await db.query(sql, [id_ordem]);
+        const nomeTecs = await db.query(sqlTec)
+        if (dados.rows.length > 0) {
+            res.render('viewordem', {
+                dadosOrdem: dados.rows[0],
+                nomeTecs: nomeTecs.rows
+            });
+        } else {
+            res.status(404).send("Ordem não encontrada");
+        }
+    } catch (error) {
+        res.status(404).render('error404');
+    }
+});
+router.get("/view/ordem/:id_ordem", async function (req, res) {
+    try {
+        const id_ordem = req.params.id_ordem;
         const sqlTec = 'SELECT matricula_tec, nome_tec, email FROM tecnicos;'
         const sql = "SELECT ordem.id_ordem, status.nome_status, ordem.numero_cha, ordem.criado_por_ord, ordem.data_ini_ord, ordem.data_fim_ord, ordem.hora_ini_ord, ordem.hora_fim_ord, ordem.prioridade_ord, ordem.manut_ord, ordem.matricula_ord, ordem.data_lanc_ord,ordem.data_ini_trab, ordem.hora_ini_trab, ordem.data_fim_trab, ordem.hora_fim_trab, ordem.texto_servico FROM ordem INNER JOIN status ON ordem.status_ord = status.id_status WHERE id_ordem = $1";
         const dados = await db.query(sql, [id_ordem]);

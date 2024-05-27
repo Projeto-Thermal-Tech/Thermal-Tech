@@ -1,4 +1,3 @@
-const { response } = require("express");
 
 function mostrarUser() {
   const userEmail = localStorage.getItem("userEmail");
@@ -35,19 +34,45 @@ setInterval(fetchNotification, 5000);
 const btn_config = document.querySelector(".config");
 const dados_chamado =document.querySelectorAll(".section_chamado").style.display="none"
 
+// JavaScript
+// JavaScript
 function gerarPDF() {
-let numerochamado = document.querySelector("#idChamado").value
-fetch('http://localhost:5000/downloadpdf?id=' + numerochamado)
-  .then(response => {
-      if (!response.ok) {
-          throw new Error('Erro ao executar o script Python');
-      }
-      console.log('Script Python executado com sucesso');
-  })
-  .catch(error => console.error(error));
-  alert("PDF gerado com sucesso!")
-  }
+  // Obtém o valor do elemento com o ID "idChamado"
+  let numeroOrdem = document.querySelector("#idOrdem").value
 
+  // Faz uma solicitação GET para o servidor para baixar o PDF
+  fetch('http://localhost:5000/downloadpdf?id=' + numeroOrdem)
+      .then(response => {
+          // Se a resposta não for bem-sucedida, lança um erro
+          if (!response.ok) {
+              throw new Error('Erro ao executar o script Python');
+          }
+          // Lê a resposta como um Blob e retorna esse Blob
+          return response.blob();
+      })
+      .then(blob => {
+          // Cria um URL para o Blob
+          const url = window.URL.createObjectURL(blob);
+
+          // Cria um elemento de link e define o URL do Blob como o href do link
+          const a = document.createElement('a');
+          a.href = url;
+
+          // Define o nome do arquivo para download
+          a.download = 'chamado ' + numeroOrdem + '.pdf';
+
+          // Adiciona o link ao corpo do documento
+          document.body.appendChild(a);
+
+          // Simula um clique no link, o que inicia o download do arquivo
+          a.click();
+
+          // Remove o link do corpo do documento, pois não é mais necessário
+          a.remove();
+      })
+      // Registra qualquer erro que possa ocorrer no console
+      .catch(error => console.error(error));
+}
 btn_config.addEventListener("click", () => {
   alert("aqui vai abrir as configurações")
 })

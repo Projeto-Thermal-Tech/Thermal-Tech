@@ -1,8 +1,12 @@
-#GMAIL
+# Python
 import smtplib
 import sys
+import pdfkit
+import os
 from email.mime.text import MIMEText
-from  email.mime.multipart import MIMEMultipart
+from email.mime.multipart import MIMEMultipart
+from email.mime.base import MIMEBase
+from email import encoders
 from datetime import datetime
 
 # Obter a hora atual
@@ -17,10 +21,9 @@ else:
     saudacao = "Boa noite"
 
 numeroOrdem = sys.argv[1]
-tecnico = sys.argv[3    ]
+tecnico = sys.argv[3]
 chamado = sys.argv[2]
 email = sys.argv[4]
-
 
 #configurações do servidor SMTP
 server_smtp = 'smtp.gmail.com'
@@ -118,13 +121,43 @@ body = f"""
 """
 
 #criando o email
+dir_path = os.path.dirname(os.path.abspath(__file__))
+path_to_wkhtmltopdf = os.path.join(dir_path, './wkhtmltopdf/bin/wkhtmltopdf.exe')
+config = pdfkit.configuration(wkhtmltopdf=path_to_wkhtmltopdf)
+
+output_file = f"Ordem {numeroOrdem}.pdf"
+pdfkit.from_url(f"http://localhost:5000/view/ordem/{numeroOrdem}", output_file, configuration=config)
+
+
 message = MIMEMultipart()
 message["from"] = sender_email
 message["to"] = receive_email
 message["subject"] = subject
 message.attach(MIMEText(body, "html"))
 
-#Conectando o servidor SMTP
+# Aqui está o novo código que anexa o PDF ao e-mail
+mime_type = "application/pdf"  # Use "application/pdf" para .pdf
+
+current_dir = os.path.dirname(os.path.realpath(__file__))
+
+# Constrói o caminho completo para o arquivo
+filename = os.path.join(current_dir, '..', '..', f'Ordem {numeroOrdem}.pdf')
+
+if os.path.isfile(filename):
+    with open(filename, "rb") as attachment:
+        part = MIMEBase(*mime_type.split('/'))
+        part.set_payload(attachment.read())
+    encoders.encode_base64(part)
+    part.add_header(
+        "Content-Disposition",
+        f"attachment; filename= {os.path.basename(filename)}",  # Use o nome do arquivo, não o caminho completo
+    )
+    message.attach(part)
+    os.remove(filename)  # Exclui o arquivo depois de anexá-lo
+else:
+    print(f"O arquivo {filename} não existe")
+
+# Conectando o servidor SMTP
 try:
     server = smtplib.SMTP(server_smtp, port)
     server.starttls()
