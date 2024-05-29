@@ -5,7 +5,7 @@ import plotly.express as px
 from database import get_data
 
 # Configurando a página
-st.set_page_config(layout="wide", page_title='Meu Painel', page_icon=":bar_chart:")
+st.set_page_config(layout="wide", page_title='Graficos Gerais', page_icon=":bar_chart:" )
 
 # Definindo o estilo dos links na barra lateral
 st.sidebar.markdown(
@@ -21,10 +21,13 @@ st.sidebar.markdown(
         background-color:  rgba(0,212,255,1);
         border-radius: 5px;
         font-family: Arial, sans-serif;
+        text-align: center; 
+        transition: background-color 1.5s ease, transform 0.7s ease-in-out; 
     }
     .sidebar-link:hover {
         color: lightgray;
         background-color: rgba(9,9,121,1);
+        transform: scale(1.1);  
     }
     </style>
     """,

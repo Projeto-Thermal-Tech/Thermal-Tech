@@ -117,8 +117,6 @@ body = f"""
                 <p class="email-text">Identificação do Chamado: {id_chamado}</p>
                 <p class="email-text">Este chamado foi criado por: {criador}</p>
                 <p class="email-text">O chamado foi iniciado às: {horaInicio} no dia: {dataInicio}</p>
-                <p class="email-text">Agradecemos por ter recebido este e-mail de teste.</p>
-                <p class="email-text">Por favor, note que este e-mail é apenas um exemplo para fins de demonstração e teste.</p>
                 <a href="http://localhost:5000/view/chamado/{id_chamado}" class="button">Clique Aqui Pra Vizualizar o Chamado</a>
             </td>
         </tr>
