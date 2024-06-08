@@ -73,6 +73,11 @@ li{
     padding: 1rem;
     text-align: center;
  }
+
+ body {
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+}
+
  .dados_manut{
    margin-top: 1rem; 
    width:90%;
