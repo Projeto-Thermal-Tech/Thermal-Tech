@@ -1,6 +1,6 @@
 {
   "name": "thermal-tech",
-  "version": "1.0.0",
+  "version": "V1.0.0",
   "description": "Sistema de controle de manutenção de  ar condiconado",
   "main": "main.ts",
   "scripts": {
