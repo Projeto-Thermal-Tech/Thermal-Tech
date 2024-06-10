@@ -18,6 +18,9 @@ const atualizarSetor = require('./database/db');
 const excluirSetor = require('./database/db');
 const atualizarTipo = require('./database/db');
 const excluirTipoArCondicionado = require('./database/db');
+const { insertFeedback } = require('./database/db');
+const { insertSuporte } = require('./database/db');
+const nodemailer = require('nodemailer');
 const dados = require('./database/db');
 const { error } = require("console");
 const db = require("./database/cnx");
@@ -245,8 +248,117 @@ router.get("/relatorio", async function (req, res) {
     }
 });
 
+router.post('/feedbacks', async function(req, res)  {
+    const { anonymous_feed, nome_feed, email_feed, descricao_feed } = req.body;
+    console.log(req.body);
+    try {
+        await insertFeedback(anonymous_feed, nome_feed, email_feed, descricao_feed);
+        res.redirect('back'); // Redireciona o usuário para a página anterior
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Houve um erro ao enviar o feedback.');
+    }
+});
+// Configura o transporte de e-mail
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'cloudthermaltech2@gmail.com',
+        pass: 'tzjvpbvvpblcgyqh'
+    }
+});
 
+router.post('/Suporte', async function (req, res) {
+    const { nome_desc, email_desc, descricao_desc } = req.body;
+    console.log(req.body);
+    try {
+        await insertSuporte(nome_desc, email_desc, descricao_desc);
 
+        // Envia um e-mail para os desenvolvedores
+        let mailOptions = {
+            from: 'cloudthermaltech2@gmail.com',
+            to: 'ens-eduardowagner@ugv.edu.br, ens-victorbueno@ugv.edu.br',
+            subject: 'Novo suporte enviado',
+            html: `
+                <html>
+                <head>
+                    <style>
+                        .body {
+                            font-family:B612; 
+                            margin: 0;
+                            padding: 0;
+                            background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+                        }
+
+                        .email-table {
+                            width: 100%;
+                            max-width: 600px;
+                            margin: 0 auto;
+                            box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.1);
+                        }
+
+                        .email-content{
+                            padding: 20px;
+                            text-align: center;
+                        }
+
+                        .email-heading {
+                            color: #ffffff;
+                        }
+
+                        .email-text {
+                            text-align: center;
+                            line-height: 1.5;
+                            color: #ffffff;
+                            font-size: 18px;
+                            margin-bottom: 30px;
+                        }
+
+                        .user-image {
+                            width: 300px;
+                            height: 200px;
+                        }
+
+                        .user-image img {
+                            width: 300px;
+                            height: 200px;
+                        }
+
+                        .email-text a {
+                            color: white;
+                        }
+                </style>
+                </head>
+                <body class="body">
+                    <img class="user-image" src="https://firebasestorage.googleapis.com/v0/b/thermal-tech-57a87.appspot.com/o/logo.png?alt=media&token=0cd54494-7088-48fd-bdfc-16f7712b6171" alt="Logo">
+                    <table class="email-table">
+                        <tr>
+                            <td class="email-content">
+                                <h1 class="email-heading">Novo suporte enviado</h1>
+                                <p class="email-text"><strong>Nome:</strong> ${nome_desc}</p>
+                                <p class="email-text"><strong>Email:</strong> ${email_desc}</p>
+                                <p class="email-text"><strong>Descrição:</strong> ${descricao_desc}</p>
+                            </td>
+                        </tr>
+                    </table>
+                </body>
+                </html>
+            `
+        };
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email enviado: ' + info.response);
+            }
+        });
+
+        res.redirect('back');
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Houve um erro ao enviar o Suporte.');
+    }
+});
 
 // router.get("/view/manut", async function (req, res) {
 //     try {

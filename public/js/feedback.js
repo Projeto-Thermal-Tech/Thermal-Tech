@@ -39,6 +39,8 @@ document.addEventListener("DOMContentLoaded", function() {
   function enableAnonymous(event) {
     event.preventDefault();
     isAnonymous = true;
+    document.getElementById('NomeFeedback').value = ''; // Limpa o campo de nome
+    document.getElementById('userEmailInput').value = ''; // Limpa o campo de e-mail
     document.getElementById('NomeFeedback').style.display = 'none';
     document.querySelector('label[for="userName"]').style.display = 'none';
     document.getElementById('userEmailInput').style.display = 'none';
@@ -47,6 +49,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function resetForm() {
     isAnonymous = false;
+    document.getElementById('NomeFeedback').value = ''; // Limpa o campo de nome
+    document.getElementById('userEmailInput').value = ''; // Limpa o campo de e-mail
     document.getElementById('NomeFeedback').style.display = 'block';
     document.querySelector('label[for="userName"]').style.display = 'block';
     document.getElementById('userEmailInput').style.display = 'block';

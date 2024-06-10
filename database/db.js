@@ -84,6 +84,22 @@ exports.selectChamado = async function() {
       await db.end();
     }
 };
+exports.insertFeedback = function (anonymous_feed, nome_feed, email_feed, descricao_feed) {
+    async function novoFeedback(anonymous_feed, nome_feed, email_feed, descricao_feed) {
+        await db.connect();
+        const inserir = 'INSERT INTO feedbacks (anonymous_feed, nome_feed, email_feed, descricao_feed) VALUES ($1, $2, $3, $4)';
+        await db.query(inserir, [anonymous_feed, nome_feed, email_feed, descricao_feed]);
+    }
+    return novoFeedback(anonymous_feed, nome_feed, email_feed, descricao_feed);
+}
+exports.insertSuporte = function (nome_desc, email_desc, descricao_desc) {
+    async function novoSuporte(nome_desc, email_desc, descricao_desc) {
+        await db.connect();
+        const inserir = 'INSERT INTO Suporte (nome_desc, email_desc, descricao_desc) VALUES ($1, $2, $3)';
+        await db.query(inserir, [nome_desc, email_desc, descricao_desc]);
+    }
+    return novoSuporte(nome_desc, email_desc, descricao_desc);
+}
 
 exports.updateEquip = function (id, tag, tipo, modelo, ns, area, local, setor, descricao) {
     async function atualizarEquip(id, tag, tipo, modelo, ns, area, local, setor, descricao) {

@@ -77,3 +77,36 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("URL da foto do perfil encontrada");
   }
 });
+
+function setUserImageOnLogin() {
+  // Obtém a URL da imagem do localStorage
+  const userPhotoURL = localStorage.getItem('userPhotoURL');
+
+  if (userPhotoURL) {
+      // Define a imagem de perfil do usuário
+      const output = document.getElementById('preview');
+      output.src = userPhotoURL;
+      output.style.display = 'block';
+
+      // Esconde o ícone do usuário
+      const icone = document.getElementById('icone');
+      icone.style.display = 'none';
+  }
+}
+
+function previewImage(event) {
+  const reader = new FileReader();
+  reader.onload = function() {
+      const output = document.getElementById('preview');
+      output.src = reader.result;
+      output.style.display = 'block';
+
+      // Esconde o ícone do usuário
+      const icone = document.getElementById('icone');
+      icone.style.display = 'none';
+
+      // Armazene a imagem do perfil como uma string de dados base64
+      localStorage.setItem('userPhotoURL', reader.result);
+  }
+  reader.readAsDataURL(event.target.files[0]);
+}
