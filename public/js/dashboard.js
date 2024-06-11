@@ -79,38 +79,39 @@ document.addEventListener("DOMContentLoaded", function () {
 // }
 
 function previewImage(event) {
-  const reader = new FileReader();
-  reader.onload = function() {
-      showLoading();
-      const output = document.getElementById('preview');
-      output.src = reader.result;
-      output.style.display = 'block';
+    const reader = new FileReader();
+    reader.onload = function() {
+        showLoading();
+        const output = document.getElementById('preview');
+        output.src = reader.result;
+        output.style.display = 'block';
 
-      // Esconde o ícone do usuário
-      const icone = document.getElementById('icone');
-      icone.style.display = 'none';
+        // Esconde o ícone do usuário
+        const icone = document.getElementById('icone');
+        icone.style.display = 'none';
 
-      // Salva a imagem no Firebase Storage
-      const storageRef = firebase.storage().ref();
-      const fileRef = storageRef.child('images/' + event.target.files[0].name);
-      fileRef.put(event.target.files[0]).then(function(snapshot) {
-          console.log('Imagem carregada com sucesso!');
-          
-          // Obtém a URL da imagem e salva no localStorage
-          fileRef.getDownloadURL().then(function(url) {
-              localStorage.setItem('userPhotoURL', url);
-              const user = firebase.auth().currentUser;
-              user.updateProfile({
-                  photoURL: url
-              }).then(function() {
-                  console.log('Foto de perfil atualizada com sucesso');
-                  alert('Foto de perfil atualizada com sucesso');
-                  hideloading();
-              }).catch(function(error) {
-                  console.log('Erro ao atualizar a foto de perfil', error);
-              });
-          });
-      });
-  };
-  reader.readAsDataURL(event.target.files[0]);
+        // Salva a imagem no Firebase Storage
+        const storageRef = firebase.storage().ref();
+        const user = firebase.auth().currentUser;
+        const fileName = 'userPhoto_' + user.uid; // Inclui o ID do usuário no nome do arquivo
+        const fileRef = storageRef.child('images/' + fileName);
+        fileRef.put(event.target.files[0]).then(function(snapshot) {
+            console.log('Imagem carregada com sucesso!');
+            
+            // Obtém a URL da imagem e salva no localStorage
+            fileRef.getDownloadURL().then(function(url) {
+                localStorage.setItem('userPhotoURL', url);
+                user.updateProfile({
+                    photoURL: url
+                }).then(function() {
+                    console.log('Foto de perfil atualizada com sucesso');
+                    alert('Foto de perfil atualizada com sucesso');
+                    hideloading();
+                }).catch(function(error) {
+                    console.log('Erro ao atualizar a foto de perfil', error);
+                });
+            });
+        });
+    };
+    reader.readAsDataURL(event.target.files[0]);
 }
