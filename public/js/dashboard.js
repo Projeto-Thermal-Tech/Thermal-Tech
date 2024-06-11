@@ -12,20 +12,6 @@ function closeDashboard() {
     dashboard.style.display = 'none';
 }
 
-function previewImage(event) {
-    const reader = new FileReader();
-    reader.onload = function() {
-        const output = document.getElementById('preview');
-        output.src = reader.result;
-        output.style.display = 'block';
-  
-        // Esconde o ícone do usuário
-        const icone = document.getElementById('icone');
-        icone.style.display = 'none';
-    };
-    reader.readAsDataURL(event.target.files[0]);
-  }
-
 function AbiriPopupPerfilUsuario() {
   document.getElementById('userModal').style.display = 'block';
 }
@@ -57,8 +43,6 @@ document.getElementById('userPhone').addEventListener('input', function (e) {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-
-
   // Obtenha a URL da foto do perfil do localStorage
   var photoURL = localStorage.getItem("userPhotoURL");
 
@@ -78,25 +62,26 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-function setUserImageOnLogin() {
-  // Obtém a URL da imagem do localStorage
-  const userPhotoURL = localStorage.getItem('userPhotoURL');
+// function setUserImageOnLogin() {
+//   // Obtém a URL da imagem do localStorage
+//   const userPhotoURL = localStorage.getItem('userPhotoURL');
 
-  if (userPhotoURL) {
-      // Define a imagem de perfil do usuário
-      const output = document.getElementById('preview');
-      output.src = userPhotoURL;
-      output.style.display = 'block';
+//   if (userPhotoURL) {
+//       // Define a imagem de perfil do usuário
+//       const output = document.getElementById('preview');
+//       output.src = userPhotoURL;
+//       output.style.display = 'block';
 
-      // Esconde o ícone do usuário
-      const icone = document.getElementById('icone');
-      icone.style.display = 'none';
-  }
-}
+//       // Esconde o ícone do usuário
+//       const icone = document.getElementById('icone');
+//       icone.style.display = 'none';
+//   }
+// }
 
 function previewImage(event) {
   const reader = new FileReader();
   reader.onload = function() {
+      showLoading();
       const output = document.getElementById('preview');
       output.src = reader.result;
       output.style.display = 'block';
@@ -105,8 +90,27 @@ function previewImage(event) {
       const icone = document.getElementById('icone');
       icone.style.display = 'none';
 
-      // Armazene a imagem do perfil como uma string de dados base64
-      localStorage.setItem('userPhotoURL', reader.result);
-  }
+      // Salva a imagem no Firebase Storage
+      const storageRef = firebase.storage().ref();
+      const fileRef = storageRef.child('images/' + event.target.files[0].name);
+      fileRef.put(event.target.files[0]).then(function(snapshot) {
+          console.log('Imagem carregada com sucesso!');
+          
+          // Obtém a URL da imagem e salva no localStorage
+          fileRef.getDownloadURL().then(function(url) {
+              localStorage.setItem('userPhotoURL', url);
+              const user = firebase.auth().currentUser;
+              user.updateProfile({
+                  photoURL: url
+              }).then(function() {
+                  console.log('Foto de perfil atualizada com sucesso');
+                  alert('Foto de perfil atualizada com sucesso');
+                  hideloading();
+              }).catch(function(error) {
+                  console.log('Erro ao atualizar a foto de perfil', error);
+              });
+          });
+      });
+  };
   reader.readAsDataURL(event.target.files[0]);
 }

@@ -39,22 +39,6 @@ function newCont() {
   window.location.href = "./criar.html";
 }
 
-// Após a autenticação bem-sucedida, obtenha o UID do usuário
-
-
-// function register() {
-//     showLoading();
-//     let email = document.getElementById("email").value;
-//     let password = document.getElementById("password").value;
-//     firebase.auth().createUserWithEmailAndPassword(email,password).then(()=>{
-//         hideloading()
-//         window.location.href ='../pages/home.html'
-//     }).catch(error =>{
-//         hideloading()
-//         alert(error)
-//     })
-//   }
-
 async function register(event) {
   event.preventDefault(); // Evita o envio padrão do formulário
 
