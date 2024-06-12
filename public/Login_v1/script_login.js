@@ -2,7 +2,7 @@
 // Add this code to the login page JavaScript file
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
-    window.location.href = "../pages/home.html";
+    window.location.href = "http://localhost:5000/inicio";
   }
 })
 
