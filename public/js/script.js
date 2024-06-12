@@ -2,9 +2,11 @@ function mostrarUser() {
   const userEmail = localStorage.getItem("userEmail");
   const fullName = localStorage.getItem("fullName"); 
   
+  document.getElementById("userEmail").value = userEmail;
   document.getElementById("userEmail").innerHTML = userEmail;
   document.getElementById("userEmailInput").value = userEmail;
   document.getElementById("userEmailSuporte").value = userEmail;
+  document.getElementById("userEmailPerfilUser").value = userEmail;
   document.getElementById("fullName").value = fullName; 
 }
 

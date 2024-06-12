@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const filterSelect = document.getElementById('esta');
+    const filterSelect = document.getElementById('estaOrd');
     const dataTable = document.getElementById('filtro_ord').getElementsByTagName('tbody')[0].getElementsByTagName('tr');
 
     filterSelect.addEventListener('change', function () {
@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (selectedValue === 'aberto' && statusCell === 'aberto') {
           row.style.display = 'table-row';
-        } else if (selectedValue === 'fechado' && statusCell === 'encerrado') {
+        } else if (selectedValue === 'encerrada' && statusCell === 'encerrada') {
           row.style.display = 'table-row';
-        } else if (selectedValue === 'andamento' && statusCell === 'em andamento') {
+        } else if (selectedValue === 'andamento' && statusCell === 'andamento') {
           row.style.display = 'table-row';
         } else if (selectedValue === 'todos') {
           row.style.display = 'table-row';

@@ -42,6 +42,25 @@ document.getElementById('userPhone').addEventListener('input', function (e) {
     }
 });
 
+document.addEventListener('DOMContentLoaded', (event) => {
+  const cpfField = document.getElementById('CPF');
+
+  cpfField.addEventListener('input', (e) => {
+    let value = e.target.value;
+    value = value.replace(/\D/g, ""); // Remove tudo o que não é dígito
+
+    if (value.length > 3 && value.length <= 6) {
+      value = value.substring(0, 3) + '.' + value.substring(3);
+    } else if (value.length > 6 && value.length <= 9) {
+      value = value.substring(0, 3) + '.' + value.substring(3, 6) + '.' + value.substring(6);
+    } else if (value.length > 9) {
+      value = value.substring(0, 3) + '.' + value.substring(3, 6) + '.' + value.substring(6, 9) + '-' + value.substring(9, 11);
+    }
+
+    e.target.value = value;
+  });
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   // Obtenha a URL da foto do perfil do localStorage
   var photoURL = localStorage.getItem("userPhotoURL");

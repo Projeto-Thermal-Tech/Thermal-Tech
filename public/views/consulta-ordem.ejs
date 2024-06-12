@@ -98,7 +98,7 @@
         <select id="estaOrd">
           <option value="todos">Todos</option>
           <option value="aberto">Aberto</option>
-          <option value="fechado">Encerrado</option>
+          <option value="encerrada">Encerrado</option>
           <option value="andamento">Em Andamento</option>
         </select>
       </div>
@@ -124,7 +124,6 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
             <% 
             function formatarData(data) {
               const dataObj = new Date(data);
@@ -330,16 +329,16 @@
             <input type="text" id="nome" class="input-field" aria-describedby="userNameHelp">
           </div>
           <div class="form-group">
-            <label class="labelUser" for="userEmailInput">Email:</label>
-            <input type="email" id="userEmailInput" class="input-field" aria-describedby="userEmailHelp">
-          </div>              
+            <label class="labelUser" for="userEmailPerfilUser">Email:</label>
+            <input type="email" id="userEmailPerfilUser" class="input-field" aria-describedby="userEmailHelp">
+          </div>                
           <div class="form-group">
             <label class="labelUser" for="userPhone">Telefone:</label>
             <input type="text" id="userPhone" class="input-field" aria-describedby="userPhoneHelp">
           </div>
           <div class="form-group">
             <label class="labelUser" for="CPF">CPF:</label>
-            <input type="number" id="CPF" class="input-field" aria-describedby="CPF">
+            <input type="text" id="CPF" class="input-field" aria-describedby="CPF">
           </div>
           <div class="form-group">
             <label class="labelUserData" for="dataNascimento">Data de Nascimento:</label>
