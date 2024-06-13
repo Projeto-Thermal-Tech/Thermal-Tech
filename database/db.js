@@ -101,6 +101,16 @@ exports.insertSuporte = function (nome_desc, email_desc, descricao_desc) {
     return novoSuporte(nome_desc, email_desc, descricao_desc);
 }
 
+exports.insertPerfil_Usuario = function (nome_pfu, email_pfu, telefone_pfu, cpf_pfu, data_nascimento_pfu) {
+    async function novoPerfil_Usuario(nome_pfu, email_pfu, telefone_pfu, cpf_pfu, data_nascimento_pfu) {
+        console.log(nome_pfu, email_pfu, telefone_pfu, cpf_pfu, data_nascimento_pfu);
+        await db.connect();
+        const inserir = 'INSERT INTO Perfil_Usuario (nome_pfu, email_pfu, telefone_pfu, cpf_pfu, data_nascimento_pfu) VALUES ($1, $2, $3, $4, $5)';
+        await db.query(inserir, [nome_pfu, email_pfu, telefone_pfu, cpf_pfu, data_nascimento_pfu]);
+    }
+    return novoPerfil_Usuario(nome_pfu, email_pfu, telefone_pfu, cpf_pfu, data_nascimento_pfu);
+}
+
 exports.updateEquip = function (id, tag, tipo, modelo, ns, area, local, setor, descricao) {
     async function atualizarEquip(id, tag, tipo, modelo, ns, area, local, setor, descricao) {
         try {

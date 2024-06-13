@@ -321,31 +321,31 @@
             <span class="user-close">&times;</span>
             <h2 class="title-user">Perfil do Usuário</h2>
             <hr class="profileLine">
-            <form id="profileForm" class="profile-form">
-              <div class="form-group">
-                <label class="labelUser" for="userName">Nome:</label>
-                <input type="text" id="nome" class="input-field" aria-describedby="userNameHelp">
-              </div>
-              <div class="form-group">
-                <label class="labelUser" for="userEmailPerfilUser">Email:</label>
-                <input type="email" id="userEmailPerfilUser" class="input-field" aria-describedby="userEmailHelp">
-              </div>                
-              <div class="form-group">
-                <label class="labelUser" for="userPhone">Telefone:</label>
-                <input type="text" id="userPhone" class="input-field" aria-describedby="userPhoneHelp">
-              </div>
-              <div class="form-group">
-                <label class="labelUser" for="CPF">CPF:</label>
-                <input type="text" id="CPF" class="input-field" aria-describedby="CPF">
-              </div>
-              <div class="form-group">
-                <label class="labelUserData" for="dataNascimento">Data de Nascimento:</label>
-                <input type="date" id="dataNascimento" class="input-fieldData" aria-describedby="dataNascimento" maxlength="14">
-              </div> 
-              <hr>
-              <div class="form-group">
-                <input type="submit" value="Salvar" class="input-submit">
-              </div>
+            <form id="profileForm" class="profile-form" action="/Perfil_Usuario" method="POST">
+                <div class="form-group">
+                    <label class="labelUser" for="userName">Nome:</label>
+                    <input type="text" id="nome" name="nome_pfu" class="input-field" aria-describedby="userNameHelp">
+                </div>
+                <div class="form-group">
+                    <label class="labelUser" for="userEmailPerfilUser">Email:</label>
+                    <input type="email" id="userEmailPerfilUser" name="email_pfu" class="input-field" aria-describedby="userEmailHelp">
+                </div>              
+                <div class="form-group">
+                    <label class="labelUser" for="userPhone">Telefone:</label>
+                    <input type="text" id="userPhone" name="telefone_pfu" class="input-field" aria-describedby="userPhoneHelp">
+                </div>
+                <div class="form-group">
+                    <label class="labelUser" for="CPF">CPF:</label>
+                    <input type="text" id="CPF" name="cpf_pfu" class="input-field" aria-describedby="CPF">
+                </div>
+                <div class="form-group">
+                    <label class="labelUserData" for="dataNascimento">Data de Nascimento:</label>
+                    <input type="date" id="dataNascimento" name="data_nascimento_pfu" class="input-fieldData" aria-describedby="dataNascimento" maxlength="14">
+                </div> 
+                <hr>
+                <div class="form-group">
+                    <input type="submit" value="Salvar" class="input-submit">
+                </div>
             </form>
           </div>
         </div>

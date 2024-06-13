@@ -20,6 +20,7 @@ const atualizarTipo = require('./database/db');
 const excluirTipoArCondicionado = require('./database/db');
 const { insertFeedback } = require('./database/db');
 const { insertSuporte } = require('./database/db');
+const { insertPerfil_Usuario } = require('./database/db');
 const nodemailer = require('nodemailer');
 const dados = require('./database/db');
 const { error } = require("console");
@@ -373,6 +374,18 @@ router.post('/Suporte', async function (req, res) {
 //         res.status(500).send('Erro no servidor');
 //     }
 // });
+
+router.post('/Perfil_Usuario', async function(req, res)  {
+    const { nome_pfu, email_pfu, telefone_pfu, cpf_pfu, data_nascimento_pfu } = req.body;
+    console.log(req.body);
+    try {
+        await insertPerfil_Usuario(nome_pfu, email_pfu, telefone_pfu, cpf_pfu, data_nascimento_pfu);
+        res.redirect('back'); // Redireciona o usuário para a página anterior
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Houve um erro ao inserir o usuário.');
+    }
+});
 
 router.post("/encerra/ordem", async function (req, res) {
     atualizarOrdem.updateOrdem(req.body.ordem, req.body.data_fim, req.body.hora_fim, req.body.matricula, req.body.data_lanc_ord, req.body.hora_ini_trab, req.body.data_ini_trab, req.body.data_fim_trab, req.body.hora_fim_trab, req.body.texto_servico)
