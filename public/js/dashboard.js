@@ -105,6 +105,11 @@ function previewImage(event) {
         output.src = reader.result;
         output.style.display = 'block';
 
+        // Adiciona um evento de clique à imagem para permitir a alteração da foto
+        output.onclick = function() {
+        document.getElementById('arquivo').click();
+        };
+        
         // Esconde o ícone do usuário
         const icone = document.getElementById('icone');
         icone.style.display = 'none';

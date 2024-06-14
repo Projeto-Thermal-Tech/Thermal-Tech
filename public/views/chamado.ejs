@@ -162,17 +162,34 @@
 
         <div>
           <label for="" class="popup-label-filter">Nº Chamado:</label>
-          <input type="number" class="popup-label-filter numero-chamado-input" id="" placeholder="Nº Chamado">
+          <select name="Nº Chamado" id="Chamado" class="select-height">
+            <option value=""></option>
+            <% chamados.forEach(function(chamado) { %>
+                <option value="<%= chamado.id_chamado %>">
+                    <%= chamado.id_chamado %>
+                </option>
+            <% }); %>
+        </select>
         </div>
         <div>
           <label for="" class="popup-label-filter">Prioridade:</label>
           <select name="" id="">
             <option value=""></option>
-            <option value="">Alta</option>
-            <option value="">Baixa</option>
-            <option value="">Média</option>
-          </select>
-        </div>
+            <% 
+            var prioridadesAdicionadas = [];
+            chamados.forEach(function(chamado) { 
+                if (!prioridadesAdicionadas.includes(chamado.prioridade_cha)) {
+                    prioridadesAdicionadas.push(chamado.prioridade_cha);
+            %>
+                <option value="<%= chamado.prioridade_cha %>">
+                    <%= chamado.prioridade_cha %>
+                </option>
+            <% 
+                }
+            }); 
+            %>
+        </select>
+      </div>
         <div>
           <label for="" class="popup-label-filter">descrição</label>
           <input type="text" class="popup-input-filter" id="descrição" placeholder="descrição">
@@ -182,24 +199,56 @@
       <div>
         <label for="" class="popup-label-filter">Status</label>
         <select name="" id="">
-          <option value=""></option>
-          <option value="">Todos</option>
-          <option value="">Aberto</option>
-          <option value="">Encerrado</option>
-          <option value="">Em andamento</option>
+            <option value=""></option>
+            <% 
+            var statusAdicionados = [];
+            chamados.forEach(function(chamado) { 
+                if (!statusAdicionados.includes(chamado.nome_status)) {
+                    statusAdicionados.push(chamado.nome_status);
+            %>
+                <option value="<%= chamado.status_cha %>">
+                    <%= chamado.nome_status %>
+                </option>
+            <% 
+                }
+            }); 
+            %>
         </select>
-      </div>
+    </div>
       <div>
         <div>
           <label for="" class="popup-label-filter">Criador</label>
-          <input type="text" name="" id="Criador" class="popup-input-filter">
+          <select name="Criador" id="Chamado" class="select-height">
+            <option value=""></option>
+            <% chamados.forEach(function(chamado) { %>
+                <option value="<%= chamado.criado_por_cha %>">
+                    <%= chamado.criado_por_cha %>
+                </option>
+            <% }); %>
+        </select>
         </div>
       </div>
       <div class="popup-center-filter">
         <div>
           <label for="" class="popup-label-filter">Data de Inico</label>
-          <input type="date" name="" id="" class="popup-input-filter">
-        </div>
+          <select name="" id="" class="popup-input-filter">
+              <option value=""></option>
+              <% 
+              var datasInicioAdicionadas = [];
+              chamados.forEach(function(chamado) { 
+                  var dataIniFormatada = new Date(chamado.data_ini_cha).toISOString().split('T')[0];
+                  if (!datasInicioAdicionadas.includes(dataIniFormatada)) {
+                      datasInicioAdicionadas.push(dataIniFormatada);
+              %>
+                  <option value="<%= dataIniFormatada %>">
+                      <%= dataIniFormatada %>
+                  </option>
+              <% 
+                  }
+              }); 
+              %>
+          </select>
+      </div>
 
       </div>
       <button class="popup-button salvar" onclick="saveEquipment()">Filtrar</button>
