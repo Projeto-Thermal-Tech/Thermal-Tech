@@ -76,87 +76,55 @@
     </div>
 </header>
 
-  <main class="container">
-    <div class="titulo">
-      <h2>Homem Hora</h2>
+<main>
+  <h2>Homem Hora</h2>
+  <section class="container_horas">
+    <div class="dades_horas">
+      <form action="/relatorio" method="get">
+        <div class="header_horas">
+          <div class="header_horas_top">
+            <div class="search_horas">
+              <section class="colaborador"></section>
+              <label for="selectTec">Colaborador:</label>
+              <select name="matriculaTecnico" onchange="location.href='/relatorio?matriculaTecnico=' + this.value">
+                <option value="geral" <%=matriculaTecnicoSelecionado=='geral' ? 'selected' : '' %>>Geral</option>
+                <% Tecnicos.forEach(function(tecnico) { %>
+                  <option value="<%= tecnico.matricula_tec %>" <%=tecnico.matricula_tec==matriculaTecnicoSelecionado
+                    ? 'selected' : '' %>><%= tecnico.nome_tec %>
+                  </option>
+                  <% }); %>
+              </select>
+            </div>
+            <div class="horas_periodo">
+              <label for="dataInicio">Inicio do Periodo Trabalhadado</label>
+              <input type="date" id="dataInicio" name="dataInicio" value="<%= dataInicio %>">
+            </div>
+            <div class="horas_periodo">
+              <label for="dataFim">Fim do Periodo Trabalhadado</label>
+              <input type="date" id="dataFim" name="dataFim" value="<%= dataFim %>">
+            </div>
+            <div class="horas_periodo">
+              <button type="submit">Buscar</button>
+              <a href="/relatorio" class="btn btn-primary" id="botaoLimpar">Limpar</a>
+            </div>
+          </div>
+          <div class="Prev_Manut">
+            <label class="label_corretiva" for="dataInicio">Quantidade de manutenções preventivas realizadas:</label>
+            <input type="text" placeholder="Preventivas:" value="<%= preventivas %>">
+          </div>
+          <div class="Prev_Corret">
+            <label class="label_preventiva"  for="dataInicio">Quantidade de manutenções corretivas realizadas:</label>
+            <input type="text" placeholder="Corretivas:" value="<%= corretivas %>">
+          </div>
+        </div>
+      </form>
     </div>
-    <form class="form">
-      <div class="primeira-linha-form">
-        <div class="emissor">
-          <label for="">Colaborador:</label>
-          <select id="selectTec" onchange="mostrarDados('<%= JSON.stringify(horas) %>')">
-            <% Tecnicos.forEach(function(tec) { %>
-              <option value="<%=tec.matricula_tec %>"><%=tec.nome_tec  %></option>
-          <% }); %>
-            
-           
-          </select>
-        </div>
-        <div class="tempo-quantidade">
-          <div class="tempo">
-            <label for="">Tempo</label>
-            <input type="time" required />
-          </div>
-
-          <div class="quantidade">
-            <label for="">Corretiva:</label>
-            <input type="number" required />
-          </div>
-        </div>
-      </div>
-      <div class="segunda-linha-form">
-        <div>
-          <label for="">Emissor: </label>
-          <select id="Emissor">
-            <option value="lucas">Eduardo Wagner Gregorio</option>
-            <option value="lucas">Jean victor dos Santos Maciel</option>
-            <option value="eduardo">Lucas Silva Cuba</option>
-            <option value="victor">Lucas Ulbrich Franco</option>
-            <option value="jean">Luiz Gabriel Roberti</option>
-            <option value="luiz">Victor Bueno Cardoso</option>
-          </select>
-        </div>
-
-        <div class="tempo-quantidade">
-          <div class="tempo">
-            <label for="">Tempo</label>
-            <input type="time" required />
-          </div>
-
-          <div class="quantidade">
-            <label for="">Preventiva</label>
-
-            <input type="number" required />
-          </div>
-        </div>
-      </div>
-      <div class="terceira-linha-form">
-        <div class="periodo">
-          <label for="">Periodo:</label>
-          <div class="datas">
-            <input class="hora" type="date" required />
-            <input class="hora" type="date" required />
-          </div>
-        </div>
-      </div>
-      <footer class="footer-bg">
-        <div class="footer">
-          <label for="">Total Geral</label>
-          <div class="total-tempo">
-            <p>17:53</p>
-          </div>
-          <di class="total-quantidade">
-            <p>11</p>
-          </di>
-        </div>
-      </footer>
-      <button type="submit" class="submit-button">Enviar</button>
-    </form>
-  </main>
+  </section>
+</main>
   <br />
   <div class="table-container">
-    <table>
-      <thead>
+    <table class="table_horas">
+      <thead class="th_horas">
         <tr>
           <th>Ordem</th>
           <th>Tipos de Intervenção</th>
@@ -166,23 +134,37 @@
         </tr>
       </thead>
       <tbody id="tbody">
-        <% 
-            function formatarData(data) {
-            const dataObj = new Date(data);
-            const dia = dataObj.getDate().toString().padStart(2, '0');
-            const mes = (dataObj.getMonth() + 1).toString().padStart(2, '0'); // Mês começa em 0
-            const ano = dataObj.getFullYear().toString();
-            return `${dia}/${mes}/${ano}`;
-            }%>
-           
-        <tr>
-            
-            </tr>
-       
-
+        <% horas.forEach(function(ordem) { %>
+          <tr>
+            <td>
+              <%= ordem.id_ordem %>
+            </td>
+            <td>
+              <%= ordem.manut_ord %>
+            </td>
+            <td>
+              <%= ordem.tempo_trabalhado %>
+            </td>
+            <td>
+              <%= formatarData(ordem.data_ini_trab) %>
+            </td>
+            <td>
+              <%= formatarData(ordem.data_fim_trab) %>
+            </td>
+          </tr>
+          <% }); %>
       </tbody>
     </table>
   </div>
+  
+  <% function formatarData(data) { const dataObj=new Date(data); const dia=dataObj.getDate().toString().padStart(2, '0' );
+    const mes=(dataObj.getMonth() + 1).toString().padStart(2, '0' ); // Mês começa em 0 const
+    ano=dataObj.getFullYear().toString(); return `${dia}/${mes}/${ano}`; } %>
+    <tr>
+    </tr>
+    </tbody>
+    </table>
+    </div>
 
   <section class="user-profile">
     <div id="feedbackModal" class="feedback">
