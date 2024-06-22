@@ -92,13 +92,18 @@ exports.insertFeedback = function (anonymous_feed, nome_feed, email_feed, descri
     }
     return novoFeedback(anonymous_feed, nome_feed, email_feed, descricao_feed);
 }
-exports.insertSuporte = function (nome_desc, email_desc, descricao_desc) {
-    async function novoSuporte(nome_desc, email_desc, descricao_desc) {
+exports.insertSuporte = function (nome_desc, email_desc, descricao_desc, arquivos) {
+    async function novoSuporte(nome_desc, email_desc, descricao_desc, arquivos) {
         await db.connect();
-        const inserir = 'INSERT INTO Suporte (nome_desc, email_desc, descricao_desc) VALUES ($1, $2, $3)';
-        await db.query(inserir, [nome_desc, email_desc, descricao_desc]);
+        const inserirSuporte = 'INSERT INTO Suporte (nome_desc, email_desc, descricao_desc) VALUES ($1, $2, $3) RETURNING id';
+        const resSuporte = await db.query(inserirSuporte, [nome_desc, email_desc, descricao_desc]);
+        const suporteId = resSuporte.rows[0].id;
+        const inserirArquivo = 'INSERT INTO SuporteArquivos (suporte_id, arquivo_nome, arquivo_caminho) VALUES ($1, $2, $3)';
+        for (const arquivo of arquivos) {
+            await db.query(inserirArquivo, [suporteId, arquivo.originalname, arquivo.path]);
+        }
     }
-    return novoSuporte(nome_desc, email_desc, descricao_desc);
+    return novoSuporte(nome_desc, email_desc, descricao_desc, arquivos);
 }
 
 exports.insertPerfil_Usuario = function (nome_pfu, email_pfu, telefone_pfu, cpf_pfu, data_nascimento_pfu) {

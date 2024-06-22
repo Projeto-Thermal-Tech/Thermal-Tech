@@ -242,22 +242,26 @@
                     <span class="suporte-close">&times;</span>
                     <h2 class="title-suporte">Suporte</h2>
                     <hr class="suporteLine">
-                    <form id="suporteForm" class="suporte-form">
+                    <form id="suporteForm" class="suporte-form" action="/Suporte" method="POST" enctype="multipart/form-data">
                         <div class="form-group-suporte" id="nomeField">
                             <label class="labelSuporte" for="userName">Nome:</label>
-                            <input type="text" id="nome" class="input-field-suporte" aria-describedby="userName">
+                            <input type="text" id="nome" name="nome_desc" class="input-field-suporte" aria-describedby="userName">
                         </div>
                         <div class="form-group-suporte" id="emailField">
                             <label class="labelSuporte" for="userEmailInput">Email:</label>
-                            <input type="email" id="userEmailSuporte" class="input-field-suporte" aria-describedby="userEmail">
-                        </div>              
+                            <input type="email" id="userEmailSuporte" name="email_desc" class="input-field-suporte" aria-describedby="userEmail">
+                        </div>
                         <div class="form-group-suporte">
                             <label class="labelSuporte" for="DescriçãoSuporte">Descrição do Suporte:</label>
-                            <input type="text" id="DescriçãoSuporte" class="input-field-suporte" aria-describedby="DescriçãoSuporte">
+                            <input type="text" id="DescriçãoSuporte" name="descricao_desc" class="input-field-suporte" aria-describedby="DescriçãoSuporte">
+                        </div>
+                        <div class="form-group-suporte">
+                            <label class="labelSuporte" for="suporteArquivos">Anexar Imagem :</label>
+                            <input type="file" id="suporteArquivos" name="suporteArquivos" class="input-field-suporte" multiple>
                         </div>
                         <hr>
                         <div class="form-group-suporte">
-                            <input type="submit" value="Salvar" class="input-submit-feedback">
+                            <input type="submit" onclick="EnviadoSuporte()" value="Salvar" class="input-submit-feedback">
                         </div>
                     </form>
                 </div>

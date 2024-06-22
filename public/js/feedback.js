@@ -71,3 +71,12 @@ document.addEventListener("DOMContentLoaded", function() {
     };
   }
 });
+
+function EnviadoFeedback() {
+  alert("Seu feedback foi enviado com sucesso!");
+  hidePopup();
+}
+
+function EnviadoSuporte() {
+  alert("Obrigado por relatar o problema! Nossa equipe já está investigando e trabalhando para corrigi-lo.");
+}

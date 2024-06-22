@@ -20,6 +20,7 @@ const atualizarTipo = require('./database/db');
 const excluirTipoArCondicionado = require('./database/db');
 const { insertFeedback } = require('./database/db');
 const { insertSuporte } = require('./database/db');
+const multer = require('multer');
 const { insertPerfil_Usuario } = require('./database/db');
 const nodemailer = require('nodemailer');
 const dados = require('./database/db');
@@ -260,6 +261,18 @@ router.post('/feedbacks', async function(req, res)  {
         res.status(500).send('Houve um erro ao enviar o feedback.');
     }
 });
+// Configuração de armazenamento para o multer
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'C:/Users/eduar/OneDrive/Desktop/Thermal Tech/Thermal-Tech/uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+  }
+});
+
+const upload = multer({ storage: storage });
+
 // Configura o transporte de e-mail
 let transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -269,17 +282,26 @@ let transporter = nodemailer.createTransport({
     }
 });
 
-router.post('/Suporte', async function (req, res) {
+router.post('/Suporte', upload.array('suporteArquivos'), async function (req, res) {
     const { nome_desc, email_desc, descricao_desc } = req.body;
+    const arquivos = req.files;
     console.log(req.body);
     try {
-        await insertSuporte(nome_desc, email_desc, descricao_desc);
+        // Aqui você precisará ajustar para salvar as informações dos arquivos no banco de dados
+        await insertSuporte(nome_desc, email_desc, descricao_desc, arquivos);
+
+        // Prepara os anexos para o e-mail
+        let attachments = arquivos.map(arquivo => ({
+            filename: arquivo.originalname,
+            path: arquivo.path
+        }));
 
         // Envia um e-mail para os desenvolvedores
         let mailOptions = {
             from: 'cloudthermaltech2@gmail.com',
             to: 'ens-eduardowagner@ugv.edu.br, ens-victorbueno@ugv.edu.br',
             subject: 'Novo suporte enviado',
+            attachments: attachments,
             html: `
                 <html>
                 <head>
