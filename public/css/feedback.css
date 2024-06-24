@@ -209,9 +209,8 @@ hr {
     outline: none;
     border-color: #1d46ff;
     box-shadow: 0 0 55px rgba(248, 248, 248, 0.829);
-  }
-
-  .input-submit-suporte {
+}
+.input-submit-suporte {
     display: block;
     margin: 0 auto;
     text-align: center;

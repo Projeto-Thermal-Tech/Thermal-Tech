@@ -264,10 +264,12 @@ router.post('/feedbacks', async function(req, res)  {
 // Configuração de armazenamento para o multer
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'C:/Users/eduar/OneDrive/Desktop/Thermal Tech/Thermal-Tech/uploads')
+    // Define o destino como um diretório 'uploads' na raiz do projeto
+    cb(null, path.join(__dirname, '/uploads'));
   },
   filename: function (req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+    // Mantém o nome do arquivo original com um timestamp para evitar sobreposições
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
   }
 });
 
