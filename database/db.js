@@ -116,8 +116,8 @@ exports.insertPerfil_Usuario = function (nome_pfu, email_pfu, telefone_pfu, cpf_
     return novoPerfil_Usuario(nome_pfu, email_pfu, telefone_pfu, cpf_pfu, data_nascimento_pfu);
 }
 
-exports.updateEquip = function (id, tag, tipo, modelo, ns, area, local, setor, descricao) {
-    async function atualizarEquip(id, tag, tipo, modelo, ns, area, local, setor, descricao) {
+exports.updateEquip = function (id, tag, tipo, modelo, ns, area, local, setor, descricao, pdfInfo) {
+    async function atualizarEquip(id, tag, tipo, modelo, ns, area, local, setor, descricao, pdfInfo) {
         try {
             await db.connect();
 
@@ -127,8 +127,8 @@ exports.updateEquip = function (id, tag, tipo, modelo, ns, area, local, setor, d
                 throw new Error('Registro não encontrado.');
             }
 
-            // Execute a atualização dos dados
-            const atualizacao = `
+            // Prepara a consulta SQL base
+            let atualizacao = `
                 UPDATE lista_equipamentos
                 SET
                     tag_listequip = $2,
@@ -139,17 +139,28 @@ exports.updateEquip = function (id, tag, tipo, modelo, ns, area, local, setor, d
                     localidade_listequip = $7,
                     setor_listequip = $8,
                     descricao_listequip = $9
-                WHERE id_equip = $1
             `;
-            await db.query(atualizacao, [id, tag, tipo, modelo, ns, area, local, setor, descricao]);
+            let valores = [id, tag, tipo, modelo, ns, area, local, setor, descricao];
 
-            return 'Registro atualizado com sucesso.';
+            // Se pdfInfo for fornecido, adicione à consulta
+            if (pdfInfo) {
+                atualizacao += `, anexo_nome_listequip = $10, anexo_caminho_listequip = $11`;
+                valores.push(pdfInfo.nome, pdfInfo.caminho);
+            }
+
+            // Finaliza a consulta com a cláusula WHERE
+            atualizacao += ` WHERE id_equip = $1`;
+
+            // Executa a consulta
+            await db.query(atualizacao, valores);
+
+            return 'Registro e PDF atualizados com sucesso.';
         } catch (error) {
-            throw new Error(`Erro ao atualizar registro: ${error.message}`);
-        } 
+            throw new Error(`Erro ao atualizar registro e inserir PDF: ${error.message}`);
+        }
     }
 
-    return atualizarEquip(id, tag, tipo, modelo, ns, area, local, setor, descricao);
+    return atualizarEquip(id, tag, tipo, modelo, ns, area, local, setor, descricao, pdfInfo);
 }
 
 exports.deleteEquip = function (id) {

@@ -151,7 +151,7 @@
     transform: translate(-50%, -50%);
     padding: 10px;
     width: 850px;
-    height: 600px;
+    height: 750px;
     background-color: white;
     z-index: 2;
     display: none;
@@ -468,4 +468,30 @@ textarea{
 
 .select-height {
   height: 40px; 
+}
+
+.pdfViewerHeader {
+  display: flex;
+  align-items: center; 
+  justify-content: flex-start; 
+  gap: 10px; 
+}
+
+.ViewsPdf {
+  position: fixed; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150%;
+  height: 150%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+iframe#visualizadorPdf {
+  width: 80%; 
+  height: 80%; 
+  border: 0; 
 }
