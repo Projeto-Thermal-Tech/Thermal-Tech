@@ -1,7 +1,6 @@
 @media screen and (max-width: 1000px) {
  /* ESTILO DA TELA DE ORDEM */
 
-
     main {
         width: 95;
     }
@@ -20,17 +19,11 @@
     #ordem {
         width: 50%; 
     }
-    input[name="status"] {
+
+    input[name="status"]  input[type="text"] {
         width: 50%; 
     }
     
-    input[type="text"] {
-        width: 50%; 
-    }
-    
-    #numeroChamado {
-        width: 50%;
-    }
     #title-order {
         width: 94.3%;
     }
@@ -43,23 +36,10 @@
     .chamado {
         width: 95%;
     }
-    #localidadeCampo {
+
+    #localidadeCampo, #setorCampo, #equipamentoCampo, #descricaoEquipamentoCampo,  #numeroChamado, #criadorCampo, #emailCampo {
         width: 50%;
     }
-
-    #setorCampo {
-        width: 50%;
-    }
-
-    #equipamentoCampo {
-        width: 50%;
-    }
-
-    #descricaoEquipamentoCampo {
-        width: 50%;
-    }
-    /* Fim Dados chamado*/
-
 
     /* responsabilidades */
     .responsabilidades {
@@ -79,10 +59,6 @@
         justify-content: space-between; 
     }
 
-    #criadorCampo, #emailCampo {
-        width: 50%; 
-    }
-
     div[style="padding-top: 5px;"] {
         display: flex;
         flex-direction: column; 
@@ -91,7 +67,6 @@
         width: 40%; 
     }
     /* Fim Responsabilidades */
-
 
     /* Objetivo */
     .objetivo {
@@ -113,28 +88,13 @@
         width: 100%;
     }
     /* Datas*/
-    .data-chamado {
-        width: 40%;
-    }
     
     #hora-init-ordem {
         width: 40%; 
     }
     
-    select[name="prioridade"] {
-        width: 40%; 
-    }
-    
-    input[name="data_fim"] {
-        width: 40%; 
-    }
-    
-    input[name="hora_fim"] {
-        width: 40%; 
-    }
-    
-    select[name="tipo_manut"] {
-        width: 40%; 
+    select[name="prioridade"], input[name="data_fim"], input[name="hora_fim"], select[name="tipo_manut"] {
+        width: 40%;
     }
 
     /* Datas  Confirmações*/
@@ -173,7 +133,7 @@
 
 @media screen and (max-width: 1000px) {
     #userEmail {
-      display: none; /* Esconde o elemento em telas menores que 1000px */
+      display: none;
     }
   }
       

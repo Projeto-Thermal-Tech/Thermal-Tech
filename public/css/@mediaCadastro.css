@@ -6,6 +6,7 @@
         width: 90%;  
         margin-left: auto;
         margin-right: auto;
+        padding: 10%;
     }
     .header_cad div {
         width: 100%;
@@ -18,13 +19,9 @@
     #cadastro, .filtroTec, .filtroLocais, .filtroEquipamentos {
         width: 100%;
     }
-
-    .header_cad {
-        padding: 10%; 
-    }
     
     .table-container {
-        max-height: 400px; /* Ajuste este valor conforme necessário */
+        max-height: 400px;
         overflow-y: auto;
       }
 
@@ -89,17 +86,19 @@
         width: 100%;
     }
     
-
      #popup-tec,  #popup-loc,  #popup-equip{
         width: 90%;
         height: auto;
     }
+
     .popup-header {
         flex-direction: column;
     }
+
     .popup-header div {
         width: 100%;
     }
+    
     .popup-input, #matriculaTec {
         width: 100%;
     }

@@ -1,91 +1,102 @@
+main h2 {
+   font-size: 28px;
+   padding: 1rem;
+   text-align: center;
+}
 
-main h2{
-    font-size: 28px;
-    padding: 1rem;
-    text-align: center;
- }
- .dados_manut{
-   margin-top: 1rem; 
-   width:90%;
+.dados_manut {
+   margin-top: 1rem;
+   width: 90%;
    margin-left: 5%;
    margin-right: 5%;
- }
- .header_manut{
-    background-color: #0080F5;
-    border-radius: 10px;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
- }
- .search_manut{
-    margin-top: 1rem;
-    align-items: center;
- }
- .search_manut input{
-    width: 12rem;
-    height: 25px;
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
- }
- .search_manut button{
-    margin-left: 5px;
-    width: 5rem;
-    height: 35px;
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
- }
- .info_equip{
-    width: 40%;
-    display: flex;
-    background-color: white;
-    padding: 1rem;
-    border-radius: 10px;
-    font-size: 20px;
- }
- .info-left{
-    width: 60%;
-    
- }
-.info-rigth{
-    width: 40%;
-    text-align: left;
-    align-items: end;
-}
-.add_manut{
-       display: flex;
-       align-items: center;
-}
-.add_manut button{
-       font-size: 18px;
-       width:20rem ;
-       padding: 10px;
-       border: none;
-       border-radius: 10px;
 }
 
-.icon{
-        margin-left: 10px;
-        width: 34px;
+.header_manut {
+   background-color: #0080F5;
+   border-radius: 10px;
+   padding: 1rem;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
 }
+
+.search_manut {
+   margin-top: 1rem;
+   align-items: center;
+}
+
+.search_manut input {
+   width: 12rem;
+   height: 25px;
+   padding: 5px;
+   border: none;
+   border-radius: 5px;
+}
+
+.search_manut button {
+   margin-left: 5px;
+   width: 5rem;
+   height: 35px;
+   padding: 5px;
+   border: none;
+   border-radius: 5px;
+}
+
+.info_equip {
+   width: 40%;
+   display: flex;
+   background-color: white;
+   padding: 1rem;
+   border-radius: 10px;
+   font-size: 20px;
+}
+
+.info-left {
+   width: 60%;
+
+}
+
+.info-rigth {
+   width: 40%;
+   text-align: left;
+   align-items: end;
+}
+
+.add_manut {
+   display: flex;
+   align-items: center;
+}
+
+.add_manut button {
+   font-size: 18px;
+   width: 20rem;
+   padding: 10px;
+   border: none;
+   border-radius: 10px;
+}
+
+.icon {
+   margin-left: 10px;
+   width: 34px;
+}
+
 main {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+   width: 100%;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
-main div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
+
+main div {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
 }
 
 main img {
-    border-radius: 5%;
-    width: 30%;
-    margin-top: 10%;
+   border-radius: 5%;
+   width: 30%;
+   margin-top: 10%;
 }

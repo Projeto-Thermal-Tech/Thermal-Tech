@@ -1,58 +1,68 @@
-@media(max-width:1600px){
-    .block1{
-        position: relative;
-      }
-    .content4-block1{
-        position: absolute;
-        left: 80%;
-        display: flex;
-        flex-direction: column;
-        
-    }
-    .info_equip{
-      width: 45%;
-      position: absolute;
+@media(max-width:1600px) {
+  .block1 {
+    position: relative;
+  }
+
+  .content4-block1 {
+    position: absolute;
+    left: 80%;
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .content4-block1 label {
+    font-size: 10px;
+    margin-right: 5px;
+  }
+
+  .info_equip {
+    width: 45%;
+    position: absolute;
     top: 29%;
     left: 53%;
-      display: flex;
-      background-color: white;
-      padding: 1rem;
-      margin-left: 55px;
-      border-radius: 10px;
-      font-size: 18px;
-   }
-    .hora_chamado, .data_chamado{
-      display: flex;
-     flex-direction: row;
-     justify-content: end;
-     padding: 4px;
-    }
-    .content4-block1 label{
-        font-size:10px;
-        margin-right: 5px;
-      }
-      #hora_cham{
-        background-color: bisque;
-        width: 120px;
-      }
-      .prioridade {
-        width: 110px;
-      }
-      .interface nav.menu-desktop ul li{
-        white-space: nowrap;
-        display: inline-block;
-        font-size: 16px;
-        padding: 2px 12px;
-    }
-    header{
-      padding: 40px 1%;
+    display: flex;
+    background-color: white;
+    padding: 1rem;
+    margin-left: 55px;
+    border-radius: 10px;
+    font-size: 18px;
   }
-  h1{
+
+  .hora_chamado,  .data_chamado {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    padding: 4px;
+  }
+
+  #hora_cham {
+    background-color: bisque;
+    width: 120px;
+  }
+
+  .prioridade {
+    width: 110px;
+  }
+
+  .interface nav.menu-desktop ul li {
+    white-space: nowrap;
+    display: inline-block;
+    font-size: 16px;
+    padding: 2px 12px;
+  }
+
+  header {
+    padding: 40px 1%;
+  }
+
+  h1 {
     padding: 7px;
     font-size: 24px;
-}
-h4{
-  font-size: 14px;
-  margin-top: 5px;
-}
+  }
+
+  h4 {
+    font-size: 14px;
+    margin-top: 5px;
+  }
 }

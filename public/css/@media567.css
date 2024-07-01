@@ -1,110 +1,105 @@
 @media (max-width: 567px) {
-    .responsabilidades, .objetivo, .chamado{
+
+    .responsabilidades, .objetivo, .chamado {
         width: 97vw;
         padding: 5px;
         margin: 10px;
         border-radius: 5px;
-    
     }
 
-    label{
+    label {
         font-size: 14px;
     }
-    input{
+
+    input {
         height: 19px;
         font-size: 12px;
     }
-    .info-header-order label{
+
+    .info-header-order label {
         display: block;
         border-bottom: 1px solid rgba(0, 0, 0, 0.486);
         width: 100px;
         margin-right: 10px;
         border-bottom: none;
-        
+
     }
-    .prioridade{
+
+    .prioridade {
         width: 50%;
-        display:flex;
+        display: flex;
         align-items: center;
     }
-    .prioridade input{
+
+    .prioridade input {
         margin-left: 15px;
     }
-    
-     /* Estilos padrão para todas as telas */
-  h2 {
-    font-size: 24px;
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .header_cham {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .dados_cham {
+        width: 100%;
+        padding: 1rem;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 2%;
+    }
+
+    .add_cham {
+        align-items: center;
+        margin-right: 7%;
+    }
+
+    .add_cham img {
+        margin-right: 1px;
+        margin-bottom: 1px;
+    }
+
+    .add_cham button {
+        width: 170px;
+        height: 30px;
+        padding: 5px;
+    }
+
+    .num, .situ, #esta {
+        width: 80%;
+        margin-bottom: 10px;
+    }
+
+    #n_cham {
+        font-size: 24px;
+    }
+
+    #pesquisar {
+        width: 130px;
+        height: 30px;
+        padding: 5px;
+    }
+
+    .num_cham button {
+        width: 80%;
+        margin-bottom: 10px;
+    }
+
+    .filtro button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    select, label {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .estado, .filtro, .ocult {
+        display: none;
+    }
+
 }
-
-.header_cham {
-    flex-direction: column; /* Ajuste para uma exibição mais limpa em telas menores */
-    width: 100%;
-}
-.dados_cham {
-    width: 100%;
-    padding: 1rem;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 2%;
-}
-
-.add_cham {
-    align-items: center;
-    margin-right: 7%;
-}
-
-.add_cham img {
-    margin-right: 1px; /* Remova o espaçamento à direita para acomodar o layout de coluna */
-    margin-bottom: 1px; /* Adicione algum espaçamento abaixo da imagem */
-}
-
-.add_cham button {
-    width: 170px; /* Largura desejada */
-    height: 30px; /* Altura desejada */
-    padding: 5px; /* Espaçamento interno desejado */
-}
-
-.num,
-#esta,
-.situ {
-    width: 80%;
-    margin-bottom: 10px;
-}
-
-#n_cham{
-    font-size: 24px;
-}
-
-#pesquisar{
-    width: 130px; /* Largura desejada */
-    height: 30px; /* Altura desejada */
-    padding: 5px; /* Espaçamento interno desejado */
-}
-
-.num_cham button{
-    width: 80%;
-    margin-bottom: 10px;
-}
-
-.filtro button{
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-/* Ajustes para os selects e labels */
-select,
-label {
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-.estado,
-.filtro,
-.ocult {
-    display: none;
-}
-
-  }
-
- 
-

@@ -1,160 +1,161 @@
-*{
-    padding: 0;
-    margin: 0;
-    font-family: 'B612';
+h2 {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
 }
 
- h2{
-    display: flex;
-    justify-content: center;
-    font-size: 30px;
- }
- .header_cham{
-    background-color: #0080F5;
-    border-radius: 5px;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
- }
+.header_cham {
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+  border-radius: 5px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-.dados_cham{
-    margin-top: 1rem; 
-    width:90%;
-    margin-left: 5%;
-    margin-right: 5%;
-  }
+.dados_cham {
+  margin-top: 1rem;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
 
-.num_cham{
-    color:white;
-    font-size:25px;
-    text-align: center;
+.num_cham {
+  color: white;
+  font-size: 25px;
+  text-align: center;
+}
+
+.num_cham button {
+  font-size: 18px;
+  width: 6rem;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
 }
 
 .num {
-    border-radius: 2%;
-    border: none;
-    width: 12rem;
-    height: 28px;
-    padding: 5px;
-    font-size: 16px;
+  border-radius: 2%;
+  border: none;
+  width: 12rem;
+  height: 28px;
+  padding: 5px;
+  font-size: 16px;
 }
 
 .estado {
-    color:white;
-    font-size:25px;
-    text-align: center;
+  color: white;
+  font-size: 25px;
+  text-align: center;
 }
 
 #esta {
   margin-top: 10%;
-    border-radius: 2%;
-    border: none;
-    width: 9rem;
-    height: 32px;
-    font-size: 16px;
+  border-radius: 2%;
+  border: none;
+  width: 9rem;
+  height: 32px;
+  font-size: 16px;
 }
 
 .situacao {
-    color:white;
-    font-size:25px;
-    text-align: center;
+  color: white;
+  font-size: 25px;
+  text-align: center;
 }
 
 .filtro_cham td {
-  min-width: 150px; 
-  max-width: 150px; 
+  min-width: 150px;
+  max-width: 150px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .situ {
-    border-radius: 2%;
-    border: none;
-    width: 11rem;
-    height: 32px;
-    font-size: 16px;
+  border-radius: 2%;
+  border: none;
+  width: 11rem;
+  height: 32px;
+  font-size: 16px;
 }
 
-.add_cham{
-    display: flex;
-    align-items: center;
+.add_cham {
+  display: flex;
+  align-items: center;
 }
-.add_cham button{
-    font-size: 18px;
-    width:13rem ;
-    padding: 8px;
-    border: none;
-    border-radius: 8px;
-}
-.filtro {
-    display: flex;
-    align-items: center;
-}
-.filtro button{
-    font-size: 18px;
-    width:8rem ;
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-}
-.num_cham button{
+
+.add_cham button {
   font-size: 18px;
-  width:6rem ;
+  width: 13rem;
   padding: 8px;
   border: none;
   border-radius: 8px;
 }
-.icon_cham{
-    margin-left: 8px;
-    width: 37px;
+
+.filtro {
+  display: flex;
+  align-items: center;
+}
+
+.filtro button {
+  font-size: 18px;
+  width: 8rem;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+}
+
+.icon_cham {
+  margin-left: 8px;
+  width: 37px;
 }
 
 .table-container {
-    height: calc(30 * 1em); 
-    min-height: 500px;
-    overflow-y: auto;
-  }
+  height: calc(30 * 1em);
+  min-height: 500px;
+  overflow-y: auto;
+}
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
 
-  thead {
-    background-color: #0080F5;
-    color: rgb(255, 255, 255);
-  }
+thead {
+  background-color: #0080F5;
+  color: rgb(255, 255, 255);
+}
 
-  th, td {
-    text-align: center;
-    padding: 10px;
-    cursor: pointer;
-    margin-bottom:10px;
-    border: 1px solid rgb(255, 255, 255); 
-  }
+th, td {
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  border: 1px solid rgb(255, 255, 255);
+}
 
-  tr:nth-child(even) {
-    background-color: rgba(221, 219, 219, 0.793);
-  }
+tr:nth-child(even) {
+  background-color: rgba(221, 219, 219, 0.793);
+}
 
-  tr:hover td {
-    font-weight: bold;
-    transform: scale(0.98);
-    
-  }
+tr:hover td {
+  font-weight: bold;
+  transform: scale(0.98);
 
-  .visualizar {
-    background-color: green;
-    color: white;
-    width: 100%;
-    height: 35px;
-    cursor: pointer;
-    font-size: 18px;
-  }
-  /* filtro */
-.overlay{
+}
+
+.visualizar {
+  background-color: green;
+  color: white;
+  width: 100%;
+  height: 35px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* filtro */
+.overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -184,7 +185,7 @@
   font-weight: bold;
   margin-bottom: 20px;
   text-align: center;
-  background-color:#0080F5;
+  background-color: #0080F5;
   border-radius: 10px;
   height: 10%;
   padding: 10px;
@@ -215,43 +216,15 @@
   border: 1px solid gray;
   margin-bottom: 20px;
 }
-.popup-input-filter, #tag {
-  display: block;
-  width: 80%;
-  padding: 5px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid gray;
-  margin-bottom: 20px;
-}
-.popup-input-filter, #tipo {
-  display: block;
-  width: 100%;
-  padding: 5px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid gray;
-  margin-bottom: 20px;
-}
-.popup-input-filter, #local {
-  display: block;
-  width: 100%;
-  padding: 5px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid gray;
-  margin-bottom: 20px;
-}
-.popup-header-filter{
-  display: flex;
+
+.popup-header-filter {
   justify-content: space-between;
-}
-.popup-header-filter{
   display: flex;
   flex-direction: column;
 }
+
 .numero-chamado-input {
-  width: 100%; 
+  width: 100%;
   display: flex;
   justify-content: space-between;
   display: block;
@@ -263,12 +236,13 @@
   margin-bottom: 20px;
 }
 
-.popup-center-filter{
+.popup-center-filter {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-select{
+
+select {
   width: 100%;
   padding: 5px;
   font-size: 16px;
@@ -276,7 +250,8 @@ select{
   border: 1px solid gray;
   margin-bottom: 20px;
 }
-textarea{
+
+textarea {
   border-radius: 5px;
   display: block;
   padding: 5px;
@@ -284,6 +259,7 @@ textarea{
   border: 1px solid gray;
   margin-bottom: 20px;
 }
+
 .popup-buttons {
   text-align: center;
 }
@@ -299,12 +275,15 @@ textarea{
   cursor: pointer;
   margin-right: 10px;
 }
-.salvar{
+
+.salvar {
   background-color: green;
 }
-.cancelar{
+
+.cancelar {
   background-color: red;
 }
+
 .popup-button:hover {
   background-color: darkblue;
 }

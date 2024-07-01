@@ -195,7 +195,7 @@
                  </div>
                  <div>
                      <label for="" class="popup-label">Localidade</label>
-                     <input type="text" name="local" id="local" required>
+                     <input type="text" name="local"  class="popup-input" id="local" required>
                  </div>
                  <div>
                     <div>
@@ -219,7 +219,7 @@
     </form>
     </section>
     <section class="overlay-edit">
-        <div class="popup" id="popup-edit">
+        <div class="popup-edit" id="popup-edit">
             <div class="popup-title">Editar Equipamento</div>
             <div class="popup-content">
                 <form action="/atualizar/equipamento" method="post" enctype="multipart/form-data">
@@ -256,7 +256,7 @@
                  </div>
                  <div>
                      <label for="" class="popup-label">Localidade</label>
-                     <input type="text" name="LOCAL" id="LOCAL" required>
+                     <input type="text" name="LOCAL"  class="popup-input" id="LOCAL" required>
                  </div>
                  <div>
                     <div>
@@ -359,7 +359,7 @@
                     </div>
                     <div>
                         <label for="" class="popou-label-filtro">Localidade</label>
-                        <select name="Localidade" id="Localidade" class="select-height">
+                        <select name="Localidade" id="Localidade" class="select-height"  class="popup-input">
                             <option value=""></option>
                             <% equipamentos.forEach(function(equipamento) { %>
                                 <option value="<%= equipamento.localidade_listequip %>">
@@ -379,7 +379,7 @@
                     </div>
                     <div>
                         <label for="" class="popou-label-filtro">Descrição</label>
-                        <input type="text" class="popou-label-filtro" id="Descrição" placeholder="Descrição">
+                        <input type="text" class="popup-input" id="Descrição" placeholder="Descrição">
                     </div>
                     <div>
                         <button class="popup-button salvarfiltro" onclick="Salvarequipamento()">Filtrar</button>
