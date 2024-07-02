@@ -61,7 +61,7 @@ function filtrarPorTag() {
     document.querySelector("button[onclick='limparFiltro()']").style.display = "none";
   }
   
-function editarEquipamento(id_equip, tag, tipoNome, numeroSerie, descricao, area, localidade, setorNome, modelo, anexo_nome_listequip) {
+function editarEquipamento(id_equip, tag, tipoNome, numeroSerie, descricao, area, localidade, setorNome, modelo, linkPDF) {
   // Preencha os campos do popup com os dados do equipamento
   document.getElementById('id_equip').value = id_equip;
   document.getElementById('TAG').value = tag;
@@ -70,7 +70,7 @@ function editarEquipamento(id_equip, tag, tipoNome, numeroSerie, descricao, area
   document.getElementById('AREA').value = area;
   document.getElementById('LOCAL').value = localidade;
   document.getElementById('MODELO').value = modelo;
-  document.getElementById('visualizadorPdf').src = anexo_nome_listequip; 
+  document.getElementById('visualizadorPdf').src = linkPDF; 
 
   // Obtenha o elemento select para o tipo
   var selectElementTipo = document.querySelector('select[name="TIPO"]');
@@ -101,7 +101,7 @@ function editarEquipamento(id_equip, tag, tipoNome, numeroSerie, descricao, area
   }
 
   // Verifica se existe um PDF anexado
-  if (anexo_nome_listequip && anexo_nome_listequip.trim() !== "") {
+  if (linkPDF && linkPDF.trim() !== "") {
     document.getElementById('mostrarIframe').style.display = 'inline';
     document.getElementById('labelVisualizarPdf').style.display = 'inline';
   } else {
@@ -143,14 +143,27 @@ document.addEventListener('click', function(event) {
 
 // quando o input file for anexado algo chamar um função
 document.getElementById('AnexarPDF').addEventListener('change', function() {
-
+  showLoading()
+  document.getElementById('popup-edit').style.display = 'none';
+  const pdfExistente = document.getElementById('visualizadorPdf').src
+  if (pdfExistente.includes("firebasestorage.googleapis.com")) {
+    const storageRef = firebase.storage().refFromURL(pdfExistente)
+    storageRef.delete().then(() => {
+      console.log('PDF antigo excluído com sucesso!')
+    }).catch((error) => {
+      console.error('Erro ao excluir o PDF antigo:', error)
+    })
+  }
   var nomeArquivo = this.files[0].name;
   var file = this.files[0];
   var storageRef = firebase.storage().ref('AnexosEquipamentos/' + nomeArquivo);
   storageRef.put(file).then(function(snapshot) {
      storageRef.getDownloadURL().then(function(url) {
     document.getElementById('visualizadorPdf').src = url;
-    document.getElementById('linkFire').value = url;
+    document.getElementById('linkPDF').value = url;
+    document.getElementById('namePDF').value = nomeArquivo;
+    document.getElementById('popup-edit').style.display = 'block';
+    hideloading()
   });
   });
  

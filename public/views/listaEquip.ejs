@@ -222,7 +222,7 @@
         <div class="popup" id="popup-edit">
             <div class="popup-title">Editar Equipamento</div>
             <div class="popup-content">
-                <form action="/atualizar/equipamento" method="post" enctype="multipart/form-data">
+                <form action="/atualizar/equipamento" method="post">
                <div class="popup-header">
                  <div>
                      <label for="" class="popup-label">TAG:</label>
@@ -287,7 +287,8 @@
             <hr>
             <div class="ViewsPdf">
                 <button id="fecharIframe" style="position: absolute; top: 10px; right: 10px;">Fechar</button>
-                <input type="text" id="linkFire"name="pdf" value="">
+                <input type="text" style="display: none;" id="linkPDF"name="linkPDF" value="">
+                <input type="text" style="display: none;" id="namePDF"name="nomePDF" value="">
                 <iframe id="visualizadorPdf" frameborder="0"></iframe>
             </div>
             <br>

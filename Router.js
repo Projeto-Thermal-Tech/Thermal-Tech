@@ -439,31 +439,26 @@ router.post('/cadastro/equipamento', function (req, res) {
 
 
 
-// Renomeando storage para pdfStorage
-const pdfStorage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, 'pdfs/'); // Diretório onde os PDFs serão salvos
-    },
-    filename: function(req, file, cb) {
-        cb(null, Date.now() + '-' + file.originalname); // Garante nome de arquivo único
-    }
-});
+// // Renomeando storage para pdfStorage
+// const pdfStorage = multer.diskStorage({
+//     destination: function(req, file, cb) {
+//         cb(null, 'pdfs/'); // Diretório onde os PDFs serão salvos
+//     },
+//     filename: function(req, file, cb) {
+//         cb(null, Date.now() + '-' + file.originalname); // Garante nome de arquivo único
+//     }
+// });
 
-// Renomeando upload para pdfUpload
-const pdfUpload = multer({ storage: pdfStorage });
+// // Renomeando upload para pdfUpload
+// const pdfUpload = multer({ storage: pdfStorage });
 
-router.post('/atualizar/equipamento', pdfUpload.single('AnexarPDF'), function (req, res) {
-    console.log(req.body.pdf);
+router.post('/atualizar/equipamento', function (req, res) {
+
     let pdfInfo = null;
-
-    // Verifica se um arquivo foi enviado
-    if (req.file) {
-        pdfInfo = {
-            nome: req.file.filename,
-            caminho: `pdfs/${req.file.filename}`
-        };
+    pdfInfo = {
+        nome: req.body.nomePDF,
+        caminho: req.body.linkPDF
     }
-
     // Chama updateEquip com ou sem pdfInfo, dependendo se um arquivo foi enviado
     atualizarEquip.updateEquip(req.body.id_equip, req.body.TAG, req.body.TIPO, req.body.MODELO, req.body.NS, req.body.AREA, req.body.LOCAL, req.body.SETOR, req.body.DESC, pdfInfo)
         .then(function () {
