@@ -140,3 +140,20 @@ document.addEventListener('click', function(event) {
     document.querySelector('.ViewsPdf').style.display = 'none';
   }
 });
+
+// quando o input file for anexado algo chamar um função
+document.getElementById('AnexarPDF').addEventListener('change', function() {
+
+  var nomeArquivo = this.files[0].name;
+  var file = this.files[0];
+  var storageRef = firebase.storage().ref('AnexosEquipamentos/' + nomeArquivo);
+  storageRef.put(file).then(function(snapshot) {
+     storageRef.getDownloadURL().then(function(url) {
+    document.getElementById('visualizadorPdf').src = url;
+    document.getElementById('linkFire').value = url;
+  });
+  });
+ 
+  
+  
+});

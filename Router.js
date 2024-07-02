@@ -453,6 +453,7 @@ const pdfStorage = multer.diskStorage({
 const pdfUpload = multer({ storage: pdfStorage });
 
 router.post('/atualizar/equipamento', pdfUpload.single('AnexarPDF'), function (req, res) {
+    console.log(req.body.pdf);
     let pdfInfo = null;
 
     // Verifica se um arquivo foi enviado
