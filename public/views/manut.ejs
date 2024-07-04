@@ -205,157 +205,158 @@
             </div>
         </section>
 
-        <section class="user-profile">
-            <div id="feedbackModal" class="feedback">
-                <div class="feedback-content">
-                    <span class="feedback-close" onclick="resetForm()">&times;</span>
-                    <h2 class="title-feedback">Feedback</h2>
-                    <hr class="feedbackLine">
-                    <form id="feedbackForm" class="feedback-form">
-                        <div id="anonymousSection">
-                            <button class="EnviarAnonimamente" id="EnviarAnonimamenteButton" onclick="enableAnonymous()">Enviar Anonimamente</button>
-                        </div>
-                        <div class="form-group-feedback" id="nomeField">
-                            <label class="labelFeedback" for="userName" id="NomeFeedbackLabel">Nome:</label>
-                                <input type="text" id="NomeFeedback" class="input-field-feedback " aria-describedby="userNameHelp">
-                        </div>
-                        <div class="form-group-feedback" id="emailField">
-                            <label class="labelFeedback" for="userEmailInput">Email:</label>
-                            <input type="email" id="userEmailInput" class="input-field-feedback" aria-describedby="userEmailHelp">
-                        </div>              
-                        <div class="form-group-feedback">
-                            <label class="labelFeedback" for="DescriçãoFeedback">Descrição do Feedback:</label>
-                            <input type="text" id="DescriçãoFeedback" class="input-field-feedback" aria-describedby="DescriçãoFeedback">
-                        </div>
-                        <hr>
-                        <div class="form-group-feedback">
-                            <input type="submit" value="Salvar" class="input-submit-feedback">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
         
-        <section class="user-profile">
-            <div id="suporteModal" class="suporte">
-                <div class="suporte-content">
-                    <span class="suporte-close">&times;</span>
-                    <h2 class="title-suporte">Suporte</h2>
-                    <hr class="suporteLine">
-                    <form id="suporteForm" class="suporte-form" action="/Suporte" method="POST" enctype="multipart/form-data">
-                        <div class="form-group-suporte" id="nomeField">
-                            <label class="labelSuporte" for="userName">Nome:</label>
-                            <input type="text" id="nome" name="nome_desc" class="input-field-suporte" aria-describedby="userName">
-                        </div>
-                        <div class="form-group-suporte" id="emailField">
-                            <label class="labelSuporte" for="userEmailInput">Email:</label>
-                            <input type="email" id="userEmailSuporte" name="email_desc" class="input-field-suporte" aria-describedby="userEmail">
-                        </div>
-                        <div class="form-group-suporte">
-                            <label class="labelSuporte" for="DescriçãoSuporte">Descrição do Suporte:</label>
-                            <input type="text" id="DescriçãoSuporte" name="descricao_desc" class="input-field-suporte" aria-describedby="DescriçãoSuporte">
-                        </div>
-                        <div class="form-group-suporte">
-                            <label class="labelSuporte" for="suporteArquivos">Anexar Imagem:</label>
-                            <input type="file" id="suporteArquivos" name="suporteArquivos" class="input-field-suporte" multiple>
-                            <div id="imagePreviewContainer" style="margin-top: 20px;"></div>
-                        </div>
-                        <hr>
-                        <div class="form-group-suporte">
-                            <input type="submit" onclick="EnviadoSuporte()" value="Salvar" class="input-submit-feedback">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
-        <section class="overlay-dashboard" id="dashboard">
-            <div class="dashboard">
-                <span class="close-icon" onclick="closeDashboard()">X</span>
-                <form>
-                    <div class="image-dash">
-                        <label for="arquivo">
-                            <img id="icone" class="user-image" src="../assets/icons8-usuário-50.png" alt="Ícone de pessoa"
-                                style="cursor: pointer;">
-                        </label>
-                        <input type="file" id="arquivo" name="arquivo" accept="image/*" onchange="previewImage(event)"
-                            style="display: none;">
-                        <img class="user-image" id="preview" src="" alt="Pré-visualização da imagem" style="display: none;">
-                        <div class="user-info">
-                            <h4 id="userName" class="user-name"></h4>
-                        </div>
+    <section class="user-profile">
+        <div id="feedbackModal" class="feedback">
+            <div class="feedback-content">
+                <span class="feedback-close" onclick="resetForm()">&times;</span>
+                <h2 class="title-feedback">Feedback</h2>
+                <hr class="feedbackLine">
+                <form id="feedbackForm" class="feedback-form">
+                    <div id="anonymousSection">
+                        <button class="EnviarAnonimamente" id="EnviarAnonimamenteButton" onclick="enableAnonymous()">Enviar Anonimamente</button>
                     </div>
-                        <h5 id="userEmail" style="color: white;" class="user-email"></h5>
-                </form>
-                <hr>
-                <div class="content-dashboard">
-                    <div class="links-dash">
-                        <a href="#" onclick="AbiriPopupPerfilUsuario()">
-                            <img class="img-links" src="../assets/icons8-usuário-16.png" alt="">
-                            <span class="user-name">Perfil Do Usuário</span>
-                        </a>
+                    <div class="form-group-feedback" id="nomeField">
+                        <label class="labelFeedback" for="userName" id="NomeFeedbackLabel">Nome:</label>
+                            <input type="text" id="NomeFeedback" class="input-field-feedback displayName" aria-describedby="userNameHelp">
                     </div>
-                    <div class="links-dash">
-                        <a href="#" class="linksdashfeedback" onclick="AbrirPopupFeedback()">
-                            <img class="img-links" src="../assets/icons8-comentar-debate-50.png" alt="Ícone">
-                            <span class="user-nameBotaoAbrirPopup">Feedback</span>
-                        </a>
-                    </div>
-                    <div class="links-dash">
-                        <a href="#"  class="linksdashsuporte" onclick="AbrirPopupSuporte()">
-                            <img class="img-links" src="../assets/icons8-suporte-online-skin-type-1-100.png" alt="Ícone">
-                            <span class="user-nameBotaoAbrirPopup">Suporte</span>
-                        </a>
-                    </div>
-                    <div class="links-dash">
-                        <a href="#" class="NotificaçõesLink">
-                            <img class="img-links" src="../assets/icons8-alarmes-50.png" alt="">
-                            <span class="user-name">Notificações</span>
-                        </a>
-                    </div>
-                    <div class="links-dash logout">
-                        <a href="#" class="sair" onclick="logout()">
-                            <img class="img-links" src="../assets/icon_sair.png" alt="">
-                            <span class="user-name">logout</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="user-profile">
-            <div id="userModal" class="modal">
-              <div class="user-content">
-                <span class="user-close">&times;</span>
-                <h2 class="title-user">Perfil do Usuário</h2>
-                <hr class="profileLine">
-                <form id="profileForm" class="profile-form" action="/Perfil_Usuario" method="POST">
-                    <div class="form-group">
-                        <label class="labelUser" for="userName">Nome:</label>
-                        <input type="text" id="nome" name="nome_pfu" class="input-field" aria-describedby="userNameHelp">
-                    </div>
-                    <div class="form-group">
-                        <label class="labelUser" for="userEmailPerfilUser">Email:</label>
-                        <input type="email" id="userEmailPerfilUser" name="email_pfu" class="input-field" aria-describedby="userEmailHelp">
+                    <div class="form-group-feedback" id="emailField">
+                        <label class="labelFeedback" for="userEmailInput">Email:</label>
+                        <input type="email" id="userEmailInput" class="input-field-feedback userEmail" aria-describedby="userEmailHelp">
                     </div>              
-                    <div class="form-group">
-                        <label class="labelUser" for="userPhone">Telefone:</label>
-                        <input type="text" id="userPhone" name="telefone_pfu" class="input-field" aria-describedby="userPhoneHelp">
+                    <div class="form-group-feedback">
+                        <label class="labelFeedback" for="DescriçãoFeedback">Descrição do Feedback:</label>
+                        <input type="text" id="DescriçãoFeedback" class="input-field-feedback" aria-describedby="DescriçãoFeedback">
                     </div>
-                    <div class="form-group">
-                        <label class="labelUser" for="CPF">CPF:</label>
-                        <input type="text" id="CPF" name="cpf_pfu" class="input-field" aria-describedby="CPF">
-                    </div>
-                    <div class="form-group">
-                        <label class="labelUserData" for="dataNascimento">Data de Nascimento:</label>
-                        <input type="date" id="dataNascimento" name="data_nascimento_pfu" class="input-fieldData" aria-describedby="dataNascimento" maxlength="14">
-                    </div> 
                     <hr>
-                    <div class="form-group">
-                        <input type="submit" value="Salvar" class="input-submit">
+                    <div class="form-group-feedback">
+                        <input type="submit" value="Salvar" class="input-submit-feedback">
                     </div>
                 </form>
-              </div>
             </div>
-          </section>
+        </div>
+      </section>
+      
+      <section class="user-profile">
+        <div id="suporteModal" class="suporte">
+            <div class="suporte-content">
+                <span class="suporte-close">&times;</span>
+                <h2 class="title-suporte">Suporte</h2>
+                <hr class="suporteLine">
+                <form id="suporteForm" class="suporte-form" action="/Suporte" method="POST" enctype="multipart/form-data">
+                    <div class="form-group-suporte" id="nomeField">
+                        <label class="labelSuporte" for="userName">Nome:</label>
+                        <input type="text" id="nome" name="nome_desc" class="input-field-suporte displayName" aria-describedby="userName">
+                    </div>
+                    <div class="form-group-suporte" id="emailField">
+                        <label class="labelSuporte" for="userEmailInput">Email:</label>
+                        <input type="email" id="userEmailSuporte" name="email_desc" class="input-field-suporte userEmail" aria-describedby="userEmail">
+                    </div>
+                    <div class="form-group-suporte">
+                        <label class="labelSuporte" for="DescriçãoSuporte">Descrição do Suporte:</label>
+                        <input type="text" id="DescriçãoSuporte" name="descricao_desc" class="input-field-suporte" aria-describedby="DescriçãoSuporte">
+                    </div>
+                    <div class="form-group-suporte">
+                      <label class="labelSuporte" for="suporteArquivos">Anexar Imagem:</label>
+                      <input type="file" id="suporteArquivos" name="suporteArquivos" class="input-field-suporte" multiple>
+                      <div id="imagePreviewContainer" style="margin-top: 20px;"></div>
+                  </div>
+                    <hr>
+                    <div class="form-group-suporte">
+                        <input type="submit" onclick="EnviadoSuporte()" value="Salvar" class="input-submit-feedback">
+                    </div>
+                </form>
+            </div>
+        </div>
+      </section>
+      <section class="overlay-dashboard" id="dashboard">
+        <div class="dashboard">
+            <span class="close-icon" onclick="closeDashboard()">X</span>
+            <form>
+              <div class="image-dash">
+                  <label for="arquivo">
+                      <img id="icone" class="user-image" src="../assets/icons8-usuário-50.png" alt="Ícone de pessoa"
+                          style="cursor: pointer;">
+                  </label>
+                  <input type="file" id="arquivo" name="arquivo" accept="image/*" onchange="previewImage(event)"
+                      style="display: none;">
+                  <img class="user-image" id="preview" src="" alt="Pré-visualização da imagem" style="display: none;">
+                  <div class="user-info">
+                      <h4 id="userName" class="user-name"></h4>
+                  </div>
+              </div>
+                  <h5 id="userEmail" style="color: white;" class="user-email userEmail"></h5>
+          </form>
+            <hr>
+            <div class="content-dashboard">
+                <div class="links-dash">
+                    <a href="#" onclick="AbiriPopupPerfilUsuario()">
+                        <img class="img-links" src="../assets/icons8-usuário-16.png" alt="">
+                        <span class="user-name">Perfil Do Usuário</span>
+                    </a>
+                </div>
+                <div class="links-dash">
+                    <a href="#" class="linksdashfeedback" onclick="AbrirPopupFeedback()">
+                        <img class="img-links" src="../assets/icons8-comentar-debate-50.png" alt="Ícone">
+                        <span class="user-nameBotaoAbrirPopup">Feedback</span>
+                    </a>
+                </div>
+                <div class="links-dash">
+                    <a href="#"  class="linksdashsuporte" onclick="AbrirPopupSuporte()">
+                        <img class="img-links" src="../assets/icons8-suporte-online-skin-type-1-100.png" alt="Ícone">
+                        <span class="user-nameBotaoAbrirPopup">Suporte</span>
+                    </a>
+                </div>
+                <div class="links-dash">
+                    <a href="#" class="NotificaçõesLink">
+                        <img class="img-links" src="../assets/icons8-alarmes-50.png" alt="">
+                        <span class="user-name">Notificações</span>
+                    </a>
+                </div>
+                <div class="links-dash logout">
+                    <a href="#" class="sair" onclick="logout()">
+                        <img class="img-links" src="../assets/icon_sair.png" alt="">
+                        <span class="user-name">logout</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+      </section>
+      <section class="user-profile">
+        <div id="userModal" class="modal">
+          <div class="user-content">
+            <span class="user-close">&times;</span>
+            <h2 class="title-user">Perfil do Usuário</h2>
+            <hr class="profileLine">
+            <form id="profileForm" class="profile-form" action="/Perfil_Usuario" method="POST">
+              <div class="form-group">
+                  <label class="labelUser" for="userName">Nome:</label>
+                  <input type="text" id="nome" name="nome_pfu" class="input-field displayName" aria-describedby="userNameHelp">
+              </div>
+              <div class="form-group">
+                  <label class="labelUser" for="userEmailPerfilUser">Email:</label>
+                  <input type="email" id="userEmailPerfilUser" name="email_pfu" class="input-field userEmail" aria-describedby="userEmailHelp">
+              </div>              
+              <div class="form-group">
+                  <label class="labelUser" for="userPhone">Telefone:</label>
+                  <input type="text" id="userPhone" name="telefone_pfu" class="input-field" aria-describedby="userPhoneHelp">
+              </div>
+              <div class="form-group">
+                  <label class="labelUser" for="CPF">CPF:</label>
+                  <input type="text" id="CPF" name="cpf_pfu" class="input-field" aria-describedby="CPF">
+              </div>
+              <div class="form-group">
+                  <label class="labelUserData" for="dataNascimento">Data de Nascimento:</label>
+                  <input type="date" id="dataNascimento" name="data_nascimento_pfu" class="input-fieldData" aria-describedby="dataNascimento" maxlength="14">
+              </div> 
+              <hr>
+              <div class="form-group">
+                  <input type="submit" value="Salvar" class="input-submit">
+              </div>
+          </form>
+          </div>
+        </div>
+      </section>
     </main>
     <script src="../js/dashboard.js"></script>
     <script src="../js/feedback.js"></script>

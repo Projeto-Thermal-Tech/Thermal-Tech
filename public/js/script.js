@@ -4,11 +4,20 @@ function mostrarUser() {
   document.querySelectorAll(".displayName").forEach((element) => {
     element.value = fullName;
   })
-  document.getElementById("userEmail").value = userEmail;
-  document.getElementById("userEmail").innerHTML = userEmail;
-  document.getElementById("userEmailInput").value = userEmail;
-  document.getElementById("userEmailSuporte").value = userEmail;
-  document.getElementById("userEmailPerfilUser").value = userEmail;
+  // Seleciona todos os elementos com a classe 'userEmail'
+  document.querySelectorAll(".userEmail").forEach((element) => {
+    // Verifica se o elemento é um campo de entrada (input, textarea, etc.)
+    if (['INPUT', 'TEXTAREA', 'SELECT'].includes(element.tagName)) {
+      // Se for um campo de entrada, atribui ao 'value'
+      element.value = userEmail;
+    } else {
+      // Se não for um campo de entrada, atribui ao 'innerHTML'
+      element.innerHTML = userEmail;
+    }
+  });
+  // document.getElementById("userEmailInput").value = userEmail;
+  // document.getElementById("userEmailSuporte").value = userEmail;
+  // document.getElementById("userEmailPerfilUser").value = userEmail;
 }
 
 mostrarUser()

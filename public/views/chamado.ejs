@@ -257,6 +257,7 @@
 </section>
 
 
+
 <section class="user-profile">
   <div id="feedbackModal" class="feedback">
       <div class="feedback-content">
@@ -269,11 +270,11 @@
               </div>
               <div class="form-group-feedback" id="nomeField">
                   <label class="labelFeedback" for="userName" id="NomeFeedbackLabel">Nome:</label>
-                      <input type="text" id="NomeFeedback" class="input-field-feedback " aria-describedby="userNameHelp">
+                      <input type="text" id="NomeFeedback" class="input-field-feedback displayName" aria-describedby="userNameHelp">
               </div>
               <div class="form-group-feedback" id="emailField">
                   <label class="labelFeedback" for="userEmailInput">Email:</label>
-                  <input type="email" id="userEmailInput" class="input-field-feedback" aria-describedby="userEmailHelp">
+                  <input type="email" id="userEmailInput" class="input-field-feedback userEmail" aria-describedby="userEmailHelp">
               </div>              
               <div class="form-group-feedback">
                   <label class="labelFeedback" for="DescriçãoFeedback">Descrição do Feedback:</label>
@@ -297,11 +298,11 @@
           <form id="suporteForm" class="suporte-form" action="/Suporte" method="POST" enctype="multipart/form-data">
               <div class="form-group-suporte" id="nomeField">
                   <label class="labelSuporte" for="userName">Nome:</label>
-                  <input type="text" id="nome" name="nome_desc" class="input-field-suporte" aria-describedby="userName">
+                  <input type="text" id="nome" name="nome_desc" class="input-field-suporte displayName" aria-describedby="userName">
               </div>
               <div class="form-group-suporte" id="emailField">
                   <label class="labelSuporte" for="userEmailInput">Email:</label>
-                  <input type="email" id="userEmailSuporte" name="email_desc" class="input-field-suporte" aria-describedby="userEmail">
+                  <input type="email" id="userEmailSuporte" name="email_desc" class="input-field-suporte userEmail" aria-describedby="userEmail">
               </div>
               <div class="form-group-suporte">
                   <label class="labelSuporte" for="DescriçãoSuporte">Descrição do Suporte:</label>
@@ -336,7 +337,7 @@
                 <h4 id="userName" class="user-name"></h4>
             </div>
         </div>
-            <h5 id="userEmail" style="color: white;" class="user-email"></h5>
+            <h5 id="userEmail" style="color: white;" class="user-email userEmail"></h5>
     </form>
       <hr>
       <div class="content-dashboard">
@@ -382,11 +383,11 @@
       <form id="profileForm" class="profile-form" action="/Perfil_Usuario" method="POST">
         <div class="form-group">
             <label class="labelUser" for="userName">Nome:</label>
-            <input type="text" id="nome" name="nome_pfu" class="input-field" aria-describedby="userNameHelp">
+            <input type="text" id="nome" name="nome_pfu" class="input-field displayName" aria-describedby="userNameHelp">
         </div>
         <div class="form-group">
             <label class="labelUser" for="userEmailPerfilUser">Email:</label>
-            <input type="email" id="userEmailPerfilUser" name="email_pfu" class="input-field" aria-describedby="userEmailHelp">
+            <input type="email" id="userEmailPerfilUser" name="email_pfu" class="input-field userEmail" aria-describedby="userEmailHelp">
         </div>              
         <div class="form-group">
             <label class="labelUser" for="userPhone">Telefone:</label>
