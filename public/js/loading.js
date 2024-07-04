@@ -7,7 +7,7 @@ function showLoading() {
     
     div.appendChild(span);
     document.body.insertBefore(div, document.body.firstChild);
-    document.getElementById('popup-edit').style.display = 'none';
+    // document.getElementById('popup-edit').style.display = 'none';
   }
   
   
