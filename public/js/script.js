@@ -2,8 +2,13 @@ function mostrarUser() {
   const userEmail = localStorage.getItem("userEmail");
   const fullName = localStorage.getItem("userName"); 
   document.querySelectorAll(".displayName").forEach((element) => {
-    element.value = fullName;
-  })
+    // Para elementos que não são de entrada, use 'textContent' ou 'innerHTML'
+    if (['INPUT', 'TEXTAREA', 'SELECT'].includes(element.tagName)) {
+      element.value = fullName; // Para campos de entrada
+    } else {
+      element.textContent = fullName; // Para outros elementos, como <h5>
+    }
+  });
   // Seleciona todos os elementos com a classe 'userEmail'
   document.querySelectorAll(".userEmail").forEach((element) => {
     // Verifica se o elemento é um campo de entrada (input, textarea, etc.)
@@ -11,16 +16,53 @@ function mostrarUser() {
       // Se for um campo de entrada, atribui ao 'value'
       element.value = userEmail;
     } else {
-      // Se não for um campo de entrada, atribui ao 'innerHTML'
-      element.innerHTML = userEmail;
+      // Se não for um campo de entrada, atribui ao 'textContent' ou 'innerHTML'
+      element.textContent = userEmail;
     }
   });
-  // document.getElementById("userEmailInput").value = userEmail;
-  // document.getElementById("userEmailSuporte").value = userEmail;
-  // document.getElementById("userEmailPerfilUser").value = userEmail;
 }
 
-mostrarUser()
+mostrarUser();
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('profileForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // Impede o envio padrão do formulário
+
+    const nome = document.getElementById('nome').value;
+    const email = document.getElementById('userEmailPerfilUser').value;
+    const telefone = document.getElementById('userPhone').value;
+    const cpf = document.getElementById('CPF').value;
+    const dataNascimento = document.getElementById('dataNascimento').value;
+
+    const user = firebase.auth().currentUser;
+    if (user) {
+      const userId = user.uid;
+
+      // salva na tabela 'usuarios' usando o userId para criar um novo registro
+      firebase.database().ref('usuarios/' + userId).set({
+          nome: nome,
+          email: email,
+          telefone: telefone,
+          cpf: cpf,
+          dataNascimento: dataNascimento
+        }).then(() => {
+        console.log("Dados salvos com sucesso na tabela 'usuarios'!");
+
+        // Limpa os campos do formulário após o envio bem-sucedido
+        document.getElementById('nome').value = '';
+        document.getElementById('userEmailPerfilUser').value = '';
+        document.getElementById('userPhone').value = '';
+        document.getElementById('CPF').value = '';
+        document.getElementById('dataNascimento').value = '';
+
+      }).catch((error) => {
+        console.error("Erro ao salvar dados na tabela 'usuarios': ", error);
+      });
+    } else {
+      console.error("Usuário não autenticado.");
+    }
+  });
+});
 
 const btn_config = document.querySelector(".config");
 const dados_chamado =document.querySelectorAll(".section_chamado").style.display="none"

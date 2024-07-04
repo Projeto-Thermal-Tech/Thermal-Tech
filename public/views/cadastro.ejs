@@ -503,7 +503,7 @@
                     style="display: none;">
                 <img class="user-image" id="preview" src="" alt="Pré-visualização da imagem" style="display: none;">
                 <div class="user-info">
-                    <h4 id="userName" class="user-name"></h4>
+                  <h5 id="userName" style="color: white;" class="user-name displayName"></h5>
                 </div>
             </div>
                 <h5 id="userEmail" style="color: white;" class="user-email userEmail"></h5>
@@ -549,7 +549,7 @@
           <span class="user-close">&times;</span>
           <h2 class="title-user">Perfil do Usuário</h2>
           <hr class="profileLine">
-          <form id="profileForm" class="profile-form" action="/Perfil_Usuario" method="POST">
+          <form id="profileForm" class="profile-form">
             <div class="form-group">
                 <label class="labelUser" for="userName">Nome:</label>
                 <input type="text" id="nome" name="nome_pfu" class="input-field displayName" aria-describedby="userNameHelp">
@@ -559,17 +559,17 @@
                 <input type="email" id="userEmailPerfilUser" name="email_pfu" class="input-field userEmail" aria-describedby="userEmailHelp">
             </div>              
             <div class="form-group">
-                <label class="labelUser" for="userPhone">Telefone:</label>
-                <input type="text" id="userPhone" name="telefone_pfu" class="input-field" aria-describedby="userPhoneHelp">
-            </div>
-            <div class="form-group">
-                <label class="labelUser" for="CPF">CPF:</label>
-                <input type="text" id="CPF" name="cpf_pfu" class="input-field" aria-describedby="CPF">
-            </div>
-            <div class="form-group">
-                <label class="labelUserData" for="dataNascimento">Data de Nascimento:</label>
-                <input type="date" id="dataNascimento" name="data_nascimento_pfu" class="input-fieldData" aria-describedby="dataNascimento" maxlength="14">
-            </div> 
+              <label class="labelUser" for="userPhone">Telefone:</label>
+              <input type="text" id="userPhone" name="telefone_pfu" class="input-field userPhone" aria-describedby="userPhoneHelp">
+          </div>
+          <div class="form-group">
+              <label class="labelUser" for="CPF">CPF:</label>
+              <input type="text" id="CPF" name="cpf_pfu" class="input-field userCPF" aria-describedby="CPF">
+          </div>
+          <div class="form-group">
+              <label class="labelUserData" for="dataNascimento">Data de Nascimento:</label>
+              <input type="date" id="dataNascimento" name="data_nascimento_pfu" class="input-fieldData userDataNascimento" aria-describedby="dataNascimento" maxlength="14">
+          </div>
             <hr>
             <div class="form-group">
                 <input type="submit" value="Salvar" class="input-submit">
@@ -590,6 +590,7 @@
 <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-storage-compat.js"></script> 
+<script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-database-compat.js"></script>
 <script src="../Login_v1/firebase-init.js"></script>
 <script src="../js/auth-guard.js"></script>
 <script src="../js/logout.js"></script>
