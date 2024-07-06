@@ -63,6 +63,68 @@ function mostrarUser() {
       }
     });
   });
+
+  let lastNotification = null;
+
+  async function fetchNotification() {
+    const response = await fetch('http://localhost:5000/notification');
+    const data = await response.json();
+  
+    if (data && data !== lastNotification) {
+      const message = "Novo chamado criado: " + data.id_chamado + ', ' + data.criado_por_cha;       
+         $.notify(message, "success");
+         fetch('http://localhost:5000/executarPython?id=' + data.id_chamado + '&criado_por=' + data.criado_por_cha + '&hora_ini_cha=' + data.hora_ini_cha + '&data_ini_cha=' + data.data_ini_cha + '&email=' + data.email + '&id_usuario=' + localStorage.getItem('uid'))
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro ao executar o script Python');
+        }
+        console.log('Script Python executado com sucesso');
+    })
+    .catch(error => console.error(error));
+        lastNotification = data;
+    }
+  }
+  
+  setInterval(fetchNotification, 5000);
+
+
+  function gerarPDF() {
+    // Obtém o valor do elemento com o ID "idChamado"
+    let numeroOrdem = document.querySelector("#idOrdem").value
+  
+    // Faz uma solicitação GET para o servidor para baixar o PDF
+    fetch('http://localhost:5000/downloadpdf?id=' + numeroOrdem)
+        .then(response => {
+            // Se a resposta não for bem-sucedida, lança um erro
+            if (!response.ok) {
+                throw new Error('Erro ao executar o script Python');
+            }
+            // Lê a resposta como um Blob e retorna esse Blob
+            return response.blob();
+        })
+        .then(blob => {
+            // Cria um URL para o Blob
+            const url = window.URL.createObjectURL(blob);
+  
+            // Cria um elemento de link e define o URL do Blob como o href do link
+            const a = document.createElement('a');
+            a.href = url;
+  
+            // Define o nome do arquivo para download
+            a.download = 'chamado ' + numeroOrdem + '.pdf';
+  
+            // Adiciona o link ao corpo do documento
+            document.body.appendChild(a);
+  
+            // Simula um clique no link, o que inicia o download do arquivo
+            a.click();
+  
+            // Remove o link do corpo do documento, pois não é mais necessário
+            a.remove();
+        })
+        // Registra qualquer erro que possa ocorrer no console
+        .catch(error => console.error(error));
+  }
   
   const btn_config = document.querySelector(".config");
   const dados_chamado =document.querySelectorAll(".section_chamado").style.display="none"
@@ -273,7 +335,3 @@ function mostrarUser() {
         })
         .catch(error => console.error(error));
   });
-  
-  
-  
-  

@@ -6,7 +6,7 @@ const eventManager = require('./eventManager');
 const dbConfig = {
     user: 'postgres',
     password: '123456',
-    host: '34.151.204.122',
+    host: '34.95.252.117',
     port: '5432',
     database: 'banco_tt' // ou qualquer outro valor padrão
 };

@@ -6,7 +6,7 @@ def get_data(query):
         dbname="banco_tt",
         user="postgres",
         password="123456",
-        host="34.151.204.122",
+        host="34.95.252.117",
         port="5432"
     )
 
