@@ -1,0 +1,36 @@
+@media (max-width: 1000px) {
+    body {
+        overflow-y: scroll; 
+    }
+    
+    .error_404 {
+        flex-direction: column;
+        padding: 5rem 1rem;
+    }
+
+    .left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 2rem;
+    }
+
+    .left p, .left h4 {
+        text-align: center; 
+    }
+
+    .right img {
+        width: auto; 
+        height: 50vh; 
+        max-width: none; 
+    }
+
+    .right .shadow {
+        width: 80%;
+        max-width: 450px; 
+    }
+
+    .left .btn {
+        margin-top: 20px; 
+    }
+}

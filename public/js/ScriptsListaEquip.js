@@ -115,6 +115,7 @@ function Salvarequipamento() {
   document.getElementById("popoufiltro").style.display = "block";
   document.querySelector(".overlayfiltro").style.display = "block";
   document.body.style.overflow = 'hidden';
+  
 }
 function Esconderpopou() {
   document.getElementById("popoufiltro").style.display = "none";

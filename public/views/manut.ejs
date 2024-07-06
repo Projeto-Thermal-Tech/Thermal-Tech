@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
     <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/> -->
     <link rel="stylesheet" href="../css/manut.css">
     <link rel="stylesheet" href="../css/global.css">
@@ -41,7 +42,7 @@
                         <li><a href="http://localhost:5000/chamado">Chamados</a></li>
                         <li><a href="http://localhost:5000/cadastro">Cadastro Geral</a></li>
                         <li><a href="http://localhost:5000/relatorio">Homem Hora</a></li>
-                        <li><a href="">Gráficos gerenciais</a></li>
+                        <li><a href="http://localhost:5000/graficos">Gráficos gerenciais</a></li>
                         <li><a href="../pages/chat.html">Chat</a></li>
                     </ul>
                 </nav>
@@ -67,7 +68,7 @@
                             <li><a href="http://localhost:5000/chamado">Chamados</a></li>
                             <li><a href="http://localhost:5000/cadastro">Cadastro Geral</a></li>
                             <li><a href="http://localhost:5000/relatorio">Homem Hora</a></li>
-                            <li><a href="">Gráficos gerenciais</a></li>
+                            <li><a href="http://localhost:5000/graficos">Gráficos gerenciais</a></li>
                             <li><a href="../pages/chat.html">Chat</a></li>
                         </ul>
                     </nav>
@@ -359,6 +360,22 @@
       </section>
     </main>
     <script src="../js/dashboard.js"></script>
+    <script>
+        // Monitorar notificações recebidas
+// Monitorar mudanças em localStorage
+$(window).on('storage', function(e) {
+    console.log("Evento de armazenamento detectado.");
+    if (e.originalEvent.key === 'Chamado') {
+        console.log("Chamado detectado no armazenamento.");
+        // Disparar evento de notificação
+        $.notify('Um novo chamado foi criado.', 'success' )
+        // Limpar o sinal de novo chamado
+        localStorage.removeItem('Chamado');
+        console.log("Chamado removido do armazenamento.");
+    }
+});
+    </script>
+    <script src="../js/notify.min.js"></script>
     <script src="../js/feedback.js"></script>
     <script src="../js/menu-mobile.js"></script>
     <script src="../js/script.js"></script>
