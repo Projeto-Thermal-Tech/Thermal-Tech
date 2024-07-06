@@ -61,6 +61,14 @@
     text-align: center;
 }
 
+.filtro_cham td {
+  min-width: 150px; 
+  max-width: 150px; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .situ {
     border-radius: 2%;
     border: none;
@@ -104,8 +112,8 @@
 }
 
 .table-container {
-    height: calc(30 * 1em); /* Defina a altura da tabela para 10 linhas */
-    /* overflow-y: scroll; Adicione uma barra de rolagem vertical */
+    height: calc(30 * 1em); 
+    min-height: 500px;
     overflow-y: auto;
   }
 

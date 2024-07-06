@@ -84,9 +84,40 @@ exports.selectChamado = async function() {
       await db.end();
     }
 };
+exports.insertFeedback = function (anonymous_feed, nome_feed, email_feed, descricao_feed) {
+    async function novoFeedback(anonymous_feed, nome_feed, email_feed, descricao_feed) {
+        await db.connect();
+        const inserir = 'INSERT INTO feedbacks (anonymous_feed, nome_feed, email_feed, descricao_feed) VALUES ($1, $2, $3, $4)';
+        await db.query(inserir, [anonymous_feed, nome_feed, email_feed, descricao_feed]);
+    }
+    return novoFeedback(anonymous_feed, nome_feed, email_feed, descricao_feed);
+}
+exports.insertSuporte = function (nome_desc, email_desc, descricao_desc, arquivos) {
+    async function novoSuporte(nome_desc, email_desc, descricao_desc, arquivos) {
+        await db.connect();
+        const inserirSuporte = 'INSERT INTO Suporte (nome_desc, email_desc, descricao_desc) VALUES ($1, $2, $3) RETURNING id';
+        const resSuporte = await db.query(inserirSuporte, [nome_desc, email_desc, descricao_desc]);
+        const suporteId = resSuporte.rows[0].id;
+        const inserirArquivo = 'INSERT INTO SuporteArquivos (suporte_id, arquivo_nome, arquivo_caminho) VALUES ($1, $2, $3)';
+        for (const arquivo of arquivos) {
+            await db.query(inserirArquivo, [suporteId, arquivo.originalname, arquivo.path]);
+        }
+    }
+    return novoSuporte(nome_desc, email_desc, descricao_desc, arquivos);
+}
 
-exports.updateEquip = function (id, tag, tipo, modelo, ns, area, local, setor, descricao) {
-    async function atualizarEquip(id, tag, tipo, modelo, ns, area, local, setor, descricao) {
+// exports.insertPerfil_Usuario = function (nome_pfu, email_pfu, telefone_pfu, cpf_pfu, data_nascimento_pfu) {
+//     async function novoPerfil_Usuario(nome_pfu, email_pfu, telefone_pfu, cpf_pfu, data_nascimento_pfu) {
+//         console.log(nome_pfu, email_pfu, telefone_pfu, cpf_pfu, data_nascimento_pfu);
+//         await db.connect();
+//         const inserir = 'INSERT INTO Perfil_Usuario (nome_pfu, email_pfu, telefone_pfu, cpf_pfu, data_nascimento_pfu) VALUES ($1, $2, $3, $4, $5)';
+//         await db.query(inserir, [nome_pfu, email_pfu, telefone_pfu, cpf_pfu, data_nascimento_pfu]);
+//     }
+//     return novoPerfil_Usuario(nome_pfu, email_pfu, telefone_pfu, cpf_pfu, data_nascimento_pfu);
+// }
+
+exports.updateEquip = function (id, tag, tipo, modelo, ns, area, local, setor, descricao, pdfInfo) {
+    async function atualizarEquip(id, tag, tipo, modelo, ns, area, local, setor, descricao, pdfInfo) {
         try {
             await db.connect();
 
@@ -96,8 +127,8 @@ exports.updateEquip = function (id, tag, tipo, modelo, ns, area, local, setor, d
                 throw new Error('Registro não encontrado.');
             }
 
-            // Execute a atualização dos dados
-            const atualizacao = `
+            // Prepara a consulta SQL base
+            let atualizacao = `
                 UPDATE lista_equipamentos
                 SET
                     tag_listequip = $2,
@@ -108,17 +139,28 @@ exports.updateEquip = function (id, tag, tipo, modelo, ns, area, local, setor, d
                     localidade_listequip = $7,
                     setor_listequip = $8,
                     descricao_listequip = $9
-                WHERE id_equip = $1
             `;
-            await db.query(atualizacao, [id, tag, tipo, modelo, ns, area, local, setor, descricao]);
+            let valores = [id, tag, tipo, modelo, ns, area, local, setor, descricao];
 
-            return 'Registro atualizado com sucesso.';
+            // Se pdfInfo for fornecido, adicione à consulta
+            if (pdfInfo) {
+                atualizacao += `, anexo_nome_listequip = $10, anexo_caminho_listequip = $11`;
+                valores.push(pdfInfo.nome, pdfInfo.caminho);
+            }
+
+            // Finaliza a consulta com a cláusula WHERE
+            atualizacao += ` WHERE id_equip = $1`;
+
+            // Executa a consulta
+            await db.query(atualizacao, valores);
+
+            return 'Registro e PDF atualizados com sucesso.';
         } catch (error) {
-            throw new Error(`Erro ao atualizar registro: ${error.message}`);
-        } 
+            throw new Error(`Erro ao atualizar registro e inserir PDF: ${error.message}`);
+        }
     }
 
-    return atualizarEquip(id, tag, tipo, modelo, ns, area, local, setor, descricao);
+    return atualizarEquip(id, tag, tipo, modelo, ns, area, local, setor, descricao, pdfInfo);
 }
 
 exports.deleteEquip = function (id) {

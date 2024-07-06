@@ -19,6 +19,11 @@ const atualizarSetor = require('./database/db');
 const excluirSetor = require('./database/db');
 const atualizarTipo = require('./database/db');
 const excluirTipoArCondicionado = require('./database/db');
+const { insertFeedback } = require('./database/db');
+const { insertSuporte } = require('./database/db');
+const multer = require('multer');
+const { insertPerfil_Usuario } = require('./database/db');
+const nodemailer = require('nodemailer');
 const dados = require('./database/db');
 const { error } = require("console");
 const db = require("./database/cnx");
@@ -392,6 +397,167 @@ router.get("/relatorio", async function (req, res) {
     }
 });
 
+router.post('/feedbacks', async function(req, res)  {
+    const { anonymous_feed, nome_feed, email_feed, descricao_feed } = req.body;
+    console.log(req.body);
+    try {
+        await insertFeedback(anonymous_feed, nome_feed, email_feed, descricao_feed);
+        res.redirect('back'); // Redireciona o usuário para a página anterior
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Houve um erro ao enviar o feedback.');
+    }
+});
+// Configuração de armazenamento para o multer
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    // Define o destino como um diretório 'uploads' na raiz do projeto
+    cb(null, path.join(__dirname, '/uploads'));
+  },
+  filename: function (req, file, cb) {
+    // Mantém o nome do arquivo original com um timestamp para evitar sobreposições
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+  }
+});
+
+const upload = multer({ storage: storage });
+
+// Configura o transporte de e-mail
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'cloudthermaltech2@gmail.com',
+        pass: 'tzjvpbvvpblcgyqh'
+    }
+});
+
+router.post('/Suporte', upload.array('suporteArquivos'), async function (req, res) {
+    const { nome_desc, email_desc, descricao_desc } = req.body;
+    const arquivos = req.files;
+    console.log(req.body);
+    try {
+        // Aqui você precisará ajustar para salvar as informações dos arquivos no banco de dados
+        await insertSuporte(nome_desc, email_desc, descricao_desc, arquivos);
+
+        // Prepara os anexos para o e-mail
+        let attachments = arquivos.map(arquivo => ({
+            filename: arquivo.originalname,
+            path: arquivo.path
+        }));
+
+        // Envia um e-mail para os desenvolvedores
+        let mailOptions = {
+            from: 'cloudthermaltech2@gmail.com',
+            to: 'ens-eduardowagner@ugv.edu.br, ens-victorbueno@ugv.edu.br',
+            subject: 'Novo suporte enviado',
+            attachments: attachments,
+            html: `
+                <html>
+                <head>
+                    <style>
+                        .body {
+                            font-family:B612; 
+                            margin: 0;
+                            padding: 0;
+                            background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+                        }
+
+                        .email-table {
+                            width: 100%;
+                            max-width: 600px;
+                            margin: 0 auto;
+                            box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.1);
+                        }
+
+                        .email-content{
+                            padding: 20px;
+                            text-align: center;
+                        }
+
+                        .email-heading {
+                            color: #ffffff;
+                        }
+
+                        .email-text {
+                            text-align: center;
+                            line-height: 1.5;
+                            color: #ffffff;
+                            font-size: 18px;
+                            margin-bottom: 30px;
+                        }
+
+                        .user-image {
+                            width: 300px;
+                            height: 200px;
+                        }
+
+                        .user-image img {
+                            width: 300px;
+                            height: 200px;
+                        }
+
+                        .email-text a {
+                            color: white;
+                        }
+                </style>
+                </head>
+                <body class="body">
+                    <img class="user-image" src="https://firebasestorage.googleapis.com/v0/b/thermal-tech-57a87.appspot.com/o/logo.png?alt=media&token=0cd54494-7088-48fd-bdfc-16f7712b6171" alt="Logo">
+                    <table class="email-table">
+                        <tr>
+                            <td class="email-content">
+                                <h1 class="email-heading">Novo suporte enviado</h1>
+                                <p class="email-text"><strong>Nome:</strong> ${nome_desc}</p>
+                                <p class="email-text"><strong>Email:</strong> ${email_desc}</p>
+                                <p class="email-text"><strong>Descrição:</strong> ${descricao_desc}</p>
+                            </td>
+                        </tr>
+                    </table>
+                </body>
+                </html>
+            `
+        };
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email enviado: ' + info.response);
+            }
+        });
+
+        res.redirect('back');
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Houve um erro ao enviar o Suporte.');
+    }
+});
+
+// router.get("/view/manut", async function (req, res) {
+//     try {
+//         const id_ordem = req.body.manut;
+//         const createViewSql = " SELECT ordem.id_ordem,lista_equipamentos.tag_listequip,tipos_arcondicionado.tipos_arcondicionado_tipar as tipo_listequip,tecnicos.matricula_tec as matricula_ord, ordem.titulo_ord,ordem.data_ini_ord,ordem.data_fim_ord,ordem.hora_ini_ord, ordem.hora_fim_ord,ordem.texto_servico FROM ordem JOIN lista_equipamentos ON ordem.numero_cha = lista_equipamentos.id_equip JOIN tipos_arcondicionado ON lista_equipamentos.tipo_listequip = tipos_arcondicionado.id_tipar JOIN tecnicos ON ordem.matricula_ord = tecnicos.matricula_tec;";
+//         await db.query(createViewSql);
+//         const querySql = "SELECT ordem.id_ordem,lista_equipamentos.tag_listequip,tipos_arcondicionado.tipos_arcondicionado_tipar as tipo_listequip,tecnicos.matricula_tec as matricula_ord, ordem.titulo_ord,ordem.data_ini_ord,ordem.data_fim_ord,ordem.hora_ini_ord, ordem.hora_fim_ord,ordem.texto_servico FROM ordem JOIN lista_equipamentos ON ordem.numero_cha = lista_equipamentos.id_equip JOIN tipos_arcondicionado ON lista_equipamentos.tipo_listequip = tipos_arcondicionado.id_tipar JOIN tecnicos ON ordem.matricula_ord = tecnicos.matricula_tec;";
+//         const result = await db.query(querySql);
+//         res.render('viewmanut', { manut: result.rows })
+//     } catch (err) {
+//         console.error(err);
+//         res.status(500).send('Erro no servidor');
+//     }
+// });
+
+// router.post('/Perfil_Usuario', async function(req, res)  {
+//     const { nome_pfu, email_pfu, telefone_pfu, cpf_pfu, data_nascimento_pfu } = req.body;
+//     console.log(req.body);
+//     try {
+//         await insertPerfil_Usuario(nome_pfu, email_pfu, telefone_pfu, cpf_pfu, data_nascimento_pfu);
+//         res.redirect('back'); // Redireciona o usuário para a página anterior
+//     } catch (error) {
+//         console.log(error);
+//         res.status(500).send('Houve um erro ao inserir o usuário.');
+//     }
+// });
+
 router.post("/encerra/ordem", async function (req, res) {
     atualizarOrdem.updateOrdem(req.body.ordem, req.body.data_fim, req.body.hora_fim, req.body.matricula, req.body.data_lanc_ord, req.body.hora_ini_trab, req.body.data_ini_trab, req.body.data_fim_trab, req.body.hora_fim_trab, req.body.texto_servico, req.body.num_chamado)
         .then( async function () {
@@ -430,13 +596,40 @@ router.post('/cadastro/equipamento', function (req, res) {
         res.status(404).redirect('/404');
     });
 })
+
+
+
+
+// // Renomeando storage para pdfStorage
+// const pdfStorage = multer.diskStorage({
+//     destination: function(req, file, cb) {
+//         cb(null, 'pdfs/'); // Diretório onde os PDFs serão salvos
+//     },
+//     filename: function(req, file, cb) {
+//         cb(null, Date.now() + '-' + file.originalname); // Garante nome de arquivo único
+//     }
+// });
+
+// // Renomeando upload para pdfUpload
+// const pdfUpload = multer({ storage: pdfStorage });
+
 router.post('/atualizar/equipamento', function (req, res) {
-    atualizarEquip.updateEquip(req.body.id_equip, req.body.TAG, req.body.TIPO, req.body.MODELO, req.body.NS, req.body.AREA, req.body.LOCAL, req.body.SETOR, req.body.DESC).then(function () {
-        res.redirect('/equipamentos')
-    }).catch(function (error) {
-        res.status(404).redirect('/404');
-    });
-})
+
+    let pdfInfo = null;
+    pdfInfo = {
+        nome: req.body.nomePDF,
+        caminho: req.body.linkPDF
+    }
+    // Chama updateEquip com ou sem pdfInfo, dependendo se um arquivo foi enviado
+    atualizarEquip.updateEquip(req.body.id_equip, req.body.TAG, req.body.TIPO, req.body.MODELO, req.body.NS, req.body.AREA, req.body.LOCAL, req.body.SETOR, req.body.DESC, pdfInfo)
+        .then(function () {
+            console.log("Equipamento atualizado com sucesso");
+            res.redirect('/equipamentos');
+        }).catch(function (error) {
+            console.log("Erro ao atualizar equipamento:", error);
+            res.status(500).send("Erro ao atualizar equipamento: " + error);
+        });
+});
 
 router.post('/deletar/equipamento/:id', function (req, res) {
     const idEquip = req.params.id;
@@ -522,27 +715,6 @@ router.post('/cadastro/tipo', function (req, res) {
         res.status(404).redirect('/404');
     });
 })
-router.post('/novoUsuario', function (req, res) {
-    novoUser.insertUser(req.body.nome, req.body.email).then(function () {
-        res.sendFile(path.join(__dirname, "./public/pages/manut.html"))
-    }).catch(function (error) {
-        res.status(404).redirect('/404');
-    });
-})
-const dbConfig = {
-    user: 'postgres',
-    password: '123456',
-    host: '34.151.204.122',
-    port: '5432',
-    database: 'banco_tt' // ou qualquer outro valor padrão
-};
-
-app.get('/404', function (req, res) {
-    res.status(404).render('error404');
-});
-app.use(function (req, res, next) {
-    res.status(404).redirect('/404');
-});
 
 router.get("/ordem", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/pages/ordem.html"))

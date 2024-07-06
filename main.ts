@@ -14,6 +14,9 @@ server.use(router)
 server.listen(5000)
 
 
+// Correção: Usar 'server' ao invés de 'app' para configurar o diretório de arquivos estáticos
+server.use('/pdfs', express.static(path.join(__dirname, 'pdfs')));
+
 function createWindow(){
     const win = 
     new BrowserWindow({
