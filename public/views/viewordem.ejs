@@ -268,25 +268,25 @@
                 <span class="feedback-close" onclick="resetForm()">&times;</span>
                 <h2 class="title-feedback">Feedback</h2>
                 <hr class="feedbackLine">
-                <form id="feedbackForm" class="feedback-form">
+                <form id="feedbackForm" class="feedback-form"  action="/feedbacks" method="POST"> 
                     <div id="anonymousSection">
                         <button class="EnviarAnonimamente" id="EnviarAnonimamenteButton" onclick="enableAnonymous()">Enviar Anonimamente</button>
                     </div>
                     <div class="form-group-feedback" id="nomeField">
                         <label class="labelFeedback" for="userName" id="NomeFeedbackLabel">Nome:</label>
-                            <input type="text" id="NomeFeedback" class="input-field-feedback displayName" aria-describedby="userNameHelp">
+                            <input type="text" id="NomeFeedback" name="nome_feed" class="input-field-feedback displayName" aria-describedby="userNameHelp">
                     </div>
                     <div class="form-group-feedback" id="emailField">
                         <label class="labelFeedback" for="userEmailInput">Email:</label>
-                        <input type="email" id="userEmailInput" class="input-field-feedback userEmail" aria-describedby="userEmailHelp">
+                        <input type="email" id="userEmailInput" name="email_feed" class="input-field-feedback userEmail" aria-describedby="userEmailHelp">
                     </div>              
                     <div class="form-group-feedback">
                         <label class="labelFeedback" for="DescriçãoFeedback">Descrição do Feedback:</label>
-                        <input type="text" id="DescriçãoFeedback" class="input-field-feedback" aria-describedby="DescriçãoFeedback">
+                        <input type="text" id="DescriçãoFeedback" name="descricao_feed" class="input-field-feedback" aria-describedby="DescriçãoFeedback">
                     </div>
                     <hr>
                     <div class="form-group-feedback">
-                        <input type="submit" value="Salvar" class="input-submit-feedback">
+                        <input type="submit" onclick="EnviadoFeedback()" value="Salvar" class="input-submit-feedback">
                     </div>
                 </form>
             </div>
