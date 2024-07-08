@@ -141,6 +141,7 @@ main h2{
     border: 1px solid #dad0ce;
     width: 20%; 
     color: red;
+    background-color: white;
     text-align: center;
     height: 2rem; 
     font-weight: bold;
@@ -153,6 +154,7 @@ main h2{
   border: 1px solid #dad0ce;
   width: 20%; 
   color: red;
+  background-color: white;
   text-align: center;
   height: 2rem; 
   font-weight: bold;
