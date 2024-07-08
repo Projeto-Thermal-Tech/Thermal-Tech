@@ -386,14 +386,83 @@ router.get("/manutencao", async function (req, res) {
 });
 router.get("/relatorio", async function (req, res) {
     try {
-        const sqlHoras = "SELECT ordem.id_ordem, tipo_manut.nome_manut, tecnicos.matricula_tec, ordem.hora_ini_trab, ordem.hora_fim_trab, ordem.data_ini_trab, ordem.data_fim_trab, TO_CHAR((ordem.hora_fim_trab - ordem.hora_ini_trab), 'HH24:MI:SS') as horas_trabalhadas FROM ordem  INNER JOIN tipo_manut ON ordem.manut_ord = tipo_manut.id_manut INNER JOIN tecnicos ON ordem.matricula_ord = tecnicos.matricula_tec ORDER BY ordem.id_ordem ASC;  ";
-        const sqlTecnicos = 'SELECT * FROM tecnicos'
-        let relatorio = await db.query(sqlHoras);
-        let Tecnicos = await db.query(sqlTecnicos)
-        res.render('horas', { horas: relatorio.rows, Tecnicos: Tecnicos.rows });
+        // Recupera a matrícula do técnico da query string. Se caso não houver, define como 'geral'
+        let matriculaTecnico = req.query.matriculaTecnico;
+        if (!matriculaTecnico) {
+            matriculaTecnico = 'geral';
+        }
 
+        // Recupera as datas de início e fim da query string
+        const dataInicio = req.query.dataInicio;
+        const dataFim = req.query.dataFim;
+
+        // Define a consulta SQL para buscar as horas trabalhadas
+        let sqlHoras = `
+            SELECT 
+            ordem.id_ordem, 
+            tipo_manut.nome_manut as manut_ord, 
+            tecnicos.matricula_tec, 
+            ordem.hora_ini_trab, 
+            ordem.hora_fim_trab, 
+            ordem.data_ini_trab, 
+            ordem.data_fim_trab, 
+            TO_CHAR((ordem.hora_fim_trab - ordem.hora_ini_trab), 'HH24:MI:SS') as tempo_trabalhado 
+            FROM ordem  
+            INNER JOIN tipo_manut ON ordem.manut_ord = tipo_manut.id_manut 
+            INNER JOIN tecnicos ON ordem.matricula_ord = tecnicos.matricula_tec 
+        `;
+
+        // Inicializa os parâmetros da consulta
+        let params = [];
+
+        // Se a matrícula do técnico não for 'geral', adiciona uma cláusula WHERE à consulta
+        if (matriculaTecnico != 'geral') {
+            sqlHoras += ' WHERE tecnicos.matricula_tec = $1';
+            params.push(matriculaTecnico);
+        }
+
+        // Se houver data de início, adiciona uma cláusula AND à consulta
+        if (dataInicio) {
+            sqlHoras += (params.length > 0 ? ' AND' : ' WHERE') + ' ordem.data_ini_trab >= $' + (params.length + 1);
+            params.push(dataInicio);
+        }
+
+        // Se houver data de fim, adiciona uma cláusula AND à consulta
+        if (dataFim) {
+            sqlHoras += (params.length > 0 ? ' AND' : ' WHERE') + ' ordem.data_fim_trab <= $' + (params.length + 1);
+            params.push(dataFim);
+        }
+
+        // Adiciona uma cláusula ORDER BY à consulta
+        sqlHoras += ' ORDER BY ordem.id_ordem ASC';
+
+        // Define a consulta SQL para buscar todos os técnicos
+        const sqlTecnicos = 'SELECT * FROM tecnicos'
+
+        // Define as consultas SQL para buscar a quantidade de manutenções preventivas e corretivas
+        const sqlPreventivas = 'SELECT COUNT(*) FROM ordem WHERE manut_ord = \'2\' AND matricula_ord = $1' + (dataInicio ? ' AND data_ini_trab >= $2' : '') + (dataFim ? ' AND data_fim_trab <= $3' : '');
+        const sqlCorretivas = 'SELECT COUNT(*) FROM ordem WHERE manut_ord = \'1\' AND matricula_ord = $1' + (dataInicio ? ' AND data_ini_trab >= $2' : '') + (dataFim ? ' AND data_fim_trab <= $3' : '');
+
+        // Executa as consultas
+        let relatorio = await db.query(sqlHoras, params);
+        let Tecnicos = await db.query(sqlTecnicos)
+        let preventivas;
+        let corretivas;
+
+        if (matriculaTecnico !== 'geral') {
+            preventivas = await db.query(sqlPreventivas, [matriculaTecnico, dataInicio, dataFim].filter(Boolean));
+            corretivas = await db.query(sqlCorretivas, [matriculaTecnico, dataInicio, dataFim].filter(Boolean));
+        } else {
+            // Se a matrícula do técnico for 'geral', busca a quantidade total de manutenções preventivas e corretivas
+            preventivas = await db.query('SELECT COUNT(*) FROM ordem WHERE manut_ord = \'2\'' + (dataInicio ? ' AND data_ini_trab >= $1' : '') + (dataFim ? ' AND data_fim_trab <= $2' : ''), [dataInicio, dataFim].filter(Boolean));
+            corretivas = await db.query('SELECT COUNT(*) FROM ordem WHERE manut_ord = \'1\'' + (dataInicio ? ' AND data_ini_trab >= $1' : '') + (dataFim ? ' AND data_fim_trab <= $2' : ''), [dataInicio, dataFim].filter(Boolean));
+        }
+
+        res.render('horas', { horas: relatorio.rows, Tecnicos: Tecnicos.rows, matriculaTecnicoSelecionado: matriculaTecnico, dataInicio: dataInicio, dataFim: dataFim, consultaFeita: params.length > 0, preventivas: preventivas.rows[0].count, corretivas: corretivas.rows[0].count });
     } catch (error) {
-        res.status(404).render('error404');
+        // Em caso de erro, retorna uma resposta de status 500 com a mensagem de erro
+        res.status(500).send("Erro ao buscar os dados: " + error.message);
+
     }
 });
 
