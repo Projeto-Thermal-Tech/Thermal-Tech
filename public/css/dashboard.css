@@ -102,6 +102,15 @@
     margin-left: 15px;
 }
 
+.user-info {
+    font-size: 20px; 
+    margin-left: 15px; 
+}
+
+.user-info .user-name {
+    margin-top: -15px; 
+}
+
 .links-dash span:hover {
     cursor: pointer;
 }

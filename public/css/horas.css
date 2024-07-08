@@ -1,169 +1,189 @@
-* {
+*{
   padding: 0;
   margin: 0;
-  font-family: "B612";
-}
-/*inicio do código de dasing da tela de horas*/
-main h1 {
-  font-size: 35px;
+  font-family: 'B612';
+}  
+
+main h2{
+  color: #100f0f;
+  font-size: 28px;
   padding: 1rem;
   text-align: center;
 }
-
-h4 {
-  margin-bottom: 20px;
-  font-size: 20px;
+.container_horas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
 }
 
-.container {
-  width: 62%;
-  margin: 0 auto;
-  padding: 20px;
-}
-/* form */
-/* Estilos para o campo de entrada Colaborador e Emissor */
-#selectTec {
-  width: 55%; /* Largura desejada para ambos os campos */
-  padding: 10px;
-  border-radius: 4px;
-}
-#Emissor {
-  width: 65%; /* Largura desejada para ambos os campos */
-  padding: 10px;
-  border-radius: 4px;
-  margin-left: 38px; /* Ajuste o valor da margem esquerda conforme necessário */
+.dades_horas {
+  margin-top: 1rem; 
+  width:60%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
-input[type="time"],
-input[type="number"] {
-  padding: 5px;
-  border-radius: 4px;
+.header_horas {
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header_horas_top {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
 }
 
-.form {
-  margin-top: 2px;
-  background: #0080f5;
-  padding: 40px 20px;
-  border-radius: 5px;
+.search_horas {
+  margin-top: 0.5rem;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.select-group {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-}
-
-.primeira-linha-form {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  justify-content: space-between;
-}
-
-.tempo-quantidade {
-  display: flex;
-  gap: 30px;
   align-items: center;
 }
 
-label {
-  color: #fff;
-  font-size: 1.2rem;
+.search_horas h4 {
+  margin-bottom: 1rem;
 }
 
-.hora {
-  padding: 6px;
-  border-radius: 4px;
-  outline: none;
-  width: 40%;
-  border: none;
+.search_horas label {
+  margin-bottom: 0.5rem;
 }
 
-.tempo label,
-.quantidade label {
-  text-align: center;
-  display: block;
+.search_horas select {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  width: 100%; 
+  height: 2.0rem; 
 }
 
-.segunda-linha-form {
-  display: flex;
+.horas_periodo input {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  width: 60%; 
+  height: 2rem; 
+}
+
+.horas_periodo {
   align-items: center;
-  justify-content: space-between;
-}
-
-.periodo {
-  margin-top: 10px;
   display: flex;
-  align-items: center;
-  gap: 47px;
+  flex-direction: column;
 }
 
-/* footer */
-
-.footer {
-  margin-right: 5%; /* Adicione uma margem esquerda para mover para a direita */
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 10px;
+.horas_periodo label{
+  color: white;
+  margin-bottom: 0.5rem;
 }
 
-.footer p {
-  color: #000000;
-  background: #ffffff;
-  padding: 6px 20px;
-  border-radius: 4px;
+.horas_periodo button {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  width: 100%; 
+  height: 2rem; 
+  margin-top: 25px;
 }
 
-/* Estilos para o botão de envio */
-.submit-button {
-  background-color: #321ee7;
+.btn-primary {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ced4da;
   color: black;
-  border: none;
-  padding: 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 20%;
-  height: 40%;
+  background-color: white;
+  height: 2rem;
+  font-weight: bold;
+  margin-top: 25px;
 }
 
-/* Estilos quando o mouse passa sobre o botão */
-.submit-button:hover {
-  background-color: rgb(36, 107, 199);
-}
-.titulo {
+.Prev_Manut {
   display: flex;
-  justify-content: center;
+  align-items: flex-start;
+  gap: 0.5rem;
+  position: relative;
+  left: -24%;
+  margin-top: 5px; 
 }
 
-/* Estilos para a tabela */
+.Prev_Corret {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  position: relative;
+  left: -23.4%;
+  margin-top: 5px; 
+}
+
+.Prev_Manut label{
+  color: white;
+}
+
+.Prev_Corret label{
+  color: white;
+}
+
+
+.Prev_Manut input {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #dad0ce;
+    width: 20%; 
+    color: red;
+    background-color: white;
+    text-align: center;
+    height: 2rem; 
+    font-weight: bold;
+
+}
+
+.Prev_Corret input {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #dad0ce;
+  width: 20%; 
+  color: red;
+  background-color: white;
+  text-align: center;
+  height: 2rem; 
+  font-weight: bold;
+
+}
+/* Estilo da tabela horas*/
 .table-container {
-  height: calc(20 * 1em); /* Defina a altura da tabela para 10 linhas */
-  /* overflow-y: scroll; Adicione uma barra de rolagem vertical */
+  height: calc(20 * 1em); 
   overflow-y: auto;
-  margin: 0 auto; /* Centraliza horizontalmente */
-  width: 60%; /* Define a largura da tabela */
+  margin: 0 auto; 
+  width: 60%; 
 }
 
-/* Resto do seu CSS para a tabela */
-table {
+.table_horas {
   border-collapse: collapse;
-  width: 100%; /* Define a largura da tabela como 100% para ocupar todo o espaço disponível no container */
+  width: 100%; 
 }
 
-/* Resto do seu CSS para a tabela */
-
-thead {
+.th_horas {
   background-color: #0080f5;
   color: rgb(255, 255, 255);
 }
 
-/* Estilos para o cabeçalho da tabela */
-th,
-td {
+th, td {
   text-align: center;
   padding: 10px;
   cursor: pointer;
   margin-bottom: 10px;
-  border: 1px solid black; /* Adicione bordas às células */
+  border: 1px solid black;
 }
 
 tr:nth-child(even) {
@@ -173,5 +193,4 @@ tr:nth-child(even) {
 tr:hover td {
   font-weight: bold;
   transform: scale(0.98);
-  /* Adicione outros estilos aqui, se necessário */
 }
