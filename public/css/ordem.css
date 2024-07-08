@@ -1,329 +1,349 @@
- .container-chamado{
-    margin: 5px;
-    border: 1px solid black;
-    padding: 5px;
- }
- .block1{
-    display: flex;
-    margin-bottom: 10px;
+ .container-chamado {
+   margin: 5px;
+   border: 1px solid black;
+   padding: 5px;
  }
 
-.status{
-    margin-left:20px;
-    padding: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.329);
-}
-.status input[type="radio"]{
-    padding: 5px;
-}
-
-.flex{
-    display: flex;
-    justify-content: end;
-}
-/* .linha1{
-    width: 300px;
-} */
-.linha{
-    width: 300px;
-}
-label{
-    margin-bottom:5px ;
-    font-size: 16px;
-    font-weight: bold;
-}
-.linha input[type="number"]{
-    width: 150px;
-    height: 25px;
-    margin-left: 5px;
-    margin-bottom:5px ;   
-}
-/* .linha input[type="text"]{
-    width: 500px;
-    height: 25px;
-    margin-left: 5px;   
-} */
-.linha1 input{
-    background-color: bisque;
-    border: 1px solid black;
-    padding: 5px;
-    color: #000;
-    font-size: 16px;
-}
-.linha2 input{
-    background-color: rgba(129, 131, 245, 0.411);
-    border: 1px solid black;
-    padding: 5px;
-    color: #000;
-    font-size: 16px;
-}
-.linha3{
-    width: 650px;
-    display: flex;
-    justify-content: end;
-}
-.linha3 input,textarea {
-    margin-bottom: 5px;
-    width: 500px;
-    height: 25px;
-    padding: 5px;
-    color: #000;
-    font-size: 16px;
-    background-color: bisque;
-}
-
-
-.content2-block1{
-    margin-left: 5%;
-    border: 1px solid rgba(0, 0, 0, 0.397);
-    border-radius: 10px;
-    padding: 5px;
-}
-
-.section_chamado{
-  display: none;
-}
-
-.radio-input input {
-    display: none;
-  }
-  
-  .radio-input {
-    --container_width: 350px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin-left: 5px;
-    border-radius: 9999px;
-    background-color: #c4bdbd;
-    color: #000000;
-    width: var(--container_width);
-    overflow: hidden;
-    border: 1px solid rgba(53, 52, 52, 0.226);
-  }
-  
-  .radio-input label {
-    width: 100%;
-    padding: 5px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-    font-weight: 600;
-    letter-spacing: -1px;
-    font-size: 16px;
-  }
-  
-  .selection {
-    display: none;
-    position: absolute;
-    height: 100%;
-    width: calc(var(--container_width) / 4);
-    z-index: 0;
-    left: 0;
-    top: 0;
-    transition: .15s ease;
-  }
-  
-  .radio-input label:has(input:checked) {
-    color: #080808;
-  }
-  
-  .radio-input label:has(input:checked) ~ .selection {
-    background-color: rgb(11 117 223);
-    display: inline-block;
-  }
-  
-  .radio-input label:nth-child(1):has(input:checked) ~ .selection {
-    background-color: rgb(36, 223, 11);
-    transform: translateX(calc(var(--container_width) * 0/4));
-  }
-  
-  .radio-input label:nth-child(2):has(input:checked) ~ .selection {
-    background-color: rgb(191, 223, 11);
-    transform: translateX(calc(var(--container_width) * 1/4));
-  }
-  
-  .radio-input label:nth-child(3):has(input:checked) ~ .selection {
-    background-color: rgb(223, 36, 11);
-    transform: translateX(calc(var(--container_width) * 2/4));
-  }
-  
-  .radio-input label:nth-child(4):has(input:checked) ~ .selection {
-    background-color: #0080F5;
-    transform: translateX(calc(var(--container_width) * 3/4));
-  }
-
-  .tipo_manut{
-    border:1px solid rgba(0, 0, 0, 0.363);
-    border-radius: 10px;
-    width: 200px;
-    margin-left: 30%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 8px;
-
-  }
-  #corretiva, #preventiva{
-    float: right;
-  }
-
-  .content4-block1{
-    display: flex;
-    margin-left: 4%;
-}
-.content4-block1 input{
-  width: 120px;
-  color: #000;
-  
-}
-.content4-block1 div{
-  padding: 5;
-  margin-left: 5px;
-}
-  .hora_chamado, .data_chamado{
-    display: flex;
-    flex-direction: column;
-  }
-  #data_cham{
-    background-color: bisque;
-    
-  }
-  #hora_cham{
-    background-color: bisque;
-    width: 80px;
-    background-color: #9c9c9c;
-  }
-  #data_abert{
-    background-color: rgba(129, 131, 245, 0.411);
-  }
-  .content1-block2 input {
-    background-color: bisque;
-    color: #000;
-    height: 25px;
-  }
-  .content1-block2 #descr_equip{
-    width: 400px;
-  }
-  .dados-cliente{
-    display: flex;
-    width: 100%;
-  }
-
-  .mydict div {
-    display: flex;
-    margin-left:2% ;
-    width: 100vh;
-    flex-wrap: wrap;
-    justify-content: end;
-    margin-top: 0.5rem;
-    justify-content: center;
-  }
-  
-  .mydict input[type="radio"] {
-    clip: rect(0 0 0 0);
-    clip-path: inset(100%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-  }
-  
-  .mydict input[type="radio"]:checked + span {
-    box-shadow: 0 0 0 0.0625em #0043ed;
-    background-color: #dee7ff;
-    z-index: 1;
-    color: #0043ed;
-  }
-  
-  .prioridade span {
-    display: block;
-    cursor: pointer;
-    background-color: #fff;
-    padding: 0.375em .75em;
-    position: relative;
-    margin-left: .0625em;
-    box-shadow: 0 0 0 0.0625em #b5bfd9;
-    letter-spacing: .05em;
-    color: #3e4963;
-    text-align: center;
-    transition: background-color .5s ease;
-  }
-  
-  label:first-child span {
-    border-radius: .375em 0 0 .375em;
-  }
-  
-  label:last-child span {
-    border-radius: 0 .375em .375em 0;
-  }
-  #label_setor{
-    margin-left:10px ;
-  }
-  .content2-block2{
-    margin-top: 5px;
-  }
-  .content2-block2 input{
-    background-color: bisque;
-    color: #000;
-    height: 25px;
-  }
-  .defeito-anexo{
-    display: flex;
-  }
-  .anexos{
-    width: 80vh;
+ .block1 {
    display: flex;
-    margin-left: 20px;
-    float:right ;
-    margin-top: 5px;
-  }
-  .text-descr{
-    display: flex;
-    justify-content: start;
-  }
-  #descr_defeito{
-    margin-left: 20px;
-    width: 180vh;
-    height:100px;
-  }
-  .anexos button{
-    border: 0;
-    margin-left:10px ;
-  }
-  .desc_servico{
-    display: flex;
-    padding: 10px;
-  }
-  .serv_a_realizar, .serv_realizado{
-    width: 100%;
-    padding: 3px;
-    height: 200px;
-  }
-  #desc_serv1, #desc_serv2{
-    width: 100%;
-    height: 150px;
-  }
-  #desc_serv1{
-    background-color: rgba(129, 131, 245, 0.411);
-  }
-  #desc_serv2{
-    background-color: rgba(129, 131, 245, 0.411);
-  }
-  .tecnicos{
-    /* margin-left: 20px; */
-    display:flex;
-    justify-content: space-around;
-  }
-  .tecnicos div{
-    display: flex;
-    flex-direction: column;
-  }
-  .tecnicos div select{
-    background-color: rgba(129, 131, 245, 0.411);
-    width: 550px;
-  }
-  
+   margin-bottom: 10px;
+ }
+
+ .status {
+   margin-left: 20px;
+   padding: 5px;
+   border: 1px solid rgba(0, 0, 0, 0.329);
+ }
+
+ .status input[type="radio"] {
+   padding: 5px;
+ }
+
+ .flex {
+   display: flex;
+   justify-content: end;
+ }
+
+ .linha {
+   width: 300px;
+ }
+
+ label {
+   margin-bottom: 5px;
+   font-size: 16px;
+   font-weight: bold;
+ }
+
+ .linha input[type="number"] {
+   width: 150px;
+   height: 25px;
+   margin-left: 5px;
+   margin-bottom: 5px;
+ }
+
+ .linha1 input {
+   background-color: bisque;
+   border: 1px solid black;
+   padding: 5px;
+   color: #000;
+   font-size: 16px;
+ }
+
+ .linha2 input {
+   background-color: rgba(129, 131, 245, 0.411);
+   border: 1px solid black;
+   padding: 5px;
+   color: #000;
+   font-size: 16px;
+ }
+
+ .linha3 {
+   width: 650px;
+   display: flex;
+   justify-content: end;
+ }
+
+ .linha3 input, textarea {
+   margin-bottom: 5px;
+   width: 500px;
+   height: 25px;
+   padding: 5px;
+   color: #000;
+   font-size: 16px;
+   background-color: bisque;
+ }
+
+ .content2-block1 {
+   margin-left: 5%;
+   border: 1px solid rgba(0, 0, 0, 0.397);
+   border-radius: 10px;
+   padding: 5px;
+ }
+
+ .section_chamado {
+   display: none;
+ }
+
+ .radio-input input {
+   display: none;
+ }
+
+ .radio-input {
+   --container_width: 350px;
+   position: relative;
+   display: flex;
+   align-items: center;
+   margin-left: 5px;
+   border-radius: 9999px;
+   background-color: #c4bdbd;
+   color: #000000;
+   width: var(--container_width);
+   overflow: hidden;
+   border: 1px solid rgba(53, 52, 52, 0.226);
+ }
+
+ .radio-input label {
+   width: 100%;
+   padding: 5px;
+   cursor: pointer;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   z-index: 1;
+   font-weight: 600;
+   letter-spacing: -1px;
+   font-size: 16px;
+ }
+
+ .selection {
+   display: none;
+   position: absolute;
+   height: 100%;
+   width: calc(var(--container_width) / 4);
+   z-index: 0;
+   left: 0;
+   top: 0;
+   transition: .15s ease;
+ }
+
+ .radio-input label:has(input:checked) {
+   color: #080808;
+ }
+
+ .radio-input label:has(input:checked)~.selection {
+   background-color: rgb(11 117 223);
+   display: inline-block;
+ }
+
+ .radio-input label:nth-child(1):has(input:checked)~.selection {
+   background-color: rgb(36, 223, 11);
+   transform: translateX(calc(var(--container_width) * 0/4));
+ }
+
+ .radio-input label:nth-child(2):has(input:checked)~.selection {
+   background-color: rgb(191, 223, 11);
+   transform: translateX(calc(var(--container_width) * 1/4));
+ }
+
+ .radio-input label:nth-child(3):has(input:checked)~.selection {
+   background-color: rgb(223, 36, 11);
+   transform: translateX(calc(var(--container_width) * 2/4));
+ }
+
+ .radio-input label:nth-child(4):has(input:checked)~.selection {
+   background-color: #0080F5;
+   transform: translateX(calc(var(--container_width) * 3/4));
+ }
+
+ .tipo_manut {
+   border: 1px solid rgba(0, 0, 0, 0.363);
+   border-radius: 10px;
+   width: 200px;
+   margin-left: 30%;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   padding: 8px;
+
+ }
+
+ #corretiva, #preventiva {
+   float: right;
+ }
+
+ .content4-block1 {
+   display: flex;
+   margin-left: 4%;
+ }
+
+ .content4-block1 input {
+   width: 120px;
+   color: #000;
+
+ }
+
+ .content4-block1 div {
+   padding: 5;
+   margin-left: 5px;
+ }
+
+ .hora_chamado, .data_chamado {
+   display: flex;
+   flex-direction: column;
+ }
+
+ #data_cham {
+   background-color: bisque;
+
+ }
+
+ #hora_cham {
+   background-color: bisque;
+   width: 80px;
+   background-color: #9c9c9c;
+ }
+
+ #data_abert {
+   background-color: rgba(129, 131, 245, 0.411);
+ }
+
+ .content1-block2 input {
+   background-color: bisque;
+   color: #000;
+   height: 25px;
+ }
+
+ .content1-block2 #descr_equip {
+   width: 400px;
+ }
+
+ .dados-cliente {
+   display: flex;
+   width: 100%;
+ }
+
+ .mydict div {
+   display: flex;
+   margin-left: 2%;
+   width: 100vh;
+   flex-wrap: wrap;
+   justify-content: end;
+   margin-top: 0.5rem;
+   justify-content: center;
+ }
+
+ .mydict input[type="radio"] {
+   clip: rect(0 0 0 0);
+   clip-path: inset(100%);
+   height: 1px;
+   overflow: hidden;
+   position: absolute;
+   white-space: nowrap;
+   width: 1px;
+ }
+
+ .mydict input[type="radio"]:checked+span {
+   box-shadow: 0 0 0 0.0625em #0043ed;
+   background-color: #dee7ff;
+   z-index: 1;
+   color: #0043ed;
+ }
+
+ .prioridade span {
+   display: block;
+   cursor: pointer;
+   background-color: #fff;
+   padding: 0.375em .75em;
+   position: relative;
+   margin-left: .0625em;
+   box-shadow: 0 0 0 0.0625em #b5bfd9;
+   letter-spacing: .05em;
+   color: #3e4963;
+   text-align: center;
+   transition: background-color .5s ease;
+ }
+
+ label:first-child span {
+   border-radius: .375em 0 0 .375em;
+ }
+
+ label:last-child span {
+   border-radius: 0 .375em .375em 0;
+ }
+
+ #label_setor {
+   margin-left: 10px;
+ }
+
+ .content2-block2 {
+   margin-top: 5px;
+ }
+
+ .content2-block2 input {
+   background-color: bisque;
+   color: #000;
+   height: 25px;
+ }
+
+ .defeito-anexo {
+   display: flex;
+ }
+
+ .anexos {
+   width: 80vh;
+   display: flex;
+   margin-left: 20px;
+   float: right;
+   margin-top: 5px;
+ }
+
+ .text-descr {
+   display: flex;
+   justify-content: start;
+ }
+
+ #descr_defeito {
+   margin-left: 20px;
+   width: 180vh;
+   height: 100px;
+ }
+
+ .anexos button {
+   border: 0;
+   margin-left: 10px;
+ }
+
+ .desc_servico {
+   display: flex;
+   padding: 10px;
+ }
+
+ .serv_a_realizar, .serv_realizado {
+   width: 100%;
+   padding: 3px;
+   height: 200px;
+ }
+
+ #desc_serv1, #desc_serv2 {
+   width: 100%;
+   height: 150px;
+ }
+
+ #desc_serv1, #desc_serv2 {
+   background-color: rgba(129, 131, 245, 0.411);
+ }
+
+ .tecnicos {
+   display: flex;
+   justify-content: space-around;
+ }
+
+ .tecnicos div {
+   display: flex;
+   flex-direction: column;
+ }
+
+ .tecnicos div select {
+   background-color: rgba(129, 131, 245, 0.411);
+   width: 550px;
+ }

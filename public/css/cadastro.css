@@ -1,29 +1,19 @@
-* {
-  padding: 0;
-  margin: 0;
-  font-family: 'B612';
-}
-h1 {
-  padding: 10px;
-}
-
-h2{
+h2 {
   display: flex;
   justify-content: center;
   font-size: 30px;
 }
 
-.dados_cad{
-  margin-top: 1rem; 
-  /* margin-left: 20%;
-  margin-right: 5%; */
- display: flex;
- justify-content: center;
+.dados_cad {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
 
 }
-.header_cad{
+
+.header_cad {
   width: 70%;
-  background-color: #0080F5;
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
   border-radius: 5px;
   padding: 1rem;
   display: flex;
@@ -31,46 +21,49 @@ h2{
   justify-content: space-between;
 }
 
-#cadastro{
+#cadastro {
   display: flex;
   align-items: center;
   font-size: 19px;
-  width:11rem ;
+  width: 11rem;
   padding: 4px;
   border: none;
   border-radius: 8px;
 }
 
-.filtroTec, .filtroLocais, .filtroEquipamentos{
+.filtroTec, .filtroLocais, .filtroEquipamentos {
   display: flex;
   align-items: center;
   font-size: 19px;
-  width:11rem ;
+  width: 11rem;
   padding: 4px;
   border: none;
   border-radius: 8px;
 }
+
 select#escolha {
   text-align: center;
-  width: 40%; 
+  width: 40%;
   padding: 2px;
   border: 2px solid #0a0a0a;
-  border-radius: 5px; 
-  font-size: 16px; 
+  border-radius: 5px;
+  font-size: 16px;
 }
+
 select#escolha option {
-  background-color: #fff; 
+  background-color: #fff;
   color: #1e21b8;
-  font-size: 14px; 
+  font-size: 14px;
 }
 
 /* Estilo para a opção selecionada */
 select#escolha option:checked {
-  background-color: #007bff; 
+  background-color: #007bff;
   color: #fff;
-  font-weight: bold; 
+  font-weight: bold;
 }
-.escolher{
+
+.escolher {
   color: white;
   font-size: 22px;
 }
@@ -79,40 +72,34 @@ table {
   width: 100%;
   border-collapse: collapse;
 }
+
 thead {
   background-color: #0080F5;
   color: rgb(255, 255, 255);
 }
-th,
-td {
+
+th, td {
   text-align: center;
   padding: 10px;
   cursor: pointer;
   margin-bottom: 10px;
-  border: 1px solid black; /* Adicione bordas às células */
-}
-tr:nth-child(even) {
-  background-color: rgba(221, 219, 219, 0.793);
-}
-tr:hover td {
-  font-weight: bold;
-  transform: scale(0.98);
-  /* Adicione outros estilos aqui, se necessário */
+  border: 1px solid black;
 }
 
 tr:nth-child(even) {
   background-color: rgba(221, 219, 219, 0.793);
 }
+
 tr:hover td {
   font-weight: bold;
   transform: scale(0.98);
 }
-/* Classe CSS para aumentar o tamanho dos ícones */
+
 .icon-large {
-  font-size: 23px; /* Ajuste o tamanho dos ícones para 24px ou o tamanho desejado */
+  font-size: 23px;
 }
 
-.overlay{
+.overlay, .overlay-tec, .overlay-setores, .overlay-Tipos, .overlayfiltro-tec, .overlayfiltro-locais, .overlayfiltro-Equipamentos {
   position: fixed;
   top: 0;
   left: 0;
@@ -122,318 +109,19 @@ tr:hover td {
   z-index: 1;
   display: none;
 }
-.overlay-tec{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-  display: none;
-}
-.popup-tecnico {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 10px;
-  width: 850px;
-  height: 600px;
-  background-color: white;
-  z-index: 2;
-  display: none;
-  border-radius: 10px;
-}
-.overlay-setores{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-  display: none;
-}
-.popup-setores {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 10px;
-  width: 850px;
-  height: 600px;
-  background-color: white;
-  z-index: 2;
-  display: none;
-  border-radius: 10px;
-}
-.overlay-Tipos{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-  display: none;
-}
-.popup-Tipos{
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 10px;
-  width: 850px;
-  height: 600px;
-  background-color: white;
-  z-index: 2;
-  display: none;
-  border-radius: 10px;
-}
-/* Para as tabelas de seu segundo código */
-#tabela_tec,
-#tabela_loc,
-#tabela_equip {
-  width: 70%; /* Reduza a largura das tabelas para 50% ou o valor desejado */
-  font-size: 14px; /* Reduza o tamanho da fonte para diminuir o tamanho das tabelas */
-  margin: 0 auto; /* Defina margens automáticas horizontalmente para centralizar a tabela */
-}
 
-#popup-tec {
+.popup, .popup-tecnico, .popup-setores, .popup-Tipos, .popoufiltro-locais, .popoufiltro-Equipamentos {
   position: fixed;
-  top: 40%;
+  top: 48%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 10px;
   width: 850px;
-  height: 330px;
+  height: 300px;
   background-color: white;
   z-index: 2;
   display: none;
   border-radius: 10px;
-}
-#popup-loc {
-  position: fixed;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 10px;
-  width: 850px;
-  height: 330px;
-  background-color: white;
-  z-index: 2;
-  display: none;
-  border-radius: 10px;
-}
-#popup-equip{
-  position: fixed;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 10px;
-  width: 850px;
-  height: 270px;
-  background-color: white;
-  z-index: 2;
-  display: none;
-  border-radius: 10px;
-}
-#popup-tecnico{
-  position: fixed;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 10px;
-  width: 850px;
-  height: 330px;
-  background-color: white;
-  z-index: 2;
-  display: none;
-  border-radius: 10px;
-}
-#popup-setores{
-  position: fixed;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 10px;
-  width: 850px;
-  height: 330px;
-  background-color: white;
-  z-index: 2;
-  display: none;
-  border-radius: 10px;
-}
-#popup-Tipos{
-  position: fixed;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 10px;
-  width: 850px;
-  height: 330px;
-  background-color: white;
-  z-index: 2;
-  display: none;
-  border-radius: 10px;
-}
-.popup-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 25px;
-  text-align: center;
-  background-color:#0080F5;
-  border-radius: 12px;
-  height: 18%;
-  padding: 10px;
-  color: aliceblue;
-}
-
-.popup-content {
-  margin: 22px;
-  border: 1px solid black;
-  background-color: #0080F5;
-  border-radius: 15px;
-  padding: 20px;
-  color:aliceblue;
-}
-.popup-content-tecnico{
-  margin: 22px;
-  border: 1px solid black;
-  background-color: #0080F5;
-  border-radius: 15px;
-  padding: 20px;
-  color:aliceblue;
-  height: 200px; /* Ajuste a altura desejada aqui */
-}
-.popup-content-setor {
-  margin: 22px;
-  border: 1px solid black;
-  background-color: #0080F5;
-  border-radius: 15px;
-  padding: 20px;
-  color:aliceblue;
-  height: 200px; /* Ajuste a altura desejada aqui */
-}
-.popup-content-edit-equip {
-  margin: 22px;
-  border: 1px solid black;
-  background-color: #0080F5;
-  border-radius: 15px;
-  padding: 20px;
-  color:aliceblue;
-  height: 200px; /* Ajuste a altura desejada aqui */
-}
-.popup-content-Cad-Equip{
-  margin: 22px;
-  border: 1px solid black;
-  background-color: #0080F5;
-  border-radius: 15px;
-  padding: 10px;
-  color:aliceblue;
-}
-.popup-label {
-    display: block;
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.popup-input {
-  display: block;
-  width: 100%;
-  padding: 20px;
-  font-size: 16px;
-  border-radius: 10px;
-  border: 1px solid gray;
-  margin-bottom: 20px;
-}
-.popup-input, #tag {
-  display: block;
-  width: 80%;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid gray;
-  margin-bottom: 20px;
-}
-
-.popup-input, #tipo {
-  display: block;
-  width: 90%;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid gray;
-  margin-bottom: 20px;
-}
-.popup-input, #matriculaTec {
-  display: block;
-  width: 90%;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid gray;
-  margin-bottom: 20px;
-}
-.popup-header{
-  display: flex;
-  justify-content: space-between;
-  padding: 3px;
-  font-size: 5px;
-}
-
-.popup-center{
-  display: flex;
-  justify-content: space-between;
-}
-
-textarea{
-  border-radius: 5px;
-  display: block;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid gray;
-  margin-bottom: 20px;
-}
-.popup-buttons {
-  text-align: center;
-}
-
-.popup-button {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 5px;
-  border: none;
-  color: white;
-  cursor: pointer;
-  margin-right: 10px;
-}
-.salvar{
-  background-color: green;
-}
-.cancelar{
-  background-color: red;
-}
-.popup-button:hover {
-  background-color: #000000;
-}
-.display-none{
-  display: none;
-}
-
-.overlayfiltro-tec {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-  display: none;
 }
 
 .popoufiltro-tec {
@@ -450,72 +138,70 @@ textarea{
   border-radius: 10px;
 }
 
-.popup-titulo-filtro-tec {
+#tabela_tec, #tabela_loc, #tabela_equip {
+  width: 70%;
+  font-size: 14px;
+  margin: 0 auto;
+}
+
+.popup-title, .popup-titulo-filtro-tec, .popup-titulo-filtro-locais, .popup-titulo-filtro-Equipamentos {
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   text-align: center;
   background-color: #0080F5;
-  border-radius: 10px;
-  height: 10%;
+  border-radius: 12px;
+  height: 18%;
   padding: 10px;
   color: aliceblue;
 }
 
-.popou-content-filtro-tec{
-  margin: 20px;
+.popup-content, .popup-content-tecnico, .popup-content-setor, .popup-content-edit-equip, .popup-content-Cad-Equip {
+  margin: 22px;
   border: 1px solid black;
   background-color: #0080F5;
+  border-radius: 15px;
+  padding: 20px;
+  color: aliceblue;
+  height: 120px;
+}
+
+.popup-label, .popou-label-filtro-tec {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.popup-input, #email {
+  display: block;
+  width: 80%;
+  padding: 5px;
+  font-size: 16px;
   border-radius: 10px;
-  padding: 5px;
+  border: 1px solid gray;
+  margin-bottom: 20px;
 }
 
-.popup-input,
-#email {
-  display: block;
-  width: 100%;
-  padding: 5px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: none; 
-  margin-bottom: 20px;
-  margin-top: 5px;
-  font-size: 18px; 
-  font-weight: bold; 
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px;
+  font-size: 5px;
 }
-.popup-label-filtro-tec,
-#Técnicos {
-  display: block;
-  width: 100%;
-  padding: 5px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: none; 
-  margin-bottom: 20px;
-  margin-top: 5px;
-  font-size: 18px; 
-  font-weight: bold; 
-}
-.popup-label-filtro-mat,
-#Matricula {
-  display: block;
-  width: 100%;
-  padding: 5px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: none; 
-  margin-bottom: 20px;
-  margin-top: 5px;
-  font-size: 18px; 
-  font-weight: bold; 
-}
-.popup-label-filtro
 
+.popup-center {
+  display: flex;
+  justify-content: space-between;
+}
 
 textarea {
-  /* Adicionada altura mínima para a área de texto */
-  min-height: 100px;
-  resize: vertical;
+  border-radius: 5px;
+  display: block;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid gray;
+  margin-bottom: 20px;
 }
 
 .popup-buttons {
@@ -534,53 +220,41 @@ textarea {
   margin-right: 10px;
 }
 
-.salvarfiltro-tec {
+.salvar, .salvarfiltro-tec, .salvarfiltro-tec, .salvarfiltro-Equipamentos, .salvarfiltro-locais {
   background-color: green;
 }
 
-.cancelarfiltro-tec {
+.cancelar, .cancelarfiltro-Equipamentos, .cancelarfiltro-locais, .cancelarfiltro-tec {
   background-color: red;
 }
 
 .popup-button:hover {
-  background-color: darkblue;
+  background-color: #000000;
 }
 
-.overlayfiltro-locais {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
+.display-none {
   display: none;
 }
-.popoufiltro-locais {
-  position: fixed;
-  top: 48%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 10px;
-  width: 850px;
-  height: 300px; /* Altere este valor para o tamanho desejado */
-  background-color: white;
-  z-index: 2;
-  display: none;
-  border-radius: 10px;
-}
 
-
-.popup-titulo-filtro-locais {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  text-align: center;
+.popou-content-filtro-tec {
+  margin: 20px;
+  border: 1px solid black;
   background-color: #0080F5;
   border-radius: 10px;
-  height: 20%;
-  padding: 10px;
-  color: aliceblue;
+  padding: 5px;
+}
+
+.popup-label-filtro-tec, #Técnicos, .popup-label-filtro-mat, #Matricula {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 20px;
+  margin-top: 5px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .popou-content-filtro-locais {
@@ -589,10 +263,10 @@ textarea {
   background-color: #0080F5;
   border-radius: 10px;
   padding: 5px;
-  height: 170px; 
+  height: 170px;
 }
-.popou-label-filtro-email, 
-#email{
+
+.popou-label-filtro-email, #email, .popou-label-filtro-tec, #Técnicos, .popou-label-filtro-mat, #Matricula, .popou-label-filtro-local, #local, .popou-label-filtro-Equipamentos, #Equipamentos {
   display: block;
   width: 100%;
   padding: 5px;
@@ -601,132 +275,8 @@ textarea {
   border: none;
   margin-bottom: 20px;
   margin-top: 5px;
-}
-.popou-label-filtro-email{
-  font-size: 18px;
   font-weight: bold;
-  margin-bottom: 5px;
-}
-.popou-label-filtro-tec,
-#Técnicos{
-  display: block;
-  width: 100%;
-  padding: 5px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: none;
-  margin-bottom: 20px;
-  margin-top: 5px;
-}
-.popou-label-filtro-tec{
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-.popou-label-filtro-mat,
-#Matricula{
-  display: block;
-  width: 100%;
-  padding: 5px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: none;
-  margin-bottom: 20px;
-  margin-top: 5px;
-}
-.popou-label-filtro-mat{
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-.popou-label-filtro-local,
-#local {
-  display: block;
-  width: 100%;
-  padding: 5px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: none; 
-  margin-bottom: 20px;
-  margin-top: 5px; /* Adicionar margem superior para posicionar os botões mais abaixo */
-}
-
-.popou-label-filtro-local {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-
-/* Copie os estilos de textarea relevante da classe popoufiltro-tec */
-textarea {
-  min-height: 100px;
-  resize: vertical;
-}
-
-/* Copie os estilos de botões e outros elementos relevantes da classe popoufiltro-tec */
-.popup-buttons {
-  text-align: center;
-}
-
-.popup-button {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 5px;
-  border: none;
-  color: white;
-  cursor: pointer;
-  margin-right: 10px;
-}
-
-.salvarfiltro-locais {
-  background-color: green;
-}
-
-.cancelarfiltro-locais {
-  background-color: red;
-}
-
-.popup-button:hover {
-  background-color: darkblue;
-}
-
-.overlayfiltro-Equipamentos {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-  display: none;
-}
-.popoufiltro-Equipamentos {
-  position: fixed;
-  top: 48%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 10px;
-  width: 850px;
-  height: 300px; /* Ajuste o tamanho desejado */
-  background-color: white;
-  z-index: 2;
-  display: none;
-  border-radius: 10px;
-}
-
-.popup-titulo-filtro-Equipamentos {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  text-align: center;
-  background-color: #0080F5;
-  border-radius: 10px;
-  height: 20%;
-  padding: 10px;
-  color: aliceblue;
+  margin-bottom: 5px
 }
 
 .popou-content-filtro-Equipamentos {
@@ -735,60 +285,9 @@ textarea {
   background-color: #0080F5;
   border-radius: 10px;
   padding: 5px;
-  height: 170px; /* Ajuste o tamanho desejado */
+  height: 170px;
 }
 
-/* Copie os estilos de labels e inputs relevantes da classe popoufiltro-locais */
-.popou-label-filtro-Equipamentos,
-#Equipamentos {
-  display: block;
-  width: 100%;
-  padding: 5px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: none;
-
-  margin-bottom: 20px;
-  margin-top: 5px;
-}
-
-.popou-label-filtro-Equipamentos {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-/* Copie os estilos de botões e outros elementos relevantes da classe popoufiltro-locais */
-.popup-buttons {
-  text-align: center;
-}
-
-.popup-button {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 5px;
-  border: none;
-  color: white;
-  cursor: pointer;
-  margin-right: 10px;
-}
-
-.salvarfiltro-Equipamentos {
-  background-color: green;
-}
-
-.cancelarfiltro-Equipamentos {
-  background-color: red;
-}
-
-.popup-button:hover {
-  background-color: darkblue;
-}
-
-
-/* Estilo para o campo de entrada (input) */
 #matricula_tecnico, #local_setor, #tipo_equip {
   padding: 8px;
   border: 1px solid #ccc;
@@ -796,7 +295,7 @@ textarea {
   margin-right: 10px;
   font-size: 14px;
 }
-/* Estilo para os botões */
+
 button {
   padding: 8px 16px;
   border: none;
@@ -804,4 +303,3 @@ button {
   cursor: pointer;
   font-size: 14px;
 }
-

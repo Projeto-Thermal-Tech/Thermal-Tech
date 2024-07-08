@@ -1,92 +1,104 @@
-body{
-    background-color:#cae2f4c2;
+body {
+    background-color: #cae2f4c2;
 }
-main{
+
+main {
     margin: 10px;
-    box-shadow: 1px 1px 5px  black;
+    box-shadow: 1px 1px 5px black;
     padding: 5px;
     border-radius: 5px;
 }
+
 .section_order main {
     width: 60%;
 }
-input{
+
+input {
     padding: 1px;
     margin: 2px;
     padding-left: 3px;
     box-shadow: 1px rgba(0, 0, 0, 0);
 }
-.nav_infos{
+
+.nav_infos {
     margin: 10px;
-    box-shadow: 1px 1px 5px  black;
+    box-shadow: 1px 1px 5px black;
     padding: 5px;
     border-radius: 5px;
-    
+
 }
-.nav_infos button{
+
+.nav_infos button {
     padding: 3px;
     margin: 2px;
     padding-left: 3px;
     border: none;
     border-radius: 5px;
-    box-shadow: 1px 1px 5px  black;
+    box-shadow: 1px 1px 5px black;
 }
-.title-page{
+
+.title-page {
     border-bottom: 1px solid rgba(0, 0, 0, 0.473);
 }
-.title-page h2{
+
+.title-page h2 {
     font-size: 18px;
     padding: 5px;
     background-color: #8CB1DA;
 }
-.icons{
+
+.icons {
     padding: 1px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.473);
 }
-.icons img{
+
+.icons img {
     width: 22px;
 }
-.icons button{
+
+.icons button {
     margin: 1px;
     background-color: transparent;
     border: none;
 }
 
-.info-header-order{
+.info-header-order {
     margin: 4px;
 }
-.info-header-order input{
-        /* width: 260px; */
-        
-}
-.info-header-order label{
+
+.info-header-order label {
     display: inline-block;
     border-bottom: 1px solid rgba(0, 0, 0, 0.486);
     width: 140px;
     margin-right: 10px;
-    
+
 }
-#prioridade{
+
+#prioridade {
     width: 45px;
     text-align: center;
-    background-color:#8CB1DA ;
+    background-color: #8CB1DA;
 }
-#ordem{
+
+#ordem {
     width: 110px;
     margin-right: 10px;
     background-color: #8CB1DA
 }
-#title-order{
+
+#title-order {
     width: 300px;
     background-color: #FEF09E;
-  
+
 }
-.dados_chmado{
+
+.dados_chmado {
     margin: 10px;
-    box-shadow: 1px 1px 5px  black;
-    
+    box-shadow: 1px 1px 5px black;
+
 }
-.referencias{
+
+.referencias {
     font-size: 12px;
     padding: 5px;
     background-color: #8cb0daad;
@@ -94,74 +106,51 @@ input{
     margin-bottom: 10px;
 }
 
-
-.dados_chamado{
-
-}
-.label-margin{
+.label-margin {
     margin-right: 30px;
 }
-.input_chamado{
+
+.input_chamado {
     width: 300px;
 }
-.responsabilidades, .objetivo, .chamado{
+
+.responsabilidades, .objetivo, .chamado {
     width: 75vw;
-    
+
 }
-.title{
+
+.title {
     font-size: 12px;
     padding: 5px;
     background-color: #8cb0daad;
     border-bottom: 1px solid rgba(0, 0, 0, 0.486);
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
 }
-.tecs input{
+
+.tecs input {
     margin-right: 5px;
 }
-.descrição{
+
+.descrição {
     padding: 5px;
 }
-#btn-anexo{
+
+#btn-anexo {
     border: none;
     background-color: transparent;
 }
-.display_none{
+
+.display_none {
     display: none;
 }
+
 textarea {
-    resize: vertical; /* Permite apenas redimensionamento vertical */
-    overflow-x: hidden; /* Esconde a barra de rolagem horizontal se o conteúdo exceder */
-  }
-  .prioridade{
+    resize: vertical;
+    overflow-x: hidden;
+}
+
+.prioridade {
     width: 50%;
-    display:inline;
+    display: inline;
     align-items: center;
 }
-/* .chamado {
-    width: 60%;
-}
-.responsabilidades {
-    width: 60%;
-}
-
-.objetivo {
-    width: 60%;
-}
-
-main {
-    width: 99%;
-}
-
-.section_order {
-    width: 75%;
-}
-
-
-.view_ordem {
-    width: 99%; 
-
-}
-
-.Criar_view_cha {
-    width: 95%;
-} */

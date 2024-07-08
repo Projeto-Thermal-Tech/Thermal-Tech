@@ -1,3 +1,15 @@
+const pg = require("pg")
+const {Pool} = require('pg')
+
+const NewPool = new Pool({
+    user:"postgres",
+    host:"34.95.252.117",
+    database:"banco_tt",
+    password:"123456",
+    port:"5432"
+})
+
+module.exports = NewPool
 // Importe o pacote dotenv no início do seu arquivo
 require('dotenv').config();
 const express = require("express")

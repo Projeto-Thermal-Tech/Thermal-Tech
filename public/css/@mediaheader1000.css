@@ -17,7 +17,6 @@
 
     .interface {
         width: 100%;
-        /* outras propriedades... */
     }
 
     .nav-right a {
@@ -28,24 +27,21 @@
         display:  none;
     }
 
-    h1 {
-        font-size: 45px; 
-    }
-    
     .interface .menu-mobile.abrir-menu {
         display: block;
     }
     
     .interface .btn-fechar {
+        position: absolute;
         z-index: 100000000;
         display: block;
-    }
-    .interface .btn-fechar {
-        position: absolute;
         top: 0;
         left: 0; 
     }
  
+ 
+    
+
     
     .interface .menu-mobile.abrir-menu ~ .btn-fechar {
         display: block;
@@ -58,7 +54,6 @@
     .interface .menu-mobile.abrir-menu ~ .overlay-menu {
         display: block;
     }
-
 
     .interface .btn-abrir-menu i{
         color: rgba(0,212,255,1);
@@ -103,11 +98,10 @@
         z-index: 8888;
         display: none;
     }
-      .nav-right {
-        display: none;
-    }
 
-    
+    h1 {
+        font-size: 45px; 
+    }
 }
 
 
@@ -123,6 +117,4 @@
     .interface .btn-fechar {
         display: none !important;
     }
-  
-    
 }

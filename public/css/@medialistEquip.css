@@ -1,100 +1,79 @@
 @media screen and (max-width: 1000px) {
-    h4{
-        text-align: center;
-    }
-    .dados_manut{
-        width:100%;
-        margin-left: 0;
-        margin-right: 0;
-    }
-    .header_manut{
-        flex-direction: column;
-        margin-bottom: 1rem;
-        width: 90%;  
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-     
-     .search_manut input, .search_manut button{
-         width: 100%;
-         margin-bottom: 1rem; 
-    }
-     .info_equip{
-         flex-direction: column;
-         margin-bottom: 1rem; 
-    }
-     .info-left, .info-rigth{
-         width: 100%;
-         margin-bottom: 1rem; 
-    }
-     .add_manut button{
-        width:100% ;
-        margin-bottom: 1rem; 
-    }
-
-     /* Estilo Popup*/
-
-     .popup {
-        width: 90%;
-        max-height: 80vh;
-        overflow: auto;
-        position: fixed; 
-    }
-    .popup-header, .popup-center {
-        flex-direction: column;
-    }
-    .popup-input, #tag, #tipo, #local, #LOCAL {
-        width: 100%;
-    }
-    #desc, #DESC {
-        width: 100%;
-    }
-
-    /* Popup Filtro*/
-
-    .popoufiltro {
-        width: 90%;
-        max-height: 90vh;
-        overflow: auto;
-        position: fixed; 
-    }
-    .popup-input-filtro, #Tag, #Tipo, #Modelo, #Número_Série, #Área_Climatizada, #Localidade, #Setor {
-        width: 100%;
-    }
-    /* ================================================================================================ */
-        /* ESTILO TELA MANUTENÇÃO*/
-
     h4 {
-
+        text-align: center;
         font-size: 25px;
     }
-    .dados_manut{
-        width:100%;
+
+    .dados_manut {
+        width: 100%;
         margin-left: 0;
         margin-right: 0;
     }
-    .header_manut{
+
+    .header_manut {
         flex-direction: column;
+        margin-bottom: 1rem;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
         align-items: flex-start;
     }
-    .search_manut{
+
+    .search_manut input, .search_manut button {
         width: 100%;
+        margin-bottom: 1rem;
     }
-    .search_manut input, .search_manut button{
-        width: 100%;
-    }
-    .info_equip{
+
+    .info_equip {
+        flex-direction: column;
+        margin-bottom: 1rem;
         position: static;
         transform: none;
         width: 70%;
         margin-top: 1rem;
-        flex-direction: column; 
     }
-    .info-left, .info-rigth{
+
+    .info-left, .info-rigth {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .add_manut button {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    /* Estilo Popup*/
+    .popup {
+        width: 90%;
+        max-height: 80vh;
+        overflow: auto;
+        position: fixed;
+    }
+
+    .popup-header,
+    .popup-center {
+        flex-direction: column;
+    }
+
+    .popup-input, #tag, #tipo, #local, #LOCAL, #desc, #DESC {
         width: 100%;
     }
 
+    /* Popup Filtro*/
+    .popoufiltro {
+        width: 90%;
+        max-height: 90vh;
+        overflow: auto;
+        position: fixed;
+    }
+
+    .popup-input-filtro,
+    #Tag, #Tipo, #Modelo, #Número_Série, #Área_Climatizada, #Localidade, #Setor {
+        width: 100%;
+    }
+
+    /* ESTILO TELA MANUTENÇÃO*/
     .table-container {
         height: auto;
     }
@@ -103,37 +82,31 @@
         padding: 5px;
         text-align: center;
         cursor: pointer;
-        margin-bottom:10px;
+        margin-bottom: 10px;
         border: 1px solid black;
-      }
-      
+    }
+
 
     /* Popou Filtro */
-    .popup {
-        width: 90%;
-        height: auto;
-    }
     .popup-content-filter {
         flex-direction: column;
     }
+
     .popup-header-filter, .popup-center-filter {
         flex-direction: column;
     }
-    .popup-input-filter #date, #setor{
+
+    .popup-input-filter #date, #setor {
         width: 100%;
     }
+
     .popup-center-filter {
         width: 100%;
     }
-    /* ================================================================================================ */
-    
-} 
-    
+}
 
 @media screen and (max-width: 1000px) {
     #userEmail {
-      display: none; /* Esconde o elemento em telas menores que 1000px */
+        display: none;
     }
-  }
-      
- 
+}

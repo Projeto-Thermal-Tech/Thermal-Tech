@@ -1,130 +1,154 @@
 @media (max-width: 1300px) {
-    header{
-        height: 70px;
-        
-    }
-    .logo{
-        box-sizing: border-box;
-        display: flex;
-    }
-    h1{
-        padding: 5px;
-        font-size: 1rem;
-    }
-    h4{
-        font-size: 15px;
-    }
-   
-    #logo{
-        margin-left: 1rem;
-        padding: 5px 10px;
-        width: 50px;
-        height: 50px;
-    }
-    li{
-        /* margin-left: 0.5rem; */
-        list-style: none;
-        padding: 1rem;
-        font-size: 0.9rem;
-    }
-    .nav-right{
-        display: flex;
-        flex-direction: column;
-        /* width: 10rem;  */
-        padding: 0.5em;
-     }
-    .nav-right a img {
-        width: 25px;
-        height: 25px;
-        margin-left: 0.8rem;
-        margin-right: 0.8rem;
-     }
-     main h2{
-        font-size: 28px;
-        padding: 0.6rem;
-        text-align: center;
-     }
-     .dados_manut{
-        width:95%;
-        margin-left: 2.5%;
-        margin-right: 2.5%;
-         
-      }
-     .search_manut input{
-        width: 7rem;
-        height: 25px;
-        padding: 5px;
-        border: none;
-        border-radius: 5px;
-        margin-top: 1rem
-     }
-     .info_equip{
-      width: 48%;
-      height: 12%;
-      display: flex;
-      background-color: white;
-      padding: 1rem;
-      border-radius: 10px;
-      font-size: 20px;
-      position: absolute;
-      top: 29%;
-      left: 45%;
-      transform: translate(-50%, -50%);
-   }
-     .info-left{
-        width: 50%;
-     }
-    .info-rigth{
-        margin-left: 20%;
-        justify-content: center;
-    }
-    .add_manut button{
-        font-size: 16px;
-        width:10rem ;
-        padding: 10px;
-        border: none;
-        border-radius: 10px;
- }
- .add_manut img{
-         margin-left: 10px;
-         width: 44px;
- }
-.block1{
-  position: relative;
-}
-  .content4-block1{
+  header {
+    height: 70px;
+
+  }
+
+  .logo {
+    box-sizing: border-box;
+    display: flex;
+  }
+
+  h1 {
+    padding: 5px;
+    font-size: 1rem;
+  }
+
+  h4 {
+    font-size: 15px;
+  }
+
+  #logo {
+    margin-left: 1rem;
+    padding: 5px 10px;
+    width: 50px;
+    height: 50px;
+  }
+
+  li {
+    list-style: none;
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .nav-right {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+  }
+
+  .nav-right a img {
+    width: 25px;
+    height: 25px;
+    margin-left: 0.8rem;
+    margin-right: 0.8rem;
+  }
+
+  main h2 {
+    font-size: 28px;
+    padding: 0.6rem;
+    text-align: center;
+  }
+
+  .dados_manut {
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+
+  }
+
+  .search_manut input {
+    width: 7rem;
+    height: 25px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 1rem
+  }
+
+  .info_equip {
+    width: 48%;
+    height: 12%;
+    display: flex;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 20px;
+    position: absolute;
+    top: 29%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+  }
+
+  .info-left {
+    width: 50%;
+  }
+
+  .info-rigth {
+    margin-left: 20%;
+    justify-content: center;
+  }
+
+  .add_manut button {
+    font-size: 16px;
+    width: 10rem;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+  }
+
+  .add_manut img {
+    margin-left: 10px;
+    width: 44px;
+  }
+
+  .block1 {
+    position: relative;
+  }
+
+  .content4-block1 {
     position: absolute;
     left: 80%;
     display: flex;
     flex-direction: column;
-    
-}
-.hora_chamado, .data_chamado{
-  display: flex;
- flex-direction: row;
- justify-content: end;
- padding: 4px;
-}
-.content4-block1 label{
-  font-size:10px;
-  margin-right: 5px;
-}
-#hora_cham{
-  background-color: bisque;
-  width: 120px;
-}
-.tipo_manut{
-    width: 200px;
-    margin-left: 20%;
+
   }
-  .content2-block1{
+
+  .content4-block1 label {
+    font-size: 10px;
+    margin-right: 5px;
+  }
+
+  .content2-block1 {
     margin-left: 20px;
     border: 1px solid rgba(0, 0, 0, 0.397);
     border-radius: 10px;
     padding: 10px;
     height: 75px;
-}
-.mydict div {
+  }
+
+  .content1-block2 #descr_equip {
+    width: 300px;
+  }
+
+  .hora_chamado, .data_chamado {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    padding: 4px;
+  }
+
+  #hora_cham {
+    background-color: bisque;
+    width: 120px;
+  }
+
+  .tipo_manut {
+    width: 200px;
+    margin-left: 20%;
+  }
+
+  .mydict div {
     display: flex;
     width: 45vh;
     flex-wrap: wrap;
@@ -132,39 +156,41 @@
     margin-top: 0.5rem;
     justify-content: center;
   }
-  #tag{
+
+  #tag {
     width: 80px;
   }
-  #label_setor{
-    margin-left:5px ;
+
+  #label_setor {
+    margin-left: 5px;
   }
-  .content1-block2 #descr_equip{
-    width: 300px;
-  }
-  #ns{
+
+  #ns {
     width: 150px;
   }
-  #setor{
+
+  #setor {
     width: 80px;
   }
-  #descr_defeito{
+
+  #descr_defeito {
     margin-left: 20px;
     width: 148vh;
-    height:100px;
+    height: 100px;
   }
-  .serv_a_realizar, .serv_realizado{
+
+  .serv_a_realizar, .serv_realizado {
     width: 100%;
     padding: 3px;
     height: 130px;
   }
-  #desc_serv1, #desc_serv2{
+
+  #desc_serv1, #desc_serv2 {
     width: 100%;
     height: 100px;
   }
-  .tecnicos div select{
+
+  .tecnicos div select {
     width: 390px;
   }
 }
-
-  
-  
