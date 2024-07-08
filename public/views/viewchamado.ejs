@@ -8,21 +8,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="../css/global.css">
-    <!-- <link rel="stylesheet" href="../css/style.css"> -->
+    <link rel="stylesheet" href="/css/global.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/criar-chamado.css">
-    <link rel="stylesheet" href="../css/print.css">
-    <link rel="stylesheet" href="../css/@media767.css">
-    <link rel="stylesheet" href="../css/@mediaheader1000.css">
-    <link rel="stylesheet" href="../css/@mediaViewChamado1000.css">
-    <link rel="stylesheet" href="../css/@media125.css">
-    <link rel="stylesheet" href="../css/@mediaheader1280.css">
-    <link rel="stylesheet" href="../css/feedback.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/criar-chamado.css">
+    <link rel="stylesheet" href="/css/print.css">
+    <link rel="stylesheet" href="/css/@media767.css">
+    <link rel="stylesheet" href="/css/@mediaheader1000.css">
+    <link rel="stylesheet" href="/css/@mediaViewChamado1000.css">
+    <link rel="stylesheet" href="/css/@media125.css">
+    <link rel="stylesheet" href="/css/@mediaheader1280.css">
+    <link rel="stylesheet" href="/css/feedback.css">
     <link rel="stylesheet" href="../css/dashboard.css">
     <title>Document</title>
 </head>
@@ -42,7 +43,7 @@
                         <li><a href="http://localhost:5000/chamado">Chamados</a></li>
                         <li><a href="http://localhost:5000/cadastro">Cadastro Geral</a></li>
                         <li><a href="http://localhost:5000/relatorio">Homem Hora</a></li>
-                        <li><a href="">Gráficos gerenciais</a></li>
+                        <li><a href="http://localhost:5000/graficos">Gráficos gerenciais</a></li>
                         <li><a href="../pages/chat.html">Chat</a></li>
                     </ul>
                 </nav>
@@ -68,7 +69,7 @@
                             <li><a href="http://localhost:5000/chamado">Chamados</a></li>
                             <li><a href="http://localhost:5000/cadastro">Cadastro Geral</a></li>
                             <li><a href="http://localhost:5000/relatorio">Homem Hora</a></li>
-                            <li><a href="">Gráficos gerenciais</a></li>
+                            <li><a href="http://localhost:5000/graficos">Gráficos gerenciais</a></li>
                             <li><a href="../pages/chat.html">Chat</a></li>
                         </ul>
                     </nav>
@@ -81,15 +82,16 @@
         <main>
             <section>
                 <div class="title-page">
-                    <h2>Criar chamado de manutenção</h2>
+                    <h2>Visualizar chamado de manutenção</h2>
                 </div>
                 <div class="icons">
                     <form action="/cadastro/chamado" method="post">
-                        <button type="submit"><img src="../assets/save.png" onclick="salvarChamado()" alt=""></button>
-                        <button><img src="../assets/delete.png" onclick="deletarChamado()" alt=""></button>
-                        <button><img src="../assets/print.png" onclick="imprimir()"></button>
+                        <button type="submit"><img src="/assets/save.png" onclick="salvarChamado()" alt=""></button>
+                        <button><img src="/assets/delete.png" onclick="deletarChamado()" alt=""></button>
+                        <button><img src="/assets/print.png" onclick="imprimir()"></button>
+                        <button id="gerarPdfButton" type="button"><img src="/assets/pdf.png" onclick="gerarPDF()"></button>
                         <button onclick="document.getElementById('fileInput').click();" id="btn-anexo">
-                            <img src="../assets/anexos.png" alt="">
+                            <img src="/assets/anexos.png" alt="">
                         </button>
                 </div>
                 <div class="header-order">
@@ -101,10 +103,10 @@
                     </div>
                     <div class="info-header-order">
                         <label for="">Status</label>
-                        <input type="text" placeholder="ABERTA" name="status" value="<%= dadosChamado.status_cha %>">
+                        <input disabled type="text" placeholder="ABERTA" name="status" value="<%= dadosChamado.status_cha %>">
                         <br>
                         <label for="">Chamado</label>
-                        <input type="number" name="chamado" value="<%= dadosChamado.id_chamado %>">
+                        <input id="idChamado" disabled type="number" name="chamado" value="<%= dadosChamado.id_chamado %>">
                     </div>
                 </div>
             </section>
@@ -119,19 +121,19 @@
             <div class="dados">
                 <div class="info-header-order">
                     <label class="label-margin" for="">Equipamento</label>
-                    <input type="text" value="<%= dadosChamado.equipamento_cha %>">
+                    <input disabled type="text" value="<%= dadosChamado.equipamento_cha %>">
                 </div>
                 <div class="info-header-order">
                     <label class="label-margin" for="">Localidade</label>
-                    <input type="text" class="data-chamado" id="localidade" name="localidade" value="<%= dadosEquip[0].localidade_listequip %>">
+                    <input disabled type="text" class="data-chamado" id="localidade" name="localidade" value="<%= dadosEquip[0].localidade_listequip %>">
                 </div>
                 <div class="info-header-order">
                     <label for="" class="popup-label">Setor</label>
-                    <input type="text" class="data-chamado" value="<%= dadosEquip[0].setor_listequip %>">
+                    <input disabled type="text" class="data-chamado" value="<%= dadosEquip[0].setor_listequip %>">
                 </div>
                 <div class="info-header-order">
                     <label class="label-margin" for="">Descrição</label>
-                    <input type="text" id="descricao" value="<%= dadosEquip[0].descricao_listequip %>"></input>
+                    <input disabled type="text" id="descricao" value="<%= dadosEquip[0].descricao_listequip %>"></input>
                 </div>
             </div>
             
@@ -143,39 +145,39 @@
             <div class="tecs info-header-order">
                 <div>
                     <label for="">Criado por</label>
-                    <input class="data-chamado" type="text" style="width: 320px;" name="criador"
+                    <input disabled class="data-chamado" type="text" style="width: 320px;" name="criador"
                         value="<%=dadosChamado.criado_por_cha%>">
-                    <input class="data-chamado" type="email" name="email" id="email" style="width: 320px;"
+                    <input disabled class="data-chamado" type="email" name="email" id="email" style="width: 320px;"
                         value="<%=dadosChamado.email%>">
                 </div>
                 <label>Prioridade</label>
                 <div class="prioridade">
                     <% if (dadosChamado.prioridade_cha== 3 ) { %>
                         Baixa
-                        <input class="data-chamado" type="radio" id="radioBaixa" name="prioridade" value="baixa"
+                        <input disabled class="data-chamado" type="radio" id="radioBaixa" name="prioridade" value="baixa"
                             checked>
                         <% } else { %>
                             Baixa
-                            <input class="data-chamado" type="radio" id="radioBaixa" name="prioridade" value="baixa">
+                            <input disabled class="data-chamado" type="radio" id="radioBaixa" name="prioridade" value="baixa">
                             <% } %>
 
                                 <% if (dadosChamado.prioridade_cha== 2 ) { %>
                                     Média
-                                    <input class="data-chamado" type="radio" id="radioMedia" name="prioridade"
+                                    <input disabled class="data-chamado" type="radio" id="radioMedia" name="prioridade"
                                         value="media" checked>
                                     <% } else { %>
                                         Média
-                                        <input class="data-chamado" type="radio" id="radioMedia" name="prioridade"
+                                        <input disabled class="data-chamado" type="radio" id="radioMedia" name="prioridade"
                                             value="media">
                                         <% } %>
 
                                             <% if (dadosChamado.prioridade_cha== 1 ) { %>
                                                 Alta
-                                                <input class="data-chamado" type="radio" id="radioAlta"
+                                                <input disabled class="data-chamado" type="radio" id="radioAlta"
                                                     name="prioridade" value="alta" checked>
                                                 <% } else { %>
                                                     Alta
-                                                    <input class="data-chamado" type="radio" id="radioAlta"
+                                                    <input disabled class="data-chamado" type="radio" id="radioAlta"
                                                         name="prioridade" value="alta">
                                                     <% } %>
                 </div>
@@ -191,10 +193,10 @@
                         return formattedDate;
                         };
                         %>
-                        <input class="data-chamado" id="dataChamado" type="date" name="dataChamado"
+                        <input disabled class="data-chamado" id="dataChamado" type="date" name="dataChamado"
                             value="<%= formatDate(dadosChamado.data_ini_cha) %>" style="font-size: 10px">
 
-                        <input class="data-chamado" type="time" name="horaChamado" id="horaChamado" step="1"
+                        <input disabled class="data-chamado" type="time" name="horaChamado" id="horaChamado" step="1"
                             value="<%= dadosChamado.hora_ini_cha %>" style="font-size: 10px">
                 </div>
             </div>
@@ -205,94 +207,100 @@
             </div>
             <div class="info-header-order">
                 <label for="">Descrição</label>
-                <input class="data-chamado" type="text" PL="Correção de dreno ACS-2101" style="width: 280px;"
+                <input disabled class="data-chamado" type="text" PL="Correção de dreno ACS-2101" style="width: 280px;"
                     name="titleDesc" value="<%= dadosChamado.descri_cha %>">
-                <input class="data-chamado" id="fileInput" type="file" style="display:none;">
+                <input disabled class="data-chamado" id="fileInput" type="file" style="display:none;">
             </div>
             <div class="descrição">
-                <textarea class="data-chamado" name="desc" id="" cols="30" rows="10" style="width: 100%;padding: 5px;"
+                <textarea disabled class="data-chamado" name="desc" id="" cols="30" rows="10" style="width: 100%;padding: 5px;"
                     placeholder="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni exercitationem expedita assumenda repellendus,distinctio eaque neque consectetur iusto eligendi rerum cupiditate fugiat itaque sint illum facere quae explicabo fugit rem.Magni officiis, expedita a quasi quisquam non fugit facilis. Sit placeat reiciendis iusto odit deleniti facere sed non consequatur minus, nemo omnis dolorem quae vitae vel pariatur labore distinctio voluptas."><%= dadosChamado.descricao_cha %></textarea>
             </div>
         </main>
         </form>
     </section>
 
+    
     <section class="user-profile">
         <div id="feedbackModal" class="feedback">
             <div class="feedback-content">
                 <span class="feedback-close" onclick="resetForm()">&times;</span>
                 <h2 class="title-feedback">Feedback</h2>
                 <hr class="feedbackLine">
-                <form id="feedbackForm" class="feedback-form">
+                <form id="feedbackForm" class="feedback-form"  action="/feedbacks" method="POST"> 
                     <div id="anonymousSection">
                         <button class="EnviarAnonimamente" id="EnviarAnonimamenteButton" onclick="enableAnonymous()">Enviar Anonimamente</button>
                     </div>
                     <div class="form-group-feedback" id="nomeField">
                         <label class="labelFeedback" for="userName" id="NomeFeedbackLabel">Nome:</label>
-                            <input type="text" id="NomeFeedback" class="input-field-feedback " aria-describedby="userNameHelp">
+                            <input type="text" id="NomeFeedback" name="nome_feed" class="input-field-feedback displayName" aria-describedby="userNameHelp">
                     </div>
                     <div class="form-group-feedback" id="emailField">
                         <label class="labelFeedback" for="userEmailInput">Email:</label>
-                        <input type="email" id="userEmailInput" class="input-field-feedback" aria-describedby="userEmailHelp">
+                        <input type="email" id="userEmailInput" name="email_feed" class="input-field-feedback userEmail" aria-describedby="userEmailHelp">
                     </div>              
                     <div class="form-group-feedback">
                         <label class="labelFeedback" for="DescriçãoFeedback">Descrição do Feedback:</label>
-                        <input type="text" id="DescriçãoFeedback" class="input-field-feedback" aria-describedby="DescriçãoFeedback">
+                        <input type="text" id="DescriçãoFeedback" name="descricao_feed" class="input-field-feedback" aria-describedby="DescriçãoFeedback">
                     </div>
                     <hr>
                     <div class="form-group-feedback">
-                        <input type="submit" value="Salvar" class="input-submit-feedback">
+                        <input type="submit" onclick="EnviadoFeedback()" value="Salvar" class="input-submit-feedback">
                     </div>
                 </form>
             </div>
         </div>
-    </section>
-    
-    <section class="user-profile">
+      </section>
+      
+      <section class="user-profile">
         <div id="suporteModal" class="suporte">
             <div class="suporte-content">
                 <span class="suporte-close">&times;</span>
                 <h2 class="title-suporte">Suporte</h2>
                 <hr class="suporteLine">
-                <form id="suporteForm" class="suporte-form">
+                <form id="suporteForm" class="suporte-form" action="/Suporte" method="POST" enctype="multipart/form-data">
                     <div class="form-group-suporte" id="nomeField">
                         <label class="labelSuporte" for="userName">Nome:</label>
-                        <input type="text" id="nome" class="input-field-suporte" aria-describedby="userName">
+                        <input type="text" id="nome" name="nome_desc" class="input-field-suporte displayName" aria-describedby="userName">
                     </div>
                     <div class="form-group-suporte" id="emailField">
                         <label class="labelSuporte" for="userEmailInput">Email:</label>
-                        <input type="email" id="userEmailSuporte" class="input-field-suporte" aria-describedby="userEmail">
-                    </div>              
+                        <input type="email" id="userEmailSuporte" name="email_desc" class="input-field-suporte userEmail" aria-describedby="userEmail">
+                    </div>
                     <div class="form-group-suporte">
                         <label class="labelSuporte" for="DescriçãoSuporte">Descrição do Suporte:</label>
-                        <input type="text" id="DescriçãoSuporte" class="input-field-suporte" aria-describedby="DescriçãoSuporte">
+                        <input type="text" id="DescriçãoSuporte" name="descricao_desc" class="input-field-suporte" aria-describedby="DescriçãoSuporte">
                     </div>
+                    <div class="form-group-suporte">
+                      <label class="labelSuporte" for="suporteArquivos">Anexar Imagem:</label>
+                      <input type="file" id="suporteArquivos" name="suporteArquivos" class="input-field-suporte" multiple>
+                      <div id="imagePreviewContainer" style="margin-top: 20px;"></div>
+                  </div>
                     <hr>
                     <div class="form-group-suporte">
-                        <input type="submit" value="Salvar" class="input-submit-feedback">
+                        <input type="submit" onclick="EnviadoSuporte()" value="Salvar" class="input-submit-feedback">
                     </div>
                 </form>
             </div>
         </div>
-    </section>
-    <section class="overlay-dashboard" id="dashboard">
+      </section>
+      <section class="overlay-dashboard" id="dashboard">
         <div class="dashboard">
             <span class="close-icon" onclick="closeDashboard()">X</span>
             <form>
-                <div class="image-dash">
-                    <label for="arquivo">
-                        <img id="icone" class="user-image" src="../assets/icons8-usuário-50.png" alt="Ícone de pessoa"
-                            style="cursor: pointer;">
-                    </label>
-                    <input type="file" id="arquivo" name="arquivo" accept="image/*" onchange="previewImage(event)"
-                        style="display: none;">
-                    <img class="user-image" id="preview" src="" alt="Pré-visualização da imagem" style="display: none;">
-                    <div class="user-info">
-                        <h4 id="userName" class="user-name"></h4>
-                    </div>
-                </div>
-                    <h5 id="userEmail" style="color: white;" class="user-email"></h5>
-            </form>
+              <div class="image-dash">
+                  <label for="arquivo">
+                      <img id="icone" class="user-image" src="../assets/icons8-usuário-50.png" alt="Ícone de pessoa"
+                          style="cursor: pointer;">
+                  </label>
+                  <input type="file" id="arquivo" name="arquivo" accept="image/*" onchange="previewImage(event)"
+                      style="display: none;">
+                  <img class="user-image" id="preview" src="" alt="Pré-visualização da imagem" style="display: none;">
+                  <div class="user-info">
+                    <h5 id="userName" style="color: white;" class="user-name displayName"></h5>
+                  </div>
+              </div>
+                  <h5 id="userEmail" style="color: white;" class="user-email userEmail"></h5>
+          </form>
             <hr>
             <div class="content-dashboard">
                 <div class="links-dash">
@@ -327,39 +335,39 @@
                 </div>
             </div>
         </div>
-    </section>
-    <section class="user-profile">
+      </section>
+      <section class="user-profile">
         <div id="userModal" class="modal">
           <div class="user-content">
             <span class="user-close">&times;</span>
             <h2 class="title-user">Perfil do Usuário</h2>
             <hr class="profileLine">
-            <form id="profileForm" class="profile-form" action="/Perfil_Usuario" method="POST">
-                <div class="form-group">
-                    <label class="labelUser" for="userName">Nome:</label>
-                    <input type="text" id="nome" name="nome_pfu" class="input-field" aria-describedby="userNameHelp">
-                </div>
-                <div class="form-group">
-                    <label class="labelUser" for="userEmailPerfilUser">Email:</label>
-                    <input type="email" id="userEmailPerfilUser" name="email_pfu" class="input-field" aria-describedby="userEmailHelp">
-                </div>              
-                <div class="form-group">
-                    <label class="labelUser" for="userPhone">Telefone:</label>
-                    <input type="text" id="userPhone" name="telefone_pfu" class="input-field" aria-describedby="userPhoneHelp">
-                </div>
-                <div class="form-group">
-                    <label class="labelUser" for="CPF">CPF:</label>
-                    <input type="text" id="CPF" name="cpf_pfu" class="input-field" aria-describedby="CPF">
-                </div>
-                <div class="form-group">
-                    <label class="labelUserData" for="dataNascimento">Data de Nascimento:</label>
-                    <input type="date" id="dataNascimento" name="data_nascimento_pfu" class="input-fieldData" aria-describedby="dataNascimento" maxlength="14">
-                </div> 
-                <hr>
-                <div class="form-group">
-                    <input type="submit" value="Salvar" class="input-submit">
-                </div>
-            </form>
+            <form id="profileForm" class="profile-form">
+              <div class="form-group">
+                  <label class="labelUser" for="userName">Nome:</label>
+                  <input type="text" id="nome" name="nome_pfu" class="input-field displayName" aria-describedby="userNameHelp">
+              </div>
+              <div class="form-group">
+                  <label class="labelUser" for="userEmailPerfilUser">Email:</label>
+                  <input type="email" id="userEmailPerfilUser" name="email_pfu" class="input-field userEmail" aria-describedby="userEmailHelp">
+              </div>              
+              <div class="form-group">
+                <label class="labelUser" for="userPhone">Telefone:</label>
+                <input type="text" id="userPhone" name="telefone_pfu" class="input-field userPhone" aria-describedby="userPhoneHelp">
+            </div>
+            <div class="form-group">
+                <label class="labelUser" for="CPF">CPF:</label>
+                <input type="text" id="CPF" name="cpf_pfu" class="input-field userCPF" aria-describedby="CPF">
+            </div>
+            <div class="form-group">
+                <label class="labelUserData" for="dataNascimento">Data de Nascimento:</label>
+                <input type="date" id="dataNascimento" name="data_nascimento_pfu" class="input-fieldData userDataNascimento" aria-describedby="dataNascimento" maxlength="14">
+            </div>
+              <hr>
+              <div class="form-group">
+                  <input type="submit" value="Salvar" class="input-submit">
+              </div>
+          </form>
           </div>
         </div>
       </section>
@@ -368,6 +376,7 @@
     <script src="../js/loading.js"></script>  
     <script src="../js/menu-mobile.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-storage-compat.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-database-compat.js"></script>
     <script src="../js/script.js"></script>
     <link rel="stylesheet" href="../css/@media1440.css">
     <link rel="stylesheet" href="../css/@media1200.css">

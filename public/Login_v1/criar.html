@@ -3,23 +3,15 @@
 <head>
 	<title>Login</title>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
+	<meta name="viewport" content="width=device-width, initial-scale=1">	
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">	
 	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
 </head>
 <body>
 	
@@ -29,20 +21,19 @@
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="images/logo2.png" alt="IMG">
 				</div>
-				<form action="http://localhost:5000/novoUsuario" method="post" class="login100-form validate-form">
+				<form class="login100-form validate-form">
 					<span class="login100-form-title">
 						Criar conta
 					</span>
-
 					<div class="wrap-input100 validate-input" data-validate = "Valid nome is required:">
-						<input class="input100" id="fullName" type="text" name="nome" placeholder="Cadastre seu nome" autofocus>
+						<input class="input100" id="fullName" type="text" name="nome" placeholder="Cadastre seu nome" autofocus required>
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 						</span>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" id="email" type="text" name="email" placeholder="Cadastre um email" autofocus>
+						<input class="input100" id="email" type="text" name="email" required placeholder="Cadastre um email" autofocus>
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -50,14 +41,14 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" id="password" type="password" name="pass" placeholder="Digite um senha">
+						<input class="input100" id="password" type="password" name="pass" required placeholder="Digite um senha">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="pass" placeholder="Repita a senha">
+						<input class="input100" type="password" name="pass" required placeholder="Repita a senha">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -90,22 +81,17 @@
 				</form>
 			</div>
 		</div>
-	</div>
-<!--===============================================================================================-->	
+	</div>	
 <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
 	<script src="vendor/bootstrap/js/popper.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
 	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
 	<script src="vendor/tilt/tilt.jquery.min.js"></script>
 	<script >
 		$('.js-tilt').tilt({
 			scale: 1.1
 		})
 	</script>
-<!--===============================================================================================-->
 <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
 	<script src="./script_login.js"></script>

@@ -71,3 +71,42 @@ document.addEventListener("DOMContentLoaded", function() {
     };
   }
 });
+
+function EnviadoFeedback() {
+  alert("Seu feedback foi enviado com sucesso!");
+  hidePopup();
+}
+
+function EnviadoSuporte() {
+  alert("Obrigado por relatar o problema! Nossa equipe já está investigando e trabalhando para corrigi-lo.");
+}
+
+document.getElementById('suporteArquivos').addEventListener('change', function() {
+  var fileInput = this;
+  var imagePreviewContainer = document.getElementById('imagePreviewContainer');
+  imagePreviewContainer.innerHTML = ''; // Limpa a pré-visualização anterior
+
+  // Verifica se o navegador suporta FileReader e se um arquivo foi selecionado
+  if (window.FileReader && fileInput.files && fileInput.files[0]) {
+    var file = fileInput.files[0];
+
+    // Verifica se o arquivo é um PDF
+    if (file.type === 'application/pdf') {
+      alert('Formato PDF não é válido. Por favor, selecione um arquivo de imagem.');
+      fileInput.value = ''; // Limpa o input de arquivo
+      return; // Interrompe a execução da função
+    }
+
+    var reader = new FileReader();
+
+    // Função que será chamada quando o FileReader terminar de ler o arquivo
+    reader.onload = function(e) {
+      var img = new Image();
+      img.src = e.target.result;
+      img.style.maxWidth = '200px';
+      img.style.maxHeight = '200px';
+      imagePreviewContainer.appendChild(img);
+    };
+    reader.readAsDataURL(file);
+  }
+});

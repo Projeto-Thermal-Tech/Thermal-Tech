@@ -9,21 +9,19 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="../css/global.css">
-    <!-- <link rel="stylesheet" href="../css/style.css"> -->
-    <link rel="stylesheet" href="../css/@media1200.css">
-    <!-- <link rel="stylesheet" href="../css/@media1440.css"> -->
+    <link rel="stylesheet" href="/css/global.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/criar-chamado.css">
-    <link rel="stylesheet" href="../css/@mediaheader1000.css">
-    <link rel="stylesheet" href="../css/@mediaOrdem.css">
-    <link rel="stylesheet" href="../css/@media125.css">
-    <link rel="stylesheet" href="../css/@mediaheader1280.css">
-    <link rel="stylesheet" href="../css/feedback.css">
-    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/criar-chamado.css">
+    <link rel="stylesheet" href="/css/@mediaheader1000.css">
+    <link rel="stylesheet" href="/css/@mediaOrdem.css">
+    <link rel="stylesheet" href="/css/@mediaheader1280.css">
+    <link rel="stylesheet" href="/css/feedback.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
     <title>Ordem</title>
 </head>
 
@@ -42,7 +40,7 @@
                         <li><a href="http://localhost:5000/chamado">Chamados</a></li>
                         <li><a href="http://localhost:5000/cadastro">Cadastro Geral</a></li>
                         <li><a href="http://localhost:5000/relatorio">Homem Hora</a></li>
-                        <li><a href="">Gráficos gerenciais</a></li>
+                        <li><a href="http://localhost:5000/graficos">Gráficos gerenciais</a></li>
                         <li><a href="../pages/chat.html">Chat</a></li>
                     </ul>
                 </nav>
@@ -52,11 +50,11 @@
                 <a href="#" class="config" onclick="AbrirDashboard()"><img src="../assets/icon_config.png" alt=""></a>
               </div>
             </div>
-            <div class="btn-abrir-menu" id="btn-menu">
+            <div class="btn-abrir-menu" id="btn-menu" style="display: none;">
                 <i class="bi bi-list"></i>
             </div>
             <div class="menu-mobile" id="menu-mobile">
-                <div class="btn-fechar hide" id="btn-fechar">
+                <div class="btn-fechar hide" id="btn-fechar" style="display: none;">
                     <i class="bi bi-x-lg"></i>
                 </div>
                 <nav>
@@ -68,7 +66,7 @@
                             <li><a href="http://localhost:5000/chamado">Chamados</a></li>
                             <li><a href="http://localhost:5000/cadastro">Cadastro Geral</a></li>
                             <li><a href="http://localhost:5000/relatorio">Homem Hora</a></li>
-                            <li><a href="">Gráficos gerenciais</a></li>
+                            <li><a href="http://localhost:5000/graficos">Gráficos gerenciais</a></li>
                             <li><a href="../pages/chat.html">Chat</a></li>
                         </ul>
                     </nav>
@@ -86,19 +84,19 @@
                     </div>
                     <div class="icons">
                         <form action="/encerra/ordem" method="post">
-                            <button type="submit"><img src="../assets/save.png" onclick="salvarOrdem()" alt=""></button>
-                            <button type="button"><img src="../assets/delete.png" onclick="deletarOrdem()"
-                                    alt=""></button>
-                            <button type="button"><img src="../assets/print.png" onclick="imprimirOrdem()"></button>
+                            <button type="submit"><img src="/assets/save.png" onclick="salvarOrdem()" alt=""></button>
+                            <button type="button"><img src="/assets/delete.png" onclick="deletarOrdem()"alt=""></button>
+                            <button id="gerarPdfButton" type="button"><img src="/assets/pdf.png" onclick="gerarPDF()"></button>
+                            <button type="button"><img src="/assets/print.png" onclick="imprimirOrdem()"></button>
                             <button type="button" onclick="document.getElementById('fileInput').click();"
                                 id="btn-anexo">
-                                <img src="../assets/anexos.png" alt="">
+                                <img src="/assets/anexos.png" alt="">
                             </button>
                     </div>
                     <div class="header-order">
                         <div class="info-header-order">
                             <label for="">Ordem</label>
-                            <input type="number" name="ordem" style="background-color: #8CB1DA;"
+                            <input type="number" id="idOrdem" name="ordem" style="background-color: #8CB1DA;"
                                 value="<%= dadosOrdem.id_ordem %>" readonly>
                             <input type="text" id="title-order" value="Correção de dreno ACS-2101" readonly>
                         </div>
@@ -262,82 +260,89 @@
         </form>
     </section>
 
+
+    
     <section class="user-profile">
         <div id="feedbackModal" class="feedback">
             <div class="feedback-content">
                 <span class="feedback-close" onclick="resetForm()">&times;</span>
                 <h2 class="title-feedback">Feedback</h2>
                 <hr class="feedbackLine">
-                <form id="feedbackForm" class="feedback-form">
+                <form id="feedbackForm" class="feedback-form"  action="/feedbacks" method="POST"> 
                     <div id="anonymousSection">
                         <button class="EnviarAnonimamente" id="EnviarAnonimamenteButton" onclick="enableAnonymous()">Enviar Anonimamente</button>
                     </div>
                     <div class="form-group-feedback" id="nomeField">
                         <label class="labelFeedback" for="userName" id="NomeFeedbackLabel">Nome:</label>
-                            <input type="text" id="NomeFeedback" class="input-field-feedback " aria-describedby="userNameHelp">
+                            <input type="text" id="NomeFeedback" name="nome_feed" class="input-field-feedback displayName" aria-describedby="userNameHelp">
                     </div>
                     <div class="form-group-feedback" id="emailField">
                         <label class="labelFeedback" for="userEmailInput">Email:</label>
-                        <input type="email" id="userEmailInput" class="input-field-feedback" aria-describedby="userEmailHelp">
+                        <input type="email" id="userEmailInput" name="email_feed" class="input-field-feedback userEmail" aria-describedby="userEmailHelp">
                     </div>              
                     <div class="form-group-feedback">
                         <label class="labelFeedback" for="DescriçãoFeedback">Descrição do Feedback:</label>
-                        <input type="text" id="DescriçãoFeedback" class="input-field-feedback" aria-describedby="DescriçãoFeedback">
+                        <input type="text" id="DescriçãoFeedback" name="descricao_feed" class="input-field-feedback" aria-describedby="DescriçãoFeedback">
                     </div>
                     <hr>
                     <div class="form-group-feedback">
-                        <input type="submit" value="Salvar" class="input-submit-feedback">
+                        <input type="submit" onclick="EnviadoFeedback()" value="Salvar" class="input-submit-feedback">
                     </div>
                 </form>
             </div>
         </div>
-    </section>
-    
-    <section class="user-profile">
+      </section>
+      
+      <section class="user-profile">
         <div id="suporteModal" class="suporte">
             <div class="suporte-content">
                 <span class="suporte-close">&times;</span>
                 <h2 class="title-suporte">Suporte</h2>
                 <hr class="suporteLine">
-                <form id="suporteForm" class="suporte-form">
+                <form id="suporteForm" class="suporte-form" action="/Suporte" method="POST" enctype="multipart/form-data">
                     <div class="form-group-suporte" id="nomeField">
                         <label class="labelSuporte" for="userName">Nome:</label>
-                        <input type="text" id="nome" class="input-field-suporte" aria-describedby="userName">
+                        <input type="text" id="nome" name="nome_desc" class="input-field-suporte displayName" aria-describedby="userName">
                     </div>
                     <div class="form-group-suporte" id="emailField">
                         <label class="labelSuporte" for="userEmailInput">Email:</label>
-                        <input type="email" id="userEmailSuporte" class="input-field-suporte" aria-describedby="userEmail">
-                    </div>              
+                        <input type="email" id="userEmailSuporte" name="email_desc" class="input-field-suporte userEmail" aria-describedby="userEmail">
+                    </div>
                     <div class="form-group-suporte">
                         <label class="labelSuporte" for="DescriçãoSuporte">Descrição do Suporte:</label>
-                        <input type="text" id="DescriçãoSuporte" class="input-field-suporte" aria-describedby="DescriçãoSuporte">
+                        <input type="text" id="DescriçãoSuporte" name="descricao_desc" class="input-field-suporte" aria-describedby="DescriçãoSuporte">
                     </div>
+                    <div class="form-group-suporte">
+                      <label class="labelSuporte" for="suporteArquivos">Anexar Imagem:</label>
+                      <input type="file" id="suporteArquivos" name="suporteArquivos" class="input-field-suporte" multiple>
+                      <div id="imagePreviewContainer" style="margin-top: 20px;"></div>
+                  </div>
                     <hr>
                     <div class="form-group-suporte">
-                        <input type="submit" value="Salvar" class="input-submit-feedback">
+                        <input type="submit" onclick="EnviadoSuporte()" value="Salvar" class="input-submit-feedback">
                     </div>
                 </form>
             </div>
         </div>
-    </section>
-    <section class="overlay-dashboard" id="dashboard">
+      </section>
+      <section class="overlay-dashboard" id="dashboard">
         <div class="dashboard">
             <span class="close-icon" onclick="closeDashboard()">X</span>
             <form>
-                <div class="image-dash">
-                    <label for="arquivo">
-                        <img id="icone" class="user-image" src="../assets/icons8-usuário-50.png" alt="Ícone de pessoa"
-                            style="cursor: pointer;">
-                    </label>
-                    <input type="file" id="arquivo" name="arquivo" accept="image/*" onchange="previewImage(event)"
-                        style="display: none;">
-                    <img class="user-image" id="preview" src="" alt="Pré-visualização da imagem" style="display: none;">
-                    <div class="user-info">
-                        <h4 id="userName" class="user-name"></h4>
-                    </div>
-                </div>
-                    <h5 id="userEmail" style="color: white;" class="user-email"></h5>
-            </form>
+              <div class="image-dash">
+                  <label for="arquivo">
+                      <img id="icone" class="user-image" src="../assets/icons8-usuário-50.png" alt="Ícone de pessoa"
+                          style="cursor: pointer;">
+                  </label>
+                  <input type="file" id="arquivo" name="arquivo" accept="image/*" onchange="previewImage(event)"
+                      style="display: none;">
+                  <img class="user-image" id="preview" src="" alt="Pré-visualização da imagem" style="display: none;">
+                  <div class="user-info">
+                    <h5 id="userName" style="color: white;" class="user-name displayName"></h5>
+                  </div>
+              </div>
+                  <h5 id="userEmail" style="color: white;" class="user-email userEmail"></h5>
+          </form>
             <hr>
             <div class="content-dashboard">
                 <div class="links-dash">
@@ -372,44 +377,43 @@
                 </div>
             </div>
         </div>
-    </section>
-    <section class="user-profile">
+      </section>
+      <section class="user-profile">
         <div id="userModal" class="modal">
           <div class="user-content">
             <span class="user-close">&times;</span>
             <h2 class="title-user">Perfil do Usuário</h2>
             <hr class="profileLine">
-            <form id="profileForm" class="profile-form" action="/Perfil_Usuario" method="POST">
-                <div class="form-group">
-                    <label class="labelUser" for="userName">Nome:</label>
-                    <input type="text" id="nome" name="nome_pfu" class="input-field" aria-describedby="userNameHelp">
-                </div>
-                <div class="form-group">
-                    <label class="labelUser" for="userEmailPerfilUser">Email:</label>
-                    <input type="email" id="userEmailPerfilUser" name="email_pfu" class="input-field" aria-describedby="userEmailHelp">
-                </div>              
-                <div class="form-group">
-                    <label class="labelUser" for="userPhone">Telefone:</label>
-                    <input type="text" id="userPhone" name="telefone_pfu" class="input-field" aria-describedby="userPhoneHelp">
-                </div>
-                <div class="form-group">
-                    <label class="labelUser" for="CPF">CPF:</label>
-                    <input type="text" id="CPF" name="cpf_pfu" class="input-field" aria-describedby="CPF">
-                </div>
-                <div class="form-group">
-                    <label class="labelUserData" for="dataNascimento">Data de Nascimento:</label>
-                    <input type="date" id="dataNascimento" name="data_nascimento_pfu" class="input-fieldData" aria-describedby="dataNascimento" maxlength="14">
-                </div> 
-                <hr>
-                <div class="form-group">
-                    <input type="submit" value="Salvar" class="input-submit">
-                </div>
-            </form>
+            <form id="profileForm" class="profile-form">
+              <div class="form-group">
+                  <label class="labelUser" for="userName">Nome:</label>
+                  <input type="text" id="nome" name="nome_pfu" class="input-field displayName" aria-describedby="userNameHelp">
+              </div>
+              <div class="form-group">
+                  <label class="labelUser" for="userEmailPerfilUser">Email:</label>
+                  <input type="email" id="userEmailPerfilUser" name="email_pfu" class="input-field userEmail" aria-describedby="userEmailHelp">
+              </div>              
+              <div class="form-group">
+                <label class="labelUser" for="userPhone">Telefone:</label>
+                <input type="text" id="userPhone" name="telefone_pfu" class="input-field userPhone" aria-describedby="userPhoneHelp">
+            </div>
+            <div class="form-group">
+                <label class="labelUser" for="CPF">CPF:</label>
+                <input type="text" id="CPF" name="cpf_pfu" class="input-field userCPF" aria-describedby="CPF">
+            </div>
+            <div class="form-group">
+                <label class="labelUserData" for="dataNascimento">Data de Nascimento:</label>
+                <input type="date" id="dataNascimento" name="data_nascimento_pfu" class="input-fieldData userDataNascimento" aria-describedby="dataNascimento" maxlength="14">
+            </div>
+              <hr>
+              <div class="form-group">
+                  <input type="submit" value="Salvar" class="input-submit">
+              </div>
+          </form>
           </div>
         </div>
       </section>
     <script defer src="../js/script.js"></script>
-    <!-- <script src="../js/teste.js"></script> -->
     <script src="../js/menu-mobile.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
@@ -425,8 +429,9 @@
     <script src="../js/logout.js"></script>
     <script src="../js/loading.js"></script>  
     <script src="../js/auth-guard.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-storage-compat.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-database-compat.js"></script> 
     <script src="../js/scriptsViewOrdem.js"></script>
-    <link rel="stylesheet" href="../css/@media1440.css">
-    <link rel="stylesheet" href="../css/@media1200.css">
+    <link rel="stylesheet" href="/css/@media1440.css">
+    <link rel="stylesheet" href="/css/@media1200.css">
 </body>

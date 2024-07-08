@@ -1,5 +1,4 @@
 /node_modules
 /package-lock.json
-/package.json
 /public/pages/chat.html
 /yarn.lockdw

@@ -95,10 +95,19 @@
     color: white;
 }
 
-.user-info .user-name, .user-info .user-email, .user-nameBotaoAbrirPopup {
-    font-size: 18px; 
+.user-email, .user-nameBotaoAbrirPopup {
+    font-size: 14px; 
     margin-top: 5px; 
     margin-left: 15px; 
+}
+
+.user-info {
+    font-size: 20px; 
+    margin-left: 15px; 
+}
+
+.user-info .user-name {
+    margin-top: -15px; 
 }
 
 .links-dash span:hover {
