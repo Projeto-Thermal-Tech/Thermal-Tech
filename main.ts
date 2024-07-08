@@ -33,15 +33,43 @@ function createWindow(){
         win.maximize()
     })
 
-    const menuTemplate =[];
+    const menuTemplate =[
+        {
+            label: 'Menu',
+            submenu: [
+                {
+                    label: 'Home',
+                    click:function()
+                    {
+                        win.loadURL('http://localhost:5000/inicio')
+                    } 
+                },
+                {
+                    label: 'Abrir DevTools',
+                    click: ()=>{
+                        win.webContents.openDevTools();
+                    }
+                },
+                {
+                    label: 'Recarregar',
+                    role: 'reload'
+                },
+                {
+                    label: 'Sair',
+                    role: 'quit'
+                }
+            ]
+        }
+    ];
     const menu = Menu.buildFromTemplate(menuTemplate);
     Menu.setApplicationMenu(menu)
-    // win.openDevTools();
+   
 
       }
       
 app.whenReady().then(()=>{
     createWindow()
 })
+app.disableHardwareAcceleration();
 
   

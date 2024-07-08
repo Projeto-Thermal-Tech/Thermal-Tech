@@ -25,7 +25,7 @@ const dbConfig = {
 
 
 // Utilize as variáveis de configuração do banco de dados conforme necessário
-const { Pool, Client } = require('pg');
+
 const pool = new Pool(dbConfig);
 
 pool.connect((err, pool, done) => {
