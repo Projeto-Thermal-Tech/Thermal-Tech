@@ -194,3 +194,10 @@ document.getElementById('AnexarPDF').addEventListener('change', function() {
   
   
 });
+function abrirPopupAnexo() {
+  document.getElementById('sectionPopupAnexar').style.display = 'block';
+}
+
+function FecharPopupAnexo() {
+  document.getElementById('sectionPopupAnexar').style.display = 'none';
+}

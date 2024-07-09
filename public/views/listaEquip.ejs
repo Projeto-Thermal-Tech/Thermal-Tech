@@ -115,6 +115,7 @@
                             <th>Descrição</th>
                             <th>Editar</th>
                             <th>Excluir</th>
+                            <th>Anexar PDF</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -151,6 +152,11 @@
     <button onclick="ExcluirEquipamento('<%= equipamentos[i].id_equip %>','<%= equipamentos[i].tag_listequip %>')" type="button" onc style="background-color: transparent; border: none;">
         <img src="../assets/delete.png" width="35px">
     </button>
+</td>
+<td>
+    <button onclick="abrirPopupAnexo('<%= equipamentos[i].anexo_caminho_listequip %>')" style="background-color: transparent; border: none;">
+        <img src="../assets/Anexos (2).png" width="30px" alt="Ver PDF">
+    </button> 
 </td>
                             </tr>
                         <% } %>
@@ -276,28 +282,35 @@
                 <input type="text" name="MODELO" id="MODELO" class="popup-input" required>
             </div> 
             </div>
-            <div>
-                <label class="popup-label" for="popup-label">Anexar PDF:</label>
-                <input style="display: none;" type="file" id="AnexarPDF" name="AnexarPDF" class="popup-input" multiple>
-                <img src="/assets/anexos.png" id="iconeAnexo" style="cursor: pointer;" alt="Anexar PDF">
-            </div>
-            <hr>
-            <div class="pdfViewerHeader">
-                <label for="popup-label" class="popup-label" id="labelVisualizarPdf">Visualizar Pdf:</label>
-                <img id="mostrarIframe" src="../assets/icons8-pdf-48.png" alt="Mostrar PDF" style="cursor:pointer;">
-            </div>
-            <hr>
-            <div class="ViewsPdf">
-                <button id="fecharIframe" style="position: absolute; top: 10px; right: 10px;">Fechar</button>
-                <input type="text" style="display: none;" id="linkPDF"name="linkPDF" value="">
-                <input type="text" style="display: none;" id="namePDF"name="nomePDF" value="">
-                <iframe id="visualizadorPdf" frameborder="0"></iframe>
-            </div>
             <br>
             <div>
                 <button class="popup-button salvar"type="submit" onclick="saveEquipmentEdit()" >Salvar</button>
             </form>
                 <button class="popup-button cancelar" type="button" onclick="hidePopup()">Cancelar</button>
+            </div>
+        </div>
+    </section>
+    <section id="sectionPopupAnexar" style="display: none;">
+        <div class="modalPopup">
+            <div>
+                <span onclick="FecharPopupAnexo()">&times;</span>
+                    <div>
+                        <h1 class="AnexoDoc">Anexar Documentos</h1>
+                        <label class="popup-label" for="popup-label">Anexar PDF:</label>
+                        <input style="display: none;" type="file" id="AnexarPDF" name="AnexarPDF" class="popup-input" multiple>
+                        <img src="/assets/anexos.png" id="iconeAnexo" style="cursor: pointer;" alt="Anexar PDF">
+                    </div>
+                    <hr>
+                    <div class="pdfViewerHeader">
+                        <label for="popup-label" class="popup-label" id="labelVisualizarPdf">Visualizar Pdf:</label>
+                        <img id="mostrarIframe" src="../assets/icons8-pdf-48.png" alt="Mostrar PDF" style="cursor:pointer;">
+                    </div>
+                    <hr>
+                    <div class="ViewsPdf">
+                        <input type="text" style="display: none;" id="linkPDF"name="linkPDF" value="">
+                        <input type="text" style="display: none;" id="namePDF"name="nomePDF" value="">
+                        <iframe id="visualizadorPdf" frameborder="0"></iframe>
+                    </div>
             </div>
         </div>
     </section>
