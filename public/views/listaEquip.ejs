@@ -146,12 +146,12 @@
 
     
  </td>
- <td><form class="btn-excluir" action="/deletar/equipamento/<%= equipamentos[i].id_equip %>" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este equipamento?')">
+ <td>
     <input type="hidden" name="_method" value="DELETE">
-    <button type="submit" style="background-color: transparent; border: none;">
+    <button onclick="ExcluirEquipamento('<%= equipamentos[i].id_equip %>','<%= equipamentos[i].tag_listequip %>')" type="button" onc style="background-color: transparent; border: none;">
         <img src="../assets/delete.png" width="35px">
     </button>
-</form></td>
+</td>
                             </tr>
                         <% } %>
                     </tbody>
@@ -278,7 +278,8 @@
             </div>
             <div>
                 <label class="popup-label" for="popup-label">Anexar PDF:</label>
-                <input type="file" id="AnexarPDF" name="AnexarPDF" class="popup-input" multiple>
+                <input style="display: none;" type="file" id="AnexarPDF" name="AnexarPDF" class="popup-input" multiple>
+                <img src="/assets/anexos.png" id="iconeAnexo" style="cursor: pointer;" alt="Anexar PDF">
             </div>
             <hr>
             <div class="pdfViewerHeader">
@@ -547,6 +548,7 @@
       </section>
     <script src="../js/dashboard.js"></script>
     </div>
+    <script src="../js/loading.js"></script>  
     <script src="../../database/cnx.js"></script>
     <script src="../js/notify.min.js"></script>
     <script src="../js/feedback.js"></script>
@@ -561,6 +563,5 @@
      <script src="../js/auth-guard.js"></script>
      <script src="../js/logout.js"></script>
      <script src="../js/script.js"></script>
-     <script src="../js/loading.js"></script>  
     <script src="../js/auth-guard.js"></script>
 </html> 

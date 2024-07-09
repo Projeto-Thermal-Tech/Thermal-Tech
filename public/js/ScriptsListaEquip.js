@@ -123,9 +123,30 @@ function Esconderpopou() {
 
 }
 
-function pedirConfirmacao() {
-  var confirmacao = window.confirm("Tem certeza que deseja Excluir?");
-
+function ExcluirEquipamento(id_equip,tag) {
+  var confirmacao = window.confirm("Tem certeza que deseja excluir o equipamento "+tag +" ?");
+  if (confirmacao == true) {
+    if (id_equip) {
+      fetch('/deletar/equipamento/' + id_equip, {
+        method: 'POST'
+      }).then(function(response) {
+        if (response.ok) {
+          const pdfExistente = document.getElementById('visualizadorPdf').src
+          if (pdfExistente.includes("firebasestorage.googleapis.com")) {
+          const storageRef = firebase.storage().refFromURL(pdfExistente)
+          storageRef.delete().then(() => {
+            console.log('PDF antigo excluído com sucesso!')
+          }).catch((error) => {
+            console.error('Erro ao excluir o PDF antigo:', error)
+          })
+          window.location.reload();
+        } else {
+          alert('Erro ao excluir o equipamento.');
+        }
+    }});
+    }
+    
+  }
 }
 
 document.getElementById('mostrarIframe').addEventListener('click', function() {
@@ -141,7 +162,9 @@ document.addEventListener('click', function(event) {
     document.querySelector('.ViewsPdf').style.display = 'none';
   }
 });
-
+document.getElementById('iconeAnexo').addEventListener('click', function() {
+    document.getElementById('AnexarPDF').click(); // Aciona o clique no input file oculto
+});
 // quando o input file for anexado algo chamar um função
 document.getElementById('AnexarPDF').addEventListener('change', function() {
   showLoading()
