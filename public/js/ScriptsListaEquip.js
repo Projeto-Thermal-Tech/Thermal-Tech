@@ -60,7 +60,12 @@ function filtrarPorTag() {
     // Oculta o botão "Limpar Filtro"
     document.querySelector("button[onclick='limparFiltro()']").style.display = "none";
   }
+
   
+function verAnexos(id, caminho){
+  document.getElementById('id_equipAnexo').value = id;
+  document.getElementById('visualizadorPdf').src = caminho; 
+}  
 function editarEquipamento(id_equip, tag, tipoNome, numeroSerie, descricao, area, localidade, setorNome, modelo, linkPDF) {
   // Preencha os campos do popup com os dados do equipamento
   document.getElementById('id_equip').value = id_equip;

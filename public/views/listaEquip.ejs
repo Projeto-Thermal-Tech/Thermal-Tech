@@ -154,7 +154,10 @@
     </button>
 </td>
 <td>
-    <button onclick="abrirPopupAnexo('<%= equipamentos[i].anexo_caminho_listequip %>')" style="background-color: transparent; border: none;">
+    <button onclick="abrirPopupAnexo('<%= equipamentos[i].anexo_caminho_listequip %>');verAnexos(
+                                        '<%= equipamentos[i].id_equip %>',
+                                        '<%= equipamentos[i].anexo_caminho_listequip %>' // Adicionado caminho do PDF
+                                    )" style="background-color: transparent; border: none;">
         <img src="../assets/Anexos (2).png" width="30px" alt="Ver PDF">
     </button> 
 </td>
@@ -294,8 +297,11 @@
         <div class="modalPopup">
             <div>
                 <span onclick="FecharPopupAnexo()">&times;</span>
+                <form action="/atualizar/anexo" method="post">
                     <div>
                         <h1 class="AnexoDoc">Anexar Documentos</h1>
+                        <!-- <input type="text" class="popup-input" id="id_equipAnexo" name="TAG" placeholder="ACS-2101" required> -->
+                        <input type="text" id="id_equipAnexo" name="id_equip" style="display: none;"> 
                         <label class="popup-label" for="popup-label">Anexar PDF:</label>
                         <input style="display: none;" type="file" id="AnexarPDF" name="AnexarPDF" class="popup-input" multiple>
                         <img src="/assets/anexos.png" id="iconeAnexo" style="cursor: pointer;" alt="Anexar PDF">
@@ -311,6 +317,8 @@
                         <input type="text" style="display: none;" id="namePDF"name="nomePDF" value="">
                         <iframe id="visualizadorPdf" frameborder="0"></iframe>
                     </div>
+                    <button class="popup-button salvar"type="submit" onclick="saveEquipmentEdit()" >Salvar</button>
+                </form>
             </div>
         </div>
     </section>
