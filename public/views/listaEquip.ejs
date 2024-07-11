@@ -297,7 +297,6 @@
         <div class="modalPopup">
             <div>
                 <span onclick="FecharPopupAnexo()">&times;</span>
-                <form action="/atualizar/anexo" method="post">
                     <div>
                         <h1 class="AnexoDoc">Anexar Documentos</h1>
                         <!-- <input type="text" class="popup-input" id="id_equipAnexo" name="TAG" placeholder="ACS-2101" required> -->
@@ -317,8 +316,7 @@
                         <input type="text" style="display: none;" id="namePDF"name="nomePDF" value="">
                         <iframe id="visualizadorPdf" frameborder="0"></iframe>
                     </div>
-                    <button class="popup-button salvar"type="submit" onclick="saveEquipmentEdit()" >Salvar</button>
-                </form>
+                    <button id="btnSalvarAnexo" class="popup-button salvar"type="button" onclick="saveEquipmentEdit()" >Salvar</button>
             </div>
         </div>
     </section>

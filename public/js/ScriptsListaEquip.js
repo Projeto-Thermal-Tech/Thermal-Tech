@@ -159,45 +159,66 @@ document.getElementById('mostrarIframe').addEventListener('click', function() {
 })
 
 document.addEventListener('click', function(event) {
-  var cliqueDentro = document.querySelector('.ViewsPdf').contains(event.target);
-  var botãoIframe = document.getElementById('mostrarIframe').contains(event.target);
-
-  // Se o clique foi fora do .ViewsPdf e não foi no botão que mostra o iframe
-  if (!cliqueDentro && !botãoIframe) {
+  var cliqueFora = document.querySelector('.ViewsPdf').contains(event.target);
+  if (cliqueFora == true) {
     document.querySelector('.ViewsPdf').style.display = 'none';
   }
 });
+
 document.getElementById('iconeAnexo').addEventListener('click', function() {
     document.getElementById('AnexarPDF').click(); // Aciona o clique no input file oculto
 });
 // quando o input file for anexado algo chamar um função
-document.getElementById('AnexarPDF').addEventListener('change', function() {
-  showLoading()
-  document.getElementById('popup-edit').style.display = 'none';
-  const pdfExistente = document.getElementById('visualizadorPdf').src
-  if (pdfExistente.includes("firebasestorage.googleapis.com")) {
-    const storageRef = firebase.storage().refFromURL(pdfExistente)
-    storageRef.delete().then(() => {
-      console.log('PDF antigo excluído com sucesso!')
-    }).catch((error) => {
-      console.error('Erro ao excluir o PDF antigo:', error)
-    })
+// Supondo que você tenha um botão de salvar com o ID 'btnSalvar' no seu HTML
+document.getElementById('btnSalvarAnexo').addEventListener('click', function() {
+  showLoading();
+  document.querySelector('.modalPopup').style.display = 'none';
+  // Acessar o arquivo anexado do input 'AnexarPDF'
+  var fileInput = document.getElementById('AnexarPDF');
+  if (fileInput.files.length > 0) {
+    const pdfExistente = document.getElementById('visualizadorPdf').src;
+    if (pdfExistente.includes("firebasestorage.googleapis.com")) {
+      const storageRef = firebase.storage().refFromURL(pdfExistente);
+      storageRef.delete().then(() => {
+        console.log('PDF antigo excluído com sucesso!');
+      }).catch((error) => {
+        console.error('Erro ao excluir o PDF antigo:', error);
+      });
+    }
+    var nomeArquivo = fileInput.files[0].name;
+    var file = fileInput.files[0];
+    var storageRef = firebase.storage().ref('AnexosEquipamentos/' + nomeArquivo);
+    storageRef.put(file).then(function(snapshot) {
+      storageRef.getDownloadURL().then(function(url) {
+        document.getElementById('visualizadorPdf').src = url;
+        document.getElementById('linkPDF').value = url;
+        document.getElementById('namePDF').value = nomeArquivo;
+        fetch('/atualizar/anexo', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            id_equip: document.getElementById('id_equipAnexo').value,
+            linkPDF: document.getElementById('linkPDF').value,
+            namePDF: document.getElementById('namePDF').value
+          })
+        }).then(function(response) {
+          if (response.ok) {
+            alert('Anexo criado com sucesso!');
+            hideloading();
+            window.location.href = '/equipamentos';
+          } else {
+            alert('Erro ao anexar o PDF.');
+          }
+        });
+      });
+    });
+  }else{
+    alert('Nenhum anexo foi criado!');
+    hideloading();
+    window.location.href = '/equipamentos';
   }
-  var nomeArquivo = this.files[0].name;
-  var file = this.files[0];
-  var storageRef = firebase.storage().ref('AnexosEquipamentos/' + nomeArquivo);
-  storageRef.put(file).then(function(snapshot) {
-     storageRef.getDownloadURL().then(function(url) {
-    document.getElementById('visualizadorPdf').src = url;
-    document.getElementById('linkPDF').value = url;
-    document.getElementById('namePDF').value = nomeArquivo;
-    document.getElementById('popup-edit').style.display = 'block';
-    hideloading()
-  });
-  });
- 
-  
-  
 });
 function abrirPopupAnexo() {
   document.getElementById('sectionPopupAnexar').style.display = 'block';

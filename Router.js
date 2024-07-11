@@ -696,7 +696,7 @@ router.post('/atualizar/equipamento', function (req, res) {
 router.post('/atualizar/anexo', function (req, res) {
     let pdfInfo = null;
     pdfInfo = {
-        nome: req.body.nomePDF,
+        nome: req.body.namePDF,
         caminho: req.body.linkPDF
     }
     atualizarAnexo.updateAnexo(req.body.id_equip, pdfInfo)
