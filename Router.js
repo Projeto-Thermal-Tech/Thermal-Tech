@@ -8,6 +8,7 @@ const novoSetor = require('./database/db');
 const novoTec = require('./database/db');
 const novoTipo = require('./database/db');
 const novoUser = require('./database/db');
+const atualizarAnexo = require('./database/db');
 const novoChamado = require('./database/db');
 const novaOrdem = require('./database/db');
 const atualizarEquip = require('./database/db')
@@ -683,14 +684,7 @@ router.post('/cadastro/equipamento', function (req, res) {
 // const pdfUpload = multer({ storage: pdfStorage });
 
 router.post('/atualizar/equipamento', function (req, res) {
-
-    let pdfInfo = null;
-    pdfInfo = {
-        nome: req.body.nomePDF,
-        caminho: req.body.linkPDF
-    }
-    // Chama updateEquip com ou sem pdfInfo, dependendo se um arquivo foi enviado
-    atualizarEquip.updateEquip(req.body.id_equip, req.body.TAG, req.body.TIPO, req.body.MODELO, req.body.NS, req.body.AREA, req.body.LOCAL, req.body.SETOR, req.body.DESC, pdfInfo)
+    atualizarEquip.updateEquip(req.body.id_equip, req.body.TAG, req.body.TIPO, req.body.MODELO, req.body.NS, req.body.AREA, req.body.LOCAL, req.body.SETOR, req.body.DESC)
         .then(function () {
             console.log("Equipamento atualizado com sucesso");
             res.redirect('/equipamentos');
@@ -699,6 +693,22 @@ router.post('/atualizar/equipamento', function (req, res) {
             res.status(500).send("Erro ao atualizar equipamento: " + error);
         });
 });
+router.post('/atualizar/anexo', function (req, res) {
+    let pdfInfo = null;
+    pdfInfo = {
+        nome: req.body.namePDF,
+        caminho: req.body.linkPDF
+    }
+    atualizarAnexo.updateAnexo(req.body.id_equip, pdfInfo)
+        .then(function () {
+            console.log("Anexo atualizado com sucesso");
+            res.redirect('/equipamentos');
+        }).catch(function (error) {
+            console.log("Erro ao atualizar anexo:", error);
+            res.status(500).send("Erro ao atualizar anexo: " + error);
+        });
+
+})
 
 router.post('/deletar/equipamento/:id', function (req, res) {
     const idEquip = req.params.id;
