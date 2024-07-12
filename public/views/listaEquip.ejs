@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../css/@medialistEquip.css">
     <link rel="stylesheet" href="../css/@media1440.css">
     <link rel="stylesheet" href="../css/@mediaheader1000.css">
+    <link rel="stylesheet" href="../css/AnexoDoc.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <script src="https://kit.fontawesome.com/8ab443ffcb.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -154,10 +155,12 @@
     </button>
 </td>
 <td>
-    <button onclick="abrirPopupAnexo('<%= equipamentos[i].anexo_caminho_listequip %>');verAnexos(
-                                        '<%= equipamentos[i].id_equip %>',
-                                        '<%= equipamentos[i].anexo_caminho_listequip %>' // Adicionado caminho do PDF
-                                    )" style="background-color: transparent; border: none;">
+    <button onclick="
+        verAnexos('<%= equipamentos[i].id_equip %>',
+        '<%= equipamentos[i].tag_listequip %>',
+        '<%= equipamentos[i].anexo_nome_listequip %>',
+        '<%= equipamentos[i].anexo_caminho_listequip %>')" 
+        style="background-color: transparent; border: none;">
         <img src="../assets/Anexos (2).png" width="30px" alt="Ver PDF">
     </button> 
 </td>
@@ -293,13 +296,12 @@
             </div>
         </div>
     </section>
-    <section id="sectionPopupAnexar" style="display: none;">
+    <!-- <section id="sectionPopupAnexar" style="display: none;">
         <div class="modalPopup">
             <div>
                 <span onclick="FecharPopupAnexo()">&times;</span>
                     <div>
                         <h1 class="AnexoDoc">Anexar Documentos</h1>
-                        <!-- <input type="text" class="popup-input" id="id_equipAnexo" name="TAG" placeholder="ACS-2101" required> -->
                         <input type="text" id="id_equipAnexo" name="id_equip" style="display: none;"> 
                         <label class="popup-label" for="popup-label">Anexar PDF:</label>
                         <input style="display: none;" type="file" id="AnexarPDF" name="AnexarPDF" class="popup-input" multiple>
@@ -319,7 +321,7 @@
                     <button id="btnSalvarAnexo" class="popup-button salvar"type="button" onclick="saveEquipmentEdit()" >Salvar</button>
             </div>
         </div>
-    </section>
+    </section> -->
     <section class="overlayfiltro">
     <div class="popoufiltro" id="popoufiltro">
         <div class="popup-titulo-filtro">Filtrar equipamentos</div>
@@ -564,6 +566,63 @@
           </form>
           </div>
         </div>
+        <section class="AnexoDoc" id="PopupAnexo" style="display: none;">
+            <div class="PopupAnexo">
+                <div class="Popup-Content-Anexo">
+                    <form action="/asdsadasdsada/asdasdada" method="post">
+                        <div class="Popup-Header-Anexo">
+                            <span onclick="FecharPopupAnexo()">&times;</span>
+                            <div class="retan-Anexo">
+                                <h1 class="Popup-Title-Anexo">Anexar Documentos:</h1>
+                                <div class="label-container">
+                                    <label for="" class="Popup-label-Anexo">Tag do Equipamento:</label>
+                                    <input type="text" class="Anexo-input" id="id_equipAnexo" name="id_equip" readonly style="display: none;">
+                                    <input data-custom-id="TagEquip" type="text" class="popup-input" id="TAG" name="tag" placeholder="ACS-2101" readonly> 
+                                </div>
+                                <img class="Img-Anexo-TT" src="../assets/logo.png" alt="">
+                            </div>
+                            <div class="segund-Anexo">
+                                <img class="Img-Anexo" id="Img-Anexo" src="../assets/anexos.png" alt="">
+                                <input style="display: none;" type="file" id="AnexarPDF" name="AnexarPDF" class="popup-input" multiple>
+                                <button id="btnSalvarAnexo" class="popup-button salvar Img-Anexo" type="button" onclick="saveEquipmentEdit()">
+                                    <img class="Img-Anexo" src="../assets/save.png" alt="Salvar">
+                                </button>
+                                <div class="pdfViewerHeader">
+                                    <!-- <label for="popup-label" class="popup-label" id="labelVisualizarPdf">Visualizar Pdf:</label> -->
+                                    <img id="mostrarIframe" src="../assets/icons8-pdf-48.png" alt="Mostrar PDF" style="cursor:pointer;">
+                                </div>
+                                <img src="../assets/delete.png" alt="Excluir selecionados" class="Img-Anexo delete-selected">
+                            </div>
+                            <div class="ViewsPdf">
+                                <input type="text" style="display: none;" id="linkPDF"name="linkPDF" value="">
+                                <input type="text" style="display: none;" id="namePDF"name="nomePDF" value="">
+                                <iframe id="visualizadorPdf" frameborder="0"></iframe>
+                            </div>
+                            <div class="Table-Anexo">
+                                <table class="Table-Anexo-Container">
+                                    <thead>
+                                        <tr>
+                                            <th class="select-Check">Selecionar</th>
+                                            <th class="titulo-col">Título:</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="last-row">
+                                            <td><input type="checkbox" class="file-select"></td>
+                                            <td id="mostrarNomeAnexo"></td>
+                                        </tr>
+                                        <tr class="last-row">
+                                            <td><input type="checkbox" class="file-select"></td>
+                                            <td>relatorio (5).pdf</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
       </section>
     <script src="../js/dashboard.js"></script>
     </div>

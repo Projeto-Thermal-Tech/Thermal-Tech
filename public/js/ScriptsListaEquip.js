@@ -61,11 +61,7 @@ function filtrarPorTag() {
     document.querySelector("button[onclick='limparFiltro()']").style.display = "none";
   }
 
-  
-function verAnexos(id, caminho){
-  document.getElementById('id_equipAnexo').value = id;
-  document.getElementById('visualizadorPdf').src = caminho; 
-}  
+ 
 function editarEquipamento(id_equip, tag, tipoNome, numeroSerie, descricao, area, localidade, setorNome, modelo, linkPDF) {
   // Preencha os campos do popup com os dados do equipamento
   document.getElementById('id_equip').value = id_equip;
@@ -165,14 +161,14 @@ document.addEventListener('click', function(event) {
   }
 });
 
-document.getElementById('iconeAnexo').addEventListener('click', function() {
+document.getElementById('Img-Anexo').addEventListener('click', function() {
     document.getElementById('AnexarPDF').click(); // Aciona o clique no input file oculto
 });
-// quando o input file for anexado algo chamar um função
-// Supondo que você tenha um botão de salvar com o ID 'btnSalvar' no seu HTML
+
+
 document.getElementById('btnSalvarAnexo').addEventListener('click', function() {
   showLoading();
-  document.querySelector('.modalPopup').style.display = 'none';
+  document.querySelector('.AnexoDoc').style.display = 'none';
   // Acessar o arquivo anexado do input 'AnexarPDF'
   var fileInput = document.getElementById('AnexarPDF');
   if (fileInput.files.length > 0) {
@@ -220,10 +216,17 @@ document.getElementById('btnSalvarAnexo').addEventListener('click', function() {
     window.location.href = '/equipamentos';
   }
 });
-function abrirPopupAnexo() {
-  document.getElementById('sectionPopupAnexar').style.display = 'block';
-}
 
 function FecharPopupAnexo() {
-  document.getElementById('sectionPopupAnexar').style.display = 'none';
+  document.getElementById('PopupAnexo').style.display = 'none';
+  document.querySelector('.overlay-edit').style.display = 'none';
 }
+
+function verAnexos(id,tag,nomeArquivo,caminho){
+  document.getElementById('id_equipAnexo').value = id;
+  document.getElementById('mostrarNomeAnexo').textContent = nomeArquivo;
+  document.querySelector('input[data-custom-id="TagEquip"]').value = tag;
+ document.getElementById('visualizadorPdf').src = caminho; 
+ document.getElementById('PopupAnexo').style.display = 'block';
+  document.querySelector('.overlay-edit').style.display = 'block';
+} 
