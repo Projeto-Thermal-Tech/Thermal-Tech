@@ -1,0 +1,153 @@
+.AnexoDoc {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 950px;
+    height: auto; 
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    z-index: 2;
+    border-radius: 10px;
+    padding: 20px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.Popup-Title-Anexo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    color: #fff;
+    font-size: 24px; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+}
+
+.Popup-label-Anexo {
+    display: inline-flex;
+    margin-right: 10px;
+    align-items: center;
+    font-weight: bold;
+    color: #fff;
+    font-size: 18px; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
+}
+
+.retan-Anexo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 950px;
+    height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    background-color: #0835ff;
+}
+
+.label-container {
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+    padding-left: 80px; 
+}
+
+.Img-Anexo-TT {
+    width: 15%;
+    height: auto;
+    margin-left: auto; 
+}
+
+.segund-Anexo {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    margin-right: 50px;
+}
+
+.Img-Anexo {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.Img-Anexo:not(:first-child) {
+    margin-left: 20px; 
+}
+
+.Anexo-input {
+    width: 50%; 
+    display: inline-block; 
+    border: 1px solid #ccc; 
+    border-radius: 4px;
+    box-sizing: border-box; 
+    font-size: 16px; 
+    vertical-align: middle; 
+    color: #333;
+    background-color: #fff; 
+    padding: 10px; 
+    transition: border-color 0.3s ease-in-out; 
+}
+
+.Anexo-input:focus {
+    border-color: #4A90E2;
+    outline: none; 
+}
+
+.Table-Anexo table {
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 20px; 
+}
+
+.Table-Anexo td {
+    cursor: pointer;
+}
+
+.Table-Anexo td, .Table-Anexo th {
+    color: #fff;
+    text-align: left;
+    padding: 10px; 
+    border: 1px solid #777; 
+    font-size: 12px;
+}
+
+.Table-Anexo th {
+    background-color: #1a3e5f;
+    border-top: 2px solid #000000;
+}
+
+.Table-Anexo tr:hover {
+    background-color: #1a3e5f; 
+}
+
+.titulo-col {
+    width: 20%;
+}
+
+.file-select {
+    width: 50px; 
+    text-align: center;
+}
+
+.popup-button.salvar.Img-Anexo {
+    background: transparent; 
+    border: none;
+    padding: 0; 
+    cursor: pointer; 
+}
+
+.Popup-Header-Anexo span {
+    cursor: pointer;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    font-size: 20px; 
+    color: #fff;
+    background-color: rgb(34, 59, 141);
+    width: 30px; 
+    height: 30px; 
+    line-height: 30px; 
+    text-align: center; 
+    border-radius: 50%; 
+    box-shadow: 0 0 5px #000;
+    display: inline-block; 
+}

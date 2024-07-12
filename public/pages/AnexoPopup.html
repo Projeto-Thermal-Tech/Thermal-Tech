@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anexar Documentos</title>
+    <link rel="stylesheet" href="../css/AnexoDoc.css">
+</head>
+<body>
+
+    <td>
+        <button onclick="abrirPopupAnexo('<%= equipamentos[i].anexo_caminho_listequip %>');verAnexos(
+                                            '<%= equipamentos[i].id_equip %>',
+                                            '<%= equipamentos[i].anexo_caminho_listequip %>' // Adicionado caminho do PDF
+                                        )" style="background-color: transparent; border: none;">
+            <img src="../assets/Anexos (2).png" width="30px" alt="Ver PDF">
+        </button> 
+    </td>
+
+    <section class="AnexoDoc" id="PopupAnexo" style="display: none;">
+        <div class="PopupAnexo">
+            <div class="Popup-Content-Anexo">
+                <form action="/asdsadasdsada/asdasdada" method="post">
+                    <div class="Popup-Header-Anexo">
+                        <span onclick="FecharPopupAnexo()">&times;</span>
+                        <div class="retan-Anexo">
+                            <h1 class="Popup-Title-Anexo">Anexar Documentos:</h1>
+                            <div class="label-container">
+                                <label for="" class="Popup-label-Anexo">Tag do Equipamento:</label>
+                                <input type="text" class="Anexo-input" id="id_equipAnexo" name="id_equip" readonly>
+                            </div>
+                            <img class="Img-Anexo-TT" src="../assets/logo.png" alt="">
+                        </div>
+                        <div class="segund-Anexo">
+                            <img class="Img-Anexo" src="../assets/anexos.png" alt="">
+                            <button id="btnSalvarAnexo" class="popup-button salvar Img-Anexo" type="button" onclick="saveEquipmentEdit()">
+                                <img class="Img-Anexo" src="../assets/save.png" alt="Salvar">
+                            </button>
+                            <img src="../assets/delete.png" alt="Excluir selecionados" class="Img-Anexo delete-selected">
+                        </div>
+                        <div class="Table-Anexo">
+                            <table class="Table-Anexo-Container">
+                                <thead>
+                                    <tr>
+                                        <th class="select-Check">Selecionar</th>
+                                        <th class="titulo-col">Título:</th>
+                                        <th>Link:</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="last-row">
+                                        <td><input type="checkbox" class="file-select"></td>
+                                        <td>chamado 1000000.pdf</td>
+                                        <td>https://firebasestorage.googleapis.com/v0/b/thermal-tech-57a87.appspot.com/o/AnexosEquipamentos%2Fchamado%201000000.pdf?alt=media&token=d8bd0028-af22-40df-ba7d-f5aa9b07d188
+                                        </td>
+                                    </tr>
+                                    <tr class="last-row">
+                                        <td><input type="checkbox" class="file-select"></td>
+                                        <td>relatorio (5).pdf</td>
+                                        <td>https://firebasestorage.googleapis.com/v0/b/thermal-tech-57a87.appspot.com/o/AnexosEquipamentos%2Frelatorio%20(5).pdf?alt=media&token=ea7eb2ba-d7d8-45bd-8e3f-a17069337520
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+<script>
+
+    
+function abrirPopupAnexo() {
+  document.getElementById('PopupAnexo').style.display = 'block';
+}
+
+function FecharPopupAnexo() {
+  document.getElementById('PopupAnexo').style.display = 'none';
+}
+
+document.querySelector('.delete-selected').addEventListener('click', function() {
+    // Seleciona todas as caixas de seleção marcadas
+    document.querySelectorAll('.file-select:checked').forEach(checkbox => {
+        // Encontra a linha da tabela (<tr>) mais próxima e a remove
+        checkbox.closest('tr').remove();
+    });
+});
+</script>
+</html>
