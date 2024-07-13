@@ -220,13 +220,60 @@ document.getElementById('btnSalvarAnexo').addEventListener('click', function() {
 function FecharPopupAnexo() {
   document.getElementById('PopupAnexo').style.display = 'none';
   document.querySelector('.overlay-edit').style.display = 'none';
+  const tbody = document.querySelector('.tbodyAnexos')
+  while (tbody.firstChild) {
+    tbody.removeChild(tbody.firstChild)
+  }
+  
 }
 
 function verAnexos(id,tag,nomeArquivo,caminho){
-  document.getElementById('id_equipAnexo').value = id;
-  document.getElementById('mostrarNomeAnexo').textContent = nomeArquivo;
-  document.querySelector('input[data-custom-id="TagEquip"]').value = tag;
- document.getElementById('visualizadorPdf').src = caminho; 
+//   document.getElementById('id_equipAnexo').value = id;
+//   document.getElementById('mostrarNomeAnexo').textContent = nomeArquivo;
+//   document.querySelector('input[data-custom-id="TagEquip"]').value = tag;
+//  document.getElementById('visualizadorPdf').src = caminho; 
  document.getElementById('PopupAnexo').style.display = 'block';
   document.querySelector('.overlay-edit').style.display = 'block';
-} 
+fetch('/view/anexo/',{
+  method:'POST',
+  headers:{
+    'Content-Type':'application/json'
+  },
+  body:JSON.stringify({
+    id_equip:id
+  })
+}).then(function(response){
+  if(response.ok){
+    response.json().then(function(data) {
+      console.log(data);
+      const anexos = data
+      // quero que anexos[i].createdat retorne uma data formatada
+      Data = new Date(anexos[0].createdat);
+      const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+      const dataFormatada =  anexos[0].createdat = Data.toLocaleDateString('pt-BR', options);
+      for (let i = 0; i < anexos.length; i++) {
+        const tbody = document.querySelector('.tbodyAnexos')
+        const tr = document.createElement('tr')
+        tr.classList.add('last-row')
+        const td = document.createElement('td')
+        const input = document.createElement('input')
+        input.type = 'checkbox'
+        input.classList.add('file-select')
+        td.appendChild(input)
+        tr.appendChild(td)
+        const td2 = document.createElement('td')
+        td2.textContent = anexos[i].name_anexo
+        tr.appendChild(td2)
+        const td3 = document.createElement('td')
+        td3.textContent = dataFormatada
+        tr.appendChild(td3)
+        tbody.appendChild(tr)
+      }
+      hideloading();
+      // window.location.href = '/equipamentos';
+    });
+  } else {
+    alert('Erro ao anexar o PDF.');
+  }
+})
+}

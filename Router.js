@@ -705,6 +705,20 @@ router.post('/atualizar/anexo', function (req, res) {
 
 })
 
+router.post('/view/anexo', function (req, res) {
+
+    const id_equip = req.body.id_equip;
+    const sql = 'SELECT * FROM anexos WHERE id_equipamento = $1';
+    db.query(sql, [id_equip])
+        .then(function (result) {
+            res.json(result.rows);
+        }).catch(function (error) {
+            console.error(error);
+            res.status(500).send("Erro ao buscar anexos: " + error);
+        });
+
+})
+
 router.post('/deletar/equipamento/:id', function (req, res) {
     const idEquip = req.params.id;
     excluirEquip.deleteEquip(idEquip).then(function () {
