@@ -149,12 +149,19 @@ function ExcluirEquipamento(id_equip,tag) {
 }
 
 document.getElementById('mostrarIframe').addEventListener('click', function() {
+  const checkboxes = document.querySelectorAll('.file-select');
+    checkboxes.forEach(function(checkbox) {
+            if (checkbox.checked) {
+              document.getElementById('visualizadorPdf').src = checkbox.value; 
+            }
+    });
   document.querySelector('.ViewsPdf').style.display = 'flex';
 })
 
 document.addEventListener('click', function(event) {
   var cliqueFora = document.querySelector('.overlay-edit').contains(event.target);
   if (cliqueFora == true) {
+    document.getElementById('visualizadorPdf').src = ""; 
     document.querySelector('.ViewsPdf').style.display = 'none';
   }
 });
@@ -227,10 +234,10 @@ function FecharPopupAnexo() {
   
 }
 
-function verAnexos(id,tag,nomeArquivo,caminho){
-//   document.getElementById('id_equipAnexo').value = id;
+function verAnexos(id,tag){
+  document.getElementById('id_equipAnexo').value = id;
 //   document.getElementById('mostrarNomeAnexo').textContent = nomeArquivo;
-//   document.querySelector('input[data-custom-id="TagEquip"]').value = tag;
+  document.querySelector('input[data-custom-id="TagEquip"]').value = tag;
 //  document.getElementById('visualizadorPdf').src = caminho; 
  document.getElementById('PopupAnexo').style.display = 'block';
   document.querySelector('.overlay-edit').style.display = 'block';
@@ -259,6 +266,7 @@ fetch('/view/anexo/',{
         const input = document.createElement('input')
         input.type = 'checkbox'
         input.classList.add('file-select')
+        input.value = anexos[i].link
         td.appendChild(input)
         tr.appendChild(td)
         const td2 = document.createElement('td')
@@ -269,11 +277,23 @@ fetch('/view/anexo/',{
         tr.appendChild(td3)
         tbody.appendChild(tr)
       }
+      const checkboxes = document.querySelectorAll('.file-select');
+    checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            // Se o checkbox atual foi marcado, desmarque todos os outros
+            if (checkbox.checked) {
+                checkboxes.forEach(function(otherCheckbox) {
+                    if (otherCheckbox !== checkbox) {
+                        otherCheckbox.checked = false;
+                    }
+                });
+            }
+        });
+    });
       hideloading();
-      // window.location.href = '/equipamentos';
     });
   } else {
-    alert('Erro ao anexar o PDF.');
+    alert('Erro ao ver o PDF.');
   }
 })
 }

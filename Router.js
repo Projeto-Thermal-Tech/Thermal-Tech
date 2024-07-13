@@ -706,7 +706,6 @@ router.post('/atualizar/anexo', function (req, res) {
 })
 
 router.post('/view/anexo', function (req, res) {
-
     const id_equip = req.body.id_equip;
     const sql = 'SELECT * FROM anexos WHERE id_equipamento = $1';
     db.query(sql, [id_equip])

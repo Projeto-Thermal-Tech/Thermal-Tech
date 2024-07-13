@@ -126,6 +126,7 @@
 .file-select {
     width: 50px; 
     text-align: center;
+    transform: scale(1.2);
 }
 
 .popup-button.salvar.Img-Anexo {
