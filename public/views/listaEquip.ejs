@@ -577,21 +577,21 @@
                                 <div class="label-container">
                                     <label for="" class="Popup-label-Anexo">Tag do Equipamento:</label>
                                     <input type="text" class="Anexo-input" id="id_equipAnexo" name="id_equip" readonly style="display: none;">
-                                    <input data-custom-id="TagEquip" type="text" class="popup-input" id="TAG" name="tag" placeholder="ACS-2101" readonly> 
+                                    <input data-custom-id="TagEquip" type="text" class="popup-input" id="TAG" name="tag" placeholder="ACS-2101" readonly style="width: 100px;"> 
                                 </div>
                                 <img class="Img-Anexo-TT" src="../assets/logo.png" alt="">
                             </div>
                             <div class="segund-Anexo">
-                                <img class="Img-Anexo" id="Img-Anexo" src="../assets/anexos.png" alt="">
+                                <img class="Img-Anexo" id="Img-Anexo" src="../assets/anexos.png" alt="" title="Criar anexo">
                                 <input style="display: none;" type="file" id="AnexarPDF" name="AnexarPDF" class="popup-input" multiple>
                                 <button id="btnSalvarAnexo" class="popup-button salvar Img-Anexo" type="button" onclick="saveEquipmentEdit()">
-                                    <img class="Img-Anexo" src="../assets/save.png" alt="Salvar">
+                                    <img class="Img-Anexo" src="../assets/save.png" alt="Salvar" title="Salvar anexo">
                                 </button>
                                 <div class="pdfViewerHeader">
                                     <!-- <label for="popup-label" class="popup-label" id="labelVisualizarPdf">Visualizar Pdf:</label> -->
-                                    <img id="mostrarIframe" src="../assets/icons8-pdf-48.png" alt="Mostrar PDF" style="cursor:pointer;">
+                                    <img id="mostrarIframe" src="../assets/icons8-pdf-48.png" alt="Mostrar PDF" style="cursor:pointer;" title="Visualizar anexo">
                                 </div>
-                                <img src="../assets/delete.png" alt="Excluir selecionados" class="Img-Anexo delete-selected">
+                                <img src="../assets/delete.png" alt="Excluir selecionados" class="Img-Anexo delete-selected" title="Deletar anexo">
                             </div>
                             <div class="ViewsPdf">
                                 <input type="text" style="display: none;" id="linkPDF"name="linkPDF" value="">

@@ -3,7 +3,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 950px;
+    width: 45%;
     height: auto; 
     background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
     z-index: 2;
@@ -36,8 +36,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 950px;
-    height: 100px;
+    width: 98%;
+    height: 100%;
     border: 1px solid #ccc;
     border-radius: 15px;
     background-color: #0835ff;
@@ -138,11 +138,11 @@
 .Popup-Header-Anexo span {
     cursor: pointer;
     position: absolute;
-    right: 1px;
-    top: 1px;
-    font-size: 20px; 
-    color: #fff;
-    background-color: rgb(34, 59, 141);
+    right: 3px;
+    top: 4px;
+    font-size: 25px; 
+    color: #ffffff;
+    background-color: red;
     width: 30px; 
     height: 30px; 
     line-height: 30px; 

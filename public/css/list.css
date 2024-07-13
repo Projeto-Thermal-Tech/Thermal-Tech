@@ -306,8 +306,8 @@ textarea {
 }
 
 iframe#visualizadorPdf {
-  width: 80%;
-  height: 80%;
+  width: 200%;
+  height: 200%;
   border: 0;
 }
 

@@ -155,7 +155,7 @@ document.getElementById('mostrarIframe').addEventListener('click', function() {
 })
 
 document.addEventListener('click', function(event) {
-  var cliqueFora = document.querySelector('.ViewsPdf').contains(event.target);
+  var cliqueFora = document.querySelector('.overlay-edit').contains(event.target);
   if (cliqueFora == true) {
     document.querySelector('.ViewsPdf').style.display = 'none';
   }
