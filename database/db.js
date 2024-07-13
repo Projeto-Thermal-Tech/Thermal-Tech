@@ -151,36 +151,22 @@ exports.updateEquip = function (id, tag, tipo, modelo, ns, area, local, setor, d
 
     return atualizarEquip(id, tag, tipo, modelo, ns, area, local, setor, descricao);
 }
-exports.updateAnexo = function (id, pdfInfo) {
-    async function atualizarAnexo(id, pdfInfo) {
+exports.updateAnexo = function (id_equip, linkAnexo, createdAt, nomeArquivo) {
+    async function atualizarAnexo(id_equip, linkAnexo, createdAt, nomeArquivo) {
         try {
             await db.connect();
+            const queryInsertAnexo = 'INSERT INTO anexos(id_equipamento, link, createdat, name_anexo) VALUES ($1, $2, $3, $4)';
 
-            // Verifique se o registro com o ID fornecido existe na tabela
-            const verificaRegistro = await db.query('SELECT * FROM lista_equipamentos WHERE id_equip = $1', [id]);
-            if (verificaRegistro.rows.length === 0) {
-                throw new Error('Registro não encontrado.');
-            }
+            // Converter timestamp para formato de data aceito pelo banco de dados
+            const date = new Date(parseInt(createdAt)); // Converte o timestamp para um objeto Date
+            const formattedDate = date.toISOString(); // Converte para o formato ISO 8601
 
-            // Execute a atualização do anexo
-            const atualizacao = `
-                UPDATE lista_equipamentos
-                SET
-                    anexo_nome_listequip = $2,
-                    anexo_caminho_listequip = $3
-                WHERE id_equip = $1
-            `;
-            await db.query(atualizacao, [id, pdfInfo.nome, pdfInfo.caminho]);
-
-            return 'Anexo atualizado com sucesso.';
+            await db.query(queryInsertAnexo, [id_equip, linkAnexo, formattedDate, nomeArquivo]);
         } catch (error) {
             throw new Error(`Erro ao atualizar anexo: ${error.message}`);
         }
     }
-
-    return atualizarAnexo(id, pdfInfo);
-
-
+    return atualizarAnexo(id_equip, linkAnexo, createdAt, nomeArquivo);
 }
 exports.deleteEquip = function (id) {
     async function excluirEquip(id) {

@@ -104,10 +104,8 @@ function editarEquipamento(id_equip, tag, tipoNome, numeroSerie, descricao, area
   // Verifica se existe um PDF anexado
   if (linkPDF && linkPDF.trim() !== "") {
     document.getElementById('mostrarIframe').style.display = 'inline';
-    document.getElementById('labelVisualizarPdf').style.display = 'inline';
   } else {
     document.getElementById('mostrarIframe').style.display = 'none';
-    document.getElementById('labelVisualizarPdf').style.display = 'none';
   }
 
   showPopupEditar();
@@ -172,23 +170,24 @@ document.getElementById('btnSalvarAnexo').addEventListener('click', function() {
   // Acessar o arquivo anexado do input 'AnexarPDF'
   var fileInput = document.getElementById('AnexarPDF');
   if (fileInput.files.length > 0) {
-    const pdfExistente = document.getElementById('visualizadorPdf').src;
-    if (pdfExistente.includes("firebasestorage.googleapis.com")) {
-      const storageRef = firebase.storage().refFromURL(pdfExistente);
-      storageRef.delete().then(() => {
-        console.log('PDF antigo excluído com sucesso!');
-      }).catch((error) => {
-        console.error('Erro ao excluir o PDF antigo:', error);
-      });
-    }
+    // const pdfExistente = document.getElementById('visualizadorPdf').src;
+    // if (pdfExistente.includes("firebasestorage.googleapis.com")) {
+    //   const storageRef = firebase.storage().refFromURL(pdfExistente);
+    //   storageRef.delete().then(() => {
+    //     console.log('PDF antigo excluído com sucesso!');
+    //   }).catch((error) => {
+    //     console.error('Erro ao excluir o PDF antigo:', error);
+    //   });
+    // }
+    const createdAt = Date.now();
     var nomeArquivo = fileInput.files[0].name;
     var file = fileInput.files[0];
-    var storageRef = firebase.storage().ref('AnexosEquipamentos/' + nomeArquivo);
+    var storageRef = firebase.storage().ref('AnexosEquipamentos/' + `${createdAt}_${nomeArquivo}`);
     storageRef.put(file).then(function(snapshot) {
       storageRef.getDownloadURL().then(function(url) {
-        document.getElementById('visualizadorPdf').src = url;
-        document.getElementById('linkPDF').value = url;
-        document.getElementById('namePDF').value = nomeArquivo;
+        // document.getElementById('visualizadorPdf').src = url;
+        // document.getElementById('linkPDF').value = url;
+        // document.getElementById('namePDF').value = nomeArquivo;
         fetch('/atualizar/anexo', {
           method: 'POST',
           headers: {
@@ -196,8 +195,9 @@ document.getElementById('btnSalvarAnexo').addEventListener('click', function() {
           },
           body: JSON.stringify({
             id_equip: document.getElementById('id_equipAnexo').value,
-            linkPDF: document.getElementById('linkPDF').value,
-            namePDF: document.getElementById('namePDF').value
+            linkAnexo: url,
+            nomeArquivo: nomeArquivo,
+            createdAt: createdAt,
           })
         }).then(function(response) {
           if (response.ok) {

@@ -694,12 +694,7 @@ router.post('/atualizar/equipamento', function (req, res) {
         });
 });
 router.post('/atualizar/anexo', function (req, res) {
-    let pdfInfo = null;
-    pdfInfo = {
-        nome: req.body.namePDF,
-        caminho: req.body.linkPDF
-    }
-    atualizarAnexo.updateAnexo(req.body.id_equip, pdfInfo)
+    atualizarAnexo.updateAnexo(req.body.id_equip, req.body.linkAnexo, req.body.createdAt,req.body.nomeArquivo)
         .then(function () {
             console.log("Anexo atualizado com sucesso");
             res.redirect('/equipamentos');
