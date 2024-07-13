@@ -150,13 +150,19 @@ function ExcluirEquipamento(id_equip,tag) {
 
 document.getElementById('mostrarIframe').addEventListener('click', function() {
   const checkboxes = document.querySelectorAll('.file-select');
-    checkboxes.forEach(function(checkbox) {
-            if (checkbox.checked) {
-              document.getElementById('visualizadorPdf').src = checkbox.value; 
-            }
-    });
-  document.querySelector('.ViewsPdf').style.display = 'flex';
-})
+  let checkboxChecked = false; // Variável para rastrear se algum checkbox foi selecionado
+  checkboxes.forEach(function(checkbox) {
+    if (checkbox.checked) {
+      document.getElementById('visualizadorPdf').src = checkbox.value;
+      checkboxChecked = true; // Atualiza a variável se um checkbox estiver marcado
+    }
+  });
+  if (!checkboxChecked) { // Se após verificar todos, nenhum estiver marcado, exibe o alerta
+    alert('Selecione um anexo para visualizar.');
+  } else {
+    document.querySelector('.ViewsPdf').style.display = 'flex';
+  }
+});
 
 document.addEventListener('click', function(event) {
   var cliqueFora = document.querySelector('.overlay-edit').contains(event.target);
@@ -169,6 +175,9 @@ document.addEventListener('click', function(event) {
 document.getElementById('Img-Anexo').addEventListener('click', function() {
     document.getElementById('AnexarPDF').click(); // Aciona o clique no input file oculto
 });
+document.getElementById('AnexarPDF').addEventListener('change', function() {
+  alert('Arquivo carregado, mas não salvo. Clique em "Salvar" para anexar o arquivo.');
+})
 
 
 document.getElementById('btnSalvarAnexo').addEventListener('click', function() {
@@ -177,15 +186,6 @@ document.getElementById('btnSalvarAnexo').addEventListener('click', function() {
   // Acessar o arquivo anexado do input 'AnexarPDF'
   var fileInput = document.getElementById('AnexarPDF');
   if (fileInput.files.length > 0) {
-    // const pdfExistente = document.getElementById('visualizadorPdf').src;
-    // if (pdfExistente.includes("firebasestorage.googleapis.com")) {
-    //   const storageRef = firebase.storage().refFromURL(pdfExistente);
-    //   storageRef.delete().then(() => {
-    //     console.log('PDF antigo excluído com sucesso!');
-    //   }).catch((error) => {
-    //     console.error('Erro ao excluir o PDF antigo:', error);
-    //   });
-    // }
     const createdAt = Date.now();
     var nomeArquivo = fileInput.files[0].name;
     var file = fileInput.files[0];
@@ -220,7 +220,7 @@ document.getElementById('btnSalvarAnexo').addEventListener('click', function() {
   }else{
     alert('Nenhum anexo foi criado!');
     hideloading();
-    window.location.href = '/equipamentos';
+    document.querySelector('.AnexoDoc').style.display = 'block';
   }
 });
 
@@ -267,6 +267,7 @@ fetch('/view/anexo/',{
         input.type = 'checkbox'
         input.classList.add('file-select')
         input.value = anexos[i].link
+        input.setAttribute('data-custom-id', anexos[i].id)
         td.appendChild(input)
         tr.appendChild(td)
         const td2 = document.createElement('td')
@@ -296,4 +297,33 @@ fetch('/view/anexo/',{
     alert('Erro ao ver o PDF.');
   }
 })
+}
+function deletarAnexo(){
+  const checkboxes = document.querySelectorAll('.file-select');
+  let checkboxChecked = false; // Variável para rastrear se algum checkbox foi selecionado
+  checkboxes.forEach(function(checkbox) {
+    if (checkbox.checked) {
+      const storageRef = firebase.storage().refFromURL(checkbox.value);
+      storageRef.delete().then(() => {
+        console.log('PDF antigo excluído com sucesso!');
+      }).catch((error) => {
+        console.error('Erro ao excluir o PDF antigo:', error);
+      });
+      const id_anexo = checkbox.getAttribute('data-custom-id');
+      fetch('/deletar/anexo/' + id_anexo, {
+        method: 'POST'
+      }).then(function(response) {
+        if (response.ok) {
+          alert('Anexo excluído com sucesso!' + checkbox.value);
+          window.location.reload();
+        } else {
+          alert('Erro ao excluir o anexo.');
+        }
+      });
+      checkboxChecked = true; // Atualiza a variável se um checkbox estiver marcado
+    }
+  });
+  if (!checkboxChecked) { // Se após verificar todos, nenhum estiver marcado, exibe o alerta
+    alert('Selecione um anexo para excluir.');
+  }
 }

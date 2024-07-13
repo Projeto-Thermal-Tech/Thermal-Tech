@@ -718,6 +718,18 @@ router.post('/view/anexo', function (req, res) {
 
 })
 
+router.post('/deletar/anexo/:id', function (req, res) {
+    const id_anexo = req.params.id;
+    const sql = 'DELETE FROM anexos WHERE id = $1';
+    db.query(sql, [id_anexo])
+        .then(function () {
+            res.sendStatus(200);
+        }).catch(function (error) {
+            console.error(error);
+            res.status(500).send("Erro ao excluir anexo: " + error);
+        });
+})
+
 router.post('/deletar/equipamento/:id', function (req, res) {
     const idEquip = req.params.id;
     excluirEquip.deleteEquip(idEquip).then(function () {

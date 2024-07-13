@@ -566,7 +566,6 @@
         <section class="AnexoDoc" id="PopupAnexo" style="display: none;">
             <div class="PopupAnexo">
                 <div class="Popup-Content-Anexo">
-                    <form action="/asdsadasdsada/asdasdada" method="post">
                         <div class="Popup-Header-Anexo">
                             <span onclick="FecharPopupAnexo()">&times;</span>
                             <div class="retan-Anexo">
@@ -581,19 +580,14 @@
                             <div class="segund-Anexo">
                                 <img class="Img-Anexo" id="Img-Anexo" src="../assets/anexos.png" alt="" title="Criar anexo">
                                 <input style="display: none;" type="file" id="AnexarPDF" name="AnexarPDF" class="popup-input" multiple>
-                                <button id="btnSalvarAnexo" class="popup-button salvar Img-Anexo" type="button" onclick="saveEquipmentEdit()">
+                                <button id="btnSalvarAnexo" class="popup-button salvar Img-Anexo" type="button">
                                     <img class="Img-Anexo" src="../assets/save.png" alt="Salvar" title="Salvar anexo">
                                 </button>
                                 <div class="pdfViewerHeader">
                                     <!-- <label for="popup-label" class="popup-label" id="labelVisualizarPdf">Visualizar Pdf:</label> -->
                                     <img id="mostrarIframe" src="../assets/icons8-pdf-48.png" alt="Mostrar PDF" style="cursor:pointer;" title="Visualizar anexo">
                                 </div>
-                                <img src="../assets/delete.png" alt="Excluir selecionados" class="Img-Anexo delete-selected" title="Deletar anexo">
-                            </div>
-                            <div class="ViewsPdf">
-                                <input type="text" style="display: none;" id="linkPDF"name="linkPDF" value="">
-                                <input type="text" style="display: none;" id="namePDF"name="nomePDF" value="">
-                                <iframe id="visualizadorPdf" frameborder="0"></iframe>
+                                <img src="../assets/delete.png" alt="Excluir selecionados" class="Img-Anexo delete-selected" title="Deletar anexo" onclick="deletarAnexo()">
                             </div>
                             <div class="Table-Anexo">
                                 <table class="Table-Anexo-Container">
@@ -609,8 +603,12 @@
                                 </table>
                             </div>
                         </div>
-                    </form>
                 </div>
+            </div>
+            <div class="ViewsPdf">
+                <input type="text" style="display: none;" id="linkPDF"name="linkPDF" value="">
+                <input type="text" style="display: none;" id="namePDF"name="nomePDF" value="">
+                <iframe id="visualizadorPdf" frameborder="0"></iframe>
             </div>
         </section>
       </section>
