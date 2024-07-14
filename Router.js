@@ -834,5 +834,22 @@ router.get("/chat", function (req, res) {
     res.sendFile(path.join(__dirname, "./public/pages/chat.html"))
 })
 
+router.get('/baixar-imagem', async (req, res) => {
+    const url = req.query.url;
+    try {
+        const resposta = await fetch(url);
+        if (!resposta.ok) throw new Error('Falha ao baixar a imagem');
+        // Usa .arrayBuffer() para obter os dados brutos da resposta
+        const arrayBuffer = await resposta.arrayBuffer();
+        // Converte Arraybuffer para Buffer
+        const buffer = Buffer.from(arrayBuffer);
+        // Define o tipo de conteúdo baseado no tipo da resposta
+        res.setHeader('Content-Type', resposta.headers.get('Content-Type'));
+        res.send(buffer); // Envia o buffer como resposta
+    } catch (error) {
+        console.error('Erro ao baixar a imagem:', error);
+        res.status(500).send('Erro ao baixar a imagem');
+    }
+});
 
 module.exports = router

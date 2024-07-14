@@ -338,5 +338,27 @@ function deletarAnexo(){
 }
 
 document.getElementById('dowloadAnexo').addEventListener('click', function() {
-  alert("aqui vai baixar o arquivo");
+  async function baixarImagem(url, nomeDoArquivo) {
+    try {
+        // Chama a rota do backend passando a URL da imagem como parâmetro
+        const resposta = await fetch(`/baixar-imagem?url=${encodeURIComponent(url)}`);
+        if (!resposta.ok) throw new Error('Falha ao baixar a imagem');
+        const blobImagem = await resposta.blob();
+        const urlBlob = URL.createObjectURL(blobImagem);
+
+        const link = document.createElement('a');
+        link.href = urlBlob;
+        link.download = nomeDoArquivo;
+        document.body.appendChild(link);
+        link.click();
+
+        document.body.removeChild(link);
+        URL.revokeObjectURL(urlBlob);
+    } catch (error) {
+        console.error('Erro ao baixar a imagem:', error);
+    }
+}
+      const urlDaImagem = "https://firebasestorage.googleapis.com/v0/b/thermal-tech-57a87.appspot.com/o/AnexosEquipamentos%2F1720913283420_Relatorioa%20horas.pdf?alt=media&token=04213e7a-dc40-415b-99ba-0b2f38cc66bd";
+      const nomeDaImagem = "novo anexo";
+      baixarImagem(urlDaImagem, nomeDaImagem);
 });
