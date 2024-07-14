@@ -103,9 +103,9 @@ function editarEquipamento(id_equip, tag, tipoNome, numeroSerie, descricao, area
 
   // Verifica se existe um PDF anexado
   if (linkPDF && linkPDF.trim() !== "") {
-    document.getElementById('mostrarIframe').style.display = 'inline';
+    document.getElementById('mostrarAnexo').style.display = 'inline';
   } else {
-    document.getElementById('mostrarIframe').style.display = 'none';
+    document.getElementById('mostrarAnexo').style.display = 'none';
   }
 
   showPopupEditar();
@@ -148,19 +148,30 @@ function ExcluirEquipamento(id_equip,tag) {
   }
 }
 
-document.getElementById('mostrarIframe').addEventListener('click', function() {
+document.getElementById('mostrarAnexo').addEventListener('click', function() {
   const checkboxes = document.querySelectorAll('.file-select');
   let checkboxChecked = false; // Variável para rastrear se algum checkbox foi selecionado
   checkboxes.forEach(function(checkbox) {
     if (checkbox.checked) {
-      document.getElementById('visualizadorPdf').src = checkbox.value;
+      // Cria um elemento <a> temporário para abrir o PDF em uma nova aba
+      const link = document.createElement('a');
+      link.href = checkbox.value; // Define o URL do PDF
+      link.target = '_blank'; // Instrui o navegador a abrir o link em uma nova aba
+
+      // Adiciona o elemento ao corpo do documento para torná-lo funcional
+      document.body.appendChild(link);
+
+      // Aciona a abertura em nova aba
+      link.click();
+
+      // Remove o elemento do documento
+      document.body.removeChild(link);
+
       checkboxChecked = true; // Atualiza a variável se um checkbox estiver marcado
     }
   });
   if (!checkboxChecked) { // Se após verificar todos, nenhum estiver marcado, exibe o alerta
     alert('Selecione um anexo para visualizar.');
-  } else {
-    document.querySelector('.ViewsPdf').style.display = 'flex';
   }
 });
 
@@ -236,10 +247,8 @@ function FecharPopupAnexo() {
 
 function verAnexos(id,tag){
   document.getElementById('id_equipAnexo').value = id;
-//   document.getElementById('mostrarNomeAnexo').textContent = nomeArquivo;
   document.querySelector('input[data-custom-id="TagEquip"]').value = tag;
-//  document.getElementById('visualizadorPdf').src = caminho; 
- document.getElementById('PopupAnexo').style.display = 'block';
+  document.getElementById('PopupAnexo').style.display = 'block';
   document.querySelector('.overlay-edit').style.display = 'block';
 fetch('/view/anexo/',{
   method:'POST',
@@ -329,5 +338,5 @@ function deletarAnexo(){
 }
 
 document.getElementById('dowloadAnexo').addEventListener('click', function() {
-  alert('Seu anexo foi baixado.');
+  alert("aqui vai baixar o arquivo");
 });
