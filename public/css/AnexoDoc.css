@@ -67,10 +67,27 @@
     width: 30px;
     height: 30px;
     cursor: pointer;
+    margin-left: -10px;
 }
 
-.Img-Anexo:not(:first-child) {
-    margin-left: 20px; 
+.Img-Anexo:first-of-type {
+    margin-left: 0; 
+}
+
+#Img-Anexo {
+    margin-right: 10px; 
+}
+
+#mostrarIframe {
+    margin-right: 5px; 
+}
+
+.delete-selected {
+    margin-left: 5px;
+}
+
+#dowloadAnexo {
+    margin-left: 10px; 
 }
 
 .Anexo-input {
@@ -92,35 +109,37 @@
     outline: none; 
 }
 
-.Table-Anexo table {
-    width: 100%; 
-    border-collapse: collapse; 
-    margin-top: 20px; 
-}
-
-.Table-Anexo td {
-    cursor: pointer;
-}
-
 .Table-Anexo td, .Table-Anexo th {
-    color: #fff;
-    text-align: left;
-    padding: 10px; 
-    border: 1px solid #777; 
-    font-size: 12px;
+    cursor: pointer;
+    color: #fff; 
+    text-align: center;
+    padding: 8px; 
+    border-bottom: 1px solid #ddd; 
+    font-size: 14px; 
 }
 
 .Table-Anexo th {
-    background-color: #1a3e5f;
-    border-top: 2px solid #000000;
+    background-color: #304fb8; 
+    color: white;
+    border-bottom: 2px solid #444; 
 }
 
 .Table-Anexo tr:hover {
-    background-color: #1a3e5f; 
+    background-color: #1a1164be; 
 }
 
+
 .titulo-col {
-    width: 90%;
+    width: auto; 
+}
+
+.titulo-coluna-data {
+    width: 120px; 
+}
+
+.select-Check {
+    width: 50px; 
+    text-align: center; 
 }
 
 .file-select {
@@ -129,7 +148,7 @@
     transform: scale(1.2);
 }
 
-.popup-button.salvar.Img-Anexo {
+.popup-button.salvar{
     background: transparent; 
     border: none;
     padding: 0; 

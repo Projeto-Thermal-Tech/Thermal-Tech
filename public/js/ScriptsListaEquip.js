@@ -327,3 +327,7 @@ function deletarAnexo(){
     alert('Selecione um anexo para excluir.');
   }
 }
+
+document.getElementById('dowloadAnexo').addEventListener('click', function() {
+  alert('Seu anexo foi baixado.');
+});
