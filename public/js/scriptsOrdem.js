@@ -99,3 +99,11 @@ function limparCampos() {
     document.getElementById('priMedia').checked = false;
     document.getElementById('priAlta').checked = false;
 }
+
+function verAnexosChamados() {
+    document.getElementById('PopupAnexoChamado').style.display = 'block';
+  }
+  
+  function FecharPopupAnexoChamado() {
+    document.getElementById('PopupAnexoChamado').style.display = 'none';
+  }

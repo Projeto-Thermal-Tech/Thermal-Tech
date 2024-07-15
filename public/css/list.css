@@ -285,14 +285,14 @@ textarea {
   height: 40px;
 }
 
-.pdfViewerHeader {
+.pdfViewerHeader, .pdfViewerHeaderChamado {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 10px;
 }
 
-.ViewsPdf {
+.ViewsPdf, .ViewsPdfChamado {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -306,6 +306,12 @@ textarea {
 }
 
 iframe#visualizadorPdf {
+  width: 200%;
+  height: 200%;
+  border: 0;
+}
+
+iframe#visualizadorPdfChamado {
   width: 200%;
   height: 200%;
   border: 0;

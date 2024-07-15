@@ -1,4 +1,4 @@
-.AnexoDoc {
+.AnexoDoc, .AnexoDocChamado {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -12,7 +12,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.Popup-Title-Anexo {
+.Popup-Title-Anexo, .Popup-Title-Anexo-chamado {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -22,7 +22,7 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
 }
 
-.Popup-label-Anexo {
+.Popup-label-Anexo, .Popup-label-Anexo-chamado {
     display: inline-flex;
     margin-right: 10px;
     align-items: center;
@@ -32,7 +32,7 @@
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
 }
 
-.retan-Anexo {
+.retan-Anexo, .retan-Anexo-chamado {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -43,54 +43,54 @@
     background-color: #0835ff;
 }
 
-.label-container {
+.label-container, .label-container-chamado {
     display: flex;
     align-items: center; 
     gap: 10px; 
     padding-left: 80px; 
 }
 
-.Img-Anexo-TT {
+.Img-Anexo-TT, .Img-Anexo-TT-chamado {
     width: 15%;
     height: auto;
     margin-left: auto; 
 }
 
-.segund-Anexo {
+.segund-Anexo, .segund-Anexo-chamado {
     display: flex;
     align-items: center;
     padding: 20px;
     margin-right: 50px;
 }
 
-.Img-Anexo {
+.Img-Anexo, .Img-Anexo-chamado {
     width: 30px;
     height: 30px;
     cursor: pointer;
     margin-left: -10px;
 }
 
-.Img-Anexo:first-of-type {
+.Img-Anexo:first-of-type, .Img-Anexo-chamado:first-of-type {
     margin-left: 0; 
 }
 
-#Img-Anexo {
+#Img-Anexo, #Img-Anexo-chamado {
     margin-right: 10px; 
 }
 
-#mostrarAnexo {
+#mostrarAnexo, #mostrarAnexoChamado {
     margin-right: 5px; 
 }
 
-.delete-selected {
+.delete-selected, .delete-selected-chamado {
     margin-left: 5px;
 }
 
-#dowloadAnexo {
+#dowloadAnexo, #dowloadAnexoChamado {
     margin-left: 10px; 
 }
 
-.Anexo-input {
+.Anexo-input, .Anexo-input-chamado {
     width: 50%; 
     display: inline-block; 
     border: 1px solid #ccc; 
@@ -104,12 +104,12 @@
     transition: border-color 0.3s ease-in-out; 
 }
 
-.Anexo-input:focus {
+.Anexo-input:focus, .Anexo-input-chamado:focus {
     border-color: #4A90E2;
     outline: none; 
 }
 
-.Table-Anexo td, .Table-Anexo th {
+.Table-Anexo td, .Table-Anexo th, .Table-Anexo-Chamado td, .Table-Anexo-Chamado th  {
     cursor: pointer;
     color: #fff; 
     text-align: center;
@@ -118,26 +118,26 @@
     font-size: 14px; 
 }
 
-.Table-Anexo th {
+.Table-Anexo th, .Table-Anexo-Chamado th {
     background-color: #304fb8; 
     color: white;
     border-bottom: 2px solid #444; 
 }
 
-.Table-Anexo tr:hover {
+.Table-Anexo tr:hover, .Table-Anexo-Chamado tr:hover {
     background-color: #1a1164be; 
 }
 
 
-.titulo-col {
+.titulo-col, .titulo-col-chamado {
     width: auto; 
 }
 
-.titulo-coluna-data {
+.titulo-coluna-data, .titulo-coluna-data-chamado {
     width: 120px; 
 }
 
-.select-Check {
+.select-Check, .select-Check-chamado {
     width: 50px; 
     text-align: center; 
 }
@@ -148,14 +148,14 @@
     transform: scale(1.2);
 }
 
-.popup-button.salvar{
+.popup-button.salvar, .popup-button.salvarAnexoCha{
     background: transparent; 
     border: none;
     padding: 0; 
     cursor: pointer; 
 }
 
-.Popup-Header-Anexo span {
+.Popup-Header-Anexo span, .Popup-Header-Anexo-chamado span{
     cursor: pointer;
     position: absolute;
     right: 3px;

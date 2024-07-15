@@ -730,6 +730,43 @@ router.post('/deletar/anexo/:id', function (req, res) {
         });
 })
 
+router.post('/atualizar/anexoChamado', function (req, res) {
+    atualizarAnexoChamado.updateAnexoChamado(req.body.id_chamado, req.body.linkAnexoChamado, req.body.createdAtChamado,req.body.nomeArquivoChamado)
+        .then(function () {
+            console.log("Anexo atualizado com sucesso");
+            res.redirect('/view/chamado');
+        }).catch(function (error) {
+            console.log("Erro ao atualizar anexo:", error);
+            res.status(500).send("Erro ao atualizar anexo: " + error);
+        });
+
+})
+
+router.post('/view/anexoChamado', function (req, res) {
+    const id_chamado = req.body.id_chamado;
+    const sql = 'SELECT * FROM anexosChamado WHERE id_anexo_cha = $1';
+    db.query(sql, [id_chamado])
+        .then(function (result) {
+            res.json(result.rows);
+        }).catch(function (error) {
+            console.error(error);
+            res.status(500).send("Erro ao buscar anexos: " + error);
+        });
+
+})
+
+router.post('/deletar/anexoChamado/:id', function (req, res) {
+    const id_anexo_cha = req.params.id;
+    const sql = 'DELETE FROM anexosChamado WHERE id = $1';
+    db.query(sql, [id_anexo_cha ])
+        .then(function () {
+            res.sendStatus(200);
+        }).catch(function (error) {
+            console.error(error);
+            res.status(500).send("Erro ao excluir anexo: " + error);
+        });
+})
+
 router.post('/deletar/equipamento/:id', function (req, res) {
     const idEquip = req.params.id;
     excluirEquip.deleteEquip(idEquip).then(function () {

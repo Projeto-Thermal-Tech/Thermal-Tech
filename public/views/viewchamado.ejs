@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="/css/@mediaheader1280.css">
     <link rel="stylesheet" href="/css/feedback.css">
     <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/AnexoDoc.css">
+    <link rel="stylesheet" href="../css/list.css">
     <title>Document</title>
 </head>
 
@@ -83,6 +85,11 @@
             <section>
                 <div class="title-page">
                     <h2>Visualizar chamado de manutenção</h2>
+                </div>
+                <div class="icons">
+                    <button onclick="verAnexosChamado()"> 
+                        <img src="../assets/Anexos (2).png" width="30px" alt="Ver PDF">
+                    </button> 
                 </div>
                 <div class="icons">
                     <form action="/cadastro/chamado" method="post">
@@ -371,6 +378,67 @@
           </div>
         </div>
       </section>
+
+      <section class="AnexoDocChamado" id="PopupAnexoChamado" style="display: none;">
+        <div class="PopupAnexoChamado">
+            <div class="Popup-Content-Anexo-chamado">
+                    <div class="Popup-Header-Anexo-chamado">
+                        <span onclick="FecharPopupAnexoChamado()">&times;</span>
+                        <div class="retan-Anexo-chamado">
+                            <h1 class="Popup-Title-Anexo-chamado">Anexar Documentos:</h1>
+                            <div class="label-container-chamado">
+                                <label for="" class="Popup-label-Anexo-chamado">Número do Chamado:</label>
+                                <input type="text" class="Anexo-input-chamado" id="id_chamadoAnexo" name="id_chamado" readonly style="display: none;">
+                                <input data-custom-id="NumeroChamado" type="text" class="popup-input" id="NUMERO_CHAMADO" name="NUMERO_CHAMADO" placeholder="10000000" readonly style="width: 100px;"> 
+                            </div>
+                            <img class="Img-Anexo-TT-chamado" src="../assets/logo.png" alt="">
+                        </div>
+                        <div class="segund-Anexo-chamado">
+                            <img class="Img-Anexo-chamado" id="Img-Anexo-chamado" src="../assets/anexos.png" alt="" title="Criar anexo">
+                            <input style="display: none;" type="file" id="AnexarPDFChamado" name="AnexarPDFChamado" class="popup-input" multiple>
+                            <button id="btnSalvarAnexoChamado" class="popup-button salvarAnexoCha Img-Anexo-chamado" type="button">
+                                <img class="Img-Anexo-chamado" src="../assets/save.png" alt="SalvarAnexoChamado" title="Salvar anexo">
+                            </button>
+                            <div class="pdfViewerHeaderChamado">
+                                <!-- <label for="popup-label" class="popup-label" id="labelVisualizarPdf">Visualizar Pdf:</label> -->
+                                <img id="mostrarAnexoChamado" src="../assets/icons8-visualizar-arquivo-48.png" class="Img-Anexo-chamado" alt="Mostrar PDF" style="cursor:pointer;" title="Visualizar anexo">
+                            </div>
+                            <img src="../assets/delete.png" alt="Excluir selecionados" class="Img-Anexo-chamado delete-selected-chamado" title="Deletar anexo" onclick="deletarAnexoChamado()">
+                            <img src="../assets/file.png" id="dowloadAnexoChamado" class="Img-Anexo-chamado" alt="" title="Baixar arquivo">
+                        </div>
+                        <div class="Table-Anexo-Chamado">
+                            <table class="Table-Anexo-Container-chamado">
+                                <thead>
+                                    <tr>
+                                        <th class="select-Check-chamado">Selecionar</th>
+                                        <th class="titulo-col-chamado">Título:</th>
+                                        <th class="titulo-coluna-data-chamado">Data criação:</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="tbodyAnexos">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="ViewsPdfChamado">
+            <input type="text" style="display: none;" id="linkPDFChamado"name="linkPDFChamado" value="">
+            <input type="text" style="display: none;" id="namePDFChamado"name="namePDFChamado" value="">
+            <iframe id="visualizadorPdfChamado" frameborder="0"></iframe>
+        </div>
+    </section>
+  </section>
+
+  <script>
+    function verAnexosChamado() {
+  document.getElementById('PopupAnexoChamado').style.display = 'block';
+}
+
+function FecharPopupAnexoChamado() {
+  document.getElementById('PopupAnexoChamado').style.display = 'none';
+}
+  </script>
     <script src="../js/dashboard.js"></script>
     <script src="../js/feedback.js"></script>
     <script src="../js/loading.js"></script>  
