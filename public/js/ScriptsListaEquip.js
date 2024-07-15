@@ -277,6 +277,7 @@ fetch('/view/anexo/',{
         input.classList.add('file-select')
         input.value = anexos[i].link
         input.setAttribute('data-custom-id', anexos[i].id)
+        input.setAttribute('data-custom-name',anexos[i].name_anexo )
         td.appendChild(input)
         tr.appendChild(td)
         const td2 = document.createElement('td')
@@ -357,8 +358,12 @@ document.getElementById('dowloadAnexo').addEventListener('click', function() {
     } catch (error) {
         console.error('Erro ao baixar a imagem:', error);
     }
-}
-      const urlDaImagem = "https://firebasestorage.googleapis.com/v0/b/thermal-tech-57a87.appspot.com/o/AnexosEquipamentos%2F1720913283420_Relatorioa%20horas.pdf?alt=media&token=04213e7a-dc40-415b-99ba-0b2f38cc66bd";
-      const nomeDaImagem = "novo anexo";
-      baixarImagem(urlDaImagem, nomeDaImagem);
-});
+}     
+const checkboxes = document.querySelectorAll('.file-select');
+  let checkboxChecked = false; // Variável para rastrear se algum checkbox foi selecionado
+  checkboxes.forEach(function(checkbox) {
+    if (checkbox.checked) {
+      baixarImagem(checkbox.value, checkbox.getAttribute('data-custom-name'));
+      checkboxChecked = true; // Atualiza a variável se um checkbox estiver marcado
+    }
+})})
