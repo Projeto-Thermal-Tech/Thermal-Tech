@@ -185,6 +185,23 @@ exports.atualizarAnexoChamado = function (id_chamado, linkAnexo, createdAt, nome
     }
     return updateAnexoChamado(id_chamado, linkAnexo, createdAt, nomeArquivo);
 }
+exports.atualizarAnexoOrdem = function (id_ordem, linkAnexo, createdAt, nomeArquivo) {
+    async function updateAnexoOrdem(id_ordem, linkAnexo, createdAt, nomeArquivo) {
+        try {
+            await db.connect();
+            const queryInsertAnexo = 'INSERT INTO anexosordem(id_anexo_ord, link, createdat_ord, name_anexo_ord) VALUES ($1, $2, $3, $4)';
+
+            // Converter timestamp para formato de data aceito pelo banco de dados
+            const date = new Date(parseInt(createdAt)); // Converte o timestamp para um objeto Date
+            const formattedDate = date.toISOString(); // Converte para o formato ISO 8601
+
+            await db.query(queryInsertAnexo, [id_ordem, linkAnexo, formattedDate, nomeArquivo]);
+        } catch (error) {
+            throw new Error(`Erro ao atualizar anexo: ${error.message}`);
+        }
+    }
+    return updateAnexoOrdem(id_ordem, linkAnexo, createdAt, nomeArquivo);
+}
 exports.deleteEquip = function (id) {
     async function excluirEquip(id) {
         try {

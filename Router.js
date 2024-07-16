@@ -15,6 +15,7 @@ const atualizarEquip = require('./database/db')
 const atualizarOrdem = require('./database/db')
 const excluirEquip = require('./database/db')
 const updateAnexoChamado = require('./database/db')
+const updateAnexoOrdem = require('./database/db')
 const atualizarTecnicos = require('./database/db');
 const excluirtec = require('./database/db');
 const atualizarSetor = require('./database/db');
@@ -792,6 +793,40 @@ router.post('/deletar/anexoChamado/:id', function (req, res) {
         });
 })
 
+router.post('/atualizar/anexoOrdem', function (req, res) {
+    updateAnexoOrdem.atualizarAnexoOrdem(req.body.id_ordem, req.body.linkAnexo, req.body.createdAt,req.body.nomeArquivo)
+        .then(function () {
+            console.log("Anexo de chamado atualizado com sucesso");
+            res.sendStatus(200);
+        }).catch(function (error) {
+            console.log("Erro ao atualizar anexo:", error);
+            res.status(500).send("Erro ao atualizar anexo: " + error);
+        });
+
+})
+router.post('/view/anexo/Ordem', function (req, res) {
+    const id_ordem = req.body.id_ordem;
+    const sql = 'SELECT * FROM anexosordem WHERE id_anexo_ord = $1';
+    db.query(sql, [id_ordem])
+        .then(function (result) {
+            res.json(result.rows);
+        }).catch(function (error) {
+            console.error(error);
+            res.status(500).send("Erro ao buscar anexos: " + error);
+        });
+
+})
+router.post('/deletar/anexo/ordem/:id', function (req, res) {
+    const id_ordem = req.params.id;
+    const sql = 'DELETE FROM anexosordem WHERE id = $1';
+    db.query(sql, [id_ordem])
+        .then(function () {
+            res.sendStatus(200);
+        }).catch(function (error) {
+            console.error(error);
+            res.status(500).send("Erro ao excluir anexo: " + error);
+        });
+})
 router.post('/deletar/equipamento/:id', function (req, res) {
     const idEquip = req.params.id;
     excluirEquip.deleteEquip(idEquip).then(function () {

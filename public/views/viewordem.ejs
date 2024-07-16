@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="/css/@mediaheader1280.css">
     <link rel="stylesheet" href="/css/feedback.css">
     <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="../css/AnexoDoc.css">
+    <!-- <link rel="stylesheet" href="../css/list.css"> -->
     <title>Ordem</title>
 </head>
 
@@ -88,10 +90,9 @@
                             <button type="button"><img src="/assets/delete.png" onclick="deletarOrdem()"alt=""></button>
                             <button id="gerarPdfButton" type="button"><img src="/assets/pdf.png" onclick="gerarPDF()"></button>
                             <button type="button"><img src="/assets/print.png" onclick="imprimirOrdem()"></button>
-                            <button type="button" onclick="document.getElementById('fileInput').click();"
-                                id="btn-anexo">
-                                <img src="/assets/anexos.png" alt="">
-                            </button>
+                            <button type="button" onclick="verAnexos('<%= dadosOrdem.id_ordem %>')"> 
+                                <img src="../assets/Anexos (2).png" width="30px" alt="Ver PDF">
+                            </button> 
                     </div>
                     <div class="header-order">
                         <div class="info-header-order">
@@ -413,6 +414,55 @@
           </div>
         </div>
       </section>
+      <section class="AnexoDoc" id="PopupAnexo" style="display: none;">
+        <div class="PopupAnexoOrdem">
+            <div class="Popup-Content-Anexo-chamado">
+                    <div class="Popup-Header-Anexo-chamado">
+                        <span onclick="FecharPopupAnexo()">&times;</span>
+                        <div class="retan-Anexo-chamado">
+                            <h1 class="Popup-Title-Anexo-chamado">Anexar Documentos:</h1>
+                            <div class="label-container-chamado">
+                                <label for="" class="Popup-label-Anexo-chamado">Número da Ordem:</label>
+                                <input type="text" class="Anexo-input-chamado" id="id_ordemAnexo" name="id_ordem" readonly style="display: none;">
+                                <input data-custom-id="NumeroOrdem" type="text" class="popup-input-ord" value="<%= dadosOrdem.id_ordem %>" id="NUMERO_ORDEM" name="NUMERO_ORDEM" placeholder="10000000" readonly style="width: 100px;"> 
+                            </div>
+                            <img class="Img-Anexo-TT-chamado" src="../assets/logo.png" alt="">
+                        </div>
+                        <div class="segund-Anexo-chamado">
+                            <img class="Img-Anexo" id="Img-Anexo" src="../assets/anexos.png" alt="" title="Criar anexo">
+                            <input style="display: none;" type="file" id="AnexarPDF" name="AnexarPDF" class="popup-input-ord" multiple>
+                            <button id="btnSalvarAnexo" class="popup-button salvar Img-Anexo" type="button">
+                                <img class="Img-Anexo" src="../assets/save.png" alt="Salvar" title="Salvar anexo">
+                            </button>
+                            <div class="pdfViewerHeaderChamado">
+                                <!-- <label for="popup-label" class="popup-label" id="labelVisualizarPdf">Visualizar Pdf:</label> -->
+                                <img id="mostrarAnexo" src="../assets/icons8-visualizar-arquivo-48.png" class="Img-Anexo-ordem" alt="Mostrar PDF" style="cursor:pointer;" title="Visualizar anexo">
+                            </div>
+                            <img src="../assets/delete.png" alt="Excluir selecionados" class="Img-Anexo-ordem delete-selected-ordem" title="Deletar anexo" onclick="deletarAnexo()">
+                            <img src="../assets/file.png" id="dowloadAnexo" class="Img-Anexo-ordem" alt="" title="Baixar arquivo">
+                        </div>
+                        <div class="Table-Anexo-Chamado">
+                            <table class="Table-Anexo-Container-chamado">
+                                <thead>
+                                    <tr>
+                                        <th class="select-Check-chamado">Selecionar</th>
+                                        <th class="titulo-col-chamado">Título:</th>
+                                        <th class="titulo-coluna-data-chamado">Data criação:</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="tbodyAnexos">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <!-- <div class="ViewsPdfChamado">
+            <input type="text" style="display: none;" id="linkPDFChamado"name="linkPDFChamado" value="">
+            <input type="text" style="display: none;" id="namePDFChamado"name="namePDFChamado" value="">
+            <iframe id="visualizadorPdfChamado" frameborder="0"></iframe>
+        </div> -->
+    </section>
     <script defer src="../js/script.js"></script>
     <script src="../js/menu-mobile.js"></script>
     <script>
@@ -421,17 +471,20 @@
             preencherNomeTec(decodeURIComponent('<%= encodeURIComponent(JSON.stringify(nomeTecs)) %>'));
         });
     
-    </script>
+    </script>    
+    <script src="../js/scriptsViewOrdem.js"></script>
     <script src="../js/dashboard.js"></script>
     <script src="../js/feedback.js"></script>
-    <script src="../Login_v1/firebase-init.js"></script>
-    <script src="../js/auth-guard.js"></script>
-    <script src="../js/logout.js"></script>
     <script src="../js/loading.js"></script>  
     <script src="../js/auth-guard.js"></script>
+    <script src="../js/logout.js"></script>
+    <script src="../js/menu-mobile.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-storage-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-database-compat.js"></script> 
-    <script src="../js/scriptsViewOrdem.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-database-compat.js"></script>
+    <script src="../Login_v1/firebase-init.js"></script>
+    <script src="../js/script.js"></script>
     <link rel="stylesheet" href="/css/@media1440.css">
     <link rel="stylesheet" href="/css/@media1200.css">
 </body>
