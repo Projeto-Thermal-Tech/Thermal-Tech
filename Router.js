@@ -14,6 +14,7 @@ const novaOrdem = require('./database/db');
 const atualizarEquip = require('./database/db')
 const atualizarOrdem = require('./database/db')
 const excluirEquip = require('./database/db')
+const updateAnexoChamado = require('./database/db')
 const atualizarTecnicos = require('./database/db');
 const excluirtec = require('./database/db');
 const atualizarSetor = require('./database/db');
@@ -697,16 +698,29 @@ router.post('/atualizar/anexo', function (req, res) {
     atualizarAnexo.updateAnexo(req.body.id_equip, req.body.linkAnexo, req.body.createdAt,req.body.nomeArquivo)
         .then(function () {
             console.log("Anexo atualizado com sucesso");
-            res.redirect('/equipamentos');
+            res.sendStatus(200);
         }).catch(function (error) {
             console.log("Erro ao atualizar anexo:", error);
             res.status(500).send("Erro ao atualizar anexo: " + error);
         });
 
 })
+router.post('/view/anexo/chamado', function (req, res) {
+    const id_equip = req.body.id_chamado;
+    const sql = 'SELECT * FROM anexoschamado WHERE id_anexo_cha = $1';
+    db.query(sql, [id_equip])
+        .then(function (result) {
+            console.log("pego dados do anexo de chamado")
+            res.json(result.rows);
+        }).catch(function (error) {
+            console.error(error);
+            res.status(500).send("Erro ao buscar anexos: " + error);
+        });
 
-router.post('/view/anexo', function (req, res) {
-    const id_equip = req.body.id_equip;
+})
+
+router.post('/view/anexo/equipamento', function (req, res) {
+    const id_equip= req.body.id_equip;
     const sql = 'SELECT * FROM anexos WHERE id_equipamento = $1';
     db.query(sql, [id_equip])
         .then(function (result) {
@@ -718,7 +732,7 @@ router.post('/view/anexo', function (req, res) {
 
 })
 
-router.post('/deletar/anexo/:id', function (req, res) {
+router.post('/deletar/anexo/equipamento/:id', function (req, res) {
     const id_anexo = req.params.id;
     const sql = 'DELETE FROM anexos WHERE id = $1';
     db.query(sql, [id_anexo])
@@ -729,12 +743,23 @@ router.post('/deletar/anexo/:id', function (req, res) {
             res.status(500).send("Erro ao excluir anexo: " + error);
         });
 })
+router.post('/deletar/anexo/chamado/:id', function (req, res) {
+    const id_anexo = req.params.id;
+    const sql = 'DELETE FROM anexoschamado WHERE id = $1';
+    db.query(sql, [id_anexo])
+        .then(function () {
+            res.sendStatus(200);
+        }).catch(function (error) {
+            console.error(error);
+            res.status(500).send("Erro ao excluir anexo: " + error);
+        });
+})
 
 router.post('/atualizar/anexoChamado', function (req, res) {
-    atualizarAnexoChamado.updateAnexoChamado(req.body.id_chamado, req.body.linkAnexoChamado, req.body.createdAtChamado,req.body.nomeArquivoChamado)
+    updateAnexoChamado.atualizarAnexoChamado(req.body.id_chamado, req.body.linkAnexo, req.body.createdAt,req.body.nomeArquivo)
         .then(function () {
-            console.log("Anexo atualizado com sucesso");
-            res.redirect('/view/chamado');
+            console.log("Anexo de chamado atualizado com sucesso");
+            res.sendStatus(200);
         }).catch(function (error) {
             console.log("Erro ao atualizar anexo:", error);
             res.status(500).send("Erro ao atualizar anexo: " + error);
