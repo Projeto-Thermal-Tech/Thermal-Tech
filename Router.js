@@ -153,7 +153,7 @@ router.get('/executarPython', async (req, res) => {
 router.get("/chamado", async function (req, res) {
     try {
         async function listarchamados() {
-            const sql = "SELECT chamado.*, status.nome_status, prioridade.nome_pri FROM chamado INNER JOIN status ON chamado.status_cha = status.id_status INNER JOIN prioridade ON chamado.prioridade_cha = prioridade.id_prioridade ORDER BY chamado.id_chamado ASC;";
+            const sql = "SELECT chamado.*, status.nome_status, prioridade.nome_pri FROM chamado INNER JOIN status ON chamado.status_cha = status.id_status INNER JOIN prioridade ON chamado.prioridade_cha = prioridade.id_prioridade ORDER BY chamado.id_chamado DESC;";
             chamados = await db.query(sql)
         }
         await listarchamados(); // Espere até que a função listarDados seja concluída
@@ -696,7 +696,7 @@ router.post('/atualizar/equipamento', function (req, res) {
         });
 });
 router.post('/atualizar/anexo', function (req, res) {
-    atualizarAnexo.updateAnexo(req.body.id_equip, req.body.linkAnexo, req.body.createdAt,req.body.nomeArquivo)
+    atualizarAnexo.updateAnexo(req.body.id_equip, req.body.linkAnexo, req.body.createdAt,req.body.nomeArquivo,req.body.criado_por)
         .then(function () {
             console.log("Anexo atualizado com sucesso");
             res.sendStatus(200);
@@ -757,7 +757,7 @@ router.post('/deletar/anexo/chamado/:id', function (req, res) {
 })
 
 router.post('/atualizar/anexoChamado', function (req, res) {
-    updateAnexoChamado.atualizarAnexoChamado(req.body.id_chamado, req.body.linkAnexo, req.body.createdAt,req.body.nomeArquivo)
+    updateAnexoChamado.atualizarAnexoChamado(req.body.id_chamado, req.body.linkAnexo, req.body.createdAt,req.body.nomeArquivo,req.body.criado_por_cha)
         .then(function () {
             console.log("Anexo de chamado atualizado com sucesso");
             res.sendStatus(200);
@@ -794,7 +794,7 @@ router.post('/deletar/anexoChamado/:id', function (req, res) {
 })
 
 router.post('/atualizar/anexoOrdem', function (req, res) {
-    updateAnexoOrdem.atualizarAnexoOrdem(req.body.id_ordem, req.body.linkAnexo, req.body.createdAt,req.body.nomeArquivo)
+    updateAnexoOrdem.atualizarAnexoOrdem(req.body.id_ordem, req.body.linkAnexo, req.body.createdAt,req.body.nomeArquivo,req.body.criado_por_ord)
         .then(function () {
             console.log("Anexo de chamado atualizado com sucesso");
             res.sendStatus(200);

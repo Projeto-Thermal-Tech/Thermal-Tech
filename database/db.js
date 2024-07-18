@@ -151,56 +151,56 @@ exports.updateEquip = function (id, tag, tipo, modelo, ns, area, local, setor, d
 
     return atualizarEquip(id, tag, tipo, modelo, ns, area, local, setor, descricao);
 }
-exports.updateAnexo = function (id_equip, linkAnexo, createdAt, nomeArquivo) {
-    async function atualizarAnexo(id_equip, linkAnexo, createdAt, nomeArquivo) {
+exports.updateAnexo = function (id_equip, linkAnexo, createdAt, nomeArquivo,criado_por) {
+    async function atualizarAnexo(id_equip, linkAnexo, createdAt, nomeArquivo, criado_por) {
         try {
             await db.connect();
-            const queryInsertAnexo = 'INSERT INTO anexos(id_equipamento, link, createdat, name_anexo) VALUES ($1, $2, $3, $4)';
+            const queryInsertAnexo = 'INSERT INTO anexos(id_equipamento, link, createdat, name_anexo, criado_por) VALUES ($1, $2, $3, $4, $5)';
 
             // Converter timestamp para formato de data aceito pelo banco de dados
             const date = new Date(parseInt(createdAt)); // Converte o timestamp para um objeto Date
             const formattedDate = date.toISOString(); // Converte para o formato ISO 8601
 
-            await db.query(queryInsertAnexo, [id_equip, linkAnexo, formattedDate, nomeArquivo]);
+            await db.query(queryInsertAnexo, [id_equip, linkAnexo, formattedDate, nomeArquivo, criado_por]);
         } catch (error) {
             throw new Error(`Erro ao atualizar anexo: ${error.message}`);
         }
     }
-    return atualizarAnexo(id_equip, linkAnexo, createdAt, nomeArquivo);
+    return atualizarAnexo(id_equip, linkAnexo, createdAt, nomeArquivo,criado_por);
 }
-exports.atualizarAnexoChamado = function (id_chamado, linkAnexo, createdAt, nomeArquivo) {
-    async function updateAnexoChamado(id_chamado, linkAnexo, createdAt, nomeArquivo) {
+exports.atualizarAnexoChamado = function (id_chamado, linkAnexo, createdAt, nomeArquivo, criado_por) {
+    async function updateAnexoChamado(id_chamado, linkAnexo, createdAt, nomeArquivo, criado_por) {
         try {
             await db.connect();
-            const queryInsertAnexo = 'INSERT INTO anexoschamado(id_anexo_cha, link, createdat_cha, name_anexo_cha) VALUES ($1, $2, $3, $4)';
+            const queryInsertAnexo = 'INSERT INTO anexoschamado(id_anexo_cha, link, createdat_cha, name_anexo_cha, criado_por_cha) VALUES ($1, $2, $3, $4, $5)';
 
             // Converter timestamp para formato de data aceito pelo banco de dados
             const date = new Date(parseInt(createdAt)); // Converte o timestamp para um objeto Date
             const formattedDate = date.toISOString(); // Converte para o formato ISO 8601
 
-            await db.query(queryInsertAnexo, [id_chamado, linkAnexo, formattedDate, nomeArquivo]);
+            await db.query(queryInsertAnexo, [id_chamado, linkAnexo, formattedDate, nomeArquivo, criado_por]);
         } catch (error) {
             throw new Error(`Erro ao atualizar anexo: ${error.message}`);
         }
     }
-    return updateAnexoChamado(id_chamado, linkAnexo, createdAt, nomeArquivo);
+    return updateAnexoChamado(id_chamado, linkAnexo, createdAt, nomeArquivo, criado_por);
 }
-exports.atualizarAnexoOrdem = function (id_ordem, linkAnexo, createdAt, nomeArquivo) {
-    async function updateAnexoOrdem(id_ordem, linkAnexo, createdAt, nomeArquivo) {
+exports.atualizarAnexoOrdem = function (id_ordem, linkAnexo, createdAt, nomeArquivo, criado_por) {
+    async function updateAnexoOrdem(id_ordem, linkAnexo, createdAt, nomeArquivo, criado_por) {
         try {
             await db.connect();
-            const queryInsertAnexo = 'INSERT INTO anexosordem(id_anexo_ord, link, createdat_ord, name_anexo_ord) VALUES ($1, $2, $3, $4)';
+            const queryInsertAnexo = 'INSERT INTO anexosordem(id_anexo_ord, link, createdat_ord, name_anexo_ord, criado_por_ord) VALUES ($1, $2, $3, $4, $5)';
 
             // Converter timestamp para formato de data aceito pelo banco de dados
             const date = new Date(parseInt(createdAt)); // Converte o timestamp para um objeto Date
             const formattedDate = date.toISOString(); // Converte para o formato ISO 8601
 
-            await db.query(queryInsertAnexo, [id_ordem, linkAnexo, formattedDate, nomeArquivo]);
+            await db.query(queryInsertAnexo, [id_ordem, linkAnexo, formattedDate, nomeArquivo, criado_por]);
         } catch (error) {
             throw new Error(`Erro ao atualizar anexo: ${error.message}`);
         }
     }
-    return updateAnexoOrdem(id_ordem, linkAnexo, createdAt, nomeArquivo);
+    return updateAnexoOrdem(id_ordem, linkAnexo, createdAt, nomeArquivo, criado_por);
 }
 exports.deleteEquip = function (id) {
     async function excluirEquip(id) {

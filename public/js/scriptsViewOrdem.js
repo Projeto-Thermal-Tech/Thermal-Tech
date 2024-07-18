@@ -42,7 +42,7 @@ document.getElementById('AnexarPDF').addEventListener('change', function() {
   document.getElementById('btnSalvarAnexo').addEventListener('click', function() {
     showLoading();
     document.querySelector('.AnexoDoc').style.display = 'none';
-    // Acessar o arquivo anexado do input 'AnexarPDF'
+    const criado_por = localStorage.getItem('userName');
     var fileInput = document.getElementById('AnexarPDF');
     if (fileInput.files.length > 0) {
       const createdAt = Date.now();
@@ -61,6 +61,7 @@ document.getElementById('AnexarPDF').addEventListener('change', function() {
               linkAnexo: url,
               nomeArquivo: nomeArquivo,
               createdAt: createdAt,
+              criado_por_ord: criado_por,
             })
           }).then(function(response) {
             if (response.ok) {
@@ -81,6 +82,7 @@ document.getElementById('AnexarPDF').addEventListener('change', function() {
   });
   function verAnexos(id_ordem){
     document.getElementById('PopupAnexo').style.display = 'block';
+    document.querySelector('.overlay-edit').style.display = 'block';
   fetch('/view/anexo/Ordem',{
     method:'POST',
     headers:{
@@ -114,6 +116,9 @@ document.getElementById('AnexarPDF').addEventListener('change', function() {
           const td2 = document.createElement('td')
           td2.textContent = anexos[i].name_anexo_ord
           tr.appendChild(td2)
+          const TdCriadoPor = document.createElement('td')
+          TdCriadoPor.textContent = anexos[i].criado_por_ord
+          tr.appendChild(TdCriadoPor)
           const td3 = document.createElement('td')
           td3.textContent = dataFormatada
           tr.appendChild(td3)

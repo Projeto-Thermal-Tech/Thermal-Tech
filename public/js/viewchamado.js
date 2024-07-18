@@ -1,12 +1,13 @@
 
 
-function verAnexosChamado() {
-    document.getElementById('PopupAnexoChamado').style.display = 'block';
-  }
+// function verAnexosChamado() {
+//     document.getElementById('PopupAnexoChamado').style.display = 'block';
+//   }
   
-function FecharPopupAnexoChamado() {
-    document.getElementById('PopupAnexoChamado').style.display = 'none';
-  }
+// function FecharPopupAnexoChamado() {
+//     document.getElementById('PopupAnexoChamado').style.display = 'none';
+   
+//   }
 
 document.getElementById('Img-Anexo').addEventListener('click', function() {
     document.getElementById('AnexarPDF').click(); // Aciona o clique no input file oculto
@@ -19,7 +20,7 @@ document.getElementById('AnexarPDF').addEventListener('change', function() {
   document.getElementById('btnSalvarAnexo').addEventListener('click', function() {
     showLoading();
     document.querySelector('.AnexoDoc').style.display = 'none';
-    // Acessar o arquivo anexado do input 'AnexarPDF'
+    const criado_por = localStorage.getItem('userName');
     var fileInput = document.getElementById('AnexarPDF');
     if (fileInput.files.length > 0) {
       const createdAt = Date.now();
@@ -38,6 +39,7 @@ document.getElementById('AnexarPDF').addEventListener('change', function() {
               linkAnexo: url,
               nomeArquivo: nomeArquivo,
               createdAt: createdAt,
+              criado_por_cha: criado_por,
             })
           }).then(function(response) {
             if (response.ok) {
@@ -58,6 +60,7 @@ document.getElementById('AnexarPDF').addEventListener('change', function() {
   });
   function verAnexos(id_chamado){
     document.getElementById('PopupAnexo').style.display = 'block';
+    document.querySelector('.overlay-edit').style.display = 'block';
   fetch('/view/anexo/chamado',{
     method:'POST',
     headers:{
@@ -91,6 +94,9 @@ document.getElementById('AnexarPDF').addEventListener('change', function() {
           const td2 = document.createElement('td')
           td2.textContent = anexos[i].name_anexo_cha
           tr.appendChild(td2)
+          const TdCriadoPor = document.createElement('td')
+          TdCriadoPor.textContent = anexos[i].criado_por_cha
+          tr.appendChild(TdCriadoPor)
           const td3 = document.createElement('td')
           td3.textContent = dataFormatada
           tr.appendChild(td3)
@@ -118,6 +124,7 @@ document.getElementById('AnexarPDF').addEventListener('change', function() {
   }
   function FecharPopupAnexo() {
     document.getElementById('PopupAnexo').style.display = 'none';
+    document.querySelector('.overlay-edit').style.display = 'none';
     const tbody = document.querySelector('.tbodyAnexos')
     while (tbody.firstChild) {
       tbody.removeChild(tbody.firstChild)
@@ -153,8 +160,9 @@ document.getElementById('AnexarPDF').addEventListener('change', function() {
     checkboxes.forEach(function(checkbox) {
       if (checkbox.checked) {
         anyChecked = true;
+        let url = checkbox.value;
         let checkboxChecked = checkbox.getAttribute('data-custom-id');
-        deletarAnexoChamado(checkboxChecked);
+        deletarAnexoChamado(checkboxChecked,url);
       }
     });
   
@@ -163,13 +171,19 @@ document.getElementById('AnexarPDF').addEventListener('change', function() {
     }
   }
   
-  function deletarAnexoChamado(checkboxChecked) {
+  function deletarAnexoChamado(checkboxChecked,url) {
     const confirmDelete = confirm('Tem certeza que deseja excluir o anexo?');
     if (!confirmDelete) {
       return;
     }
     const id = checkboxChecked;
     if (id) {
+      const storageRef = firebase.storage().refFromURL(url)
+      storageRef.delete().then(() => {
+        console.log('PDF antigo excluído com sucesso!')
+      }).catch((error) => {
+        console.error('Erro ao excluir o PDF antigo:', error)
+      })
       fetch('/deletar/anexo/chamado/' + id, {
         method: 'POST'
       }).then(function(response) {

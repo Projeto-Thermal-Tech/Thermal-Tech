@@ -373,56 +373,53 @@
           </div>
         </div>
       </section>
-
-      <section class="AnexoDoc" id="PopupAnexo" style="display: none;">
-        <div class="PopupAnexoChamado">
-            <div class="Popup-Content-Anexo-chamado">
-                    <div class="Popup-Header-Anexo-chamado">
-                        <span onclick="FecharPopupAnexo()">&times;</span>
-                        <div class="retan-Anexo-chamado">
-                            <h1 class="Popup-Title-Anexo-chamado">Anexar Documentos:</h1>
-                            <div class="label-container-chamado">
-                                <label for="" class="Popup-label-Anexo-chamado">Número do Chamado:</label>
-                                <input type="text" class="Anexo-input-chamado" id="id_chamadoAnexo" name="id_chamado" readonly style="display: none;">
-                                <input data-custom-id="NumeroChamado" type="text" class="popup-input" value="<%= dadosChamado.id_chamado %>" id="NUMERO_CHAMADO" name="NUMERO_CHAMADO" placeholder="10000000" readonly style="width: 100px;"> 
+      <section class="overlay-edit">
+        <section class="AnexoDoc" id="PopupAnexo" style="display: none;">
+            <div class="PopupAnexoChamado">
+                <div class="Popup-Content-Anexo-chamado">
+                        <div class="Popup-Header-Anexo-chamado">
+                            <span onclick="FecharPopupAnexo()">&times;</span>
+                            <div class="retan-Anexo-chamado">
+                                <h1 class="Popup-Title-Anexo-chamado">Anexar Documentos:</h1>
+                                <div class="label-container-chamado">
+                                    <label for="" class="Popup-label-Anexo-chamado">Número do Chamado:</label>
+                                    <input type="text" class="Anexo-input-chamado" id="id_chamadoAnexo" name="id_chamado" readonly style="display: none;">
+                                    <input data-custom-id="NumeroChamado" type="text" class="popup-input" value="<%= dadosChamado.id_chamado %>" id="NUMERO_CHAMADO" name="NUMERO_CHAMADO" placeholder="10000000" readonly style="width: 100px;"> 
+                                </div>
+                                <img class="Img-Anexo-TT-chamado" src="../assets/logo.png" alt="">
                             </div>
-                            <img class="Img-Anexo-TT-chamado" src="../assets/logo.png" alt="">
-                        </div>
-                        <div class="segund-Anexo-chamado">
-                            <img class="Img-Anexo" id="Img-Anexo" src="../assets/anexos.png" alt="" title="Criar anexo">
-                            <input style="display: none;" type="file" id="AnexarPDF" name="AnexarPDF" class="popup-input" multiple>
-                            <button id="btnSalvarAnexo" class="popup-button salvar Img-Anexo" type="button">
-                                <img class="Img-Anexo" src="../assets/save.png" alt="Salvar" title="Salvar anexo">
-                            </button>
-                            <div class="pdfViewerHeaderChamado">
-                                <!-- <label for="popup-label" class="popup-label" id="labelVisualizarPdf">Visualizar Pdf:</label> -->
-                                <img id="mostrarAnexo" src="../assets/icons8-visualizar-arquivo-48.png" class="Img-Anexo-chamado" alt="Mostrar PDF" style="cursor:pointer;" title="Visualizar anexo">
+                            <div class="segund-Anexo-chamado">
+                                <img class="Img-Anexo" id="Img-Anexo" src="../assets/anexos.png" alt="" title="Criar anexo">
+                                <input style="display: none;" type="file" id="AnexarPDF" name="AnexarPDF" class="popup-input" multiple>
+                                <button id="btnSalvarAnexo" class="popup-button salvar Img-Anexo" type="button">
+                                    <img class="Img-Anexo" src="../assets/save.png" alt="Salvar" title="Salvar anexo">
+                                </button>
+                                <div class="pdfViewerHeaderChamado">
+                                    <!-- <label for="popup-label" class="popup-label" id="labelVisualizarPdf">Visualizar Pdf:</label> -->
+                                    <img id="mostrarAnexo" src="../assets/icons8-visualizar-arquivo-48.png" class="Img-Anexo-chamado" alt="Mostrar PDF" style="cursor:pointer;" title="Visualizar anexo">
+                                </div>
+                                <img src="../assets/delete.png" alt="Excluir selecionados" class="Img-Anexo-chamado delete-selected-chamado" title="Deletar anexo" onclick="deletarAnexo()">
+                                <img src="../assets/file.png" id="dowloadAnexo" class="Img-Anexo-chamado" alt="" title="Baixar arquivo">
                             </div>
-                            <img src="../assets/delete.png" alt="Excluir selecionados" class="Img-Anexo-chamado delete-selected-chamado" title="Deletar anexo" onclick="deletarAnexo()">
-                            <img src="../assets/file.png" id="dowloadAnexo" class="Img-Anexo-chamado" alt="" title="Baixar arquivo">
+                            <div class="Table-Anexo-Chamado">
+                                <table class="Table-Anexo-Container-chamado">
+                                    <thead>
+                                        <tr>
+                                            <th class="select-Check-chamado">Selecionar</th>
+                                            <th class="titulo-col-chamado">Título:</th>
+                                            <th class="titulo-col-chamado">Criado por:</th>
+                                            <th class="titulo-coluna-data-chamado">Data criação:</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="tbodyAnexos">
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <div class="Table-Anexo-Chamado">
-                            <table class="Table-Anexo-Container-chamado">
-                                <thead>
-                                    <tr>
-                                        <th class="select-Check-chamado">Selecionar</th>
-                                        <th class="titulo-col-chamado">Título:</th>
-                                        <th class="titulo-coluna-data-chamado">Data criação:</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="tbodyAnexos">
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                </div>
             </div>
-        </div>
-        <!-- <div class="ViewsPdfChamado">
-            <input type="text" style="display: none;" id="linkPDFChamado"name="linkPDFChamado" value="">
-            <input type="text" style="display: none;" id="namePDFChamado"name="namePDFChamado" value="">
-            <iframe id="visualizadorPdfChamado" frameborder="0"></iframe>
-        </div> -->
-    </section>
+        </section>
+      </section>
   </section>
     <script src="../js/viewchamado.js"></script>
     <script src="../js/dashboard.js"></script>

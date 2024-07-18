@@ -1,3 +1,5 @@
+
+
 function filtrarPorTag() {
     var input, filtro, tabela, linhas, colunaTag, i, textoTag, botaoLimparFiltro;
     input = document.getElementById("tagInput");
@@ -186,7 +188,7 @@ document.getElementById('AnexarPDF').addEventListener('change', function() {
 document.getElementById('btnSalvarAnexo').addEventListener('click', function() {
   showLoading();
   document.querySelector('.AnexoDoc').style.display = 'none';
-  // Acessar o arquivo anexado do input 'AnexarPDF'
+  const criado_por = localStorage.getItem("userName");
   var fileInput = document.getElementById('AnexarPDF');
   if (fileInput.files.length > 0) {
     const createdAt = Date.now();
@@ -195,9 +197,6 @@ document.getElementById('btnSalvarAnexo').addEventListener('click', function() {
     var storageRef = firebase.storage().ref('AnexosEquipamentos/' + `${createdAt}_${nomeArquivo}`);
     storageRef.put(file).then(function(snapshot) {
       storageRef.getDownloadURL().then(function(url) {
-        // document.getElementById('visualizadorPdf').src = url;
-        // document.getElementById('linkPDF').value = url;
-        // document.getElementById('namePDF').value = nomeArquivo;
         fetch('/atualizar/anexo', {
           method: 'POST',
           headers: {
@@ -208,6 +207,7 @@ document.getElementById('btnSalvarAnexo').addEventListener('click', function() {
             linkAnexo: url,
             nomeArquivo: nomeArquivo,
             createdAt: createdAt,
+            criado_por:criado_por,
           })
         }).then(function(response) {
           if (response.ok) {
@@ -275,6 +275,9 @@ fetch('/view/anexo/equipamento',{
         const td2 = document.createElement('td')
         td2.textContent = anexos[i].name_anexo
         tr.appendChild(td2)
+        const TdCriadoPor = document.createElement('td')
+        TdCriadoPor.textContent = anexos[i].criado_por
+        tr.appendChild(TdCriadoPor)
         const td3 = document.createElement('td')
         td3.textContent = dataFormatada
         tr.appendChild(td3)
@@ -307,8 +310,9 @@ function deletarAnexo() {
   checkboxes.forEach(function(checkbox) {
     if (checkbox.checked) {
       anyChecked = true;
+      let url = checkbox.value;
       let checkboxChecked = checkbox.getAttribute('data-custom-id');
-      deletarAnexoEquipamento(checkboxChecked);
+      deletarAnexoEquipamento(checkboxChecked,url);
     }
   });
 
@@ -317,13 +321,19 @@ function deletarAnexo() {
   }
 }
 
-function deletarAnexoEquipamento(checkboxChecked) {
+function deletarAnexoEquipamento(checkboxChecked,url) {
   const confirmDelete = confirm('Tem certeza que deseja excluir o anexo?');
   if (!confirmDelete) {
     return;
   }
   const id = checkboxChecked;
   if (id) {
+          const storageRef = firebase.storage().refFromURL(url)
+          storageRef.delete().then(() => {
+            console.log('PDF antigo excluído com sucesso!')
+          }).catch((error) => {
+            console.error('Erro ao excluir o PDF antigo:', error)
+          })
     fetch('/deletar/anexo/equipamento/' + id, {
       method: 'POST'
     }).then(function(response) {
@@ -334,35 +344,35 @@ function deletarAnexoEquipamento(checkboxChecked) {
         alert('Erro ao excluir o anexo.');
       }
     });
-  }
-}
+  
+}}
 
-document.getElementById('dowloadAnexo').addEventListener('click', function() {
-  async function baixarImagem(url, nomeDoArquivo) {
-    try {
-        // Chama a rota do backend passando a URL da imagem como parâmetro
-        const resposta = await fetch(`/baixar-imagem?url=${encodeURIComponent(url)}`);
-        if (!resposta.ok) throw new Error('Falha ao baixar a imagem');
-        const blobImagem = await resposta.blob();
-        const urlBlob = URL.createObjectURL(blobImagem);
-
-        const link = document.createElement('a');
-        link.href = urlBlob;
-        link.download = nomeDoArquivo;
-        document.body.appendChild(link);
-        link.click();
-
-        document.body.removeChild(link);
-        URL.revokeObjectURL(urlBlob);
-    } catch (error) {
-        console.error('Erro ao baixar a imagem:', error);
-    }
-}     
-const checkboxes = document.querySelectorAll('.file-select');
-  let checkboxChecked = false; // Variável para rastrear se algum checkbox foi selecionado
-  checkboxes.forEach(function(checkbox) {
-    if (checkbox.checked) {
-      baixarImagem(checkbox.value, checkbox.getAttribute('data-custom-name'));
-      checkboxChecked = true; // Atualiza a variável se um checkbox estiver marcado
-    }
-})})
+  document.getElementById('dowloadAnexo').addEventListener('click', function() {
+    async function baixarImagem(url, nomeDoArquivo) {
+      try {
+          // Chama a rota do backend passando a URL da imagem como parâmetro
+          const resposta = await fetch(`/baixar-imagem?url=${encodeURIComponent(url)}`);
+          if (!resposta.ok) throw new Error('Falha ao baixar a imagem');
+          const blobImagem = await resposta.blob();
+          const urlBlob = URL.createObjectURL(blobImagem);
+  
+          const link = document.createElement('a');
+          link.href = urlBlob;
+          link.download = nomeDoArquivo;
+          document.body.appendChild(link);
+          link.click();
+  
+          document.body.removeChild(link);
+          URL.revokeObjectURL(urlBlob);
+      } catch (error) {
+          console.error('Erro ao baixar a imagem:', error);
+      }
+  }     
+  const checkboxes = document.querySelectorAll('.file-select');
+    let checkboxChecked = false; // Variável para rastrear se algum checkbox foi selecionado
+    checkboxes.forEach(function(checkbox) {
+      if (checkbox.checked) {
+        baixarImagem(checkbox.value, checkbox.getAttribute('data-custom-name'));
+        checkboxChecked = true; // Atualiza a variável se um checkbox estiver marcado
+      }
+  })})
