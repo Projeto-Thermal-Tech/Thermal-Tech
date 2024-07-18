@@ -181,8 +181,9 @@ document.getElementById('AnexarPDF').addEventListener('change', function() {
     checkboxes.forEach(function(checkbox) {
       if (checkbox.checked) {
         anyChecked = true;
+        let url = checkbox.value;
         let checkboxChecked = checkbox.getAttribute('data-custom-id');
-        deletarAnexoChamado(checkboxChecked);
+        deletarAnexoChamado(checkboxChecked,url);
       }
     });
   
@@ -191,13 +192,19 @@ document.getElementById('AnexarPDF').addEventListener('change', function() {
     }
   }
   
-  function deletarAnexoChamado(checkboxChecked) {
+  function deletarAnexoChamado(checkboxChecked,url) {
     const confirmDelete = confirm('Tem certeza que deseja excluir o anexo?');
     if (!confirmDelete) {
       return;
     }
     const id = checkboxChecked;
     if (id) {
+      const storageRef = firebase.storage().refFromURL(url)
+      storageRef.delete().then(() => {
+        console.log('PDF antigo excluído com sucesso!')
+      }).catch((error) => {
+        console.error('Erro ao excluir o PDF antigo:', error)
+      })
       fetch('/deletar/anexo/ordem/' + id, {
         method: 'POST'
       }).then(function(response) {

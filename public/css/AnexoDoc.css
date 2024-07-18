@@ -172,11 +172,14 @@
     display: inline-block; 
 }
 .popup-input, #linkPDF, #namePDF {
+    display: block;
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
+    font-size: 16px;
     border-radius: 5px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .popup-input-ord, #linkPDF, #namePDF {
@@ -187,7 +190,7 @@
     border-radius: 5px;
 }
 
-.pdfViewerHeader, .PopupAnexoOrdem {
+.pdfViewerHeader, .pdfViewerHeaderChamado {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -240,4 +243,28 @@ tr:nth-child(even) {
 tr:hover td {
     font-weight: bold;
     transform: scale(0.98);
+}
+
+span[onclick="FecharPopupAnexo()"] {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+span[onclick="FecharPopupAnexo()"]:hover {
+    color: #333;
+}
+
+.popup-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
 }
