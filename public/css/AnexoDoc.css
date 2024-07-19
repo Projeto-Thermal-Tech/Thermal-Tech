@@ -61,33 +61,25 @@
     align-items: center;
     padding: 20px;
     margin-right: 50px;
+    width: 100%;
 }
 
 .Img-Anexo, .Img-Anexo-chamado, .Img-Anexo-ordem {
     width: 30px;
     height: 30px;
     cursor: pointer;
-    margin-left: -10px;
+    margin-left: 10px; /* Ajustado para um valor padrão */
+    background-color: transparent;
 }
 
 .Img-Anexo:first-of-type, .Img-Anexo-chamado:first-of-type, .Img-Anexo-ordem:first-of-type {
-    margin-left: 0; 
-}
-
-#Img-Anexo, #Img-Anexo-chamado, #Img-Anexo-ordem {
-    margin-right: 10px; 
-}
-
-#mostrarAnexo, #mostrarAnexoChamado {
-    margin-right: 5px; 
-}
-
-.delete-selected, .delete-selected-chamado {
-    margin-left: 5px;
-}
-
-#dowloadAnexo, #dowloadAnexoChamado {
     margin-left: 10px; 
+}
+
+
+/* Ajuste de margens específicas para IDs, se necessário */
+#Img-Anexo, #Img-Anexo-chamado, #Img-Anexo-ordem, #mostrarAnexo, #mostrarAnexoChamado, .delete-selected, .delete-selected-chamado, #dowloadAnexo, #dowloadAnexoChamado {
+    margin-right: 10px;
 }
 
 .Anexo-input, .Anexo-input-chamado {
@@ -148,7 +140,13 @@
     transform: scale(1.2);
 }
 
-.popup-button.salvar, .popup-button.salvarAnexoCha{
+.Img-Anexo {
+    vertical-align: middle;
+    margin-right: 5px; 
+    margin-left: 5px; 
+}
+
+.Img-Anexo-Salvar{
     background: transparent; 
     border: none;
     padding: 0; 
@@ -171,7 +169,7 @@
     box-shadow: 0 0 5px #000;
     display: inline-block; 
 }
-.popup-input, #linkPDF, #namePDF {
+.popup-input-anexo, #linkPDF, #namePDF {
     display: block;
     width: 100%;
     padding: 10px;
@@ -182,7 +180,7 @@
     margin-top: 20px;
 }
 
-.popup-input-ord, #linkPDF, #namePDF {
+.popup-input-anexo, #linkPDF, #namePDF {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -267,4 +265,15 @@ span[onclick="FecharPopupAnexo()"]:hover {
     color: white;
     cursor: pointer;
     margin-right: 10px;
+}
+
+.overlay-edit {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    display: none;
 }

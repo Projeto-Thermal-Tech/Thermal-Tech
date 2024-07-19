@@ -64,7 +64,7 @@ function filtrarPorTag() {
   }
 
  
-function editarEquipamento(id_equip, tag, tipoNome, numeroSerie, descricao, area, localidade, setorNome, modelo, linkPDF) {
+function editarEquipamento(id_equip, tag, tipoNome, numeroSerie, descricao, area, localidade, setorNome, modelo) {
   // Preencha os campos do popup com os dados do equipamento
   document.getElementById('id_equip').value = id_equip;
   document.getElementById('TAG').value = tag;
@@ -73,7 +73,6 @@ function editarEquipamento(id_equip, tag, tipoNome, numeroSerie, descricao, area
   document.getElementById('AREA').value = area;
   document.getElementById('LOCAL').value = localidade;
   document.getElementById('MODELO').value = modelo;
-  document.getElementById('visualizadorPdf').src = linkPDF; 
 
   // Obtenha o elemento select para o tipo
   var selectElementTipo = document.querySelector('select[name="TIPO"]');
@@ -102,14 +101,6 @@ function editarEquipamento(id_equip, tag, tipoNome, numeroSerie, descricao, area
       break;
     }
   }
-
-  // Verifica se existe um PDF anexado
-  if (linkPDF && linkPDF.trim() !== "") {
-    document.getElementById('mostrarAnexo').style.display = 'inline';
-  } else {
-    document.getElementById('mostrarAnexo').style.display = 'none';
-  }
-
   showPopupEditar();
 }
 function Salvarequipamento() {

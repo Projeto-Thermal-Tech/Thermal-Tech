@@ -146,6 +146,7 @@ document.getElementById('AnexarPDF').addEventListener('change', function() {
   }
   function FecharPopupAnexo() {
     document.getElementById('PopupAnexo').style.display = 'none';
+    document.querySelector('.overlay-edit').style.display = 'none';
     const tbody = document.querySelector('.tbodyAnexos')
     while (tbody.firstChild) {
       tbody.removeChild(tbody.firstChild)
