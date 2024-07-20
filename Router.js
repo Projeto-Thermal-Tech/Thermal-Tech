@@ -669,22 +669,6 @@ router.post('/cadastro/equipamento', function (req, res) {
     });
 })
 
-
-
-
-// // Renomeando storage para pdfStorage
-// const pdfStorage = multer.diskStorage({
-//     destination: function(req, file, cb) {
-//         cb(null, 'pdfs/'); // Diretório onde os PDFs serão salvos
-//     },
-//     filename: function(req, file, cb) {
-//         cb(null, Date.now() + '-' + file.originalname); // Garante nome de arquivo único
-//     }
-// });
-
-// // Renomeando upload para pdfUpload
-// const pdfUpload = multer({ storage: pdfStorage });
-
 router.post('/atualizar/equipamento', function (req, res) {
     atualizarEquip.updateEquip(req.body.id_equip, req.body.TAG, req.body.TIPO, req.body.MODELO, req.body.NS, req.body.AREA, req.body.LOCAL, req.body.SETOR, req.body.DESC)
         .then(function () {

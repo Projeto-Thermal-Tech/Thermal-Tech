@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="../css/@mediaheader1280.css">
     <link rel="stylesheet" href="../css/feedback.css">
     <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/AnexoDoc.css">
     <title>Novo-Chamado</title>
 </head>
 
@@ -83,14 +84,13 @@
                     <h2>Criar chamado de manutenção</h2>
                 </div>
                 <div class="icons">
-                    <form action="/cadastro/chamado" method="post">
                         <button type="submit"><img src="../assets/save.png" onclick="salvarChamado()" alt=""></button>
                         <button><img src="../assets/delete.png" onclick="deletarChamado()" alt=""></button>
                         <button><img src="../assets/print.png" onclick="imprimir()"></button>
                         <button type="button"><img src="/assets/pdf.png" onclick="PdfDowload()"></button>
-                        <button onclick="document.getElementById('fileInput').click();" id="btn-anexo">
-                            <img src="../assets/anexos.png" alt="">
-                        </button>
+                        <button type="button" onclick="verAnexos(`<%= numeroChamado %>`)"> 
+                            <img src="../assets/Anexos (2).png" width="30px" alt="Ver PDF">
+                        </button> 
                 </div>
                 <div class="header-order">
                     <div class="info-header-order">
@@ -105,7 +105,7 @@
                         <input type="text" value="ABERTA" readonly>
                         <br>
                         <label for="">Chamado</label>
-                        <input type="number" value="<%= numeroChamado %>" name="chamado">
+                        <input type="number" value="<%= numeroChamado %>" id="NumChamado" name="chamado">
                     </div>
                 </div>
             </section>
@@ -358,6 +358,46 @@
           </div>
         </div>
       </section>
+
+      <section class="overlay-edit">
+        <section class="AnexoDoc" id="PopupAnexo" style="display: none;">
+            <div class="PopupAnexoChamado">
+                <div class="Popup-Content-Anexo-chamado">
+                        <div class="Popup-Header-Anexo-chamado">
+                            <span onclick="FecharPopupAnexo()">&times;</span>
+                            <div class="retan-Anexo-chamado">
+                                <h1 class="Popup-Title-Anexo-chamado">Anexar Documentos:</h1>
+                                <div class="label-container-chamado">
+                                    <label for="" class="Popup-label-Anexo-chamado">Número do Chamado:</label>
+                                    <input type="text" class="Anexo-input-chamado" id="id_chamadoAnexo" name="id_chamado" readonly style="display: none;" value="<%= numeroChamado %>">
+                                    <input data-custom-id="NumeroChamado" type="text" class="popup-input-anexo" id="NUMERO_CHAMADO" name="NUMERO_CHAMADO" placeholder="30000" readonly style="width: 100px;"> 
+                                </div>
+                                <img class="Img-Anexo-TT-chamado" src="../assets/logo.png" alt="">
+                            </div>
+                            <div class="segund-Anexo-chamado">
+                                <img class="Img-Anexo" id="Img-Anexo" src="../assets/anexos.png" alt="" title="Criar anexo">
+                                <input style="display: none;" type="file" id="AnexarPDF" name="AnexarPDF" class="popup-input-anexo" multiple>
+                                <img src="../assets/delete.png" alt="Excluir selecionados" class="Img-Anexo-chamado delete-selected-chamado" title="Deletar anexo" onclick="deletarAnexo()">
+                            </div>
+                            <div class="Table-Anexo-Chamado">
+                                <table class="Table-Anexo-Container-chamado">
+                                    <thead>
+                                        <tr>
+                                            <th class="select-Check-chamado">Selecionar</th>
+                                            <th class="titulo-col-chamado">Título:</th>
+                                            <th class="titulo-col-chamado">Criado por:</th>
+                                            <th class="titulo-coluna-data-chamado">Data criação:</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="tbodyAnexos">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </section>
+      </section>
     <script src="../js/dashboard.js"></script>
     <script src="../js/feedback.js"></script>
     <script src="../js/menu-mobile.js"></script>
@@ -365,8 +405,10 @@
     <script src="../js/script.js"></script>
     <script src="../js/loading.js"></script>  
     <script src="../js/scriptsNovoChamado.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-storage-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-database-compat.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-database-compat.js"></script>
     <link rel="stylesheet" href="../css/@media1440.css">
     <link rel="stylesheet" href="../css/@media1200.css">
 </body>

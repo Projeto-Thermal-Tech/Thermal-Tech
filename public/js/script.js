@@ -234,17 +234,6 @@ function mostrarUser() {
     print()
   }
   
-  function salvarChamado(){
-    const inputs = document.querySelectorAll(".data-chamado")
-    alert("Chamado criado com sucesso!")
-    setTimeout(() => {
-      inputs.forEach(function(input) {
-        input.value = '';
-      });
-    }, 2000);
-    
-  }
-  
   function deletarChamado(){
     const inputs = document.querySelectorAll(".data-chamado")
     confirmDelete = confirm("Tem certeza que deseja excluir esse chamado?") 

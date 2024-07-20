@@ -20,7 +20,8 @@ const dbConfig = {
     password: '123456',
     host: '34.95.252.117',
     port: '5432',
-    database: 'banco_tt' // ou qualquer outro valor padrão
+    database: 'banco_tt',
+    ssl: { rejectUnauthorized: false }
 };
 
 
