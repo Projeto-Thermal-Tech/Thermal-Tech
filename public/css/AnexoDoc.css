@@ -5,7 +5,7 @@
     transform: translate(-50%, -50%);
     width: 45%;
     height: auto; 
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    background:rgb(87, 162, 177) 100%;
     z-index: 2;
     border-radius: 10px;
     padding: 20px; 
@@ -103,7 +103,7 @@
 
 .Table-Anexo td, .Table-Anexo th, .Table-Anexo-Chamado td, .Table-Anexo-Chamado th  {
     cursor: pointer;
-    color: #fff; 
+    color: #000000; 
     text-align: center;
     padding: 8px; 
     border-bottom: 1px solid #ddd; 
@@ -111,13 +111,14 @@
 }
 
 .Table-Anexo th, .Table-Anexo-Chamado th {
-    background-color: #304fb8; 
+    background-color: #0835ff; 
     color: white;
-    border-bottom: 2px solid #444; 
+    border-bottom: 1px solid #080808; 
 }
 
 .Table-Anexo tr:hover, .Table-Anexo-Chamado tr:hover {
-    background-color: #1a1164be; 
+    background-color: #050505be; 
+    color: rgb(255, 255, 255);
 }
 
 
@@ -241,6 +242,7 @@ tr:nth-child(even) {
 tr:hover td {
     font-weight: bold;
     transform: scale(0.98);
+    color: #ffffff;
 }
 
 span[onclick="FecharPopupAnexo()"] {
