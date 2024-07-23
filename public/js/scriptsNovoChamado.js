@@ -74,62 +74,67 @@ document.getElementById("equipamento").addEventListener("change", function () {
   //     document.querySelector('.AnexoDoc').style.display = 'block';
   //   }
   // });
-  let anexos = [];
-  function verAnexos(id_chamado){
-    document.getElementById('PopupAnexo').style.display = 'block';
-    document.querySelector('.overlay-edit').style.display = 'block';
-    document.getElementById('AnexarPDF').addEventListener('change', function() {
-      alert('Arquivo carregado, mas não salvo. Clique em "Salvar" para anexar o arquivo.');
-      var fileInput = document.getElementById('AnexarPDF');
-      var createdAt = Date.now();
-      var nomeArquivo = fileInput.files[0].name;
-      var criado_por = localStorage.getItem('userName');
-      const date = new Date(parseInt(createdAt)); // Converte o timestamp para um objeto Date
-      const DateString = date.toISOString(); 
-      const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-      const formattedDate = date.toLocaleDateString('pt-BR', options);
-      const tbody = document.querySelector('.tbodyAnexos')
-      const tr = document.createElement('tr');
-      tr.classList.add('last-row')
-      const td = document.createElement('td')
-      const input = document.createElement('input')
-      input.type = 'checkbox'
-      input.classList.add('file-select')
-      input.value = nomeArquivo
-      td.appendChild(input)
-      tr.appendChild(td)
-      const td2 = document.createElement('td')
-      td2.textContent = nomeArquivo
-      tr.appendChild(td2)
-      const TdCriadoPor = document.createElement('td')
-      TdCriadoPor.textContent = criado_por
-      tr.appendChild(TdCriadoPor)
-      const td3 = document.createElement('td')
-      td3.textContent = formattedDate
-      tr.appendChild(td3)
-      tbody.appendChild(tr)
-      const anexo = {
-        nomeArquivo: nomeArquivo,
-        criadoPor: criado_por,
-        dataCriacao: formattedDate
-    };
+  var anexos = [];
 
-      // Adicionando o objeto ao array de anexos
-      anexos.push(anexo);
-      alert(anexos);
-    });
-    
-    
-  }
+function verAnexos(id_chamado) {
+  document.getElementById('PopupAnexo').style.display = 'block';
+  document.querySelector('.overlay-edit').style.display = 'block';
+
+  const fileInput = document.getElementById('AnexarPDF');
+
+  // Remove o event listener anterior, se existir
+  fileInput.removeEventListener('change', handleFileChange);
+
+  // Adiciona o event listener
+  fileInput.addEventListener('change', handleFileChange);
+}
+
+let indiceAnexo =0
+function handleFileChange() {
+  alert('Arquivo carregado, mas não salvo. Clique em "Salvar" para anexar o arquivo.');
+  var fileInput = document.getElementById('AnexarPDF');
+  var createdAt = Date.now();
+  var nomeArquivo = fileInput.files[0].name;
+  var criado_por = localStorage.getItem('userName');
+  const date = new Date(parseInt(createdAt)); // Converte o timestamp para um objeto Date
+  const DateString = date.toISOString();
+  const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+  const formattedDate = date.toLocaleDateString('pt-BR', options);
+  const tbody = document.querySelector('.tbodyAnexos');
+  const tr = document.createElement('tr');
+  tr.classList.add('last-row');
+  const td = document.createElement('td');
+  const input = document.createElement('input');
+  input.type = 'checkbox';
+  input.classList.add('file-select');
+  input.value = nomeArquivo;
+  input.setAttribute('data-custom-indice', indiceAnexo++);
+  td.appendChild(input);
+  tr.appendChild(td);
+  const td2 = document.createElement('td');
+  td2.textContent = nomeArquivo;
+  tr.appendChild(td2);
+  const TdCriadoPor = document.createElement('td');
+  TdCriadoPor.textContent = criado_por;
+  tr.appendChild(TdCriadoPor);
+  const td3 = document.createElement('td');
+  td3.textContent = formattedDate;
+  tr.appendChild(td3);
+  tbody.appendChild(tr);
+  const anexo = {
+    nomeArquivo: nomeArquivo,
+    criadoPor: criado_por,
+    dataCriacao: formattedDate,
+    file: fileInput.files[0]
+  };
+
+  // Adicionando o objeto ao array de anexos
+  anexos.push(anexo);
+}
   
   function FecharPopupAnexo() {
     document.getElementById('PopupAnexo').style.display = 'none';
     document.querySelector('.overlay-edit').style.display = 'none';
-    const tbody = document.querySelector('.tbodyAnexos')
-    while (tbody.firstChild) {
-      tbody.removeChild(tbody.firstChild)
-    }
-    
   }    
   document.getElementById('mostrarAnexo').addEventListener('click', function() {
     const checkboxes = document.querySelectorAll('.file-select');
@@ -160,9 +165,8 @@ document.getElementById("equipamento").addEventListener("change", function () {
     checkboxes.forEach(function(checkbox) {
       if (checkbox.checked) {
         anyChecked = true;
-        let url = checkbox.value;
-        let checkboxChecked = checkbox.getAttribute('data-custom-id');
-        deletarAnexoChamado(checkboxChecked,url);
+        let checkboxChecked = checkbox.getAttribute('data-custom-indice');
+        deletarAnexoChamado(checkboxChecked);
       }
     });
   
@@ -171,31 +175,7 @@ document.getElementById("equipamento").addEventListener("change", function () {
     }
   }
   
-  function deletarAnexoChamado(checkboxChecked,url) {
-    const confirmDelete = confirm('Tem certeza que deseja excluir o anexo?');
-    if (!confirmDelete) {
-      return;
-    }
-    const id = checkboxChecked;
-    if (id) {
-      const storageRef = firebase.storage().refFromURL(url)
-      storageRef.delete().then(() => {
-        console.log('PDF antigo excluído com sucesso!')
-      }).catch((error) => {
-        console.error('Erro ao excluir o PDF antigo:', error)
-      })
-      fetch('/deletar/anexo/chamado/' + id, {
-        method: 'POST'
-      }).then(function(response) {
-        if (response.ok) {
-          alert('Anexo excluído com sucesso!');
-          window.location.reload();
-        } else {
-          alert('Erro ao excluir o anexo.');
-        }
-      });
-    }
-  }
+ 
   document.getElementById('dowloadAnexo').addEventListener('click', function() {
     async function baixarImagem(url, nomeDoArquivo) {
       try {
@@ -226,20 +206,27 @@ document.getElementById("equipamento").addEventListener("change", function () {
       }
   })})
 
-  function salvarChamado(){
-    
-   const status = document.getElementsByName('status')[0].value
-   const chamado = document.getElementsByName('chamado')[0].value
-   const tag = document.getElementsByName('tag')[0].value
-   const prioridade = document.getElementsByName('prioridade')[0].value
-   const criador = document.getElementsByName('criador')[0].value
-   const email = document.getElementsByName('email')[0].value
-   const dataChamado = document.getElementsByName('dataChamado')[0].value
-   const horaChamado = document.getElementsByName('horaChamado')[0].value
-   const titleDesc = document.getElementsByName('titleDesc')[0].value
-   const desc = document.getElementsByName('desc')[0].value
+async function salvarChamado() {
+  showLoading()  
+  const status = document.getElementsByName('status')[0].value;
+  const chamado = document.getElementsByName('chamado')[0].value;
+  const tag = document.getElementsByName('tag')[0].value;
+  const prioridade = document.getElementsByName('prioridade')[0].value;
+  const criador = document.getElementsByName('criador')[0].value;
+  const email = document.getElementsByName('email')[0].value;
+  const dataChamado = document.getElementsByName('dataChamado')[0].value;
+  const horaChamado = document.getElementsByName('horaChamado')[0].value;
+  const titleDesc = document.getElementsByName('titleDesc')[0].value;
+  const desc = document.getElementsByName('desc')[0].value;
 
-    fetch('/cadastro/chamado', {
+  // Validação de campos
+  if (!status || !chamado || !tag || !prioridade || !criador || !email || !dataChamado || !horaChamado || !titleDesc || !desc) {
+    alert('Por favor, preencha todos os campos obrigatórios.');
+    return;
+  }
+
+  try {
+    const response = await fetch('/cadastro/chamado', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -248,28 +235,56 @@ document.getElementById("equipamento").addEventListener("change", function () {
         status: status,
         chamado: chamado,
         tag: tag,
-        titleDesc:titleDesc,
+        titleDesc: titleDesc,
         prioridade: prioridade,
-        criador:criador,
-        email:email,
-        dataChamado:dataChamado,
-        horaChamado:horaChamado,
-        desc:desc
+        criador: criador,
+        email: email,
+        dataChamado: dataChamado,
+        horaChamado: horaChamado,
+        desc: desc
       })
-    }).then(function(response) {
-      if (response.ok) {
-        alert('Chamado criado com sucesso!');
-        window.location.reload();
-      } else {
-        alert('Erro ao criar o chamado.');
-      }
     });
 
-    const inputs = document.querySelectorAll(".data-chamado")
-    alert("Chamado criado com sucesso!")
-    setTimeout(() => {
-      inputs.forEach(function(input) {
-        input.value = '';
-      });
-    }, 2000);
+    if (response.ok) {
+      for (const anexo of anexos) {
+        let timestamp = Date.now();
+        var storageRef = firebase.storage().ref('AnexosChamados/' + `${timestamp}_${anexo.nomeArquivo}`);
+        let file = anexo.file;
+        await storageRef.put(file);
+        let url = await storageRef.getDownloadURL();
+        let anexoResponse = await fetch('/atualizar/anexoChamado', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            id_chamado: chamado,
+            linkAnexo: url,
+            nomeArquivo: anexo.nomeArquivo,
+            createdAt: timestamp,
+            criado_por_cha: anexo.criadoPor,
+          })
+        });
+
+        if (!anexoResponse.ok) {
+          alert('Erro ao anexar o PDF.');
+        }
+      }
+      hideloading();
+      alert('Chamado criado com sucesso!');
+      window.location.reload();
+    } else {
+      alert('Erro ao criar o chamado.');
+    }
+  } catch (error) {
+    console.error('Erro:', error);
+    alert('Ocorreu um erro ao criar o chamado.');
   }
+
+  const inputs = document.querySelectorAll(".data-chamado");
+  setTimeout(() => {
+    inputs.forEach(function(input) {
+      input.value = '';
+    });
+  }, 2000);
+}

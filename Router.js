@@ -876,9 +876,9 @@ router.post('/cadastro/setor', function (req, res) {
 
 router.post('/cadastro/chamado', function (req, res) {
     novoChamado.insertChamado(req.body.status, req.body.tag, req.body.titleDesc, req.body.prioridade, req.body.criador, req.body.email, req.body.dataChamado, req.body.horaChamado, req.body.desc).then(function () {
-        res.redirect('/novo-chamado')
+        res.sendStatus(200)
     }).catch(function (error) {
-        res.send(error)
+        res.status(404)
     });
 })
 router.post('/cadastro/tecnico', function (req, res) {
