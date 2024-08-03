@@ -49,7 +49,13 @@ function verAnexos() {
   // Adiciona o event listener
   fileInput.addEventListener('change', handleFileChange);
 }
-
+document.getElementById('select-all').addEventListener('click', () => {
+  const checkboxes = document.querySelectorAll('.file-select');
+  const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = !allChecked;
+  });
+});
 let indiceAnexo = 0;
 
 function handleFileChange() {
@@ -125,16 +131,10 @@ function deletarAnexo() {
   if (!confirmacao) {
     return;
   }
-  else {
-    // Ordenar os índices em ordem decrescente
-    indices.sort((a, b) => b - a);
 
-    // Excluir os anexos com base nos índices ordenados
-    indices.forEach(function (indice) {
-      deletarAnexoChamado(indice);
-    });
-    alert('Anexo excluído com sucesso.');
-  }
+  // Ordenar os índices em ordem decrescente para evitar problemas ao excluir
+  indices.sort((a, b) => b - a);
+  indices.forEach(indice => deletarAnexoChamado(indice));
 }
 
 function deletarAnexoChamado(indice) { 
@@ -179,28 +179,6 @@ function FecharPopupAnexo() {
   document.getElementById('PopupAnexo').style.display = 'none';
   document.querySelector('.overlay-edit').style.display = 'none';
 }
-document.getElementById('mostrarAnexo').addEventListener('click', function () {
-  const checkboxes = document.querySelectorAll('.file-select');
-  let checkboxChecked = false; // Variável para rastrear se algum checkbox foi selecionado
-  checkboxes.forEach(function (checkbox) {
-    if (checkbox.checked) {
-      // Cria um elemento <a> temporário para abrir o PDF em uma nova aba
-      const link = document.createElement('a');
-      link.href = checkbox.value; // Define o URL do PDF
-      link.target = '_blank'; // Instrui o navegador a abrir o link em uma nova aba
-      // Adiciona o elemento ao corpo do documento para torná-lo funcional
-      document.body.appendChild(link);
-      // Aciona a abertura em nova aba
-      link.click();
-      // Remove o elemento do documento
-      document.body.removeChild(link);
-      checkboxChecked = true; // Atualiza a variável se um checkbox estiver marcado
-    }
-  });
-  if (!checkboxChecked) { // Se após verificar todos, nenhum estiver marcado, exibe o alerta
-    alert('Selecione um anexo para visualizar.');
-  }
-});
 
 
 document.getElementById('dowloadAnexo').addEventListener('click', function () {

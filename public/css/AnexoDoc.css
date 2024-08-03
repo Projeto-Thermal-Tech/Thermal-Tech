@@ -280,3 +280,7 @@ span[onclick="FecharPopupAnexo()"]:hover {
     z-index: 1;
     display: none;
 }
+.SelecionarTudo:hover{
+    cursor: pointer;
+    scale: 1.1;
+}
