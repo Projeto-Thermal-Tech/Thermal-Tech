@@ -179,6 +179,7 @@
     border: 1px solid gray;
     margin-bottom: 20px;
     margin-top: 20px;
+    text-align: center;
 }
 
 .popup-input-anexo, #linkPDF, #namePDF {

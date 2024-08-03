@@ -88,7 +88,7 @@
                         <button><img src="../assets/delete.png" onclick="deletarChamado()" alt=""></button>
                         <button><img src="../assets/print.png" onclick="imprimir()"></button>
                         <button type="button"><img src="/assets/pdf.png" onclick="PdfDowload()"></button>
-                        <button type="button" onclick="verAnexos(`<%= numeroChamado %>`)"> 
+                        <button type="button" onclick="verAnexos()"> 
                             <img src="../assets/Anexos (2).png" width="30px" alt="Ver PDF">
                         </button> 
                 </div>
@@ -196,7 +196,7 @@
                 <label for="">Descrição</label>
                 <input class="data-chamado" type="text" PL="Correção de dreno ACS-2101" style="width: 280px;"
                     name="titleDesc">
-                <input class="data-chamado" id="fileInput" type="file" style="display:none;">
+                <input class="data-chamado" id="fileInput" type="file" style="display:none;" multiple>
             </div>
             <div class="descrição">
                 <textarea class="data-chamado" name="desc" id="" cols="30" rows="10" style="width: 100%;padding: 5px;"
@@ -370,7 +370,7 @@
                                 <div class="label-container-chamado">
                                     <label for="" class="Popup-label-Anexo-chamado">Número do Chamado:</label>
                                     <input type="text" class="Anexo-input-chamado" id="id_chamadoAnexo" name="id_chamado" readonly style="display: none;" value="<%= numeroChamado %>">
-                                    <input data-custom-id="NumeroChamado" type="text" class="popup-input-anexo" id="NUMERO_CHAMADO" name="NUMERO_CHAMADO" placeholder="30000" readonly style="width: 100px;"> 
+                                    <input data-custom-id="NumeroChamado" type="text" class="popup-input-anexo" id="NUMERO_CHAMADO" name="NUMERO_CHAMADO" placeholder="30000" readonly style="width: 100px;" value="<%= numeroChamado %>"> 
                                 </div>
                                 <img class="Img-Anexo-TT-chamado" src="../assets/logo.png" alt="">
                             </div>
