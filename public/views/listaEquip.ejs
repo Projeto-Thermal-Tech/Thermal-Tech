@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/> -->
     <link rel="stylesheet" href="../css/list.css">
     <link rel="stylesheet" href="../css/header.css">
@@ -19,17 +21,21 @@
     <link rel="stylesheet" href="../css/AnexoDoc.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <script src="https://kit.fontawesome.com/8ab443ffcb.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Overpass:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/@media125.css">
-<link rel="stylesheet" href="../css/@mediaheader1280.css">
-<link rel="stylesheet" href="../css/feedback.css">
-<link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Overpass:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/@media125.css">
+    <link rel="stylesheet" href="../css/@mediaheader1280.css">
+    <link rel="stylesheet" href="../css/feedback.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
     <title>Lista de Equipamentos</title>
 </head>
+
 <body>
     <header>
         <div class="interface">
@@ -51,9 +57,10 @@
                 </nav>
             </nav>
             <div class="nav-right">
-              <div>
-                <a href="#" class="config" onclick="AbrirDashboard()"><img src="../assets/icon_config.png" alt=""></a>
-              </div>
+                <div>
+                    <a href="#" class="config" onclick="AbrirDashboard()"><img src="../assets/icon_config.png"
+                            alt=""></a>
+                </div>
             </div>
             <div class="btn-abrir-menu" id="btn-menu">
                 <i class="bi bi-list"></i>
@@ -85,11 +92,11 @@
         <section class="dados_manut">
             <div class="header_manut">
                 <div class="search_manut">
-                        <h4>Consultar Equipamentos</h4>
-                        <input type="text" id="tagInput" placeholder="TAG do Equipamento">
-                        <button onclick="filtrarPorTag()">Pesquisar</button>
-                        <button onclick="limparFiltro()" style="display: none;">Voltar</button>
-                        <button id="filtro" onclick="Salvarequipamento()">Filtrar</button>
+                    <h4>Consultar Equipamentos</h4>
+                    <input type="text" id="tagInput" placeholder="TAG do Equipamento">
+                    <button onclick="filtrarPorTag()">Pesquisar</button>
+                    <button onclick="limparFiltro()" style="display: none;">Voltar</button>
+                    <button id="filtro" onclick="Salvarequipamento()">Filtrar</button>
                 </div>
                 <div class="add_manut">
                     <div>
@@ -97,7 +104,7 @@
                     </div>
                     <div>
                         <img class="icon" src="../assets/ar_equip.png" alt=""><img src="" alt="">
-                    </div> 
+                    </div>
                 </div>
             </div>
         </section>
@@ -120,16 +127,32 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% for (let i = 0; i < equipamentos.length; i++) { %>
+                        <% for (let i=0; i < equipamentos.length; i++) { %>
                             <tr>
-                                <td><%= equipamentos[i].tag_listequip %></td>
-                                <td><%= equipamentos[i].tipos_arcondicionado_tipar %></td>
-                                <td><%= equipamentos[i].modelo_listequip %></td>
-                                <td><%= equipamentos[i].numero_serie_listequip %></td>
-                                <td><%= equipamentos[i].area_cli_listequip %></td>
-                                <td><%= equipamentos[i].localidade_listequip %></td>
-                                <td><%= equipamentos[i].nome_setor %></td>
-                                <td><%= equipamentos[i].descricao_listequip %></td>
+                                <td>
+                                    <%= equipamentos[i].tag_listequip %>
+                                </td>
+                                <td>
+                                    <%= equipamentos[i].tipos_arcondicionado_tipar %>
+                                </td>
+                                <td>
+                                    <%= equipamentos[i].modelo_listequip %>
+                                </td>
+                                <td>
+                                    <%= equipamentos[i].numero_serie_listequip %>
+                                </td>
+                                <td>
+                                    <%= equipamentos[i].area_cli_listequip %>
+                                </td>
+                                <td>
+                                    <%= equipamentos[i].localidade_listequip %>
+                                </td>
+                                <td>
+                                    <%= equipamentos[i].nome_setor %>
+                                </td>
+                                <td>
+                                    <%= equipamentos[i].descricao_listequip %>
+                                </td>
                                 <td style="width: 100px;">
                                     <button onclick="editarEquipamento(
                                         '<%= equipamentos[i].id_equip %>',                               
@@ -145,26 +168,28 @@
                                         <img src="../assets/botao-editar.png" width="30px" alt="">
                                     </button>
 
-    
- </td>
- <td>
-    <input type="hidden" name="_method" value="DELETE">
-    <button onclick="ExcluirEquipamento('<%= equipamentos[i].id_equip %>','<%= equipamentos[i].tag_listequip %>')" type="button" onc style="background-color: transparent; border: none;">
-        <img src="../assets/delete.png" width="35px">
-    </button>
-</td>
-<td>
-    <button onclick="
-        verAnexos('<%= equipamentos[i].id_equip %>','<%= equipamentos[i].tag_listequip %>',)" 
-        style="background-color: transparent; border: none;">
-        <img src="../assets/Anexos (2).png" width="30px" alt="Ver PDF">
-    </button> 
-</td>
+
+                                </td>
+                                <td>
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button
+                                        onclick="ExcluirEquipamento('<%= equipamentos[i].id_equip %>','<%= equipamentos[i].tag_listequip %>')"
+                                        type="button" onc style="background-color: transparent; border: none;">
+                                        <img src="../assets/delete.png" width="35px">
+                                    </button>
+                                </td>
+                                <td>
+                                    <button onclick="
+        verAnexos('<%= equipamentos[i].id_equip %>','<%= equipamentos[i].tag_listequip %>',)"
+                                        style="background-color: transparent; border: none;">
+                                        <img src="../assets/Anexos (2).png" width="30px" alt="Ver PDF">
+                                    </button>
+                                </td>
                             </tr>
-                        <% } %>
+                            <% } %>
                     </tbody>
                 </table>
-                
+
             </div>
         </section>
     </main>
@@ -173,130 +198,135 @@
             <div class="popup-title">Cadastrar Equipamento</div>
             <div class="popup-content">
                 <form action="/cadastro/equipamento" method="post">
-               <div class="popup-header">
-                 <div>
-                     <label for="" class="popup-label">TAG:</label>
-                     <input type="text" class="popup-input" id="tag" name="tag" placeholder="ACS-2101" required> 
-                 </div>
-                 <div>
-                    <label for="" class="popup-label">Tipo de Equipamento:</label>
-                    <select name="tipo" required>
-                        <option value=""></option> <!-- Opção em branco -->
-                        <% tipo.forEach(function(tipo) { %>
-                            <option id="tipo"  value="<%= tipo.id_tipar %>"><%= tipo.tipos_arcondicionado_tipar %></option>
-                        <% }); %>
-                    </select>
-                </div>
-                
-                 <div>
-                     <label for="" class="popup-label">Número de Série</label>
-                     <input type="text" class="popup-input" id="n/s" name="ns" placeholder="3928849328" required> 
-                 </div>
-               </div>
-               <div>
-                 <label for="" class="popup-label">Descrição do Equipamento</label> 
-                 <textarea name="desc" id="desc" cols="82" rows="3" required></textarea>
-             </div>  
-               <div class="popup-center">
-                 <div>
-                     <label for="" class="popup-label">Aréa Climatizada</label>
-                     <input type="number" name="area" id="area" class="popup-input" required>
-                 </div>
-                 <div>
-                     <label for="" class="popup-label">Localidade</label>
-                     <input type="text" name="local"  class="popup-input" id="local" required>
-                 </div>
-                 <div>
-                    <div>
-                        <label for="" class="popup-label">Setor</label>
-                        <select id="setor" name="setor" required>
-                            <option value=""></option>
-                            <% setores.forEach(function(setor) { %>
-                                <option value="<%= setor.id_setor %>"><%= setor.nome_setor %></option>
-                            <% }); %>
-                            </select>                        
+                    <div class="popup-header">
+                        <div>
+                            <label for="" class="popup-label">TAG:</label>
+                            <input type="text" class="popup-input" id="tag" name="tag" placeholder="ACS-2101" required>
+                        </div>
+                        <div>
+                            <label for="" class="popup-label">Tipo de Equipamento:</label>
+                            <select name="tipo" required>
+                                <option value=""></option> <!-- Opção em branco -->
+                                <% tipo.forEach(function(tipo) { %>
+                                    <option id="tipo" value="<%= tipo.id_tipar %>">
+                                        <%= tipo.tipos_arcondicionado_tipar %>
+                                    </option>
+                                    <% }); %>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="" class="popup-label">Número de Série</label>
+                            <input type="text" class="popup-input" id="n/s" name="ns" placeholder="3928849328" required>
+                        </div>
                     </div>
-               </div>
-               <div>
-                <label for="" class="popup-label">Modelo</label>
-                <input type="number" name="modelo" id="modelo" class="popup-input" required>
-            </div> 
+                    <div>
+                        <label for="" class="popup-label">Descrição do Equipamento</label>
+                        <textarea name="desc" id="desc" cols="82" rows="3" required></textarea>
+                    </div>
+                    <div class="popup-center">
+                        <div>
+                            <label for="" class="popup-label">Aréa Climatizada</label>
+                            <input type="number" name="area" id="area" class="popup-input" required>
+                        </div>
+                        <div>
+                            <label for="" class="popup-label">Localidade</label>
+                            <input type="text" name="local" class="popup-input" id="local" required>
+                        </div>
+                        <div>
+                            <div>
+                                <label for="" class="popup-label">Setor</label>
+                                <select id="setor" name="setor" required>
+                                    <option value=""></option>
+                                    <% setores.forEach(function(setor) { %>
+                                        <option value="<%= setor.id_setor %>">
+                                            <%= setor.nome_setor %>
+                                        </option>
+                                        <% }); %>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="" class="popup-label">Modelo</label>
+                            <input type="number" name="modelo" id="modelo" class="popup-input" required>
+                        </div>
+                    </div>
+                    <button class="popup-button salvar" type="submit" onclick="saveEquipment()">Salvar</button>
+                    <button class="popup-button cancelar" onclick="hidePopup()">Cancelar</button>
             </div>
-            <button class="popup-button salvar" type="submit" onclick="saveEquipment()" >Salvar</button>
-            <button class="popup-button cancelar" onclick="hidePopup()">Cancelar</button>
-        </div>
-    </form>
+            </form>
     </section>
     <section class="overlay-edit">
         <div class="popup-edit" id="popup-edit">
             <div class="popup-title">Editar Equipamento</div>
             <div class="popup-content">
                 <form action="/atualizar/equipamento" method="post">
-               <div class="popup-header">
-                 <div>
-                     <label for="" class="popup-label">TAG:</label>
-                     <input type="text" class="popup-input" id="TAG" name="TAG" placeholder="ACS-2101" required>
-                     <input type="text" id="id_equip" name="id_equip" style="display: none;"> 
-                 </div>
-                 <div>
-                    <label for="" class="popup-label">Tipo de Equipamento:</label>
-                    <select name="TIPO" required>
-                        <option id="TIPO" value=""></option>
-                        <% tipo.forEach(function(tipo) { %>
-                            <option value="<%= tipo.id_tipar %>" data-nome="<%= tipo.tipos_arcondicionado_tipar %>">
-                                <%= tipo.tipos_arcondicionado_tipar %>
-                            </option>
-                        <% }); %>
-                    </select>
-                </div>
-                 <div>
-                     <label for="" class="popup-label">Número de Série</label>
-                     <input type="text" class="popup-input" id="N/S" name="NS" placeholder="3928849328" required> 
-                 </div>
-               </div>
-               <div>
-                 <label for="" class="popup-label">Descrição do Equipamento</label> 
-                 <textarea name="DESC" id="DESC" cols="82" rows="3" required></textarea>
-             </div>  
-               <div class="popup-center">
-                 <div>
-                     <label for="" class="popup-label">Aréa Climatizada</label>
-                     <input type="text" name="AREA" id="AREA" class="popup-input" required>
-                 </div>
-                 <div>
-                     <label for="" class="popup-label">Localidade</label>
-                     <input type="text" name="LOCAL"  class="popup-input" id="LOCAL" required>
-                 </div>
-                 <div>
-                    <div>
-                        <label for="" class="popup-label">Setor</label>
-                        <select id="SETOR" name="SETOR" required>
-                            <% setores.forEach(function(setor) { %>
-                                <option value="<%= setor.id_setor %>" data-nome="<%= setor.nome_setor %>">
-                                    <%= setor.nome_setor %>
-                                </option>
-                            <% }); %>
-                        </select>                                             
+                    <div class="popup-header">
+                        <div>
+                            <label for="" class="popup-label">TAG:</label>
+                            <input type="text" class="popup-input" id="TAG" name="TAG" placeholder="ACS-2101" required>
+                            <input type="text" id="id_equip" name="id_equip" style="display: none;">
+                        </div>
+                        <div>
+                            <label for="" class="popup-label">Tipo de Equipamento:</label>
+                            <select name="TIPO" required>
+                                <option id="TIPO" value=""></option>
+                                <% tipo.forEach(function(tipo) { %>
+                                    <option value="<%= tipo.id_tipar %>"
+                                        data-nome="<%= tipo.tipos_arcondicionado_tipar %>">
+                                        <%= tipo.tipos_arcondicionado_tipar %>
+                                    </option>
+                                    <% }); %>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="" class="popup-label">Número de Série</label>
+                            <input type="text" class="popup-input" id="N/S" name="NS" placeholder="3928849328" required>
+                        </div>
                     </div>
-               </div>
-               <div>
-                <label for="" class="popup-label">Modelo</label>
-                <input type="text" name="MODELO" id="MODELO" class="popup-input" required>
-            </div> 
-            </div>
-            <br>
-            <div>
-                <button class="popup-button salvar"type="submit" onclick="saveEquipmentEdit()" >Salvar</button>
-            </form>
+                    <div>
+                        <label for="" class="popup-label">Descrição do Equipamento</label>
+                        <textarea name="DESC" id="DESC" cols="82" rows="3" required></textarea>
+                    </div>
+                    <div class="popup-center">
+                        <div>
+                            <label for="" class="popup-label">Aréa Climatizada</label>
+                            <input type="text" name="AREA" id="AREA" class="popup-input" required>
+                        </div>
+                        <div>
+                            <label for="" class="popup-label">Localidade</label>
+                            <input type="text" name="LOCAL" class="popup-input" id="LOCAL" required>
+                        </div>
+                        <div>
+                            <div>
+                                <label for="" class="popup-label">Setor</label>
+                                <select id="SETOR" name="SETOR" required>
+                                    <% setores.forEach(function(setor) { %>
+                                        <option value="<%= setor.id_setor %>" data-nome="<%= setor.nome_setor %>">
+                                            <%= setor.nome_setor %>
+                                        </option>
+                                        <% }); %>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="" class="popup-label">Modelo</label>
+                            <input type="text" name="MODELO" id="MODELO" class="popup-input" required>
+                        </div>
+                    </div>
+                    <br>
+                    <div>
+                        <button class="popup-button salvar" type="submit" onclick="saveEquipmentEdit()">Salvar</button>
+                </form>
                 <button class="popup-button cancelar" type="button" onclick="hidePopup()">Cancelar</button>
             </div>
         </div>
     </section>
     <section class="overlayfiltro">
-    <div class="popoufiltro" id="popoufiltro">
-        <div class="popup-titulo-filtro">Filtrar equipamentos</div>
-        <div class="popou-content-filtro">
-            <div class="popup-header-filtro">
+        <div class="popoufiltro" id="popoufiltro">
+            <div class="popup-titulo-filtro">Filtrar equipamentos</div>
+            <div class="popou-content-filtro">
+                <div class="popup-header-filtro">
                     <div>
                         <label for="" class="popou-label-filtro">Tag:</label>
                         <select id="equipamento" name="tag" class="select-height">
@@ -305,7 +335,7 @@
                                 <option value="<%= equipamento.tag_listequip %>">
                                     <%= equipamento.tag_listequip %>
                                 </option>
-                            <% }); %>
+                                <% }); %>
                         </select>
                     </div>
                     <div>
@@ -316,7 +346,7 @@
                                 <option value="<%= tipo.id_tipar %>" data-nome="<%= tipo.tipos_arcondicionado_tipar %>">
                                     <%= tipo.tipos_arcondicionado_tipar %>
                                 </option>
-                            <% }); %>
+                                <% }); %>
                         </select>
                     </div>
                     <div>
@@ -327,7 +357,7 @@
                                 <option value="<%= equipamento.modelo_listequip %>">
                                     <%= equipamento.modelo_listequip %>
                                 </option>
-                            <% }); %>
+                                <% }); %>
                         </select>
                     </div>
                     <div>
@@ -338,7 +368,7 @@
                                 <option value="<%= equipamento.numero_serie_listequip %>">
                                     <%= equipamento.numero_serie_listequip %>
                                 </option>
-                            <% }); %>
+                                <% }); %>
                         </select>
                     </div>
                     <div>
@@ -349,18 +379,18 @@
                                 <option value="<%= equipamento.area_cli_listequip %>">
                                     <%= equipamento.area_cli_listequip %>
                                 </option>
-                            <% }); %>
+                                <% }); %>
                         </select>
                     </div>
                     <div>
                         <label for="" class="popou-label-filtro">Localidade</label>
-                        <select name="Localidade" id="Localidade" class="select-height"  class="popup-input">
+                        <select name="Localidade" id="Localidade" class="select-height" class="popup-input">
                             <option value=""></option>
                             <% equipamentos.forEach(function(equipamento) { %>
                                 <option value="<%= equipamento.localidade_listequip %>">
                                     <%= equipamento.localidade_listequip %>
                                 </option>
-                            <% }); %>
+                                <% }); %>
                         </select>
                     </div>
                     <div>
@@ -368,9 +398,11 @@
                         <select id="setor" name="setor" class="select-height">
                             <option value=""></option>
                             <% setores.forEach(function(setor) { %>
-                                <option value="<%= setor.id_setor %>"><%= setor.nome_setor %></option>
-                            <% }); %>
-                            </select>     
+                                <option value="<%= setor.id_setor %>">
+                                    <%= setor.nome_setor %>
+                                </option>
+                                <% }); %>
+                        </select>
                     </div>
                     <div>
                         <label for="" class="popou-label-filtro">Descrição</label>
@@ -383,30 +415,34 @@
                 </div>
             </div>
         </div>
-        
+
     </section>
-    
+
     <section class="user-profile">
         <div id="feedbackModal" class="feedback">
             <div class="feedback-content">
                 <span class="feedback-close" onclick="resetForm()">&times;</span>
                 <h2 class="title-feedback">Feedback</h2>
                 <hr class="feedbackLine">
-                <form id="feedbackForm" class="feedback-form"  action="/feedbacks" method="POST"> 
+                <form id="feedbackForm" class="feedback-form" action="/feedbacks" method="POST">
                     <div id="anonymousSection">
-                        <button class="EnviarAnonimamente" id="EnviarAnonimamenteButton" onclick="enableAnonymous()">Enviar Anonimamente</button>
+                        <button class="EnviarAnonimamente" id="EnviarAnonimamenteButton"
+                            onclick="enableAnonymous()">Enviar Anonimamente</button>
                     </div>
                     <div class="form-group-feedback" id="nomeField">
                         <label class="labelFeedback" for="userName" id="NomeFeedbackLabel">Nome:</label>
-                            <input type="text" id="NomeFeedback" name="nome_feed" class="input-field-feedback displayName" aria-describedby="userNameHelp">
+                        <input type="text" id="NomeFeedback" name="nome_feed" class="input-field-feedback displayName"
+                            aria-describedby="userNameHelp">
                     </div>
                     <div class="form-group-feedback" id="emailField">
                         <label class="labelFeedback" for="userEmailInput">Email:</label>
-                        <input type="email" id="userEmailInput" name="email_feed" class="input-field-feedback userEmail" aria-describedby="userEmailHelp">
-                    </div>              
+                        <input type="email" id="userEmailInput" name="email_feed" class="input-field-feedback userEmail"
+                            aria-describedby="userEmailHelp">
+                    </div>
                     <div class="form-group-feedback">
                         <label class="labelFeedback" for="DescriçãoFeedback">Descrição do Feedback:</label>
-                        <input type="text" id="DescriçãoFeedback" name="descricao_feed" class="input-field-feedback" aria-describedby="DescriçãoFeedback">
+                        <input type="text" id="DescriçãoFeedback" name="descricao_feed" class="input-field-feedback"
+                            aria-describedby="DescriçãoFeedback">
                     </div>
                     <hr>
                     <div class="form-group-feedback">
@@ -415,32 +451,37 @@
                 </form>
             </div>
         </div>
-      </section>
-      
-      <section class="user-profile">
+    </section>
+
+    <section class="user-profile">
         <div id="suporteModal" class="suporte">
             <div class="suporte-content">
                 <span class="suporte-close">&times;</span>
                 <h2 class="title-suporte">Suporte</h2>
                 <hr class="suporteLine">
-                <form id="suporteForm" class="suporte-form" action="/Suporte" method="POST" enctype="multipart/form-data">
+                <form id="suporteForm" class="suporte-form" action="/Suporte" method="POST"
+                    enctype="multipart/form-data">
                     <div class="form-group-suporte" id="nomeField">
                         <label class="labelSuporte" for="userName">Nome:</label>
-                        <input type="text" id="nome" name="nome_desc" class="input-field-suporte displayName" aria-describedby="userName">
+                        <input type="text" id="nome" name="nome_desc" class="input-field-suporte displayName"
+                            aria-describedby="userName">
                     </div>
                     <div class="form-group-suporte" id="emailField">
                         <label class="labelSuporte" for="userEmailInput">Email:</label>
-                        <input type="email" id="userEmailSuporte" name="email_desc" class="input-field-suporte userEmail" aria-describedby="userEmail">
+                        <input type="email" id="userEmailSuporte" name="email_desc"
+                            class="input-field-suporte userEmail" aria-describedby="userEmail">
                     </div>
                     <div class="form-group-suporte">
                         <label class="labelSuporte" for="DescriçãoSuporte">Descrição do Suporte:</label>
-                        <input type="text" id="DescriçãoSuporte" name="descricao_desc" class="input-field-suporte" aria-describedby="DescriçãoSuporte">
+                        <input type="text" id="DescriçãoSuporte" name="descricao_desc" class="input-field-suporte"
+                            aria-describedby="DescriçãoSuporte">
                     </div>
                     <div class="form-group-suporte">
-                      <label class="labelSuporte" for="suporteArquivos">Anexar Imagem:</label>
-                      <input type="file" id="suporteArquivos" name="suporteArquivos" class="input-field-suporte" multiple>
-                      <div id="imagePreviewContainer" style="margin-top: 20px;"></div>
-                  </div>
+                        <label class="labelSuporte" for="suporteArquivos">Anexar Imagem:</label>
+                        <input type="file" id="suporteArquivos" name="suporteArquivos" class="input-field-suporte"
+                            multiple>
+                        <div id="imagePreviewContainer" style="margin-top: 20px;"></div>
+                    </div>
                     <hr>
                     <div class="form-group-suporte">
                         <input type="submit" onclick="EnviadoSuporte()" value="Salvar" class="input-submit-feedback">
@@ -448,25 +489,25 @@
                 </form>
             </div>
         </div>
-      </section>
-      <section class="overlay-dashboard" id="dashboard">
+    </section>
+    <section class="overlay-dashboard" id="dashboard">
         <div class="dashboard">
             <span class="close-icon" onclick="closeDashboard()">X</span>
             <form>
-              <div class="image-dash">
-                  <label for="arquivo">
-                      <img id="icone" class="user-image" src="../assets/icons8-usuário-50.png" alt="Ícone de pessoa"
-                          style="cursor: pointer;">
-                  </label>
-                  <input type="file" id="arquivo" name="arquivo" accept="image/*" onchange="previewImage(event)"
-                      style="display: none;">
-                  <img class="user-image" id="preview" src="" alt="Pré-visualização da imagem" style="display: none;">
-                  <div class="user-info">
-                    <h5 id="userName" style="color: white;" class="user-name displayName"></h5>
-                  </div>
-              </div>
-                  <h5 id="userEmail" style="color: white;" class="user-email userEmail"></h5>
-          </form>
+                <div class="image-dash">
+                    <label for="arquivo">
+                        <img id="icone" class="user-image" src="../assets/icons8-usuário-50.png" alt="Ícone de pessoa"
+                            style="cursor: pointer;">
+                    </label>
+                    <input type="file" id="arquivo" name="arquivo" accept="image/*" onchange="previewImage(event)"
+                        style="display: none;">
+                    <img class="user-image" id="preview" src="" alt="Pré-visualização da imagem" style="display: none;">
+                    <div class="user-info">
+                        <h5 id="userName" style="color: white;" class="user-name displayName"></h5>
+                    </div>
+                </div>
+                <h5 id="userEmail" style="color: white;" class="user-email userEmail"></h5>
+            </form>
             <hr>
             <div class="content-dashboard">
                 <div class="links-dash">
@@ -482,7 +523,7 @@
                     </a>
                 </div>
                 <div class="links-dash">
-                    <a href="#"  class="linksdashsuporte" onclick="AbrirPopupSuporte()">
+                    <a href="#" class="linksdashsuporte" onclick="AbrirPopupSuporte()">
                         <img class="img-links" src="../assets/icons8-suporte-online-skin-type-1-100.png" alt="Ícone">
                         <span class="user-nameBotaoAbrirPopup">Suporte</span>
                     </a>
@@ -501,90 +542,105 @@
                 </div>
             </div>
         </div>
-      </section>
-      <section class="user-profile">
+    </section>
+    <section class="user-profile">
         <div id="userModal" class="modal">
-          <div class="user-content">
-            <span class="user-close">&times;</span>
-            <h2 class="title-user">Perfil do Usuário</h2>
-            <hr class="profileLine">
-            <form id="profileForm" class="profile-form">
-              <div class="form-group">
-                  <label class="labelUser" for="userName">Nome:</label>
-                  <input type="text" id="nome" name="nome_pfu" class="input-field displayName" aria-describedby="userNameHelp">
-              </div>
-              <div class="form-group">
-                  <label class="labelUser" for="userEmailPerfilUser">Email:</label>
-                  <input type="email" id="userEmailPerfilUser" name="email_pfu" class="input-field userEmail" aria-describedby="userEmailHelp">
-              </div>              
-              <div class="form-group">
-                <label class="labelUser" for="userPhone">Telefone:</label>
-                <input type="text" id="userPhone" name="telefone_pfu" class="input-field userPhone" aria-describedby="userPhoneHelp">
+            <div class="user-content">
+                <span class="user-close">&times;</span>
+                <h2 class="title-user">Perfil do Usuário</h2>
+                <hr class="profileLine">
+                <form id="profileForm" class="profile-form">
+                    <div class="form-group">
+                        <label class="labelUser" for="userName">Nome:</label>
+                        <input type="text" id="nome" name="nome_pfu" class="input-field displayName"
+                            aria-describedby="userNameHelp">
+                    </div>
+                    <div class="form-group">
+                        <label class="labelUser" for="userEmailPerfilUser">Email:</label>
+                        <input type="email" id="userEmailPerfilUser" name="email_pfu" class="input-field userEmail"
+                            aria-describedby="userEmailHelp">
+                    </div>
+                    <div class="form-group">
+                        <label class="labelUser" for="userPhone">Telefone:</label>
+                        <input type="text" id="userPhone" name="telefone_pfu" class="input-field userPhone"
+                            aria-describedby="userPhoneHelp">
+                    </div>
+                    <div class="form-group">
+                        <label class="labelUser" for="CPF">CPF:</label>
+                        <input type="text" id="CPF" name="cpf_pfu" class="input-field userCPF" aria-describedby="CPF">
+                    </div>
+                    <div class="form-group">
+                        <label class="labelUserData" for="dataNascimento">Data de Nascimento:</label>
+                        <input type="date" id="dataNascimento" name="data_nascimento_pfu"
+                            class="input-fieldData userDataNascimento" aria-describedby="dataNascimento" maxlength="14">
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <input type="submit" value="Salvar" class="input-submit">
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label class="labelUser" for="CPF">CPF:</label>
-                <input type="text" id="CPF" name="cpf_pfu" class="input-field userCPF" aria-describedby="CPF">
-            </div>
-            <div class="form-group">
-                <label class="labelUserData" for="dataNascimento">Data de Nascimento:</label>
-                <input type="date" id="dataNascimento" name="data_nascimento_pfu" class="input-fieldData userDataNascimento" aria-describedby="dataNascimento" maxlength="14">
-            </div>
-              <hr>
-              <div class="form-group">
-                  <input type="submit" value="Salvar" class="input-submit">
-              </div>
-          </form>
-          </div>
         </div>
         <section class="AnexoDoc" id="PopupAnexo" style="display: none;">
             <div class="PopupAnexo">
                 <div class="Popup-Content-Anexo">
-                        <div class="Popup-Header-Anexo">
-                            <span onclick="FecharPopupAnexo()">&times;</span>
-                            <div class="retan-Anexo">
-                                <h1 class="Popup-Title-Anexo">Anexar Documentos:</h1>
-                                <div class="label-container">
-                                    <label for="" class="Popup-label-Anexo">Tag do Equipamento:</label>
-                                    <input type="text" class="Anexo-input" id="id_equipAnexo" name="id_equip" readonly style="display: none;">
-                                    <input data-custom-id="TagEquip" type="text" class="popup-input-anexo" id="TAG" name="tag" placeholder="ACS-2101" readonly style="width: 100px;"> 
-                                </div>
-                                <img class="Img-Anexo-TT" src="../assets/logo.png" alt="">
+                    <div class="Popup-Header-Anexo">
+                        <span onclick="FecharPopupAnexo()">&times;</span>
+                        <div class="retan-Anexo">
+                            <h1 class="Popup-Title-Anexo">Anexar Documentos:</h1>
+                            <div class="label-container">
+                                <label for="" class="Popup-label-Anexo">Tag do Equipamento:</label>
+                                <input type="text" class="Anexo-input" id="id_equipAnexo" name="id_equip" readonly
+                                    style="display: none;">
+                                <input data-custom-id="TagEquip" type="text" class="popup-input-anexo" id="TAG"
+                                    name="tag" placeholder="ACS-2101" readonly style="width: 100px;">
                             </div>
-                            <div class="segund-Anexo">
-                                <img class="Img-Anexo" id="Img-Anexo" src="../assets/anexos.png" alt="" title="Criar anexo">
-                                <input style="display: none;" type="file" id="AnexarPDF" name="AnexarPDF" class="popup-input-anexo" multiple>
-                                <button id="btnSalvarAnexo" class="Img-Anexo-Salvar" type="button">
-                                    <img class="Img-Anexo" src="../assets/save.png" alt="Salvar" title="Salvar anexo">
-                                </button>
-                                <div class="pdfViewerHeader">
-                                    <img id="mostrarAnexo" src="../assets/icons8-visualizar-arquivo-48.png" class="Img-Anexo" alt="Mostrar PDF" style="cursor:pointer;" title="Visualizar anexo">
-                                </div>
-                                <img src="../assets/delete.png" alt="Excluir selecionados" class="Img-Anexo delete-selected" title="Deletar anexo" onclick="deletarAnexo()">
-                                <img src="../assets/file.png" id="dowloadAnexo" class="Img-Anexo" alt="" title="Baixar arquivo">
-                            </div>
-                            <div class="Table-Anexo">
-                                <table class="Table-Anexo-Container">
-                                    <thead>
-                                        <tr>
-                                            <th class="select-Check">Selecionar</th>
-                                            <th class="titulo-col">Título:</th>
-                                            <th class="titulo-col">Criado por</th>
-                                            <th class="titulo-coluna-data">Data criação:</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="tbodyAnexos">
-                                    </tbody>
-                                </table>
-                            </div>
+                            <img class="Img-Anexo-TT" src="../assets/logo.png" alt="">
                         </div>
+                        <div class="segund-Anexo">
+                            <img class="Img-Anexo" id="Img-Anexo" src="../assets/anexos.png" alt="" title="Criar anexo">
+                            <input style="display: none;" type="file" id="AnexarPDF" name="AnexarPDF"
+                                class="popup-input-anexo" multiple>
+                            <button id="btnSalvarAnexo" class="Img-Anexo-Salvar" type="button">
+                                <img class="Img-Anexo" src="../assets/save.png" alt="Salvar" title="Salvar anexo">
+                            </button>
+                            <div class="pdfViewerHeader">
+                                <img id="mostrarAnexo" src="../assets/icons8-visualizar-arquivo-48.png"
+                                    class="Img-Anexo" alt="Mostrar PDF" style="cursor:pointer;"
+                                    title="Visualizar anexo">
+                            </div>
+                            <img src="../assets/delete.png" alt="Excluir selecionados" class="Img-Anexo delete-selected"
+                                title="Deletar anexo" onclick="deletarAnexo()">
+                            <img src="../assets/file.png" id="dowloadAnexo" class="Img-Anexo" alt=""
+                                title="Baixar arquivo">
+                        </div>
+                        <div class="Table-Anexo">
+                            <table class="Table-Anexo-Container">
+                                <thead>
+                                    <tr>
+                                        <th><img id="select-all" title="Selecionar todos Anexos" class="SelecionarTudo"
+                                                width="24" height="24"
+                                                src="https://img.icons8.com/color-glass/48/check-all--v1.png"
+                                                alt="check-all--v1" /></th>
+
+                                        <th class="titulo-col">Título:</th>
+                                        <th class="titulo-col">Criado por</th>
+                                        <th class="titulo-coluna-data">Data criação:</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="tbodyAnexos">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-    
+
         </section>
-      </section>
+    </section>
     </div>
     <script src="../js/dashboard.js"></script>
-    <script src="../js/loading.js"></script>  
+    <script src="../js/loading.js"></script>
     <script src="../../database/cnx.js"></script>
     <script src="../js/notify.min.js"></script>
     <script src="../js/feedback.js"></script>
@@ -595,9 +651,10 @@
     <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-storage-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-database-compat.js"></script>
-     <script src="../Login_v1/firebase-init.js"></script>
-     <script src="../js/auth-guard.js"></script>
-     <script src="../js/logout.js"></script>
-     <script src="../js/script.js"></script>
+    <script src="../Login_v1/firebase-init.js"></script>
     <script src="../js/auth-guard.js"></script>
-</html> 
+    <script src="../js/logout.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/auth-guard.js"></script>
+
+</html>

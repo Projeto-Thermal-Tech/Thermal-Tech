@@ -244,9 +244,7 @@ fetch('/view/anexo/equipamento',{
 }).then(function(response){
   if(response.ok){
     response.json().then(function(data) {
-      console.log(data);
       const anexos = data
-      // quero que anexos[i].createdat retorne uma data formatada
       Data = new Date(anexos[0].createdat);
       const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
       const dataFormatada =  anexos[0].createdat = Data.toLocaleDateString('pt-BR', options);
@@ -294,29 +292,45 @@ fetch('/view/anexo/equipamento',{
   }
 })
 }
+document.getElementById('select-all').addEventListener('click', () => {
+  const checkboxes = document.querySelectorAll('.file-select');
+  const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = !allChecked;
+  });
+});
 function deletarAnexo() {
   const checkboxes = document.querySelectorAll('.file-select');
   let anyChecked = false;
+  let anexosParaExcluir = [];
 
   checkboxes.forEach(function(checkbox) {
     if (checkbox.checked) {
       anyChecked = true;
-      let url = checkbox.value;
-      let checkboxChecked = checkbox.getAttribute('data-custom-id');
-      deletarAnexoEquipamento(checkboxChecked,url);
+      const url = checkbox.value;
+      const checkboxChecked = checkbox.getAttribute('data-custom-id');
+      anexosParaExcluir.push({ id: checkboxChecked, url: url });
     }
   });
 
   if (!anyChecked) {
     alert('Selecione um anexo para excluir.');
+    return;
   }
-}
 
-function deletarAnexoEquipamento(checkboxChecked,url) {
-  const confirmDelete = confirm('Tem certeza que deseja excluir o anexo?');
+  const confirmDelete = confirm('Tem certeza que deseja excluir os anexos selecionados?');
   if (!confirmDelete) {
     return;
   }
+
+  anexosParaExcluir.forEach(function(anexo) {
+    deletarAnexoEquipamento(anexo.id, anexo.url);
+  });
+
+  alert('Anexos excluídos com sucesso!');
+}
+
+function deletarAnexoEquipamento(checkboxChecked,url) {
   const id = checkboxChecked;
   if (id) {
           const storageRef = firebase.storage().refFromURL(url)
@@ -329,7 +343,6 @@ function deletarAnexoEquipamento(checkboxChecked,url) {
       method: 'POST'
     }).then(function(response) {
       if (response.ok) {
-        alert('Anexo excluído com sucesso!');
         window.location.reload();
       } else {
         alert('Erro ao excluir o anexo.');
